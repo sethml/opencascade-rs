@@ -22,11 +22,9 @@
 #include <ApproxInt_SvSurfaces.hxx>
 #include <Approx_Array1OfAdHSurface.hxx>
 #include <Approx_ParametrizationType.hxx>
-#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Approx_Status.hxx>
 #include <Approx_SweepFunction.hxx>
 #include <BRepFill_CurveConstraint.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_BoundSortBox.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
@@ -44,6 +42,7 @@
 #include <Extrema_ExtPS.hxx>
 #include <Extrema_ExtSS.hxx>
 #include <Extrema_POnCurv2d.hxx>
+#include <FEmTool_AssemblyTable.hxx>
 #include <FairCurve_AnalysisCode.hxx>
 #include <FairCurve_Batten.hxx>
 #include <FairCurve_BattenLaw.hxx>
@@ -293,6 +292,7 @@
 #include <Hatch_Line.hxx>
 #include <Hatch_LineForm.hxx>
 #include <Hatch_Parameter.hxx>
+#include <IGESBasic_Array2OfHArray1OfReal.hxx>
 #include <IntAna_Curve.hxx>
 #include <IntCurveSurface_HInter.hxx>
 #include <IntCurveSurface_Intersection.hxx>
@@ -435,7 +435,7 @@
 #include <LocalAnalysis_SurfaceContinuity.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_BaseAllocator.hxx>
-#include <NCollection_BaseSequence.hxx>
+#include <NCollection_BaseList.hxx>
 #include <NLPlate_HGPPConstraint.hxx>
 #include <NLPlate_HPG0Constraint.hxx>
 #include <NLPlate_HPG0G1Constraint.hxx>
@@ -476,6 +476,8 @@
 #include <TColGeom2d_HArray1OfCurve.hxx>
 #include <TColGeom_Array1OfBSplineCurve.hxx>
 #include <TColGeom_Array1OfBezierCurve.hxx>
+#include <TColGeom_Array1OfCurve.hxx>
+#include <TColGeom_Array1OfSurface.hxx>
 #include <TColGeom_Array2OfBezierSurface.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
 #include <TColStd_Array1OfInteger.hxx>
@@ -500,12 +502,11 @@
 #include <TColgp_SequenceOfVec.hxx>
 #include <TColgp_SequenceOfXY.hxx>
 #include <TColgp_SequenceOfXYZ.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_State.hxx>
-#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopTrans_CurveTransition.hxx>
 #include <TopTrans_SurfaceTransition.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax22d.hxx>
 #include <gp_Circ.hxx>

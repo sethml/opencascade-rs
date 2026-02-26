@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <DEPLY_ConfigurationNode.hxx>
 #include <DEPLY_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
@@ -30,6 +29,7 @@
 #include <TDocStd_SequenceOfDocument.hxx>
 #include <XCAFPrs_Style.hxx>
 #include <XSControl_WorkSession.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<DEPLY_ConfigurationNode> HandleDEPLYConfigurationNode;

@@ -5,9 +5,7 @@
 
 #include <AIS_InteractiveContext.hxx>
 #include <AIS_NListOfEntityOwner.hxx>
-#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Aspect_SequenceOfColor.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
 #include <Convert_SequenceOfArray1OfPoles.hxx>
@@ -21,6 +19,7 @@
 #include <Graphic3d_MapOfStructure.hxx>
 #include <Graphic3d_MaterialAspect.hxx>
 #include <Graphic3d_ShaderVariable.hxx>
+#include <IGESBasic_Array2OfHArray1OfReal.hxx>
 #include <MeshVS_Array1OfSequenceOfInteger.hxx>
 #include <MeshVS_Buffer.hxx>
 #include <MeshVS_CommonSensitiveEntity.hxx>
@@ -56,13 +55,13 @@
 #include <MeshVS_TwoColors.hxx>
 #include <MeshVS_TwoNodes.hxx>
 #include <MeshVS_VectorPrsBuilder.hxx>
-#include <MoniTool_DataMapOfShapeTransient.hxx>
 #include <Prs3d_Drawer.hxx>
 #include <PrsMgr_ListOfPresentableObjects.hxx>
 #include <PrsMgr_PresentableObject.hxx>
 #include <PrsMgr_PresentationManager.hxx>
 #include <PrsMgr_Presentations.hxx>
 #include <Quantity_Color.hxx>
+#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <Select3D_BndBox3d.hxx>
 #include <Select3D_EntitySequence.hxx>
 #include <Select3D_SensitiveFace.hxx>
@@ -71,12 +70,11 @@
 #include <Select3D_TypeOfSensitivity.hxx>
 #include <SelectBasics_PickResult.hxx>
 #include <SelectBasics_SelectingVolumeManager.hxx>
-#include <SelectMgr_EntityOwner.hxx>
 #include <SelectMgr_SelectableObject.hxx>
+#include <SelectMgr_SelectableObjectSet.hxx>
 #include <SelectMgr_Selection.hxx>
 #include <SelectMgr_SequenceOfOwner.hxx>
 #include <SelectMgr_SequenceOfSelection.hxx>
-#include <SelectMgr_ViewerSelector.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
@@ -89,6 +87,7 @@
 #include <TColgp_Array1OfPnt2d.hxx>
 #include <TopLoc_Location.hxx>
 #include <V3d_ListOfView.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_GTrsf.hxx>
 #include <gp_Trsf.hxx>
 #include <gp_Vec.hxx>
@@ -1698,6 +1697,10 @@ extern "C" const char* MeshVS_Mesh_inherited_UpdateSelection(MeshVS_Mesh* self, 
 extern "C" const char* MeshVS_Mesh_inherited_SetAssemblyOwner(MeshVS_Mesh* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> MeshVS_Mesh_inherited_BndBoxOfSelected(MeshVS_Mesh* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> MeshVS_Mesh_inherited_GlobalSelectionMode(const MeshVS_Mesh* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }

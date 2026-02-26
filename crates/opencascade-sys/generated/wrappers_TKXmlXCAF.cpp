@@ -3,8 +3,7 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
-#include <CDM_ListOfDocument.hxx>
+#include <CDM_MapOfDocument.hxx>
 #include <LDOM_Element.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
@@ -19,7 +18,7 @@
 #include <Standard_TypeDef.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeIndexedMap.hxx>
+#include <TDF_AttributeDataMap.hxx>
 #include <TDocStd_Application.hxx>
 #include <TopLoc_Location.hxx>
 #include <TopTools_LocationSet.hxx>
@@ -30,7 +29,7 @@
 #include <XmlLDrivers_DocumentStorageDriver.hxx>
 #include <XmlMDF_ADriver.hxx>
 #include <XmlMDF_ADriverTable.hxx>
-#include <XmlMDF_MapOfDriver.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <XmlMXCAFDoc.hxx>
 #include <XmlMXCAFDoc_AssemblyItemRefDriver.hxx>
 #include <XmlMXCAFDoc_CentroidDriver.hxx>

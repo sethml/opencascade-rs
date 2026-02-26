@@ -57,7 +57,6 @@
 #include <BRep_TFace.hxx>
 #include <BRep_TVertex.hxx>
 #include <BRep_Tool.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <BinTools.hxx>
 #include <BinTools_Curve2dSet.hxx>
 #include <BinTools_CurveSet.hxx>
@@ -124,15 +123,15 @@
 #include <TColGeom2d_Array1OfCurve.hxx>
 #include <TColGeom_Array1OfBSplineCurve.hxx>
 #include <TColGeom_Array1OfBezierCurve.hxx>
+#include <TColGeom_Array1OfCurve.hxx>
+#include <TColGeom_Array1OfSurface.hxx>
 #include <TColGeom_Array2OfBezierSurface.hxx>
-#include <TColGeom_SequenceOfCurve.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopLoc_Location.hxx>
-#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopTools.hxx>
 #include <TopTools_Array1OfListOfShape.hxx>
 #include <TopTools_Array1OfShape.hxx>
@@ -191,6 +190,7 @@
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
 #include <VrmlData_DataMapOfShapeAppearance.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>

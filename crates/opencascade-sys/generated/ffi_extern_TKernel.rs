@@ -35996,6 +35996,9 @@ extern "C" {
     pub fn NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex_destructor(
         self_: *mut NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex,
     );
+    pub fn NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner_destructor(
+        self_: *mut NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner,
+    );
     pub fn NCollection_Shared_NCollection_List_gp_Pnt2d_destructor(
         self_: *mut NCollection_Shared_NCollection_List_gp_Pnt2d,
     );

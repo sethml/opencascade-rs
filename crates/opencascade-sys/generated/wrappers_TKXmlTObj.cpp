@@ -3,8 +3,7 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
-#include <CDM_ListOfDocument.hxx>
+#include <CDM_MapOfDocument.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <PCDM_Reader.hxx>
@@ -18,12 +17,13 @@
 #include <Standard_TypeDef.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeIndexedMap.hxx>
+#include <TDF_AttributeDataMap.hxx>
 #include <TDocStd_Application.hxx>
 #include <XmlLDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlLDrivers_DocumentStorageDriver.hxx>
 #include <XmlMDF_ADriver.hxx>
 #include <XmlMDF_ADriverTable.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <XmlObjMgt_Persistent.hxx>
 #include <XmlObjMgt_RRelocationTable.hxx>
 #include <XmlObjMgt_SRelocationTable.hxx>

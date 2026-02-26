@@ -2717,6 +2717,7 @@ pub use crate::ffi_types::{
     NCollection_Sequence_opencascade_handle_Poly_Triangulation as Sequence_opencascade_handle_Poly_Triangulation,
     NCollection_Sequence_opencascade_handle_V3d_View as Sequence_opencascade_handle_V3d_View,
     NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex as Shared_NCollection_DynamicArray_BRepMesh_Vertex,
+    NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner as Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner,
     NCollection_Shared_NCollection_List_gp_Pnt2d as Shared_NCollection_List_gp_Pnt2d,
     NCollection_Shared_TColStd_PackedMapOfInteger as Shared_TColStd_PackedMapOfInteger,
     NCollection_Utf8String as Utf8String, NCollection_Vec3_Standard_Size as Vec3_Standard_Size,

@@ -1949,6 +1949,21 @@ impl AngleDimension {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_AngleDimension_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3792,6 +3807,21 @@ impl Chamf2dDimension {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_Chamf2dDimension_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -5625,6 +5655,21 @@ impl Chamf3dDimension {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_Chamf3dDimension_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -7431,6 +7476,21 @@ impl ConcentricRelation {
                 theMode,
             )
         })
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_ConcentricRelation_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
@@ -9375,6 +9435,21 @@ impl DiameterDimension {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_DiameterDimension_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -11281,6 +11356,21 @@ impl Dimension {
                 theMode,
             )
         })
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_Dimension_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
@@ -13659,6 +13749,21 @@ impl EllipseRadiusDimension {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_EllipseRadiusDimension_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -15655,6 +15760,21 @@ impl EqualDistanceRelation {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_EqualDistanceRelation_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -17441,6 +17561,21 @@ impl EqualRadiusRelation {
                 theMode,
             )
         })
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_EqualRadiusRelation_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
@@ -19317,6 +19452,21 @@ impl FixRelation {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_FixRelation_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -21123,6 +21273,21 @@ impl IdenticRelation {
                 theMode,
             )
         })
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_IdenticRelation_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
@@ -23192,6 +23357,21 @@ impl LengthDimension {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_LengthDimension_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -25067,6 +25247,21 @@ impl MaxRadiusDimension {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_MaxRadiusDimension_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -26885,6 +27080,21 @@ impl MidPointRelation {
                 theMode,
             )
         })
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_MidPointRelation_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
@@ -28747,6 +28957,21 @@ impl MinRadiusDimension {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_MinRadiusDimension_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -30555,6 +30780,21 @@ impl OffsetDimension {
                 theMode,
             )
         })
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_OffsetDimension_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
@@ -32388,6 +32628,21 @@ impl ParallelRelation {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_ParallelRelation_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -34199,6 +34454,21 @@ impl PerpendicularRelation {
                 theMode,
             )
         })
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_PerpendicularRelation_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
@@ -36142,6 +36412,21 @@ impl RadiusDimension {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_RadiusDimension_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -37905,6 +38190,21 @@ impl Relation {
                 theMode,
             )
         })
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_Relation_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
@@ -39976,6 +40276,21 @@ impl SymmetricRelation {
         })
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_SymmetricRelation_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
@@ -41809,6 +42124,21 @@ impl TangentRelation {
                 theMode,
             )
         })
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi_types::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::PrsDim_TangentRelation_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`

@@ -1855,6 +1855,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn MeshVS_Mesh_inherited_BndBoxOfSelected(
+        self_: *mut MeshVS_Mesh,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn MeshVS_Mesh_inherited_GlobalSelectionMode(
         self_: *const MeshVS_Mesh,

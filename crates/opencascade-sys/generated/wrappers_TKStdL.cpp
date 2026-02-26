@@ -3,12 +3,11 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_ListOfDocument.hxx>
+#include <CDM_MapOfDocument.hxx>
 #include <Message_ProgressRange.hxx>
-#include <MoniTool_ValueSatisfies.hxx>
+#include <MoniTool_ValueInterpret.hxx>
 #include <PCDM_BaseDriverPointer.hxx>
 #include <PCDM_Reader.hxx>
 #include <PCDM_ReaderFilter.hxx>
@@ -47,7 +46,7 @@
 #include <TCollection_HAsciiString.hxx>
 #include <TCollection_HExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeIndexedMap.hxx>
+#include <TDF_AttributeDataMap.hxx>
 #include <TDF_Data.hxx>
 #include <TDataStd_NamedData.hxx>
 #include <TDataStd_Real.hxx>
@@ -58,6 +57,7 @@
 #include <TDocStd_XLink.hxx>
 #include <TFunction_Function.hxx>
 #include <TObj_Container.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<CDM_Application> HandleCDMApplication;

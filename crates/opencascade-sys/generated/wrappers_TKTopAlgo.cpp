@@ -14,7 +14,6 @@
 #include <AppParCurves_MultiCurve.hxx>
 #include <Approx_Array1OfAdHSurface.hxx>
 #include <Approx_ParametrizationType.hxx>
-#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Approx_Status.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
@@ -118,7 +117,7 @@
 #include <BRepExtrema_SupportType.hxx>
 #include <BRepExtrema_TriangleSet.hxx>
 #include <BRepExtrema_UnCompatibleShape.hxx>
-#include <BRepFill_DataMapOfNodeDataMapOfShapeShape.hxx>
+#include <BRepFill_DataMapOfNodeShape.hxx>
 #include <BRepGProp.hxx>
 #include <BRepGProp_Cinert.hxx>
 #include <BRepGProp_Domain.hxx>
@@ -165,7 +164,6 @@
 #include <BRepTopAdaptor_Tool.hxx>
 #include <BRepTopAdaptor_TopolTool.hxx>
 #include <BVH_Types.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bisector.hxx>
 #include <Bisector_Bisec.hxx>
 #include <Bisector_BisecAna.hxx>
@@ -204,6 +202,7 @@
 #include <Geom_Plane.hxx>
 #include <Geom_SequenceOfBSplineSurface.hxx>
 #include <Geom_Surface.hxx>
+#include <IGESBasic_Array2OfHArray1OfReal.hxx>
 #include <IntCurveSurface_IntersectionPoint.hxx>
 #include <IntCurveSurface_TransitionOnCurve.hxx>
 #include <IntCurvesFace_Intersector.hxx>
@@ -216,11 +215,11 @@
 #include <IntSurf_LineOn2S.hxx>
 #include <IntSurf_PntOn2S.hxx>
 #include <IntSurf_Quadric.hxx>
+#include <MAT2d_Array2OfConnexion.hxx>
 #include <MAT2d_BiInt.hxx>
 #include <MAT2d_Circuit.hxx>
 #include <MAT2d_Connexion.hxx>
 #include <MAT2d_CutCurve.hxx>
-#include <MAT2d_DataMapOfIntegerConnexion.hxx>
 #include <MAT2d_Mat2d.hxx>
 #include <MAT2d_MiniPath.hxx>
 #include <MAT2d_SequenceOfConnexion.hxx>
@@ -229,6 +228,7 @@
 #include <MAT_Arc.hxx>
 #include <MAT_BasicElt.hxx>
 #include <MAT_Bisector.hxx>
+#include <MAT_DataMapOfIntegerArc.hxx>
 #include <MAT_DataMapOfIntegerBasicElt.hxx>
 #include <MAT_DataMapOfIntegerBisector.hxx>
 #include <MAT_Edge.hxx>
@@ -259,8 +259,9 @@
 #include <TColGeom2d_SequenceOfCurve.hxx>
 #include <TColGeom2d_SequenceOfGeometry.hxx>
 #include <TColGeom_Array1OfBSplineCurve.hxx>
+#include <TColGeom_Array1OfCurve.hxx>
+#include <TColGeom_Array1OfSurface.hxx>
 #include <TColGeom_Array2OfBezierSurface.hxx>
-#include <TColGeom_SequenceOfCurve.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_HArray1OfReal.hxx>
@@ -274,7 +275,6 @@
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_State.hxx>
 #include <TopLoc_Location.hxx>
-#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopOpeBRep_DataMapOfTopolTool.hxx>
 #include <TopTools_DataMapOfIntegerListOfShape.hxx>
 #include <TopTools_DataMapOfIntegerShape.hxx>
@@ -290,6 +290,7 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>

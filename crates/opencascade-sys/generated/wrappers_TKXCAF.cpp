@@ -4,18 +4,16 @@
 #include "occt_preamble.hxx"
 
 #include <AIS_ColoredShape.hxx>
+#include <AIS_DataMapOfIOStatus.hxx>
 #include <AIS_DataMapOfShapeDrawer.hxx>
 #include <AIS_InteractiveContext.hxx>
-#include <AIS_ListOfInteractive.hxx>
 #include <AIS_NListOfEntityOwner.hxx>
 #include <AIS_Shape.hxx>
-#include <Approx_SequenceOfHArray1OfReal.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_ListOfDocument.hxx>
+#include <CDM_MapOfDocument.hxx>
 #include <CDM_MetaDataLookUpTable.hxx>
 #include <Graphic3d_AlphaMode.hxx>
 #include <Graphic3d_Aspects.hxx>
@@ -30,12 +28,12 @@
 #include <Graphic3d_TextureRoot.hxx>
 #include <Graphic3d_TextureUnit.hxx>
 #include <Graphic3d_TypeOfBackfacingModel.hxx>
+#include <IGESBasic_Array2OfHArray1OfReal.hxx>
 #include <Image_CompressedPixMap.hxx>
 #include <Image_SupportedFormats.hxx>
 #include <Image_Texture.hxx>
 #include <Message_ProgressRange.hxx>
-#include <MoniTool_DataMapOfShapeTransient.hxx>
-#include <MoniTool_ValueSatisfies.hxx>
+#include <MoniTool_ValueInterpret.hxx>
 #include <OSD_File.hxx>
 #include <OSD_Path.hxx>
 #include <PrsMgr_ListOfPresentableObjects.hxx>
@@ -44,6 +42,7 @@
 #include <Quantity_Color.hxx>
 #include <Quantity_ColorRGBA.hxx>
 #include <Quantity_NameOfColor.hxx>
+#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <SelectMgr_SelectableObject.hxx>
 #include <SelectMgr_SequenceOfOwner.hxx>
 #include <SelectMgr_SequenceOfSelection.hxx>
@@ -62,6 +61,7 @@
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
 #include <TDF_Attribute.hxx>
+#include <TDF_AttributeDataMap.hxx>
 #include <TDF_AttributeDeltaList.hxx>
 #include <TDF_AttributeIndexedMap.hxx>
 #include <TDF_AttributeSequence.hxx>
@@ -163,6 +163,7 @@
 #include <XCAFPrs_Texture.hxx>
 #include <XCAFView_Object.hxx>
 #include <XCAFView_ProjectionType.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Dir.hxx>
 #include <gp_GTrsf.hxx>
@@ -10811,6 +10812,10 @@ extern "C" const char* XCAFPrs_AISObject_inherited_UpdateSelection(XCAFPrs_AISOb
 extern "C" const char* XCAFPrs_AISObject_inherited_SetAssemblyOwner(XCAFPrs_AISObject* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> XCAFPrs_AISObject_inherited_BndBoxOfSelected(XCAFPrs_AISObject* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_GlobalSelectionMode(const XCAFPrs_AISObject* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }

@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <DEGLTF_ConfigurationNode.hxx>
@@ -49,6 +48,7 @@
 #include <TDocStd_SequenceOfDocument.hxx>
 #include <XCAFPrs_Style.hxx>
 #include <XSControl_WorkSession.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax3.hxx>
 #include <gp_Dir.hxx>
 #include <gp_Trsf.hxx>

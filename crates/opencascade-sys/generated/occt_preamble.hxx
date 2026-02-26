@@ -101,6 +101,7 @@ static const char* occt_make_exception(const char* type_name, const char* messag
 #include <RWObj_Material.hxx>
 #include <STEPCAFControl_ExternFile.hxx>
 #include <Select3D_SensitiveEntity.hxx>
+#include <SelectMgr_EntityOwner.hxx>
 #include <SelectMgr_SensitiveEntity.hxx>
 #include <SelectMgr_VectorTypes.hxx>
 #include <Standard_Transient.hxx>
@@ -165,6 +166,7 @@ typedef NCollection_Sequence<opencascade::handle<Graphic3d_CView>> NCollection_S
 typedef NCollection_Sequence<opencascade::handle<Poly_Triangulation>> NCollection_Sequence_opencascade_handle_Poly_Triangulation;
 typedef NCollection_Sequence<opencascade::handle<V3d_View>> NCollection_Sequence_opencascade_handle_V3d_View;
 typedef NCollection_Shared<NCollection_DynamicArray<BRepMesh_Vertex>> NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex;
+typedef NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>> NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner;
 typedef NCollection_Shared<NCollection_List<gp_Pnt2d>> NCollection_Shared_NCollection_List_gp_Pnt2d;
 typedef NCollection_Shared<TColStd_PackedMapOfInteger> NCollection_Shared_TColStd_PackedMapOfInteger;
 typedef NCollection_Vec3<Standard_Size> NCollection_Vec3_Standard_Size;

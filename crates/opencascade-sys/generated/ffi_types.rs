@@ -5801,6 +5801,11 @@ pub struct HandleNCollectionIncAllocator {
 pub struct HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
     _opaque: [u8; 0],
 }
+/// Handle to NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner
+#[repr(C)]
+pub struct HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner {
+    _opaque: [u8; 0],
+}
 /// Handle to NCollection_Shared_NCollection_List_gp_Pnt2d
 #[repr(C)]
 pub struct HandleNCollectionSharedNCollectionListgpPnt2d {
@@ -14253,6 +14258,9 @@ extern "C" {
     pub fn HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_destructor(
         ptr: *mut HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex,
     );
+    pub fn HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner_destructor(
+        ptr: *mut HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    );
     pub fn HandleNCollectionSharedNCollectionListgpPnt2d_destructor(
         ptr: *mut HandleNCollectionSharedNCollectionListgpPnt2d,
     );
@@ -14277,6 +14285,13 @@ unsafe impl crate::CppDeletable for HandleBVHTreedouble3 {
 unsafe impl crate::CppDeletable for HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
         HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_destructor(ptr);
+    }
+}
+unsafe impl crate::CppDeletable
+    for HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner_destructor(ptr);
     }
 }
 unsafe impl crate::CppDeletable for HandleNCollectionSharedNCollectionListgpPnt2d {
@@ -36577,6 +36592,11 @@ pub struct NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex {
 }
 /// Referenced type from C++
 #[repr(C)]
+pub struct NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner {
+    _opaque: [u8; 0],
+}
+/// Referenced type from C++
+#[repr(C)]
 pub struct NCollection_Shared_NCollection_List_gp_Pnt2d {
     _opaque: [u8; 0],
 }
@@ -40286,6 +40306,13 @@ unsafe impl crate::CppDeletable for NCollection_Sequence_opencascade_handle_V3d_
 unsafe impl crate::CppDeletable for NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex_destructor(ptr);
+    }
+}
+unsafe impl crate::CppDeletable
+    for NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKernel::NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner_destructor(ptr);
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Shared_NCollection_List_gp_Pnt2d {

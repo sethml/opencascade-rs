@@ -43,7 +43,6 @@
 #include <BRepFilletAPI_MakeChamfer.hxx>
 #include <BRepFilletAPI_MakeFillet.hxx>
 #include <BRepFilletAPI_MakeFillet2d.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <BlendFunc.hxx>
 #include <BlendFunc_CSCircular.hxx>
 #include <BlendFunc_CSConstRad.hxx>
@@ -139,7 +138,7 @@
 #include <Law_Function.hxx>
 #include <Law_Laws.hxx>
 #include <Message_ProgressRange.hxx>
-#include <MoniTool_DataMapOfShapeTransient.hxx>
+#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
@@ -149,7 +148,8 @@
 #include <TColGeom2d_Array1OfCurve.hxx>
 #include <TColGeom_Array1OfBSplineCurve.hxx>
 #include <TColGeom_Array1OfBezierCurve.hxx>
-#include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_Array1OfCurve.hxx>
+#include <TColGeom_Array1OfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_Array2OfReal.hxx>
@@ -163,13 +163,13 @@
 #include <TopAbs_State.hxx>
 #include <TopOpeBRepBuild_HBuilder.hxx>
 #include <TopOpeBRepDS_DataStructure.hxx>
-#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopTools_ListOfShape.hxx>
 #include <TopTools_SequenceOfShape.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>

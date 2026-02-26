@@ -1254,6 +1254,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_Axis_inherited_BndBoxOfSelected(
+        self_: *mut AIS_Axis,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_Axis_inherited_GlobalSelectionMode(self_: *const AIS_Axis)
         -> crate::OcctResult<i32>;
@@ -2231,6 +2236,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_CameraFrustum_inherited_BndBoxOfSelected(
+        self_: *mut AIS_CameraFrustum,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_CameraFrustum_inherited_GlobalSelectionMode(
         self_: *const AIS_CameraFrustum,
@@ -2883,6 +2893,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_Circle_inherited_BndBoxOfSelected(
+        self_: *mut AIS_Circle,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_Circle_inherited_GlobalSelectionMode(
         self_: *const AIS_Circle,
@@ -3792,6 +3807,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_ColorScale_inherited_BndBoxOfSelected(
+        self_: *mut AIS_ColorScale,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_ColorScale_inherited_GlobalSelectionMode(
         self_: *const AIS_ColorScale,
@@ -5497,6 +5517,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_ColoredShape_inherited_BndBoxOfSelected(
+        self_: *mut AIS_ColoredShape,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_ColoredShape_inherited_GlobalSelectionMode(
         self_: *const AIS_ColoredShape,
@@ -6112,6 +6137,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_ConnectedInteractive_inherited_BndBoxOfSelected(
+        self_: *mut AIS_ConnectedInteractive,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_ConnectedInteractive_inherited_GlobalSelectionMode(
         self_: *const AIS_ConnectedInteractive,
@@ -7442,6 +7472,13 @@ extern "C" {
         anIobj: *const HandleAISInteractiveObject,
         theList: *mut TColStd_ListOfInteger,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `AIS_InteractiveContext.hxx`:830 - `AIS_InteractiveContext::EntityOwners()`
+    pub fn AIS_InteractiveContext_entity_owners(
+        self_: *const AIS_InteractiveContext,
+        theOwners: *mut HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+        theIObj: *const HandleAISInteractiveObject,
+        theMode: i32,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `AIS_InteractiveContext.hxx`:836 - `AIS_InteractiveContext::FilterType()`
     pub fn AIS_InteractiveContext_filter_type(
         self_: *const AIS_InteractiveContext,
@@ -8347,6 +8384,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_InteractiveObject_inherited_BndBoxOfSelected(
+        self_: *mut AIS_InteractiveObject,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_InteractiveObject_inherited_GlobalSelectionMode(
         self_: *const AIS_InteractiveObject,
@@ -9082,6 +9124,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_LightSource_inherited_BndBoxOfSelected(
+        self_: *mut AIS_LightSource,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_LightSource_inherited_GlobalSelectionMode(
         self_: *const AIS_LightSource,
@@ -9930,6 +9977,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_Line_inherited_BndBoxOfSelected(
+        self_: *mut AIS_Line,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_Line_inherited_GlobalSelectionMode(self_: *const AIS_Line)
         -> crate::OcctResult<i32>;
@@ -10780,6 +10832,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_Manipulator_inherited_BndBoxOfSelected(
+        self_: *mut AIS_Manipulator,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_Manipulator_inherited_GlobalSelectionMode(
         self_: *const AIS_Manipulator,
@@ -11650,6 +11707,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_MediaPlayer_inherited_BndBoxOfSelected(
+        self_: *mut AIS_MediaPlayer,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_MediaPlayer_inherited_GlobalSelectionMode(
         self_: *const AIS_MediaPlayer,
@@ -12334,6 +12396,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_MultipleConnectedInteractive_inherited_BndBoxOfSelected(
+        self_: *mut AIS_MultipleConnectedInteractive,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_MultipleConnectedInteractive_inherited_GlobalSelectionMode(
         self_: *const AIS_MultipleConnectedInteractive,
@@ -13071,6 +13138,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_Plane_inherited_BndBoxOfSelected(
+        self_: *mut AIS_Plane,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_Plane_inherited_GlobalSelectionMode(
         self_: *const AIS_Plane,
@@ -13695,6 +13767,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_PlaneTrihedron_inherited_BndBoxOfSelected(
+        self_: *mut AIS_PlaneTrihedron,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_PlaneTrihedron_inherited_GlobalSelectionMode(
         self_: *const AIS_PlaneTrihedron,
@@ -14333,6 +14410,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_Point_inherited_BndBoxOfSelected(
+        self_: *mut AIS_Point,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_Point_inherited_GlobalSelectionMode(
         self_: *const AIS_Point,
@@ -14940,6 +15022,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_PointCloud_inherited_BndBoxOfSelected(
+        self_: *mut AIS_PointCloud,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_PointCloud_inherited_GlobalSelectionMode(
         self_: *const AIS_PointCloud,
@@ -15859,6 +15946,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_RubberBand_inherited_BndBoxOfSelected(
+        self_: *mut AIS_RubberBand,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_RubberBand_inherited_GlobalSelectionMode(
         self_: *const AIS_RubberBand,
@@ -16731,6 +16823,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_Shape_inherited_BndBoxOfSelected(
+        self_: *mut AIS_Shape,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_Shape_inherited_GlobalSelectionMode(
         self_: *const AIS_Shape,
@@ -17500,6 +17597,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_TextLabel_inherited_BndBoxOfSelected(
+        self_: *mut AIS_TextLabel,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_TextLabel_inherited_GlobalSelectionMode(
         self_: *const AIS_TextLabel,
@@ -18358,6 +18460,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_TexturedShape_inherited_BndBoxOfSelected(
+        self_: *mut AIS_TexturedShape,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_TexturedShape_inherited_GlobalSelectionMode(
         self_: *const AIS_TexturedShape,
@@ -18969,6 +19076,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_Triangulation_inherited_BndBoxOfSelected(
+        self_: *mut AIS_Triangulation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_Triangulation_inherited_GlobalSelectionMode(
         self_: *const AIS_Triangulation,
@@ -19724,6 +19836,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_Trihedron_inherited_BndBoxOfSelected(
+        self_: *mut AIS_Trihedron,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_Trihedron_inherited_GlobalSelectionMode(
         self_: *const AIS_Trihedron,
@@ -21682,6 +21799,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_ViewCube_inherited_BndBoxOfSelected(
+        self_: *mut AIS_ViewCube,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_ViewCube_inherited_GlobalSelectionMode(
         self_: *const AIS_ViewCube,
@@ -22881,6 +23003,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn AIS_XRTrackedDevice_inherited_BndBoxOfSelected(
+        self_: *mut AIS_XRTrackedDevice,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn AIS_XRTrackedDevice_inherited_GlobalSelectionMode(
         self_: *const AIS_XRTrackedDevice,
@@ -27622,6 +27749,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_AngleDimension_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_AngleDimension,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_AngleDimension_inherited_GlobalSelectionMode(
         self_: *const PrsDim_AngleDimension,
@@ -28408,6 +28540,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_Chamf2dDimension_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_Chamf2dDimension,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_Chamf2dDimension_inherited_GlobalSelectionMode(
         self_: *const PrsDim_Chamf2dDimension,
@@ -29183,6 +29320,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_Chamf3dDimension_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_Chamf3dDimension,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_Chamf3dDimension_inherited_GlobalSelectionMode(
         self_: *const PrsDim_Chamf3dDimension,
@@ -29949,6 +30091,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_ConcentricRelation_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_ConcentricRelation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_ConcentricRelation_inherited_GlobalSelectionMode(
         self_: *const PrsDim_ConcentricRelation,
@@ -30750,6 +30897,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_DiameterDimension_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_DiameterDimension,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_DiameterDimension_inherited_GlobalSelectionMode(
         self_: *const PrsDim_DiameterDimension,
@@ -31516,6 +31668,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_Dimension_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_Dimension,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_Dimension_inherited_GlobalSelectionMode(
         self_: *const PrsDim_Dimension,
@@ -32513,6 +32670,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_EllipseRadiusDimension_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_EllipseRadiusDimension,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_EllipseRadiusDimension_inherited_GlobalSelectionMode(
         self_: *const PrsDim_EllipseRadiusDimension,
@@ -33356,6 +33518,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_EqualDistanceRelation_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_EqualDistanceRelation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_EqualDistanceRelation_inherited_GlobalSelectionMode(
         self_: *const PrsDim_EqualDistanceRelation,
@@ -34122,6 +34289,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_EqualRadiusRelation_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_EqualRadiusRelation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_EqualRadiusRelation_inherited_GlobalSelectionMode(
         self_: *const PrsDim_EqualRadiusRelation,
@@ -34916,6 +35088,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_FixRelation_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_FixRelation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_FixRelation_inherited_GlobalSelectionMode(
         self_: *const PrsDim_FixRelation,
@@ -35699,6 +35876,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_IdenticRelation_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_IdenticRelation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_IdenticRelation_inherited_GlobalSelectionMode(
         self_: *const PrsDim_IdenticRelation,
@@ -36542,6 +36724,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_LengthDimension_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_LengthDimension,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_LengthDimension_inherited_GlobalSelectionMode(
         self_: *const PrsDim_LengthDimension,
@@ -37342,6 +37529,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_MaxRadiusDimension_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_MaxRadiusDimension,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_MaxRadiusDimension_inherited_GlobalSelectionMode(
         self_: *const PrsDim_MaxRadiusDimension,
@@ -38118,6 +38310,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_MidPointRelation_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_MidPointRelation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_MidPointRelation_inherited_GlobalSelectionMode(
         self_: *const PrsDim_MidPointRelation,
@@ -38909,6 +39106,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_MinRadiusDimension_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_MinRadiusDimension,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_MinRadiusDimension_inherited_GlobalSelectionMode(
         self_: *const PrsDim_MinRadiusDimension,
@@ -39681,6 +39883,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_OffsetDimension_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_OffsetDimension,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_OffsetDimension_inherited_GlobalSelectionMode(
         self_: *const PrsDim_OffsetDimension,
@@ -40456,6 +40663,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_ParallelRelation_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_ParallelRelation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_ParallelRelation_inherited_GlobalSelectionMode(
         self_: *const PrsDim_ParallelRelation,
@@ -41229,6 +41441,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_PerpendicularRelation_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_PerpendicularRelation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_PerpendicularRelation_inherited_GlobalSelectionMode(
         self_: *const PrsDim_PerpendicularRelation,
@@ -42039,6 +42256,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_RadiusDimension_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_RadiusDimension,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_RadiusDimension_inherited_GlobalSelectionMode(
         self_: *const PrsDim_RadiusDimension,
@@ -42845,6 +43067,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_Relation_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_Relation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_Relation_inherited_GlobalSelectionMode(
         self_: *const PrsDim_Relation,
@@ -43620,6 +43847,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_SymmetricRelation_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_SymmetricRelation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_SymmetricRelation_inherited_GlobalSelectionMode(
         self_: *const PrsDim_SymmetricRelation,
@@ -44396,6 +44628,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn PrsDim_TangentRelation_inherited_BndBoxOfSelected(
+        self_: *mut PrsDim_TangentRelation,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn PrsDim_TangentRelation_inherited_GlobalSelectionMode(
         self_: *const PrsDim_TangentRelation,
@@ -52332,6 +52569,11 @@ extern "C" {
         theOwner: *const HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn SelectMgr_SelectableObject_bnd_box_of_selected(
+        self_: *mut SelectMgr_SelectableObject,
+        theOwners: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut Bnd_Box>;
     /// **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn SelectMgr_SelectableObject_global_selection_mode(
         self_: *const SelectMgr_SelectableObject,

@@ -9,7 +9,6 @@
 #include <BinDrivers_DocumentStorageDriver.hxx>
 #include <BinLDrivers_DocumentRetrievalDriver.hxx>
 #include <BinLDrivers_DocumentStorageDriver.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <BinTObjDrivers_DocumentRetrievalDriver.hxx>
 #include <BinTObjDrivers_DocumentStorageDriver.hxx>
 #include <BinXCAFDrivers_DocumentRetrievalDriver.hxx>
@@ -26,8 +25,8 @@
 #include <CDM_Application.hxx>
 #include <CDM_CanCloseStatus.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_ListOfDocument.hxx>
 #include <CDM_ListOfReferences.hxx>
+#include <CDM_MapOfDocument.hxx>
 #include <CDM_MetaData.hxx>
 #include <CDM_MetaDataLookUpTable.hxx>
 #include <CDM_Reference.hxx>
@@ -104,6 +103,7 @@
 #include <XmlDrivers_DocumentStorageDriver.hxx>
 #include <XmlLDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlLDrivers_DocumentStorageDriver.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <XmlTObjDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlTObjDrivers_DocumentStorageDriver.hxx>
 #include <XmlXCAFDrivers_DocumentRetrievalDriver.hxx>

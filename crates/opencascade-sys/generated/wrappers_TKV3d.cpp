@@ -18,6 +18,7 @@
 #include <AIS_ColoredShape.hxx>
 #include <AIS_ConnectedInteractive.hxx>
 #include <AIS_DataMapIteratorOfDataMapOfIOStatus.hxx>
+#include <AIS_DataMapOfIOStatus.hxx>
 #include <AIS_DataMapOfShapeDrawer.hxx>
 #include <AIS_DragAction.hxx>
 #include <AIS_ExclusionFilter.hxx>
@@ -95,7 +96,6 @@
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
 #include <BRep_Builder.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
 #include <Convert_SequenceOfArray1OfPoles.hxx>
@@ -125,6 +125,7 @@
 #include <DsgPrs_TangentPresentation.hxx>
 #include <DsgPrs_XYZAxisPresentation.hxx>
 #include <DsgPrs_XYZPlanePresentation.hxx>
+#include <FEmTool_AssemblyTable.hxx>
 #include <Font_FTFont.hxx>
 #include <Font_FontAspect.hxx>
 #include <Font_StrictLevel.hxx>
@@ -204,9 +205,8 @@
 #include <MeshVS_SensitivePolyhedron.hxx>
 #include <MeshVS_SensitiveQuad.hxx>
 #include <MeshVS_SensitiveSegment.hxx>
-#include <MoniTool_DataMapOfShapeTransient.hxx>
 #include <NCollection_BaseAllocator.hxx>
-#include <NCollection_BaseSequence.hxx>
+#include <NCollection_BaseList.hxx>
 #include <NCollection_Buffer.hxx>
 #include <NCollection_String.hxx>
 #include <Poly_ListOfTriangulation.hxx>
@@ -290,6 +290,7 @@
 #include <Quantity_HArray1OfColor.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Quantity_TypeOfColor.hxx>
+#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <Select3D_BVHIndexBuffer.hxx>
 #include <Select3D_BndBox3d.hxx>
 #include <Select3D_EntitySequence.hxx>
@@ -324,7 +325,6 @@
 #include <SelectMgr_BaseFrustum.hxx>
 #include <SelectMgr_BaseIntersector.hxx>
 #include <SelectMgr_CompositionFilter.hxx>
-#include <SelectMgr_EntityOwner.hxx>
 #include <SelectMgr_Filter.hxx>
 #include <SelectMgr_FilterType.hxx>
 #include <SelectMgr_FrustumBuilder.hxx>
@@ -400,7 +400,8 @@
 #include <StdSelect_TypeOfEdge.hxx>
 #include <StdSelect_TypeOfFace.hxx>
 #include <StdSelect_TypeOfSelectionImage.hxx>
-#include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_Array1OfCurve.hxx>
+#include <TColGeom_Array1OfSurface.hxx>
 #include <TColStd_HArray1OfByte.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
 #include <TColStd_HPackedMapOfInteger.hxx>
@@ -415,12 +416,10 @@
 #include <TColgp_HArray1OfPnt.hxx>
 #include <TColgp_SequenceOfPnt.hxx>
 #include <TCollection_ExtendedString.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopLoc_Datum3D.hxx>
 #include <TopLoc_Location.hxx>
-#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopTools_HSequenceOfShape.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopoDS_Compound.hxx>
@@ -452,6 +451,7 @@
 #include <V3d_ViewerPointer.hxx>
 #include <WNT_HIDSpaceMouse.hxx>
 #include <XCAFPrs_AISObject.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Ax3.hxx>
@@ -575,6 +575,7 @@ typedef opencascade::handle<MeshVS_SensitiveQuad> HandleMeshVSSensitiveQuad;
 typedef opencascade::handle<MeshVS_SensitiveSegment> HandleMeshVSSensitiveSegment;
 typedef opencascade::handle<NCollection_BaseAllocator> HandleNCollectionBaseAllocator;
 typedef opencascade::handle<NCollection_Buffer> HandleNCollectionBuffer;
+typedef opencascade::handle<NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner> HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner;
 typedef opencascade::handle<Poly_Polygon3D> HandlePolyPolygon3D;
 typedef opencascade::handle<Poly_PolygonOnTriangulation> HandlePolyPolygonOnTriangulation;
 typedef opencascade::handle<Poly_Triangulation> HandlePolyTriangulation;
@@ -1984,6 +1985,10 @@ extern "C" const char* AIS_Axis_inherited_SetAssemblyOwner(AIS_Axis* self, Handl
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_Axis_inherited_BndBoxOfSelected(AIS_Axis* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_Axis_inherited_GlobalSelectionMode(const AIS_Axis* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2900,6 +2905,10 @@ extern "C" const char* AIS_CameraFrustum_inherited_SetAssemblyOwner(AIS_CameraFr
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_CameraFrustum_inherited_BndBoxOfSelected(AIS_CameraFrustum* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_CameraFrustum_inherited_GlobalSelectionMode(const AIS_CameraFrustum* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -3485,6 +3494,10 @@ extern "C" const char* AIS_Circle_inherited_UpdateSelection(AIS_Circle* self, in
 extern "C" const char* AIS_Circle_inherited_SetAssemblyOwner(AIS_Circle* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_Circle_inherited_BndBoxOfSelected(AIS_Circle* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_Circle_inherited_GlobalSelectionMode(const AIS_Circle* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -4303,6 +4316,10 @@ extern "C" const char* AIS_ColorScale_inherited_UpdateSelection(AIS_ColorScale* 
 extern "C" const char* AIS_ColorScale_inherited_SetAssemblyOwner(AIS_ColorScale* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_ColorScale_inherited_BndBoxOfSelected(AIS_ColorScale* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_ColorScale_inherited_GlobalSelectionMode(const AIS_ColorScale* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -5832,6 +5849,10 @@ extern "C" const char* AIS_ColoredShape_inherited_SetAssemblyOwner(AIS_ColoredSh
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_ColoredShape_inherited_BndBoxOfSelected(AIS_ColoredShape* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_ColoredShape_inherited_GlobalSelectionMode(const AIS_ColoredShape* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6361,6 +6382,10 @@ extern "C" const char* AIS_ConnectedInteractive_inherited_UpdateSelection(AIS_Co
 extern "C" const char* AIS_ConnectedInteractive_inherited_SetAssemblyOwner(AIS_ConnectedInteractive* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_ConnectedInteractive_inherited_BndBoxOfSelected(AIS_ConnectedInteractive* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_ConnectedInteractive_inherited_GlobalSelectionMode(const AIS_ConnectedInteractive* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -7491,6 +7516,10 @@ extern "C" const char* AIS_InteractiveContext_activated_modes(const AIS_Interact
     try { self_->ActivatedModes(*anIobj, *theList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* AIS_InteractiveContext_entity_owners(const AIS_InteractiveContext* self_, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner)* theOwners, Handle(AIS_InteractiveObject) const* theIObj, int32_t theMode) {
+    try { self_->EntityOwners(*theOwners, *theIObj, theMode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<int32_t> AIS_InteractiveContext_filter_type(const AIS_InteractiveContext* self_) {
     try { return {static_cast<int32_t>(self_->FilterType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -8417,6 +8446,10 @@ extern "C" const char* AIS_InteractiveObject_inherited_SetAssemblyOwner(AIS_Inte
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_InteractiveObject_inherited_BndBoxOfSelected(AIS_InteractiveObject* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_InteractiveObject_inherited_GlobalSelectionMode(const AIS_InteractiveObject* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -9066,6 +9099,10 @@ extern "C" const char* AIS_LightSource_inherited_UpdateSelection(AIS_LightSource
 extern "C" const char* AIS_LightSource_inherited_SetAssemblyOwner(AIS_LightSource* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_LightSource_inherited_BndBoxOfSelected(AIS_LightSource* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_LightSource_inherited_GlobalSelectionMode(const AIS_LightSource* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -9822,6 +9859,10 @@ extern "C" const char* AIS_Line_inherited_UpdateSelection(AIS_Line* self, int32_
 extern "C" const char* AIS_Line_inherited_SetAssemblyOwner(AIS_Line* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_Line_inherited_BndBoxOfSelected(AIS_Line* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_Line_inherited_GlobalSelectionMode(const AIS_Line* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -10617,6 +10658,10 @@ extern "C" const char* AIS_Manipulator_inherited_SetAssemblyOwner(AIS_Manipulato
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_Manipulator_inherited_BndBoxOfSelected(AIS_Manipulator* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_Manipulator_inherited_GlobalSelectionMode(const AIS_Manipulator* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11373,6 +11418,10 @@ extern "C" const char* AIS_MediaPlayer_inherited_SetAssemblyOwner(AIS_MediaPlaye
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_MediaPlayer_inherited_BndBoxOfSelected(AIS_MediaPlayer* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_MediaPlayer_inherited_GlobalSelectionMode(const AIS_MediaPlayer* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11958,6 +12007,10 @@ extern "C" const char* AIS_MultipleConnectedInteractive_inherited_UpdateSelectio
 extern "C" const char* AIS_MultipleConnectedInteractive_inherited_SetAssemblyOwner(AIS_MultipleConnectedInteractive* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_MultipleConnectedInteractive_inherited_BndBoxOfSelected(AIS_MultipleConnectedInteractive* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_MultipleConnectedInteractive_inherited_GlobalSelectionMode(const AIS_MultipleConnectedInteractive* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -12621,6 +12674,10 @@ extern "C" const char* AIS_Plane_inherited_SetAssemblyOwner(AIS_Plane* self, Han
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_Plane_inherited_BndBoxOfSelected(AIS_Plane* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_Plane_inherited_GlobalSelectionMode(const AIS_Plane* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -13207,6 +13264,10 @@ extern "C" const char* AIS_PlaneTrihedron_inherited_SetAssemblyOwner(AIS_PlaneTr
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_PlaneTrihedron_inherited_BndBoxOfSelected(AIS_PlaneTrihedron* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_PlaneTrihedron_inherited_GlobalSelectionMode(const AIS_PlaneTrihedron* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -13789,6 +13850,10 @@ extern "C" const char* AIS_Point_inherited_SetAssemblyOwner(AIS_Point* self, Han
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_Point_inherited_BndBoxOfSelected(AIS_Point* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_Point_inherited_GlobalSelectionMode(const AIS_Point* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -14362,6 +14427,10 @@ extern "C" const char* AIS_PointCloud_inherited_UpdateSelection(AIS_PointCloud* 
 extern "C" const char* AIS_PointCloud_inherited_SetAssemblyOwner(AIS_PointCloud* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_PointCloud_inherited_BndBoxOfSelected(AIS_PointCloud* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_PointCloud_inherited_GlobalSelectionMode(const AIS_PointCloud* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -15162,6 +15231,10 @@ extern "C" const char* AIS_RubberBand_inherited_UpdateSelection(AIS_RubberBand* 
 extern "C" const char* AIS_RubberBand_inherited_SetAssemblyOwner(AIS_RubberBand* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_RubberBand_inherited_BndBoxOfSelected(AIS_RubberBand* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_RubberBand_inherited_GlobalSelectionMode(const AIS_RubberBand* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -15997,6 +16070,10 @@ extern "C" const char* AIS_Shape_inherited_SetAssemblyOwner(AIS_Shape* self, Han
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_Shape_inherited_BndBoxOfSelected(AIS_Shape* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_Shape_inherited_GlobalSelectionMode(const AIS_Shape* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -16706,6 +16783,10 @@ extern "C" const char* AIS_TextLabel_inherited_UpdateSelection(AIS_TextLabel* se
 extern "C" const char* AIS_TextLabel_inherited_SetAssemblyOwner(AIS_TextLabel* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_TextLabel_inherited_BndBoxOfSelected(AIS_TextLabel* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_TextLabel_inherited_GlobalSelectionMode(const AIS_TextLabel* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -17467,6 +17548,10 @@ extern "C" const char* AIS_TexturedShape_inherited_SetAssemblyOwner(AIS_Textured
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_TexturedShape_inherited_BndBoxOfSelected(AIS_TexturedShape* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_TexturedShape_inherited_GlobalSelectionMode(const AIS_TexturedShape* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -17996,6 +18081,10 @@ extern "C" const char* AIS_Triangulation_inherited_UpdateSelection(AIS_Triangula
 extern "C" const char* AIS_Triangulation_inherited_SetAssemblyOwner(AIS_Triangulation* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_Triangulation_inherited_BndBoxOfSelected(AIS_Triangulation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_Triangulation_inherited_GlobalSelectionMode(const AIS_Triangulation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -18666,6 +18755,10 @@ extern "C" const char* AIS_Trihedron_inherited_UpdateSelection(AIS_Trihedron* se
 extern "C" const char* AIS_Trihedron_inherited_SetAssemblyOwner(AIS_Trihedron* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_Trihedron_inherited_BndBoxOfSelected(AIS_Trihedron* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_Trihedron_inherited_GlobalSelectionMode(const AIS_Trihedron* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -20377,6 +20470,10 @@ extern "C" const char* AIS_ViewCube_inherited_SetAssemblyOwner(AIS_ViewCube* sel
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> AIS_ViewCube_inherited_BndBoxOfSelected(AIS_ViewCube* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> AIS_ViewCube_inherited_GlobalSelectionMode(const AIS_ViewCube* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -21442,6 +21539,10 @@ extern "C" const char* AIS_XRTrackedDevice_inherited_UpdateSelection(AIS_XRTrack
 extern "C" const char* AIS_XRTrackedDevice_inherited_SetAssemblyOwner(AIS_XRTrackedDevice* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> AIS_XRTrackedDevice_inherited_BndBoxOfSelected(AIS_XRTrackedDevice* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> AIS_XRTrackedDevice_inherited_GlobalSelectionMode(const AIS_XRTrackedDevice* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -25535,6 +25636,10 @@ extern "C" const char* PrsDim_AngleDimension_inherited_SetAssemblyOwner(PrsDim_A
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_AngleDimension_inherited_BndBoxOfSelected(PrsDim_AngleDimension* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_AngleDimension_inherited_GlobalSelectionMode(const PrsDim_AngleDimension* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -26203,6 +26308,10 @@ extern "C" const char* PrsDim_Chamf2dDimension_inherited_SetAssemblyOwner(PrsDim
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_Chamf2dDimension_inherited_BndBoxOfSelected(PrsDim_Chamf2dDimension* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_Chamf2dDimension_inherited_GlobalSelectionMode(const PrsDim_Chamf2dDimension* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -26863,6 +26972,10 @@ extern "C" const char* PrsDim_Chamf3dDimension_inherited_SetAssemblyOwner(PrsDim
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_Chamf3dDimension_inherited_BndBoxOfSelected(PrsDim_Chamf3dDimension* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_Chamf3dDimension_inherited_GlobalSelectionMode(const PrsDim_Chamf3dDimension* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -27518,6 +27631,10 @@ extern "C" const char* PrsDim_ConcentricRelation_inherited_UpdateSelection(PrsDi
 extern "C" const char* PrsDim_ConcentricRelation_inherited_SetAssemblyOwner(PrsDim_ConcentricRelation* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> PrsDim_ConcentricRelation_inherited_BndBoxOfSelected(PrsDim_ConcentricRelation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> PrsDim_ConcentricRelation_inherited_GlobalSelectionMode(const PrsDim_ConcentricRelation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -28215,6 +28332,10 @@ extern "C" const char* PrsDim_DiameterDimension_inherited_SetAssemblyOwner(PrsDi
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_DiameterDimension_inherited_BndBoxOfSelected(PrsDim_DiameterDimension* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_DiameterDimension_inherited_GlobalSelectionMode(const PrsDim_DiameterDimension* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -28908,6 +29029,10 @@ extern "C" const char* PrsDim_Dimension_inherited_UpdateSelection(PrsDim_Dimensi
 extern "C" const char* PrsDim_Dimension_inherited_SetAssemblyOwner(PrsDim_Dimension* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> PrsDim_Dimension_inherited_BndBoxOfSelected(PrsDim_Dimension* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> PrsDim_Dimension_inherited_GlobalSelectionMode(const PrsDim_Dimension* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -29763,6 +29888,10 @@ extern "C" const char* PrsDim_EllipseRadiusDimension_inherited_SetAssemblyOwner(
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_EllipseRadiusDimension_inherited_BndBoxOfSelected(PrsDim_EllipseRadiusDimension* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_EllipseRadiusDimension_inherited_GlobalSelectionMode(const PrsDim_EllipseRadiusDimension* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -30462,6 +30591,10 @@ extern "C" const char* PrsDim_EqualDistanceRelation_inherited_SetAssemblyOwner(P
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_EqualDistanceRelation_inherited_BndBoxOfSelected(PrsDim_EqualDistanceRelation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_EqualDistanceRelation_inherited_GlobalSelectionMode(const PrsDim_EqualDistanceRelation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -31117,6 +31250,10 @@ extern "C" const char* PrsDim_EqualRadiusRelation_inherited_UpdateSelection(PrsD
 extern "C" const char* PrsDim_EqualRadiusRelation_inherited_SetAssemblyOwner(PrsDim_EqualRadiusRelation* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> PrsDim_EqualRadiusRelation_inherited_BndBoxOfSelected(PrsDim_EqualRadiusRelation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> PrsDim_EqualRadiusRelation_inherited_GlobalSelectionMode(const PrsDim_EqualRadiusRelation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -31794,6 +31931,10 @@ extern "C" const char* PrsDim_FixRelation_inherited_SetAssemblyOwner(PrsDim_FixR
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_FixRelation_inherited_BndBoxOfSelected(PrsDim_FixRelation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_FixRelation_inherited_GlobalSelectionMode(const PrsDim_FixRelation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -32465,6 +32606,10 @@ extern "C" const char* PrsDim_IdenticRelation_inherited_UpdateSelection(PrsDim_I
 extern "C" const char* PrsDim_IdenticRelation_inherited_SetAssemblyOwner(PrsDim_IdenticRelation* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> PrsDim_IdenticRelation_inherited_BndBoxOfSelected(PrsDim_IdenticRelation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> PrsDim_IdenticRelation_inherited_GlobalSelectionMode(const PrsDim_IdenticRelation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -33190,6 +33335,10 @@ extern "C" const char* PrsDim_LengthDimension_inherited_SetAssemblyOwner(PrsDim_
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_LengthDimension_inherited_BndBoxOfSelected(PrsDim_LengthDimension* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_LengthDimension_inherited_GlobalSelectionMode(const PrsDim_LengthDimension* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -33868,6 +34017,10 @@ extern "C" const char* PrsDim_MaxRadiusDimension_inherited_SetAssemblyOwner(PrsD
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_MaxRadiusDimension_inherited_BndBoxOfSelected(PrsDim_MaxRadiusDimension* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_MaxRadiusDimension_inherited_GlobalSelectionMode(const PrsDim_MaxRadiusDimension* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -34531,6 +34684,10 @@ extern "C" const char* PrsDim_MidPointRelation_inherited_UpdateSelection(PrsDim_
 extern "C" const char* PrsDim_MidPointRelation_inherited_SetAssemblyOwner(PrsDim_MidPointRelation* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> PrsDim_MidPointRelation_inherited_BndBoxOfSelected(PrsDim_MidPointRelation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> PrsDim_MidPointRelation_inherited_GlobalSelectionMode(const PrsDim_MidPointRelation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -35202,6 +35359,10 @@ extern "C" const char* PrsDim_MinRadiusDimension_inherited_SetAssemblyOwner(PrsD
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_MinRadiusDimension_inherited_BndBoxOfSelected(PrsDim_MinRadiusDimension* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_MinRadiusDimension_inherited_GlobalSelectionMode(const PrsDim_MinRadiusDimension* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -35861,6 +36022,10 @@ extern "C" const char* PrsDim_OffsetDimension_inherited_UpdateSelection(PrsDim_O
 extern "C" const char* PrsDim_OffsetDimension_inherited_SetAssemblyOwner(PrsDim_OffsetDimension* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> PrsDim_OffsetDimension_inherited_BndBoxOfSelected(PrsDim_OffsetDimension* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> PrsDim_OffsetDimension_inherited_GlobalSelectionMode(const PrsDim_OffsetDimension* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -36522,6 +36687,10 @@ extern "C" const char* PrsDim_ParallelRelation_inherited_SetAssemblyOwner(PrsDim
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_ParallelRelation_inherited_BndBoxOfSelected(PrsDim_ParallelRelation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_ParallelRelation_inherited_GlobalSelectionMode(const PrsDim_ParallelRelation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -37181,6 +37350,10 @@ extern "C" const char* PrsDim_PerpendicularRelation_inherited_UpdateSelection(Pr
 extern "C" const char* PrsDim_PerpendicularRelation_inherited_SetAssemblyOwner(PrsDim_PerpendicularRelation* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> PrsDim_PerpendicularRelation_inherited_BndBoxOfSelected(PrsDim_PerpendicularRelation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> PrsDim_PerpendicularRelation_inherited_GlobalSelectionMode(const PrsDim_PerpendicularRelation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -37881,6 +38054,10 @@ extern "C" const char* PrsDim_RadiusDimension_inherited_UpdateSelection(PrsDim_R
 extern "C" const char* PrsDim_RadiusDimension_inherited_SetAssemblyOwner(PrsDim_RadiusDimension* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> PrsDim_RadiusDimension_inherited_BndBoxOfSelected(PrsDim_RadiusDimension* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> PrsDim_RadiusDimension_inherited_GlobalSelectionMode(const PrsDim_RadiusDimension* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -38664,6 +38841,10 @@ extern "C" const char* PrsDim_Relation_inherited_SetAssemblyOwner(PrsDim_Relatio
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_Relation_inherited_BndBoxOfSelected(PrsDim_Relation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_Relation_inherited_GlobalSelectionMode(const PrsDim_Relation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -39328,6 +39509,10 @@ extern "C" const char* PrsDim_SymmetricRelation_inherited_SetAssemblyOwner(PrsDi
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<Bnd_Box*> PrsDim_SymmetricRelation_inherited_BndBoxOfSelected(PrsDim_SymmetricRelation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> PrsDim_SymmetricRelation_inherited_GlobalSelectionMode(const PrsDim_SymmetricRelation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -39991,6 +40176,10 @@ extern "C" const char* PrsDim_TangentRelation_inherited_UpdateSelection(PrsDim_T
 extern "C" const char* PrsDim_TangentRelation_inherited_SetAssemblyOwner(PrsDim_TangentRelation* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
     try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Bnd_Box*> PrsDim_TangentRelation_inherited_BndBoxOfSelected(PrsDim_TangentRelation* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
+    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> PrsDim_TangentRelation_inherited_GlobalSelectionMode(const PrsDim_TangentRelation* self) {
     try { return {self->GlobalSelectionMode(), nullptr}; }
@@ -47099,6 +47288,10 @@ extern "C" OcctResult<Handle(Graphic3d_Structure)*> SelectMgr_SelectableObject_g
 }
 extern "C" OcctResult<Handle(Graphic3d_Structure)*> SelectMgr_SelectableObject_get_select_presentation(SelectMgr_SelectableObject* self_, Handle(PrsMgr_PresentationManager) const* thePrsMgr) {
     try { return {new Handle(Graphic3d_Structure)(self_->GetSelectPresentation(*thePrsMgr)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Bnd_Box*> SelectMgr_SelectableObject_bnd_box_of_selected(SelectMgr_SelectableObject* self_, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const* theOwners) {
+    try { return {new Bnd_Box(self_->BndBoxOfSelected(*theOwners)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(SelectMgr_EntityOwner)*> SelectMgr_SelectableObject_global_sel_owner(const SelectMgr_SelectableObject* self_) {

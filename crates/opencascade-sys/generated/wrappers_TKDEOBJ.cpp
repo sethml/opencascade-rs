@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <DEOBJ_ConfigurationNode.hxx>
 #include <DEOBJ_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
@@ -40,6 +39,7 @@
 #include <TDocStd_SequenceOfDocument.hxx>
 #include <XCAFPrs_Style.hxx>
 #include <XSControl_WorkSession.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax3.hxx>
 
 // Handle type aliases

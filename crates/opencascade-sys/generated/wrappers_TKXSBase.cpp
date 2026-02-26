@@ -4,9 +4,9 @@
 #include "occt_preamble.hxx"
 
 #include <APIHeaderSection_EditHeader.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ShapeFixParameters.hxx>
+#include <FEmTool_AssemblyTable.hxx>
 #include <Geom2d_Curve.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_Geometry.hxx>
@@ -271,6 +271,7 @@
 #include <RWHeaderSection_ReadWriteModule.hxx>
 #include <STEPCAFControl_ActorWrite.hxx>
 #include <STEPCAFControl_Controller.hxx>
+#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <STEPControl_ActorRead.hxx>
 #include <STEPControl_ActorWrite.hxx>
 #include <STEPControl_Controller.hxx>
@@ -304,7 +305,8 @@
 #include <StepVisual_TessellatedCurveSet.hxx>
 #include <Storage_PType.hxx>
 #include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_Array1OfCurve.hxx>
+#include <TColGeom_Array1OfSurface.hxx>
 #include <TColStd_DataMapOfAsciiStringInteger.hxx>
 #include <TColStd_DataMapOfTransientTransient.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
@@ -319,11 +321,9 @@
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
 #include <TCollection_HExtendedString.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
 #include <TObj_Container.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
-#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopTools_DataMapOfShapeShape.hxx>
 #include <TopTools_HSequenceOfShape.hxx>
 #include <TopoDS_CompSolid.hxx>
@@ -375,6 +375,7 @@
 #include <Transfer_TransferFailure.hxx>
 #include <Transfer_TransferInput.hxx>
 #include <Transfer_TransferIterator.hxx>
+#include <Transfer_TransferMapOfProcessForFinder.hxx>
 #include <Transfer_TransferOutput.hxx>
 #include <Transfer_TransientListBinder.hxx>
 #include <Transfer_TransientMapper.hxx>
@@ -397,6 +398,7 @@
 #include <XSControl_Vars.hxx>
 #include <XSControl_WorkSession.hxx>
 #include <XSControl_Writer.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_XY.hxx>
 
 // Handle type aliases

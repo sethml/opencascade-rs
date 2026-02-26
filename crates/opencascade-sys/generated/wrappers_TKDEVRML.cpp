@@ -4,10 +4,8 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor3d_Curve.hxx>
-#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Aspect_TypeOfDeflection.hxx>
 #include <BRepAdaptor_Surface.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_B3f.hxx>
 #include <DEVRML_ConfigurationNode.hxx>
 #include <DEVRML_Provider.hxx>
@@ -15,7 +13,9 @@
 #include <DE_ConfigurationNode.hxx>
 #include <DE_Provider.hxx>
 #include <DE_Wrapper.hxx>
+#include <FEmTool_AssemblyTable.hxx>
 #include <HLRAlgo_Projector.hxx>
+#include <IGESBasic_Array2OfHArray1OfReal.hxx>
 #include <Interface_IndexedMapOfAsciiString.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_IncAllocator.hxx>
@@ -38,7 +38,6 @@
 #include <TColgp_HArray1OfVec.hxx>
 #include <TColgp_HArray1OfVec2d.hxx>
 #include <TCollection_ExtendedString.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
 #include <TDataStd_ListIteratorOfListOfExtendedString.hxx>
 #include <TDocStd_Document.hxx>
 #include <TDocStd_SequenceOfDocument.hxx>
@@ -82,6 +81,7 @@
 #include <VrmlData_InBuffer.hxx>
 #include <VrmlData_IndexedFaceSet.hxx>
 #include <VrmlData_IndexedLineSet.hxx>
+#include <VrmlData_ListOfNode.hxx>
 #include <VrmlData_MapOfNode.hxx>
 #include <VrmlData_Material.hxx>
 #include <VrmlData_Node.hxx>
@@ -148,6 +148,7 @@
 #include <Vrml_WWWAnchorMap.hxx>
 #include <Vrml_WWWInline.hxx>
 #include <XSControl_WorkSession.hxx>
+#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax3.hxx>
 #include <gp_Trsf.hxx>
 #include <gp_Vec.hxx>
