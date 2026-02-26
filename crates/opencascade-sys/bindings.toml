@@ -135,4 +135,12 @@ void_pointer_types = ["Aspect_RenderingContext"]
 "NCollection_Shared<NCollection_List<gp_Pnt2d>>" = { header = "NCollection_Shared.hxx", module = "NCollection", handle = true }
 "NCollection_Shared<TColStd_PackedMapOfInteger>" = { header = "NCollection_Shared.hxx", module = "NCollection", handle = true }
 "NCollection_Shared<NCollection_DynamicArray<BRepMesh_Vertex>>" = { header = "NCollection_Shared.hxx", module = "NCollection", handle = true }
+
+# Split configuration for build parallelization.
+# Splitting generated C++/Rust files enables parallel compilation.
+[split]
+# Strategy for C++ wrapper splitting: "toolkit" splits into one file per OCCT toolkit.
+cpp_split = "toolkit"
+# Path to OCCT source directory containing TK*/PACKAGES files (relative to this file).
+occt_source_dir = "../occt-sys/OCCT/src"
 "NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>>" = { header = "NCollection_Shared.hxx", module = "NCollection", handle = true }

@@ -937,21 +937,6 @@ impl AISObject {
         })
     }
 
-    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
-    pub fn bnd_box_of_selected(
-        &mut self,
-        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
-    ) -> crate::OwnedPtr<crate::bnd::Box> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XCAFPrs_AISObject_inherited_BndBoxOfSelected(
-                    self as *mut Self,
-                    theOwners,
-                ),
-            ))
-        }
-    }
-
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {

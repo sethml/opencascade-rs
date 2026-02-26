@@ -44,7 +44,7 @@ echo "Generating bindings from $CONFIG_FILE..."
 
 # Clean generated directory
 echo "Cleaning $OUTPUT_DIR..."
-rm -f "$OUTPUT_DIR"/*.rs "$OUTPUT_DIR"/*.hxx
+rm -f "$OUTPUT_DIR"/*.rs "$OUTPUT_DIR"/*.hxx "$OUTPUT_DIR"/*.cpp
 
 # Set library path for libclang on macOS
 if [[ "$(uname)" == "Darwin" ]]; then

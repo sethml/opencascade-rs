@@ -94,9 +94,34 @@ pub struct BindingConfig {
     /// by platform (void* on Linux, NSOpenGLContext* on macOS, EAGLContext* on iOS).
     #[serde(default)]
     pub void_pointer_types: Vec<String>,
+
+    /// Configuration for splitting generated output files.
+    #[serde(default)]
+    pub split: SplitConfig,
 }
 
-/// A manually-defined opaque type referenced by auto-generated bindings.
+/// Configuration for splitting generated output files for build parallelization.
+#[derive(Debug, Deserialize, Default, Clone)]
+pub struct SplitConfig {
+    /// Strategy for C++ wrapper splitting: "none" (default) or "toolkit".
+    /// When "toolkit", wrappers.cpp is split into one file per OCCT toolkit (TKernel,
+    /// TKMath, etc.) enabling parallel C++ compilation.
+    #[serde(default)]
+    pub cpp_split: Option<String>,
+
+    /// Strategy for Rust FFI splitting: "none" (default) or "toolkit".
+    /// When "toolkit", ffi.rs is split into one file per toolkit enabling parallel
+    /// Rust compilation.
+    #[serde(default)]
+    pub ffi_split: Option<String>,
+
+    /// Path to OCCT source directory containing TK*/PACKAGES files.
+    /// Used to discover toolkit→module mappings for splitting.
+    /// Relative to the config file directory.
+    #[serde(default)]
+    pub occt_source_dir: Option<String>,
+}
+
 #[derive(Debug, Deserialize)]
 pub struct ManualType {
     /// The C++ header that defines this type (for wrappers.cpp includes).
@@ -104,7 +129,7 @@ pub struct ManualType {
 }
 
 /// A C++ template instantiation declared as an opaque Rust type.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct TemplateInstantiation {
     /// The C++ header that defines the template (for wrappers.cpp includes).
     pub header: String,
@@ -297,4 +322,38 @@ pub fn expand_headers(config: &BindingConfig, occt_include_dir: &Path) -> Result
     }
 
     Ok(headers)
+}
+
+/// Discover OCCT module→toolkit mappings by reading TK*/PACKAGES files.
+///
+/// Returns a map from C++ module name (e.g., "gp", "TopoDS") to toolkit name
+/// (e.g., "TKMath", "TKBRep").
+pub fn discover_toolkit_modules(occt_source_dir: &Path) -> Result<std::collections::HashMap<String, String>> {
+    use std::collections::HashMap;
+    let mut module_to_toolkit: HashMap<String, String> = HashMap::new();
+
+    let entries = std::fs::read_dir(occt_source_dir)
+        .with_context(|| format!("Failed to read OCCT source directory: {}", occt_source_dir.display()))?;
+
+    for entry in entries {
+        let entry = entry?;
+        let name = entry.file_name().to_string_lossy().to_string();
+        if !name.starts_with("TK") || !entry.path().is_dir() {
+            continue;
+        }
+        let packages_file = entry.path().join("PACKAGES");
+        if !packages_file.exists() {
+            continue;
+        }
+        let content = std::fs::read_to_string(&packages_file)
+            .with_context(|| format!("Failed to read {}", packages_file.display()))?;
+        for line in content.lines() {
+            let module = line.trim();
+            if !module.is_empty() {
+                module_to_toolkit.insert(module.to_string(), name.clone());
+            }
+        }
+    }
+
+    Ok(module_to_toolkit)
 }

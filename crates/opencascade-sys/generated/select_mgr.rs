@@ -6357,23 +6357,6 @@ impl SelectableObject {
         })
     }
 
-    /// **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
-    /// Returns a bounding box of sensitive entities with the owners given if they are a part of
-    /// activated selection
-    pub fn bnd_box_of_selected(
-        &mut self,
-        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
-    ) -> crate::OwnedPtr<crate::bnd::Box> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_bnd_box_of_selected(
-                    self as *mut Self,
-                    theOwners,
-                ),
-            ))
-        }
-    }
-
     /// **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     /// Returns the mode for selection of object as a whole; 0 by default.
     pub fn global_selection_mode(&self) -> i32 {
@@ -8111,6 +8094,14 @@ impl HandleSelectMgrSelectableObject {
         }
     }
 }
+
+// ── Skipped symbols for SelectableObject (1 total) ──
+// SKIPPED: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected`
+//   method: Returns a bounding box of sensitive entities with the owners given if they are a part of
+//   method: activated selection
+//   Reason: param 'theOwners' uses unknown type 'Handle(NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>>) const&'
+//   // pub fn bnd_box_of_selected(&mut self, theOwners: &HandleShared<NCollection_IndexedMap<opencascade_handle<SelectMgr_EntityOwner>>>) -> OwnedPtr<Bnd_Box>;
+//
 
 // ========================
 // From SelectMgr_SelectableObjectSet.hxx

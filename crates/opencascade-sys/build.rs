@@ -62,10 +62,23 @@ fn main() {
         println!("cargo:rustc-link-lib=dylib=user32");
     }
 
-    // Find the generated wrappers.cpp file
-    let wrappers_cpp = gen_dir.join("wrappers.cpp");
-    if !wrappers_cpp.exists() {
-        panic!("Generated wrappers.cpp not found at {}. Run the binding generator first.", wrappers_cpp.display());
+    // Find generated wrappers*.cpp files (may be split by toolkit)
+    let mut wrapper_cpp_files: Vec<PathBuf> = std::fs::read_dir(&gen_dir)
+        .expect("Failed to read generated/ directory")
+        .filter_map(|entry| {
+            let path = entry.ok()?.path();
+            if path.extension().map_or(false, |e| e == "cpp")
+                && path.file_stem().map_or(false, |s| s.to_string_lossy().starts_with("wrappers"))
+            {
+                Some(path)
+            } else {
+                None
+            }
+        })
+        .collect();
+    wrapper_cpp_files.sort();
+    if wrapper_cpp_files.is_empty() {
+        panic!("No generated wrappers*.cpp files found in {}. Run the binding generator first.", gen_dir.display());
     }
 
     // Find manual wrapper .cpp files
@@ -88,7 +101,9 @@ fn main() {
 
     // Build with cc
     let mut build = cc::Build::new();
-    build.file(&wrappers_cpp);
+    for cpp_file in &wrapper_cpp_files {
+        build.file(cpp_file);
+    }
     for cpp_file in &manual_cpp_files {
         build.file(cpp_file);
     }
@@ -124,7 +139,9 @@ fn main() {
 
     // Rerun if generated or manual files change
     println!("cargo:rerun-if-changed=generated");
-    println!("cargo:rerun-if-changed={}", wrappers_cpp.display());
+    for cpp_file in &wrapper_cpp_files {
+        println!("cargo:rerun-if-changed={}", cpp_file.display());
+    }
     println!("cargo:rerun-if-changed=manual");
     for cpp_file in &manual_cpp_files {
         println!("cargo:rerun-if-changed={}", cpp_file.display());

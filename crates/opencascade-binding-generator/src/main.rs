@@ -8,7 +8,7 @@ use opencascade_binding_generator::{codegen, config, header_deps, model, module_
 use anyhow::Result;
 use clap::Parser;
 use std::collections::{HashMap, HashSet};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::process::Command;
 
 /// OCCT binding generator - parses OCCT headers and generates extern "C" FFI bindings
@@ -120,8 +120,12 @@ fn main() -> Result<()> {
     }
 
     // Determine explicit headers from config file or CLI arguments
+    let mut split_config = config::SplitConfig::default();
+    let mut config_dir: Option<PathBuf> = None;
     let inputs = if let Some(ref config_path) = args.config {
         let cfg = config::load_config(config_path)?;
+        split_config = cfg.split.clone();
+        config_dir = Some(config_path.parent().unwrap_or(Path::new(".")).to_path_buf());
 
         if args.include_dirs.is_empty() {
             anyhow::bail!("--config requires at least one -I <include_dir>");
@@ -544,7 +548,7 @@ fn main() -> Result<()> {
     }
 
     // Generate FFI output
-    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &ambiguous_methods, &non_allocatable_classes, &handle_able_classes, &manual_type_names, &template_instantiations)
+    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &ambiguous_methods, &non_allocatable_classes, &handle_able_classes, &manual_type_names, &template_instantiations, &split_config, config_dir.as_deref())
 }
 
 /// Rewrite template spellings in Handle types to alias names.
@@ -950,6 +954,8 @@ fn generate_output(
     handle_able_classes: &HashSet<String>,
     manual_type_names: &HashSet<String>,
     template_instantiations: &HashMap<String, config::TemplateInstantiation>,
+    split_config: &config::SplitConfig,
+    config_dir: Option<&Path>,
 ) -> Result<()> {
     use model::ParsedClass;
 
@@ -1016,22 +1022,170 @@ fn generate_output(
     println!("  Wrote: {} ({} classes, {} functions)",
         ffi_path.display(), all_classes.len(), all_functions.len());
 
-    // 2. Generate wrappers.cpp
-    println!("Generating wrappers.cpp...");
-    let cpp_code = codegen::cpp::generate_wrappers(
-        all_classes,
-        &all_collections,
-        known_headers,
-        symbol_table,
-        &all_bindings,
-        &all_function_bindings,
-        &nested_types,
-        &handle_able_classes,
-        template_instantiations,
-    );
-    let cpp_path = args.output.join("wrappers.cpp");
-    std::fs::write(&cpp_path, &cpp_code)?;
-    println!("  Wrote: {}", cpp_path.display());
+    // 2. Generate wrappers (split by toolkit or monolithic)
+    if split_config.cpp_split.as_deref() == Some("toolkit") {
+        println!("Splitting wrappers by toolkit...");
+        let occt_src = split_config.occt_source_dir.as_ref()
+            .expect("split.occt_source_dir required for cpp_split = 'toolkit'");
+        let occt_source_dir = config_dir.as_ref()
+            .expect("config_dir required for toolkit split")
+            .join(occt_src);
+        let module_to_toolkit = config::discover_toolkit_modules(&occt_source_dir)?;
+
+        // Generate preamble header
+        let include_dir = args.include_dirs.first().map(|p| p.as_path());
+        let preamble = codegen::cpp::generate_preamble(template_instantiations, known_headers, include_dir);
+        let preamble_path = args.output.join("occt_preamble.hxx");
+        std::fs::write(&preamble_path, &preamble)?;
+        println!("  Wrote: {}", preamble_path.display());
+
+        // Helper to extract C++ module prefix from a name
+        fn cpp_module(name: &str) -> &str {
+            let base = name.split("::").next().unwrap_or(name);
+            base.split('_').next().unwrap_or(base)
+        }
+
+        // Group ClassBindings by toolkit
+        let mut tk_bindings: HashMap<String, Vec<&codegen::bindings::ClassBindings>> = HashMap::new();
+        for b in &all_bindings {
+            let tk = module_to_toolkit.get(b.module.as_str()).cloned()
+                .unwrap_or_else(|| "misc".to_string());
+            tk_bindings.entry(tk).or_default().push(b);
+        }
+
+        // Group ParsedClass by toolkit (for header collection)
+        let mut tk_classes: HashMap<String, Vec<&&ParsedClass>> = HashMap::new();
+        for c in all_classes {
+            let tk = module_to_toolkit.get(c.module.as_str()).cloned()
+                .unwrap_or_else(|| "misc".to_string());
+            tk_classes.entry(tk).or_default().push(c);
+        }
+
+        // Group FunctionBindings by toolkit (use namespace = C++ module)
+        let mut tk_functions: HashMap<String, Vec<&codegen::bindings::FunctionBinding>> = HashMap::new();
+        for f in &all_function_bindings {
+            let tk = module_to_toolkit.get(f.namespace.as_str()).cloned()
+                .unwrap_or_else(|| "misc".to_string());
+            tk_functions.entry(tk).or_default().push(f);
+        }
+
+        // Group collections by toolkit (derive C++ module from typedef prefix)
+        let mut tk_collections: HashMap<String, Vec<&codegen::collections::CollectionInfo>> = HashMap::new();
+        for c in &all_collections {
+            let module = cpp_module(&c.typedef_name);
+            let tk = module_to_toolkit.get(module).cloned()
+                .unwrap_or_else(|| "misc".to_string());
+            tk_collections.entry(tk).or_default().push(c);
+        }
+
+        // Group nested types by toolkit (derive C++ module from cpp_name prefix)
+        let mut tk_nested: HashMap<String, Vec<&codegen::rust::NestedTypeInfo>> = HashMap::new();
+        for nt in &nested_types {
+            let module = cpp_module(&nt.cpp_name);
+            let tk = module_to_toolkit.get(module).cloned()
+                .unwrap_or_else(|| "misc".to_string());
+            tk_nested.entry(tk).or_default().push(nt);
+        }
+
+        // Assign template instantiations to toolkits by their module
+        let mut tk_templates: HashMap<String, HashMap<String, config::TemplateInstantiation>> = HashMap::new();
+        for (spelling, inst) in template_instantiations {
+            let tk = module_to_toolkit.get(inst.module.as_str()).cloned()
+                .unwrap_or_else(|| "misc".to_string());
+            tk_templates.entry(tk).or_default()
+                .insert(spelling.clone(), inst.clone());
+        }
+
+        // Collect all toolkit names
+        let mut all_toolkits: HashSet<String> = HashSet::new();
+        all_toolkits.extend(tk_bindings.keys().cloned());
+        all_toolkits.extend(tk_classes.keys().cloned());
+        all_toolkits.extend(tk_functions.keys().cloned());
+        all_toolkits.extend(tk_collections.keys().cloned());
+        all_toolkits.extend(tk_nested.keys().cloned());
+        all_toolkits.extend(tk_templates.keys().cloned());
+        let mut sorted_toolkits: Vec<_> = all_toolkits.into_iter().collect();
+        sorted_toolkits.sort();
+
+        // Build own_class_names per toolkit (classes + template aliases)
+        let mut tk_own_classes: HashMap<String, HashSet<String>> = HashMap::new();
+        for c in all_classes {
+            let tk = module_to_toolkit.get(c.module.as_str()).cloned()
+                .unwrap_or_else(|| "misc".to_string());
+            tk_own_classes.entry(tk).or_default().insert(c.name.clone());
+        }
+        // Template alias names belong to the toolkit of their module
+        for (spelling, inst) in template_instantiations {
+            let tk = module_to_toolkit.get(inst.module.as_str()).cloned()
+                .unwrap_or_else(|| "misc".to_string());
+            tk_own_classes.entry(tk).or_default()
+                .insert(config::template_alias_name(spelling));
+        }
+
+        // Build class_name → source_header map (covers ALL classes for cross-toolkit lookups)
+        let class_header_map: HashMap<String, String> = all_classes.iter()
+            .map(|c| (c.name.clone(), c.source_header.clone()))
+            .collect();
+
+        println!("  {} toolkits", sorted_toolkits.len());
+        for toolkit in &sorted_toolkits {
+            let empty_bindings = Vec::new();
+            let empty_classes = Vec::new();
+            let empty_functions = Vec::new();
+            let empty_collections = Vec::new();
+            let empty_nested = Vec::new();
+            let empty_templates = HashMap::new();
+            let empty_own = HashSet::new();
+
+            let bindings = tk_bindings.get(toolkit).unwrap_or(&empty_bindings);
+            let classes_refs = tk_classes.get(toolkit).unwrap_or(&empty_classes);
+            let functions = tk_functions.get(toolkit).unwrap_or(&empty_functions);
+            let collections = tk_collections.get(toolkit).unwrap_or(&empty_collections);
+            let nested = tk_nested.get(toolkit).unwrap_or(&empty_nested);
+            let _templates = tk_templates.get(toolkit).unwrap_or(&empty_templates);
+            let own_classes = tk_own_classes.get(toolkit).unwrap_or(&empty_own);
+
+            // Flatten &&ParsedClass to &ParsedClass
+            let classes: Vec<&ParsedClass> = classes_refs.iter().copied().copied().collect();
+
+            let cpp_code = codegen::cpp::generate_wrappers_for_group(
+                toolkit,
+                &classes,
+                collections,
+                known_headers,
+                bindings,
+                functions,
+                nested,
+                &handle_able_classes,
+                template_instantiations,
+                "occt_preamble.hxx",
+                own_classes,
+                &class_header_map,
+                include_dir,
+            );
+            let cpp_path = args.output.join(format!("wrappers_{}.cpp", toolkit));
+            std::fs::write(&cpp_path, &cpp_code)?;
+            println!("  Wrote: {} ({} classes, {} functions)",
+                cpp_path.display(), bindings.len(), functions.len());
+        }
+    } else {
+        // Monolithic wrappers.cpp (original behavior)
+        println!("Generating wrappers.cpp...");
+        let cpp_code = codegen::cpp::generate_wrappers(
+            all_classes,
+            &all_collections,
+            known_headers,
+            symbol_table,
+            &all_bindings,
+            &all_function_bindings,
+            &nested_types,
+            &handle_able_classes,
+            template_instantiations,
+        );
+        let cpp_path = args.output.join("wrappers.cpp");
+        std::fs::write(&cpp_path, &cpp_code)?;
+        println!("  Wrote: {}", cpp_path.display());
+    }
 
     // 3. Generate per-module re-export files
     println!("Generating module re-exports...");
