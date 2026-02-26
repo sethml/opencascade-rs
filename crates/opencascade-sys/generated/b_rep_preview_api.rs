@@ -30,280 +30,199 @@ impl MakeBox {
     /// **Source:** `BRepPreviewAPI_MakeBox.hxx`:33 - `BRepPreviewAPI_MakeBox::BRepPreviewAPI_MakeBox()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPreviewAPI_MakeBox_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_ctor()),
+            )
         }
     }
 
     /// **Source:** `BRepPreviewAPI_MakeBox.hxx`:36 - `BRepPreviewAPI_MakeBox::Build()`
     /// Creates a preview depending on point values.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPreviewAPI_MakeBox_build(self as *mut Self, theRange) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPreviewAPI_MakeBox_build(self as *mut Self, theRange)
+        })
     }
 
     /// Upcast to BRepPrimAPI_MakeBox
     pub fn as_b_rep_prim_api_make_box(&self) -> &crate::b_rep_prim_api::MakeBox {
-        let __result = unsafe {
-            crate::ffi::BRepPreviewAPI_MakeBox_as_BRepPrimAPI_MakeBox(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_as_BRepPrimAPI_MakeBox(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrimAPI_MakeBox (mutable)
     pub fn as_b_rep_prim_api_make_box_mut(&mut self) -> &mut crate::b_rep_prim_api::MakeBox {
-        let __result = unsafe {
-            crate::ffi::BRepPreviewAPI_MakeBox_as_BRepPrimAPI_MakeBox_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepPreviewAPI_MakeBox_as_BRepPrimAPI_MakeBox_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        let __result = unsafe {
-            crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_MakeShape(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        let __result = unsafe {
-            crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_MakeShape_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        let __result = unsafe {
-            crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_Command(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_Command(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        let __result = unsafe {
-            crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_Command_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:79 - `BRepPrimAPI_MakeBox::Init()`
     pub fn init(&mut self, theDX: f64, theDY: f64, theDZ: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPreviewAPI_MakeBox_inherited_Init(
-                    self as *mut Self,
-                    theDX,
-                    theDY,
-                    theDZ,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPreviewAPI_MakeBox_inherited_Init(
+                self as *mut Self,
+                theDX,
+                theDY,
+                theDZ,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:99 - `BRepPrimAPI_MakeBox::Wedge()`
     pub fn wedge(&mut self) -> &mut crate::b_rep_prim::Wedge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPreviewAPI_MakeBox_inherited_Wedge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Wedge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:106 - `BRepPrimAPI_MakeBox::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPreviewAPI_MakeBox_inherited_Shell(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Shell(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:110 - `BRepPrimAPI_MakeBox::Solid()`
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPreviewAPI_MakeBox_inherited_Solid(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Solid(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:114 - `BRepPrimAPI_MakeBox::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPreviewAPI_MakeBox_inherited_BottomFace(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_BottomFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:117 - `BRepPrimAPI_MakeBox::BackFace()`
     pub fn back_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPreviewAPI_MakeBox_inherited_BackFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_BackFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:120 - `BRepPrimAPI_MakeBox::FrontFace()`
     pub fn front_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPreviewAPI_MakeBox_inherited_FrontFace(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_FrontFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:123 - `BRepPrimAPI_MakeBox::LeftFace()`
     pub fn left_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPreviewAPI_MakeBox_inherited_LeftFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_LeftFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:126 - `BRepPrimAPI_MakeBox::RightFace()`
     pub fn right_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPreviewAPI_MakeBox_inherited_RightFace(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_RightFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:129 - `BRepPrimAPI_MakeBox::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPreviewAPI_MakeBox_inherited_TopFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_TopFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPreviewAPI_MakeBox_inherited_Shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Shape(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPreviewAPI_MakeBox_inherited_IsDeleted(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPreviewAPI_MakeBox_inherited_IsDeleted(self as *mut Self, S)
+        })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPreviewAPI_MakeBox_inherited_IsDone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPreviewAPI_MakeBox_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPreviewAPI_MakeBox_inherited_Check(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPreviewAPI_MakeBox_inherited_Check(self as *const Self)
+        })
     }
 }

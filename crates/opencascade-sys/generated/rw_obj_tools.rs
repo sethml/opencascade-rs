@@ -14,38 +14,18 @@ pub unsafe fn read_vec3(
     theVec: &mut crate::gp::XYZ,
 ) -> bool {
     let c_thePos = std::ffi::CString::new(thePos).unwrap();
-    {
-        let __result =
-            unsafe { crate::ffi::RWObj_Tools_read_vec3(c_thePos.as_ptr(), theNext, theVec) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::RWObj_Tools_read_vec3(c_thePos.as_ptr(), theNext, theVec)
+    })
 }
 /// **Source:** `RWObj_Tools.hxx`:50 - `RWObj_Tools::ReadName`
 /// Read string.
 pub fn read_name(thePos: &str, theName: &mut crate::t_collection::AsciiString) -> bool {
     let c_thePos = std::ffi::CString::new(thePos).unwrap();
-    {
-        let __result = unsafe { crate::ffi::RWObj_Tools_read_name(c_thePos.as_ptr(), theName) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::RWObj_Tools_read_name(c_thePos.as_ptr(), theName) })
 }
 /// **Source:** `RWObj_Tools.hxx`:78 - `RWObj_Tools::isSpaceChar`
 /// Return true if specified char is a white space.
 pub fn is_space_char(theChar: std::ffi::c_char) -> bool {
-    {
-        let __result = unsafe { crate::ffi::RWObj_Tools_is_space_char(theChar) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::RWObj_Tools_is_space_char(theChar) })
 }

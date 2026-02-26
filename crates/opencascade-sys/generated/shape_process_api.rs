@@ -27,17 +27,13 @@ impl ApplySequence {
     pub fn new_charptr2(rscName: &str, seqName: &str) -> crate::OwnedPtr<Self> {
         let c_rscName = std::ffi::CString::new(rscName).unwrap();
         let c_seqName = std::ffi::CString::new(seqName).unwrap();
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::ShapeProcessAPI_ApplySequence_ctor_charptr2(
                     c_rscName.as_ptr(),
                     c_seqName.as_ptr(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -45,14 +41,10 @@ impl ApplySequence {
     /// Returns object for managing resource file and sequence of
     /// operators.
     pub fn context(&mut self) -> &mut crate::ffi::HandleShapeProcessShapeContext {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeProcessAPI_ApplySequence_context(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::ShapeProcessAPI_ApplySequence_context(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -68,47 +60,34 @@ impl ApplySequence {
         until: crate::top_abs::ShapeEnum,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::ShapeProcessAPI_ApplySequence_prepare_shape(
                     self as *mut Self,
                     shape,
                     fillmap,
                     until.into(),
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:59 - `ShapeProcessAPI_ApplySequence::ClearMap()`
     /// Clears myMap with accumulated history.
     pub fn clear_map(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::ShapeProcessAPI_ApplySequence_clear_map(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeProcessAPI_ApplySequence_clear_map(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:62 - `ShapeProcessAPI_ApplySequence::Map()`
     /// Returns myMap with accumulated history.
     pub fn map(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeProcessAPI_ApplySequence_map(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::ShapeProcessAPI_ApplySequence_map(
+                self as *const Self,
+            )))
         }
     }
 
@@ -117,15 +96,8 @@ impl ApplySequence {
     /// Note that results can be accumulated from previous preparations
     /// it method ClearMap was not called before PrepareShape.
     pub fn print_preparation_result(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeProcessAPI_ApplySequence_print_preparation_result(
-                    self as *const Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeProcessAPI_ApplySequence_print_preparation_result(self as *const Self)
+        })
     }
 }

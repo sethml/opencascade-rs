@@ -20,13 +20,9 @@ pub fn plane_equation(
     NormalVector: &mut crate::gp::XYZ,
     PolarDistance: &mut f64,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::Intf_plane_equation(P1, P2, P3, NormalVector, PolarDistance) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::Intf_plane_equation(P1, P2, P3, NormalVector, PolarDistance)
+    })
 }
 /// **Source:** `Intf.hxx`:51 - `Intf::Contain`
 /// Compute if the triangle <P1> <P2> <P3> contain <ThePnt>.
@@ -36,14 +32,7 @@ pub fn contain(
     P3: &crate::gp::Pnt,
     ThePnt: &crate::gp::Pnt,
 ) -> bool {
-    {
-        let __result = unsafe { crate::ffi::Intf_contain(P1, P2, P3, ThePnt) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::Intf_contain(P1, P2, P3, ThePnt) })
 }
 
 /// Describes the different intersection  point types for this
@@ -94,29 +83,20 @@ impl Interference {
     /// Gives the number   of  points of  intersection  in the
     /// interference.
     pub fn nb_section_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_Interference_nb_section_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_Interference_nb_section_points(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
     /// Gives the point of  intersection of address  Index in
     /// the interference.
     pub fn pnt_value(&self, Index: i32) -> &SectionPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_Interference_pnt_value(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Intf_Interference_pnt_value(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -124,88 +104,58 @@ impl Interference {
     /// Gives the number  of polylines of  intersection in the
     /// interference.
     pub fn nb_section_lines(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_Interference_nb_section_lines(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_Interference_nb_section_lines(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
     /// Gives the polyline of intersection at address <Index> in
     /// the interference.
     pub fn line_value(&self, Index: i32) -> &SectionLine {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_Interference_line_value(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Intf_Interference_line_value(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
     /// Gives the number of zones of tangence in the interference.
     pub fn nb_tangent_zones(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_Interference_nb_tangent_zones(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_Interference_nb_tangent_zones(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
     /// Gives  the zone of  tangence at address   Index in the
     /// interference.
     pub fn zone_value(&self, Index: i32) -> &TangentZone {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_Interference_zone_value(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Intf_Interference_zone_value(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
     /// Gives the tolerance used for the calculation.
     pub fn get_tolerance(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_Interference_get_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_Interference_get_tolerance(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
     /// Tests if the polylines of  intersection or the zones of
     /// tangence contain the point of intersection <ThePnt>.
     pub fn contains(&self, ThePnt: &SectionPoint) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_Interference_contains(self as *const Self, ThePnt) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_Interference_contains(self as *const Self, ThePnt)
+        })
     }
 
     /// **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
@@ -213,40 +163,23 @@ impl Interference {
     /// tangent zones of  the interference  and  returns  True
     /// when done.
     pub fn insert_tangentzone(&mut self, TheZone: &TangentZone) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_Interference_insert_tangentzone(self as *mut Self, TheZone)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_Interference_insert_tangentzone(self as *mut Self, TheZone)
+        })
     }
 
     /// **Source:** `Intf_Interference.hxx`:78 - `Intf_Interference::Insert()`
     /// Insert a new segment of intersection in the current  list of
     /// polylines of intersection of the interference.
     pub fn insert_sectionpoint2(&mut self, pdeb: &SectionPoint, pfin: &SectionPoint) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_Interference_insert_sectionpoint2(self as *mut Self, pdeb, pfin)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_Interference_insert_sectionpoint2(self as *mut Self, pdeb, pfin)
+        })
     }
 
     /// **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Intf_Interference_dump(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Intf_Interference_dump(self as *const Self) })
     }
 }
 
@@ -270,258 +203,159 @@ impl InterferencePolygon2d {
     /// **Source:** `Intf_InterferencePolygon2d.hxx`:38 - `Intf_InterferencePolygon2d::Intf_InterferencePolygon2d()`
     /// Constructs an empty interference of Polygon.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Intf_InterferencePolygon2d_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Intf_InterferencePolygon2d_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Intf_InterferencePolygon2d.hxx`:41 - `Intf_InterferencePolygon2d::Intf_InterferencePolygon2d()`
     /// Constructs and computes an interference between two Polygons.
     pub fn new_polygon2d2(Obje1: &Polygon2d, Obje2: &Polygon2d) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_InterferencePolygon2d_ctor_polygon2d2(Obje1, Obje2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Intf_InterferencePolygon2d_ctor_polygon2d2(Obje1, Obje2),
+            ))
         }
     }
 
     /// **Source:** `Intf_InterferencePolygon2d.hxx`:45 - `Intf_InterferencePolygon2d::Intf_InterferencePolygon2d()`
     /// Constructs and computes the auto interference of a Polygon.
     pub fn new_polygon2d(Obje: &Polygon2d) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Intf_InterferencePolygon2d_ctor_polygon2d(Obje) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Intf_InterferencePolygon2d_ctor_polygon2d(Obje),
+            ))
         }
     }
 
     /// **Source:** `Intf_InterferencePolygon2d.hxx`:48 - `Intf_InterferencePolygon2d::Perform()`
     /// Computes an interference between two Polygons.
     pub fn perform_polygon2d2(&mut self, Obje1: &Polygon2d, Obje2: &Polygon2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_perform_polygon2d2(
-                    self as *mut Self,
-                    Obje1,
-                    Obje2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_InterferencePolygon2d_perform_polygon2d2(
+                self as *mut Self,
+                Obje1,
+                Obje2,
+            )
+        })
     }
 
     /// **Source:** `Intf_InterferencePolygon2d.hxx`:51 - `Intf_InterferencePolygon2d::Perform()`
     /// Computes the self interference of a Polygon.
     pub fn perform_polygon2d(&mut self, Obje: &Polygon2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_perform_polygon2d(self as *mut Self, Obje)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_InterferencePolygon2d_perform_polygon2d(self as *mut Self, Obje)
+        })
     }
 
     /// **Source:** `Intf_InterferencePolygon2d.hxx`:55 - `Intf_InterferencePolygon2d::Pnt2dValue()`
     /// Gives the  geometrical 2d point   of the  intersection
     /// point at address <Index> in the interference.
     pub fn pnt2d_value(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_pnt2d_value(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Intf_InterferencePolygon2d_pnt2d_value(self as *const Self, Index),
+            ))
         }
     }
 
     /// Upcast to Intf_Interference
     pub fn as_interference(&self) -> &Interference {
-        let __result = unsafe {
-            crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Intf_Interference (mutable)
     pub fn as_interference_mut(&mut self) -> &mut Interference {
-        let __result = unsafe {
-            crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
     pub fn nb_section_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_inherited_NbSectionPoints(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_InterferencePolygon2d_inherited_NbSectionPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
     pub fn pnt_value(&self, Index: i32) -> &SectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_inherited_PntValue(
-                    self as *const Self,
-                    Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Intf_InterferencePolygon2d_inherited_PntValue(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:51 - `Intf_Interference::NbSectionLines()`
     pub fn nb_section_lines(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_inherited_NbSectionLines(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_InterferencePolygon2d_inherited_NbSectionLines(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
     pub fn line_value(&self, Index: i32) -> &SectionLine {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_inherited_LineValue(
-                    self as *const Self,
-                    Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Intf_InterferencePolygon2d_inherited_LineValue(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
     pub fn nb_tangent_zones(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_inherited_NbTangentZones(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_InterferencePolygon2d_inherited_NbTangentZones(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
     pub fn zone_value(&self, Index: i32) -> &TangentZone {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_inherited_ZoneValue(
-                    self as *const Self,
-                    Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Intf_InterferencePolygon2d_inherited_ZoneValue(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
     pub fn get_tolerance(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_inherited_GetTolerance(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_InterferencePolygon2d_inherited_GetTolerance(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
     pub fn contains(&self, ThePnt: &SectionPoint) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_inherited_Contains(
-                    self as *const Self,
-                    ThePnt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_InterferencePolygon2d_inherited_Contains(self as *const Self, ThePnt)
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
     pub fn insert(&mut self, TheZone: &TangentZone) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_inherited_Insert(self as *mut Self, TheZone)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_InterferencePolygon2d_inherited_Insert(self as *mut Self, TheZone)
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_inherited_Dump(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_InterferencePolygon2d_inherited_Dump(self as *const Self)
+        })
     }
 }
 
@@ -544,55 +378,27 @@ impl Polygon2d {
     /// **Source:** `Intf_Polygon2d.hxx`:35 - `Intf_Polygon2d::Bounding()`
     /// Returns the bounding box of the polygon.
     pub fn bounding(&self) -> &crate::bnd::Box2d {
-        {
-            let __result = unsafe { crate::ffi::Intf_Polygon2d_bounding(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Intf_Polygon2d_bounding(self as *const Self))) }
     }
 
     /// **Source:** `Intf_Polygon2d.hxx`:38 - `Intf_Polygon2d::Closed()`
     /// Returns True if the polyline is closed.
     pub fn closed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Intf_Polygon2d_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Intf_Polygon2d_closed(self as *const Self) })
     }
 
     /// **Source:** `Intf_Polygon2d.hxx`:43 - `Intf_Polygon2d::DeflectionOverEstimation()`
     /// Returns the tolerance of the polygon.
     pub fn deflection_over_estimation(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_Polygon2d_deflection_over_estimation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_Polygon2d_deflection_over_estimation(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_Polygon2d.hxx`:46 - `Intf_Polygon2d::NbSegments()`
     /// Returns the number of Segments in the polyline.
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Intf_Polygon2d_nb_segments(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Intf_Polygon2d_nb_segments(self as *const Self) })
     }
 
     /// **Source:** `Intf_Polygon2d.hxx`:49 - `Intf_Polygon2d::Segment()`
@@ -603,14 +409,9 @@ impl Polygon2d {
         theBegin: &mut crate::gp::Pnt2d,
         theEnd: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_Polygon2d_segment(self as *const Self, theIndex, theBegin, theEnd)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_Polygon2d_segment(self as *const Self, theIndex, theBegin, theEnd)
+        })
     }
 }
 
@@ -633,189 +434,122 @@ impl SectionLine {
     /// **Source:** `Intf_SectionLine.hxx`:58 - `Intf_SectionLine::Intf_SectionLine()`
     /// Constructs an empty SectionLine.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Intf_SectionLine_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Intf_SectionLine_ctor()))
         }
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:36 - `Intf_SectionLine::NumberOfPoints()`
     /// Returns number of points in this SectionLine.
     pub fn number_of_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_SectionLine_number_of_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_SectionLine_number_of_points(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:40 - `Intf_SectionLine::GetPoint()`
     /// Gives the point of intersection of  address <Index>  in the
     /// SectionLine.
     pub fn get_point(&self, Index: i32) -> &SectionPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_SectionLine_get_point(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Intf_SectionLine_get_point(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:43 - `Intf_SectionLine::IsClosed()`
     /// Returns True if the SectionLine is closed.
     pub fn is_closed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Intf_SectionLine_is_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Intf_SectionLine_is_closed(self as *const Self) })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:46 - `Intf_SectionLine::Contains()`
     /// Returns True if ThePI is in the SectionLine <me>.
     pub fn contains(&self, ThePI: &SectionPoint) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_SectionLine_contains(self as *const Self, ThePI) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_SectionLine_contains(self as *const Self, ThePI)
+        })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:50 - `Intf_SectionLine::IsEnd()`
     /// Checks if <ThePI>  is an end of  the SectionLine. Returns 1
     /// for the beginning, 2 for the end, otherwise 0.
     pub fn is_end(&self, ThePI: &SectionPoint) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_SectionLine_is_end(self as *const Self, ThePI) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_SectionLine_is_end(self as *const Self, ThePI)
+        })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:53 - `Intf_SectionLine::IsEqual()`
     /// Compares two SectionLines.
     pub fn is_equal(&self, Other: &SectionLine) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_SectionLine_is_equal(self as *const Self, Other) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_SectionLine_is_equal(self as *const Self, Other)
+        })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:72 - `Intf_SectionLine::Append()`
     /// Adds a point at the end of the SectionLine.
     pub fn append_sectionpoint(&mut self, Pi: &SectionPoint) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Intf_SectionLine_append_sectionpoint(self as *mut Self, Pi) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_SectionLine_append_sectionpoint(self as *mut Self, Pi)
+        })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:76 - `Intf_SectionLine::Append()`
     /// Concatenates   the SectionLine  <LS>  at  the  end  of  the
     /// SectionLine <me>.
     pub fn append_sectionline(&mut self, LS: &mut SectionLine) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Intf_SectionLine_append_sectionline(self as *mut Self, LS) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_SectionLine_append_sectionline(self as *mut Self, LS)
+        })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:79 - `Intf_SectionLine::Prepend()`
     /// Adds a point to the beginning of the SectionLine <me>.
     pub fn prepend_sectionpoint(&mut self, Pi: &SectionPoint) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Intf_SectionLine_prepend_sectionpoint(self as *mut Self, Pi) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_SectionLine_prepend_sectionpoint(self as *mut Self, Pi)
+        })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:83 - `Intf_SectionLine::Prepend()`
     /// Concatenates a SectionLine  <LS>  at the  beginning  of the
     /// SectionLine <me>.
     pub fn prepend_sectionline(&mut self, LS: &mut SectionLine) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Intf_SectionLine_prepend_sectionline(self as *mut Self, LS) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_SectionLine_prepend_sectionline(self as *mut Self, LS)
+        })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:86 - `Intf_SectionLine::Reverse()`
     /// Reverses the order of the elements of the SectionLine.
     pub fn reverse(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Intf_SectionLine_reverse(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Intf_SectionLine_reverse(self as *mut Self) })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:89 - `Intf_SectionLine::Close()`
     /// Closes the SectionLine.
     pub fn close(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Intf_SectionLine_close(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Intf_SectionLine_close(self as *mut Self) })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:91 - `Intf_SectionLine::Dump()`
     pub fn dump(&self, Indent: i32) {
-        {
-            let __exc = unsafe { crate::ffi::Intf_SectionLine_dump(self as *const Self, Indent) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_SectionLine_dump(self as *const Self, Indent)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        let __result = unsafe { crate::ffi::Intf_SectionLine_to_owned(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Intf_SectionLine_to_owned(
+                self as *const Self,
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -837,12 +571,8 @@ unsafe impl crate::CppDeletable for SectionPoint {
 impl SectionPoint {
     /// **Source:** `Intf_SectionPoint.hxx`:88 - `Intf_SectionPoint::Intf_SectionPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Intf_SectionPoint_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Intf_SectionPoint_ctor()))
         }
     }
 
@@ -862,8 +592,8 @@ impl SectionPoint {
         ParamT: f64,
         Incid: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Intf_SectionPoint_ctor_pnt_pitype_int2_real_pitype_int2_real2(
                     Where,
                     DimeO.into(),
@@ -875,12 +605,8 @@ impl SectionPoint {
                     AddrT2,
                     ParamT,
                     Incid,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -898,8 +624,8 @@ impl SectionPoint {
         ParamT: f64,
         Incid: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Intf_SectionPoint_ctor_pnt2d_pitype_int_real_pitype_int_real2(
                     Where,
                     DimeO.into(),
@@ -909,85 +635,52 @@ impl SectionPoint {
                     AddrT1,
                     ParamT,
                     Incid,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:36 - `Intf_SectionPoint::Pnt()`
     /// Returns the location of the SectionPoint.
     pub fn pnt(&self) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe { crate::ffi::Intf_SectionPoint_pnt(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Intf_SectionPoint_pnt(self as *const Self))) }
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:40 - `Intf_SectionPoint::ParamOnFirst()`
     /// Returns the cumulated  Parameter of the SectionPoint on the
     /// first element.
     pub fn param_on_first(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_SectionPoint_param_on_first(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_SectionPoint_param_on_first(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:44 - `Intf_SectionPoint::ParamOnSecond()`
     /// Returns the cumulated Parameter of the section point on the
     /// second element.
     pub fn param_on_second(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_SectionPoint_param_on_second(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_SectionPoint_param_on_second(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:47 - `Intf_SectionPoint::TypeOnFirst()`
     /// Returns the type of the section point on the first element.
     pub fn type_on_first(&self) -> crate::intf::PIType {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_SectionPoint_type_on_first(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::intf::PIType::try_from(__val).unwrap()
-        }
+        crate::intf::PIType::try_from(crate::check_result(unsafe {
+            crate::ffi::Intf_SectionPoint_type_on_first(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:51 - `Intf_SectionPoint::TypeOnSecond()`
     /// Returns  the  type  of the  section  point  on  the  second
     /// element.
     pub fn type_on_second(&self) -> crate::intf::PIType {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_SectionPoint_type_on_second(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::intf::PIType::try_from(__val).unwrap()
-        }
+        crate::intf::PIType::try_from(crate::check_result(unsafe {
+            crate::ffi::Intf_SectionPoint_type_on_second(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:53 - `Intf_SectionPoint::InfoFirst()`
@@ -999,20 +692,15 @@ impl SectionPoint {
         Param: &mut f64,
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_SectionPoint_info_first_pitype_int2_real(
-                    self as *const Self,
-                    &mut Dim_i32_,
-                    Add1,
-                    Add2,
-                    Param,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_SectionPoint_info_first_pitype_int2_real(
+                self as *const Self,
+                &mut Dim_i32_,
+                Add1,
+                Add2,
+                Param,
+            )
+        });
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
 
@@ -1025,19 +713,14 @@ impl SectionPoint {
         Param: &mut f64,
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_SectionPoint_info_first_pitype_int_real(
-                    self as *const Self,
-                    &mut Dim_i32_,
-                    Addr,
-                    Param,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_SectionPoint_info_first_pitype_int_real(
+                self as *const Self,
+                &mut Dim_i32_,
+                Addr,
+                Param,
+            )
+        });
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
 
@@ -1050,20 +733,15 @@ impl SectionPoint {
         Param: &mut f64,
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_SectionPoint_info_second_pitype_int2_real(
-                    self as *const Self,
-                    &mut Dim_i32_,
-                    Add1,
-                    Add2,
-                    Param,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_SectionPoint_info_second_pitype_int2_real(
+                self as *const Self,
+                &mut Dim_i32_,
+                Add1,
+                Add2,
+                Param,
+            )
+        });
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
 
@@ -1076,19 +754,14 @@ impl SectionPoint {
         Param: &mut f64,
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_SectionPoint_info_second_pitype_int_real(
-                    self as *const Self,
-                    &mut Dim_i32_,
-                    Addr,
-                    Param,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_SectionPoint_info_second_pitype_int_real(
+                self as *const Self,
+                &mut Dim_i32_,
+                Addr,
+                Param,
+            )
+        });
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
 
@@ -1097,66 +770,40 @@ impl SectionPoint {
     /// between the two triangles is given by the cosine.  The best
     /// incidence is 0. (PI/2).  The worst is 1. (null angle).
     pub fn incidence(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Intf_SectionPoint_incidence(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Intf_SectionPoint_incidence(self as *const Self) })
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:80 - `Intf_SectionPoint::IsEqual()`
     /// Returns True if the two SectionPoint have the  same logical
     /// information.
     pub fn is_equal(&self, Other: &SectionPoint) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_SectionPoint_is_equal(self as *const Self, Other) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_SectionPoint_is_equal(self as *const Self, Other)
+        })
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:86 - `Intf_SectionPoint::IsOnSameEdge()`
     /// Returns True if the two SectionPoints are  on the  same edge
     /// of the first or the second element.
     pub fn is_on_same_edge(&self, Other: &SectionPoint) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_SectionPoint_is_on_same_edge(self as *const Self, Other)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_SectionPoint_is_on_same_edge(self as *const Self, Other)
+        })
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:117 - `Intf_SectionPoint::Merge()`
     /// Merges two SectionPoints.
     pub fn merge(&mut self, Other: &mut SectionPoint) {
-        {
-            let __exc = unsafe { crate::ffi::Intf_SectionPoint_merge(self as *mut Self, Other) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_SectionPoint_merge(self as *mut Self, Other)
+        })
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:119 - `Intf_SectionPoint::Dump()`
     pub fn dump(&self, Indent: i32) {
-        {
-            let __exc = unsafe { crate::ffi::Intf_SectionPoint_dump(self as *const Self, Indent) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_SectionPoint_dump(self as *const Self, Indent)
+        })
     }
 }
 
@@ -1179,98 +826,63 @@ impl TangentZone {
     /// **Source:** `Intf_TangentZone.hxx`:81 - `Intf_TangentZone::Intf_TangentZone()`
     /// Builds an empty tangent zone.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Intf_TangentZone_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Intf_TangentZone_ctor()))
         }
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:36 - `Intf_TangentZone::NumberOfPoints()`
     /// Returns number of SectionPoint in this TangentZone.
     pub fn number_of_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_TangentZone_number_of_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_TangentZone_number_of_points(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:40 - `Intf_TangentZone::GetPoint()`
     /// Gives   the   SectionPoint   of  address  <Index>  in  the
     /// TangentZone.
     pub fn get_point(&self, Index: i32) -> &SectionPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_TangentZone_get_point(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Intf_TangentZone_get_point(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:43 - `Intf_TangentZone::IsEqual()`
     /// Compares two TangentZones.
     pub fn is_equal(&self, Other: &TangentZone) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_TangentZone_is_equal(self as *const Self, Other) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_TangentZone_is_equal(self as *const Self, Other)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:48 - `Intf_TangentZone::Contains()`
     /// Checks if <ThePI> is in TangentZone.
     pub fn contains(&self, ThePI: &SectionPoint) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_TangentZone_contains(self as *const Self, ThePI) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_TangentZone_contains(self as *const Self, ThePI)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:52 - `Intf_TangentZone::ParamOnFirst()`
     /// Gives  the parameter range of the  TangentZone on the first
     /// argument of the Interference. (Usable only for polygon)
     pub fn param_on_first(&self, paraMin: &mut f64, paraMax: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_TangentZone_param_on_first(self as *const Self, paraMin, paraMax)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_TangentZone_param_on_first(self as *const Self, paraMin, paraMax)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:56 - `Intf_TangentZone::ParamOnSecond()`
     /// Gives the parameter range of the  TangentZone on the second
     /// argument of the Interference. (Usable only for polygon)
     pub fn param_on_second(&self, paraMin: &mut f64, paraMax: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_TangentZone_param_on_second(self as *const Self, paraMin, paraMax)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_TangentZone_param_on_second(self as *const Self, paraMin, paraMax)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:60 - `Intf_TangentZone::InfoFirst()`
@@ -1283,20 +895,15 @@ impl TangentZone {
         segMax: &mut i32,
         paraMax: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_TangentZone_info_first(
-                    self as *const Self,
-                    segMin,
-                    paraMin,
-                    segMax,
-                    paraMax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_TangentZone_info_first(
+                self as *const Self,
+                segMin,
+                paraMin,
+                segMax,
+                paraMax,
+            )
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:67 - `Intf_TangentZone::InfoSecond()`
@@ -1309,134 +916,86 @@ impl TangentZone {
         segMax: &mut i32,
         paraMax: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_TangentZone_info_second(
-                    self as *const Self,
-                    segMin,
-                    paraMin,
-                    segMax,
-                    paraMax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_TangentZone_info_second(
+                self as *const Self,
+                segMin,
+                paraMin,
+                segMax,
+                paraMax,
+            )
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:74 - `Intf_TangentZone::RangeContains()`
     /// Returns True if  <ThePI>  is in the parameter  range of the
     /// TangentZone.
     pub fn range_contains(&self, ThePI: &SectionPoint) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_TangentZone_range_contains(self as *const Self, ThePI) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_TangentZone_range_contains(self as *const Self, ThePI)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:78 - `Intf_TangentZone::HasCommonRange()`
     /// Returns True if the TangentZone  <Other> has  a common part
     /// with <me>.
     pub fn has_common_range(&self, Other: &TangentZone) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_TangentZone_has_common_range(self as *const Self, Other)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_TangentZone_has_common_range(self as *const Self, Other)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:84 - `Intf_TangentZone::Append()`
     /// Adds a SectionPoint to the TangentZone.
     pub fn append_sectionpoint(&mut self, Pi: &SectionPoint) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Intf_TangentZone_append_sectionpoint(self as *mut Self, Pi) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_TangentZone_append_sectionpoint(self as *mut Self, Pi)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:87 - `Intf_TangentZone::Append()`
     /// Adds the TangentZone <Tzi> to <me>.
     pub fn append_tangentzone(&mut self, Tzi: &TangentZone) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Intf_TangentZone_append_tangentzone(self as *mut Self, Tzi) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_TangentZone_append_tangentzone(self as *mut Self, Tzi)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:90 - `Intf_TangentZone::Insert()`
     /// Inserts a SectionPoint in the TangentZone.
     pub fn insert(&mut self, Pi: &SectionPoint) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Intf_TangentZone_insert(self as *mut Self, Pi) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Intf_TangentZone_insert(self as *mut Self, Pi) })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:93 - `Intf_TangentZone::PolygonInsert()`
     /// Inserts a point in the polygonal TangentZone.
     pub fn polygon_insert(&mut self, Pi: &SectionPoint) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Intf_TangentZone_polygon_insert(self as *mut Self, Pi) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_TangentZone_polygon_insert(self as *mut Self, Pi)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:96 - `Intf_TangentZone::InsertBefore()`
     /// Inserts a SectionPoint before <Index> in the TangentZone.
     pub fn insert_before(&mut self, Index: i32, Pi: &SectionPoint) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Intf_TangentZone_insert_before(self as *mut Self, Index, Pi) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_TangentZone_insert_before(self as *mut Self, Index, Pi)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:99 - `Intf_TangentZone::InsertAfter()`
     /// Inserts a SectionPoint after <Index> in the TangentZone.
     pub fn insert_after(&mut self, Index: i32, Pi: &SectionPoint) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Intf_TangentZone_insert_after(self as *mut Self, Index, Pi) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_TangentZone_insert_after(self as *mut Self, Index, Pi)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:101 - `Intf_TangentZone::Dump()`
     pub fn dump(&self, Indent: i32) {
-        {
-            let __exc = unsafe { crate::ffi::Intf_TangentZone_dump(self as *const Self, Indent) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_TangentZone_dump(self as *const Self, Indent)
+        })
     }
 }
 
@@ -1458,13 +1017,7 @@ unsafe impl crate::CppDeletable for Tool {
 impl Tool {
     /// **Source:** `Intf_Tool.hxx`:40 - `Intf_Tool::Intf_Tool()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Intf_Tool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Intf_Tool_ctor())) }
     }
 
     /// **Source:** `Intf_Tool.hxx`:42 - `Intf_Tool::Lin2dBox()`
@@ -1474,14 +1027,9 @@ impl Tool {
         bounding: &crate::bnd::Box2d,
         boxLin: &mut crate::bnd::Box2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_Tool_lin2d_box(self as *mut Self, theLin2d, bounding, boxLin)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_Tool_lin2d_box(self as *mut Self, theLin2d, bounding, boxLin)
+        })
     }
 
     /// **Source:** `Intf_Tool.hxx`:46 - `Intf_Tool::Hypr2dBox()`
@@ -1491,14 +1039,9 @@ impl Tool {
         bounding: &crate::bnd::Box2d,
         boxHypr: &mut crate::bnd::Box2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_Tool_hypr2d_box(self as *mut Self, theHypr2d, bounding, boxHypr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_Tool_hypr2d_box(self as *mut Self, theHypr2d, bounding, boxHypr)
+        })
     }
 
     /// **Source:** `Intf_Tool.hxx`:50 - `Intf_Tool::Parab2dBox()`
@@ -1508,14 +1051,9 @@ impl Tool {
         bounding: &crate::bnd::Box2d,
         boxHypr: &mut crate::bnd::Box2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_Tool_parab2d_box(self as *mut Self, theParab2d, bounding, boxHypr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_Tool_parab2d_box(self as *mut Self, theParab2d, bounding, boxHypr)
+        })
     }
 
     /// **Source:** `Intf_Tool.hxx`:54 - `Intf_Tool::LinBox()`
@@ -1525,14 +1063,9 @@ impl Tool {
         bounding: &crate::bnd::Box,
         boxLin: &mut crate::bnd::Box,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_Tool_lin_box(self as *mut Self, theLin, bounding, boxLin)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_Tool_lin_box(self as *mut Self, theLin, bounding, boxLin)
+        })
     }
 
     /// **Source:** `Intf_Tool.hxx`:56 - `Intf_Tool::HyprBox()`
@@ -1542,14 +1075,9 @@ impl Tool {
         bounding: &crate::bnd::Box,
         boxHypr: &mut crate::bnd::Box,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_Tool_hypr_box(self as *mut Self, theHypr, bounding, boxHypr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_Tool_hypr_box(self as *mut Self, theHypr, bounding, boxHypr)
+        })
     }
 
     /// **Source:** `Intf_Tool.hxx`:58 - `Intf_Tool::ParabBox()`
@@ -1559,52 +1087,28 @@ impl Tool {
         bounding: &crate::bnd::Box,
         boxHypr: &mut crate::bnd::Box,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Intf_Tool_parab_box(self as *mut Self, theParab, bounding, boxHypr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Intf_Tool_parab_box(self as *mut Self, theParab, bounding, boxHypr)
+        })
     }
 
     /// **Source:** `Intf_Tool.hxx`:62 - `Intf_Tool::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Intf_Tool_nb_segments(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Intf_Tool_nb_segments(self as *const Self) })
     }
 
     /// **Source:** `Intf_Tool.hxx`:64 - `Intf_Tool::BeginParam()`
     pub fn begin_param(&self, SegmentNum: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_Tool_begin_param(self as *const Self, SegmentNum) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_Tool_begin_param(self as *const Self, SegmentNum)
+        })
     }
 
     /// **Source:** `Intf_Tool.hxx`:66 - `Intf_Tool::EndParam()`
     pub fn end_param(&self, SegmentNum: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Intf_Tool_end_param(self as *const Self, SegmentNum) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Intf_Tool_end_param(self as *const Self, SegmentNum)
+        })
     }
 }
 

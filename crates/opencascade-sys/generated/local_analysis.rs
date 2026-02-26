@@ -15,13 +15,9 @@ pub fn dump_surfacecontinuity_ostream(
     surfconti: &SurfaceContinuity,
     o: &mut crate::ffi::Standard_OStream,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::LocalAnalysis_dump_surfacecontinuity_ostream(surfconti, o) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::LocalAnalysis_dump_surfacecontinuity_ostream(surfconti, o)
+    })
 }
 /// **Source:** `LocalAnalysis.hxx`:43 - `LocalAnalysis::Dump`
 /// This function gives information about a variable SurfaceContinuity
@@ -29,12 +25,9 @@ pub fn dump_curvecontinuity_ostream(
     curvconti: &CurveContinuity,
     o: &mut crate::ffi::Standard_OStream,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::LocalAnalysis_dump_curvecontinuity_ostream(curvconti, o) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::LocalAnalysis_dump_curvecontinuity_ostream(curvconti, o)
+    })
 }
 
 /// C++ enum: `LocalAnalysis_StatusErrorType`
@@ -190,14 +183,8 @@ impl CurveContinuity {
         Percent: f64,
         Maxlen: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_CurveContinuity_ctor_handlegeomcurve_real_handlegeomcurve_real_shape_real8(Curv1, u1, Curv2, u2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, EpsG2, Percent, Maxlen)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocalAnalysis_CurveContinuity_ctor_handlegeomcurve_real_handlegeomcurve_real_shape_real8(Curv1, u1, Curv2, u2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, EpsG2, Percent, Maxlen)))
         }
     }
 
@@ -1048,215 +1035,116 @@ impl CurveContinuity {
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:139 - `LocalAnalysis_CurveContinuity::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:141 - `LocalAnalysis_CurveContinuity::StatusError()`
     pub fn status_error(&self) -> crate::local_analysis::StatusErrorType {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_CurveContinuity_status_error(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::local_analysis::StatusErrorType::try_from(__val).unwrap()
-        }
+        crate::local_analysis::StatusErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_status_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:143 - `LocalAnalysis_CurveContinuity::ContinuityStatus()`
     pub fn continuity_status(&self) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_CurveContinuity_continuity_status(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_continuity_status(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:145 - `LocalAnalysis_CurveContinuity::C0Value()`
     pub fn c0_value(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_c0_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_c0_value(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:147 - `LocalAnalysis_CurveContinuity::C1Angle()`
     pub fn c1_angle(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_c1_angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_c1_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:149 - `LocalAnalysis_CurveContinuity::C1Ratio()`
     pub fn c1_ratio(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_c1_ratio(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_c1_ratio(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:151 - `LocalAnalysis_CurveContinuity::C2Angle()`
     pub fn c2_angle(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_c2_angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_c2_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:153 - `LocalAnalysis_CurveContinuity::C2Ratio()`
     pub fn c2_ratio(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_c2_ratio(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_c2_ratio(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:155 - `LocalAnalysis_CurveContinuity::G1Angle()`
     pub fn g1_angle(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_g1_angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_g1_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:157 - `LocalAnalysis_CurveContinuity::G2Angle()`
     pub fn g2_angle(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_g2_angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_g2_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:159 - `LocalAnalysis_CurveContinuity::G2CurvatureVariation()`
     pub fn g2_curvature_variation(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_CurveContinuity_g2_curvature_variation(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_g2_curvature_variation(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:161 - `LocalAnalysis_CurveContinuity::IsC0()`
     pub fn is_c0(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_is_c0(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_is_c0(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:163 - `LocalAnalysis_CurveContinuity::IsC1()`
     pub fn is_c1(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_is_c1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_is_c1(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:165 - `LocalAnalysis_CurveContinuity::IsC2()`
     pub fn is_c2(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_is_c2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_is_c2(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:167 - `LocalAnalysis_CurveContinuity::IsG1()`
     pub fn is_g1(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_is_g1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_is_g1(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:169 - `LocalAnalysis_CurveContinuity::IsG2()`
     pub fn is_g2(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_CurveContinuity_is_g2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_CurveContinuity_is_g2(self as *const Self)
+        })
     }
 }
 
@@ -1376,14 +1264,8 @@ impl SurfaceContinuity {
         Percent: f64,
         Maxlen: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_ctor_handlegeomsurface_real2_handlegeomsurface_real2_shape_real7(Surf1, u1, v1, Surf2, u2, v2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, Percent, Maxlen)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocalAnalysis_SurfaceContinuity_ctor_handlegeomsurface_real2_handlegeomsurface_real2_shape_real7(Surf1, u1, v1, Surf2, u2, v2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, Percent, Maxlen)))
         }
     }
 
@@ -1403,14 +1285,8 @@ impl SurfaceContinuity {
         Percent: f64,
         Maxlen: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_ctor_handlegeom2dcurve2_real_handlegeomsurface2_shape_real7(curv1, curv2, U, Surf1, Surf2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, Percent, Maxlen)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocalAnalysis_SurfaceContinuity_ctor_handlegeom2dcurve2_real_handlegeomsurface2_shape_real7(curv1, curv2, U, Surf1, Surf2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, Percent, Maxlen)))
         }
     }
 
@@ -1426,16 +1302,12 @@ impl SurfaceContinuity {
         Percent: f64,
         Maxlen: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::LocalAnalysis_SurfaceContinuity_ctor_real7(
                     EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, Percent, Maxlen,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2336,278 +2208,148 @@ impl SurfaceContinuity {
         Surf2: &mut crate::geom_l_prop::SLProps,
         Order: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_compute_analysis(
-                    self as *mut Self,
-                    Surf1,
-                    Surf2,
-                    Order.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_compute_analysis(
+                self as *mut Self,
+                Surf1,
+                Surf2,
+                Order.into(),
+            )
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:163 - `LocalAnalysis_SurfaceContinuity::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_SurfaceContinuity_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:165 - `LocalAnalysis_SurfaceContinuity::ContinuityStatus()`
     pub fn continuity_status(&self) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_continuity_status(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_continuity_status(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:167 - `LocalAnalysis_SurfaceContinuity::StatusError()`
     pub fn status_error(&self) -> crate::local_analysis::StatusErrorType {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_status_error(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::local_analysis::StatusErrorType::try_from(__val).unwrap()
-        }
+        crate::local_analysis::StatusErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_status_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:169 - `LocalAnalysis_SurfaceContinuity::C0Value()`
     pub fn c0_value(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_c0_value(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_c0_value(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:171 - `LocalAnalysis_SurfaceContinuity::C1UAngle()`
     pub fn c1u_angle(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_c1u_angle(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_c1u_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:173 - `LocalAnalysis_SurfaceContinuity::C1URatio()`
     pub fn c1u_ratio(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_c1u_ratio(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_c1u_ratio(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:175 - `LocalAnalysis_SurfaceContinuity::C1VAngle()`
     pub fn c1v_angle(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_c1v_angle(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_c1v_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:177 - `LocalAnalysis_SurfaceContinuity::C1VRatio()`
     pub fn c1v_ratio(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_c1v_ratio(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_c1v_ratio(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:179 - `LocalAnalysis_SurfaceContinuity::C2UAngle()`
     pub fn c2u_angle(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_c2u_angle(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_c2u_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:181 - `LocalAnalysis_SurfaceContinuity::C2URatio()`
     pub fn c2u_ratio(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_c2u_ratio(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_c2u_ratio(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:183 - `LocalAnalysis_SurfaceContinuity::C2VAngle()`
     pub fn c2v_angle(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_c2v_angle(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_c2v_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:185 - `LocalAnalysis_SurfaceContinuity::C2VRatio()`
     pub fn c2v_ratio(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_c2v_ratio(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_c2v_ratio(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:187 - `LocalAnalysis_SurfaceContinuity::G1Angle()`
     pub fn g1_angle(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_g1_angle(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_g1_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:189 - `LocalAnalysis_SurfaceContinuity::G2CurvatureGap()`
     pub fn g2_curvature_gap(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::LocalAnalysis_SurfaceContinuity_g2_curvature_gap(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_g2_curvature_gap(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:191 - `LocalAnalysis_SurfaceContinuity::IsC0()`
     pub fn is_c0(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_SurfaceContinuity_is_c0(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_is_c0(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:193 - `LocalAnalysis_SurfaceContinuity::IsC1()`
     pub fn is_c1(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_SurfaceContinuity_is_c1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_is_c1(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:195 - `LocalAnalysis_SurfaceContinuity::IsC2()`
     pub fn is_c2(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_SurfaceContinuity_is_c2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_is_c2(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:197 - `LocalAnalysis_SurfaceContinuity::IsG1()`
     pub fn is_g1(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_SurfaceContinuity_is_g1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_is_g1(self as *const Self)
+        })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:199 - `LocalAnalysis_SurfaceContinuity::IsG2()`
     pub fn is_g2(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LocalAnalysis_SurfaceContinuity_is_g2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LocalAnalysis_SurfaceContinuity_is_g2(self as *const Self)
+        })
     }
 }

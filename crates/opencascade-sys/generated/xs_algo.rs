@@ -11,37 +11,21 @@
 /// and others for XSTEP processors.
 /// Creates and initializes default AlgoContainer.
 pub fn init() {
-    {
-        let __exc = unsafe { crate::ffi::XSAlgo_init() };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::XSAlgo_init() })
 }
 /// **Source:** `XSAlgo.hxx`:36 - `XSAlgo::SetAlgoContainer`
 /// Sets default AlgoContainer
 pub fn set_algo_container_handlexsalgoalgocontainer(
     aContainer: &crate::ffi::HandleXSAlgoAlgoContainer,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::XSAlgo_set_algo_container_handlexsalgoalgocontainer(aContainer) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::XSAlgo_set_algo_container_handlexsalgoalgocontainer(aContainer)
+    })
 }
 /// **Source:** `XSAlgo.hxx`:39 - `XSAlgo::AlgoContainer`
 /// Returns default AlgoContainer
 pub fn algo_container() -> crate::OwnedPtr<crate::ffi::HandleXSAlgoAlgoContainer> {
-    {
-        let __result = unsafe { crate::ffi::XSAlgo_algo_container() };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
-    }
+    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSAlgo_algo_container())) }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -64,12 +48,8 @@ impl AlgoContainer {
     /// **Source:** `XSAlgo_AlgoContainer.hxx`:41 - `XSAlgo_AlgoContainer::XSAlgo_AlgoContainer()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::XSAlgo_AlgoContainer_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSAlgo_AlgoContainer_ctor()))
         }
     }
 
@@ -77,14 +57,9 @@ impl AlgoContainer {
     /// Performs actions necessary for preparing environment
     /// for transfer. Empty in Open version.
     pub fn prepare_for_transfer(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_AlgoContainer_prepare_for_transfer(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_prepare_for_transfer(self as *const Self)
+        })
     }
 
     /// **Source:** `XSAlgo_AlgoContainer.hxx`:59 - `XSAlgo_AlgoContainer::ProcessShape()`
@@ -114,8 +89,8 @@ impl AlgoContainer {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         let c_thePrscfile = std::ffi::CString::new(thePrscfile).unwrap();
         let c_thePseq = std::ffi::CString::new(thePseq).unwrap();
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::XSAlgo_AlgoContainer_process_shape(
                     self as *const Self,
                     theShape,
@@ -127,13 +102,8 @@ impl AlgoContainer {
                     theProgress,
                     theNonManifold,
                     theDetailingLevel.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -147,22 +117,15 @@ impl AlgoContainer {
         thePrecision: f64,
         theIsSeam: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::XSAlgo_AlgoContainer_check_p_curve(
-                    self as *const Self,
-                    theEdge,
-                    theFace,
-                    thePrecision,
-                    theIsSeam,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_check_p_curve(
+                self as *const Self,
+                theEdge,
+                theFace,
+                thePrecision,
+                theIsSeam,
+            )
+        })
     }
 
     /// **Source:** `XSAlgo_AlgoContainer.hxx`:77 - `XSAlgo_AlgoContainer::MergeTransferInfo()`
@@ -172,14 +135,9 @@ impl AlgoContainer {
         info: &crate::ffi::HandleStandardTransient,
         startTPitem: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_AlgoContainer_merge_transfer_info_handletransfertransientprocess_handlestandardtransient_int(self as *const Self, TP, info, startTPitem)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_merge_transfer_info_handletransfertransientprocess_handlestandardtransient_int(self as *const Self, TP, info, startTPitem)
+        })
     }
 
     /// **Source:** `XSAlgo_AlgoContainer.hxx`:86 - `XSAlgo_AlgoContainer::MergeTransferInfo()`
@@ -193,122 +151,85 @@ impl AlgoContainer {
         FP: &crate::ffi::HandleTransferFinderProcess,
         info: &crate::ffi::HandleStandardTransient,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_AlgoContainer_merge_transfer_info_handletransferfinderprocess_handlestandardtransient(self as *const Self, FP, info)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_merge_transfer_info_handletransferfinderprocess_handlestandardtransient(self as *const Self, FP, info)
+        })
     }
 
     /// **Source:** `XSAlgo_AlgoContainer.hxx`:89 - `XSAlgo_AlgoContainer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::XSAlgo_AlgoContainer_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::XSAlgo_AlgoContainer_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `XSAlgo_AlgoContainer.hxx`:89 - `XSAlgo_AlgoContainer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::XSAlgo_AlgoContainer_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::XSAlgo_AlgoContainer_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `XSAlgo_AlgoContainer.hxx`:89 - `XSAlgo_AlgoContainer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::XSAlgo_AlgoContainer_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::XSAlgo_AlgoContainer_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::XSAlgo_AlgoContainer_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::XSAlgo_AlgoContainer_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::XSAlgo_AlgoContainer_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::XSAlgo_AlgoContainer_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXSAlgoAlgoContainer> {
-        let __result = unsafe { crate::ffi::XSAlgo_AlgoContainer_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::XSAlgo_AlgoContainer_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::XSAlgo_AlgoContainer_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::XSAlgo_AlgoContainer_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::XSAlgo_AlgoContainer_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::XSAlgo_AlgoContainer_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -319,53 +240,30 @@ impl AlgoContainer {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::XSAlgo_AlgoContainer_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_AlgoContainer_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::XSAlgo_AlgoContainer_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::XSAlgo_AlgoContainer_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -380,31 +278,29 @@ unsafe impl crate::CppDeletable for HandleXSAlgoAlgoContainer {
 impl HandleXSAlgoAlgoContainer {
     /// Dereference this Handle to access the underlying XSAlgo_AlgoContainer
     pub fn get(&self) -> &crate::ffi::XSAlgo_AlgoContainer {
-        let __result = unsafe { crate::ffi::HandleXSAlgoAlgoContainer_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleXSAlgoAlgoContainer_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XSAlgo_AlgoContainer
     pub fn get_mut(&mut self) -> &mut crate::ffi::XSAlgo_AlgoContainer {
-        let __result = unsafe { crate::ffi::HandleXSAlgoAlgoContainer_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleXSAlgoAlgoContainer_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XSAlgo_AlgoContainer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleXSAlgoAlgoContainer_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleXSAlgoAlgoContainer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -434,17 +330,13 @@ impl ShapeProcessor {
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
         theShapeFixParameters: &crate::de::ShapeFixParameters,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::XSAlgo_ShapeProcessor_ctor_parametermap_shapefixparameters(
                     theParameters,
                     theShapeFixParameters,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -454,13 +346,10 @@ impl ShapeProcessor {
     pub fn new_shapefixparameters(
         theParameters: &crate::de::ShapeFixParameters,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::XSAlgo_ShapeProcessor_ctor_shapefixparameters(theParameters) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::XSAlgo_ShapeProcessor_ctor_shapefixparameters(theParameters),
+            ))
         }
     }
 
@@ -476,20 +365,15 @@ impl ShapeProcessor {
         theOperations: &crate::ffi::ShapeProcess_OperationsFlags,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::XSAlgo_ShapeProcessor_process_shape(
                     self as *mut Self,
                     theShape,
                     theOperations,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -498,14 +382,10 @@ impl ShapeProcessor {
     /// Only valid after the ProcessShape() method was called.
     /// @return Shape context.
     pub fn get_context(&mut self) -> crate::OwnedPtr<crate::ffi::HandleShapeProcessShapeContext> {
-        {
-            let __result =
-                unsafe { crate::ffi::XSAlgo_ShapeProcessor_get_context(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::XSAlgo_ShapeProcessor_get_context(self as *mut Self),
+            ))
         }
     }
 
@@ -518,14 +398,13 @@ impl ShapeProcessor {
         theTransientProcess: &crate::ffi::HandleTransferTransientProcess,
         theFirstTPItemIndex: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_ShapeProcessor_merge_transfer_info_handletransfertransientprocess_int(self as *const Self, theTransientProcess, theFirstTPItemIndex)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_merge_transfer_info_handletransfertransientprocess_int(
+                self as *const Self,
+                theTransientProcess,
+                theFirstTPItemIndex,
+            )
+        })
     }
 
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:78 - `XSAlgo_ShapeProcessor::MergeTransferInfo()`
@@ -535,17 +414,12 @@ impl ShapeProcessor {
         &self,
         theFinderProcess: &crate::ffi::HandleTransferFinderProcess,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_ShapeProcessor_merge_transfer_info_handletransferfinderprocess(
-                    self as *const Self,
-                    theFinderProcess,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_merge_transfer_info_handletransferfinderprocess(
+                self as *const Self,
+                theFinderProcess,
+            )
+        })
     }
 
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:87 - `XSAlgo_ShapeProcessor::CheckPCurve()`
@@ -561,21 +435,14 @@ impl ShapeProcessor {
         thePrecision: f64,
         theIsSeam: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::XSAlgo_ShapeProcessor_check_p_curve(
-                    theEdge,
-                    theFace,
-                    thePrecision,
-                    theIsSeam,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_check_p_curve(
+                theEdge,
+                theFace,
+                thePrecision,
+                theIsSeam,
+            )
+        })
     }
 
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:100 - `XSAlgo_ShapeProcessor::ReadProcessingData()`
@@ -591,18 +458,13 @@ impl ShapeProcessor {
         theFileResourceName: &crate::t_collection::AsciiString,
         theScopeResourceName: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::ffi::XSAlgo_ShapeProcessor_ProcessingData> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::XSAlgo_ShapeProcessor_read_processing_data(
                     theFileResourceName,
                     theScopeResourceName,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -617,18 +479,13 @@ impl ShapeProcessor {
         theIsReplace: bool,
         theMap: &mut crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_ShapeProcessor_fill_parameter_map(
-                    theParameters,
-                    theIsReplace,
-                    theMap,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_fill_parameter_map(
+                theParameters,
+                theIsReplace,
+                theMap,
+            )
+        })
     }
 
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:120 - `XSAlgo_ShapeProcessor::SetShapeFixParameters()`
@@ -644,18 +501,13 @@ impl ShapeProcessor {
         theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
         theTargetParameterMap: &mut crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_ShapeProcessor_set_shape_fix_parameters(
-                    theParameters,
-                    theAdditionalParameters,
-                    theTargetParameterMap,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_set_shape_fix_parameters(
+                theParameters,
+                theAdditionalParameters,
+                theTargetParameterMap,
+            )
+        })
     }
 
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:130 - `XSAlgo_ShapeProcessor::SetParameter()`
@@ -672,19 +524,14 @@ impl ShapeProcessor {
         theMap: &mut crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         let c_theKey = std::ffi::CString::new(theKey).unwrap();
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_ShapeProcessor_set_parameter_charptr_fixmode_bool_parametermap(
-                    c_theKey.as_ptr(),
-                    theValue,
-                    theIsReplace,
-                    theMap,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_set_parameter_charptr_fixmode_bool_parametermap(
+                c_theKey.as_ptr(),
+                theValue,
+                theIsReplace,
+                theMap,
+            )
+        })
     }
 
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:141 - `XSAlgo_ShapeProcessor::SetParameter()`
@@ -701,19 +548,14 @@ impl ShapeProcessor {
         theMap: &mut crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         let c_theKey = std::ffi::CString::new(theKey).unwrap();
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_ShapeProcessor_set_parameter_charptr_real_bool_parametermap(
-                    c_theKey.as_ptr(),
-                    theValue,
-                    theIsReplace,
-                    theMap,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_set_parameter_charptr_real_bool_parametermap(
+                c_theKey.as_ptr(),
+                theValue,
+                theIsReplace,
+                theMap,
+            )
+        })
     }
 
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:152 - `XSAlgo_ShapeProcessor::SetParameter()`
@@ -730,14 +572,14 @@ impl ShapeProcessor {
         theMap: &mut crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         let c_theKey = std::ffi::CString::new(theKey).unwrap();
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_ShapeProcessor_set_parameter_charptr_asciistring_bool_parametermap(c_theKey.as_ptr(), theValue, theIsReplace, theMap)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_set_parameter_charptr_asciistring_bool_parametermap(
+                c_theKey.as_ptr(),
+                theValue,
+                theIsReplace,
+                theMap,
+            )
+        })
     }
 
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:160 - `XSAlgo_ShapeProcessor::PrepareForTransfer()`
@@ -745,12 +587,9 @@ impl ShapeProcessor {
     /// transfer operation. It ensures that the length unit is correctly configured based on the
     /// value associated with the key "xstep.cascade.unit".
     pub fn prepare_for_transfer() {
-        {
-            let __exc = unsafe { crate::ffi::XSAlgo_ShapeProcessor_prepare_for_transfer() };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_prepare_for_transfer()
+        })
     }
 
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:167 - `XSAlgo_ShapeProcessor::MergeShapeTransferInfo()`
@@ -765,14 +604,9 @@ impl ShapeProcessor {
         theFirstTPItemIndex: i32,
         theMessages: &crate::ffi::HandleShapeExtendMsgRegistrator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_ShapeProcessor_merge_shape_transfer_info_handletransfertransientprocess_datamapofshapeshape_int_handleshapeextendmsgregistrator(theFinderProcess, theModifiedShapesMap, theFirstTPItemIndex, theMessages)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_merge_shape_transfer_info_handletransfertransientprocess_datamapofshapeshape_int_handleshapeextendmsgregistrator(theFinderProcess, theModifiedShapesMap, theFirstTPItemIndex, theMessages)
+        })
     }
 
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:178 - `XSAlgo_ShapeProcessor::MergeShapeTransferInfo()`
@@ -786,13 +620,8 @@ impl ShapeProcessor {
         theModifiedShapesMap: &crate::ffi::TopTools_DataMapOfShapeShape,
         theMessages: &crate::ffi::HandleShapeExtendMsgRegistrator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XSAlgo_ShapeProcessor_merge_shape_transfer_info_handletransferfinderprocess_datamapofshapeshape_handleshapeextendmsgregistrator(theTransientProcess, theModifiedShapesMap, theMessages)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_merge_shape_transfer_info_handletransferfinderprocess_datamapofshapeshape_handleshapeextendmsgregistrator(theTransientProcess, theModifiedShapesMap, theMessages)
+        })
     }
 }

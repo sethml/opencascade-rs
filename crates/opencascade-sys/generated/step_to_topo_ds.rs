@@ -10,111 +10,83 @@
 pub fn decode_builder_error_buildererror(
     Error: crate::step_to_topo_ds::BuilderError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result =
-            unsafe { crate::ffi::StepToTopoDS_decode_builder_error_buildererror(Error.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::StepToTopoDS_decode_builder_error_buildererror(Error.into()),
+        ))
     }
 }
 /// **Source:** `StepToTopoDS.hxx`:46 - `StepToTopoDS::DecodeShellError`
 pub fn decode_shell_error(
     Error: crate::step_to_topo_ds::TranslateShellError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result = unsafe { crate::ffi::StepToTopoDS_decode_shell_error(Error.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_decode_shell_error(
+            Error.into(),
+        )))
     }
 }
 /// **Source:** `StepToTopoDS.hxx`:49 - `StepToTopoDS::DecodeFaceError`
 pub fn decode_face_error_translatefaceerror(
     Error: crate::step_to_topo_ds::TranslateFaceError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result =
-            unsafe { crate::ffi::StepToTopoDS_decode_face_error_translatefaceerror(Error.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::StepToTopoDS_decode_face_error_translatefaceerror(Error.into()),
+        ))
     }
 }
 /// **Source:** `StepToTopoDS.hxx`:52 - `StepToTopoDS::DecodeEdgeError`
 pub fn decode_edge_error_translateedgeerror(
     Error: crate::step_to_topo_ds::TranslateEdgeError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result =
-            unsafe { crate::ffi::StepToTopoDS_decode_edge_error_translateedgeerror(Error.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::StepToTopoDS_decode_edge_error_translateedgeerror(Error.into()),
+        ))
     }
 }
 /// **Source:** `StepToTopoDS.hxx`:55 - `StepToTopoDS::DecodeVertexError`
 pub fn decode_vertex_error_translatevertexerror(
     Error: crate::step_to_topo_ds::TranslateVertexError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_decode_vertex_error_translatevertexerror(Error.into())
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::StepToTopoDS_decode_vertex_error_translatevertexerror(Error.into()),
+        ))
     }
 }
 /// **Source:** `StepToTopoDS.hxx`:58 - `StepToTopoDS::DecodeVertexLoopError`
 pub fn decode_vertex_loop_error(
     Error: crate::step_to_topo_ds::TranslateVertexLoopError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result = unsafe { crate::ffi::StepToTopoDS_decode_vertex_loop_error(Error.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::StepToTopoDS_decode_vertex_loop_error(Error.into()),
+        ))
     }
 }
 /// **Source:** `StepToTopoDS.hxx`:61 - `StepToTopoDS::DecodePolyLoopError`
 pub fn decode_poly_loop_error(
     Error: crate::step_to_topo_ds::TranslatePolyLoopError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result = unsafe { crate::ffi::StepToTopoDS_decode_poly_loop_error(Error.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::StepToTopoDS_decode_poly_loop_error(Error.into()),
+        ))
     }
 }
 /// **Source:** `StepToTopoDS.hxx`:64 - `StepToTopoDS::DecodeGeometricToolError`
 pub fn decode_geometric_tool_error(
     Error: crate::step_to_topo_ds::GeometricToolError,
 ) -> std::string::String {
-    {
-        let __result =
-            unsafe { crate::ffi::StepToTopoDS_decode_geometric_tool_error(Error.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+    unsafe {
+        std::ffi::CStr::from_ptr(crate::check_result(
+            crate::ffi::StepToTopoDS_decode_geometric_tool_error(Error.into()),
+        ))
     }
+    .to_string_lossy()
+    .into_owned()
 }
 
 /// C++ enum: `StepToTopoDS_BuilderError`
@@ -401,12 +373,8 @@ unsafe impl crate::CppDeletable for Builder {
 impl Builder {
     /// **Source:** `StepToTopoDS_Builder.hxx`:50 - `StepToTopoDS_Builder::StepToTopoDS_Builder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Builder_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_Builder_ctor()))
         }
     }
 
@@ -418,14 +386,9 @@ impl Builder {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepshapemanifoldsolidbrep_handletransfertransientprocess_factors_progressrange(self as *mut Self, theManifoldSolid, theTP, theLocalFactors, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapemanifoldsolidbrep_handletransfertransientprocess_factors_progressrange(self as *mut Self, theManifoldSolid, theTP, theLocalFactors, theProgress)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:57 - `StepToTopoDS_Builder::Init()`
@@ -436,14 +399,9 @@ impl Builder {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepshapebrepwithvoids_handletransfertransientprocess_factors_progressrange(self as *mut Self, theBRepWithVoids, theTP, theLocalFactors, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapebrepwithvoids_handletransfertransientprocess_factors_progressrange(self as *mut Self, theBRepWithVoids, theTP, theLocalFactors, theProgress)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:62 - `StepToTopoDS_Builder::Init()`
@@ -454,14 +412,9 @@ impl Builder {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepshapefacetedbrep_handletransfertransientprocess_factors_progressrange(self as *mut Self, theFB, theTP, theLocalFactors, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapefacetedbrep_handletransfertransientprocess_factors_progressrange(self as *mut Self, theFB, theTP, theLocalFactors, theProgress)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:67 - `StepToTopoDS_Builder::Init()`
@@ -472,14 +425,9 @@ impl Builder {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepshapefacetedbrepandbrepwithvoids_handletransfertransientprocess_factors_progressrange(self as *mut Self, theFBABWV, theTP, theLocalFactors, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapefacetedbrepandbrepwithvoids_handletransfertransientprocess_factors_progressrange(self as *mut Self, theFBABWV, theTP, theLocalFactors, theProgress)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:72 - `StepToTopoDS_Builder::Init()`
@@ -491,14 +439,9 @@ impl Builder {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepshapeshellbasedsurfacemodel_handletransfertransientprocess_nmtool_factors_progressrange(self as *mut Self, S, TP, NMTool, theLocalFactors, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapeshellbasedsurfacemodel_handletransfertransientprocess_nmtool_factors_progressrange(self as *mut Self, S, TP, NMTool, theLocalFactors, theProgress)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:78 - `StepToTopoDS_Builder::Init()`
@@ -508,14 +451,9 @@ impl Builder {
         TP: &crate::ffi::HandleTransferTransientProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepshapeedgebasedwireframemodel_handletransfertransientprocess_factors(self as *mut Self, S, TP, theLocalFactors)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapeedgebasedwireframemodel_handletransfertransientprocess_factors(self as *mut Self, S, TP, theLocalFactors)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:82 - `StepToTopoDS_Builder::Init()`
@@ -525,14 +463,9 @@ impl Builder {
         TP: &crate::ffi::HandleTransferTransientProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepshapefacebasedsurfacemodel_handletransfertransientprocess_factors(self as *mut Self, S, TP, theLocalFactors)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapefacebasedsurfacemodel_handletransfertransientprocess_factors(self as *mut Self, S, TP, theLocalFactors)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:86 - `StepToTopoDS_Builder::Init()`
@@ -545,14 +478,9 @@ impl Builder {
         isManifold: bool,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepshapegeometricset_handletransfertransientprocess_factors_handletransferactoroftransientprocess_bool_progressrange(self as *mut Self, S, TP, theLocalFactors, RA, isManifold, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapegeometricset_handletransfertransientprocess_factors_handletransferactoroftransientprocess_bool_progressrange(self as *mut Self, S, TP, theLocalFactors, RA, isManifold, theProgress)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:93 - `StepToTopoDS_Builder::Init()`
@@ -565,14 +493,9 @@ impl Builder {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedsolid_handletransfertransientprocess_bool2_factors_progressrange(self as *mut Self, theTSo, theTP, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedsolid_handletransfertransientprocess_bool2_factors_progressrange(self as *mut Self, theTSo, theTP, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors, theProgress)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:100 - `StepToTopoDS_Builder::Init()`
@@ -585,14 +508,9 @@ impl Builder {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedshell_handletransfertransientprocess_bool2_factors_progressrange(self as *mut Self, theTSh, theTP, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedshell_handletransfertransientprocess_bool2_factors_progressrange(self as *mut Self, theTSh, theTP, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors, theProgress)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:107 - `StepToTopoDS_Builder::Init()`
@@ -604,14 +522,9 @@ impl Builder {
         theHasGeom: &mut bool,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedface_handletransfertransientprocess_bool2_factors(self as *mut Self, theTF, theTP, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedface_handletransfertransientprocess_bool2_factors(self as *mut Self, theTF, theTP, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:113 - `StepToTopoDS_Builder::Init()`
@@ -622,122 +535,77 @@ impl Builder {
         theHasGeom: &mut bool,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedsurfaceset_handletransfertransientprocess_bool_factors(self as *mut Self, theTSS, theTP, theHasGeom, theLocalFactors)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedsurfaceset_handletransfertransientprocess_bool_factors(self as *mut Self, theTSS, theTP, theHasGeom, theLocalFactors)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:118 - `StepToTopoDS_Builder::Value()`
     pub fn value(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Builder_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_Builder_value(self as *const Self)))
         }
     }
 
     /// **Source:** `StepToTopoDS_Builder.hxx`:120 - `StepToTopoDS_Builder::Error()`
     pub fn error(&self) -> crate::step_to_topo_ds::BuilderError {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Builder_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::step_to_topo_ds::BuilderError::try_from(__val).unwrap()
-        }
+        crate::step_to_topo_ds::BuilderError::try_from(crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result =
-            unsafe { crate::ffi::StepToTopoDS_Builder_as_StepToTopoDS_Root(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::StepToTopoDS_Builder_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result =
-            unsafe { crate::ffi::StepToTopoDS_Builder_as_StepToTopoDS_Root_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::StepToTopoDS_Builder_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_Builder_inherited_IsDone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_Builder_inherited_Precision(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_inherited_Precision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_inherited_SetPrecision(self as *mut Self, preci)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_inherited_SetPrecision(self as *mut Self, preci)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_Builder_inherited_MaxTol(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_inherited_MaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Builder_inherited_SetMaxTol(self as *mut Self, maxpreci)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Builder_inherited_SetMaxTol(self as *mut Self, maxpreci)
+        })
     }
 }
 
@@ -760,12 +628,10 @@ impl GeometricTool {
     /// **Source:** `StepToTopoDS_GeometricTool.hxx` - `StepToTopoDS_GeometricTool::StepToTopoDS_GeometricTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_GeometricTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_GeometricTool_ctor(),
+            ))
         }
     }
 
@@ -776,15 +642,9 @@ impl GeometricTool {
         PC: &mut crate::ffi::HandleStepGeomPcurve,
         last: i32,
     ) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_GeometricTool_p_curve(SC, S, PC, last) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_GeometricTool_p_curve(SC, S, PC, last)
+        })
     }
 
     /// **Source:** `StepToTopoDS_GeometricTool.hxx`:44 - `StepToTopoDS_GeometricTool::IsSeamCurve()`
@@ -794,15 +654,9 @@ impl GeometricTool {
         E: &crate::ffi::HandleStepShapeEdge,
         EL: &crate::ffi::HandleStepShapeEdgeLoop,
     ) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_GeometricTool_is_seam_curve(SC, S, E, EL) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_GeometricTool_is_seam_curve(SC, S, E, EL)
+        })
     }
 
     /// **Source:** `StepToTopoDS_GeometricTool.hxx`:49 - `StepToTopoDS_GeometricTool::IsLikeSeam()`
@@ -812,15 +666,9 @@ impl GeometricTool {
         E: &crate::ffi::HandleStepShapeEdge,
         EL: &crate::ffi::HandleStepShapeEdgeLoop,
     ) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_GeometricTool_is_like_seam(SC, S, E, EL) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_GeometricTool_is_like_seam(SC, S, E, EL)
+        })
     }
 
     /// **Source:** `StepToTopoDS_GeometricTool.hxx`:54 - `StepToTopoDS_GeometricTool::UpdateParam3d()`
@@ -830,15 +678,9 @@ impl GeometricTool {
         w2: &mut f64,
         preci: f64,
     ) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_GeometricTool_update_param3d(C, w1, w2, preci) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_GeometricTool_update_param3d(C, w1, w2, preci)
+        })
     }
 }
 
@@ -859,12 +701,10 @@ unsafe impl crate::CppDeletable for MakeTransformed {
 impl MakeTransformed {
     /// **Source:** `StepToTopoDS_MakeTransformed.hxx`:40 - `StepToTopoDS_MakeTransformed::StepToTopoDS_MakeTransformed()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_MakeTransformed_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_MakeTransformed_ctor(),
+            ))
         }
     }
 
@@ -878,16 +718,14 @@ impl MakeTransformed {
         Target: &crate::ffi::HandleStepGeomAxis2Placement3d,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_MakeTransformed_compute_handlestepgeomaxis2placement3d2_factors(self as *mut Self, Origin, Target, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_compute_handlestepgeomaxis2placement3d2_factors(
+                self as *mut Self,
+                Origin,
+                Target,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_MakeTransformed.hxx`:52 - `StepToTopoDS_MakeTransformed::Compute()`
@@ -897,31 +735,19 @@ impl MakeTransformed {
         Operator: &crate::ffi::HandleStepGeomCartesianTransformationOperator3d,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_MakeTransformed_compute_handlestepgeomcartesiantransformationoperator3d_factors(self as *mut Self, Operator, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_compute_handlestepgeomcartesiantransformationoperator3d_factors(self as *mut Self, Operator, theLocalFactors)
+        })
     }
 
     /// **Source:** `StepToTopoDS_MakeTransformed.hxx`:57 - `StepToTopoDS_MakeTransformed::Transformation()`
     /// Returns the computed transformation (Identity if not yet or
     /// if failed)
     pub fn transformation(&self) -> &crate::gp::Trsf {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_MakeTransformed_transformation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_MakeTransformed_transformation(
+                self as *const Self,
+            )))
         }
     }
 
@@ -929,16 +755,9 @@ impl MakeTransformed {
     /// Applies the computed transformation to a shape
     /// Returns False if the transformation is Identity
     pub fn transform(&self, shape: &mut crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_MakeTransformed_transform(self as *const Self, shape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_transform(self as *const Self, shape)
+        })
     }
 
     /// **Source:** `StepToTopoDS_MakeTransformed.hxx`:74 - `StepToTopoDS_MakeTransformed::TranslateMappedItem()`
@@ -959,116 +778,78 @@ impl MakeTransformed {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::StepToTopoDS_MakeTransformed_translate_mapped_item(
                     self as *mut Self,
                     mapit,
                     TP,
                     theLocalFactors,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_MakeTransformed_as_StepToTopoDS_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::StepToTopoDS_MakeTransformed_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_MakeTransformed_as_StepToTopoDS_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::StepToTopoDS_MakeTransformed_as_StepToTopoDS_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_MakeTransformed_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_MakeTransformed_inherited_Precision(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_inherited_Precision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_MakeTransformed_inherited_SetPrecision(
-                    self as *mut Self,
-                    preci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_MakeTransformed_inherited_MaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_inherited_MaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_MakeTransformed_inherited_SetMaxTol(
-                    self as *mut Self,
-                    maxpreci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        })
     }
 }
 
@@ -1090,12 +871,8 @@ unsafe impl crate::CppDeletable for NMTool {
 impl NMTool {
     /// **Source:** `StepToTopoDS_NMTool.hxx`:38 - `StepToTopoDS_NMTool::StepToTopoDS_NMTool()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_NMTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_NMTool_ctor()))
         }
     }
 
@@ -1104,17 +881,13 @@ impl NMTool {
         MapOfRI: &crate::ffi::StepToTopoDS_DataMapOfRI,
         MapOfRINames: &crate::ffi::StepToTopoDS_DataMapOfRINames,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::StepToTopoDS_NMTool_ctor_datamapofri_datamapofrinames(
                     MapOfRI,
                     MapOfRINames,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1124,47 +897,28 @@ impl NMTool {
         MapOfRI: &crate::ffi::StepToTopoDS_DataMapOfRI,
         MapOfRINames: &crate::ffi::StepToTopoDS_DataMapOfRINames,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_NMTool_init(self as *mut Self, MapOfRI, MapOfRINames)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_init(self as *mut Self, MapOfRI, MapOfRINames)
+        })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:46 - `StepToTopoDS_NMTool::SetActive()`
     pub fn set_active(&mut self, isActive: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::StepToTopoDS_NMTool_set_active(self as *mut Self, isActive) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_set_active(self as *mut Self, isActive)
+        })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:48 - `StepToTopoDS_NMTool::IsActive()`
     pub fn is_active(&mut self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_NMTool_is_active(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_NMTool_is_active(self as *mut Self) })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:50 - `StepToTopoDS_NMTool::CleanUp()`
     pub fn clean_up(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::StepToTopoDS_NMTool_clean_up(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_clean_up(self as *mut Self)
+        })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:52 - `StepToTopoDS_NMTool::IsBound()`
@@ -1172,33 +926,19 @@ impl NMTool {
         &mut self,
         RI: &crate::ffi::HandleStepReprRepresentationItem,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_NMTool_is_bound_handlestepreprrepresentationitem(
-                    self as *mut Self,
-                    RI,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_is_bound_handlestepreprrepresentationitem(
+                self as *mut Self,
+                RI,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:54 - `StepToTopoDS_NMTool::IsBound()`
     pub fn is_bound_asciistring(&mut self, RIName: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_NMTool_is_bound_asciistring(self as *mut Self, RIName)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_is_bound_asciistring(self as *mut Self, RIName)
+        })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:56 - `StepToTopoDS_NMTool::Bind()`
@@ -1207,18 +947,13 @@ impl NMTool {
         RI: &crate::ffi::HandleStepReprRepresentationItem,
         S: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_NMTool_bind_handlestepreprrepresentationitem_shape(
-                    self as *mut Self,
-                    RI,
-                    S,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_bind_handlestepreprrepresentationitem_shape(
+                self as *mut Self,
+                RI,
+                S,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:58 - `StepToTopoDS_NMTool::Bind()`
@@ -1227,14 +962,9 @@ impl NMTool {
         RIName: &crate::t_collection::AsciiString,
         S: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_NMTool_bind_asciistring_shape(self as *mut Self, RIName, S)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_bind_asciistring_shape(self as *mut Self, RIName, S)
+        })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:60 - `StepToTopoDS_NMTool::Find()`
@@ -1248,18 +978,13 @@ impl NMTool {
         &mut self,
         RI: &crate::ffi::HandleStepReprRepresentationItem,
     ) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::StepToTopoDS_NMTool_find_handlestepreprrepresentationitem(
                     self as *mut Self,
                     RI,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
@@ -1274,28 +999,19 @@ impl NMTool {
         &mut self,
         RIName: &crate::t_collection::AsciiString,
     ) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_NMTool_find_asciistring(self as *mut Self, RIName)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_NMTool_find_asciistring(
+                self as *mut Self,
+                RIName,
+            )))
         }
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:64 - `StepToTopoDS_NMTool::RegisterNMEdge()`
     pub fn register_nm_edge(&mut self, Edge: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_NMTool_register_nm_edge(self as *mut Self, Edge)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_register_nm_edge(self as *mut Self, Edge)
+        })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:66 - `StepToTopoDS_NMTool::IsSuspectedAsClosing()`
@@ -1304,59 +1020,34 @@ impl NMTool {
         BaseShell: &crate::topo_ds::Shape,
         SuspectedShell: &crate::topo_ds::Shape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_NMTool_is_suspected_as_closing(
-                    self as *mut Self,
-                    BaseShell,
-                    SuspectedShell,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_is_suspected_as_closing(
+                self as *mut Self,
+                BaseShell,
+                SuspectedShell,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:69 - `StepToTopoDS_NMTool::IsPureNMShell()`
     pub fn is_pure_nm_shell(&mut self, Shell: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_NMTool_is_pure_nm_shell(self as *mut Self, Shell)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_is_pure_nm_shell(self as *mut Self, Shell)
+        })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:71 - `StepToTopoDS_NMTool::SetIDEASCase()`
     pub fn set_ideas_case(&mut self, IDEASCase: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_NMTool_set_ideas_case(self as *mut Self, IDEASCase)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_set_ideas_case(self as *mut Self, IDEASCase)
+        })
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:73 - `StepToTopoDS_NMTool::IsIDEASCase()`
     pub fn is_ideas_case(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_NMTool_is_ideas_case(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_NMTool_is_ideas_case(self as *mut Self)
+        })
     }
 }
 
@@ -1380,40 +1071,28 @@ impl PointPair {
         P1: &crate::ffi::HandleStepGeomCartesianPoint,
         P2: &crate::ffi::HandleStepGeomCartesianPoint,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_PointPair_ctor_handlestepgeomcartesianpoint2(P1, P2)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_PointPair_ctor_handlestepgeomcartesianpoint2(P1, P2),
+            ))
         }
     }
 
     /// **Source:** `StepToTopoDS_PointPair.hxx`:35 - `StepToTopoDS_PointPair::GetPoint1()`
     pub fn get_point1(&self) -> &crate::ffi::HandleStepGeomCartesianPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_PointPair_get_point1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_PointPair_get_point1(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepToTopoDS_PointPair.hxx`:37 - `StepToTopoDS_PointPair::GetPoint2()`
     pub fn get_point2(&self) -> &crate::ffi::HandleStepGeomCartesianPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_PointPair_get_point2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_PointPair_get_point2(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1437,64 +1116,35 @@ unsafe impl crate::CppDeletable for Root {
 impl Root {
     /// **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Root_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Root_is_done(self as *const Self) })
     }
 
     /// **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     /// Returns the value of "MyPrecision"
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Root_precision(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Root_precision(self as *const Self) })
     }
 
     /// **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     /// Sets the value of "MyPrecision"
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::StepToTopoDS_Root_set_precision(self as *mut Self, preci) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Root_set_precision(self as *mut Self, preci)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     /// Returns the value of "MaxTol"
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Root_max_tol(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Root_max_tol(self as *const Self) })
     }
 
     /// **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     /// Sets the value of MaxTol
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::StepToTopoDS_Root_set_max_tol(self as *mut Self, maxpreci) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Root_set_max_tol(self as *mut Self, maxpreci)
+        })
     }
 }
 
@@ -1516,12 +1166,8 @@ unsafe impl crate::CppDeletable for Tool {
 impl Tool {
     /// **Source:** `StepToTopoDS_Tool.hxx`:46 - `StepToTopoDS_Tool::StepToTopoDS_Tool()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Tool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_Tool_ctor()))
         }
     }
 
@@ -1530,16 +1176,12 @@ impl Tool {
         Map: &crate::ffi::StepToTopoDS_DataMapOfTRI,
         TP: &crate::ffi::HandleTransferTransientProcess,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::StepToTopoDS_Tool_ctor_datamapoftri_handletransfertransientprocess(
                     Map, TP,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1549,12 +1191,9 @@ impl Tool {
         Map: &crate::ffi::StepToTopoDS_DataMapOfTRI,
         TP: &crate::ffi::HandleTransferTransientProcess,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::StepToTopoDS_Tool_init(self as *mut Self, Map, TP) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_init(self as *mut Self, Map, TP)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:55 - `StepToTopoDS_Tool::IsBound()`
@@ -1562,15 +1201,9 @@ impl Tool {
         &mut self,
         TRI: &crate::ffi::HandleStepShapeTopologicalRepresentationItem,
     ) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_Tool_is_bound(self as *mut Self, TRI) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_is_bound(self as *mut Self, TRI)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:57 - `StepToTopoDS_Tool::Bind()`
@@ -1579,12 +1212,9 @@ impl Tool {
         TRI: &crate::ffi::HandleStepShapeTopologicalRepresentationItem,
         S: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::StepToTopoDS_Tool_bind(self as *mut Self, TRI, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_bind(self as *mut Self, TRI, S)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:60 - `StepToTopoDS_Tool::Find()`
@@ -1598,48 +1228,30 @@ impl Tool {
         &mut self,
         TRI: &crate::ffi::HandleStepShapeTopologicalRepresentationItem,
     ) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Tool_find(self as *mut Self, TRI) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_Tool_find(self as *mut Self, TRI)))
         }
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:63 - `StepToTopoDS_Tool::ClearEdgeMap()`
     pub fn clear_edge_map(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::StepToTopoDS_Tool_clear_edge_map(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_clear_edge_map(self as *mut Self)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:65 - `StepToTopoDS_Tool::IsEdgeBound()`
     pub fn is_edge_bound(&mut self, PP: &PointPair) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_Tool_is_edge_bound(self as *mut Self, PP) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_is_edge_bound(self as *mut Self, PP)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:67 - `StepToTopoDS_Tool::BindEdge()`
     pub fn bind_edge(&mut self, PP: &PointPair, E: &crate::topo_ds::Edge) {
-        {
-            let __exc =
-                unsafe { crate::ffi::StepToTopoDS_Tool_bind_edge(self as *mut Self, PP, E) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_bind_edge(self as *mut Self, PP, E)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:69 - `StepToTopoDS_Tool::FindEdge()`
@@ -1650,39 +1262,23 @@ impl Tool {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn find_edge(&mut self, PP: &PointPair) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_Tool_find_edge(self as *mut Self, PP) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_Tool_find_edge(self as *mut Self, PP)))
         }
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:71 - `StepToTopoDS_Tool::ClearVertexMap()`
     pub fn clear_vertex_map(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::StepToTopoDS_Tool_clear_vertex_map(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_clear_vertex_map(self as *mut Self)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:73 - `StepToTopoDS_Tool::IsVertexBound()`
     pub fn is_vertex_bound(&mut self, PG: &crate::ffi::HandleStepGeomCartesianPoint) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_Tool_is_vertex_bound(self as *mut Self, PG) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_is_vertex_bound(self as *mut Self, PG)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:75 - `StepToTopoDS_Tool::BindVertex()`
@@ -1691,13 +1287,9 @@ impl Tool {
         P: &crate::ffi::HandleStepGeomCartesianPoint,
         V: &crate::topo_ds::Vertex,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::StepToTopoDS_Tool_bind_vertex(self as *mut Self, P, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_bind_vertex(self as *mut Self, P, V)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:77 - `StepToTopoDS_Tool::FindVertex()`
@@ -1711,205 +1303,107 @@ impl Tool {
         &mut self,
         P: &crate::ffi::HandleStepGeomCartesianPoint,
     ) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_Tool_find_vertex(self as *mut Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_Tool_find_vertex(self as *mut Self, P)))
         }
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:79 - `StepToTopoDS_Tool::ComputePCurve()`
     pub fn compute_p_curve_bool(&mut self, B: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::StepToTopoDS_Tool_compute_p_curve_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_compute_p_curve_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:81 - `StepToTopoDS_Tool::ComputePCurve()`
     pub fn compute_p_curve(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_Tool_compute_p_curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_compute_p_curve(self as *const Self)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:83 - `StepToTopoDS_Tool::TransientProcess()`
     pub fn transient_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_Tool_transient_process(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_Tool_transient_process(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:85 - `StepToTopoDS_Tool::AddContinuity()`
     pub fn add_continuity_handlegeomsurface(&mut self, GeomSurf: &crate::ffi::HandleGeomSurface) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Tool_add_continuity_handlegeomsurface(
-                    self as *mut Self,
-                    GeomSurf,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_add_continuity_handlegeomsurface(
+                self as *mut Self,
+                GeomSurf,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:87 - `StepToTopoDS_Tool::AddContinuity()`
     pub fn add_continuity_handlegeomcurve(&mut self, GeomCurve: &crate::ffi::HandleGeomCurve) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Tool_add_continuity_handlegeomcurve(
-                    self as *mut Self,
-                    GeomCurve,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_add_continuity_handlegeomcurve(
+                self as *mut Self,
+                GeomCurve,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:89 - `StepToTopoDS_Tool::AddContinuity()`
     pub fn add_continuity_handlegeom2dcurve(&mut self, GeomCur2d: &crate::ffi::HandleGeom2dCurve) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_Tool_add_continuity_handlegeom2dcurve(
-                    self as *mut Self,
-                    GeomCur2d,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_Tool_add_continuity_handlegeom2dcurve(
+                self as *mut Self,
+                GeomCur2d,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:91 - `StepToTopoDS_Tool::C0Surf()`
     pub fn c0_surf(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Tool_c0_surf(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Tool_c0_surf(self as *const Self) })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:93 - `StepToTopoDS_Tool::C1Surf()`
     pub fn c1_surf(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Tool_c1_surf(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Tool_c1_surf(self as *const Self) })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:95 - `StepToTopoDS_Tool::C2Surf()`
     pub fn c2_surf(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Tool_c2_surf(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Tool_c2_surf(self as *const Self) })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:97 - `StepToTopoDS_Tool::C0Cur2()`
     pub fn c0_cur2(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Tool_c0_cur2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Tool_c0_cur2(self as *const Self) })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:99 - `StepToTopoDS_Tool::C1Cur2()`
     pub fn c1_cur2(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Tool_c1_cur2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Tool_c1_cur2(self as *const Self) })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:101 - `StepToTopoDS_Tool::C2Cur2()`
     pub fn c2_cur2(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Tool_c2_cur2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Tool_c2_cur2(self as *const Self) })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:103 - `StepToTopoDS_Tool::C0Cur3()`
     pub fn c0_cur3(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Tool_c0_cur3(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Tool_c0_cur3(self as *const Self) })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:105 - `StepToTopoDS_Tool::C1Cur3()`
     pub fn c1_cur3(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Tool_c1_cur3(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Tool_c1_cur3(self as *const Self) })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:107 - `StepToTopoDS_Tool::C2Cur3()`
     pub fn c2_cur3(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_Tool_c2_cur3(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::StepToTopoDS_Tool_c2_cur3(self as *const Self) })
     }
 }
 
@@ -1937,12 +1431,10 @@ impl TranslateCompositeCurve {
     /// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:44 - `StepToTopoDS_TranslateCompositeCurve::StepToTopoDS_TranslateCompositeCurve()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_TranslateCompositeCurve_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateCompositeCurve_ctor(),
+            ))
         }
     }
 
@@ -1953,14 +1445,8 @@ impl TranslateCompositeCurve {
         TP: &crate::ffi::HandleTransferTransientProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCompositeCurve_ctor_handlestepgeomcompositecurve_handletransfertransientprocess_factors(CC, TP, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_TranslateCompositeCurve_ctor_handlestepgeomcompositecurve_handletransfertransientprocess_factors(CC, TP, theLocalFactors)))
         }
     }
 
@@ -1973,14 +1459,8 @@ impl TranslateCompositeCurve {
         Surf: &crate::ffi::HandleGeomSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCompositeCurve_ctor_handlestepgeomcompositecurve_handletransfertransientprocess_handlestepgeomsurface_handlegeomsurface_factors(CC, TP, S, Surf, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_TranslateCompositeCurve_ctor_handlestepgeomcompositecurve_handletransfertransientprocess_handlestepgeomsurface_handlegeomsurface_factors(CC, TP, S, Surf, theLocalFactors)))
         }
     }
 
@@ -1992,16 +1472,9 @@ impl TranslateCompositeCurve {
         TP: &crate::ffi::HandleTransferTransientProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCompositeCurve_init_handlestepgeomcompositecurve_handletransfertransientprocess_factors(self as *mut Self, CC, TP, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_init_handlestepgeomcompositecurve_handletransfertransientprocess_factors(self as *mut Self, CC, TP, theLocalFactors)
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:68 - `StepToTopoDS_TranslateCompositeCurve::Init()`
@@ -2014,152 +1487,94 @@ impl TranslateCompositeCurve {
         Surf: &crate::ffi::HandleGeomSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCompositeCurve_init_handlestepgeomcompositecurve_handletransfertransientprocess_handlestepgeomsurface_handlegeomsurface_factors(self as *mut Self, CC, TP, S, Surf, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_init_handlestepgeomcompositecurve_handletransfertransientprocess_handlestepgeomsurface_handlegeomsurface_factors(self as *mut Self, CC, TP, S, Surf, theLocalFactors)
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:75 - `StepToTopoDS_TranslateCompositeCurve::Value()`
     /// Returns result of last translation or null wire if failed.
     pub fn value(&self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCompositeCurve_value(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_TranslateCompositeCurve_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:78 - `StepToTopoDS_TranslateCompositeCurve::IsInfiniteSegment()`
     /// Returns True if composite_curve contains a segment with infinite parameters.
     pub fn is_infinite_segment(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCompositeCurve_is_infinite_segment(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_is_infinite_segment(
+                self as *const Self,
+            )
+        })
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateCompositeCurve_as_StepToTopoDS_Root(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateCompositeCurve_as_StepToTopoDS_Root(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateCompositeCurve_as_StepToTopoDS_Root_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateCompositeCurve_as_StepToTopoDS_Root_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_IsDone(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_Precision(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_Precision(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_SetPrecision(
-                    self as *mut Self,
-                    preci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_MaxTol(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_MaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_SetMaxTol(
-                    self as *mut Self,
-                    maxpreci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        })
     }
 }
 
@@ -2181,12 +1596,10 @@ impl TranslateCurveBoundedSurface {
     /// **Source:** `StepToTopoDS_TranslateCurveBoundedSurface.hxx`:36 - `StepToTopoDS_TranslateCurveBoundedSurface::StepToTopoDS_TranslateCurveBoundedSurface()`
     /// Create empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_ctor(),
+            ))
         }
     }
 
@@ -2197,14 +1610,8 @@ impl TranslateCurveBoundedSurface {
         TP: &crate::ffi::HandleTransferTransientProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_ctor_handlestepgeomcurveboundedsurface_handletransfertransientprocess_factors(CBS, TP, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_ctor_handlestepgeomcurveboundedsurface_handletransfertransientprocess_factors(CBS, TP, theLocalFactors)))
         }
     }
 
@@ -2216,140 +1623,93 @@ impl TranslateCurveBoundedSurface {
         TP: &crate::ffi::HandleTransferTransientProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_init(
-                    self as *mut Self,
-                    CBS,
-                    TP,
-                    theLocalFactors,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_init(
+                self as *mut Self,
+                CBS,
+                TP,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateCurveBoundedSurface.hxx`:51 - `StepToTopoDS_TranslateCurveBoundedSurface::Value()`
     /// Returns result of last translation or null wire if failed.
     pub fn value(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_value(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_as_StepToTopoDS_Root(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_as_StepToTopoDS_Root(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_as_StepToTopoDS_Root_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_as_StepToTopoDS_Root_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_IsDone(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_IsDone(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_Precision(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_Precision(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_SetPrecision(
-                    self as *mut Self,
-                    preci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_MaxTol(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_MaxTol(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_SetMaxTol(
-                    self as *mut Self,
-                    maxpreci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        })
     }
 }
 
@@ -2369,12 +1729,10 @@ unsafe impl crate::CppDeletable for TranslateEdge {
 impl TranslateEdge {
     /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:44 - `StepToTopoDS_TranslateEdge::StepToTopoDS_TranslateEdge()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_TranslateEdge_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateEdge_ctor(),
+            ))
         }
     }
 
@@ -2385,19 +1743,15 @@ impl TranslateEdge {
         NMTool: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::StepToTopoDS_TranslateEdge_ctor_handlestepshapeedge_tool_nmtool_factors(
                     E,
                     T,
                     NMTool,
                     theLocalFactors,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2409,20 +1763,15 @@ impl TranslateEdge {
         NMTool: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdge_init(
-                    self as *mut Self,
-                    E,
-                    T,
-                    NMTool,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_init(
+                self as *mut Self,
+                E,
+                T,
+                NMTool,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:59 - `StepToTopoDS_TranslateEdge::MakeFromCurve3D()`
@@ -2440,25 +1789,20 @@ impl TranslateEdge {
         T: &mut Tool,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdge_make_from_curve3_d(
-                    self as *mut Self,
-                    C3D,
-                    EC,
-                    Vend,
-                    preci,
-                    E,
-                    V1,
-                    V2,
-                    T,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_make_from_curve3_d(
+                self as *mut Self,
+                C3D,
+                EC,
+                Vend,
+                preci,
+                E,
+                V1,
+                V2,
+                T,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:70 - `StepToTopoDS_TranslateEdge::MakePCurve()`
@@ -2468,141 +1812,86 @@ impl TranslateEdge {
         ConvSurf: &crate::ffi::HandleGeomSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::StepToTopoDS_TranslateEdge_make_p_curve(
                     self as *const Self,
                     PCU,
                     ConvSurf,
                     theLocalFactors,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:75 - `StepToTopoDS_TranslateEdge::Value()`
     pub fn value(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateEdge_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_TranslateEdge_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:77 - `StepToTopoDS_TranslateEdge::Error()`
     pub fn error(&self) -> crate::step_to_topo_ds::TranslateEdgeError {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateEdge_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::step_to_topo_ds::TranslateEdgeError::try_from(__val).unwrap()
-        }
+        crate::step_to_topo_ds::TranslateEdgeError::try_from(crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateEdge_as_StepToTopoDS_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::StepToTopoDS_TranslateEdge_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateEdge_as_StepToTopoDS_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateEdge_as_StepToTopoDS_Root_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdge_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdge_inherited_Precision(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_inherited_Precision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdge_inherited_SetPrecision(
-                    self as *mut Self,
-                    preci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_inherited_SetPrecision(self as *mut Self, preci)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdge_inherited_MaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_inherited_MaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdge_inherited_SetMaxTol(
-                    self as *mut Self,
-                    maxpreci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_inherited_SetMaxTol(self as *mut Self, maxpreci)
+        })
     }
 }
 
@@ -2622,12 +1911,10 @@ unsafe impl crate::CppDeletable for TranslateEdgeLoop {
 impl TranslateEdgeLoop {
     /// **Source:** `StepToTopoDS_TranslateEdgeLoop.hxx`:39 - `StepToTopoDS_TranslateEdgeLoop::StepToTopoDS_TranslateEdgeLoop()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_TranslateEdgeLoop_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateEdgeLoop_ctor(),
+            ))
         }
     }
 
@@ -2642,14 +1929,8 @@ impl TranslateEdgeLoop {
         NMTool: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdgeLoop_ctor_handlestepshapefacebound_face_handlegeomsurface_handlestepgeomsurface_bool_tool_nmtool_factors(FB, F, S, SS, ss, T, NMTool, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_TranslateEdgeLoop_ctor_handlestepshapefacebound_face_handlegeomsurface_handlestepgeomsurface_bool_tool_nmtool_factors(FB, F, S, SS, ss, T, NMTool, theLocalFactors)))
         }
     }
 
@@ -2665,144 +1946,97 @@ impl TranslateEdgeLoop {
         NMTool: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdgeLoop_init(
-                    self as *mut Self,
-                    FB,
-                    F,
-                    S,
-                    SS,
-                    ss,
-                    T,
-                    NMTool,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdgeLoop_init(
+                self as *mut Self,
+                FB,
+                F,
+                S,
+                SS,
+                ss,
+                T,
+                NMTool,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateEdgeLoop.hxx`:60 - `StepToTopoDS_TranslateEdgeLoop::Value()`
     pub fn value(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateEdgeLoop_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_TranslateEdgeLoop_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepToTopoDS_TranslateEdgeLoop.hxx`:62 - `StepToTopoDS_TranslateEdgeLoop::Error()`
     pub fn error(&self) -> crate::step_to_topo_ds::TranslateEdgeLoopError {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateEdgeLoop_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::step_to_topo_ds::TranslateEdgeLoopError::try_from(__val).unwrap()
-        }
+        crate::step_to_topo_ds::TranslateEdgeLoopError::try_from(crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdgeLoop_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateEdgeLoop_as_StepToTopoDS_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::StepToTopoDS_TranslateEdgeLoop_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateEdgeLoop_as_StepToTopoDS_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateEdgeLoop_as_StepToTopoDS_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_Precision(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_Precision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_SetPrecision(
-                    self as *mut Self,
-                    preci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_MaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_MaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_SetMaxTol(
-                    self as *mut Self,
-                    maxpreci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        })
     }
 }
 
@@ -2822,12 +2056,10 @@ unsafe impl crate::CppDeletable for TranslateFace {
 impl TranslateFace {
     /// **Source:** `StepToTopoDS_TranslateFace.hxx`:42 - `StepToTopoDS_TranslateFace::StepToTopoDS_TranslateFace()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_TranslateFace_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateFace_ctor(),
+            ))
         }
     }
 
@@ -2838,14 +2070,8 @@ impl TranslateFace {
         NMTool: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateFace_ctor_handlestepshapefacesurface_tool_nmtool_factors(FS, T, NMTool, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_TranslateFace_ctor_handlestepshapefacesurface_tool_nmtool_factors(FS, T, NMTool, theLocalFactors)))
         }
     }
 
@@ -2858,14 +2084,8 @@ impl TranslateFace {
         theHasGeom: &mut bool,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateFace_ctor_handlestepvisualtessellatedface_tool_nmtool_bool2_factors(theTF, theTool, theNMTool, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_TranslateFace_ctor_handlestepvisualtessellatedface_tool_nmtool_bool2_factors(theTF, theTool, theNMTool, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors)))
         }
     }
 
@@ -2876,14 +2096,8 @@ impl TranslateFace {
         theNMTool: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateFace_ctor_handlestepvisualtessellatedsurfaceset_tool_nmtool_factors(theTSS, theTool, theNMTool, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_TranslateFace_ctor_handlestepvisualtessellatedsurfaceset_tool_nmtool_factors(theTSS, theTool, theNMTool, theLocalFactors)))
         }
     }
 
@@ -2895,14 +2109,9 @@ impl TranslateFace {
         theTopoDSToolNM: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateFace_init_handlestepshapefacesurface_tool_nmtool_factors(self as *mut Self, theFaceSurface, theTopoDSTool, theTopoDSToolNM, theLocalFactors)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_init_handlestepshapefacesurface_tool_nmtool_factors(self as *mut Self, theFaceSurface, theTopoDSTool, theTopoDSToolNM, theLocalFactors)
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateFace.hxx`:69 - `StepToTopoDS_TranslateFace::Init()`
@@ -2915,14 +2124,9 @@ impl TranslateFace {
         theHasGeom: &mut bool,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateFace_init_handlestepvisualtessellatedface_tool_nmtool_bool2_factors(self as *mut Self, theTF, theTool, theNMTool, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_init_handlestepvisualtessellatedface_tool_nmtool_bool2_factors(self as *mut Self, theTF, theTool, theNMTool, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors)
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateFace.hxx`:76 - `StepToTopoDS_TranslateFace::Init()`
@@ -2933,134 +2137,79 @@ impl TranslateFace {
         theNMTool: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateFace_init_handlestepvisualtessellatedsurfaceset_tool_nmtool_factors(self as *mut Self, theTSS, theTool, theNMTool, theLocalFactors)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_init_handlestepvisualtessellatedsurfaceset_tool_nmtool_factors(self as *mut Self, theTSS, theTool, theNMTool, theLocalFactors)
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateFace.hxx`:81 - `StepToTopoDS_TranslateFace::Value()`
     pub fn value(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateFace_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_TranslateFace_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepToTopoDS_TranslateFace.hxx`:83 - `StepToTopoDS_TranslateFace::Error()`
     pub fn error(&self) -> crate::step_to_topo_ds::TranslateFaceError {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateFace_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::step_to_topo_ds::TranslateFaceError::try_from(__val).unwrap()
-        }
+        crate::step_to_topo_ds::TranslateFaceError::try_from(crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateFace_as_StepToTopoDS_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::StepToTopoDS_TranslateFace_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateFace_as_StepToTopoDS_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateFace_as_StepToTopoDS_Root_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateFace_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateFace_inherited_Precision(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_inherited_Precision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateFace_inherited_SetPrecision(
-                    self as *mut Self,
-                    preci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_inherited_SetPrecision(self as *mut Self, preci)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateFace_inherited_MaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_inherited_MaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateFace_inherited_SetMaxTol(
-                    self as *mut Self,
-                    maxpreci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_inherited_SetMaxTol(self as *mut Self, maxpreci)
+        })
     }
 }
 
@@ -3080,12 +2229,10 @@ unsafe impl crate::CppDeletable for TranslatePolyLoop {
 impl TranslatePolyLoop {
     /// **Source:** `StepToTopoDS_TranslatePolyLoop.hxx`:37 - `StepToTopoDS_TranslatePolyLoop::StepToTopoDS_TranslatePolyLoop()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_TranslatePolyLoop_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_TranslatePolyLoop_ctor(),
+            ))
         }
     }
 
@@ -3097,14 +2244,8 @@ impl TranslatePolyLoop {
         F: &crate::topo_ds::Face,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslatePolyLoop_ctor_handlestepshapepolyloop_tool_handlegeomsurface_face_factors(PL, T, S, F, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_TranslatePolyLoop_ctor_handlestepshapepolyloop_tool_handlegeomsurface_face_factors(PL, T, S, F, theLocalFactors)))
         }
     }
 
@@ -3117,141 +2258,94 @@ impl TranslatePolyLoop {
         F: &crate::topo_ds::Face,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslatePolyLoop_init(
-                    self as *mut Self,
-                    PL,
-                    T,
-                    S,
-                    F,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslatePolyLoop_init(
+                self as *mut Self,
+                PL,
+                T,
+                S,
+                F,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslatePolyLoop.hxx`:52 - `StepToTopoDS_TranslatePolyLoop::Value()`
     pub fn value(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslatePolyLoop_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_TranslatePolyLoop_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepToTopoDS_TranslatePolyLoop.hxx`:54 - `StepToTopoDS_TranslatePolyLoop::Error()`
     pub fn error(&self) -> crate::step_to_topo_ds::TranslatePolyLoopError {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslatePolyLoop_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::step_to_topo_ds::TranslatePolyLoopError::try_from(__val).unwrap()
-        }
+        crate::step_to_topo_ds::TranslatePolyLoopError::try_from(crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslatePolyLoop_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslatePolyLoop_as_StepToTopoDS_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::StepToTopoDS_TranslatePolyLoop_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslatePolyLoop_as_StepToTopoDS_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::StepToTopoDS_TranslatePolyLoop_as_StepToTopoDS_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_Precision(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_Precision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_SetPrecision(
-                    self as *mut Self,
-                    preci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_MaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_MaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_SetMaxTol(
-                    self as *mut Self,
-                    maxpreci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        })
     }
 }
 
@@ -3271,12 +2365,10 @@ unsafe impl crate::CppDeletable for TranslateShell {
 impl TranslateShell {
     /// **Source:** `StepToTopoDS_TranslateShell.hxx`:39 - `StepToTopoDS_TranslateShell::StepToTopoDS_TranslateShell()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_TranslateShell_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateShell_ctor(),
+            ))
         }
     }
 
@@ -3289,14 +2381,9 @@ impl TranslateShell {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateShell_init_handlestepshapeconnectedfaceset_tool_nmtool_factors_progressrange(self as *mut Self, CFS, T, NMTool, theLocalFactors, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_init_handlestepshapeconnectedfaceset_tool_nmtool_factors_progressrange(self as *mut Self, CFS, T, NMTool, theLocalFactors, theProgress)
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateShell.hxx`:47 - `StepToTopoDS_TranslateShell::Init()`
@@ -3310,134 +2397,79 @@ impl TranslateShell {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateShell_init_handlestepvisualtessellatedshell_tool_nmtool_bool2_factors_progressrange(self as *mut Self, theTSh, theTool, theNMTool, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_init_handlestepvisualtessellatedshell_tool_nmtool_bool2_factors_progressrange(self as *mut Self, theTSh, theTool, theNMTool, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors, theProgress)
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateShell.hxx`:55 - `StepToTopoDS_TranslateShell::Value()`
     pub fn value(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateShell_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_TranslateShell_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepToTopoDS_TranslateShell.hxx`:57 - `StepToTopoDS_TranslateShell::Error()`
     pub fn error(&self) -> crate::step_to_topo_ds::TranslateShellError {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateShell_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::step_to_topo_ds::TranslateShellError::try_from(__val).unwrap()
-        }
+        crate::step_to_topo_ds::TranslateShellError::try_from(crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateShell_as_StepToTopoDS_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::StepToTopoDS_TranslateShell_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateShell_as_StepToTopoDS_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateShell_as_StepToTopoDS_Root_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateShell_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateShell_inherited_Precision(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_inherited_Precision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateShell_inherited_SetPrecision(
-                    self as *mut Self,
-                    preci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_inherited_SetPrecision(self as *mut Self, preci)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateShell_inherited_MaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_inherited_MaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateShell_inherited_SetMaxTol(
-                    self as *mut Self,
-                    maxpreci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_inherited_SetMaxTol(self as *mut Self, maxpreci)
+        })
     }
 }
 
@@ -3457,12 +2489,10 @@ unsafe impl crate::CppDeletable for TranslateSolid {
 impl TranslateSolid {
     /// **Source:** `StepToTopoDS_TranslateSolid.hxx`:37 - `StepToTopoDS_TranslateSolid::StepToTopoDS_TranslateSolid()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_TranslateSolid_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateSolid_ctor(),
+            ))
         }
     }
 
@@ -3478,144 +2508,89 @@ impl TranslateSolid {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateSolid_init(
-                    self as *mut Self,
-                    theTSo,
-                    theTP,
-                    theTool,
-                    theNMTool,
-                    theReadTessellatedWhenNoBRepOnly,
-                    theHasGeom,
-                    theLocalFactors,
-                    theProgress,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateSolid_init(
+                self as *mut Self,
+                theTSo,
+                theTP,
+                theTool,
+                theNMTool,
+                theReadTessellatedWhenNoBRepOnly,
+                theHasGeom,
+                theLocalFactors,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateSolid.hxx`:48 - `StepToTopoDS_TranslateSolid::Value()`
     pub fn value(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateSolid_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_TranslateSolid_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepToTopoDS_TranslateSolid.hxx`:50 - `StepToTopoDS_TranslateSolid::Error()`
     pub fn error(&self) -> crate::step_to_topo_ds::TranslateSolidError {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateSolid_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::step_to_topo_ds::TranslateSolidError::try_from(__val).unwrap()
-        }
+        crate::step_to_topo_ds::TranslateSolidError::try_from(crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateSolid_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateSolid_as_StepToTopoDS_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::StepToTopoDS_TranslateSolid_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateSolid_as_StepToTopoDS_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateSolid_as_StepToTopoDS_Root_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateSolid_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateSolid_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateSolid_inherited_Precision(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateSolid_inherited_Precision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateSolid_inherited_SetPrecision(
-                    self as *mut Self,
-                    preci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateSolid_inherited_SetPrecision(self as *mut Self, preci)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateSolid_inherited_MaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateSolid_inherited_MaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateSolid_inherited_SetMaxTol(
-                    self as *mut Self,
-                    maxpreci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateSolid_inherited_SetMaxTol(self as *mut Self, maxpreci)
+        })
     }
 }
 
@@ -3635,12 +2610,10 @@ unsafe impl crate::CppDeletable for TranslateVertex {
 impl TranslateVertex {
     /// **Source:** `StepToTopoDS_TranslateVertex.hxx`:36 - `StepToTopoDS_TranslateVertex::StepToTopoDS_TranslateVertex()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_TranslateVertex_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateVertex_ctor(),
+            ))
         }
     }
 
@@ -3651,14 +2624,8 @@ impl TranslateVertex {
         NMTool: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertex_ctor_handlestepshapevertex_tool_nmtool_factors(V, T, NMTool, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_TranslateVertex_ctor_handlestepshapevertex_tool_nmtool_factors(V, T, NMTool, theLocalFactors)))
         }
     }
 
@@ -3670,140 +2637,93 @@ impl TranslateVertex {
         NMTool: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertex_init(
-                    self as *mut Self,
-                    V,
-                    T,
-                    NMTool,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertex_init(
+                self as *mut Self,
+                V,
+                T,
+                NMTool,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateVertex.hxx`:49 - `StepToTopoDS_TranslateVertex::Value()`
     pub fn value(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateVertex_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_TranslateVertex_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepToTopoDS_TranslateVertex.hxx`:51 - `StepToTopoDS_TranslateVertex::Error()`
     pub fn error(&self) -> crate::step_to_topo_ds::TranslateVertexError {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateVertex_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::step_to_topo_ds::TranslateVertexError::try_from(__val).unwrap()
-        }
+        crate::step_to_topo_ds::TranslateVertexError::try_from(crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertex_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateVertex_as_StepToTopoDS_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::StepToTopoDS_TranslateVertex_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateVertex_as_StepToTopoDS_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateVertex_as_StepToTopoDS_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertex_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertex_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertex_inherited_Precision(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertex_inherited_Precision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertex_inherited_SetPrecision(
-                    self as *mut Self,
-                    preci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertex_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertex_inherited_MaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertex_inherited_MaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertex_inherited_SetMaxTol(
-                    self as *mut Self,
-                    maxpreci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertex_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        })
     }
 }
 
@@ -3823,12 +2743,10 @@ unsafe impl crate::CppDeletable for TranslateVertexLoop {
 impl TranslateVertexLoop {
     /// **Source:** `StepToTopoDS_TranslateVertexLoop.hxx`:36 - `StepToTopoDS_TranslateVertexLoop::StepToTopoDS_TranslateVertexLoop()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StepToTopoDS_TranslateVertexLoop_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateVertexLoop_ctor(),
+            ))
         }
     }
 
@@ -3839,14 +2757,8 @@ impl TranslateVertexLoop {
         NMTool: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertexLoop_ctor_handlestepshapevertexloop_tool_nmtool_factors(VL, T, NMTool, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepToTopoDS_TranslateVertexLoop_ctor_handlestepshapevertexloop_tool_nmtool_factors(VL, T, NMTool, theLocalFactors)))
         }
     }
 
@@ -3858,142 +2770,95 @@ impl TranslateVertexLoop {
         NMTool: &mut NMTool,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertexLoop_init(
-                    self as *mut Self,
-                    VL,
-                    T,
-                    NMTool,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_init(
+                self as *mut Self,
+                VL,
+                T,
+                NMTool,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `StepToTopoDS_TranslateVertexLoop.hxx`:49 - `StepToTopoDS_TranslateVertexLoop::Value()`
     pub fn value(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateVertexLoop_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::StepToTopoDS_TranslateVertexLoop_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepToTopoDS_TranslateVertexLoop.hxx`:51 - `StepToTopoDS_TranslateVertexLoop::Error()`
     pub fn error(&self) -> crate::step_to_topo_ds::TranslateVertexLoopError {
-        {
-            let __result =
-                unsafe { crate::ffi::StepToTopoDS_TranslateVertexLoop_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::step_to_topo_ds::TranslateVertexLoopError::try_from(__val).unwrap()
-        }
+        crate::step_to_topo_ds::TranslateVertexLoopError::try_from(crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to StepToTopoDS_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateVertexLoop_as_StepToTopoDS_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateVertexLoop_as_StepToTopoDS_Root(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepToTopoDS_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::StepToTopoDS_TranslateVertexLoop_as_StepToTopoDS_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::StepToTopoDS_TranslateVertexLoop_as_StepToTopoDS_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
     pub fn precision(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_Precision(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_Precision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_SetPrecision(
-                    self as *mut Self,
-                    preci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
     pub fn max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_MaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_MaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxpreci: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_SetMaxTol(
-                    self as *mut Self,
-                    maxpreci,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        })
     }
 }
 

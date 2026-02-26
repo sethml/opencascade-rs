@@ -30,12 +30,10 @@ unsafe impl crate::CppDeletable for AssemblyComponent {
 impl AssemblyComponent {
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:34 - `STEPSelections_AssemblyComponent::STEPSelections_AssemblyComponent()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_AssemblyComponent_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyComponent_ctor(),
+            ))
         }
     }
 
@@ -44,14 +42,8 @@ impl AssemblyComponent {
         sdr: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
         list: &crate::ffi::HandleSTEPSelectionsHSequenceOfAssemblyLink,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_ctor_handlestepshapeshapedefinitionrepresentation_handlestepselectionshsequenceofassemblylink(sdr, list)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPSelections_AssemblyComponent_ctor_handlestepshapeshapedefinitionrepresentation_handlestepselectionshsequenceofassemblylink(sdr, list)))
         }
     }
 
@@ -59,15 +51,10 @@ impl AssemblyComponent {
     pub fn get_sdr(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepShapeShapeDefinitionRepresentation> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_get_sdr(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyComponent_get_sdr(self as *const Self),
+            ))
         }
     }
 
@@ -75,161 +62,115 @@ impl AssemblyComponent {
     pub fn get_list(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsHSequenceOfAssemblyLink> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_get_list(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyComponent_get_list(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:44 - `STEPSelections_AssemblyComponent::SetSDR()`
     pub fn set_sdr(&mut self, sdr: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_set_sdr(self as *mut Self, sdr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyComponent_set_sdr(self as *mut Self, sdr)
+        })
     }
 
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:46 - `STEPSelections_AssemblyComponent::SetList()`
     pub fn set_list(&mut self, list: &crate::ffi::HandleSTEPSelectionsHSequenceOfAssemblyLink) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_set_list(self as *mut Self, list)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyComponent_set_list(self as *mut Self, list)
+        })
     }
 
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:48 - `STEPSelections_AssemblyComponent::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_AssemblyComponent_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:48 - `STEPSelections_AssemblyComponent::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_AssemblyComponent_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyComponent_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:48 - `STEPSelections_AssemblyComponent::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_AssemblyComponent_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyComponent_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_AssemblyComponent_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_AssemblyComponent_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_AssemblyComponent_as_Standard_Transient_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_AssemblyComponent_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsAssemblyComponent> {
-        let __result =
-            unsafe { crate::ffi::STEPSelections_AssemblyComponent_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyComponent_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyComponent_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyComponent_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::STEPSelections_AssemblyComponent_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -240,60 +181,34 @@ impl AssemblyComponent {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_inherited_GetRefCount(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyComponent_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyComponent_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyComponent_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_AssemblyComponent_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyComponent_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -308,35 +223,31 @@ unsafe impl crate::CppDeletable for HandleSTEPSelectionsAssemblyComponent {
 impl HandleSTEPSelectionsAssemblyComponent {
     /// Dereference this Handle to access the underlying STEPSelections_AssemblyComponent
     pub fn get(&self) -> &crate::ffi::STEPSelections_AssemblyComponent {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsAssemblyComponent_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleSTEPSelectionsAssemblyComponent_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPSelections_AssemblyComponent
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPSelections_AssemblyComponent {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsAssemblyComponent_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleSTEPSelectionsAssemblyComponent_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPSelections_AssemblyComponent> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsAssemblyComponent_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsAssemblyComponent_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -356,36 +267,25 @@ unsafe impl crate::CppDeletable for AssemblyExplorer {
 impl AssemblyExplorer {
     /// **Source:** `STEPSelections_AssemblyExplorer.hxx`:40 - `STEPSelections_AssemblyExplorer::STEPSelections_AssemblyExplorer()`
     pub fn new_graph(G: &crate::interface::Graph) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_AssemblyExplorer_ctor_graph(G) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyExplorer_ctor_graph(G),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_AssemblyExplorer.hxx`:42 - `STEPSelections_AssemblyExplorer::Init()`
     pub fn init(&mut self, G: &crate::interface::Graph) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPSelections_AssemblyExplorer_init(self as *mut Self, G) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyExplorer_init(self as *mut Self, G)
+        })
     }
 
     /// **Source:** `STEPSelections_AssemblyExplorer.hxx`:44 - `STEPSelections_AssemblyExplorer::Dump()`
     pub fn dump(&self, os: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_AssemblyExplorer_dump(self as *const Self, os)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyExplorer_dump(self as *const Self, os)
+        })
     }
 
     /// **Source:** `STEPSelections_AssemblyExplorer.hxx`:46 - `STEPSelections_AssemblyExplorer::FindSDRWithProduct()`
@@ -393,18 +293,13 @@ impl AssemblyExplorer {
         &self,
         product: &crate::ffi::HandleStepBasicProductDefinition,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepShapeShapeDefinitionRepresentation> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_AssemblyExplorer_find_sdr_with_product(
                     self as *const Self,
                     product,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -413,17 +308,9 @@ impl AssemblyExplorer {
         &mut self,
         cmp: &crate::ffi::HandleSTEPSelectionsAssemblyComponent,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_AssemblyExplorer_fill_list_with_graph(
-                    self as *mut Self,
-                    cmp,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyExplorer_fill_list_with_graph(self as *mut Self, cmp)
+        })
     }
 
     /// **Source:** `STEPSelections_AssemblyExplorer.hxx`:51 - `STEPSelections_AssemblyExplorer::FindItemWithNAUO()`
@@ -431,34 +318,22 @@ impl AssemblyExplorer {
         &self,
         nauo: &crate::ffi::HandleStepReprNextAssemblyUsageOccurrence,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_AssemblyExplorer_find_item_with_nauo(
                     self as *const Self,
                     nauo,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_AssemblyExplorer.hxx`:55 - `STEPSelections_AssemblyExplorer::NbAssemblies()`
     /// Returns the number of root assemblies;
     pub fn nb_assemblies(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyExplorer_nb_assemblies(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyExplorer_nb_assemblies(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPSelections_AssemblyExplorer.hxx`:58 - `STEPSelections_AssemblyExplorer::Root()`
@@ -467,15 +342,10 @@ impl AssemblyExplorer {
         &self,
         rank: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsAssemblyComponent> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyExplorer_root(self as *const Self, rank)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyExplorer_root(self as *const Self, rank),
+            ))
         }
     }
 }
@@ -496,12 +366,10 @@ unsafe impl crate::CppDeletable for AssemblyLink {
 impl AssemblyLink {
     /// **Source:** `STEPSelections_AssemblyLink.hxx`:34 - `STEPSelections_AssemblyLink::STEPSelections_AssemblyLink()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_AssemblyLink_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyLink_ctor(),
+            ))
         }
     }
 
@@ -511,14 +379,8 @@ impl AssemblyLink {
         item: &crate::ffi::HandleStandardTransient,
         part: &crate::ffi::HandleSTEPSelectionsAssemblyComponent,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_ctor_handlestepreprnextassemblyusageoccurrence_handlestandardtransient_handlestepselectionsassemblycomponent(nauo, item, part)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPSelections_AssemblyLink_ctor_handlestepreprnextassemblyusageoccurrence_handlestandardtransient_handlestepselectionsassemblycomponent(nauo, item, part)))
         }
     }
 
@@ -526,27 +388,19 @@ impl AssemblyLink {
     pub fn get_nauo(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepReprNextAssemblyUsageOccurrence> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_AssemblyLink_get_nauo(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyLink_get_nauo(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_AssemblyLink.hxx`:43 - `STEPSelections_AssemblyLink::GetItem()`
     pub fn get_item(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_AssemblyLink_get_item(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyLink_get_item(self as *const Self),
+            ))
         }
     }
 
@@ -554,169 +408,115 @@ impl AssemblyLink {
     pub fn get_component(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsAssemblyComponent> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_get_component(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyLink_get_component(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_AssemblyLink.hxx`:47 - `STEPSelections_AssemblyLink::SetNAUO()`
     pub fn set_nauo(&mut self, nauo: &crate::ffi::HandleStepReprNextAssemblyUsageOccurrence) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_set_nauo(self as *mut Self, nauo)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyLink_set_nauo(self as *mut Self, nauo)
+        })
     }
 
     /// **Source:** `STEPSelections_AssemblyLink.hxx`:49 - `STEPSelections_AssemblyLink::SetItem()`
     pub fn set_item(&mut self, item: &crate::ffi::HandleStandardTransient) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_set_item(self as *mut Self, item)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyLink_set_item(self as *mut Self, item)
+        })
     }
 
     /// **Source:** `STEPSelections_AssemblyLink.hxx`:51 - `STEPSelections_AssemblyLink::SetComponent()`
     pub fn set_component(&mut self, part: &crate::ffi::HandleSTEPSelectionsAssemblyComponent) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_set_component(self as *mut Self, part)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyLink_set_component(self as *mut Self, part)
+        })
     }
 
     /// **Source:** `STEPSelections_AssemblyLink.hxx`:53 - `STEPSelections_AssemblyLink::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_AssemblyLink_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPSelections_AssemblyLink.hxx`:53 - `STEPSelections_AssemblyLink::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_AssemblyLink_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyLink_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `STEPSelections_AssemblyLink.hxx`:53 - `STEPSelections_AssemblyLink::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_AssemblyLink_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_AssemblyLink_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_AssemblyLink_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_AssemblyLink_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_AssemblyLink_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_AssemblyLink_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsAssemblyLink> {
-        let __result = unsafe { crate::ffi::STEPSelections_AssemblyLink_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_AssemblyLink_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyLink_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyLink_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::STEPSelections_AssemblyLink_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -727,58 +527,30 @@ impl AssemblyLink {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyLink_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyLink_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyLink_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_AssemblyLink_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_AssemblyLink_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -793,35 +565,31 @@ unsafe impl crate::CppDeletable for HandleSTEPSelectionsAssemblyLink {
 impl HandleSTEPSelectionsAssemblyLink {
     /// Dereference this Handle to access the underlying STEPSelections_AssemblyLink
     pub fn get(&self) -> &crate::ffi::STEPSelections_AssemblyLink {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsAssemblyLink_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleSTEPSelectionsAssemblyLink_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPSelections_AssemblyLink
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPSelections_AssemblyLink {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsAssemblyLink_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleSTEPSelectionsAssemblyLink_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPSelections_AssemblyLink> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsAssemblyLink_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsAssemblyLink_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -841,12 +609,10 @@ unsafe impl crate::CppDeletable for Counter {
 impl Counter {
     /// **Source:** `STEPSelections_Counter.hxx`:36 - `STEPSelections_Counter::STEPSelections_Counter()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_Counter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::STEPSelections_Counter_ctor()),
+            )
         }
     }
 
@@ -856,183 +622,96 @@ impl Counter {
         graph: &crate::interface::Graph,
         start: &crate::ffi::HandleStandardTransient,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_Counter_count(self as *mut Self, graph, start)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_Counter_count(self as *mut Self, graph, start)
+        })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:40 - `STEPSelections_Counter::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::STEPSelections_Counter_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_Counter_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:42 - `STEPSelections_Counter::NbInstancesOfFaces()`
     pub fn nb_instances_of_faces(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_Counter_nb_instances_of_faces(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_Counter_nb_instances_of_faces(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:44 - `STEPSelections_Counter::POP()`
     pub fn pop(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_Counter_pop(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::STEPSelections_Counter_pop(self as *const Self) })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:46 - `STEPSelections_Counter::POP2()`
     pub fn pop2(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_Counter_pop2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::STEPSelections_Counter_pop2(self as *const Self) })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:48 - `STEPSelections_Counter::NbInstancesOfShells()`
     pub fn nb_instances_of_shells(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_Counter_nb_instances_of_shells(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_Counter_nb_instances_of_shells(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:50 - `STEPSelections_Counter::NbInstancesOfSolids()`
     pub fn nb_instances_of_solids(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_Counter_nb_instances_of_solids(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_Counter_nb_instances_of_solids(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:52 - `STEPSelections_Counter::NbInstancesOfEdges()`
     pub fn nb_instances_of_edges(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_Counter_nb_instances_of_edges(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_Counter_nb_instances_of_edges(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:54 - `STEPSelections_Counter::NbInstancesOfWires()`
     pub fn nb_instances_of_wires(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_Counter_nb_instances_of_wires(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_Counter_nb_instances_of_wires(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:56 - `STEPSelections_Counter::NbSourceFaces()`
     pub fn nb_source_faces(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_Counter_nb_source_faces(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_Counter_nb_source_faces(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:58 - `STEPSelections_Counter::NbSourceShells()`
     pub fn nb_source_shells(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_Counter_nb_source_shells(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_Counter_nb_source_shells(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:60 - `STEPSelections_Counter::NbSourceSolids()`
     pub fn nb_source_solids(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_Counter_nb_source_solids(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_Counter_nb_source_solids(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:62 - `STEPSelections_Counter::NbSourceEdges()`
     pub fn nb_source_edges(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_Counter_nb_source_edges(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_Counter_nb_source_edges(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPSelections_Counter.hxx`:64 - `STEPSelections_Counter::NbSourceWires()`
     pub fn nb_source_wires(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_Counter_nb_source_wires(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_Counter_nb_source_wires(self as *const Self)
+        })
     }
 }
 
@@ -1052,12 +731,10 @@ unsafe impl crate::CppDeletable for HSequenceOfAssemblyLink {
 impl HSequenceOfAssemblyLink {
     /// **Source:** `STEPSelections_HSequenceOfAssemblyLink.hxx`:23 - `STEPSelections_HSequenceOfAssemblyLink::STEPSelections_HSequenceOfAssemblyLink()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_HSequenceOfAssemblyLink_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_ctor(),
+            ))
         }
     }
 
@@ -1065,30 +742,21 @@ impl HSequenceOfAssemblyLink {
     pub fn new_sequenceofassemblylink(
         theOther: &crate::ffi::STEPSelections_SequenceOfAssemblyLink,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_HSequenceOfAssemblyLink_ctor_sequenceofassemblylink(
                     theOther,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_HSequenceOfAssemblyLink.hxx`:23 - `STEPSelections_HSequenceOfAssemblyLink::Sequence()`
     pub fn sequence(&self) -> &crate::ffi::STEPSelections_SequenceOfAssemblyLink {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_sequence(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_HSequenceOfAssemblyLink_sequence(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1097,14 +765,9 @@ impl HSequenceOfAssemblyLink {
         &mut self,
         theItem: &crate::ffi::HandleSTEPSelectionsAssemblyLink,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_append_handlestepselectionsassemblylink(self as *mut Self, theItem)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_append_handlestepselectionsassemblylink(self as *mut Self, theItem)
+        })
     }
 
     /// **Source:** `STEPSelections_HSequenceOfAssemblyLink.hxx`:23 - `STEPSelections_HSequenceOfAssemblyLink::Append()`
@@ -1112,159 +775,117 @@ impl HSequenceOfAssemblyLink {
         &mut self,
         theSequence: &mut crate::ffi::STEPSelections_SequenceOfAssemblyLink,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_append_sequenceofassemblylink(
-                    self as *mut Self,
-                    theSequence,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_append_sequenceofassemblylink(
+                self as *mut Self,
+                theSequence,
+            )
+        })
     }
 
     /// **Source:** `STEPSelections_HSequenceOfAssemblyLink.hxx`:23 - `STEPSelections_HSequenceOfAssemblyLink::ChangeSequence()`
     pub fn change_sequence(&mut self) -> &mut crate::ffi::STEPSelections_SequenceOfAssemblyLink {
-        {
-            let __result = unsafe {
+        unsafe {
+            &mut *(crate::check_result(
                 crate::ffi::STEPSelections_HSequenceOfAssemblyLink_change_sequence(
                     self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_HSequenceOfAssemblyLink.hxx`:23 - `STEPSelections_HSequenceOfAssemblyLink::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_HSequenceOfAssemblyLink.hxx`:23 - `STEPSelections_HSequenceOfAssemblyLink::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_HSequenceOfAssemblyLink_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `STEPSelections_HSequenceOfAssemblyLink.hxx`:23 - `STEPSelections_HSequenceOfAssemblyLink::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_HSequenceOfAssemblyLink_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_as_Standard_Transient(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_as_Standard_Transient(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_as_Standard_Transient_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsHSequenceOfAssemblyLink> {
-        let __result =
-            unsafe { crate::ffi::STEPSelections_HSequenceOfAssemblyLink_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_This(
                     self as *const Self,
                 )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1275,62 +896,36 @@ impl HSequenceOfAssemblyLink {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_GetRefCount(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_Delete(
-                    self as *const Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1345,37 +940,31 @@ unsafe impl crate::CppDeletable for HandleSTEPSelectionsHSequenceOfAssemblyLink 
 impl HandleSTEPSelectionsHSequenceOfAssemblyLink {
     /// Dereference this Handle to access the underlying STEPSelections_HSequenceOfAssemblyLink
     pub fn get(&self) -> &crate::ffi::STEPSelections_HSequenceOfAssemblyLink {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsHSequenceOfAssemblyLink_get(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleSTEPSelectionsHSequenceOfAssemblyLink_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPSelections_HSequenceOfAssemblyLink
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPSelections_HSequenceOfAssemblyLink {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsHSequenceOfAssemblyLink_get_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::HandleSTEPSelectionsHSequenceOfAssemblyLink_get_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPSelections_HSequenceOfAssemblyLink> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsHSequenceOfAssemblyLink_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsHSequenceOfAssemblyLink_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1395,12 +984,10 @@ unsafe impl crate::CppDeletable for SelectAssembly {
 impl SelectAssembly {
     /// **Source:** `STEPSelections_SelectAssembly.hxx`:37 - `STEPSelections_SelectAssembly::STEPSelections_SelectAssembly()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectAssembly_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_ctor(),
+            ))
         }
     }
 
@@ -1414,194 +1001,154 @@ impl SelectAssembly {
         G: &crate::interface::Graph,
         explored: &mut crate::interface::EntityIterator,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_explore(
-                    self as *const Self,
-                    level,
-                    ent,
-                    G,
-                    explored,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_explore(
+                self as *const Self,
+                level,
+                ent,
+                G,
+                explored,
+            )
+        })
     }
 
     /// **Source:** `STEPSelections_SelectAssembly.hxx`:48 - `STEPSelections_SelectAssembly::ExploreLabel()`
     /// Returns a text defining the criterium : "Assembly structures"
     pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_explore_label(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_explore_label(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_SelectAssembly.hxx`:50 - `STEPSelections_SelectAssembly::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_SelectAssembly_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPSelections_SelectAssembly.hxx`:50 - `STEPSelections_SelectAssembly::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectAssembly_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `STEPSelections_SelectAssembly.hxx`:50 - `STEPSelections_SelectAssembly::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_SelectAssembly_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_SelectAssembly_get_type_descriptor()))
         }
     }
 
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_SelectExplore(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_SelectExplore(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExplore (mutable)
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_SelectExplore_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_SelectExplore_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_SelectDeduct(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_SelectDeduct(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_SelectDeduct_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_Selection(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_Selection(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_Selection_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_as_IFSelect_Selection_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectAssembly_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectAssembly_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectAssembly_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectAssembly> {
-        let __result =
-            unsafe { crate::ffi::STEPSelections_SelectAssembly_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_Level(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_inherited_Level(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
@@ -1609,102 +1156,61 @@ impl SelectAssembly {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectAssembly_inherited_RootResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_Label(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_inherited_Label(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_SetInput(self as *mut Self, sel)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_inherited_SetInput(self as *mut Self, sel)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_Input(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_inherited_Input(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_HasInput(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_inherited_HasInput(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_HasAlternate(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_inherited_HasAlternate(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
     pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_Alternate(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::STEPSelections_SelectAssembly_inherited_Alternate(self as *mut Self),
+            ))
         }
     }
 
@@ -1713,34 +1219,24 @@ impl SelectAssembly {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectAssembly_inherited_InputResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_FillIterator(
-                    self as *const Self,
-                    iter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_inherited_FillIterator(
+                self as *const Self,
+                iter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
@@ -1748,18 +1244,13 @@ impl SelectAssembly {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectAssembly_inherited_UniqueResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1768,65 +1259,39 @@ impl SelectAssembly {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectAssembly_inherited_CompleteResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::STEPSelections_SelectAssembly_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1837,58 +1302,34 @@ impl SelectAssembly {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectAssembly_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectAssembly_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1903,78 +1344,68 @@ unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectAssembly {
 impl HandleSTEPSelectionsSelectAssembly {
     /// Dereference this Handle to access the underlying STEPSelections_SelectAssembly
     pub fn get(&self) -> &crate::ffi::STEPSelections_SelectAssembly {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectAssembly_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleSTEPSelectionsSelectAssembly_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPSelections_SelectAssembly
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPSelections_SelectAssembly {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectAssembly_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleSTEPSelectionsSelectAssembly_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPSelections_SelectAssembly> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectAssembly_to_HandleIFSelectSelectExplore(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectAssembly_to_HandleIFSelectSelectExplore(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectAssembly> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectAssembly_to_HandleIFSelectSelectDeduct(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectAssembly_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectAssembly> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectAssembly_to_HandleIFSelectSelection(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectAssembly_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectAssembly> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectAssembly_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectAssembly_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1994,12 +1425,10 @@ unsafe impl crate::CppDeletable for SelectDerived {
 impl SelectDerived {
     /// **Source:** `STEPSelections_SelectDerived.hxx`:35 - `STEPSelections_SelectDerived::STEPSelections_SelectDerived()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectDerived_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectDerived_ctor(),
+            ))
         }
     }
 
@@ -2011,216 +1440,173 @@ impl SelectDerived {
         text: &crate::t_collection::AsciiString,
         exact: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_matches(
-                    self as *const Self,
-                    ent,
-                    model,
-                    text,
-                    exact,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectDerived_matches(
+                self as *const Self,
+                ent,
+                model,
+                text,
+                exact,
+            )
+        })
     }
 
     /// **Source:** `STEPSelections_SelectDerived.hxx`:43 - `STEPSelections_SelectDerived::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_SelectDerived_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPSelections_SelectDerived.hxx`:43 - `STEPSelections_SelectDerived::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectDerived_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::STEPSelections_SelectDerived_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `STEPSelections_SelectDerived.hxx`:43 - `STEPSelections_SelectDerived::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_SelectDerived_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_SelectDerived_get_type_descriptor()))
         }
     }
 
     /// Upcast to StepSelect_StepType
     pub fn as_step_select_step_type(&self) -> &crate::step_select::StepType {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectDerived_as_StepSelect_StepType(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectDerived_as_StepSelect_StepType(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepSelect_StepType (mutable)
     pub fn as_step_select_step_type_mut(&mut self) -> &mut crate::step_select::StepType {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectDerived_as_StepSelect_StepType_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectDerived_as_StepSelect_StepType_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Signature
     pub fn as_if_select_signature(&self) -> &crate::if_select::Signature {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectDerived_as_IFSelect_Signature(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectDerived_as_IFSelect_Signature(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Signature (mutable)
     pub fn as_if_select_signature_mut(&mut self) -> &mut crate::if_select::Signature {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectDerived_as_IFSelect_Signature_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectDerived_as_IFSelect_Signature_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_SignType
     pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectDerived_as_Interface_SignType(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectDerived_as_Interface_SignType(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_SignType (mutable)
     pub fn as_interface_sign_type_mut(&mut self) -> &mut crate::interface::SignType {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectDerived_as_Interface_SignType_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectDerived_as_Interface_SignType_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to MoniTool_SignText
     pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectDerived_as_MoniTool_SignText(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectDerived_as_MoniTool_SignText(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to MoniTool_SignText (mutable)
     pub fn as_moni_tool_sign_text_mut(&mut self) -> &mut crate::moni_tool::SignText {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectDerived_as_MoniTool_SignText_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectDerived_as_MoniTool_SignText_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectDerived_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectDerived_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectDerived_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectDerived_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectDerived> {
-        let __result =
-            unsafe { crate::ffi::STEPSelections_SelectDerived_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectDerived_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepSelect_StepType.hxx`:54 - `StepSelect_StepType::SetProtocol()`
     pub fn set_protocol(&mut self, proto: &crate::ffi::HandleInterfaceProtocol) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_inherited_SetProtocol(
-                    self as *mut Self,
-                    proto,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectDerived_inherited_SetProtocol(self as *mut Self, proto)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_inherited_SetIntCase(
-                    self as *mut Self,
-                    hasmin,
-                    valmin,
-                    hasmax,
-                    valmax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectDerived_inherited_SetIntCase(
+                self as *mut Self,
+                hasmin,
+                valmin,
+                hasmax,
+                valmax,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
@@ -2231,49 +1617,32 @@ impl SelectDerived {
         hasmax: &mut bool,
         valmax: &mut i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_inherited_IsIntCase(
-                    self as *const Self,
-                    hasmin,
-                    valmin,
-                    hasmax,
-                    valmax,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectDerived_inherited_IsIntCase(
+                self as *const Self,
+                hasmin,
+                valmin,
+                hasmax,
+                valmax,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
     pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_inherited_CaseList(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectDerived_inherited_CaseList(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_inherited_Label(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectDerived_inherited_Label(self as *const Self),
+            ))
         }
     }
 
@@ -2283,19 +1652,14 @@ impl SelectDerived {
         ent: &crate::ffi::HandleStandardTransient,
         context: &crate::ffi::HandleStandardTransient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectDerived_inherited_Text(
                     self as *const Self,
                     ent,
                     context,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2304,65 +1668,39 @@ impl SelectDerived {
         &self,
         ent: &crate::ffi::HandleStandardTransient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectDerived_inherited_TextAlone(
                     self as *const Self,
                     ent,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectDerived_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectDerived_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::STEPSelections_SelectDerived_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2373,58 +1711,34 @@ impl SelectDerived {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectDerived_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectDerived_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectDerived_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectDerived_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectDerived_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2439,87 +1753,75 @@ unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectDerived {
 impl HandleSTEPSelectionsSelectDerived {
     /// Dereference this Handle to access the underlying STEPSelections_SelectDerived
     pub fn get(&self) -> &crate::ffi::STEPSelections_SelectDerived {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectDerived_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleSTEPSelectionsSelectDerived_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPSelections_SelectDerived
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPSelections_SelectDerived {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectDerived_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleSTEPSelectionsSelectDerived_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPSelections_SelectDerived> to Handle<StepSelect_StepType>
     pub fn to_handle_step_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStepSelectStepType> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectDerived_to_HandleStepSelectStepType(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectDerived_to_HandleStepSelectStepType(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectDerived> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectDerived_to_HandleIFSelectSignature(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectDerived_to_HandleIFSelectSignature(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectDerived> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectDerived_to_HandleInterfaceSignType(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectDerived_to_HandleInterfaceSignType(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectDerived> to Handle<MoniTool_SignText>
     pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectDerived_to_HandleMoniToolSignText(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectDerived_to_HandleMoniToolSignText(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectDerived> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectDerived_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectDerived_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2540,12 +1842,10 @@ unsafe impl crate::CppDeletable for SelectFaces {
 impl SelectFaces {
     /// **Source:** `STEPSelections_SelectFaces.hxx`:38 - `STEPSelections_SelectFaces::STEPSelections_SelectFaces()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectFaces_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_ctor(),
+            ))
         }
     }
 
@@ -2559,187 +1859,146 @@ impl SelectFaces {
         G: &crate::interface::Graph,
         explored: &mut crate::interface::EntityIterator,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_explore(
-                    self as *const Self,
-                    level,
-                    ent,
-                    G,
-                    explored,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_explore(
+                self as *const Self,
+                level,
+                ent,
+                G,
+                explored,
+            )
+        })
     }
 
     /// **Source:** `STEPSelections_SelectFaces.hxx`:49 - `STEPSelections_SelectFaces::ExploreLabel()`
     /// Returns a text defining the criterium : "Faces"
     pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_explore_label(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_explore_label(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_SelectFaces.hxx`:51 - `STEPSelections_SelectFaces::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_SelectFaces_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_SelectFaces_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPSelections_SelectFaces.hxx`:51 - `STEPSelections_SelectFaces::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectFaces_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `STEPSelections_SelectFaces.hxx`:51 - `STEPSelections_SelectFaces::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectFaces_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_SelectFaces_get_type_descriptor()))
         }
     }
 
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectFaces_as_IFSelect_SelectExplore(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectFaces_as_IFSelect_SelectExplore(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExplore (mutable)
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectFaces_as_IFSelect_SelectExplore_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_as_IFSelect_SelectExplore_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectFaces_as_IFSelect_SelectDeduct(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectFaces_as_IFSelect_SelectDeduct(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectFaces_as_IFSelect_SelectDeduct_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_as_IFSelect_SelectDeduct_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectFaces_as_IFSelect_Selection(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectFaces_as_IFSelect_Selection(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectFaces_as_IFSelect_Selection_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_as_IFSelect_Selection_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectFaces_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectFaces_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectFaces_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectFaces> {
-        let __result = unsafe { crate::ffi::STEPSelections_SelectFaces_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_Level(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_inherited_Level(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
@@ -2747,97 +2006,58 @@ impl SelectFaces {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_RootResult(self as *const Self, G)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_inherited_RootResult(self as *const Self, G),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_Label(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_inherited_Label(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_SetInput(self as *mut Self, sel)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_inherited_SetInput(self as *mut Self, sel)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_Input(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_inherited_Input(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_HasInput(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_inherited_HasInput(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_HasAlternate(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_inherited_HasAlternate(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
     pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_Alternate(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::STEPSelections_SelectFaces_inherited_Alternate(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -2846,31 +2066,21 @@ impl SelectFaces {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_InputResult(self as *const Self, G)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectFaces_inherited_InputResult(
+                    self as *const Self,
+                    G,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_FillIterator(
-                    self as *const Self,
-                    iter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_inherited_FillIterator(self as *const Self, iter)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
@@ -2878,18 +2088,13 @@ impl SelectFaces {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectFaces_inherited_UniqueResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2898,65 +2103,39 @@ impl SelectFaces {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectFaces_inherited_CompleteResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::STEPSelections_SelectFaces_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2967,58 +2146,30 @@ impl SelectFaces {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectFaces_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectFaces_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3033,78 +2184,68 @@ unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectFaces {
 impl HandleSTEPSelectionsSelectFaces {
     /// Dereference this Handle to access the underlying STEPSelections_SelectFaces
     pub fn get(&self) -> &crate::ffi::STEPSelections_SelectFaces {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectFaces_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleSTEPSelectionsSelectFaces_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPSelections_SelectFaces
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPSelections_SelectFaces {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectFaces_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleSTEPSelectionsSelectFaces_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPSelections_SelectFaces> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectFaces_to_HandleIFSelectSelectExplore(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectFaces_to_HandleIFSelectSelectExplore(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectFaces> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectFaces_to_HandleIFSelectSelectDeduct(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectFaces_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectFaces> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectFaces_to_HandleIFSelectSelection(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectFaces_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectFaces> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectFaces_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectFaces_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3124,12 +2265,10 @@ unsafe impl crate::CppDeletable for SelectForTransfer {
 impl SelectForTransfer {
     /// **Source:** `STEPSelections_SelectForTransfer.hxx`:34 - `STEPSelections_SelectForTransfer::STEPSelections_SelectForTransfer()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectForTransfer_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_ctor(),
+            ))
         }
     }
 
@@ -3137,14 +2276,10 @@ impl SelectForTransfer {
     pub fn new_handlexscontroltransferreader(
         TR: &crate::ffi::HandleXSControlTransferReader,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_ctor_handlexscontroltransferreader(TR)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_ctor_handlexscontroltransferreader(TR),
+            ))
         }
     }
 
@@ -3153,252 +2288,194 @@ impl SelectForTransfer {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_root_result(self as *const Self, G)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_root_result(self as *const Self, G),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_SelectForTransfer.hxx`:41 - `STEPSelections_SelectForTransfer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_SelectForTransfer_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPSelections_SelectForTransfer.hxx`:41 - `STEPSelections_SelectForTransfer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectForTransfer_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `STEPSelections_SelectForTransfer.hxx`:41 - `STEPSelections_SelectForTransfer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_SelectForTransfer_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to XSControl_SelectForTransfer
     pub fn as_xs_control_select_for_transfer(&self) -> &crate::xs_control::SelectForTransfer {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectForTransfer_as_XSControl_SelectForTransfer(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_as_XSControl_SelectForTransfer(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to XSControl_SelectForTransfer (mutable)
     pub fn as_xs_control_select_for_transfer_mut(
         &mut self,
     ) -> &mut crate::xs_control::SelectForTransfer {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectForTransfer_as_XSControl_SelectForTransfer_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_as_XSControl_SelectForTransfer_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExtract
     pub fn as_if_select_select_extract(&self) -> &crate::if_select::SelectExtract {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_SelectExtract(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_SelectExtract(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExtract (mutable)
     pub fn as_if_select_select_extract_mut(&mut self) -> &mut crate::if_select::SelectExtract {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_SelectExtract_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_SelectExtract_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_SelectDeduct(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_SelectDeduct(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_SelectDeduct_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_Selection(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_Selection(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_Selection_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_as_IFSelect_Selection_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectForTransfer_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectForTransfer_as_Standard_Transient_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectForTransfer> {
-        let __result =
-            unsafe { crate::ffi::STEPSelections_SelectForTransfer_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `XSControl_SelectForTransfer.hxx`:61 - `XSControl_SelectForTransfer::SetReader()`
     pub fn set_reader(&mut self, TR: &crate::ffi::HandleXSControlTransferReader) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_SetReader(
-                    self as *mut Self,
-                    TR,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_SetReader(self as *mut Self, TR)
+        })
     }
 
     /// Inherited: **Source:** `XSControl_SelectForTransfer.hxx`:65 - `XSControl_SelectForTransfer::SetActor()`
     pub fn set_actor(&mut self, act: &crate::ffi::HandleTransferActorOfTransientProcess) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_SetActor(
-                    self as *mut Self,
-                    act,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_SetActor(self as *mut Self, act)
+        })
     }
 
     /// Inherited: **Source:** `XSControl_SelectForTransfer.hxx`:70 - `XSControl_SelectForTransfer::Actor()`
     pub fn actor(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_Actor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_inherited_Actor(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `XSControl_SelectForTransfer.hxx`:74 - `XSControl_SelectForTransfer::Reader()`
     pub fn reader(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlTransferReader> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_Reader(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_inherited_Reader(self as *const Self),
+            ))
         }
     }
 
@@ -3409,66 +2486,42 @@ impl SelectForTransfer {
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_Sort(
-                    self as *const Self,
-                    rank,
-                    ent,
-                    model,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_Sort(
+                self as *const Self,
+                rank,
+                ent,
+                model,
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_SelectForTransfer.hxx`:84 - `XSControl_SelectForTransfer::ExtractLabel()`
     pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectForTransfer_inherited_ExtractLabel(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_IsDirect(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_IsDirect(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_SetDirect(
-                    self as *mut Self,
-                    direct,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_SetDirect(
+                self as *mut Self,
+                direct,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
@@ -3478,107 +2531,61 @@ impl SelectForTransfer {
         ent: &crate::ffi::HandleStandardTransient,
         G: &crate::interface::Graph,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_SortInGraph(
-                    self as *const Self,
-                    rank,
-                    ent,
-                    G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_SortInGraph(
+                self as *const Self,
+                rank,
+                ent,
+                G,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_Label(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_inherited_Label(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_SetInput(
-                    self as *mut Self,
-                    sel,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_SetInput(self as *mut Self, sel)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_Input(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_inherited_Input(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_HasInput(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_HasInput(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_HasAlternate(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_HasAlternate(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
     pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_Alternate(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::STEPSelections_SelectForTransfer_inherited_Alternate(self as *mut Self),
+            ))
         }
     }
 
@@ -3587,34 +2594,24 @@ impl SelectForTransfer {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectForTransfer_inherited_InputResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_FillIterator(
-                    self as *const Self,
-                    iter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_FillIterator(
+                self as *const Self,
+                iter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
@@ -3622,18 +2619,13 @@ impl SelectForTransfer {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectForTransfer_inherited_UniqueResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -3642,65 +2634,42 @@ impl SelectForTransfer {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectForTransfer_inherited_CompleteResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::STEPSelections_SelectForTransfer_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3711,60 +2680,34 @@ impl SelectForTransfer {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_GetRefCount(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectForTransfer_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectForTransfer_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3779,93 +2722,77 @@ unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectForTransfer {
 impl HandleSTEPSelectionsSelectForTransfer {
     /// Dereference this Handle to access the underlying STEPSelections_SelectForTransfer
     pub fn get(&self) -> &crate::ffi::STEPSelections_SelectForTransfer {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectForTransfer_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleSTEPSelectionsSelectForTransfer_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPSelections_SelectForTransfer
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPSelections_SelectForTransfer {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectForTransfer_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleSTEPSelectionsSelectForTransfer_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPSelections_SelectForTransfer> to Handle<XSControl_SelectForTransfer>
     pub fn to_handle_select_for_transfer(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleXSControlSelectForTransfer> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectForTransfer_to_HandleXSControlSelectForTransfer(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleSTEPSelectionsSelectForTransfer_to_HandleXSControlSelectForTransfer(self as *const Self)))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectForTransfer> to Handle<IFSelect_SelectExtract>
     pub fn to_handle_select_extract(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectForTransfer_to_HandleIFSelectSelectExtract(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectForTransfer_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectForTransfer> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectForTransfer_to_HandleIFSelectSelectDeduct(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectForTransfer_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectForTransfer> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectForTransfer_to_HandleIFSelectSelection(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectForTransfer_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectForTransfer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectForTransfer_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectForTransfer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3886,12 +2813,10 @@ unsafe impl crate::CppDeletable for SelectGSCurves {
 impl SelectGSCurves {
     /// **Source:** `STEPSelections_SelectGSCurves.hxx`:38 - `STEPSelections_SelectGSCurves::STEPSelections_SelectGSCurves()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectGSCurves_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_ctor(),
+            ))
         }
     }
 
@@ -3903,194 +2828,154 @@ impl SelectGSCurves {
         G: &crate::interface::Graph,
         explored: &mut crate::interface::EntityIterator,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_explore(
-                    self as *const Self,
-                    level,
-                    ent,
-                    G,
-                    explored,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_explore(
+                self as *const Self,
+                level,
+                ent,
+                G,
+                explored,
+            )
+        })
     }
 
     /// **Source:** `STEPSelections_SelectGSCurves.hxx`:47 - `STEPSelections_SelectGSCurves::ExploreLabel()`
     /// Returns a text defining the criterium : "Curves"
     pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_explore_label(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_explore_label(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_SelectGSCurves.hxx`:49 - `STEPSelections_SelectGSCurves::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_SelectGSCurves_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPSelections_SelectGSCurves.hxx`:49 - `STEPSelections_SelectGSCurves::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectGSCurves_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `STEPSelections_SelectGSCurves.hxx`:49 - `STEPSelections_SelectGSCurves::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_SelectGSCurves_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_SelectGSCurves_get_type_descriptor()))
         }
     }
 
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_SelectExplore(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_SelectExplore(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExplore (mutable)
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_SelectExplore_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_SelectExplore_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_SelectDeduct(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_SelectDeduct(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_SelectDeduct_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_Selection(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_Selection(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_Selection_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_as_IFSelect_Selection_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectGSCurves_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectGSCurves_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectGSCurves_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectGSCurves> {
-        let __result =
-            unsafe { crate::ffi::STEPSelections_SelectGSCurves_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_Level(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_inherited_Level(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
@@ -4098,102 +2983,61 @@ impl SelectGSCurves {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectGSCurves_inherited_RootResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_Label(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_inherited_Label(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_SetInput(self as *mut Self, sel)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_inherited_SetInput(self as *mut Self, sel)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_Input(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_inherited_Input(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_HasInput(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_inherited_HasInput(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_HasAlternate(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_inherited_HasAlternate(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
     pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_Alternate(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::STEPSelections_SelectGSCurves_inherited_Alternate(self as *mut Self),
+            ))
         }
     }
 
@@ -4202,34 +3046,24 @@ impl SelectGSCurves {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectGSCurves_inherited_InputResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_FillIterator(
-                    self as *const Self,
-                    iter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_inherited_FillIterator(
+                self as *const Self,
+                iter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
@@ -4237,18 +3071,13 @@ impl SelectGSCurves {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectGSCurves_inherited_UniqueResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -4257,65 +3086,39 @@ impl SelectGSCurves {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectGSCurves_inherited_CompleteResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::STEPSelections_SelectGSCurves_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -4326,58 +3129,34 @@ impl SelectGSCurves {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectGSCurves_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectGSCurves_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -4392,78 +3171,68 @@ unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectGSCurves {
 impl HandleSTEPSelectionsSelectGSCurves {
     /// Dereference this Handle to access the underlying STEPSelections_SelectGSCurves
     pub fn get(&self) -> &crate::ffi::STEPSelections_SelectGSCurves {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectGSCurves_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleSTEPSelectionsSelectGSCurves_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPSelections_SelectGSCurves
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPSelections_SelectGSCurves {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectGSCurves_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleSTEPSelectionsSelectGSCurves_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPSelections_SelectGSCurves> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectGSCurves_to_HandleIFSelectSelectExplore(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectGSCurves_to_HandleIFSelectSelectExplore(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectGSCurves> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectGSCurves_to_HandleIFSelectSelectDeduct(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectGSCurves_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectGSCurves> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectGSCurves_to_HandleIFSelectSelection(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectGSCurves_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectGSCurves> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectGSCurves_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectGSCurves_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4483,12 +3252,10 @@ unsafe impl crate::CppDeletable for SelectInstances {
 impl SelectInstances {
     /// **Source:** `STEPSelections_SelectInstances.hxx`:37 - `STEPSelections_SelectInstances::STEPSelections_SelectInstances()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectInstances_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_ctor(),
+            ))
         }
     }
 
@@ -4497,15 +3264,10 @@ impl SelectInstances {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_root_result(self as *const Self, G)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_root_result(self as *const Self, G),
+            ))
         }
     }
 
@@ -4517,282 +3279,201 @@ impl SelectInstances {
         G: &crate::interface::Graph,
         explored: &mut crate::interface::EntityIterator,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_explore(
-                    self as *const Self,
-                    level,
-                    ent,
-                    G,
-                    explored,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_explore(
+                self as *const Self,
+                level,
+                ent,
+                G,
+                explored,
+            )
+        })
     }
 
     /// **Source:** `STEPSelections_SelectInstances.hxx`:49 - `STEPSelections_SelectInstances::ExploreLabel()`
     /// Returns a text defining the criterium : "Instances"
     pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_explore_label(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_explore_label(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPSelections_SelectInstances.hxx`:51 - `STEPSelections_SelectInstances::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_SelectInstances_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPSelections_SelectInstances.hxx`:51 - `STEPSelections_SelectInstances::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::STEPSelections_SelectInstances_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `STEPSelections_SelectInstances.hxx`:51 - `STEPSelections_SelectInstances::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPSelections_SelectInstances_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPSelections_SelectInstances_get_type_descriptor()))
         }
     }
 
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectInstances_as_IFSelect_SelectExplore(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_as_IFSelect_SelectExplore(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExplore (mutable)
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectInstances_as_IFSelect_SelectExplore_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_as_IFSelect_SelectExplore_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectInstances_as_IFSelect_SelectDeduct(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_as_IFSelect_SelectDeduct(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectInstances_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_as_IFSelect_SelectDeduct_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectInstances_as_IFSelect_Selection(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectInstances_as_IFSelect_Selection(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectInstances_as_IFSelect_Selection_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_as_IFSelect_Selection_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectInstances_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPSelections_SelectInstances_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::STEPSelections_SelectInstances_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectInstances> {
-        let __result =
-            unsafe { crate::ffi::STEPSelections_SelectInstances_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_Level(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_inherited_Level(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_Label(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_inherited_Label(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_SetInput(
-                    self as *mut Self,
-                    sel,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_inherited_SetInput(self as *mut Self, sel)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_Input(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_inherited_Input(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_HasInput(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_inherited_HasInput(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_HasAlternate(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_inherited_HasAlternate(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
     pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_Alternate(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::STEPSelections_SelectInstances_inherited_Alternate(self as *mut Self),
+            ))
         }
     }
 
@@ -4801,34 +3482,24 @@ impl SelectInstances {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectInstances_inherited_InputResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_FillIterator(
-                    self as *const Self,
-                    iter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_inherited_FillIterator(
+                self as *const Self,
+                iter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
@@ -4836,18 +3507,13 @@ impl SelectInstances {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectInstances_inherited_UniqueResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -4856,65 +3522,42 @@ impl SelectInstances {
         &self,
         G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPSelections_SelectInstances_inherited_CompleteResult(
                     self as *const Self,
                     G,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::STEPSelections_SelectInstances_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -4925,60 +3568,34 @@ impl SelectInstances {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_GetRefCount(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPSelections_SelectInstances_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPSelections_SelectInstances_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -4993,78 +3610,68 @@ unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectInstances {
 impl HandleSTEPSelectionsSelectInstances {
     /// Dereference this Handle to access the underlying STEPSelections_SelectInstances
     pub fn get(&self) -> &crate::ffi::STEPSelections_SelectInstances {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectInstances_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleSTEPSelectionsSelectInstances_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPSelections_SelectInstances
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPSelections_SelectInstances {
-        let __result =
-            unsafe { crate::ffi::HandleSTEPSelectionsSelectInstances_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleSTEPSelectionsSelectInstances_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPSelections_SelectInstances> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectInstances_to_HandleIFSelectSelectExplore(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectInstances_to_HandleIFSelectSelectExplore(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectInstances> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectInstances_to_HandleIFSelectSelectDeduct(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectInstances_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectInstances> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectInstances_to_HandleIFSelectSelection(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectInstances_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPSelections_SelectInstances> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleSTEPSelectionsSelectInstances_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleSTEPSelectionsSelectInstances_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

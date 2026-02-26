@@ -31,12 +31,8 @@ impl ComputeData {
     /// **Source:** `ChFiKPart_ComputeData.hxx` - `ChFiKPart_ComputeData::ChFiKPart_ComputeData()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::ChFiKPart_ComputeData_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiKPart_ComputeData_ctor()))
         }
     }
 
@@ -53,25 +49,18 @@ impl ComputeData {
         Sp: &crate::ffi::HandleChFiDSSpine,
         Iedge: i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ChFiKPart_ComputeData_compute(
-                    DStr,
-                    Data,
-                    S1,
-                    S2,
-                    Or1.into(),
-                    Or2.into(),
-                    Sp,
-                    Iedge,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ChFiKPart_ComputeData_compute(
+                DStr,
+                Data,
+                S1,
+                S2,
+                Or1.into(),
+                Or2.into(),
+                Sp,
+                Iedge,
+            )
+        })
     }
 
     /// **Source:** `ChFiKPart_ComputeData.hxx`:53 - `ChFiKPart_ComputeData::ComputeCorner()`
@@ -92,16 +81,9 @@ impl ComputeData {
         P1S2: &crate::gp::Pnt2d,
         P2S2: &crate::gp::Pnt2d,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real2_pnt2d4(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), minRad, majRad, P1S1, P2S1, P1S2, P2S2)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real2_pnt2d4(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), minRad, majRad, P1S1, P2S1, P1S2, P2S2)
+        })
     }
 
     /// **Source:** `ChFiKPart_ComputeData.hxx`:69 - `ChFiKPart_ComputeData::ComputeCorner()`
@@ -120,16 +102,9 @@ impl ComputeData {
         P1S2: &crate::gp::Pnt2d,
         P2S2: &crate::gp::Pnt2d,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real_pnt2d3(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), Rad, PS1, P1S2, P2S2)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real_pnt2d3(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), Rad, PS1, P1S2, P2S2)
+        })
     }
 
     /// **Source:** `ChFiKPart_ComputeData.hxx`:83 - `ChFiKPart_ComputeData::ComputeCorner()`
@@ -146,15 +121,8 @@ impl ComputeData {
         OS2: crate::top_abs::Orientation,
         Radius: f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface3_orientation4_real(DStr, Data, S, S1, S2, OfS.into(), OS.into(), OS1.into(), OS2.into(), Radius)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface3_orientation4_real(DStr, Data, S, S1, S2, OfS.into(), OS.into(), OS1.into(), OS2.into(), Radius)
+        })
     }
 }

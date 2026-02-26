@@ -24,13 +24,8 @@
 /// Geom2dGcc_QualifiedCurve
 /// myQCurve = Geom2dGcc::Unqualified(Obj);
 pub fn unqualified_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
-    {
-        let __result = unsafe { crate::ffi::Geom2dGcc_unqualified_curve(Obj) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_unqualified_curve(Obj)))
     }
 }
 /// **Source:** `Geom2dGcc.hxx`:78 - `Geom2dGcc::Enclosing`
@@ -50,13 +45,8 @@ pub fn unqualified_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<
 /// Geom2dGcc_QualifiedCurve
 /// myQCurve = Geom2dGcc::Enclosing(Obj);
 pub fn enclosing_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
-    {
-        let __result = unsafe { crate::ffi::Geom2dGcc_enclosing_curve(Obj) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_enclosing_curve(Obj)))
     }
 }
 /// **Source:** `Geom2dGcc.hxx`:95 - `Geom2dGcc::Enclosed`
@@ -76,13 +66,8 @@ pub fn enclosing_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<Qu
 /// Geom2dGcc_QualifiedCurve
 /// myQCurve = Geom2dGcc::Enclosed(Obj);
 pub fn enclosed_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
-    {
-        let __result = unsafe { crate::ffi::Geom2dGcc_enclosed_curve(Obj) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_enclosed_curve(Obj)))
     }
 }
 /// **Source:** `Geom2dGcc.hxx`:112 - `Geom2dGcc::Outside`
@@ -102,13 +87,8 @@ pub fn enclosed_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<Qua
 /// Geom2dGcc_QualifiedCurve
 /// myQCurve = Geom2dGcc::Outside(Obj);
 pub fn outside_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
-    {
-        let __result = unsafe { crate::ffi::Geom2dGcc_outside_curve(Obj) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_outside_curve(Obj)))
     }
 }
 
@@ -263,16 +243,12 @@ impl Circ2d2TanOn {
         Param2: f64,
         ParamOn: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOn_ctor_qualifiedcurve2_curve_real4(
                     Qualified1, Qualified2, OnCurve, Tolerance, Param1, Param2, ParamOn,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -291,16 +267,8 @@ impl Circ2d2TanOn {
         Param1: f64,
         ParamOn: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_ctor_qualifiedcurve_handlegeom2dpoint_curve_real3(
-                    Qualified1, Point, OnCurve, Tolerance, Param1, ParamOn,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_Circ2d2TanOn_ctor_qualifiedcurve_handlegeom2dpoint_curve_real3(Qualified1, Point, OnCurve, Tolerance, Param1, ParamOn)))
         }
     }
 
@@ -315,41 +283,27 @@ impl Circ2d2TanOn {
         OnCurve: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOn_ctor_handlegeom2dpoint2_curve_real(
                     Point1, Point2, OnCurve, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:92 - `Geom2dGcc_Circ2d2TanOn::Results()`
     pub fn results_circ2d2tanon(&mut self, Circ: &crate::gcc_ana::Circ2d2TanOn) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanon(self as *mut Self, Circ)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanon(self as *mut Self, Circ)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:94 - `Geom2dGcc_Circ2d2TanOn::Results()`
     pub fn results_circ2d2tanongeo(&mut self, Circ: &Circ2d2TanOnGeo) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanongeo(self as *mut Self, Circ)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanongeo(self as *mut Self, Circ)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:101 - `Geom2dGcc_Circ2d2TanOn::IsDone()`
@@ -359,30 +313,18 @@ impl Circ2d2TanOn {
     /// more internal intersection algorithm, which has
     /// reached its numeric limits.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d2TanOn_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOn_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:105 - `Geom2dGcc_Circ2d2TanOn::NbSolutions()`
     /// This method returns the number of solutions.
     /// NotDone is raised if the algorithm failed.
     pub fn nb_solutions(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d2TanOn_nb_solutions(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOn_nb_solutions(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:117 - `Geom2dGcc_Circ2d2TanOn::ThisSolution()`
@@ -397,15 +339,10 @@ impl Circ2d2TanOn {
     /// computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_this_solution(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Circ2d2TanOn_this_solution(self as *const Self, Index),
+            ))
         }
     }
 
@@ -428,19 +365,14 @@ impl Circ2d2TanOn {
     ) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_which_qualifier(
-                    self as *const Self,
-                    Index,
-                    &mut Qualif1_i32_,
-                    &mut Qualif2_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOn_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
@@ -457,20 +389,15 @@ impl Circ2d2TanOn {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_tangency1(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOn_tangency1(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:146 - `Geom2dGcc_Circ2d2TanOn::Tangency2()`
@@ -485,20 +412,15 @@ impl Circ2d2TanOn {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_tangency2(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOn_tangency2(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:158 - `Geom2dGcc_Circ2d2TanOn::CenterOn3()`
@@ -510,19 +432,14 @@ impl Circ2d2TanOn {
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_center_on3(
-                    self as *const Self,
-                    Index,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOn_center_on3(
+                self as *const Self,
+                Index,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:175 - `Geom2dGcc_Circ2d2TanOn::IsTheSame1()`
@@ -540,16 +457,9 @@ impl Circ2d2TanOn {
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
     pub fn is_the_same1(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_is_the_same1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOn_is_the_same1(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:190 - `Geom2dGcc_Circ2d2TanOn::IsTheSame2()`
@@ -567,16 +477,9 @@ impl Circ2d2TanOn {
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
     pub fn is_the_same2(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_is_the_same2(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOn_is_the_same2(self as *const Self, Index)
+        })
     }
 }
 
@@ -615,16 +518,12 @@ impl Circ2d2TanOnGeo {
         OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedcirc2_curve_real(
                     Qualified1, Qualified2, OnCurv, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -638,16 +537,12 @@ impl Circ2d2TanOnGeo {
         OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedcirc_qualifiedlin_curve_real(
                     Qualified1, Qualified2, OnCurv, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -661,16 +556,12 @@ impl Circ2d2TanOnGeo {
         OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedcirc_pnt2d_curve_real(
                     Qualified1, Point2, OnCurv, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -684,16 +575,12 @@ impl Circ2d2TanOnGeo {
         OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedlin2_curve_real(
                     Qualified1, Qualified2, OnCurv, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -707,16 +594,12 @@ impl Circ2d2TanOnGeo {
         OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedlin_pnt2d_curve_real(
                     Qualified1, Qualified2, OnCurv, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -730,16 +613,12 @@ impl Circ2d2TanOnGeo {
         OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_pnt2d2_curve_real(
                     Point1, Point2, OnCurv, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -747,15 +626,9 @@ impl Circ2d2TanOnGeo {
     /// This method returns True if the construction
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:107 - `Geom2dGcc_Circ2d2TanOnGeo::NbSolutions()`
@@ -763,15 +636,9 @@ impl Circ2d2TanOnGeo {
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_nb_solutions(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_nb_solutions(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:118 - `Geom2dGcc_Circ2d2TanOnGeo::ThisSolution()`
@@ -785,15 +652,10 @@ impl Circ2d2TanOnGeo {
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_this_solution(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_this_solution(self as *const Self, Index),
+            ))
         }
     }
 
@@ -812,19 +674,14 @@ impl Circ2d2TanOnGeo {
     ) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_which_qualifier(
-                    self as *const Self,
-                    Index,
-                    &mut Qualif1_i32_,
-                    &mut Qualif2_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
@@ -849,20 +706,15 @@ impl Circ2d2TanOnGeo {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_tangency1(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_tangency1(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:159 - `Geom2dGcc_Circ2d2TanOnGeo::Tangency2()`
@@ -885,20 +737,15 @@ impl Circ2d2TanOnGeo {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_tangency2(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_tangency2(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:173 - `Geom2dGcc_Circ2d2TanOnGeo::CenterOn3()`
@@ -912,19 +759,14 @@ impl Circ2d2TanOnGeo {
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_center_on3(
-                    self as *const Self,
-                    Index,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_center_on3(
+                self as *const Self,
+                Index,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:183 - `Geom2dGcc_Circ2d2TanOnGeo::IsTheSame1()`
@@ -935,16 +777,9 @@ impl Circ2d2TanOnGeo {
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
     pub fn is_the_same1(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_is_the_same1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_is_the_same1(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:191 - `Geom2dGcc_Circ2d2TanOnGeo::IsTheSame2()`
@@ -955,16 +790,9 @@ impl Circ2d2TanOnGeo {
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
     pub fn is_the_same2(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_is_the_same2(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_is_the_same2(self as *const Self, Index)
+        })
     }
 }
 
@@ -1008,16 +836,12 @@ impl Circ2d2TanOnIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedcirc_qcurve_lin2d_real4(
                     Qualified1, Qualified2, OnLine, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1036,16 +860,12 @@ impl Circ2d2TanOnIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedlin_qcurve_lin2d_real4(
                     Qualified1, Qualified2, OnLine, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1065,16 +885,12 @@ impl Circ2d2TanOnIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve2_lin2d_real4(
                     Qualified1, Qualified2, OnLine, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1092,16 +908,12 @@ impl Circ2d2TanOnIter {
         Param2: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve_pnt2d_lin2d_real3(
                     Qualified1, Point2, OnLine, Param1, Param2, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1120,16 +932,12 @@ impl Circ2d2TanOnIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedcirc_qcurve_circ2d_real4(
                     Qualified1, Qualified2, OnCirc, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1148,16 +956,12 @@ impl Circ2d2TanOnIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedlin_qcurve_circ2d_real4(
                     Qualified1, Qualified2, OnCirc, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1177,16 +981,12 @@ impl Circ2d2TanOnIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve2_circ2d_real4(
                     Qualified1, Qualified2, OnCirc, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1204,16 +1004,12 @@ impl Circ2d2TanOnIter {
         Param2: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve_pnt2d_circ2d_real3(
                     Qualified1, Point2, OnCirc, Param1, Param2, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1233,16 +1029,12 @@ impl Circ2d2TanOnIter {
         ParamOn: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedcirc_qcurve_curve_real4(
                     Qualified1, Qualified2, OnCurv, Param1, Param2, ParamOn, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1262,16 +1054,12 @@ impl Circ2d2TanOnIter {
         ParamOn: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedlin_qcurve_curve_real4(
                     Qualified1, Qualified2, OnCurve, Param1, Param2, ParamOn, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1290,16 +1078,12 @@ impl Circ2d2TanOnIter {
         ParamOn: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve_pnt2d_curve_real3(
                     Qualified1, Point2, OnCurve, Param1, ParamOn, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1320,16 +1104,12 @@ impl Circ2d2TanOnIter {
         ParamOn: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve2_curve_real4(
                     Qualified1, Qualified2, OnCurve, Param1, Param2, ParamOn, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1337,15 +1117,9 @@ impl Circ2d2TanOnIter {
     /// This method returns True if the construction
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d2TanOnIter_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:215 - `Geom2dGcc_Circ2d2TanOnIter::ThisSolution()`
@@ -1353,15 +1127,10 @@ impl Circ2d2TanOnIter {
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_this_solution(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_this_solution(self as *const Self),
+            ))
         }
     }
 
@@ -1373,18 +1142,13 @@ impl Circ2d2TanOnIter {
     ) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_which_qualifier(
-                    self as *const Self,
-                    &mut Qualif1_i32_,
-                    &mut Qualif2_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_which_qualifier(
+                self as *const Self,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
@@ -1399,19 +1163,14 @@ impl Circ2d2TanOnIter {
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_tangency1(
-                    self as *const Self,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_tangency1(
+                self as *const Self,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:239 - `Geom2dGcc_Circ2d2TanOnIter::Tangency2()`
@@ -1424,19 +1183,14 @@ impl Circ2d2TanOnIter {
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_tangency2(
-                    self as *const Self,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_tangency2(
+                self as *const Self,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:247 - `Geom2dGcc_Circ2d2TanOnIter::CenterOn3()`
@@ -1445,48 +1199,27 @@ impl Circ2d2TanOnIter {
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn center_on3(&self, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_center_on3(
-                    self as *const Self,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_center_on3(self as *const Self, ParArg, PntSol)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:251 - `Geom2dGcc_Circ2d2TanOnIter::IsTheSame1()`
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn is_the_same1(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d2TanOnIter_is_the_same1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_is_the_same1(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:255 - `Geom2dGcc_Circ2d2TanOnIter::IsTheSame2()`
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn is_the_same2(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d2TanOnIter_is_the_same2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_is_the_same2(self as *const Self)
+        })
     }
 }
 
@@ -1532,16 +1265,12 @@ impl Circ2d2TanRad {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanRad_ctor_qualifiedcurve2_real2(
                     Qualified1, Qualified2, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1552,16 +1281,12 @@ impl Circ2d2TanRad {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanRad_ctor_qualifiedcurve_handlegeom2dpoint_real2(
                     Qualified1, Point, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1595,44 +1320,27 @@ impl Circ2d2TanRad {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanRad_ctor_handlegeom2dpoint2_real2(
                     Point1, Point2, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:102 - `Geom2dGcc_Circ2d2TanRad::Results()`
     pub fn results_circ2d2tanrad(&mut self, Circ: &crate::gcc_ana::Circ2d2TanRad) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanrad(self as *mut Self, Circ)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanrad(self as *mut Self, Circ)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:104 - `Geom2dGcc_Circ2d2TanRad::Results()`
     pub fn results_circ2d2tanradgeo(&mut self, Circ: &Circ2d2TanRadGeo) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanradgeo(
-                    self as *mut Self,
-                    Circ,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanradgeo(self as *mut Self, Circ)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:109 - `Geom2dGcc_Circ2d2TanRad::IsDone()`
@@ -1640,15 +1348,9 @@ impl Circ2d2TanRad {
     /// Note: IsDone protects against a failure arising from a
     /// more internal intersection algorithm, which has reached its numeric limits.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d2TanRad_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRad_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:115 - `Geom2dGcc_Circ2d2TanRad::NbSolutions()`
@@ -1657,15 +1359,9 @@ impl Circ2d2TanRad {
     /// Exceptions
     /// StdFail_NotDone if the construction fails.
     pub fn nb_solutions(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d2TanRad_nb_solutions(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRad_nb_solutions(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:129 - `Geom2dGcc_Circ2d2TanRad::ThisSolution()`
@@ -1682,15 +1378,10 @@ impl Circ2d2TanRad {
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_this_solution(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Circ2d2TanRad_this_solution(self as *const Self, Index),
+            ))
         }
     }
 
@@ -1720,19 +1411,14 @@ impl Circ2d2TanRad {
     ) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_which_qualifier(
-                    self as *const Self,
-                    Index,
-                    &mut Qualif1_i32_,
-                    &mut Qualif2_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRad_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
@@ -1751,20 +1437,15 @@ impl Circ2d2TanRad {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_tangency1(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRad_tangency1(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:169 - `Geom2dGcc_Circ2d2TanRad::Tangency2()`
@@ -1781,20 +1462,15 @@ impl Circ2d2TanRad {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_tangency2(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRad_tangency2(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:185 - `Geom2dGcc_Circ2d2TanRad::IsTheSame1()`
@@ -1810,16 +1486,9 @@ impl Circ2d2TanRad {
     /// OutOfRange is raised if Index is greater than the number of solutions.
     /// notDone is raised if the construction algorithm did not succeed.
     pub fn is_the_same1(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_is_the_same1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRad_is_the_same1(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:198 - `Geom2dGcc_Circ2d2TanRad::IsTheSame2()`
@@ -1835,16 +1504,9 @@ impl Circ2d2TanRad {
     /// OutOfRange is raised if Index is greater than the number of solutions.
     /// notDone is raised if the construction algorithm did not succeed.
     pub fn is_the_same2(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_is_the_same2(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRad_is_the_same2(self as *const Self, Index)
+        })
     }
 }
 
@@ -1894,16 +1556,12 @@ impl Circ2d2TanRadGeo {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_ctor_qualifiedcirc_qcurve_real2(
                     Qualified1, Qualified2, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1918,16 +1576,12 @@ impl Circ2d2TanRadGeo {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_ctor_qualifiedlin_qcurve_real2(
                     Qualified1, Qualified2, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1942,16 +1596,12 @@ impl Circ2d2TanRadGeo {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_ctor_qcurve2_real2(
                     Qualified1, Qualified2, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1966,46 +1616,30 @@ impl Circ2d2TanRadGeo {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_ctor_qcurve_pnt2d_real2(
                     Qualified1, Point2, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:99 - `Geom2dGcc_Circ2d2TanRadGeo::IsDone()`
     /// This method returns True if the algorithm succeeded.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:103 - `Geom2dGcc_Circ2d2TanRadGeo::NbSolutions()`
     /// This method returns the number of solutions.
     /// It raises NotDone if the algorithm failed.
     pub fn nb_solutions(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_nb_solutions(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_nb_solutions(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:113 - `Geom2dGcc_Circ2d2TanRadGeo::ThisSolution()`
@@ -2018,15 +1652,10 @@ impl Circ2d2TanRadGeo {
     /// It raises NotDone if the construction algorithm did not
     /// succeed.
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_this_solution(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_this_solution(self as *const Self, Index),
+            ))
         }
     }
 
@@ -2044,19 +1673,14 @@ impl Circ2d2TanRadGeo {
     ) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_which_qualifier(
-                    self as *const Self,
-                    Index,
-                    &mut Qualif1_i32_,
-                    &mut Qualif2_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
@@ -2078,20 +1702,15 @@ impl Circ2d2TanRadGeo {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_tangency1(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_tangency1(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:148 - `Geom2dGcc_Circ2d2TanRadGeo::Tangency2()`
@@ -2112,20 +1731,15 @@ impl Circ2d2TanRadGeo {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_tangency2(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_tangency2(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:159 - `Geom2dGcc_Circ2d2TanRadGeo::IsTheSame1()`
@@ -2136,16 +1750,9 @@ impl Circ2d2TanRadGeo {
     /// It raises NotDone if the construction algorithm did not
     /// succeed.
     pub fn is_the_same1(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_is_the_same1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_is_the_same1(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:167 - `Geom2dGcc_Circ2d2TanRadGeo::IsTheSame2()`
@@ -2156,16 +1763,9 @@ impl Circ2d2TanRadGeo {
     /// It raises NotDone if the construction algorithm did not
     /// succeed.
     pub fn is_the_same2(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_is_the_same2(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_is_the_same2(self as *const Self, Index)
+        })
     }
 }
 
@@ -2220,16 +1820,12 @@ impl Circ2d3Tan {
         Param2: f64,
         Param3: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3Tan_ctor_qualifiedcurve3_real4(
                     Qualified1, Qualified2, Qualified3, Tolerance, Param1, Param2, Param3,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2252,16 +1848,12 @@ impl Circ2d3Tan {
         Param1: f64,
         Param2: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3Tan_ctor_qualifiedcurve2_handlegeom2dpoint_real3(
                     Qualified1, Qualified2, Point, Tolerance, Param1, Param2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2280,16 +1872,12 @@ impl Circ2d3Tan {
         Tolerance: f64,
         Param1: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3Tan_ctor_qualifiedcurve_handlegeom2dpoint2_real2(
                     Qualified1, Point1, Point2, Tolerance, Param1,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2323,16 +1911,12 @@ impl Circ2d3Tan {
         Point3: &crate::ffi::HandleGeom2dPoint,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3Tan_ctor_handlegeom2dpoint3_real(
                     Point1, Point2, Point3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2344,20 +1928,9 @@ impl Circ2d3Tan {
         Rank2: i32,
         Rank3: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3Tan_results(
-                    self as *mut Self,
-                    Circ,
-                    Rank1,
-                    Rank2,
-                    Rank3,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3Tan_results(self as *mut Self, Circ, Rank1, Rank2, Rank3)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:143 - `Geom2dGcc_Circ2d3Tan::IsDone()`
@@ -2365,29 +1938,18 @@ impl Circ2d3Tan {
     /// Note: IsDone protects against a failure arising from a
     /// more internal intersection algorithm, which has reached its numeric limits.
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_Circ2d3Tan_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3Tan_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:147 - `Geom2dGcc_Circ2d3Tan::NbSolutions()`
     /// This method returns the number of solutions.
     /// NotDone is raised if the algorithm failed.
     pub fn nb_solutions(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d3Tan_nb_solutions(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3Tan_nb_solutions(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:154 - `Geom2dGcc_Circ2d3Tan::ThisSolution()`
@@ -2397,15 +1959,10 @@ impl Circ2d3Tan {
     /// solutions, but is not associated to these outside the context
     /// of the algorithm-object.
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3Tan_this_solution(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Circ2d3Tan_this_solution(self as *const Self, Index),
+            ))
         }
     }
 
@@ -2425,20 +1982,15 @@ impl Circ2d3Tan {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         let mut Qualif3_i32_: i32 = (*Qualif3).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3Tan_which_qualifier(
-                    self as *const Self,
-                    Index,
-                    &mut Qualif1_i32_,
-                    &mut Qualif2_i32_,
-                    &mut Qualif3_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3Tan_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+                &mut Qualif3_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
         *Qualif3 = crate::gcc_ent::Position::try_from(Qualif3_i32_).unwrap();
@@ -2456,20 +2008,15 @@ impl Circ2d3Tan {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3Tan_tangency1(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3Tan_tangency1(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:179 - `Geom2dGcc_Circ2d3Tan::Tangency2()`
@@ -2484,20 +2031,15 @@ impl Circ2d3Tan {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3Tan_tangency2(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3Tan_tangency2(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:188 - `Geom2dGcc_Circ2d3Tan::Tangency3()`
@@ -2512,50 +2054,31 @@ impl Circ2d3Tan {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3Tan_tangency3(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3Tan_tangency3(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:194 - `Geom2dGcc_Circ2d3Tan::IsTheSame1()`
     /// Returns True if the solution is equal to the first argument.
     pub fn is_the_same1(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3Tan_is_the_same1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3Tan_is_the_same1(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:197 - `Geom2dGcc_Circ2d3Tan::IsTheSame2()`
     /// Returns True if the solution is equal to the second argument.
     pub fn is_the_same2(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3Tan_is_the_same2(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3Tan_is_the_same2(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:210 - `Geom2dGcc_Circ2d3Tan::IsTheSame3()`
@@ -2571,16 +2094,9 @@ impl Circ2d3Tan {
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
     pub fn is_the_same3(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3Tan_is_the_same3(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3Tan_is_the_same3(self as *const Self, Index)
+        })
     }
 }
 
@@ -2618,16 +2134,12 @@ impl Circ2d3TanIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc2_qcurve_real4(
                     Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2643,16 +2155,12 @@ impl Circ2d3TanIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc_qcurve2_real4(
                     Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2669,16 +2177,12 @@ impl Circ2d3TanIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc_qualifiedlin_qcurve_real4(
                     Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2694,16 +2198,12 @@ impl Circ2d3TanIter {
         Param2: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc_qcurve_pnt2d_real3(
                     Qualified1, Qualified2, Point3, Param1, Param2, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2719,16 +2219,12 @@ impl Circ2d3TanIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedlin2_qcurve_real4(
                     Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2744,16 +2240,12 @@ impl Circ2d3TanIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedlin_qcurve2_real4(
                     Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2769,16 +2261,12 @@ impl Circ2d3TanIter {
         Param2: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedlin_qcurve_pnt2d_real3(
                     Qualified1, Qualified2, Point3, Param1, Param2, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2792,16 +2280,12 @@ impl Circ2d3TanIter {
         Param1: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qcurve_pnt2d2_real2(
                     Qualified1, Point1, Point2, Param1, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2816,16 +2300,12 @@ impl Circ2d3TanIter {
         Param2: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qcurve2_pnt2d_real3(
                     Qualified1, Qualified2, Point2, Param1, Param2, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2841,16 +2321,12 @@ impl Circ2d3TanIter {
         Param3: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qcurve3_real4(
                     Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2858,15 +2334,9 @@ impl Circ2d3TanIter {
     /// This method returns True if the construction
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d3TanIter_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3TanIter_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:148 - `Geom2dGcc_Circ2d3TanIter::ThisSolution()`
@@ -2874,14 +2344,10 @@ impl Circ2d3TanIter {
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d3TanIter_this_solution(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Circ2d3TanIter_this_solution(self as *const Self),
+            ))
         }
     }
 
@@ -2895,19 +2361,14 @@ impl Circ2d3TanIter {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         let mut Qualif3_i32_: i32 = (*Qualif3).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_which_qualifier(
-                    self as *const Self,
-                    &mut Qualif1_i32_,
-                    &mut Qualif2_i32_,
-                    &mut Qualif3_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3TanIter_which_qualifier(
+                self as *const Self,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+                &mut Qualif3_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
         *Qualif3 = crate::gcc_ent::Position::try_from(Qualif3_i32_).unwrap();
@@ -2923,19 +2384,14 @@ impl Circ2d3TanIter {
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency1(
-                    self as *const Self,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency1(
+                self as *const Self,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:174 - `Geom2dGcc_Circ2d3TanIter::Tangency2()`
@@ -2948,19 +2404,14 @@ impl Circ2d3TanIter {
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency2(
-                    self as *const Self,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency2(
+                self as *const Self,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:186 - `Geom2dGcc_Circ2d3TanIter::Tangency3()`
@@ -2973,64 +2424,41 @@ impl Circ2d3TanIter {
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn tangency3(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency3(
-                    self as *const Self,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency3(
+                self as *const Self,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:192 - `Geom2dGcc_Circ2d3TanIter::IsTheSame1()`
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn is_the_same1(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d3TanIter_is_the_same1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3TanIter_is_the_same1(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:196 - `Geom2dGcc_Circ2d3TanIter::IsTheSame2()`
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn is_the_same2(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d3TanIter_is_the_same2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3TanIter_is_the_same2(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:200 - `Geom2dGcc_Circ2d3TanIter::IsTheSame3()`
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn is_the_same3(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2d3TanIter_is_the_same3(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2d3TanIter_is_the_same3(self as *const Self)
+        })
     }
 }
 
@@ -3084,16 +2512,12 @@ impl Circ2dTanCen {
         Pcenter: &crate::ffi::HandleGeom2dPoint,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2dTanCen_ctor_qualifiedcurve_handlegeom2dpoint_real(
                     Qualified1, Pcenter, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3104,15 +2528,9 @@ impl Circ2dTanCen {
     /// more internal intersection algorithm, which has reached
     /// its numeric limits.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2dTanCen_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanCen_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:86 - `Geom2dGcc_Circ2dTanCen::NbSolutions()`
@@ -3121,15 +2539,9 @@ impl Circ2dTanCen {
     /// Exceptions
     /// StdFail_NotDone if the construction fails.
     pub fn nb_solutions(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2dTanCen_nb_solutions(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanCen_nb_solutions(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:98 - `Geom2dGcc_Circ2dTanCen::ThisSolution()`
@@ -3144,15 +2556,10 @@ impl Circ2dTanCen {
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanCen_this_solution(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Circ2dTanCen_this_solution(self as *const Self, Index),
+            ))
         }
     }
 
@@ -3172,18 +2579,13 @@ impl Circ2dTanCen {
     /// StdFail_NotDone if the construction fails.
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanCen_which_qualifier(
-                    self as *const Self,
-                    Index,
-                    &mut Qualif1_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanCen_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
@@ -3203,20 +2605,15 @@ impl Circ2dTanCen {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanCen_tangency1(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanCen_tangency1(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:140 - `Geom2dGcc_Circ2dTanCen::IsTheSame1()`
@@ -3233,16 +2630,9 @@ impl Circ2dTanCen {
     /// OutOfRange is raised if Index is greater than the
     /// number of solutions.
     pub fn is_the_same1(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanCen_is_the_same1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanCen_is_the_same1(self as *const Self, Index)
+        })
     }
 }
 
@@ -3286,16 +2676,12 @@ impl Circ2dTanCenGeo {
         Pcenter: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2dTanCenGeo_ctor_qcurve_pnt2d_real(
                     Qualified1, Pcenter, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3303,15 +2689,9 @@ impl Circ2dTanCenGeo {
     /// This method returns True if the construction
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2dTanCenGeo_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanCenGeo_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:70 - `Geom2dGcc_Circ2dTanCenGeo::NbSolutions()`
@@ -3320,15 +2700,9 @@ impl Circ2dTanCenGeo {
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2dTanCenGeo_nb_solutions(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanCenGeo_nb_solutions(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:81 - `Geom2dGcc_Circ2dTanCenGeo::ThisSolution()`
@@ -3342,33 +2716,23 @@ impl Circ2dTanCenGeo {
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions or less than zero.
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanCenGeo_this_solution(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Circ2dTanCenGeo_this_solution(self as *const Self, Index),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:83 - `Geom2dGcc_Circ2dTanCenGeo::WhichQualifier()`
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanCenGeo_which_qualifier(
-                    self as *const Self,
-                    Index,
-                    &mut Qualif1_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanCenGeo_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
@@ -3390,20 +2754,15 @@ impl Circ2dTanCenGeo {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanCenGeo_tangency1(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanCenGeo_tangency1(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 }
 
@@ -3453,16 +2812,12 @@ impl Circ2dTanOnRad {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2dTanOnRad_ctor_qualifiedcurve_curve_real2(
                     Qualified1, OnCurv, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3503,44 +2858,27 @@ impl Circ2dTanOnRad {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2dTanOnRad_ctor_handlegeom2dpoint_curve_real2(
                     Point1, OnCurv, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:109 - `Geom2dGcc_Circ2dTanOnRad::Results()`
     pub fn results_circ2dtanonrad(&mut self, Circ: &crate::gcc_ana::Circ2dTanOnRad) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonrad(self as *mut Self, Circ)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonrad(self as *mut Self, Circ)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:111 - `Geom2dGcc_Circ2dTanOnRad::Results()`
     pub fn results_circ2dtanonradgeo(&mut self, Circ: &Circ2dTanOnRadGeo) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonradgeo(
-                    self as *mut Self,
-                    Circ,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonradgeo(self as *mut Self, Circ)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:118 - `Geom2dGcc_Circ2dTanOnRad::IsDone()`
@@ -3550,15 +2888,9 @@ impl Circ2dTanOnRad {
     /// more internal intersection algorithm which has reached
     /// its numeric limits.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2dTanOnRad_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRad_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:123 - `Geom2dGcc_Circ2dTanOnRad::NbSolutions()`
@@ -3566,15 +2898,9 @@ impl Circ2dTanOnRad {
     /// computed by this algorithm.
     /// Exceptions: StdFail_NotDone if the construction fails.
     pub fn nb_solutions(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2dTanOnRad_nb_solutions(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRad_nb_solutions(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:134 - `Geom2dGcc_Circ2dTanOnRad::ThisSolution()`
@@ -3588,15 +2914,10 @@ impl Circ2dTanOnRad {
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRad_this_solution(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Circ2dTanOnRad_this_solution(self as *const Self, Index),
+            ))
         }
     }
 
@@ -3617,18 +2938,13 @@ impl Circ2dTanOnRad {
     /// StdFail_NotDone if the construction fails.
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRad_which_qualifier(
-                    self as *const Self,
-                    Index,
-                    &mut Qualif1_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRad_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
@@ -3650,20 +2966,15 @@ impl Circ2dTanOnRad {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRad_tangency1(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRad_tangency1(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:177 - `Geom2dGcc_Circ2dTanOnRad::CenterOn3()`
@@ -3678,19 +2989,14 @@ impl Circ2dTanOnRad {
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRad_center_on3(
-                    self as *const Self,
-                    Index,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRad_center_on3(
+                self as *const Self,
+                Index,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:192 - `Geom2dGcc_Circ2dTanOnRad::IsTheSame1()`
@@ -3706,16 +3012,9 @@ impl Circ2dTanOnRad {
     /// OutOfRange is raised if Index is greater than the number of solutions.
     /// notDone is raised if the construction algorithm did not succeed.
     pub fn is_the_same1(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRad_is_the_same1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRad_is_the_same1(self as *const Self, Index)
+        })
     }
 }
 
@@ -3767,16 +3066,12 @@ impl Circ2dTanOnRadGeo {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qcurve_lin2d_real2(
                     Qualified1, OnLine, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3792,16 +3087,12 @@ impl Circ2dTanOnRadGeo {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qcurve_circ2d_real2(
                     Qualified1, OnCirc, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3817,16 +3108,12 @@ impl Circ2dTanOnRadGeo {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qualifiedcirc_curve_real2(
                     Qualified1, OnCurv, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3842,16 +3129,12 @@ impl Circ2dTanOnRadGeo {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qualifiedlin_curve_real2(
                     Qualified1, OnCurv, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3867,16 +3150,12 @@ impl Circ2dTanOnRadGeo {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qcurve_curve_real2(
                     Qualified1, OnCurv, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3892,16 +3171,12 @@ impl Circ2dTanOnRadGeo {
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_pnt2d_curve_real2(
                     Point1, OnCurv, Radius, Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3909,15 +3184,9 @@ impl Circ2dTanOnRadGeo {
     /// This method returns True if the construction
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:132 - `Geom2dGcc_Circ2dTanOnRadGeo::NbSolutions()`
@@ -3925,16 +3194,9 @@ impl Circ2dTanOnRadGeo {
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_nb_solutions(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_nb_solutions(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:143 - `Geom2dGcc_Circ2dTanOnRadGeo::ThisSolution()`
@@ -3948,33 +3210,23 @@ impl Circ2dTanOnRadGeo {
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_this_solution(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_this_solution(self as *const Self, Index),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:145 - `Geom2dGcc_Circ2dTanOnRadGeo::WhichQualifier()`
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_which_qualifier(
-                    self as *const Self,
-                    Index,
-                    &mut Qualif1_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
@@ -3998,20 +3250,15 @@ impl Circ2dTanOnRadGeo {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_tangency1(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_tangency1(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:173 - `Geom2dGcc_Circ2dTanOnRadGeo::CenterOn3()`
@@ -4025,19 +3272,14 @@ impl Circ2dTanOnRadGeo {
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_center_on3(
-                    self as *const Self,
-                    Index,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_center_on3(
+                self as *const Self,
+                Index,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:183 - `Geom2dGcc_Circ2dTanOnRadGeo::IsTheSame1()`
@@ -4048,16 +3290,9 @@ impl Circ2dTanOnRadGeo {
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
     pub fn is_the_same1(&self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_is_the_same1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_is_the_same1(self as *const Self, Index)
+        })
     }
 }
 
@@ -4078,72 +3313,37 @@ impl CurveTool {
     /// **Source:** `Geom2dGcc_CurveTool.hxx` - `Geom2dGcc_CurveTool::Geom2dGcc_CurveTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_CurveTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_CurveTool_ctor()))
         }
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:33 - `Geom2dGcc_CurveTool::FirstParameter()`
     pub fn first_parameter(C: &crate::geom2d_adaptor::Curve) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_CurveTool_first_parameter(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_first_parameter(C) })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:35 - `Geom2dGcc_CurveTool::LastParameter()`
     pub fn last_parameter(C: &crate::geom2d_adaptor::Curve) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_CurveTool_last_parameter(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_last_parameter(C) })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:37 - `Geom2dGcc_CurveTool::EpsX()`
     pub fn eps_x(C: &crate::geom2d_adaptor::Curve, Tol: f64) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_CurveTool_eps_x(C, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_eps_x(C, Tol) })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:39 - `Geom2dGcc_CurveTool::NbSamples()`
     pub fn nb_samples(C: &crate::geom2d_adaptor::Curve) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_CurveTool_nb_samples(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_nb_samples(C) })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:41 - `Geom2dGcc_CurveTool::Value()`
     pub fn value(C: &crate::geom2d_adaptor::Curve, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_CurveTool_value(C, X) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_CurveTool_value(
+                C, X,
+            )))
         }
     }
 
@@ -4154,12 +3354,7 @@ impl CurveTool {
         P: &mut crate::gp::Pnt2d,
         T: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::Geom2dGcc_CurveTool_d1(C, U, P, T) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_d1(C, U, P, T) })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:48 - `Geom2dGcc_CurveTool::D2()`
@@ -4170,12 +3365,7 @@ impl CurveTool {
         T: &mut crate::gp::Vec2d,
         N: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::Geom2dGcc_CurveTool_d2(C, U, P, T, N) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_d2(C, U, P, T, N) })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:54 - `Geom2dGcc_CurveTool::D3()`
@@ -4187,12 +3377,7 @@ impl CurveTool {
         N: &mut crate::gp::Vec2d,
         dN: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::Geom2dGcc_CurveTool_d3(C, U, P, T, N, dN) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_d3(C, U, P, T, N, dN) })
     }
 }
 
@@ -4217,13 +3402,10 @@ impl FunctionTanCirCu {
         Circ: &crate::gp::Circ2d,
         Curv: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCirCu_ctor_circ2d_curve(Circ, Curv) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCirCu_ctor_circ2d_curve(Circ, Curv),
+            ))
         }
     }
 
@@ -4232,15 +3414,9 @@ impl FunctionTanCirCu {
     /// It returns True if the computation is successfully done,
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCirCu_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCirCu_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCirCu.hxx`:46 - `Geom2dGcc_FunctionTanCirCu::Derivative()`
@@ -4248,16 +3424,9 @@ impl FunctionTanCirCu {
     /// It returns True if the computation is successfully done,
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, Deriv: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCirCu_derivative(self as *mut Self, X, Deriv)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCirCu_derivative(self as *mut Self, X, Deriv)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCirCu.hxx`:52 - `Geom2dGcc_FunctionTanCirCu::Values()`
@@ -4266,79 +3435,58 @@ impl FunctionTanCirCu {
     /// It returns True if the computation is successfully done,
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, Deriv: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCirCu_values(self as *mut Self, X, F, Deriv)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCirCu_values(self as *mut Self, X, F, Deriv)
+        })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_FunctionWithDerivative(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_FunctionWithDerivative_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_Function(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_Function(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_Function_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_Function_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCirCu_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCirCu_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -4363,13 +3511,10 @@ impl FunctionTanCuCu {
         Curv1: &crate::geom2d_adaptor::Curve,
         Curv2: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCu_ctor_curve2(Curv1, Curv2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCu_ctor_curve2(Curv1, Curv2),
+            ))
         }
     }
 
@@ -4378,13 +3523,10 @@ impl FunctionTanCuCu {
         Circ1: &crate::gp::Circ2d,
         Curv2: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCu_ctor_circ2d_curve(Circ1, Curv2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCu_ctor_circ2d_curve(Circ1, Curv2),
+            ))
         }
     }
 
@@ -4399,51 +3541,34 @@ impl FunctionTanCuCu {
         D21: &mut crate::gp::Vec2d,
         D22: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCu_init_derivative(
-                    self as *mut Self,
-                    X,
-                    Point1,
-                    Point2,
-                    Tan1,
-                    Tan2,
-                    D21,
-                    D22,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCu_init_derivative(
+                self as *mut Self,
+                X,
+                Point1,
+                Point2,
+                Tan1,
+                Tan2,
+                D21,
+                D22,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:54 - `Geom2dGcc_FunctionTanCuCu::NbVariables()`
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCu_nb_variables(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCu_nb_variables(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:57 - `Geom2dGcc_FunctionTanCuCu::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCu_nb_equations(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCu_nb_equations(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:62 - `Geom2dGcc_FunctionTanCuCu::Value()`
@@ -4451,15 +3576,9 @@ impl FunctionTanCuCu {
     /// It returns True if the computation is successfully done,
     /// False otherwise.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCu_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCu_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:67 - `Geom2dGcc_FunctionTanCuCu::Derivatives()`
@@ -4471,16 +3590,9 @@ impl FunctionTanCuCu {
         X: &crate::ffi::math_Vector,
         Deriv: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCu_derivatives(self as *mut Self, X, Deriv)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCu_derivatives(self as *mut Self, X, Deriv)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:73 - `Geom2dGcc_FunctionTanCuCu::Values()`
@@ -4494,82 +3606,60 @@ impl FunctionTanCuCu {
         F: &mut crate::ffi::math_Vector,
         Deriv: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCu_values(self as *mut Self, X, F, Deriv)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCu_values(self as *mut Self, X, F, Deriv)
+        })
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCu_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCu_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -4595,13 +3685,10 @@ impl FunctionTanCuCuCu {
         C2: &crate::geom2d_adaptor::Curve,
         C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_curve3(C1, C2, C3) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_curve3(C1, C2, C3),
+            ))
         }
     }
 
@@ -4611,13 +3698,10 @@ impl FunctionTanCuCuCu {
         C2: &crate::geom2d_adaptor::Curve,
         C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_curve2(C1, C2, C3) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_curve2(C1, C2, C3),
+            ))
         }
     }
 
@@ -4627,13 +3711,10 @@ impl FunctionTanCuCuCu {
         C2: &crate::gp::Circ2d,
         C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d2_curve(C1, C2, C3) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d2_curve(C1, C2, C3),
+            ))
         }
     }
 
@@ -4643,14 +3724,10 @@ impl FunctionTanCuCuCu {
         L2: &crate::gp::Lin2d,
         C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_lin2d_curve(C1, L2, C3)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_lin2d_curve(C1, L2, C3),
+            ))
         }
     }
 
@@ -4660,13 +3737,10 @@ impl FunctionTanCuCuCu {
         L2: &crate::gp::Lin2d,
         C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d2_curve(L1, L2, C3) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d2_curve(L1, L2, C3),
+            ))
         }
     }
 
@@ -4676,13 +3750,10 @@ impl FunctionTanCuCuCu {
         C2: &crate::geom2d_adaptor::Curve,
         C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d_curve2(L1, C2, C3) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d_curve2(L1, C2, C3),
+            ))
         }
     }
 
@@ -4692,14 +3763,10 @@ impl FunctionTanCuCuCu {
         C2: &crate::geom2d_adaptor::Curve,
         P3: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_curve_pnt2d(C1, C2, P3)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_curve_pnt2d(C1, C2, P3),
+            ))
         }
     }
 
@@ -4709,14 +3776,10 @@ impl FunctionTanCuCuCu {
         C2: &crate::geom2d_adaptor::Curve,
         P3: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d_curve_pnt2d(L1, C2, P3)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d_curve_pnt2d(L1, C2, P3),
+            ))
         }
     }
 
@@ -4726,13 +3789,10 @@ impl FunctionTanCuCuCu {
         P2: &crate::gp::Pnt2d,
         P3: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_curve_pnt2d2(C1, P2, P3) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_curve_pnt2d2(C1, P2, P3),
+            ))
         }
     }
 
@@ -4750,70 +3810,45 @@ impl FunctionTanCuCuCu {
         D22: &mut crate::gp::Vec2d,
         D23: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_init_derivative(
-                    self as *mut Self,
-                    X,
-                    Point1,
-                    Point2,
-                    Point3,
-                    Tan1,
-                    Tan2,
-                    Tan3,
-                    D21,
-                    D22,
-                    D23,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_init_derivative(
+                self as *mut Self,
+                X,
+                Point1,
+                Point2,
+                Point3,
+                Tan1,
+                Tan2,
+                Tan3,
+                D21,
+                D22,
+                D23,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:88 - `Geom2dGcc_FunctionTanCuCuCu::NbVariables()`
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_nb_variables(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_nb_variables(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:91 - `Geom2dGcc_FunctionTanCuCuCu::NbEquations()`
     /// Returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_nb_equations(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_nb_equations(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:94 - `Geom2dGcc_FunctionTanCuCuCu::Value()`
     /// Computes the values of the Functions for the variable <X>.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:97 - `Geom2dGcc_FunctionTanCuCuCu::Derivatives()`
@@ -4823,16 +3858,9 @@ impl FunctionTanCuCuCu {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_derivatives(self as *mut Self, X, D)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_derivatives(self as *mut Self, X, D)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:101 - `Geom2dGcc_FunctionTanCuCuCu::Values()`
@@ -4844,82 +3872,60 @@ impl FunctionTanCuCuCu {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_values(self as *mut Self, X, F, D)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_values(self as *mut Self, X, F, D)
+        })
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -4946,14 +3952,12 @@ impl FunctionTanCuCuOnCu {
         OnCi: &crate::gp::Circ2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve2_circ2d_real(C1, C2, OnCi, Rad)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve2_circ2d_real(
+                    C1, C2, OnCi, Rad,
+                ),
+            ))
         }
     }
 
@@ -4964,16 +3968,12 @@ impl FunctionTanCuCuOnCu {
         OnCi: &crate::gp::Circ2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_circ2d_curve_circ2d_real(
                     C1, C2, OnCi, Rad,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -4984,16 +3984,12 @@ impl FunctionTanCuCuOnCu {
         OnCi: &crate::gp::Circ2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_lin2d_curve_circ2d_real(
                     L1, C2, OnCi, Rad,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -5004,16 +4000,12 @@ impl FunctionTanCuCuOnCu {
         OnCi: &crate::gp::Circ2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve_pnt2d_circ2d_real(
                     C1, P2, OnCi, Rad,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -5024,14 +4016,10 @@ impl FunctionTanCuCuOnCu {
         OnLi: &crate::gp::Lin2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve2_lin2d_real(C1, C2, OnLi, Rad)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve2_lin2d_real(C1, C2, OnLi, Rad),
+            ))
         }
     }
 
@@ -5042,16 +4030,12 @@ impl FunctionTanCuCuOnCu {
         OnLi: &crate::gp::Lin2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_circ2d_curve_lin2d_real(
                     C1, C2, OnLi, Rad,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -5062,16 +4046,12 @@ impl FunctionTanCuCuOnCu {
         OnLi: &crate::gp::Lin2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_lin2d_curve_lin2d_real(
                     L1, C2, OnLi, Rad,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -5082,16 +4062,12 @@ impl FunctionTanCuCuOnCu {
         OnLi: &crate::gp::Lin2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve_pnt2d_lin2d_real(
                     C1, P2, OnLi, Rad,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -5102,14 +4078,10 @@ impl FunctionTanCuCuOnCu {
         OnCu: &crate::geom2d_adaptor::Curve,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve3_real(C1, C2, OnCu, Rad)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve3_real(C1, C2, OnCu, Rad),
+            ))
         }
     }
 
@@ -5120,14 +4092,12 @@ impl FunctionTanCuCuOnCu {
         OnCu: &crate::geom2d_adaptor::Curve,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_circ2d_curve2_real(C1, C2, OnCu, Rad)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_circ2d_curve2_real(
+                    C1, C2, OnCu, Rad,
+                ),
+            ))
         }
     }
 
@@ -5138,14 +4108,10 @@ impl FunctionTanCuCuOnCu {
         OnCu: &crate::geom2d_adaptor::Curve,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_lin2d_curve2_real(L1, C2, OnCu, Rad)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_lin2d_curve2_real(L1, C2, OnCu, Rad),
+            ))
         }
     }
 
@@ -5156,16 +4122,12 @@ impl FunctionTanCuCuOnCu {
         OnCu: &crate::geom2d_adaptor::Curve,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve_pnt2d_curve_real(
                     C1, P1, OnCu, Rad,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -5183,70 +4145,45 @@ impl FunctionTanCuCuOnCu {
         D22: &mut crate::gp::Vec2d,
         D23: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_init_derivative(
-                    self as *mut Self,
-                    X,
-                    Point1,
-                    Point2,
-                    Point3,
-                    Tan1,
-                    Tan2,
-                    Tan3,
-                    D21,
-                    D22,
-                    D23,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_init_derivative(
+                self as *mut Self,
+                X,
+                Point1,
+                Point2,
+                Point3,
+                Tan1,
+                Tan2,
+                Tan3,
+                D21,
+                D22,
+                D23,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:112 - `Geom2dGcc_FunctionTanCuCuOnCu::NbVariables()`
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_nb_variables(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_nb_variables(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:115 - `Geom2dGcc_FunctionTanCuCuOnCu::NbEquations()`
     /// Returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_nb_equations(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_nb_equations(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:118 - `Geom2dGcc_FunctionTanCuCuOnCu::Value()`
     /// Computes the values of the Functions for the variable <X>.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:121 - `Geom2dGcc_FunctionTanCuCuOnCu::Derivatives()`
@@ -5256,16 +4193,9 @@ impl FunctionTanCuCuOnCu {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_derivatives(self as *mut Self, X, D)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_derivatives(self as *mut Self, X, D)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:125 - `Geom2dGcc_FunctionTanCuCuOnCu::Values()`
@@ -5277,84 +4207,62 @@ impl FunctionTanCuCuOnCu {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_values(self as *mut Self, X, F, D)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_values(self as *mut Self, X, F, D)
+        })
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_inherited_GetStateNumber(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -5380,13 +4288,10 @@ impl FunctionTanCuPnt {
         C: &crate::geom2d_adaptor::Curve,
         Point: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuPnt_ctor_curve_pnt2d(C, Point) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuPnt_ctor_curve_pnt2d(C, Point),
+            ))
         }
     }
 
@@ -5395,15 +4300,9 @@ impl FunctionTanCuPnt {
     /// It returns True if the computation is successfully done,
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanCuPnt_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuPnt_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuPnt.hxx`:46 - `Geom2dGcc_FunctionTanCuPnt::Derivative()`
@@ -5411,16 +4310,9 @@ impl FunctionTanCuPnt {
     /// It returns True if the computation is successfully done,
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, Deriv: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuPnt_derivative(self as *mut Self, X, Deriv)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuPnt_derivative(self as *mut Self, X, Deriv)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuPnt.hxx`:52 - `Geom2dGcc_FunctionTanCuPnt::Values()`
@@ -5429,79 +4321,58 @@ impl FunctionTanCuPnt {
     /// It returns True if the computation is successfully done,
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, Deriv: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuPnt_values(self as *mut Self, X, F, Deriv)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuPnt_values(self as *mut Self, X, F, Deriv)
+        })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_FunctionWithDerivative(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_FunctionWithDerivative_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_Function(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_Function(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_Function_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_Function_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanCuPnt_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuPnt_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -5525,13 +4396,10 @@ impl FunctionTanObl {
         Curve: &crate::geom2d_adaptor::Curve,
         Dir: &crate::gp::Dir2d,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanObl_ctor_curve_dir2d(Curve, Dir) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanObl_ctor_curve_dir2d(Curve, Dir),
+            ))
         }
     }
 
@@ -5540,15 +4408,9 @@ impl FunctionTanObl {
     /// It returns True if the computation is successfully done,
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_FunctionTanObl_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanObl_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanObl.hxx`:44 - `Geom2dGcc_FunctionTanObl::Derivative()`
@@ -5556,16 +4418,9 @@ impl FunctionTanObl {
     /// It returns True if the computation is successfully done,
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, Deriv: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanObl_derivative(self as *mut Self, X, Deriv)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanObl_derivative(self as *mut Self, X, Deriv)
+        })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanObl.hxx`:50 - `Geom2dGcc_FunctionTanObl::Values()`
@@ -5574,76 +4429,58 @@ impl FunctionTanObl {
     /// It returns True if the computation is successfully done,
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, Deriv: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanObl_values(self as *mut Self, X, F, Deriv)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanObl_values(self as *mut Self, X, F, Deriv)
+        })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanObl_as_math_FunctionWithDerivative(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanObl_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanObl_as_math_FunctionWithDerivative_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Geom2dGcc_FunctionTanObl_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::Geom2dGcc_FunctionTanObl_as_math_Function(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanObl_as_math_Function(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::Geom2dGcc_FunctionTanObl_as_math_Function_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Geom2dGcc_FunctionTanObl_as_math_Function_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_FunctionTanObl_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanObl_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -5663,25 +4500,18 @@ unsafe impl crate::CppDeletable for IsParallel {
 impl IsParallel {
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Geom2dGcc_IsParallel()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_IsParallel_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_IsParallel_ctor()))
         }
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Geom2dGcc_IsParallel()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_IsParallel_ctor_charptr(c_theMessage.as_ptr()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_IsParallel_ctor_charptr(c_theMessage.as_ptr()),
+            ))
         }
     }
 
@@ -5689,53 +4519,38 @@ impl IsParallel {
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_IsParallel_ctor_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_IsParallel_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Geom2dGcc_IsParallel_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Raise()`
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        {
-            let __exc =
-                unsafe { crate::ffi::Geom2dGcc_IsParallel_raise_charptr(c_theMessage.as_ptr()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_raise_charptr(c_theMessage.as_ptr())
+        })
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
-        {
-            let __exc = unsafe { crate::ffi::Geom2dGcc_IsParallel_raise_sstream(theMessage) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_raise_sstream(theMessage)
+        })
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::NewInstance()`
@@ -5743,15 +4558,10 @@ impl IsParallel {
         theMessage: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGccIsParallel> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_IsParallel_new_instance_charptr(c_theMessage.as_ptr())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_IsParallel_new_instance_charptr(c_theMessage.as_ptr()),
+            ))
         }
     }
 
@@ -5762,190 +4572,138 @@ impl IsParallel {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGccIsParallel> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_IsParallel_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_IsParallel_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Geom2dGcc_IsParallel_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_IsParallel_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Geom2dGcc_IsParallel_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_as_Standard_DomainError(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_DomainError(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_as_Standard_DomainError_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_DomainError_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        let __result =
-            unsafe { crate::ffi::Geom2dGcc_IsParallel_as_Standard_Failure(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Failure(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        let __result =
-            unsafe { crate::ffi::Geom2dGcc_IsParallel_as_Standard_Failure_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Failure_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Geom2dGcc_IsParallel_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGccIsParallel> {
-        let __result = unsafe { crate::ffi::Geom2dGcc_IsParallel_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_IsParallel_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_IsParallel_inherited_Print(self as *const Self, theStream)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_inherited_Print(self as *const Self, theStream)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_Reraise(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_inherited_Reraise(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_Jump(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_inherited_Jump(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_IsParallel_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_IsParallel_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Geom2dGcc_IsParallel_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -5956,53 +4714,30 @@ impl IsParallel {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_IsParallel_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_IsParallel_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_IsParallel_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -6017,53 +4752,49 @@ unsafe impl crate::CppDeletable for HandleGeom2dGccIsParallel {
 impl HandleGeom2dGccIsParallel {
     /// Dereference this Handle to access the underlying Geom2dGcc_IsParallel
     pub fn get(&self) -> &crate::ffi::Geom2dGcc_IsParallel {
-        let __result = unsafe { crate::ffi::HandleGeom2dGccIsParallel_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleGeom2dGccIsParallel_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2dGcc_IsParallel
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2dGcc_IsParallel {
-        let __result = unsafe { crate::ffi::HandleGeom2dGccIsParallel_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleGeom2dGccIsParallel_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        let __result = unsafe {
-            crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardDomainError(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        let __result = unsafe {
-            crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardFailure(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardFailure(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6104,16 +4835,12 @@ impl Lin2d2Tan {
         Qualified2: &QualifiedCurve,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve2_real(
                     Qualified1, Qualified2, Tolang,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6126,16 +4853,12 @@ impl Lin2d2Tan {
         ThePoint: &crate::gp::Pnt2d,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve_pnt2d_real(
                     Qualified1, ThePoint, Tolang,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6152,16 +4875,12 @@ impl Lin2d2Tan {
         Param1: f64,
         Param2: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve2_real3(
                     Qualified1, Qualified2, Tolang, Param1, Param2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6176,16 +4895,12 @@ impl Lin2d2Tan {
         Tolang: f64,
         Param1: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve_pnt2d_real2(
                     Qualified1, ThePoint, Tolang, Param1,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6196,29 +4911,16 @@ impl Lin2d2Tan {
     /// more internal intersection algorithm, which has
     /// reached its numeric limits.
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_Lin2d2Tan_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Geom2dGcc_Lin2d2Tan_is_done(self as *const Self) })
     }
 
     /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:97 - `Geom2dGcc_Lin2d2Tan::NbSolutions()`
     /// Returns the number of lines, representing solutions computed by this algorithm.
     /// Exceptions StdFail_NotDone if the construction fails.R
     pub fn nb_solutions(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Lin2d2Tan_nb_solutions(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2d2Tan_nb_solutions(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:108 - `Geom2dGcc_Lin2d2Tan::ThisSolution()`
@@ -6232,15 +4934,10 @@ impl Lin2d2Tan {
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Lin2d2Tan_this_solution(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Lin2d2Tan_this_solution(self as *const Self, Index),
+            ))
         }
     }
 
@@ -6268,19 +4965,14 @@ impl Lin2d2Tan {
     ) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2d2Tan_which_qualifier(
-                    self as *const Self,
-                    Index,
-                    &mut Qualif1_i32_,
-                    &mut Qualif2_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2d2Tan_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
@@ -6302,20 +4994,15 @@ impl Lin2d2Tan {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2d2Tan_tangency1(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2d2Tan_tangency1(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:151 - `Geom2dGcc_Lin2d2Tan::Tangency2()`
@@ -6334,20 +5021,15 @@ impl Lin2d2Tan {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2d2Tan_tangency2(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2d2Tan_tangency2(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 }
 
@@ -6386,16 +5068,12 @@ impl Lin2d2TanIter {
         Param1: f64,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Lin2d2TanIter_ctor_qcurve_pnt2d_real2(
                     Qualified1, ThePoint, Param1, Tolang,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6413,16 +5091,12 @@ impl Lin2d2TanIter {
         Param2: f64,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Lin2d2TanIter_ctor_qualifiedcirc_qcurve_real2(
                     Qualified1, Qualified2, Param2, Tolang,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6440,16 +5114,12 @@ impl Lin2d2TanIter {
         Param2: f64,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Lin2d2TanIter_ctor_qcurve2_real3(
                     Qualified1, Qualified2, Param1, Param2, Tolang,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6457,28 +5127,18 @@ impl Lin2d2TanIter {
     /// This methode returns true when there is a solution
     /// and false in the other cases.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Lin2d2TanIter_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2d2TanIter_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2d2TanIter.hxx`:82 - `Geom2dGcc_Lin2d2TanIter::ThisSolution()`
     /// Returns the solution.
     pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Lin2d2TanIter_this_solution(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Lin2d2TanIter_this_solution(self as *const Self),
+            ))
         }
     }
 
@@ -6490,18 +5150,13 @@ impl Lin2d2TanIter {
     ) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2d2TanIter_which_qualifier(
-                    self as *const Self,
-                    &mut Qualif1_i32_,
-                    &mut Qualif2_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2d2TanIter_which_qualifier(
+                self as *const Self,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
@@ -6514,36 +5169,26 @@ impl Lin2d2TanIter {
     /// ParArg is the intrinsic parameter of the point PntSol on
     /// the argument curv.
     pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2d2TanIter_tangency1(
-                    self as *const Self,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2d2TanIter_tangency1(
+                self as *const Self,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2d2TanIter.hxx`:96 - `Geom2dGcc_Lin2d2TanIter::Tangency2()`
     pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2d2TanIter_tangency2(
-                    self as *const Self,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2d2TanIter_tangency2(
+                self as *const Self,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 }
 
@@ -6583,16 +5228,12 @@ impl Lin2dTanObl {
         TolAng: f64,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Lin2dTanObl_ctor_qualifiedcurve_lin2d_real2(
                     Qualified1, TheLin, TolAng, Angle,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6617,16 +5258,12 @@ impl Lin2dTanObl {
         Param1: f64,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Lin2dTanObl_ctor_qualifiedcurve_lin2d_real3(
                     Qualified1, TheLin, TolAng, Param1, Angle,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6636,15 +5273,9 @@ impl Lin2dTanObl {
     /// Note: IsDone protects against a failure arising from a
     /// more internal intersection algorithm, which has reached its numeric limits.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Lin2dTanObl_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2dTanObl_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:88 - `Geom2dGcc_Lin2dTanObl::NbSolutions()`
@@ -6652,15 +5283,9 @@ impl Lin2dTanObl {
     /// Exceptions
     /// StdFail_NotDone if the construction fails.
     pub fn nb_solutions(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Lin2dTanObl_nb_solutions(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2dTanObl_nb_solutions(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:96 - `Geom2dGcc_Lin2dTanObl::ThisSolution()`
@@ -6671,15 +5296,10 @@ impl Lin2dTanObl {
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_Lin2dTanObl_this_solution(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Lin2dTanObl_this_solution(self as *const Self, Index),
+            ))
         }
     }
 
@@ -6700,18 +5320,13 @@ impl Lin2dTanObl {
     /// StdFail_NotDone if the construction fails.
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2dTanObl_which_qualifier(
-                    self as *const Self,
-                    Index,
-                    &mut Qualif1_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2dTanObl_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
@@ -6729,20 +5344,15 @@ impl Lin2dTanObl {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2dTanObl_tangency1(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2dTanObl_tangency1(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:135 - `Geom2dGcc_Lin2dTanObl::Intersection2()`
@@ -6763,20 +5373,15 @@ impl Lin2dTanObl {
         ParArg: &mut f64,
         PntSol: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2dTanObl_intersection2(
-                    self as *const Self,
-                    Index,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2dTanObl_intersection2(
+                self as *const Self,
+                Index,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:144 - `Geom2dGcc_Lin2dTanObl::IsParallel2()`
@@ -6785,15 +5390,9 @@ impl Lin2dTanObl {
     /// construction is equal to 0 or Pi.
     /// Exceptions StdFail_NotDone if the construction fails.
     pub fn is_parallel2(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Lin2dTanObl_is_parallel2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2dTanObl_is_parallel2(self as *const Self)
+        })
     }
 }
 
@@ -6829,16 +5428,12 @@ impl Lin2dTanOblIter {
         TolAng: f64,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dGcc_Lin2dTanOblIter_ctor_qcurve_lin2d_real3(
                     Qualified1, TheLin, Param1, TolAng, Angle,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6862,92 +5457,61 @@ impl Lin2dTanOblIter {
     /// This method returns true when there is a solution
     /// and false in the other cases.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Lin2dTanOblIter_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2dTanOblIter_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:53 - `Geom2dGcc_Lin2dTanOblIter::ThisSolution()`
     pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Lin2dTanOblIter_this_solution(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_Lin2dTanOblIter_this_solution(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:55 - `Geom2dGcc_Lin2dTanOblIter::WhichQualifier()`
     pub fn which_qualifier(&self, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2dTanOblIter_which_qualifier(
-                    self as *const Self,
-                    &mut Qualif1_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2dTanOblIter_which_qualifier(
+                self as *const Self,
+                &mut Qualif1_i32_,
+            )
+        });
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:57 - `Geom2dGcc_Lin2dTanOblIter::Tangency1()`
     pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2dTanOblIter_tangency1(
-                    self as *const Self,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2dTanOblIter_tangency1(
+                self as *const Self,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:61 - `Geom2dGcc_Lin2dTanOblIter::Intersection2()`
     pub fn intersection2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dGcc_Lin2dTanOblIter_intersection2(
-                    self as *const Self,
-                    ParSol,
-                    ParArg,
-                    PntSol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2dTanOblIter_intersection2(
+                self as *const Self,
+                ParSol,
+                ParArg,
+                PntSol,
+            )
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:65 - `Geom2dGcc_Lin2dTanOblIter::IsParallel2()`
     pub fn is_parallel2(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_Lin2dTanOblIter_is_parallel2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_Lin2dTanOblIter_is_parallel2(self as *const Self)
+        })
     }
 }
 
@@ -6971,97 +5535,62 @@ impl QCurve {
         Curve: &crate::geom2d_adaptor::Curve,
         Qualifier: crate::gcc_ent::Position,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_QCurve_ctor_curve_position(Curve, Qualifier.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_QCurve_ctor_curve_position(Curve, Qualifier.into()),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_QCurve.hxx`:37 - `Geom2dGcc_QCurve::Qualified()`
     pub fn qualified(&self) -> crate::OwnedPtr<crate::geom2d_adaptor::Curve> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_QCurve_qualified(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_QCurve_qualified(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Geom2dGcc_QCurve.hxx`:39 - `Geom2dGcc_QCurve::Qualifier()`
     pub fn qualifier(&self) -> crate::gcc_ent::Position {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_QCurve_qualifier(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::gcc_ent::Position::try_from(__val).unwrap()
-        }
+        crate::gcc_ent::Position::try_from(crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_QCurve_qualifier(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Geom2dGcc_QCurve.hxx`:43 - `Geom2dGcc_QCurve::IsUnqualified()`
     /// Returns true if the solution is unqualified and false in the
     /// other cases.
     pub fn is_unqualified(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_QCurve_is_unqualified(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_QCurve_is_unqualified(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_QCurve.hxx`:47 - `Geom2dGcc_QCurve::IsEnclosing()`
     /// Returns true if the solution is Enclosing the Curv and false in
     /// the other cases.
     pub fn is_enclosing(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_QCurve_is_enclosing(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_QCurve_is_enclosing(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_QCurve.hxx`:51 - `Geom2dGcc_QCurve::IsEnclosed()`
     /// Returns true if the solution is Enclosed in the Curv and false in
     /// the other cases.
     pub fn is_enclosed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_QCurve_is_enclosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_QCurve_is_enclosed(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_QCurve.hxx`:55 - `Geom2dGcc_QCurve::IsOutside()`
     /// Returns true if the solution is Outside the Curv and false in
     /// the other cases.
     pub fn is_outside(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Geom2dGcc_QCurve_is_outside(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Geom2dGcc_QCurve_is_outside(self as *const Self) })
     }
 }
 
@@ -7113,14 +5642,10 @@ impl QualifiedCurve {
         Curve: &crate::geom2d_adaptor::Curve,
         Qualifier: crate::gcc_ent::Position,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dGcc_QualifiedCurve_ctor_curve_position(Curve, Qualifier.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_QualifiedCurve_ctor_curve_position(Curve, Qualifier.into()),
+            ))
         }
     }
 
@@ -7137,14 +5662,10 @@ impl QualifiedCurve {
     /// Geom2dAdaptor_Curve myAdaptedCurve = myQualifiedCurve.Qualified();
     /// Handle(Geom2d_Curve) = myAdaptedCurve.Curve();
     pub fn qualified(&self) -> crate::OwnedPtr<crate::geom2d_adaptor::Curve> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_QualifiedCurve_qualified(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dGcc_QualifiedCurve_qualified(self as *const Self),
+            ))
         }
     }
 
@@ -7154,73 +5675,44 @@ impl QualifiedCurve {
     /// enclosed or outside, or
     /// -   GccEnt_noqualifier if it is unqualified.
     pub fn qualifier(&self) -> crate::gcc_ent::Position {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_QualifiedCurve_qualifier(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::gcc_ent::Position::try_from(__val).unwrap()
-        }
+        crate::gcc_ent::Position::try_from(crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_QualifiedCurve_qualifier(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Geom2dGcc_QualifiedCurve.hxx`:85 - `Geom2dGcc_QualifiedCurve::IsUnqualified()`
     /// Returns true if the solution is unqualified and false in the other cases.
     pub fn is_unqualified(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_QualifiedCurve_is_unqualified(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_QualifiedCurve_is_unqualified(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_QualifiedCurve.hxx`:89 - `Geom2dGcc_QualifiedCurve::IsEnclosing()`
     /// It returns true if the solution is Enclosing the Curv and false in
     /// the other cases.
     pub fn is_enclosing(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_QualifiedCurve_is_enclosing(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_QualifiedCurve_is_enclosing(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_QualifiedCurve.hxx`:93 - `Geom2dGcc_QualifiedCurve::IsEnclosed()`
     /// It returns true if the solution is Enclosed in the Curv and false in
     /// the other cases.
     pub fn is_enclosed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_QualifiedCurve_is_enclosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_QualifiedCurve_is_enclosed(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_QualifiedCurve.hxx`:97 - `Geom2dGcc_QualifiedCurve::IsOutside()`
     /// It returns true if the solution is Outside the Curv and false in
     /// the other cases.
     pub fn is_outside(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dGcc_QualifiedCurve_is_outside(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dGcc_QualifiedCurve_is_outside(self as *const Self)
+        })
     }
 }

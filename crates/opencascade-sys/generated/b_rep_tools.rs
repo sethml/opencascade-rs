@@ -16,13 +16,9 @@ pub fn uv_bounds_face_real4(
     VMin: &mut f64,
     VMax: &mut f64,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::BRepTools_uv_bounds_face_real4(F, UMin, UMax, VMin, VMax) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepTools_uv_bounds_face_real4(F, UMin, UMax, VMin, VMax)
+    })
 }
 /// **Source:** `BRepTools.hxx`:93 - `BRepTools::UVBounds`
 /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
@@ -35,14 +31,9 @@ pub fn uv_bounds_face_wire_real4(
     VMin: &mut f64,
     VMax: &mut f64,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::BRepTools_uv_bounds_face_wire_real4(F, W, UMin, UMax, VMin, VMax)
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepTools_uv_bounds_face_wire_real4(F, W, UMin, UMax, VMin, VMax)
+    })
 }
 /// **Source:** `BRepTools.hxx`:102 - `BRepTools::UVBounds`
 /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
@@ -55,25 +46,15 @@ pub fn uv_bounds_face_edge_real4(
     VMin: &mut f64,
     VMax: &mut f64,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::BRepTools_uv_bounds_face_edge_real4(F, E, UMin, UMax, VMin, VMax)
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepTools_uv_bounds_face_edge_real4(F, E, UMin, UMax, VMin, VMax)
+    })
 }
 /// **Source:** `BRepTools.hxx`:111 - `BRepTools::AddUVBounds`
 /// Adds  to  the box <B>  the bounding values in  the
 /// parametric space of F.
 pub fn add_uv_bounds_face_box2d(F: &crate::topo_ds::Face, B: &mut crate::bnd::Box2d) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_add_uv_bounds_face_box2d(F, B) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_add_uv_bounds_face_box2d(F, B) })
 }
 /// **Source:** `BRepTools.hxx`:115 - `BRepTools::AddUVBounds`
 /// Adds  to the box  <B>  the bounding  values of the
@@ -83,12 +64,9 @@ pub fn add_uv_bounds_face_wire_box2d(
     W: &crate::topo_ds::Wire,
     B: &mut crate::bnd::Box2d,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_add_uv_bounds_face_wire_box2d(F, W, B) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepTools_add_uv_bounds_face_wire_box2d(F, W, B)
+    })
 }
 /// **Source:** `BRepTools.hxx`:119 - `BRepTools::AddUVBounds`
 /// Adds to  the box <B>  the  bounding values  of the
@@ -98,114 +76,61 @@ pub fn add_uv_bounds_face_edge_box2d(
     E: &crate::topo_ds::Edge,
     B: &mut crate::bnd::Box2d,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_add_uv_bounds_face_edge_box2d(F, E, B) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepTools_add_uv_bounds_face_edge_box2d(F, E, B)
+    })
 }
 /// **Source:** `BRepTools.hxx`:122 - `BRepTools::Update`
 /// Update a vertex (nothing is done)
 pub fn update_vertex(V: &crate::topo_ds::Vertex) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_update_vertex(V) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_update_vertex(V) })
 }
 /// **Source:** `BRepTools.hxx`:125 - `BRepTools::Update`
 /// Update an edge, compute 2d bounding boxes.
 pub fn update_edge(E: &crate::topo_ds::Edge) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_update_edge(E) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_update_edge(E) })
 }
 /// **Source:** `BRepTools.hxx`:128 - `BRepTools::Update`
 /// Update a wire (nothing is done)
 pub fn update_wire(W: &crate::topo_ds::Wire) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_update_wire(W) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_update_wire(W) })
 }
 /// **Source:** `BRepTools.hxx`:131 - `BRepTools::Update`
 /// Update a Face, update UV points.
 pub fn update_face(F: &crate::topo_ds::Face) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_update_face(F) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_update_face(F) })
 }
 /// **Source:** `BRepTools.hxx`:134 - `BRepTools::Update`
 /// Update a shell (nothing is done)
 pub fn update_shell(S: &crate::topo_ds::Shell) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_update_shell(S) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_update_shell(S) })
 }
 /// **Source:** `BRepTools.hxx`:137 - `BRepTools::Update`
 /// Update a solid (nothing is done)
 pub fn update_solid(S: &crate::topo_ds::Solid) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_update_solid(S) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_update_solid(S) })
 }
 /// **Source:** `BRepTools.hxx`:140 - `BRepTools::Update`
 /// Update a composite solid (nothing is done)
 pub fn update_compsolid(C: &crate::topo_ds::CompSolid) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_update_compsolid(C) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_update_compsolid(C) })
 }
 /// **Source:** `BRepTools.hxx`:143 - `BRepTools::Update`
 /// Update a compound (nothing is done)
 pub fn update_compound(C: &crate::topo_ds::Compound) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_update_compound(C) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_update_compound(C) })
 }
 /// **Source:** `BRepTools.hxx`:146 - `BRepTools::Update`
 /// Update a shape, call the correct update.
 pub fn update_shape(S: &crate::topo_ds::Shape) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_update_shape(S) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_update_shape(S) })
 }
 /// **Source:** `BRepTools.hxx`:151 - `BRepTools::UpdateFaceUVPoints`
 /// For each edge of the face <F> reset the UV points
 /// to the bounding points of the parametric curve of the
 /// edge on the face.
 pub fn update_face_uv_points(theF: &crate::topo_ds::Face) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_update_face_uv_points(theF) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_update_face_uv_points(theF) })
 }
 /// **Source:** `BRepTools.hxx`:162 - `BRepTools::Clean`
 /// Removes all cached polygonal representation of the shape,
@@ -218,33 +143,18 @@ pub fn update_face_uv_points(theF: &crate::topo_ds::Face) {
 /// including polygons on triangulations irrelevant for the faces of the
 /// given shape.
 pub fn clean(theShape: &crate::topo_ds::Shape, theForce: bool) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_clean(theShape, theForce) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_clean(theShape, theForce) })
 }
 /// **Source:** `BRepTools.hxx`:166 - `BRepTools::CleanGeometry`
 /// Removes geometry (curves and surfaces) from all edges and faces of the shape
 pub fn clean_geometry(theShape: &crate::topo_ds::Shape) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_clean_geometry(theShape) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_clean_geometry(theShape) })
 }
 /// **Source:** `BRepTools.hxx`:170 - `BRepTools::RemoveUnusedPCurves`
 /// Removes all the pcurves of the edges of <S> that
 /// refer to surfaces not belonging to any face of <S>
 pub fn remove_unused_p_curves(S: &crate::topo_ds::Shape) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_remove_unused_p_curves(S) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_remove_unused_p_curves(S) })
 }
 /// **Source:** `BRepTools.hxx`:182 - `BRepTools::Triangulation`
 /// Verifies that each Face from the shape has got a triangulation with a deflection smaller or
@@ -261,16 +171,9 @@ pub fn triangulation(
     theLinDefl: f64,
     theToCheckFreeEdges: bool,
 ) -> bool {
-    {
-        let __result = unsafe {
-            crate::ffi::BRepTools_triangulation(theShape, theLinDefl, theToCheckFreeEdges)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::BRepTools_triangulation(theShape, theLinDefl, theToCheckFreeEdges)
+    })
 }
 /// **Source:** `BRepTools.hxx`:198 - `BRepTools::LoadTriangulation`
 /// Loads triangulation data for each face of the shape
@@ -290,21 +193,14 @@ pub fn load_triangulation(
     theToSetAsActive: bool,
     theFileSystem: &crate::ffi::HandleOSDFileSystem,
 ) -> bool {
-    {
-        let __result = unsafe {
-            crate::ffi::BRepTools_load_triangulation(
-                theShape,
-                theTriangulationIdx,
-                theToSetAsActive,
-                theFileSystem,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::BRepTools_load_triangulation(
+            theShape,
+            theTriangulationIdx,
+            theToSetAsActive,
+            theFileSystem,
+        )
+    })
 }
 /// **Source:** `BRepTools.hxx`:213 - `BRepTools::UnloadTriangulation`
 /// Releases triangulation data for each face of the shape if there is deferred storage to load it
@@ -317,15 +213,9 @@ pub fn load_triangulation(
 /// for it. Exception will be thrown in case of invalid negative index
 /// @return TRUE if at least one triangulation is unloaded.
 pub fn unload_triangulation(theShape: &crate::topo_ds::Shape, theTriangulationIdx: i32) -> bool {
-    {
-        let __result =
-            unsafe { crate::ffi::BRepTools_unload_triangulation(theShape, theTriangulationIdx) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::BRepTools_unload_triangulation(theShape, theTriangulationIdx)
+    })
 }
 /// **Source:** `BRepTools.hxx`:229 - `BRepTools::ActivateTriangulation`
 /// Activates triangulation data for each face of the shape
@@ -345,20 +235,13 @@ pub fn activate_triangulation(
     theTriangulationIdx: i32,
     theToActivateStrictly: bool,
 ) -> bool {
-    {
-        let __result = unsafe {
-            crate::ffi::BRepTools_activate_triangulation(
-                theShape,
-                theTriangulationIdx,
-                theToActivateStrictly,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::BRepTools_activate_triangulation(
+            theShape,
+            theTriangulationIdx,
+            theToActivateStrictly,
+        )
+    })
 }
 /// **Source:** `BRepTools.hxx`:239 - `BRepTools::LoadAllTriangulations`
 /// Loads all available triangulations for each face of the shape
@@ -370,15 +253,9 @@ pub fn load_all_triangulations(
     theShape: &crate::topo_ds::Shape,
     theFileSystem: &crate::ffi::HandleOSDFileSystem,
 ) -> bool {
-    {
-        let __result =
-            unsafe { crate::ffi::BRepTools_load_all_triangulations(theShape, theFileSystem) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::BRepTools_load_all_triangulations(theShape, theFileSystem)
+    })
 }
 /// **Source:** `BRepTools.hxx`:247 - `BRepTools::UnloadAllTriangulations`
 /// Releases all available triangulations for each face of the shape if there is deferred storage
@@ -386,77 +263,39 @@ pub fn load_all_triangulations(
 /// @param[in] theShape       shape to unload triangulations
 /// @return TRUE if at least one triangulation is unloaded.
 pub fn unload_all_triangulations(theShape: &crate::topo_ds::Shape) -> bool {
-    {
-        let __result = unsafe { crate::ffi::BRepTools_unload_all_triangulations(theShape) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::BRepTools_unload_all_triangulations(theShape) })
 }
 /// **Source:** `BRepTools.hxx`:252 - `BRepTools::Compare`
 /// Returns  True if  the    distance between the  two
 /// vertices is lower than their tolerance.
 pub fn compare_vertex2(V1: &crate::topo_ds::Vertex, V2: &crate::topo_ds::Vertex) -> bool {
-    {
-        let __result = unsafe { crate::ffi::BRepTools_compare_vertex2(V1, V2) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::BRepTools_compare_vertex2(V1, V2) })
 }
 /// **Source:** `BRepTools.hxx`:256 - `BRepTools::Compare`
 /// Returns  True if  the    distance between the  two
 /// edges is lower than their tolerance.
 pub fn compare_edge2(E1: &crate::topo_ds::Edge, E2: &crate::topo_ds::Edge) -> bool {
-    {
-        let __result = unsafe { crate::ffi::BRepTools_compare_edge2(E1, E2) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::BRepTools_compare_edge2(E1, E2) })
 }
 /// **Source:** `BRepTools.hxx`:260 - `BRepTools::OuterWire`
 /// Returns the outer most wire of <F>. Returns a Null
 /// wire if <F> has no wires.
 pub fn outer_wire_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<crate::topo_ds::Wire> {
-    {
-        let __result = unsafe { crate::ffi::BRepTools_outer_wire_face(F) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepTools_outer_wire_face(F)))
     }
 }
 /// **Source:** `BRepTools.hxx`:264 - `BRepTools::Map3DEdges`
 /// Stores in the map  <M> all the 3D topology edges
 /// of <S>.
 pub fn map3_d_edges(S: &crate::topo_ds::Shape, M: &mut crate::ffi::TopTools_IndexedMapOfShape) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_map3_d_edges(S, M) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_map3_d_edges(S, M) })
 }
 /// **Source:** `BRepTools.hxx`:268 - `BRepTools::IsReallyClosed`
 /// Verifies that the edge  <E> is found two  times on
 /// the face <F> before calling BRep_Tool::IsClosed.
 pub fn is_really_closed(E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) -> bool {
-    {
-        let __result = unsafe { crate::ffi::BRepTools_is_really_closed(E, F) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::BRepTools_is_really_closed(E, F) })
 }
 /// **Source:** `BRepTools.hxx`:272 - `BRepTools::DetectClosedness`
 /// Detect closedness of face in U and V directions
@@ -465,24 +304,15 @@ pub fn detect_closedness(
     theUclosed: &mut bool,
     theVclosed: &mut bool,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::BRepTools_detect_closedness(theFace, theUclosed, theVclosed) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepTools_detect_closedness(theFace, theUclosed, theVclosed)
+    })
 }
 /// **Source:** `BRepTools.hxx`:278 - `BRepTools::Dump`
 /// Dumps the topological structure and the geometry
 /// of <Sh> on the stream <S>.
 pub fn dump_shape_ostream(Sh: &crate::topo_ds::Shape, S: &mut crate::ffi::Standard_OStream) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_dump_shape_ostream(Sh, S) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_dump_shape_ostream(Sh, S) })
 }
 /// **Source:** `BRepTools.hxx`:285 - `BRepTools::Write`
 /// Writes the shape to the stream in an ASCII format TopTools_FormatVersion_VERSION_1.
@@ -495,18 +325,9 @@ pub fn write_shape_ostream_progressrange(
     theStream: &mut crate::ffi::Standard_OStream,
     theProgress: &crate::message::ProgressRange,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::BRepTools_write_shape_ostream_progressrange(
-                theShape,
-                theStream,
-                theProgress,
-            )
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepTools_write_shape_ostream_progressrange(theShape, theStream, theProgress)
+    })
 }
 /// **Source:** `BRepTools.hxx`:308 - `BRepTools::Write`
 /// Writes the shape to the stream in an ASCII format of specified version.
@@ -528,21 +349,16 @@ pub fn write_shape_ostream_bool2_formatversion_progressrange(
     theVersion: crate::top_tools::FormatVersion,
     theProgress: &crate::message::ProgressRange,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::BRepTools_write_shape_ostream_bool2_formatversion_progressrange(
-                theShape,
-                theStream,
-                theWithTriangles,
-                theWithNormals,
-                theVersion.into(),
-                theProgress,
-            )
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepTools_write_shape_ostream_bool2_formatversion_progressrange(
+            theShape,
+            theStream,
+            theWithTriangles,
+            theWithNormals,
+            theVersion.into(),
+            theProgress,
+        )
+    })
 }
 /// **Source:** `BRepTools.hxx`:318 - `BRepTools::Read`
 /// Reads a Shape  from <S> in  returns it in  <Sh>.
@@ -553,14 +369,9 @@ pub fn read_shape_istream_builder_progressrange(
     B: &crate::b_rep::Builder,
     theProgress: &crate::message::ProgressRange,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::BRepTools_read_shape_istream_builder_progressrange(Sh, S, B, theProgress)
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepTools_read_shape_istream_builder_progressrange(Sh, S, B, theProgress)
+    })
 }
 /// **Source:** `BRepTools.hxx`:329 - `BRepTools::Write`
 /// Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1.
@@ -574,20 +385,13 @@ pub fn write_shape_charptr_progressrange(
     theProgress: &crate::message::ProgressRange,
 ) -> bool {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
-    {
-        let __result = unsafe {
-            crate::ffi::BRepTools_write_shape_charptr_progressrange(
-                theShape,
-                c_theFile.as_ptr(),
-                theProgress,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::BRepTools_write_shape_charptr_progressrange(
+            theShape,
+            c_theFile.as_ptr(),
+            theProgress,
+        )
+    })
 }
 /// **Source:** `BRepTools.hxx`:352 - `BRepTools::Write`
 /// Writes the shape to the file in an ASCII format of specified version.
@@ -610,23 +414,16 @@ pub fn write_shape_charptr_bool2_formatversion_progressrange(
     theProgress: &crate::message::ProgressRange,
 ) -> bool {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
-    {
-        let __result = unsafe {
-            crate::ffi::BRepTools_write_shape_charptr_bool2_formatversion_progressrange(
-                theShape,
-                c_theFile.as_ptr(),
-                theWithTriangles,
-                theWithNormals,
-                theVersion.into(),
-                theProgress,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::BRepTools_write_shape_charptr_bool2_formatversion_progressrange(
+            theShape,
+            c_theFile.as_ptr(),
+            theWithTriangles,
+            theWithNormals,
+            theVersion.into(),
+            theProgress,
+        )
+    })
 }
 /// **Source:** `BRepTools.hxx`:362 - `BRepTools::Read`
 /// Reads a Shape  from <File>,  returns it in  <Sh>.
@@ -638,21 +435,14 @@ pub fn read_shape_charptr_builder_progressrange(
     theProgress: &crate::message::ProgressRange,
 ) -> bool {
     let c_File = std::ffi::CString::new(File).unwrap();
-    {
-        let __result = unsafe {
-            crate::ffi::BRepTools_read_shape_charptr_builder_progressrange(
-                Sh,
-                c_File.as_ptr(),
-                B,
-                theProgress,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::BRepTools_read_shape_charptr_builder_progressrange(
+            Sh,
+            c_File.as_ptr(),
+            B,
+            theProgress,
+        )
+    })
 }
 /// **Source:** `BRepTools.hxx`:374 - `BRepTools::EvalAndUpdateTol`
 /// Evals real tolerance of edge  <theE>.
@@ -669,16 +459,9 @@ pub fn eval_and_update_tol(
     theF: f64,
     theL: f64,
 ) -> f64 {
-    {
-        let __result = unsafe {
-            crate::ffi::BRepTools_eval_and_update_tol(theE, theC3d, theC2d, theS, theF, theL)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::BRepTools_eval_and_update_tol(theE, theC3d, theC2d, theS, theF, theL)
+    })
 }
 /// **Source:** `BRepTools.hxx`:383 - `BRepTools::OriEdgeInFace`
 /// returns the cumul  of the orientation  of <Edge>
@@ -687,14 +470,10 @@ pub fn ori_edge_in_face(
     theEdge: &crate::topo_ds::Edge,
     theFace: &crate::topo_ds::Face,
 ) -> crate::top_abs::Orientation {
-    {
-        let __result = unsafe { crate::ffi::BRepTools_ori_edge_in_face(theEdge, theFace) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        crate::top_abs::Orientation::try_from(__val).unwrap()
-    }
+    crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+        crate::ffi::BRepTools_ori_edge_in_face(theEdge, theFace)
+    }))
+    .unwrap()
 }
 /// **Source:** `BRepTools.hxx`:393 - `BRepTools::RemoveInternals`
 /// Removes internal sub-shapes from the shape.
@@ -705,12 +484,7 @@ pub fn ori_edge_in_face(
 /// The flag <theForce> if set to true disables the connectivity check and clears
 /// the given shape from all sub-shapes with internal orientation.
 pub fn remove_internals(theS: &mut crate::topo_ds::Shape, theForce: bool) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_remove_internals(theS, theForce) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepTools_remove_internals(theS, theForce) })
 }
 /// **Source:** `BRepTools.hxx`:399 - `BRepTools::CheckLocations`
 /// Check all locations of shape according criterium:
@@ -720,12 +494,9 @@ pub fn check_locations(
     theS: &crate::topo_ds::Shape,
     theProblemShapes: &mut crate::ffi::TopTools_ListOfShape,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::BRepTools_check_locations(theS, theProblemShapes) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepTools_check_locations(theS, theProblemShapes)
+    })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -757,14 +528,10 @@ impl CopyModification {
     /// \param[in] theCopyGeom  indicates that the geometry (surfaces and curves) should be copied
     /// \param[in] theCopyMesh  indicates that the triangulation should be copied
     pub fn new_bool2(theCopyGeom: bool, theCopyMesh: bool) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_ctor_bool2(theCopyGeom, theCopyMesh)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_CopyModification_ctor_bool2(theCopyGeom, theCopyMesh),
+            ))
         }
     }
 
@@ -800,24 +567,17 @@ impl CopyModification {
         theRevWires: &mut bool,
         theRevFace: &mut bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_new_surface(
-                    self as *mut Self,
-                    theFace,
-                    theSurf,
-                    theLoc,
-                    theTol,
-                    theRevWires,
-                    theRevFace,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_new_surface(
+                self as *mut Self,
+                theFace,
+                theSurf,
+                theLoc,
+                theTol,
+                theRevWires,
+                theRevFace,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:53 - `BRepTools_CopyModification::NewCurve()`
@@ -835,22 +595,15 @@ impl CopyModification {
         theLoc: &mut crate::top_loc::Location,
         theTol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_new_curve(
-                    self as *mut Self,
-                    theEdge,
-                    theCurve,
-                    theLoc,
-                    theTol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_new_curve(
+                self as *mut Self,
+                theEdge,
+                theCurve,
+                theLoc,
+                theTol,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:64 - `BRepTools_CopyModification::NewPoint()`
@@ -866,21 +619,14 @@ impl CopyModification {
         thePnt: &mut crate::gp::Pnt,
         theTol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_new_point(
-                    self as *mut Self,
-                    theVertex,
-                    thePnt,
-                    theTol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_new_point(
+                self as *mut Self,
+                theVertex,
+                thePnt,
+                theTol,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:74 - `BRepTools_CopyModification::NewCurve2d()`
@@ -899,24 +645,17 @@ impl CopyModification {
         theCurve: &mut crate::ffi::HandleGeom2dCurve,
         theTol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_new_curve2d(
-                    self as *mut Self,
-                    theEdge,
-                    theFace,
-                    theNewEdge,
-                    theNewFace,
-                    theCurve,
-                    theTol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_new_curve2d(
+                self as *mut Self,
+                theEdge,
+                theFace,
+                theNewEdge,
+                theNewFace,
+                theCurve,
+                theTol,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:87 - `BRepTools_CopyModification::NewParameter()`
@@ -933,22 +672,15 @@ impl CopyModification {
         thePnt: &mut f64,
         theTol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_new_parameter(
-                    self as *mut Self,
-                    theVertex,
-                    theEdge,
-                    thePnt,
-                    theTol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_new_parameter(
+                self as *mut Self,
+                theVertex,
+                theEdge,
+                thePnt,
+                theTol,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:96 - `BRepTools_CopyModification::Continuity()`
@@ -965,24 +697,18 @@ impl CopyModification {
         theNewFace1: &crate::topo_ds::Face,
         theNewFace2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_continuity(
-                    self as *mut Self,
-                    theEdge,
-                    theFace1,
-                    theFace2,
-                    theNewEdge,
-                    theNewFace1,
-                    theNewFace2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_continuity(
+                self as *mut Self,
+                theEdge,
+                theFace1,
+                theFace2,
+                theNewEdge,
+                theNewFace1,
+                theNewFace2,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:106 - `BRepTools_CopyModification::NewTriangulation()`
@@ -994,20 +720,13 @@ impl CopyModification {
         theFace: &crate::topo_ds::Face,
         theTri: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_new_triangulation(
-                    self as *mut Self,
-                    theFace,
-                    theTri,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_new_triangulation(
+                self as *mut Self,
+                theFace,
+                theTri,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:113 - `BRepTools_CopyModification::NewPolygon()`
@@ -1019,20 +738,9 @@ impl CopyModification {
         theEdge: &crate::topo_ds::Edge,
         thePoly: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_new_polygon(
-                    self as *mut Self,
-                    theEdge,
-                    thePoly,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_new_polygon(self as *mut Self, theEdge, thePoly)
+        })
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:120 - `BRepTools_CopyModification::NewPolygonOnTriangulation()`
@@ -1045,159 +753,115 @@ impl CopyModification {
         theFace: &crate::topo_ds::Face,
         thePoly: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_new_polygon_on_triangulation(
-                    self as *mut Self,
-                    theEdge,
-                    theFace,
-                    thePoly,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_new_polygon_on_triangulation(
+                self as *mut Self,
+                theEdge,
+                theFace,
+                thePoly,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:124 - `BRepTools_CopyModification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_CopyModification_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_CopyModification_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:124 - `BRepTools_CopyModification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_CopyModification_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepTools_CopyModification_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:124 - `BRepTools_CopyModification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_CopyModification_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_CopyModification_get_type_descriptor()))
         }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_modification(&self) -> &Modification {
-        let __result = unsafe {
-            crate::ffi::BRepTools_CopyModification_as_BRepTools_Modification(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepTools_CopyModification_as_BRepTools_Modification(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_modification_mut(&mut self) -> &mut Modification {
-        let __result = unsafe {
-            crate::ffi::BRepTools_CopyModification_as_BRepTools_Modification_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepTools_CopyModification_as_BRepTools_Modification_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepTools_CopyModification_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepTools_CopyModification_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepTools_CopyModification_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepTools_CopyModification_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsCopyModification> {
-        let __result = unsafe { crate::ffi::BRepTools_CopyModification_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_CopyModification_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::BRepTools_CopyModification_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1208,58 +872,30 @@ impl CopyModification {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_CopyModification_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_CopyModification_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_CopyModification_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_CopyModification_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1274,50 +910,44 @@ unsafe impl crate::CppDeletable for HandleBRepToolsCopyModification {
 impl HandleBRepToolsCopyModification {
     /// Dereference this Handle to access the underlying BRepTools_CopyModification
     pub fn get(&self) -> &crate::ffi::BRepTools_CopyModification {
-        let __result =
-            unsafe { crate::ffi::HandleBRepToolsCopyModification_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepToolsCopyModification_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepTools_CopyModification
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_CopyModification {
-        let __result =
-            unsafe { crate::ffi::HandleBRepToolsCopyModification_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepToolsCopyModification_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepTools_CopyModification> to Handle<BRepTools_Modification>
     pub fn to_handle_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsCopyModification_to_HandleBRepToolsModification(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepToolsCopyModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepTools_CopyModification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsCopyModification_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepToolsCopyModification_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<BRepTools_CopyModification> to Handle<BRepTools_NurbsConvertModification>
@@ -1326,16 +956,13 @@ impl HandleBRepToolsCopyModification {
     pub fn downcast_to_nurbs_convert_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepToolsNurbsConvertModification>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsCopyModification_downcast_to_HandleBRepToolsNurbsConvertModification(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -1359,26 +986,20 @@ unsafe impl crate::CppDeletable for GTrsfModification {
 impl GTrsfModification {
     /// **Source:** `BRepTools_GTrsfModification.hxx`:45 - `BRepTools_GTrsfModification::BRepTools_GTrsfModification()`
     pub fn new_gtrsf(T: &crate::gp::GTrsf) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_GTrsfModification_ctor_gtrsf(T) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_GTrsfModification_ctor_gtrsf(T),
+            ))
         }
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:48 - `BRepTools_GTrsfModification::GTrsf()`
     /// Gives an access on the GTrsf.
     pub fn g_trsf(&mut self) -> &mut crate::gp::GTrsf {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_GTrsfModification_g_trsf(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepTools_GTrsfModification_g_trsf(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -1403,24 +1024,17 @@ impl GTrsfModification {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_new_surface(
-                    self as *mut Self,
-                    F,
-                    S,
-                    L,
-                    Tol,
-                    RevWires,
-                    RevFace,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_surface(
+                self as *mut Self,
+                F,
+                S,
+                L,
+                Tol,
+                RevWires,
+                RevFace,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:74 - `BRepTools_GTrsfModification::NewCurve()`
@@ -1437,16 +1051,9 @@ impl GTrsfModification {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_new_curve(self as *mut Self, E, C, L, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_curve(self as *mut Self, E, C, L, Tol)
+        })
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:84 - `BRepTools_GTrsfModification::NewPoint()`
@@ -1461,16 +1068,9 @@ impl GTrsfModification {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_new_point(self as *mut Self, V, P, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_point(self as *mut Self, V, P, Tol)
+        })
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:94 - `BRepTools_GTrsfModification::NewCurve2d()`
@@ -1489,24 +1089,17 @@ impl GTrsfModification {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_new_curve2d(
-                    self as *mut Self,
-                    E,
-                    F,
-                    NewE,
-                    NewF,
-                    C,
-                    Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_curve2d(
+                self as *mut Self,
+                E,
+                F,
+                NewE,
+                NewF,
+                C,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:106 - `BRepTools_GTrsfModification::NewParameter()`
@@ -1522,22 +1115,9 @@ impl GTrsfModification {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_new_parameter(
-                    self as *mut Self,
-                    V,
-                    E,
-                    P,
-                    Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_parameter(self as *mut Self, V, E, P, Tol)
+        })
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:117 - `BRepTools_GTrsfModification::Continuity()`
@@ -1556,24 +1136,18 @@ impl GTrsfModification {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_continuity(
-                    self as *mut Self,
-                    E,
-                    F1,
-                    F2,
-                    NewE,
-                    NewF1,
-                    NewF2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_continuity(
+                self as *mut Self,
+                E,
+                F1,
+                F2,
+                NewE,
+                NewF1,
+                NewF2,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:127 - `BRepTools_GTrsfModification::NewTriangulation()`
@@ -1585,20 +1159,13 @@ impl GTrsfModification {
         theFace: &crate::topo_ds::Face,
         theTri: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_new_triangulation(
-                    self as *mut Self,
-                    theFace,
-                    theTri,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_triangulation(
+                self as *mut Self,
+                theFace,
+                theTri,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:134 - `BRepTools_GTrsfModification::NewPolygon()`
@@ -1610,20 +1177,9 @@ impl GTrsfModification {
         theEdge: &crate::topo_ds::Edge,
         thePoly: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_new_polygon(
-                    self as *mut Self,
-                    theEdge,
-                    thePoly,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_polygon(self as *mut Self, theEdge, thePoly)
+        })
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:141 - `BRepTools_GTrsfModification::NewPolygonOnTriangulation()`
@@ -1636,160 +1192,119 @@ impl GTrsfModification {
         theFace: &crate::topo_ds::Face,
         thePoly: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_new_polygon_on_triangulation(
-                    self as *mut Self,
-                    theEdge,
-                    theFace,
-                    thePoly,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_polygon_on_triangulation(
+                self as *mut Self,
+                theEdge,
+                theFace,
+                thePoly,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:145 - `BRepTools_GTrsfModification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_GTrsfModification_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:145 - `BRepTools_GTrsfModification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_GTrsfModification_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepTools_GTrsfModification_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:145 - `BRepTools_GTrsfModification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_GTrsfModification_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_GTrsfModification_get_type_descriptor()))
         }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_modification(&self) -> &Modification {
-        let __result = unsafe {
-            crate::ffi::BRepTools_GTrsfModification_as_BRepTools_Modification(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::BRepTools_GTrsfModification_as_BRepTools_Modification(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_modification_mut(&mut self) -> &mut Modification {
-        let __result = unsafe {
-            crate::ffi::BRepTools_GTrsfModification_as_BRepTools_Modification_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepTools_GTrsfModification_as_BRepTools_Modification_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepTools_GTrsfModification_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepTools_GTrsfModification_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepTools_GTrsfModification_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepTools_GTrsfModification_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsGTrsfModification> {
-        let __result = unsafe { crate::ffi::BRepTools_GTrsfModification_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_GTrsfModification_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::BRepTools_GTrsfModification_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1800,58 +1315,30 @@ impl GTrsfModification {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_GTrsfModification_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_GTrsfModification_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1866,50 +1353,44 @@ unsafe impl crate::CppDeletable for HandleBRepToolsGTrsfModification {
 impl HandleBRepToolsGTrsfModification {
     /// Dereference this Handle to access the underlying BRepTools_GTrsfModification
     pub fn get(&self) -> &crate::ffi::BRepTools_GTrsfModification {
-        let __result =
-            unsafe { crate::ffi::HandleBRepToolsGTrsfModification_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepToolsGTrsfModification_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepTools_GTrsfModification
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_GTrsfModification {
-        let __result =
-            unsafe { crate::ffi::HandleBRepToolsGTrsfModification_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepToolsGTrsfModification_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepTools_GTrsfModification> to Handle<BRepTools_Modification>
     pub fn to_handle_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsGTrsfModification_to_HandleBRepToolsModification(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepToolsGTrsfModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepTools_GTrsfModification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsGTrsfModification_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepToolsGTrsfModification_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1993,12 +1474,8 @@ impl History {
     /// @name Constructors for History creation
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_History_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepTools_History_ctor()))
         }
     }
 
@@ -2010,18 +1487,9 @@ impl History {
         theInitial: &crate::topo_ds::Shape,
         theGenerated: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_History_add_generated(
-                    self as *mut Self,
-                    theInitial,
-                    theGenerated,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_History_add_generated(self as *mut Self, theInitial, theGenerated)
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:158 - `BRepTools_History::AddModified()`
@@ -2031,30 +1499,17 @@ impl History {
         theInitial: &crate::topo_ds::Shape,
         theModified: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_History_add_modified(
-                    self as *mut Self,
-                    theInitial,
-                    theModified,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_History_add_modified(self as *mut Self, theInitial, theModified)
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:161 - `BRepTools_History::Remove()`
     /// Set the shape as removed one.
     pub fn remove(&mut self, theRemoved: &crate::topo_ds::Shape) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_History_remove(self as *mut Self, theRemoved) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_History_remove(self as *mut Self, theRemoved)
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:164 - `BRepTools_History::ReplaceGenerated()`
@@ -2064,18 +1519,13 @@ impl History {
         theInitial: &crate::topo_ds::Shape,
         theGenerated: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_History_replace_generated(
-                    self as *mut Self,
-                    theInitial,
-                    theGenerated,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_History_replace_generated(
+                self as *mut Self,
+                theInitial,
+                theGenerated,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:168 - `BRepTools_History::ReplaceModified()`
@@ -2085,29 +1535,19 @@ impl History {
         theInitial: &crate::topo_ds::Shape,
         theModified: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_History_replace_modified(
-                    self as *mut Self,
-                    theInitial,
-                    theModified,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_History_replace_modified(
+                self as *mut Self,
+                theInitial,
+                theModified,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:172 - `BRepTools_History::Clear()`
     /// Clears the history.
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepTools_History_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::BRepTools_History_clear(self as *mut Self) })
     }
 
     /// **Source:** `BRepTools_History.hxx`:181 - `BRepTools_History::Generated()`
@@ -2123,14 +1563,11 @@ impl History {
         &self,
         theInitial: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_History_generated(self as *const Self, theInitial) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_History_generated(
+                self as *const Self,
+                theInitial,
+            )))
         }
     }
 
@@ -2146,72 +1583,44 @@ impl History {
         &self,
         theInitial: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_History_modified(self as *const Self, theInitial) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_History_modified(
+                self as *const Self,
+                theInitial,
+            )))
         }
     }
 
     /// **Source:** `BRepTools_History.hxx`:187 - `BRepTools_History::IsRemoved()`
     /// Returns 'true' if the shape is removed.
     pub fn is_removed(&self, theInitial: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_History_is_removed(self as *const Self, theInitial)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_History_is_removed(self as *const Self, theInitial)
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:190 - `BRepTools_History::HasGenerated()`
     /// Returns 'true' if there any shapes with Generated elements present
     pub fn has_generated(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_History_has_generated(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_History_has_generated(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:193 - `BRepTools_History::HasModified()`
     /// Returns 'true' if there any Modified shapes present
     pub fn has_modified(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_History_has_modified(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_History_has_modified(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:196 - `BRepTools_History::HasRemoved()`
     /// Returns 'true' if there any removed shapes present
     pub fn has_removed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_History_has_removed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_History_has_removed(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:200 - `BRepTools_History::Merge()`
@@ -2221,165 +1630,112 @@ impl History {
         &mut self,
         theHistory23: &crate::ffi::HandleBRepToolsHistory,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_History_merge_handlebreptoolshistory(
-                    self as *mut Self,
-                    theHistory23,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_History_merge_handlebreptoolshistory(
+                self as *mut Self,
+                theHistory23,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:203 - `BRepTools_History::Merge()`
     /// Merges the next history to this history.
     pub fn merge_history(&mut self, theHistory23: &History) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_History_merge_history(self as *mut Self, theHistory23)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_History_merge_history(self as *mut Self, theHistory23)
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:219 - `BRepTools_History::Dump()`
     /// A method to dump a history
     /// Prints the brief description of the history into a stream
     pub fn dump(&mut self, theS: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc = unsafe { crate::ffi::BRepTools_History_dump(self as *mut Self, theS) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_History_dump(self as *mut Self, theS)
+        })
     }
 
     /// **Source:** `BRepTools_History.hxx`:229 - `BRepTools_History::DynamicType()`
     /// Define the OCCT RTTI for the type.
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_History_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_History_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepTools_History.hxx`:145 - `BRepTools_History::IsSupportedType()`
     /// Returns 'true' if the type of the shape is supported by the history.
     pub fn is_supported_type(theShape: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_History_is_supported_type(theShape) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepTools_History_is_supported_type(theShape) })
     }
 
     /// **Source:** `BRepTools_History.hxx`:229 - `BRepTools_History::get_type_name()`
     /// Define the OCCT RTTI for the type.
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_History_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepTools_History_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepTools_History.hxx`:229 - `BRepTools_History::get_type_descriptor()`
     /// Define the OCCT RTTI for the type.
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_History_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepTools_History_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepTools_History_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepTools_History_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepTools_History_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepTools_History_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
-        let __result = unsafe { crate::ffi::BRepTools_History_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepTools_History_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_History_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_History_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_History_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_History_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepTools_History_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepTools_History_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2390,52 +1746,30 @@ impl History {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_History_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_History_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_History_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_History_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_History_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_History_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_History_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_History_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2450,31 +1784,25 @@ unsafe impl crate::CppDeletable for HandleBRepToolsHistory {
 impl HandleBRepToolsHistory {
     /// Dereference this Handle to access the underlying BRepTools_History
     pub fn get(&self) -> &crate::ffi::BRepTools_History {
-        let __result = unsafe { crate::ffi::HandleBRepToolsHistory_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepToolsHistory_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepTools_History
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_History {
-        let __result = unsafe { crate::ffi::HandleBRepToolsHistory_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepToolsHistory_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepTools_History> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsHistory_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepToolsHistory_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2517,24 +1845,17 @@ impl Modification {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_new_surface(
-                    self as *mut Self,
-                    F,
-                    S,
-                    L,
-                    Tol,
-                    RevWires,
-                    RevFace,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_new_surface(
+                self as *mut Self,
+                F,
+                S,
+                L,
+                Tol,
+                RevWires,
+                RevFace,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
@@ -2546,16 +1867,9 @@ impl Modification {
         F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_new_triangulation(self as *mut Self, F, T)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_new_triangulation(self as *mut Self, F, T)
+        })
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:81 - `BRepTools_Modification::NewCurve()`
@@ -2573,16 +1887,9 @@ impl Modification {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_new_curve(self as *mut Self, E, C, L, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_new_curve(self as *mut Self, E, C, L, Tol)
+        })
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
@@ -2594,15 +1901,9 @@ impl Modification {
         E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_Modification_new_polygon(self as *mut Self, E, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_new_polygon(self as *mut Self, E, P)
+        })
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
@@ -2615,21 +1916,14 @@ impl Modification {
         F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_new_polygon_on_triangulation(
-                    self as *mut Self,
-                    E,
-                    F,
-                    P,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_new_polygon_on_triangulation(
+                self as *mut Self,
+                E,
+                F,
+                P,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:106 - `BRepTools_Modification::NewPoint()`
@@ -2645,16 +1939,9 @@ impl Modification {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_new_point(self as *mut Self, V, P, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_new_point(self as *mut Self, V, P, Tol)
+        })
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:120 - `BRepTools_Modification::NewCurve2d()`
@@ -2677,24 +1964,17 @@ impl Modification {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_new_curve2d(
-                    self as *mut Self,
-                    E,
-                    F,
-                    NewE,
-                    NewF,
-                    C,
-                    Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_new_curve2d(
+                self as *mut Self,
+                E,
+                F,
+                NewE,
+                NewF,
+                C,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:133 - `BRepTools_Modification::NewParameter()`
@@ -2711,16 +1991,9 @@ impl Modification {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_new_parameter(self as *mut Self, V, E, P, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_new_parameter(self as *mut Self, V, E, P, Tol)
+        })
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:143 - `BRepTools_Modification::Continuity()`
@@ -2738,125 +2011,83 @@ impl Modification {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_continuity(
-                    self as *mut Self,
-                    E,
-                    F1,
-                    F2,
-                    NewE,
-                    NewF1,
-                    NewF2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_continuity(
+                self as *mut Self,
+                E,
+                F1,
+                F2,
+                NewE,
+                NewF1,
+                NewF2,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:150 - `BRepTools_Modification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_Modification_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_Modification_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:150 - `BRepTools_Modification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_Modification_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepTools_Modification_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:150 - `BRepTools_Modification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_Modification_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepTools_Modification_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepTools_Modification_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepTools_Modification_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepTools_Modification_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepTools_Modification_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepTools_Modification_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepTools_Modification_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2867,53 +2098,30 @@ impl Modification {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_Modification_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_Modification_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modification_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modification_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_Modification_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_Modification_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2928,32 +2136,29 @@ unsafe impl crate::CppDeletable for HandleBRepToolsModification {
 impl HandleBRepToolsModification {
     /// Dereference this Handle to access the underlying BRepTools_Modification
     pub fn get(&self) -> &crate::ffi::BRepTools_Modification {
-        let __result = unsafe { crate::ffi::HandleBRepToolsModification_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepToolsModification_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepTools_Modification
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_Modification {
-        let __result =
-            unsafe { crate::ffi::HandleBRepToolsModification_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepToolsModification_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepTools_Modification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsModification_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepToolsModification_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<BRepTools_Modification> to Handle<BRepOffset_SimpleOffset>
@@ -2962,18 +2167,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_simple_offset(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepOffsetSimpleOffset>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleBRepOffsetSimpleOffset(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -2983,18 +2185,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_copy_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepToolsCopyModification>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleBRepToolsCopyModification(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -3004,18 +2203,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_g_trsf_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepToolsGTrsfModification>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleBRepToolsGTrsfModification(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -3025,16 +2221,13 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_nurbs_convert_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepToolsNurbsConvertModification>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleBRepToolsNurbsConvertModification(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -3044,18 +2237,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_b_rep_tools_trsf_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepToolsTrsfModification>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleBRepToolsTrsfModification(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -3065,18 +2255,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_draft_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDraftModification>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleDraftModification(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -3086,18 +2273,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_b_spline_restriction(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomBSplineRestriction>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomBSplineRestriction(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -3107,18 +2291,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_convert_to_b_spline(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomConvertToBSpline>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomConvertToBSpline(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -3128,18 +2309,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_convert_to_revolution(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomConvertToRevolution>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomConvertToRevolution(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -3149,18 +2327,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_direct_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomDirectModification>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomDirectModification(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -3170,18 +2345,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_shape_custom_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomModification>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomModification(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -3191,18 +2363,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_swept_to_elementary(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomSweptToElementary>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomSweptToElementary(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -3212,18 +2381,15 @@ impl HandleBRepToolsModification {
     pub fn downcast_to_shape_custom_trsf_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomTrsfModification>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomTrsfModification(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -3246,24 +2412,20 @@ impl Modifier {
     /// **Source:** `BRepTools_Modifier.hxx`:47 - `BRepTools_Modifier::BRepTools_Modifier()`
     /// Creates an empty Modifier.
     pub fn new_bool(theMutableInput: bool) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_Modifier_ctor_bool(theMutableInput) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_Modifier_ctor_bool(theMutableInput),
+            ))
         }
     }
 
     /// **Source:** `BRepTools_Modifier.hxx`:50 - `BRepTools_Modifier::BRepTools_Modifier()`
     /// Creates a modifier on the shape <S>.
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_Modifier_ctor_shape(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_Modifier_ctor_shape(S),
+            ))
         }
     }
 
@@ -3274,14 +2436,10 @@ impl Modifier {
         S: &crate::topo_ds::Shape,
         M: &crate::ffi::HandleBRepToolsModification,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_Modifier_ctor_shape_handlebreptoolsmodification(S, M)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_Modifier_ctor_shape_handlebreptoolsmodification(S, M),
+            ))
         }
     }
 
@@ -3294,12 +2452,9 @@ impl Modifier {
     /// **Source:** `BRepTools_Modifier.hxx`:58 - `BRepTools_Modifier::Init()`
     /// Initializes the modifier with the shape <S>.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::BRepTools_Modifier_init(self as *mut Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_Modifier_init(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `BRepTools_Modifier.hxx`:61 - `BRepTools_Modifier::Perform()`
@@ -3309,42 +2464,24 @@ impl Modifier {
         M: &crate::ffi::HandleBRepToolsModification,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_Modifier_perform(self as *mut Self, M, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_Modifier_perform(self as *mut Self, M, theProgress)
+        })
     }
 
     /// **Source:** `BRepTools_Modifier.hxx`:66 - `BRepTools_Modifier::IsDone()`
     /// Returns Standard_True if the modification has
     /// been computed successfully.
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_Modifier_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepTools_Modifier_is_done(self as *const Self) })
     }
 
     /// **Source:** `BRepTools_Modifier.hxx`:69 - `BRepTools_Modifier::IsMutableInput()`
     /// Returns the current mutable input state
     pub fn is_mutable_input(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_Modifier_is_mutable_input(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Modifier_is_mutable_input(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepTools_Modifier.hxx`:74 - `BRepTools_Modifier::SetMutableInput()`
@@ -3352,14 +2489,9 @@ impl Modifier {
     /// If true then the input (original) shape can be modified
     /// during modification process
     pub fn set_mutable_input(&mut self, theMutableInput: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_Modifier_set_mutable_input(self as *mut Self, theMutableInput)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_Modifier_set_mutable_input(self as *mut Self, theMutableInput)
+        })
     }
 
     /// **Source:** `BRepTools_Modifier.hxx`:77 - `BRepTools_Modifier::ModifiedShape()`
@@ -3371,14 +2503,11 @@ impl Modifier {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn modified_shape(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_Modifier_modified_shape(self as *const Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_Modifier_modified_shape(
+                self as *const Self,
+                S,
+            )))
         }
     }
 }
@@ -3402,12 +2531,10 @@ unsafe impl crate::CppDeletable for NurbsConvertModification {
 impl NurbsConvertModification {
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:47 - `BRepTools_NurbsConvertModification::BRepTools_NurbsConvertModification()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_NurbsConvertModification_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_NurbsConvertModification_ctor(),
+            ))
         }
     }
 
@@ -3432,24 +2559,17 @@ impl NurbsConvertModification {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_new_surface(
-                    self as *mut Self,
-                    F,
-                    S,
-                    L,
-                    Tol,
-                    RevWires,
-                    RevFace,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_surface(
+                self as *mut Self,
+                F,
+                S,
+                L,
+                Tol,
+                RevWires,
+                RevFace,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:73 - `BRepTools_NurbsConvertModification::NewCurve()`
@@ -3466,22 +2586,15 @@ impl NurbsConvertModification {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_new_curve(
-                    self as *mut Self,
-                    E,
-                    C,
-                    L,
-                    Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_curve(
+                self as *mut Self,
+                E,
+                C,
+                L,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:83 - `BRepTools_NurbsConvertModification::NewPoint()`
@@ -3496,21 +2609,9 @@ impl NurbsConvertModification {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_new_point(
-                    self as *mut Self,
-                    V,
-                    P,
-                    Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_point(self as *mut Self, V, P, Tol)
+        })
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:93 - `BRepTools_NurbsConvertModification::NewCurve2d()`
@@ -3529,24 +2630,17 @@ impl NurbsConvertModification {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_new_curve2d(
-                    self as *mut Self,
-                    E,
-                    F,
-                    NewE,
-                    NewF,
-                    C,
-                    Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_curve2d(
+                self as *mut Self,
+                E,
+                F,
+                NewE,
+                NewF,
+                C,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:105 - `BRepTools_NurbsConvertModification::NewParameter()`
@@ -3562,22 +2656,15 @@ impl NurbsConvertModification {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_new_parameter(
-                    self as *mut Self,
-                    V,
-                    E,
-                    P,
-                    Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_parameter(
+                self as *mut Self,
+                V,
+                E,
+                P,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:116 - `BRepTools_NurbsConvertModification::Continuity()`
@@ -3596,24 +2683,18 @@ impl NurbsConvertModification {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_continuity(
-                    self as *mut Self,
-                    E,
-                    F1,
-                    F2,
-                    NewE,
-                    NewF1,
-                    NewF2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_continuity(
+                self as *mut Self,
+                E,
+                F1,
+                F2,
+                NewE,
+                NewF1,
+                NewF2,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:126 - `BRepTools_NurbsConvertModification::NewTriangulation()`
@@ -3625,20 +2706,13 @@ impl NurbsConvertModification {
         theFace: &crate::topo_ds::Face,
         theTri: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_new_triangulation(
-                    self as *mut Self,
-                    theFace,
-                    theTri,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_triangulation(
+                self as *mut Self,
+                theFace,
+                theTri,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:133 - `BRepTools_NurbsConvertModification::NewPolygon()`
@@ -3650,20 +2724,13 @@ impl NurbsConvertModification {
         theEdge: &crate::topo_ds::Edge,
         thePoly: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_new_polygon(
-                    self as *mut Self,
-                    theEdge,
-                    thePoly,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_polygon(
+                self as *mut Self,
+                theEdge,
+                thePoly,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:140 - `BRepTools_NurbsConvertModification::NewPolygonOnTriangulation()`
@@ -3676,213 +2743,159 @@ impl NurbsConvertModification {
         theFace: &crate::topo_ds::Face,
         thePoly: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_new_polygon_on_triangulation(
-                    self as *mut Self,
-                    theEdge,
-                    theFace,
-                    thePoly,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_polygon_on_triangulation(
+                self as *mut Self,
+                theEdge,
+                theFace,
+                thePoly,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:144 - `BRepTools_NurbsConvertModification::GetUpdatedEdges()`
     pub fn get_updated_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::BRepTools_NurbsConvertModification_get_updated_edges(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:146 - `BRepTools_NurbsConvertModification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_NurbsConvertModification_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:146 - `BRepTools_NurbsConvertModification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_NurbsConvertModification_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepTools_NurbsConvertModification_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:146 - `BRepTools_NurbsConvertModification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_NurbsConvertModification_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::BRepTools_NurbsConvertModification_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to BRepTools_CopyModification
     pub fn as_copy_modification(&self) -> &CopyModification {
-        let __result = unsafe {
-            crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_CopyModification(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_CopyModification(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepTools_CopyModification (mutable)
     pub fn as_copy_modification_mut(&mut self) -> &mut CopyModification {
-        let __result = unsafe {
-            crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_CopyModification_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_CopyModification_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_modification(&self) -> &Modification {
-        let __result = unsafe {
-            crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_Modification(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_Modification(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_modification_mut(&mut self) -> &mut Modification {
-        let __result = unsafe {
-            crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_Modification_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_Modification_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepTools_NurbsConvertModification_as_Standard_Transient(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::BRepTools_NurbsConvertModification_as_Standard_Transient(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepTools_NurbsConvertModification_as_Standard_Transient_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepTools_NurbsConvertModification_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsNurbsConvertModification> {
-        let __result =
-            unsafe { crate::ffi::BRepTools_NurbsConvertModification_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_NurbsConvertModification_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::BRepTools_NurbsConvertModification_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3893,60 +2906,36 @@ impl NurbsConvertModification {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_inherited_GetRefCount(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_NurbsConvertModification_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3961,66 +2950,53 @@ unsafe impl crate::CppDeletable for HandleBRepToolsNurbsConvertModification {
 impl HandleBRepToolsNurbsConvertModification {
     /// Dereference this Handle to access the underlying BRepTools_NurbsConvertModification
     pub fn get(&self) -> &crate::ffi::BRepTools_NurbsConvertModification {
-        let __result =
-            unsafe { crate::ffi::HandleBRepToolsNurbsConvertModification_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepToolsNurbsConvertModification_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepTools_NurbsConvertModification
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_NurbsConvertModification {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsNurbsConvertModification_get_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepToolsNurbsConvertModification_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepTools_NurbsConvertModification> to Handle<BRepTools_CopyModification>
     pub fn to_handle_copy_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsCopyModification> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsNurbsConvertModification_to_HandleBRepToolsCopyModification(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleBRepToolsNurbsConvertModification_to_HandleBRepToolsCopyModification(self as *const Self)))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepTools_NurbsConvertModification> to Handle<BRepTools_Modification>
     pub fn to_handle_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsNurbsConvertModification_to_HandleBRepToolsModification(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepToolsNurbsConvertModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepTools_NurbsConvertModification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsNurbsConvertModification_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepToolsNurbsConvertModification_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4043,55 +3019,36 @@ unsafe impl crate::CppDeletable for PurgeLocations {
 impl PurgeLocations {
     /// **Source:** `BRepTools_PurgeLocations.hxx`:29 - `BRepTools_PurgeLocations::BRepTools_PurgeLocations()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_PurgeLocations_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_PurgeLocations_ctor(),
+            ))
         }
     }
 
     /// **Source:** `BRepTools_PurgeLocations.hxx`:32 - `BRepTools_PurgeLocations::Perform()`
     /// Removes all locations correspondingly to criterium from theShape.
     pub fn perform(&mut self, theShape: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_PurgeLocations_perform(self as *mut Self, theShape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_PurgeLocations_perform(self as *mut Self, theShape)
+        })
     }
 
     /// **Source:** `BRepTools_PurgeLocations.hxx`:35 - `BRepTools_PurgeLocations::GetResult()`
     /// Returns shape with removed locations.
     pub fn get_result(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_PurgeLocations_get_result(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_PurgeLocations_get_result(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepTools_PurgeLocations.hxx`:37 - `BRepTools_PurgeLocations::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_PurgeLocations_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_PurgeLocations_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepTools_PurgeLocations.hxx`:40 - `BRepTools_PurgeLocations::ModifiedShape()`
@@ -4100,18 +3057,13 @@ impl PurgeLocations {
         &self,
         theInitShape: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepTools_PurgeLocations_modified_shape(
                     self as *const Self,
                     theInitShape,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 }
@@ -4147,12 +3099,8 @@ unsafe impl crate::CppDeletable for Quilt {
 impl Quilt {
     /// **Source:** `BRepTools_Quilt.hxx`:48 - `BRepTools_Quilt::BRepTools_Quilt()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_Quilt_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepTools_Quilt_ctor()))
         }
     }
 
@@ -4174,13 +3122,9 @@ impl Quilt {
     /// <Eold> must belong to the next added shape, <Enew> must belong
     /// to a Shape added before.
     pub fn bind_edge2(&mut self, Eold: &crate::topo_ds::Edge, Enew: &crate::topo_ds::Edge) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_Quilt_bind_edge2(self as *mut Self, Eold, Enew) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_Quilt_bind_edge2(self as *mut Self, Eold, Enew)
+        })
     }
 
     /// **Source:** `BRepTools_Quilt.hxx`:72 - `BRepTools_Quilt::Bind()`
@@ -4189,39 +3133,25 @@ impl Quilt {
     /// The faces  of  the added  shape containing  <Vold>
     /// will be copied to substitute <Vold> by <Vnew>.
     pub fn bind_vertex2(&mut self, Vold: &crate::topo_ds::Vertex, Vnew: &crate::topo_ds::Vertex) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_Quilt_bind_vertex2(self as *mut Self, Vold, Vnew) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_Quilt_bind_vertex2(self as *mut Self, Vold, Vnew)
+        })
     }
 
     /// **Source:** `BRepTools_Quilt.hxx`:76 - `BRepTools_Quilt::Add()`
     /// Add   the faces of  <S>  to  the Quilt,  the faces
     /// containing bounded edges are copied.
     pub fn add(&mut self, S: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::BRepTools_Quilt_add(self as *mut Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::BRepTools_Quilt_add(self as *mut Self, S) })
     }
 
     /// **Source:** `BRepTools_Quilt.hxx`:80 - `BRepTools_Quilt::IsCopied()`
     /// Returns   True if <S> has   been  copied (<S> is a
     /// vertex, an edge or a face)
     pub fn is_copied(&self, S: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_Quilt_is_copied(self as *const Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Quilt_is_copied(self as *const Self, S)
+        })
     }
 
     /// **Source:** `BRepTools_Quilt.hxx`:83 - `BRepTools_Quilt::Copy()`
@@ -4233,14 +3163,7 @@ impl Quilt {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn copy(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_Quilt_copy(self as *const Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepTools_Quilt_copy(self as *const Self, S))) }
     }
 
     /// **Source:** `BRepTools_Quilt.hxx`:88 - `BRepTools_Quilt::Shells()`
@@ -4248,13 +3171,10 @@ impl Quilt {
     /// set of faces. The shells will be flagged as closed
     /// or not closed.
     pub fn shells(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_Quilt_shells(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepTools_Quilt_shells(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -4290,62 +3210,39 @@ impl ReShape {
     /// **Source:** `BRepTools_ReShape.hxx`:56 - `BRepTools_ReShape::BRepTools_ReShape()`
     /// Returns an empty Reshape
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_ReShape_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepTools_ReShape_ctor()))
         }
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:59 - `BRepTools_ReShape::Clear()`
     /// Clears all substitutions requests
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepTools_ReShape_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::BRepTools_ReShape_clear(self as *mut Self) })
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:62 - `BRepTools_ReShape::Remove()`
     /// Sets a request to Remove a Shape whatever the orientation
     pub fn remove(&mut self, shape: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::BRepTools_ReShape_remove(self as *mut Self, shape) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ReShape_remove(self as *mut Self, shape)
+        })
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:65 - `BRepTools_ReShape::Replace()`
     /// Sets a request to Replace a Shape by a new one.
     pub fn replace(&mut self, shape: &crate::topo_ds::Shape, newshape: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ReShape_replace(self as *mut Self, shape, newshape)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ReShape_replace(self as *mut Self, shape, newshape)
+        })
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:94 - `BRepTools_ReShape::IsRecorded()`
     /// Tells if a shape is recorded for Replace/Remove
     pub fn is_recorded(&self, shape: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ReShape_is_recorded(self as *const Self, shape) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ReShape_is_recorded(self as *const Self, shape)
+        })
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:100 - `BRepTools_ReShape::Value()`
@@ -4354,14 +3251,11 @@ impl ReShape {
     /// If to be Removed, returns a Null Shape
     /// Else, returns the replacing item
     pub fn value(&self, shape: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ReShape_value(self as *const Self, shape) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepTools_ReShape_value(
+                self as *const Self,
+                shape,
+            )))
         }
     }
 
@@ -4379,16 +3273,9 @@ impl ReShape {
         newsh: &mut crate::topo_ds::Shape,
         last: bool,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_ReShape_status(self as *mut Self, shape, newsh, last)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ReShape_status(self as *mut Self, shape, newsh, last)
+        })
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:123 - `BRepTools_ReShape::Apply()`
@@ -4407,15 +3294,12 @@ impl ReShape {
         theShape: &crate::topo_ds::Shape,
         theUntil: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_ReShape_apply(self as *mut Self, theShape, theUntil.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepTools_ReShape_apply(
+                self as *mut Self,
+                theShape,
+                theUntil.into(),
+            )))
         }
     }
 
@@ -4423,14 +3307,10 @@ impl ReShape {
     /// Returns (modifiable) the flag which defines whether Location of shape take into account
     /// during replacing shapes.
     pub fn mode_consider_location(&mut self) -> &mut bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ReShape_mode_consider_location(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepTools_ReShape_mode_consider_location(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -4440,19 +3320,14 @@ impl ReShape {
         theV: &crate::topo_ds::Vertex,
         theTol: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepTools_ReShape_copy_vertex_vertex_real(
                     self as *mut Self,
                     theV,
                     theTol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -4463,155 +3338,107 @@ impl ReShape {
         theNewPos: &crate::gp::Pnt,
         aTol: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepTools_ReShape_copy_vertex_vertex_pnt_real(
                     self as *mut Self,
                     theV,
                     theNewPos,
                     aTol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:148 - `BRepTools_ReShape::IsNewShape()`
     pub fn is_new_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_ReShape_is_new_shape(self as *const Self, theShape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ReShape_is_new_shape(self as *const Self, theShape)
+        })
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:151 - `BRepTools_ReShape::History()`
     /// Returns the history of the substituted shapes.
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_ReShape_history(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepTools_ReShape_history(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:153 - `BRepTools_ReShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ReShape_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_ReShape_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:153 - `BRepTools_ReShape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_ReShape_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepTools_ReShape_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:153 - `BRepTools_ReShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_ReShape_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepTools_ReShape_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepTools_ReShape_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepTools_ReShape_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepTools_ReShape_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepTools_ReShape_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsReShape> {
-        let __result = unsafe { crate::ffi::BRepTools_ReShape_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepTools_ReShape_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_ReShape_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ReShape_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_ReShape_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ReShape_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ReShape_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepTools_ReShape_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -4622,52 +3449,30 @@ impl ReShape {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ReShape_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ReShape_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ReShape_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ReShape_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_ReShape_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ReShape_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_ReShape_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ReShape_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -4682,31 +3487,25 @@ unsafe impl crate::CppDeletable for HandleBRepToolsReShape {
 impl HandleBRepToolsReShape {
     /// Dereference this Handle to access the underlying BRepTools_ReShape
     pub fn get(&self) -> &crate::ffi::BRepTools_ReShape {
-        let __result = unsafe { crate::ffi::HandleBRepToolsReShape_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepToolsReShape_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepTools_ReShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_ReShape {
-        let __result = unsafe { crate::ffi::HandleBRepToolsReShape_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepToolsReShape_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepTools_ReShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsReShape_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepToolsReShape_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<BRepTools_ReShape> to Handle<ShapeBuild_ReShape>
@@ -4715,18 +3514,15 @@ impl HandleBRepToolsReShape {
     pub fn downcast_to_re_shape(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsReShape_downcast_to_HandleShapeBuildReShape(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -4753,14 +3549,10 @@ impl ShapeSet {
     /// Builds an empty ShapeSet.
     /// @param theWithTriangles flag to write triangulation data
     pub fn new_bool2(theWithTriangles: bool, theWithNormals: bool) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_ShapeSet_ctor_bool2(theWithTriangles, theWithNormals)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_ShapeSet_ctor_bool2(theWithTriangles, theWithNormals),
+            ))
         }
     }
 
@@ -4772,18 +3564,14 @@ impl ShapeSet {
         theWithTriangles: bool,
         theWithNormals: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepTools_ShapeSet_ctor_builder_bool2(
                     theBuilder,
                     theWithTriangles,
                     theWithNormals,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -4821,96 +3609,57 @@ impl ShapeSet {
     /// **Source:** `BRepTools_ShapeSet.hxx`:59 - `BRepTools_ShapeSet::IsWithTriangles()`
     /// Return true if shape should be stored with triangles.
     pub fn is_with_triangles(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ShapeSet_is_with_triangles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_is_with_triangles(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:62 - `BRepTools_ShapeSet::IsWithNormals()`
     /// Return true if shape should be stored triangulation with normals.
     pub fn is_with_normals(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ShapeSet_is_with_normals(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_is_with_normals(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:66 - `BRepTools_ShapeSet::SetWithTriangles()`
     /// Define if shape will be stored with triangles.
     /// Ignored (always written) if face defines only triangulation (no surface).
     pub fn set_with_triangles(&mut self, theWithTriangles: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_set_with_triangles(
-                    self as *mut Self,
-                    theWithTriangles,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_set_with_triangles(self as *mut Self, theWithTriangles)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:73 - `BRepTools_ShapeSet::SetWithNormals()`
     /// Define if shape will be stored triangulation with normals.
     /// Ignored (always written) if face defines only triangulation (no surface).
     pub fn set_with_normals(&mut self, theWithNormals: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_set_with_normals(self as *mut Self, theWithNormals)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_set_with_normals(self as *mut Self, theWithNormals)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:76 - `BRepTools_ShapeSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepTools_ShapeSet_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::BRepTools_ShapeSet_clear(self as *mut Self) })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:79 - `BRepTools_ShapeSet::AddGeometry()`
     /// Stores the geometry of <S>.
     pub fn add_geometry(&mut self, S: &crate::topo_ds::Shape) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_ShapeSet_add_geometry(self as *mut Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_add_geometry(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:82 - `BRepTools_ShapeSet::DumpGeometry()`
     /// Dumps the geometry of me on the stream <OS>.
     pub fn dump_geometry_ostream(&self, OS: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_dump_geometry_ostream(self as *const Self, OS)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_dump_geometry_ostream(self as *const Self, OS)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:86 - `BRepTools_ShapeSet::WriteGeometry()`
@@ -4921,18 +3670,13 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_write_geometry_ostream_progressrange(
-                    self as *mut Self,
-                    OS,
-                    theProgress,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_write_geometry_ostream_progressrange(
+                self as *mut Self,
+                OS,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:91 - `BRepTools_ShapeSet::ReadGeometry()`
@@ -4942,18 +3686,13 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_read_geometry_istream_progressrange(
-                    self as *mut Self,
-                    IS,
-                    theProgress,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_read_geometry_istream_progressrange(
+                self as *mut Self,
+                IS,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:96 - `BRepTools_ShapeSet::DumpGeometry()`
@@ -4963,18 +3702,9 @@ impl ShapeSet {
         S: &crate::topo_ds::Shape,
         OS: &mut crate::ffi::Standard_OStream,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_dump_geometry_shape_ostream(
-                    self as *const Self,
-                    S,
-                    OS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_dump_geometry_shape_ostream(self as *const Self, S, OS)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:101 - `BRepTools_ShapeSet::WriteGeometry()`
@@ -4985,18 +3715,9 @@ impl ShapeSet {
         S: &crate::topo_ds::Shape,
         OS: &mut crate::ffi::Standard_OStream,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_write_geometry_shape_ostream(
-                    self as *const Self,
-                    S,
-                    OS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_write_geometry_shape_ostream(self as *const Self, S, OS)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:106 - `BRepTools_ShapeSet::ReadGeometry()`
@@ -5008,19 +3729,14 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         S: &mut crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_read_geometry_shapeenum_istream_shape(
-                    self as *mut Self,
-                    T.into(),
-                    IS,
-                    S,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_read_geometry_shapeenum_istream_shape(
+                self as *mut Self,
+                T.into(),
+                IS,
+                S,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:113 - `BRepTools_ShapeSet::AddShapes()`
@@ -5028,24 +3744,16 @@ impl ShapeSet {
     /// method must be   redefined  to  use   the  correct
     /// builder.
     pub fn add_shapes(&mut self, S1: &mut crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_ShapeSet_add_shapes(self as *mut Self, S1, S2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_add_shapes(self as *mut Self, S1, S2)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:116 - `BRepTools_ShapeSet::Check()`
     pub fn check(&mut self, T: crate::top_abs::ShapeEnum, S: &mut crate::topo_ds::Shape) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_ShapeSet_check(self as *mut Self, T.into(), S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_check(self as *mut Self, T.into(), S)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:120 - `BRepTools_ShapeSet::ReadPolygon3D()`
@@ -5056,14 +3764,9 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_read_polygon3_d(self as *mut Self, IS, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_read_polygon3_d(self as *mut Self, IS, theProgress)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:127 - `BRepTools_ShapeSet::WritePolygon3D()`
@@ -5076,32 +3779,23 @@ impl ShapeSet {
         Compact: bool,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_write_polygon3_d(
-                    self as *const Self,
-                    OS,
-                    Compact,
-                    theProgress,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_write_polygon3_d(
+                self as *const Self,
+                OS,
+                Compact,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:134 - `BRepTools_ShapeSet::DumpPolygon3D()`
     /// Dumps the 3d polygons
     /// on the stream <OS>.
     pub fn dump_polygon3_d(&self, OS: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_ShapeSet_dump_polygon3_d(self as *const Self, OS) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_dump_polygon3_d(self as *const Self, OS)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:138 - `BRepTools_ShapeSet::ReadTriangulation()`
@@ -5112,18 +3806,9 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_read_triangulation(
-                    self as *mut Self,
-                    IS,
-                    theProgress,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_read_triangulation(self as *mut Self, IS, theProgress)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:145 - `BRepTools_ShapeSet::WriteTriangulation()`
@@ -5136,33 +3821,23 @@ impl ShapeSet {
         Compact: bool,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_write_triangulation(
-                    self as *const Self,
-                    OS,
-                    Compact,
-                    theProgress,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_write_triangulation(
+                self as *const Self,
+                OS,
+                Compact,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:152 - `BRepTools_ShapeSet::DumpTriangulation()`
     /// Dumps the triangulation
     /// on the stream <OS>.
     pub fn dump_triangulation(&self, OS: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_dump_triangulation(self as *const Self, OS)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_dump_triangulation(self as *const Self, OS)
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:156 - `BRepTools_ShapeSet::ReadPolygonOnTriangulation()`
@@ -5173,18 +3848,13 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_read_polygon_on_triangulation(
-                    self as *mut Self,
-                    IS,
-                    theProgress,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_read_polygon_on_triangulation(
+                self as *mut Self,
+                IS,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:163 - `BRepTools_ShapeSet::WritePolygonOnTriangulation()`
@@ -5197,170 +3867,111 @@ impl ShapeSet {
         Compact: bool,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_write_polygon_on_triangulation(
-                    self as *const Self,
-                    OS,
-                    Compact,
-                    theProgress,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_write_polygon_on_triangulation(
+                self as *const Self,
+                OS,
+                Compact,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_ShapeSet.hxx`:170 - `BRepTools_ShapeSet::DumpPolygonOnTriangulation()`
     /// Dumps the polygons on triangulation
     /// on the stream <OS>.
     pub fn dump_polygon_on_triangulation(&self, OS: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_dump_polygon_on_triangulation(
-                    self as *const Self,
-                    OS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_dump_polygon_on_triangulation(self as *const Self, OS)
+        })
     }
 
     /// Upcast to TopTools_ShapeSet
     pub fn as_top_tools_shape_set(&self) -> &crate::top_tools::ShapeSet {
-        let __result =
-            unsafe { crate::ffi::BRepTools_ShapeSet_as_TopTools_ShapeSet(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepTools_ShapeSet_as_TopTools_ShapeSet(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopTools_ShapeSet (mutable)
     pub fn as_top_tools_shape_set_mut(&mut self) -> &mut crate::top_tools::ShapeSet {
-        let __result =
-            unsafe { crate::ffi::BRepTools_ShapeSet_as_TopTools_ShapeSet_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepTools_ShapeSet_as_TopTools_ShapeSet_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:50 - `TopTools_ShapeSet::SetFormatNb()`
     pub fn set_format_nb(&mut self, theFormatNb: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_inherited_SetFormatNb(self as *mut Self, theFormatNb)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_inherited_SetFormatNb(self as *mut Self, theFormatNb)
+        })
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:53 - `TopTools_ShapeSet::FormatNb()`
     pub fn format_nb(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ShapeSet_inherited_FormatNb(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_inherited_FormatNb(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:61 - `TopTools_ShapeSet::Add()`
     pub fn add(&mut self, S: &crate::topo_ds::Shape) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ShapeSet_inherited_Add(self as *mut Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_inherited_Add(self as *mut Self, S)
+        })
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:64 - `TopTools_ShapeSet::Shape()`
     pub fn shape(&self, I: i32) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ShapeSet_inherited_Shape(self as *const Self, I) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_ShapeSet_inherited_Shape(
+                self as *const Self,
+                I,
+            )))
         }
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:67 - `TopTools_ShapeSet::Index()`
     pub fn index(&self, S: &crate::topo_ds::Shape) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ShapeSet_inherited_Index(self as *const Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_inherited_Index(self as *const Self, S)
+        })
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:69 - `TopTools_ShapeSet::Locations()`
     pub fn locations(&self) -> &crate::top_tools::LocationSet {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ShapeSet_inherited_Locations(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_ShapeSet_inherited_Locations(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:71 - `TopTools_ShapeSet::ChangeLocations()`
     pub fn change_locations(&mut self) -> &mut crate::top_tools::LocationSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_ShapeSet_inherited_ChangeLocations(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepTools_ShapeSet_inherited_ChangeLocations(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:79 - `TopTools_ShapeSet::DumpExtent()`
     pub fn dump_extent(&self, S: &mut crate::t_collection::AsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_inherited_DumpExtent(self as *const Self, S)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_inherited_DumpExtent(self as *const Self, S)
+        })
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:91 - `TopTools_ShapeSet::Dump()`
     pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_ShapeSet_inherited_Dump(self as *const Self, OS) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_inherited_Dump(self as *const Self, OS)
+        })
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:105 - `TopTools_ShapeSet::Write()`
@@ -5369,14 +3980,9 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_inherited_Write(self as *mut Self, OS, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_inherited_Write(self as *mut Self, OS, theProgress)
+        })
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:121 - `TopTools_ShapeSet::Read()`
@@ -5385,27 +3991,16 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_ShapeSet_inherited_Read(self as *mut Self, IS, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_inherited_Read(self as *mut Self, IS, theProgress)
+        })
     }
 
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:181 - `TopTools_ShapeSet::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_ShapeSet_inherited_NbShapes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_ShapeSet_inherited_NbShapes(self as *const Self)
+        })
     }
 }
 
@@ -5435,24 +4030,19 @@ unsafe impl crate::CppDeletable for Substitution {
 impl Substitution {
     /// **Source:** `BRepTools_Substitution.hxx`:42 - `BRepTools_Substitution::BRepTools_Substitution()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_Substitution_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::BRepTools_Substitution_ctor()),
+            )
         }
     }
 
     /// **Source:** `BRepTools_Substitution.hxx`:45 - `BRepTools_Substitution::Clear()`
     /// Reset all the fields.
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepTools_Substitution_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_Substitution_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepTools_Substitution.hxx`:55 - `BRepTools_Substitution::Substitute()`
@@ -5469,18 +4059,9 @@ impl Substitution {
         OldShape: &crate::topo_ds::Shape,
         NewShapes: &crate::ffi::TopTools_ListOfShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_Substitution_substitute(
-                    self as *mut Self,
-                    OldShape,
-                    NewShapes,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_Substitution_substitute(self as *mut Self, OldShape, NewShapes)
+        })
     }
 
     /// **Source:** `BRepTools_Substitution.hxx`:62 - `BRepTools_Substitution::Build()`
@@ -5489,26 +4070,17 @@ impl Substitution {
     /// The methods <IsCopied> and <Copy> allows you to keep
     /// the resul of <Build>
     pub fn build(&mut self, S: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::BRepTools_Substitution_build(self as *mut Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_Substitution_build(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `BRepTools_Substitution.hxx`:65 - `BRepTools_Substitution::IsCopied()`
     /// Returns   True if <S> has   been  replaced .
     pub fn is_copied(&self, S: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_Substitution_is_copied(self as *const Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_Substitution_is_copied(self as *const Self, S)
+        })
     }
 
     /// **Source:** `BRepTools_Substitution.hxx`:68 - `BRepTools_Substitution::Copy()`
@@ -5520,14 +4092,8 @@ impl Substitution {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn copy(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_Substitution_copy(self as *const Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_Substitution_copy(self as *const Self, S)))
         }
     }
 }
@@ -5551,12 +4117,10 @@ unsafe impl crate::CppDeletable for TrsfModification {
 impl TrsfModification {
     /// **Source:** `BRepTools_TrsfModification.hxx`:45 - `BRepTools_TrsfModification::BRepTools_TrsfModification()`
     pub fn new_trsf(T: &crate::gp::Trsf) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_TrsfModification_ctor_trsf(T) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_TrsfModification_ctor_trsf(T),
+            ))
         }
     }
 
@@ -5564,28 +4128,20 @@ impl TrsfModification {
     /// Provides access to the gp_Trsf associated with this
     /// modification. The transformation can be changed.
     pub fn trsf(&mut self) -> &mut crate::gp::Trsf {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_TrsfModification_trsf(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepTools_TrsfModification_trsf(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:52 - `BRepTools_TrsfModification::IsCopyMesh()`
     /// Sets a flag to indicate the need to copy mesh.
     pub fn is_copy_mesh(&mut self) -> &mut bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_TrsfModification_is_copy_mesh(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepTools_TrsfModification_is_copy_mesh(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -5610,24 +4166,17 @@ impl TrsfModification {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_new_surface(
-                    self as *mut Self,
-                    F,
-                    S,
-                    L,
-                    Tol,
-                    RevWires,
-                    RevFace,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_surface(
+                self as *mut Self,
+                F,
+                S,
+                L,
+                Tol,
+                RevWires,
+                RevFace,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:76 - `BRepTools_TrsfModification::NewTriangulation()`
@@ -5639,16 +4188,9 @@ impl TrsfModification {
         F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_new_triangulation(self as *mut Self, F, T)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_triangulation(self as *mut Self, F, T)
+        })
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:81 - `BRepTools_TrsfModification::NewPolygon()`
@@ -5660,16 +4202,9 @@ impl TrsfModification {
         E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_new_polygon(self as *mut Self, E, P)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_polygon(self as *mut Self, E, P)
+        })
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:87 - `BRepTools_TrsfModification::NewPolygonOnTriangulation()`
@@ -5682,21 +4217,14 @@ impl TrsfModification {
         F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_new_polygon_on_triangulation(
-                    self as *mut Self,
-                    E,
-                    F,
-                    P,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_polygon_on_triangulation(
+                self as *mut Self,
+                E,
+                F,
+                P,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:96 - `BRepTools_TrsfModification::NewCurve()`
@@ -5711,16 +4239,9 @@ impl TrsfModification {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_new_curve(self as *mut Self, E, C, L, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_curve(self as *mut Self, E, C, L, Tol)
+        })
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:107 - `BRepTools_TrsfModification::NewPoint()`
@@ -5736,16 +4257,9 @@ impl TrsfModification {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_new_point(self as *mut Self, V, P, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_point(self as *mut Self, V, P, Tol)
+        })
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:118 - `BRepTools_TrsfModification::NewCurve2d()`
@@ -5765,24 +4279,17 @@ impl TrsfModification {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_new_curve2d(
-                    self as *mut Self,
-                    E,
-                    F,
-                    NewE,
-                    NewF,
-                    C,
-                    Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_curve2d(
+                self as *mut Self,
+                E,
+                F,
+                NewE,
+                NewF,
+                C,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:131 - `BRepTools_TrsfModification::NewParameter()`
@@ -5799,22 +4306,9 @@ impl TrsfModification {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_new_parameter(
-                    self as *mut Self,
-                    V,
-                    E,
-                    P,
-                    Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_parameter(self as *mut Self, V, E, P, Tol)
+        })
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:142 - `BRepTools_TrsfModification::Continuity()`
@@ -5833,162 +4327,119 @@ impl TrsfModification {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_continuity(
-                    self as *mut Self,
-                    E,
-                    F1,
-                    F2,
-                    NewE,
-                    NewF1,
-                    NewF2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_continuity(
+                self as *mut Self,
+                E,
+                F1,
+                F2,
+                NewE,
+                NewF1,
+                NewF2,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:149 - `BRepTools_TrsfModification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_TrsfModification_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_TrsfModification_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:149 - `BRepTools_TrsfModification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_TrsfModification_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepTools_TrsfModification_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:149 - `BRepTools_TrsfModification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_TrsfModification_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_TrsfModification_get_type_descriptor()))
         }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_modification(&self) -> &Modification {
-        let __result = unsafe {
-            crate::ffi::BRepTools_TrsfModification_as_BRepTools_Modification(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepTools_TrsfModification_as_BRepTools_Modification(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_modification_mut(&mut self) -> &mut Modification {
-        let __result = unsafe {
-            crate::ffi::BRepTools_TrsfModification_as_BRepTools_Modification_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepTools_TrsfModification_as_BRepTools_Modification_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepTools_TrsfModification_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepTools_TrsfModification_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepTools_TrsfModification_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepTools_TrsfModification_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsTrsfModification> {
-        let __result = unsafe { crate::ffi::BRepTools_TrsfModification_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_TrsfModification_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::BRepTools_TrsfModification_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -5999,58 +4450,30 @@ impl TrsfModification {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_TrsfModification_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepTools_TrsfModification_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_TrsfModification_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_TrsfModification_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -6065,50 +4488,44 @@ unsafe impl crate::CppDeletable for HandleBRepToolsTrsfModification {
 impl HandleBRepToolsTrsfModification {
     /// Dereference this Handle to access the underlying BRepTools_TrsfModification
     pub fn get(&self) -> &crate::ffi::BRepTools_TrsfModification {
-        let __result =
-            unsafe { crate::ffi::HandleBRepToolsTrsfModification_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepToolsTrsfModification_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepTools_TrsfModification
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_TrsfModification {
-        let __result =
-            unsafe { crate::ffi::HandleBRepToolsTrsfModification_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepToolsTrsfModification_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepTools_TrsfModification> to Handle<BRepTools_Modification>
     pub fn to_handle_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsTrsfModification_to_HandleBRepToolsModification(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepToolsTrsfModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepTools_TrsfModification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepToolsTrsfModification_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepToolsTrsfModification_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<BRepTools_TrsfModification> to Handle<ShapeCustom_TrsfModification>
@@ -6117,16 +4534,13 @@ impl HandleBRepToolsTrsfModification {
     pub fn downcast_to_trsf_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomTrsfModification>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepToolsTrsfModification_downcast_to_HandleShapeCustomTrsfModification(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -6161,24 +4575,20 @@ impl WireExplorer {
     /// **Source:** `BRepTools_WireExplorer.hxx`:50 - `BRepTools_WireExplorer::BRepTools_WireExplorer()`
     /// Constructs an empty explorer (which can be initialized using Init)
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_WireExplorer_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::BRepTools_WireExplorer_ctor()),
+            )
         }
     }
 
     /// **Source:** `BRepTools_WireExplorer.hxx`:53 - `BRepTools_WireExplorer::BRepTools_WireExplorer()`
     /// IInitializes an exploration  of the wire <W>.
     pub fn new_wire(W: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_WireExplorer_ctor_wire(W) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_WireExplorer_ctor_wire(W),
+            ))
         }
     }
 
@@ -6190,25 +4600,19 @@ impl WireExplorer {
         W: &crate::topo_ds::Wire,
         F: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_WireExplorer_ctor_wire_face(W, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepTools_WireExplorer_ctor_wire_face(W, F),
+            ))
         }
     }
 
     /// **Source:** `BRepTools_WireExplorer.hxx`:61 - `BRepTools_WireExplorer::Init()`
     /// Initializes an exploration of the wire <W>.
     pub fn init_wire(&mut self, W: &crate::topo_ds::Wire) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepTools_WireExplorer_init_wire(self as *mut Self, W) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_WireExplorer_init_wire(self as *mut Self, W)
+        })
     }
 
     /// **Source:** `BRepTools_WireExplorer.hxx`:66 - `BRepTools_WireExplorer::Init()`
@@ -6216,14 +4620,9 @@ impl WireExplorer {
     /// F is used to select the edge connected to the
     /// previous in the parametric representation of <F>.
     pub fn init_wire_face(&mut self, W: &crate::topo_ds::Wire, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_WireExplorer_init_wire_face(self as *mut Self, W, F)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_WireExplorer_init_wire_face(self as *mut Self, W, F)
+        })
     }
 
     /// **Source:** `BRepTools_WireExplorer.hxx`:72 - `BRepTools_WireExplorer::Init()`
@@ -6240,99 +4639,66 @@ impl WireExplorer {
         VMin: f64,
         VMax: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepTools_WireExplorer_init_wire_face_real4(
-                    self as *mut Self,
-                    W,
-                    F,
-                    UMin,
-                    UMax,
-                    VMin,
-                    VMax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_WireExplorer_init_wire_face_real4(
+                self as *mut Self,
+                W,
+                F,
+                UMin,
+                UMax,
+                VMin,
+                VMax,
+            )
+        })
     }
 
     /// **Source:** `BRepTools_WireExplorer.hxx`:80 - `BRepTools_WireExplorer::More()`
     /// Returns True if there  is a current  edge.
     pub fn more(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepTools_WireExplorer_more(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepTools_WireExplorer_more(self as *const Self) })
     }
 
     /// **Source:** `BRepTools_WireExplorer.hxx`:83 - `BRepTools_WireExplorer::Next()`
     /// Proceeds to the next edge.
     pub fn next(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepTools_WireExplorer_next(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_WireExplorer_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepTools_WireExplorer.hxx`:86 - `BRepTools_WireExplorer::Current()`
     /// Returns the current edge.
     pub fn current(&self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_WireExplorer_current(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_WireExplorer_current(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepTools_WireExplorer.hxx`:89 - `BRepTools_WireExplorer::Orientation()`
     /// Returns an Orientation for the current edge.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_WireExplorer_orientation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepTools_WireExplorer_orientation(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepTools_WireExplorer.hxx`:93 - `BRepTools_WireExplorer::CurrentVertex()`
     /// Returns the vertex connecting the current  edge to
     /// the previous one.
     pub fn current_vertex(&self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepTools_WireExplorer_current_vertex(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepTools_WireExplorer_current_vertex(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepTools_WireExplorer.hxx`:96 - `BRepTools_WireExplorer::Clear()`
     /// Clears the content of the explorer.
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepTools_WireExplorer_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepTools_WireExplorer_clear(self as *mut Self)
+        })
     }
 }

@@ -24,87 +24,58 @@ impl Builder {
     /// **Source:** `BRepSweep_Builder.hxx`:35 - `BRepSweep_Builder::BRepSweep_Builder()`
     /// Creates a Builder.
     pub fn new_builder(aBuilder: &crate::b_rep::Builder) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Builder_ctor_builder(aBuilder) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Builder_ctor_builder(aBuilder),
+            ))
         }
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:37 - `BRepSweep_Builder::Builder()`
     pub fn builder(&self) -> &crate::b_rep::Builder {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Builder_builder(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepSweep_Builder_builder(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:40 - `BRepSweep_Builder::MakeCompound()`
     /// Returns an empty Compound.
     pub fn make_compound(&self, aCompound: &mut crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Builder_make_compound(self as *const Self, aCompound)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Builder_make_compound(self as *const Self, aCompound)
+        })
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:43 - `BRepSweep_Builder::MakeCompSolid()`
     /// Returns an empty CompSolid.
     pub fn make_comp_solid(&self, aCompSolid: &mut crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Builder_make_comp_solid(self as *const Self, aCompSolid)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Builder_make_comp_solid(self as *const Self, aCompSolid)
+        })
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:46 - `BRepSweep_Builder::MakeSolid()`
     /// Returns an empty Solid.
     pub fn make_solid(&self, aSolid: &mut crate::topo_ds::Shape) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepSweep_Builder_make_solid(self as *const Self, aSolid) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Builder_make_solid(self as *const Self, aSolid)
+        })
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:49 - `BRepSweep_Builder::MakeShell()`
     /// Returns an empty Shell.
     pub fn make_shell(&self, aShell: &mut crate::topo_ds::Shape) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepSweep_Builder_make_shell(self as *const Self, aShell) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Builder_make_shell(self as *const Self, aShell)
+        })
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:52 - `BRepSweep_Builder::MakeWire()`
     /// Returns an empty Wire.
     pub fn make_wire(&self, aWire: &mut crate::topo_ds::Shape) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepSweep_Builder_make_wire(self as *const Self, aWire) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Builder_make_wire(self as *const Self, aWire)
+        })
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:56 - `BRepSweep_Builder::Add()`
@@ -116,32 +87,22 @@ impl Builder {
         aShape2: &crate::topo_ds::Shape,
         Orient: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Builder_add_shape2_orientation(
-                    self as *const Self,
-                    aShape1,
-                    aShape2,
-                    Orient.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Builder_add_shape2_orientation(
+                self as *const Self,
+                aShape1,
+                aShape2,
+                Orient.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:61 - `BRepSweep_Builder::Add()`
     /// Adds the Shape 1 in the Shape 2.
     pub fn add_shape2(&self, aShape1: &mut crate::topo_ds::Shape, aShape2: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Builder_add_shape2(self as *const Self, aShape1, aShape2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Builder_add_shape2(self as *const Self, aShape1, aShape2)
+        })
     }
 }
 
@@ -165,75 +126,46 @@ unsafe impl crate::CppDeletable for Iterator {
 impl Iterator {
     /// **Source:** `BRepSweep_Iterator.hxx`:38 - `BRepSweep_Iterator::BRepSweep_Iterator()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Iterator_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Iterator_ctor()))
         }
     }
 
     /// **Source:** `BRepSweep_Iterator.hxx`:41 - `BRepSweep_Iterator::Init()`
     /// Reset the Iterator on sub-shapes of <aShape>.
     pub fn init(&mut self, aShape: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::BRepSweep_Iterator_init(self as *mut Self, aShape) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Iterator_init(self as *mut Self, aShape)
+        })
     }
 
     /// **Source:** `BRepSweep_Iterator.hxx`:44 - `BRepSweep_Iterator::More()`
     /// Returns True if there is a current sub-shape.
     pub fn more(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Iterator_more(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepSweep_Iterator_more(self as *const Self) })
     }
 
     /// **Source:** `BRepSweep_Iterator.hxx`:47 - `BRepSweep_Iterator::Next()`
     /// Moves to the next sub-shape.
     pub fn next(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepSweep_Iterator_next(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::BRepSweep_Iterator_next(self as *mut Self) })
     }
 
     /// **Source:** `BRepSweep_Iterator.hxx`:50 - `BRepSweep_Iterator::Value()`
     /// Returns the current sub-shape.
     pub fn value(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Iterator_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepSweep_Iterator_value(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepSweep_Iterator.hxx`:53 - `BRepSweep_Iterator::Orientation()`
     /// Returns the orientation of the current sub-shape.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Iterator_orientation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Iterator_orientation(self as *const Self)
+        }))
+        .unwrap()
     }
 }
 
@@ -296,19 +228,14 @@ impl NumLinearRegularSweep {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_make_empty_vertex(
                     self as *mut Self,
                     aGenV,
                     aDirV,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -320,19 +247,14 @@ impl NumLinearRegularSweep {
         aGenV: &crate::topo_ds::Shape,
         aDirE: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_make_empty_directing_edge(
                     self as *mut Self,
                     aGenV,
                     aDirE,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -344,19 +266,14 @@ impl NumLinearRegularSweep {
         aGenE: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_make_empty_generating_edge(
                     self as *mut Self,
                     aGenE,
                     aDirV,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -372,21 +289,16 @@ impl NumLinearRegularSweep {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_set_parameters(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewVertex,
-                    aGenF,
-                    aGenV,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_set_parameters(
+                self as *mut Self,
+                aNewFace,
+                aNewVertex,
+                aGenF,
+                aGenV,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:101 - `BRepSweep_NumLinearRegularSweep::SetDirectingParameter()`
@@ -401,21 +313,16 @@ impl NumLinearRegularSweep {
         aDirE: &crate::sweep::NumShape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_set_directing_parameter(
-                    self as *mut Self,
-                    aNewEdge,
-                    aNewVertex,
-                    aGenV,
-                    aDirE,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_set_directing_parameter(
+                self as *mut Self,
+                aNewEdge,
+                aNewVertex,
+                aGenV,
+                aDirE,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:110 - `BRepSweep_NumLinearRegularSweep::SetGeneratingParameter()`
@@ -430,21 +337,16 @@ impl NumLinearRegularSweep {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_set_generating_parameter(
-                    self as *mut Self,
-                    aNewEdge,
-                    aNewVertex,
-                    aGenE,
-                    aGenV,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_set_generating_parameter(
+                self as *mut Self,
+                aNewEdge,
+                aNewVertex,
+                aGenE,
+                aGenV,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:121 - `BRepSweep_NumLinearRegularSweep::MakeEmptyFace()`
@@ -458,19 +360,14 @@ impl NumLinearRegularSweep {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_make_empty_face(
                     self as *mut Self,
                     aGenS,
                     aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -487,22 +384,17 @@ impl NumLinearRegularSweep {
         aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_set_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenF,
-                    aGenE,
-                    aDirV,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_set_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenF,
+                aGenE,
+                aDirV,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:137 - `BRepSweep_NumLinearRegularSweep::SetGeneratingPCurve()`
@@ -518,22 +410,17 @@ impl NumLinearRegularSweep {
         aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_set_generating_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenE,
-                    aDirE,
-                    aDirV,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_set_generating_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenE,
+                aDirE,
+                aDirV,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:147 - `BRepSweep_NumLinearRegularSweep::SetDirectingPCurve()`
@@ -549,22 +436,17 @@ impl NumLinearRegularSweep {
         aDirE: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_set_directing_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenE,
-                    aGenV,
-                    aDirE,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_set_directing_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenE,
+                aGenV,
+                aDirE,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:158 - `BRepSweep_NumLinearRegularSweep::DirectSolid()`
@@ -577,20 +459,14 @@ impl NumLinearRegularSweep {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::top_abs::Orientation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_direct_solid(
-                    self as *mut Self,
-                    aGenS,
-                    aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_direct_solid(
+                self as *mut Self,
+                aGenS,
+                aDirS,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:164 - `BRepSweep_NumLinearRegularSweep::GGDShapeIsToAdd()`
@@ -605,23 +481,16 @@ impl NumLinearRegularSweep {
         aSubGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_ggd_shape_is_to_add(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aSubGenS,
-                    aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_ggd_shape_is_to_add(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aSubGenS,
+                aDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:173 - `BRepSweep_NumLinearRegularSweep::GDDShapeIsToAdd()`
@@ -636,23 +505,16 @@ impl NumLinearRegularSweep {
         aDirS: &crate::sweep::NumShape,
         aSubDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_gdd_shape_is_to_add(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aDirS,
-                    aSubDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_gdd_shape_is_to_add(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aDirS,
+                aSubDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:184 - `BRepSweep_NumLinearRegularSweep::SeparatedWires()`
@@ -668,23 +530,16 @@ impl NumLinearRegularSweep {
         aSubGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_separated_wires(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aSubGenS,
-                    aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_separated_wires(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aSubGenS,
+                aDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
@@ -696,18 +551,13 @@ impl NumLinearRegularSweep {
         &self,
         aNewShape: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_split_shell(
                     self as *const Self,
                     aNewShape,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -720,18 +570,13 @@ impl NumLinearRegularSweep {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_set_continuity(
-                    self as *mut Self,
-                    aGenS,
-                    aDirS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_set_continuity(
+                self as *mut Self,
+                aGenS,
+                aDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:206 - `BRepSweep_NumLinearRegularSweep::HasShape()`
@@ -740,35 +585,17 @@ impl NumLinearRegularSweep {
     /// can  be    geometrically   inexsistant,  then this
     /// function returns false.
     pub fn has_shape(&self, aGenS: &crate::topo_ds::Shape, aDirS: &crate::sweep::NumShape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_has_shape(
-                    self as *const Self,
-                    aGenS,
-                    aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_has_shape(self as *const Self, aGenS, aDirS)
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:210 - `BRepSweep_NumLinearRegularSweep::IsInvariant()`
     /// Returns true if aGenS cannot be transformed.
     pub fn is_invariant(&self, aGenS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_is_invariant(self as *const Self, aGenS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_is_invariant(self as *const Self, aGenS)
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
@@ -779,19 +606,14 @@ impl NumLinearRegularSweep {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_shape_shape_numshape(
                     self as *mut Self,
                     aGenS,
                     aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -802,15 +624,10 @@ impl NumLinearRegularSweep {
         &mut self,
         aGenS: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_shape_shape(self as *mut Self, aGenS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_NumLinearRegularSweep_shape_shape(self as *mut Self, aGenS),
+            ))
         }
     }
 
@@ -818,46 +635,28 @@ impl NumLinearRegularSweep {
     /// Returns true if the initial shape aGenS
     /// is used in result shape
     pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_is_used(self as *const Self, aGenS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_is_used(self as *const Self, aGenS)
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     /// Returns true if the shape, generated from theS
     /// is used in result shape
     pub fn gen_is_used(&self, theS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_gen_is_used(self as *const Self, theS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_gen_is_used(self as *const Self, theS)
+        })
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:230 - `BRepSweep_NumLinearRegularSweep::Shape()`
     /// Returns the resulting  Shape indexed by  myDirWire
     /// and myGenShape.
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_NumLinearRegularSweep_shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_NumLinearRegularSweep_shape(self as *mut Self),
+            ))
         }
     }
 
@@ -865,15 +664,10 @@ impl NumLinearRegularSweep {
     /// Returns the resulting Shape  indexed by the  first
     /// Vertex  of myDirWire and myGenShape.
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_first_shape(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_NumLinearRegularSweep_first_shape(self as *mut Self),
+            ))
         }
     }
 
@@ -881,15 +675,10 @@ impl NumLinearRegularSweep {
     /// Returns the  resulting Shape  indexed by the  last
     /// Vertex of myDirWire and myGenShape.
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_NumLinearRegularSweep_last_shape(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_NumLinearRegularSweep_last_shape(self as *mut Self),
+            ))
         }
     }
 
@@ -900,18 +689,13 @@ impl NumLinearRegularSweep {
         &mut self,
         aGenS: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_first_shape_shape(
                     self as *mut Self,
                     aGenS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -922,32 +706,21 @@ impl NumLinearRegularSweep {
         &mut self,
         aGenS: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_last_shape_shape(
                     self as *mut Self,
                     aGenS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_NumLinearRegularSweep_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_NumLinearRegularSweep_closed(self as *const Self)
+        })
     }
 }
 
@@ -977,13 +750,10 @@ impl Prism {
         Copy: bool,
         Canonize: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Prism_ctor_shape_vec_bool2(S, V, Copy, Canonize) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Prism_ctor_shape_vec_bool2(S, V, Copy, Canonize),
+            ))
         }
     }
 
@@ -1000,14 +770,10 @@ impl Prism {
         Copy: bool,
         Canonize: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Prism_ctor_shape_dir_bool3(S, D, Inf, Copy, Canonize)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Prism_ctor_shape_dir_bool3(S, D, Inf, Copy, Canonize),
+            ))
         }
     }
 
@@ -1073,13 +839,10 @@ impl Prism {
     /// **Source:** `BRepSweep_Prism.hxx`:59 - `BRepSweep_Prism::Shape()`
     /// Returns the TopoDS Shape attached to the prism.
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Prism_shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Prism_shape(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -1090,27 +853,21 @@ impl Prism {
         &mut self,
         aGenS: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Prism_shape_shape(self as *mut Self, aGenS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Prism_shape_shape(
+                self as *mut Self,
+                aGenS,
+            )))
         }
     }
 
     /// **Source:** `BRepSweep_Prism.hxx`:66 - `BRepSweep_Prism::FirstShape()`
     /// Returns the  TopoDS  Shape of the bottom of the prism.
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Prism_first_shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Prism_first_shape(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -1122,27 +879,20 @@ impl Prism {
         &mut self,
         aGenS: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Prism_first_shape_shape(self as *mut Self, aGenS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Prism_first_shape_shape(self as *mut Self, aGenS),
+            ))
         }
     }
 
     /// **Source:** `BRepSweep_Prism.hxx`:74 - `BRepSweep_Prism::LastShape()`
     /// Returns the TopoDS Shape of the top of the prism.
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Prism_last_shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Prism_last_shape(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -1154,14 +904,10 @@ impl Prism {
         &mut self,
         aGenS: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Prism_last_shape_shape(self as *mut Self, aGenS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Prism_last_shape_shape(self as *mut Self, aGenS),
+            ))
         }
     }
 
@@ -1169,13 +915,10 @@ impl Prism {
     /// Returns the Vector of the Prism,  if it is an infinite
     /// prism the Vec is unitar.
     pub fn vec(&self) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Prism_vec(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Prism_vec(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1183,30 +926,18 @@ impl Prism {
     /// Returns true if the
     /// aGenS is used in resulting shape
     pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Prism_is_used(self as *const Self, aGenS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Prism_is_used(self as *const Self, aGenS)
+        })
     }
 
     /// **Source:** `BRepSweep_Prism.hxx`:91 - `BRepSweep_Prism::GenIsUsed()`
     /// Returns true if the shape, generated from theS
     /// is used in result shape
     pub fn gen_is_used(&self, theS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Prism_gen_is_used(self as *const Self, theS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Prism_gen_is_used(self as *const Self, theS)
+        })
     }
 }
 
@@ -1235,13 +966,10 @@ impl Revol {
         D: f64,
         C: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Revol_ctor_shape_ax1_real_bool(S, A, D, C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Revol_ctor_shape_ax1_real_bool(S, A, D, C),
+            ))
         }
     }
 
@@ -1253,12 +981,10 @@ impl Revol {
         A: &crate::gp::Ax1,
         C: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Revol_ctor_shape_ax1_bool(S, A, C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Revol_ctor_shape_ax1_bool(S, A, C),
+            ))
         }
     }
 
@@ -1283,13 +1009,10 @@ impl Revol {
     /// **Source:** `BRepSweep_Revol.hxx`:52 - `BRepSweep_Revol::Shape()`
     /// Returns the TopoDS Shape attached to the Revol.
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Revol_shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Revol_shape(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -1300,14 +1023,11 @@ impl Revol {
         &mut self,
         aGenS: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Revol_shape_shape(self as *mut Self, aGenS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Revol_shape_shape(
+                self as *mut Self,
+                aGenS,
+            )))
         }
     }
 
@@ -1315,13 +1035,10 @@ impl Revol {
     /// Returns the first shape of the revol  (coinciding with
     /// the generating shape).
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Revol_first_shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Revol_first_shape(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -1332,27 +1049,20 @@ impl Revol {
         &mut self,
         aGenS: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Revol_first_shape_shape(self as *mut Self, aGenS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Revol_first_shape_shape(self as *mut Self, aGenS),
+            ))
         }
     }
 
     /// **Source:** `BRepSweep_Revol.hxx`:67 - `BRepSweep_Revol::LastShape()`
     /// Returns the TopoDS Shape of the top of the prism.
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Revol_last_shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Revol_last_shape(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -1364,55 +1074,35 @@ impl Revol {
         &mut self,
         aGenS: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Revol_last_shape_shape(self as *mut Self, aGenS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Revol_last_shape_shape(self as *mut Self, aGenS),
+            ))
         }
     }
 
     /// **Source:** `BRepSweep_Revol.hxx`:75 - `BRepSweep_Revol::Axe()`
     /// returns the axis
     pub fn axe(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Revol_axe(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Revol_axe(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepSweep_Revol.hxx`:78 - `BRepSweep_Revol::Angle()`
     /// returns the angle.
     pub fn angle(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Revol_angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepSweep_Revol_angle(self as *const Self) })
     }
 
     /// **Source:** `BRepSweep_Revol.hxx`:81 - `BRepSweep_Revol::IsUsed()`
     /// Returns true if the aGenS is used in resulting Shape
     pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Revol_is_used(self as *const Self, aGenS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Revol_is_used(self as *const Self, aGenS)
+        })
     }
 }
 
@@ -1443,16 +1133,12 @@ impl Rotation {
         D: f64,
         C: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_Rotation_ctor_shape_numshape_location_ax1_real_bool(
                     S, N, L, A, D, C,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1464,15 +1150,10 @@ impl Rotation {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_make_empty_vertex(self as *mut Self, aGenV, aDirV)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Rotation_make_empty_vertex(self as *mut Self, aGenV, aDirV),
+            ))
         }
     }
 
@@ -1484,19 +1165,14 @@ impl Rotation {
         aGenV: &crate::topo_ds::Shape,
         aDirE: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_Rotation_make_empty_directing_edge(
                     self as *mut Self,
                     aGenV,
                     aDirE,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1508,19 +1184,14 @@ impl Rotation {
         aGenE: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_Rotation_make_empty_generating_edge(
                     self as *mut Self,
                     aGenE,
                     aDirV,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1536,21 +1207,16 @@ impl Rotation {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Rotation_set_parameters(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewVertex,
-                    aGenF,
-                    aGenV,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_set_parameters(
+                self as *mut Self,
+                aNewFace,
+                aNewVertex,
+                aGenF,
+                aGenV,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:77 - `BRepSweep_Rotation::SetDirectingParameter()`
@@ -1565,21 +1231,16 @@ impl Rotation {
         aDirE: &crate::sweep::NumShape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Rotation_set_directing_parameter(
-                    self as *mut Self,
-                    aNewEdge,
-                    aNewVertex,
-                    aGenV,
-                    aDirE,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_set_directing_parameter(
+                self as *mut Self,
+                aNewEdge,
+                aNewVertex,
+                aGenV,
+                aDirE,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:86 - `BRepSweep_Rotation::SetGeneratingParameter()`
@@ -1594,21 +1255,16 @@ impl Rotation {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Rotation_set_generating_parameter(
-                    self as *mut Self,
-                    aNewEdge,
-                    aNewVertex,
-                    aGenE,
-                    aGenV,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_set_generating_parameter(
+                self as *mut Self,
+                aNewEdge,
+                aNewVertex,
+                aGenE,
+                aGenV,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:97 - `BRepSweep_Rotation::MakeEmptyFace()`
@@ -1622,15 +1278,10 @@ impl Rotation {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_make_empty_face(self as *mut Self, aGenS, aDirS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Rotation_make_empty_face(self as *mut Self, aGenS, aDirS),
+            ))
         }
     }
 
@@ -1647,22 +1298,17 @@ impl Rotation {
         aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Rotation_set_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenF,
-                    aGenE,
-                    aDirV,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_set_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenF,
+                aGenE,
+                aDirV,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:113 - `BRepSweep_Rotation::SetGeneratingPCurve()`
@@ -1678,22 +1324,17 @@ impl Rotation {
         aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Rotation_set_generating_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenE,
-                    aDirE,
-                    aDirV,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_set_generating_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenE,
+                aDirE,
+                aDirV,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:123 - `BRepSweep_Rotation::SetDirectingPCurve()`
@@ -1709,22 +1350,17 @@ impl Rotation {
         aDirE: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Rotation_set_directing_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenE,
-                    aGenV,
-                    aDirE,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_set_directing_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenE,
+                aGenV,
+                aDirE,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:134 - `BRepSweep_Rotation::DirectSolid()`
@@ -1737,16 +1373,10 @@ impl Rotation {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::top_abs::Orientation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_direct_solid(self as *mut Self, aGenS, aDirS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_direct_solid(self as *mut Self, aGenS, aDirS)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:141 - `BRepSweep_Rotation::GGDShapeIsToAdd()`
@@ -1761,23 +1391,16 @@ impl Rotation {
         aSubGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_ggd_shape_is_to_add(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aSubGenS,
-                    aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_ggd_shape_is_to_add(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aSubGenS,
+                aDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:151 - `BRepSweep_Rotation::GDDShapeIsToAdd()`
@@ -1792,23 +1415,16 @@ impl Rotation {
         aDirS: &crate::sweep::NumShape,
         aSubDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_gdd_shape_is_to_add(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aDirS,
-                    aSubDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_gdd_shape_is_to_add(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aDirS,
+                aSubDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:163 - `BRepSweep_Rotation::SeparatedWires()`
@@ -1825,23 +1441,16 @@ impl Rotation {
         aSubGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_separated_wires(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aSubGenS,
-                    aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_separated_wires(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aSubGenS,
+                aDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:173 - `BRepSweep_Rotation::SplitShell()`
@@ -1853,15 +1462,10 @@ impl Rotation {
         &self,
         aNewShape: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_split_shell(self as *const Self, aNewShape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Rotation_split_shell(self as *const Self, aNewShape),
+            ))
         }
     }
 
@@ -1871,109 +1475,81 @@ impl Rotation {
     /// can  be    geometrically   inexsistant,  then this
     /// function returns false.
     pub fn has_shape(&self, aGenS: &crate::topo_ds::Shape, aDirS: &crate::sweep::NumShape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_has_shape(self as *const Self, aGenS, aDirS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_has_shape(self as *const Self, aGenS, aDirS)
+        })
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:185 - `BRepSweep_Rotation::IsInvariant()`
     /// Returns true when   the geometry of  aGenS  is not
     /// modified  by the rotation.
     pub fn is_invariant(&self, aGenS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Rotation_is_invariant(self as *const Self, aGenS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_is_invariant(self as *const Self, aGenS)
+        })
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:188 - `BRepSweep_Rotation::Axe()`
     /// returns the axis
     pub fn axe(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Rotation_axe(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Rotation_axe(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:191 - `BRepSweep_Rotation::Angle()`
     /// returns the angle.
     pub fn angle(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Rotation_angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepSweep_Rotation_angle(self as *const Self) })
     }
 
     /// Upcast to BRepSweep_Trsf
     pub fn as_trsf(&self) -> &Trsf {
-        let __result =
-            unsafe { crate::ffi::BRepSweep_Rotation_as_BRepSweep_Trsf(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepSweep_Rotation_as_BRepSweep_Trsf(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepSweep_Trsf (mutable)
     pub fn as_trsf_mut(&mut self) -> &mut Trsf {
-        let __result =
-            unsafe { crate::ffi::BRepSweep_Rotation_as_BRepSweep_Trsf_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepSweep_Rotation_as_BRepSweep_Trsf_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepSweep_NumLinearRegularSweep
     pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
-        let __result = unsafe {
-            crate::ffi::BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepSweep_NumLinearRegularSweep (mutable)
     pub fn as_num_linear_regular_sweep_mut(&mut self) -> &mut NumLinearRegularSweep {
-        let __result = unsafe {
-            crate::ffi::BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:51 - `BRepSweep_Trsf::Init()`
     pub fn init(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepSweep_Rotation_inherited_Init(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_inherited_Init(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
@@ -1982,16 +1558,9 @@ impl Rotation {
         aGenS: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_inherited_Process(self as *mut Self, aGenS, aDirV)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_inherited_Process(self as *mut Self, aGenS, aDirV)
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
@@ -2000,18 +1569,9 @@ impl Rotation {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Rotation_inherited_SetContinuity(
-                    self as *mut Self,
-                    aGenS,
-                    aDirS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_inherited_SetContinuity(self as *mut Self, aGenS, aDirS)
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
@@ -2020,83 +1580,50 @@ impl Rotation {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_inherited_Shape(self as *mut Self, aGenS, aDirS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Rotation_inherited_Shape(self as *mut Self, aGenS, aDirS),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_inherited_IsUsed(self as *const Self, aGenS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_inherited_IsUsed(self as *const Self, aGenS)
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     pub fn gen_is_used(&self, theS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Rotation_inherited_GenIsUsed(self as *const Self, theS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_inherited_GenIsUsed(self as *const Self, theS)
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Rotation_inherited_FirstShape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Rotation_inherited_FirstShape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Rotation_inherited_LastShape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Rotation_inherited_LastShape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Rotation_inherited_Closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Rotation_inherited_Closed(self as *const Self)
+        })
     }
 }
 
@@ -2121,80 +1648,54 @@ impl Tool {
     /// must prepare an indexation for  all  the subshapes
     /// of this shape.
     pub fn new_shape(aShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Tool_ctor_shape(aShape) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Tool_ctor_shape(
+                aShape,
+            )))
         }
     }
 
     /// **Source:** `BRepSweep_Tool.hxx`:42 - `BRepSweep_Tool::NbShapes()`
     /// Returns the number of subshapes in the shape.
     pub fn nb_shapes(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Tool_nb_shapes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepSweep_Tool_nb_shapes(self as *const Self) })
     }
 
     /// **Source:** `BRepSweep_Tool.hxx`:45 - `BRepSweep_Tool::Index()`
     /// Returns the index of <aShape>.
     pub fn index(&self, aShape: &crate::topo_ds::Shape) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Tool_index(self as *const Self, aShape) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Tool_index(self as *const Self, aShape)
+        })
     }
 
     /// **Source:** `BRepSweep_Tool.hxx`:48 - `BRepSweep_Tool::Shape()`
     /// Returns the Shape at Index anIdex.
     pub fn shape(&self, anIndex: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Tool_shape(self as *const Self, anIndex) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Tool_shape(
+                self as *const Self,
+                anIndex,
+            )))
         }
     }
 
     /// **Source:** `BRepSweep_Tool.hxx`:51 - `BRepSweep_Tool::Type()`
     /// Returns the type of <aShape>.
     pub fn type_(&self, aShape: &crate::topo_ds::Shape) -> crate::top_abs::ShapeEnum {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Tool_type_(self as *const Self, aShape) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
-        }
+        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Tool_type_(self as *const Self, aShape)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepSweep_Tool.hxx`:54 - `BRepSweep_Tool::Orientation()`
     /// Returns the Orientation of <aShape>.
     pub fn orientation(&self, aShape: &crate::topo_ds::Shape) -> crate::top_abs::Orientation {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Tool_orientation(self as *const Self, aShape) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Tool_orientation(self as *const Self, aShape)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepSweep_Tool.hxx`:57 - `BRepSweep_Tool::SetOrientation()`
@@ -2204,14 +1705,9 @@ impl Tool {
         aShape: &mut crate::topo_ds::Shape,
         Or: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Tool_set_orientation(self as *const Self, aShape, Or.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Tool_set_orientation(self as *const Self, aShape, Or.into())
+        })
     }
 }
 
@@ -2244,16 +1740,12 @@ impl Translation {
         C: bool,
         Canonize: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_Translation_ctor_shape_numshape_location_vec_bool2(
                     S, N, L, V, C, Canonize,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2280,15 +1772,14 @@ impl Translation {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_make_empty_vertex(self as *mut Self, aGenV, aDirV)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Translation_make_empty_vertex(
+                    self as *mut Self,
+                    aGenV,
+                    aDirV,
+                ),
+            ))
         }
     }
 
@@ -2300,19 +1791,14 @@ impl Translation {
         aGenV: &crate::topo_ds::Shape,
         aDirE: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_Translation_make_empty_directing_edge(
                     self as *mut Self,
                     aGenV,
                     aDirE,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2324,19 +1810,14 @@ impl Translation {
         aGenE: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_Translation_make_empty_generating_edge(
                     self as *mut Self,
                     aGenE,
                     aDirV,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2352,21 +1833,16 @@ impl Translation {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Translation_set_parameters(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewVertex,
-                    aGenF,
-                    aGenV,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Translation_set_parameters(
+                self as *mut Self,
+                aNewFace,
+                aNewVertex,
+                aGenF,
+                aGenV,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:77 - `BRepSweep_Translation::SetDirectingParameter()`
@@ -2381,21 +1857,16 @@ impl Translation {
         aDirE: &crate::sweep::NumShape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Translation_set_directing_parameter(
-                    self as *mut Self,
-                    aNewEdge,
-                    aNewVertex,
-                    aGenV,
-                    aDirE,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Translation_set_directing_parameter(
+                self as *mut Self,
+                aNewEdge,
+                aNewVertex,
+                aGenV,
+                aDirE,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:86 - `BRepSweep_Translation::SetGeneratingParameter()`
@@ -2410,21 +1881,16 @@ impl Translation {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Translation_set_generating_parameter(
-                    self as *mut Self,
-                    aNewEdge,
-                    aNewVertex,
-                    aGenE,
-                    aGenV,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Translation_set_generating_parameter(
+                self as *mut Self,
+                aNewEdge,
+                aNewVertex,
+                aGenE,
+                aGenV,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:97 - `BRepSweep_Translation::MakeEmptyFace()`
@@ -2438,15 +1904,10 @@ impl Translation {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_make_empty_face(self as *mut Self, aGenS, aDirS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Translation_make_empty_face(self as *mut Self, aGenS, aDirS),
+            ))
         }
     }
 
@@ -2463,22 +1924,17 @@ impl Translation {
         aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Translation_set_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenF,
-                    aGenE,
-                    aDirV,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Translation_set_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenF,
+                aGenE,
+                aDirV,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:113 - `BRepSweep_Translation::SetGeneratingPCurve()`
@@ -2494,22 +1950,17 @@ impl Translation {
         aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Translation_set_generating_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenE,
-                    aDirE,
-                    aDirV,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Translation_set_generating_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenE,
+                aDirE,
+                aDirV,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:123 - `BRepSweep_Translation::SetDirectingPCurve()`
@@ -2525,22 +1976,17 @@ impl Translation {
         aDirE: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Translation_set_directing_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenE,
-                    aGenV,
-                    aDirE,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Translation_set_directing_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenE,
+                aGenV,
+                aDirE,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:134 - `BRepSweep_Translation::DirectSolid()`
@@ -2553,16 +1999,10 @@ impl Translation {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::top_abs::Orientation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_direct_solid(self as *mut Self, aGenS, aDirS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Translation_direct_solid(self as *mut Self, aGenS, aDirS)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:140 - `BRepSweep_Translation::GGDShapeIsToAdd()`
@@ -2577,23 +2017,16 @@ impl Translation {
         aSubGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_ggd_shape_is_to_add(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aSubGenS,
-                    aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Translation_ggd_shape_is_to_add(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aSubGenS,
+                aDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:149 - `BRepSweep_Translation::GDDShapeIsToAdd()`
@@ -2608,23 +2041,16 @@ impl Translation {
         aDirS: &crate::sweep::NumShape,
         aSubDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_gdd_shape_is_to_add(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aDirS,
-                    aSubDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Translation_gdd_shape_is_to_add(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aDirS,
+                aSubDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:160 - `BRepSweep_Translation::SeparatedWires()`
@@ -2641,23 +2067,16 @@ impl Translation {
         aSubGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_separated_wires(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aSubGenS,
-                    aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Translation_separated_wires(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aSubGenS,
+                aDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:170 - `BRepSweep_Translation::HasShape()`
@@ -2666,103 +2085,76 @@ impl Translation {
     /// can  be    geometrically   inexsistant,  then this
     /// function returns false.
     pub fn has_shape(&self, aGenS: &crate::topo_ds::Shape, aDirS: &crate::sweep::NumShape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_has_shape(self as *const Self, aGenS, aDirS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Translation_has_shape(self as *const Self, aGenS, aDirS)
+        })
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:175 - `BRepSweep_Translation::IsInvariant()`
     /// Returns  always     false   because    here    the
     /// transformation is a translation.
     pub fn is_invariant(&self, aGenS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_is_invariant(self as *const Self, aGenS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Translation_is_invariant(self as *const Self, aGenS)
+        })
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:179 - `BRepSweep_Translation::Vec()`
     /// Returns the Vector of the Prism,  if it is an infinite
     /// prism the Vec is unitar.
     pub fn vec(&self) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result = unsafe { crate::ffi::BRepSweep_Translation_vec(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepSweep_Translation_vec(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to BRepSweep_Trsf
     pub fn as_trsf(&self) -> &Trsf {
-        let __result =
-            unsafe { crate::ffi::BRepSweep_Translation_as_BRepSweep_Trsf(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepSweep_Translation_as_BRepSweep_Trsf(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepSweep_Trsf (mutable)
     pub fn as_trsf_mut(&mut self) -> &mut Trsf {
-        let __result =
-            unsafe { crate::ffi::BRepSweep_Translation_as_BRepSweep_Trsf_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepSweep_Translation_as_BRepSweep_Trsf_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepSweep_NumLinearRegularSweep
     pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
-        let __result = unsafe {
-            crate::ffi::BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepSweep_NumLinearRegularSweep (mutable)
     pub fn as_num_linear_regular_sweep_mut(&mut self) -> &mut NumLinearRegularSweep {
-        let __result = unsafe {
-            crate::ffi::BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:51 - `BRepSweep_Trsf::Init()`
     pub fn init(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepSweep_Translation_inherited_Init(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Translation_inherited_Init(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
@@ -2771,16 +2163,9 @@ impl Translation {
         aGenS: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_inherited_Process(self as *mut Self, aGenS, aDirV)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Translation_inherited_Process(self as *mut Self, aGenS, aDirV)
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
@@ -2789,18 +2174,13 @@ impl Translation {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Translation_inherited_SetContinuity(
-                    self as *mut Self,
-                    aGenS,
-                    aDirS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Translation_inherited_SetContinuity(
+                self as *mut Self,
+                aGenS,
+                aDirS,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
@@ -2808,18 +2188,13 @@ impl Translation {
         &self,
         aNewShape: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_Translation_inherited_SplitShell(
                     self as *const Self,
                     aNewShape,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2829,84 +2204,50 @@ impl Translation {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_inherited_Shape(self as *mut Self, aGenS, aDirS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Translation_inherited_Shape(self as *mut Self, aGenS, aDirS),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_inherited_IsUsed(self as *const Self, aGenS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Translation_inherited_IsUsed(self as *const Self, aGenS)
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     pub fn gen_is_used(&self, theS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_inherited_GenIsUsed(self as *const Self, theS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Translation_inherited_GenIsUsed(self as *const Self, theS)
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Translation_inherited_FirstShape(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Translation_inherited_FirstShape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Translation_inherited_LastShape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Translation_inherited_LastShape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Translation_inherited_Closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Translation_inherited_Closed(self as *const Self)
+        })
     }
 }
 
@@ -2942,12 +2283,7 @@ impl Trsf {
     /// calling the virtual geometric functions that can't
     /// be called in the initialize.
     pub fn init(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepSweep_Trsf_init(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::BRepSweep_Trsf_init(self as *mut Self) })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
@@ -2958,15 +2294,9 @@ impl Trsf {
         aGenS: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Trsf_process(self as *mut Self, aGenS, aDirV) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_process(self as *mut Self, aGenS, aDirV)
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:59 - `BRepSweep_Trsf::MakeEmptyVertex()`
@@ -2977,15 +2307,10 @@ impl Trsf {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Trsf_make_empty_vertex(self as *mut Self, aGenV, aDirV)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Trsf_make_empty_vertex(self as *mut Self, aGenV, aDirV),
+            ))
         }
     }
 
@@ -2997,19 +2322,14 @@ impl Trsf {
         aGenV: &crate::topo_ds::Shape,
         aDirE: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_Trsf_make_empty_directing_edge(
                     self as *mut Self,
                     aGenV,
                     aDirE,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -3021,19 +2341,14 @@ impl Trsf {
         aGenE: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepSweep_Trsf_make_empty_generating_edge(
                     self as *mut Self,
                     aGenE,
                     aDirV,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -3049,21 +2364,16 @@ impl Trsf {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Trsf_set_parameters(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewVertex,
-                    aGenF,
-                    aGenV,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_set_parameters(
+                self as *mut Self,
+                aNewFace,
+                aNewVertex,
+                aGenF,
+                aGenV,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:84 - `BRepSweep_Trsf::SetDirectingParameter()`
@@ -3078,21 +2388,16 @@ impl Trsf {
         aDirE: &crate::sweep::NumShape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Trsf_set_directing_parameter(
-                    self as *mut Self,
-                    aNewEdge,
-                    aNewVertex,
-                    aGenV,
-                    aDirE,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_set_directing_parameter(
+                self as *mut Self,
+                aNewEdge,
+                aNewVertex,
+                aGenV,
+                aDirE,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:93 - `BRepSweep_Trsf::SetGeneratingParameter()`
@@ -3107,21 +2412,16 @@ impl Trsf {
         aGenV: &crate::topo_ds::Shape,
         aDirV: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Trsf_set_generating_parameter(
-                    self as *mut Self,
-                    aNewEdge,
-                    aNewVertex,
-                    aGenE,
-                    aGenV,
-                    aDirV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_set_generating_parameter(
+                self as *mut Self,
+                aNewEdge,
+                aNewVertex,
+                aGenE,
+                aGenV,
+                aDirV,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:104 - `BRepSweep_Trsf::MakeEmptyFace()`
@@ -3135,15 +2435,10 @@ impl Trsf {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Trsf_make_empty_face(self as *mut Self, aGenS, aDirS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Trsf_make_empty_face(self as *mut Self, aGenS, aDirS),
+            ))
         }
     }
 
@@ -3160,22 +2455,17 @@ impl Trsf {
         aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Trsf_set_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenF,
-                    aGenE,
-                    aDirV,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_set_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenF,
+                aGenE,
+                aDirV,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:120 - `BRepSweep_Trsf::SetGeneratingPCurve()`
@@ -3191,22 +2481,17 @@ impl Trsf {
         aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Trsf_set_generating_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenE,
-                    aDirE,
-                    aDirV,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_set_generating_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenE,
+                aDirE,
+                aDirV,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:130 - `BRepSweep_Trsf::SetDirectingPCurve()`
@@ -3222,22 +2507,17 @@ impl Trsf {
         aDirE: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Trsf_set_directing_p_curve(
-                    self as *mut Self,
-                    aNewFace,
-                    aNewEdge,
-                    aGenE,
-                    aGenV,
-                    aDirE,
-                    orien.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_set_directing_p_curve(
+                self as *mut Self,
+                aNewFace,
+                aNewEdge,
+                aGenE,
+                aGenV,
+                aDirE,
+                orien.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:140 - `BRepSweep_Trsf::GGDShapeIsToAdd()`
@@ -3252,23 +2532,16 @@ impl Trsf {
         aSubGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Trsf_ggd_shape_is_to_add(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aSubGenS,
-                    aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_ggd_shape_is_to_add(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aSubGenS,
+                aDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:149 - `BRepSweep_Trsf::GDDShapeIsToAdd()`
@@ -3283,23 +2556,16 @@ impl Trsf {
         aDirS: &crate::sweep::NumShape,
         aSubDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Trsf_gdd_shape_is_to_add(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aDirS,
-                    aSubDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_gdd_shape_is_to_add(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aDirS,
+                aSubDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:160 - `BRepSweep_Trsf::SeparatedWires()`
@@ -3315,23 +2581,16 @@ impl Trsf {
         aSubGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Trsf_separated_wires(
-                    self as *const Self,
-                    aNewShape,
-                    aNewSubShape,
-                    aGenS,
-                    aSubGenS,
-                    aDirS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_separated_wires(
+                self as *const Self,
+                aNewShape,
+                aNewSubShape,
+                aGenS,
+                aSubGenS,
+                aDirS,
+            )
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:170 - `BRepSweep_Trsf::HasShape()`
@@ -3340,30 +2599,18 @@ impl Trsf {
     /// can  be    geometrically   inexsistant,  then this
     /// function returns false.
     pub fn has_shape(&self, aGenS: &crate::topo_ds::Shape, aDirS: &crate::sweep::NumShape) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Trsf_has_shape(self as *const Self, aGenS, aDirS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_has_shape(self as *const Self, aGenS, aDirS)
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:175 - `BRepSweep_Trsf::IsInvariant()`
     /// Returns  true if  the geometry   of  aGenS is  not
     /// modified by the trsf of the BRepSweep Trsf.
     pub fn is_invariant(&self, aGenS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Trsf_is_invariant(self as *const Self, aGenS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_is_invariant(self as *const Self, aGenS)
+        })
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
@@ -3375,36 +2622,29 @@ impl Trsf {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepSweep_Trsf_set_continuity(self as *mut Self, aGenS, aDirS)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_set_continuity(self as *mut Self, aGenS, aDirS)
+        })
     }
 
     /// Upcast to BRepSweep_NumLinearRegularSweep
     pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
-        let __result = unsafe {
-            crate::ffi::BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepSweep_NumLinearRegularSweep (mutable)
     pub fn as_num_linear_regular_sweep_mut(&mut self) -> &mut NumLinearRegularSweep {
-        let __result = unsafe {
-            crate::ffi::BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:158 - `BRepSweep_NumLinearRegularSweep::DirectSolid()`
@@ -3413,16 +2653,10 @@ impl Trsf {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::top_abs::Orientation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Trsf_inherited_DirectSolid(self as *mut Self, aGenS, aDirS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_inherited_DirectSolid(self as *mut Self, aGenS, aDirS)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
@@ -3430,15 +2664,10 @@ impl Trsf {
         &self,
         aNewShape: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Trsf_inherited_SplitShell(self as *const Self, aNewShape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Trsf_inherited_SplitShell(self as *const Self, aNewShape),
+            ))
         }
     }
 
@@ -3448,81 +2677,49 @@ impl Trsf {
         aGenS: &crate::topo_ds::Shape,
         aDirS: &crate::sweep::NumShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Trsf_inherited_Shape(self as *mut Self, aGenS, aDirS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Trsf_inherited_Shape(self as *mut Self, aGenS, aDirS),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Trsf_inherited_IsUsed(self as *const Self, aGenS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_inherited_IsUsed(self as *const Self, aGenS)
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     pub fn gen_is_used(&self, theS: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepSweep_Trsf_inherited_GenIsUsed(self as *const Self, theS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_inherited_GenIsUsed(self as *const Self, theS)
+        })
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Trsf_inherited_FirstShape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Trsf_inherited_FirstShape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Trsf_inherited_LastShape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepSweep_Trsf_inherited_LastShape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepSweep_Trsf_inherited_Closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepSweep_Trsf_inherited_Closed(self as *const Self)
+        })
     }
 }

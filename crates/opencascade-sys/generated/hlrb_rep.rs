@@ -8,35 +8,21 @@
 
 /// **Source:** `HLRBRep.hxx`:38 - `HLRBRep::MakeEdge`
 pub fn make_edge(ec: &Curve, U1: f64, U2: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-    {
-        let __result = unsafe { crate::ffi::HLRBRep_make_edge(ec, U1, U2) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_make_edge(ec, U1, U2)))
     }
 }
 /// **Source:** `HLRBRep.hxx`:42 - `HLRBRep::MakeEdge3d`
 pub fn make_edge3d(ec: &Curve, U1: f64, U2: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-    {
-        let __result = unsafe { crate::ffi::HLRBRep_make_edge3d(ec, U1, U2) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_make_edge3d(ec, U1, U2)))
     }
 }
 /// **Source:** `HLRBRep.hxx`:46 - `HLRBRep::PolyHLRAngleAndDeflection`
 pub fn poly_hlr_angle_and_deflection(InAngl: f64, OutAngl: &mut f64, OutDefl: &mut f64) {
-    {
-        let __exc =
-            unsafe { crate::ffi::HLRBRep_poly_hlr_angle_and_deflection(InAngl, OutAngl, OutDefl) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::HLRBRep_poly_hlr_angle_and_deflection(InAngl, OutAngl, OutDefl)
+    })
 }
 
 /// Identifies the type of resulting edge of HLRBRep_Algo
@@ -137,23 +123,15 @@ impl Algo {
     /// -   Update to compute the outlines of the shape, and
     /// -   Hide to compute the visible and hidden lines of the shape.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Algo_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Algo_ctor())) }
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:75 - `HLRBRep_Algo::HLRBRep_Algo()`
     pub fn new_handlehlrbrepalgo(A: &crate::ffi::HandleHLRBRepAlgo) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Algo_ctor_handlehlrbrepalgo(A) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_Algo_ctor_handlehlrbrepalgo(A),
+            ))
         }
     }
 
@@ -165,19 +143,14 @@ impl Algo {
         SData: &crate::ffi::HandleStandardTransient,
         nbIso: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Algo_add_shape_handlestandardtransient_int(
-                    self as *mut Self,
-                    S,
-                    SData,
-                    nbIso,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_add_shape_handlestandardtransient_int(
+                self as *mut Self,
+                S,
+                SData,
+                nbIso,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:85 - `HLRBRep_Algo::Add()`
@@ -185,145 +158,104 @@ impl Algo {
     /// specifies the number of isoparameters nbiso desired in visualizing S.
     /// You may add as many shapes as you wish. Use the function Add once for each shape.
     pub fn add_shape_int(&mut self, S: &crate::topo_ds::Shape, nbIso: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Algo_add_shape_int(self as *mut Self, S, nbIso) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_add_shape_int(self as *mut Self, S, nbIso)
+        })
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:89 - `HLRBRep_Algo::Index()`
     /// return  the index  of  the  Shape <S>  and
     /// return 0 if the Shape <S> is not found.
     pub fn index(&mut self, S: &crate::topo_ds::Shape) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Algo_index(self as *mut Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Algo_index(self as *mut Self, S) })
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:92 - `HLRBRep_Algo::OutLinedShapeNullify()`
     /// nullify all the results of OutLiner from HLRTopoBRep.
     pub fn out_lined_shape_nullify(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Algo_out_lined_shape_nullify(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_out_lined_shape_nullify(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:94 - `HLRBRep_Algo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Algo_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_Algo_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:94 - `HLRBRep_Algo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Algo_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::HLRBRep_Algo_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:94 - `HLRBRep_Algo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Algo_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_Algo_get_type_descriptor())) }
     }
 
     /// Upcast to HLRBRep_InternalAlgo
     pub fn as_internal_algo(&self) -> &InternalAlgo {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_Algo_as_HLRBRep_InternalAlgo(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_Algo_as_HLRBRep_InternalAlgo(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to HLRBRep_InternalAlgo (mutable)
     pub fn as_internal_algo_mut(&mut self) -> &mut InternalAlgo {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_Algo_as_HLRBRep_InternalAlgo_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_Algo_as_HLRBRep_InternalAlgo_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_Algo_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_Algo_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_Algo_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_Algo_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAlgo> {
-        let __result = unsafe { crate::ffi::HLRBRep_Algo_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Algo_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:44 - `HLRBRep_InternalAlgo::Projector()`
     pub fn projector(&mut self, P: &crate::hlr_algo::Projector) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Algo_inherited_Projector(self as *mut Self, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_Projector(self as *mut Self, P)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:50 - `HLRBRep_InternalAlgo::Update()`
     pub fn update(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Algo_inherited_Update(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_Update(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:53 - `HLRBRep_InternalAlgo::Load()`
@@ -333,219 +265,143 @@ impl Algo {
         SData: &crate::ffi::HandleStandardTransient,
         nbIso: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Algo_inherited_Load(self as *mut Self, S, SData, nbIso)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_Load(self as *mut Self, S, SData, nbIso)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:66 - `HLRBRep_InternalAlgo::Remove()`
     pub fn remove(&mut self, I: i32) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Algo_inherited_Remove(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_Remove(self as *mut Self, I)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:69 - `HLRBRep_InternalAlgo::ShapeData()`
     pub fn shape_data(&mut self, I: i32, SData: &crate::ffi::HandleStandardTransient) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Algo_inherited_ShapeData(self as *mut Self, I, SData)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_ShapeData(self as *mut Self, I, SData)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:71 - `HLRBRep_InternalAlgo::SeqOfShapeBounds()`
     pub fn seq_of_shape_bounds(&mut self) -> &mut crate::ffi::HLRBRep_SeqOfShapeBounds {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Algo_inherited_SeqOfShapeBounds(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_Algo_inherited_SeqOfShapeBounds(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:73 - `HLRBRep_InternalAlgo::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Algo_inherited_NbShapes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_NbShapes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:75 - `HLRBRep_InternalAlgo::ShapeBounds()`
     pub fn shape_bounds(&mut self, I: i32) -> &mut ShapeBounds {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Algo_inherited_ShapeBounds(self as *mut Self, I) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_Algo_inherited_ShapeBounds(
+                self as *mut Self,
+                I,
+            )))
         }
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:79 - `HLRBRep_InternalAlgo::InitEdgeStatus()`
     pub fn init_edge_status(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Algo_inherited_InitEdgeStatus(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_InitEdgeStatus(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:82 - `HLRBRep_InternalAlgo::Select()`
     pub fn select(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Algo_inherited_Select(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_Select(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:88 - `HLRBRep_InternalAlgo::SelectEdge()`
     pub fn select_edge(&mut self, I: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Algo_inherited_SelectEdge(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_SelectEdge(self as *mut Self, I)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:91 - `HLRBRep_InternalAlgo::SelectFace()`
     pub fn select_face(&mut self, I: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Algo_inherited_SelectFace(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_SelectFace(self as *mut Self, I)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:94 - `HLRBRep_InternalAlgo::ShowAll()`
     pub fn show_all(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Algo_inherited_ShowAll(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_ShowAll(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:100 - `HLRBRep_InternalAlgo::HideAll()`
     pub fn hide_all(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Algo_inherited_HideAll(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_HideAll(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:107 - `HLRBRep_InternalAlgo::PartialHide()`
     pub fn partial_hide(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Algo_inherited_PartialHide(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_PartialHide(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:110 - `HLRBRep_InternalAlgo::Hide()`
     pub fn hide(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Algo_inherited_Hide(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_Hide(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:118 - `HLRBRep_InternalAlgo::Debug()`
     pub fn debug(&mut self, deb: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Algo_inherited_Debug(self as *mut Self, deb) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_Debug(self as *mut Self, deb)
+        })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:122 - `HLRBRep_InternalAlgo::DataStructure()`
     pub fn data_structure(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepData> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Algo_inherited_DataStructure(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_Algo_inherited_DataStructure(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_Algo_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Algo_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::HLRBRep_Algo_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::HLRBRep_Algo_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -556,51 +412,30 @@ impl Algo {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Algo_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Algo_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_Algo_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Algo_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Algo_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -615,44 +450,34 @@ unsafe impl crate::CppDeletable for HandleHLRBRepAlgo {
 impl HandleHLRBRepAlgo {
     /// Dereference this Handle to access the underlying HLRBRep_Algo
     pub fn get(&self) -> &crate::ffi::HLRBRep_Algo {
-        let __result = unsafe { crate::ffi::HandleHLRBRepAlgo_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleHLRBRepAlgo_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRBRep_Algo
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_Algo {
-        let __result = unsafe { crate::ffi::HandleHLRBRepAlgo_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleHLRBRepAlgo_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRBRep_Algo> to Handle<HLRBRep_InternalAlgo>
     pub fn to_handle_internal_algo(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepInternalAlgo> {
-        let __result = unsafe {
-            crate::ffi::HandleHLRBRepAlgo_to_HandleHLRBRepInternalAlgo(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHLRBRepAlgo_to_HandleHLRBRepInternalAlgo(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<HLRBRep_Algo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleHLRBRepAlgo_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHLRBRepAlgo_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -684,8 +509,8 @@ impl AreaLimit {
         EdgeBefore: crate::top_abs::State,
         EdgeAfter: crate::top_abs::State,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_AreaLimit_ctor_intersection_bool2_state4(
                     V,
                     Boundary,
@@ -694,315 +519,201 @@ impl AreaLimit {
                     StateAfter.into(),
                     EdgeBefore.into(),
                     EdgeAfter.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:46 - `HLRBRep_AreaLimit::StateBefore()`
     pub fn state_before_state(&mut self, St: crate::top_abs::State) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_AreaLimit_state_before_state(self as *mut Self, St.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_state_before_state(self as *mut Self, St.into())
+        })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:48 - `HLRBRep_AreaLimit::StateAfter()`
     pub fn state_after_state(&mut self, St: crate::top_abs::State) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_AreaLimit_state_after_state(self as *mut Self, St.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_state_after_state(self as *mut Self, St.into())
+        })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:50 - `HLRBRep_AreaLimit::EdgeBefore()`
     pub fn edge_before_state(&mut self, St: crate::top_abs::State) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_AreaLimit_edge_before_state(self as *mut Self, St.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_edge_before_state(self as *mut Self, St.into())
+        })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:52 - `HLRBRep_AreaLimit::EdgeAfter()`
     pub fn edge_after_state(&mut self, St: crate::top_abs::State) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_AreaLimit_edge_after_state(self as *mut Self, St.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_edge_after_state(self as *mut Self, St.into())
+        })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:54 - `HLRBRep_AreaLimit::Previous()`
     pub fn previous_handlehlrbreparealimit(&mut self, P: &crate::ffi::HandleHLRBRepAreaLimit) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_AreaLimit_previous_handlehlrbreparealimit(self as *mut Self, P)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_previous_handlehlrbreparealimit(self as *mut Self, P)
+        })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:56 - `HLRBRep_AreaLimit::Next()`
     pub fn next_handlehlrbreparealimit(&mut self, N: &crate::ffi::HandleHLRBRepAreaLimit) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_AreaLimit_next_handlehlrbreparealimit(self as *mut Self, N)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_next_handlehlrbreparealimit(self as *mut Self, N)
+        })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:58 - `HLRBRep_AreaLimit::Vertex()`
     pub fn vertex(&self) -> &crate::hlr_algo::Intersection {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_AreaLimit_vertex(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_AreaLimit_vertex(self as *const Self)))
         }
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:60 - `HLRBRep_AreaLimit::IsBoundary()`
     pub fn is_boundary(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_AreaLimit_is_boundary(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_is_boundary(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:62 - `HLRBRep_AreaLimit::IsInterference()`
     pub fn is_interference(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_AreaLimit_is_interference(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_is_interference(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:64 - `HLRBRep_AreaLimit::StateBefore()`
     pub fn state_before(&self) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_AreaLimit_state_before(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_state_before(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:66 - `HLRBRep_AreaLimit::StateAfter()`
     pub fn state_after(&self) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_AreaLimit_state_after(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_state_after(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:68 - `HLRBRep_AreaLimit::EdgeBefore()`
     pub fn edge_before(&self) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_AreaLimit_edge_before(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_edge_before(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:70 - `HLRBRep_AreaLimit::EdgeAfter()`
     pub fn edge_after(&self) -> crate::top_abs::State {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_AreaLimit_edge_after(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_edge_after(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:72 - `HLRBRep_AreaLimit::Previous()`
     pub fn previous(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAreaLimit> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_AreaLimit_previous(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_AreaLimit_previous(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:74 - `HLRBRep_AreaLimit::Next()`
     pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAreaLimit> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_AreaLimit_next(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_AreaLimit_next(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:76 - `HLRBRep_AreaLimit::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_AreaLimit_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_AreaLimit_clear(self as *mut Self) })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:78 - `HLRBRep_AreaLimit::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_AreaLimit_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_AreaLimit_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:78 - `HLRBRep_AreaLimit::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_AreaLimit_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::HLRBRep_AreaLimit_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:78 - `HLRBRep_AreaLimit::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_AreaLimit_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_AreaLimit_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_AreaLimit_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_AreaLimit_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_AreaLimit_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_AreaLimit_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAreaLimit> {
-        let __result = unsafe { crate::ffi::HLRBRep_AreaLimit_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_AreaLimit_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_AreaLimit_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_AreaLimit_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_AreaLimit_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::HLRBRep_AreaLimit_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1013,52 +724,30 @@ impl AreaLimit {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_AreaLimit_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_AreaLimit_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_AreaLimit_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_AreaLimit_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_AreaLimit_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1073,31 +762,25 @@ unsafe impl crate::CppDeletable for HandleHLRBRepAreaLimit {
 impl HandleHLRBRepAreaLimit {
     /// Dereference this Handle to access the underlying HLRBRep_AreaLimit
     pub fn get(&self) -> &crate::ffi::HLRBRep_AreaLimit {
-        let __result = unsafe { crate::ffi::HandleHLRBRepAreaLimit_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleHLRBRepAreaLimit_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRBRep_AreaLimit
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_AreaLimit {
-        let __result = unsafe { crate::ffi::HandleHLRBRepAreaLimit_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleHLRBRepAreaLimit_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRBRep_AreaLimit> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleHLRBRepAreaLimit_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHLRBRepAreaLimit_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1118,63 +801,34 @@ impl BCurveTool {
     /// **Source:** `HLRBRep_BCurveTool.hxx` - `HLRBRep_BCurveTool::HLRBRep_BCurveTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_ctor()))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:47 - `HLRBRep_BCurveTool::FirstParameter()`
     pub fn first_parameter(C: &crate::b_rep_adaptor::Curve) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_first_parameter(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_first_parameter(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:49 - `HLRBRep_BCurveTool::LastParameter()`
     pub fn last_parameter(C: &crate::b_rep_adaptor::Curve) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_last_parameter(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_last_parameter(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:51 - `HLRBRep_BCurveTool::Continuity()`
     pub fn continuity(C: &crate::b_rep_adaptor::Curve) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_continuity(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_BCurveTool_continuity(C)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:55 - `HLRBRep_BCurveTool::NbIntervals()`
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(myclass) >= <S>
     pub fn nb_intervals(C: &crate::b_rep_adaptor::Curve, S: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_nb_intervals(C, S.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_nb_intervals(C, S.into()) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:62 - `HLRBRep_BCurveTool::Intervals()`
@@ -1188,72 +842,40 @@ impl BCurveTool {
         T: &mut crate::ffi::TColStd_Array1OfReal,
         S: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BCurveTool_intervals(C, T, S.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BCurveTool_intervals(C, T, S.into())
+        })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:64 - `HLRBRep_BCurveTool::IsClosed()`
     pub fn is_closed(C: &crate::b_rep_adaptor::Curve) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_is_closed(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_is_closed(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:66 - `HLRBRep_BCurveTool::IsPeriodic()`
     pub fn is_periodic(C: &crate::b_rep_adaptor::Curve) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_is_periodic(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_is_periodic(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:68 - `HLRBRep_BCurveTool::Period()`
     pub fn period(C: &crate::b_rep_adaptor::Curve) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_period(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_period(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:71 - `HLRBRep_BCurveTool::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(C: &crate::b_rep_adaptor::Curve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_value(C, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_value(
+                C, U,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:74 - `HLRBRep_BCurveTool::D0()`
     /// Computes the point of parameter U on the curve.
     pub fn d0(C: &crate::b_rep_adaptor::Curve, U: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BCurveTool_d0(C, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BCurveTool_d0(C, U, P) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:80 - `HLRBRep_BCurveTool::D1()`
@@ -1267,12 +889,7 @@ impl BCurveTool {
         P: &mut crate::gp::Pnt,
         V: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BCurveTool_d1(C, U, P, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BCurveTool_d1(C, U, P, V) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:86 - `HLRBRep_BCurveTool::D2()`
@@ -1287,12 +904,7 @@ impl BCurveTool {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BCurveTool_d2(C, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BCurveTool_d2(C, U, P, V1, V2) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:96 - `HLRBRep_BCurveTool::D3()`
@@ -1308,12 +920,7 @@ impl BCurveTool {
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BCurveTool_d3(C, U, P, V1, V2, V3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BCurveTool_d3(C, U, P, V1, V2, V3) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:108 - `HLRBRep_BCurveTool::DN()`
@@ -1323,13 +930,10 @@ impl BCurveTool {
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(C: &crate::b_rep_adaptor::Curve, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_dn(C, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_dn(
+                C, U, N,
+            )))
         }
     }
 
@@ -1337,14 +941,7 @@ impl BCurveTool {
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(C: &crate::b_rep_adaptor::Curve, R3d: f64) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_resolution(C, R3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_resolution(C, R3d) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:117 - `HLRBRep_BCurveTool::GetType()`
@@ -1352,73 +949,50 @@ impl BCurveTool {
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(C: &crate::b_rep_adaptor::Curve) -> crate::geom_abs::CurveType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_get_type(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::CurveType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_BCurveTool_get_type(C)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:119 - `HLRBRep_BCurveTool::Line()`
     pub fn line(C: &crate::b_rep_adaptor::Curve) -> crate::OwnedPtr<crate::gp::Lin> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_line(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_line(C)))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:121 - `HLRBRep_BCurveTool::Circle()`
     pub fn circle(C: &crate::b_rep_adaptor::Curve) -> crate::OwnedPtr<crate::gp::Circ> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_circle(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_circle(C)))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:123 - `HLRBRep_BCurveTool::Ellipse()`
     pub fn ellipse(C: &crate::b_rep_adaptor::Curve) -> crate::OwnedPtr<crate::gp::Elips> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_ellipse(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_ellipse(
+                C,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:125 - `HLRBRep_BCurveTool::Hyperbola()`
     pub fn hyperbola(C: &crate::b_rep_adaptor::Curve) -> crate::OwnedPtr<crate::gp::Hypr> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_hyperbola(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_BCurveTool_hyperbola(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:127 - `HLRBRep_BCurveTool::Parabola()`
     pub fn parabola(C: &crate::b_rep_adaptor::Curve) -> crate::OwnedPtr<crate::gp::Parab> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_parabola(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_parabola(
+                C,
+            )))
         }
     }
 
@@ -1426,13 +1000,8 @@ impl BCurveTool {
     pub fn bezier(
         C: &crate::b_rep_adaptor::Curve,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_bezier(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_bezier(C)))
         }
     }
 
@@ -1440,72 +1009,36 @@ impl BCurveTool {
     pub fn b_spline(
         C: &crate::b_rep_adaptor::Curve,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_b_spline(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_b_spline(
+                C,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:133 - `HLRBRep_BCurveTool::Degree()`
     pub fn degree(C: &crate::b_rep_adaptor::Curve) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_degree(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_degree(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:135 - `HLRBRep_BCurveTool::IsRational()`
     pub fn is_rational(C: &crate::b_rep_adaptor::Curve) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_is_rational(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_is_rational(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:137 - `HLRBRep_BCurveTool::NbPoles()`
     pub fn nb_poles(C: &crate::b_rep_adaptor::Curve) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_nb_poles(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_nb_poles(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:139 - `HLRBRep_BCurveTool::NbKnots()`
     pub fn nb_knots(C: &crate::b_rep_adaptor::Curve) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_nb_knots(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_nb_knots(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:141 - `HLRBRep_BCurveTool::Poles()`
     pub fn poles(C: &crate::b_rep_adaptor::Curve, T: &mut crate::ffi::TColgp_Array1OfPnt) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BCurveTool_poles(C, T) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BCurveTool_poles(C, T) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:143 - `HLRBRep_BCurveTool::PolesAndWeights()`
@@ -1514,24 +1047,14 @@ impl BCurveTool {
         T: &mut crate::ffi::TColgp_Array1OfPnt,
         W: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BCurveTool_poles_and_weights(C, T, W) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BCurveTool_poles_and_weights(C, T, W)
+        })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:147 - `HLRBRep_BCurveTool::NbSamples()`
     pub fn nb_samples(C: &crate::b_rep_adaptor::Curve, U0: f64, U1: f64) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BCurveTool_nb_samples(C, U0, U1) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_nb_samples(C, U0, U1) })
     }
 }
 
@@ -1552,85 +1075,43 @@ impl BSurfaceTool {
     /// **Source:** `HLRBRep_BSurfaceTool.hxx` - `HLRBRep_BSurfaceTool::HLRBRep_BSurfaceTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_ctor()))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:45 - `HLRBRep_BSurfaceTool::FirstUParameter()`
     pub fn first_u_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_first_u_parameter(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_first_u_parameter(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:47 - `HLRBRep_BSurfaceTool::FirstVParameter()`
     pub fn first_v_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_first_v_parameter(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_first_v_parameter(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:49 - `HLRBRep_BSurfaceTool::LastUParameter()`
     pub fn last_u_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_last_u_parameter(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_last_u_parameter(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:51 - `HLRBRep_BSurfaceTool::LastVParameter()`
     pub fn last_v_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_last_v_parameter(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_last_v_parameter(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:53 - `HLRBRep_BSurfaceTool::NbUIntervals()`
     pub fn nb_u_intervals(S: &crate::b_rep_adaptor::Surface, Sh: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_u_intervals(S, Sh.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_nb_u_intervals(S, Sh.into())
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:55 - `HLRBRep_BSurfaceTool::NbVIntervals()`
     pub fn nb_v_intervals(S: &crate::b_rep_adaptor::Surface, Sh: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_v_intervals(S, Sh.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_nb_v_intervals(S, Sh.into())
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:57 - `HLRBRep_BSurfaceTool::UIntervals()`
@@ -1639,12 +1120,9 @@ impl BSurfaceTool {
         T: &mut crate::ffi::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_intervals(S, T, Sh.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_u_intervals(S, T, Sh.into())
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:61 - `HLRBRep_BSurfaceTool::VIntervals()`
@@ -1653,12 +1131,9 @@ impl BSurfaceTool {
         T: &mut crate::ffi::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_intervals(S, T, Sh.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_v_intervals(S, T, Sh.into())
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:66 - `HLRBRep_BSurfaceTool::UTrim()`
@@ -1669,13 +1144,10 @@ impl BSurfaceTool {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_trim(S, First, Last, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_u_trim(
+                S, First, Last, Tol,
+            )))
         }
     }
 
@@ -1687,86 +1159,41 @@ impl BSurfaceTool {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_trim(S, First, Last, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_v_trim(
+                S, First, Last, Tol,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:77 - `HLRBRep_BSurfaceTool::IsUClosed()`
     pub fn is_u_closed(S: &crate::b_rep_adaptor::Surface) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_u_closed(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_u_closed(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:79 - `HLRBRep_BSurfaceTool::IsVClosed()`
     pub fn is_v_closed(S: &crate::b_rep_adaptor::Surface) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_v_closed(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_v_closed(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:81 - `HLRBRep_BSurfaceTool::IsUPeriodic()`
     pub fn is_u_periodic(S: &crate::b_rep_adaptor::Surface) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_u_periodic(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_u_periodic(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:83 - `HLRBRep_BSurfaceTool::UPeriod()`
     pub fn u_period(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_period(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_period(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:85 - `HLRBRep_BSurfaceTool::IsVPeriodic()`
     pub fn is_v_periodic(S: &crate::b_rep_adaptor::Surface) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_v_periodic(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_v_periodic(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:87 - `HLRBRep_BSurfaceTool::VPeriod()`
     pub fn v_period(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_period(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_period(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:89 - `HLRBRep_BSurfaceTool::Value()`
@@ -1775,24 +1202,16 @@ impl BSurfaceTool {
         u: f64,
         v: f64,
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_value(S, u, v) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_value(
+                S, u, v,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:91 - `HLRBRep_BSurfaceTool::D0()`
     pub fn d0(S: &crate::b_rep_adaptor::Surface, u: f64, v: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BSurfaceTool_d0(S, u, v, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_d0(S, u, v, P) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:96 - `HLRBRep_BSurfaceTool::D1()`
@@ -1804,12 +1223,9 @@ impl BSurfaceTool {
         D1u: &mut crate::gp::Vec,
         D1v: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BSurfaceTool_d1(S, u, v, P, D1u, D1v) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_d1(S, u, v, P, D1u, D1v)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:103 - `HLRBRep_BSurfaceTool::D2()`
@@ -1824,14 +1240,9 @@ impl BSurfaceTool {
         D2V: &mut crate::gp::Vec,
         D2UV: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_BSurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:113 - `HLRBRep_BSurfaceTool::D3()`
@@ -1850,16 +1261,11 @@ impl BSurfaceTool {
         D3UUV: &mut crate::gp::Vec,
         D3UVV: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_BSurfaceTool_d3(
-                    S, u, v, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_d3(
+                S, u, v, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:127 - `HLRBRep_BSurfaceTool::DN()`
@@ -1870,229 +1276,127 @@ impl BSurfaceTool {
         Nu: i32,
         Nv: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_dn(S, u, v, Nu, Nv) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_dn(
+                S, u, v, Nu, Nv,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:133 - `HLRBRep_BSurfaceTool::UContinuity()`
     pub fn u_continuity(S: &crate::b_rep_adaptor::Surface) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_continuity(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_u_continuity(S)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:135 - `HLRBRep_BSurfaceTool::VContinuity()`
     pub fn v_continuity(S: &crate::b_rep_adaptor::Surface) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_continuity(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_v_continuity(S)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:137 - `HLRBRep_BSurfaceTool::UDegree()`
     pub fn u_degree(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_degree(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_degree(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:139 - `HLRBRep_BSurfaceTool::NbUPoles()`
     pub fn nb_u_poles(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_u_poles(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_u_poles(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:141 - `HLRBRep_BSurfaceTool::NbUKnots()`
     pub fn nb_u_knots(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_u_knots(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_u_knots(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:143 - `HLRBRep_BSurfaceTool::IsURational()`
     pub fn is_u_rational(S: &crate::b_rep_adaptor::Surface) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_u_rational(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_u_rational(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:145 - `HLRBRep_BSurfaceTool::VDegree()`
     pub fn v_degree(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_degree(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_degree(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:147 - `HLRBRep_BSurfaceTool::NbVPoles()`
     pub fn nb_v_poles(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_v_poles(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_v_poles(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:149 - `HLRBRep_BSurfaceTool::NbVKnots()`
     pub fn nb_v_knots(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_v_knots(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_v_knots(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:151 - `HLRBRep_BSurfaceTool::IsVRational()`
     pub fn is_v_rational(S: &crate::b_rep_adaptor::Surface) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_v_rational(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_v_rational(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:153 - `HLRBRep_BSurfaceTool::UResolution()`
     pub fn u_resolution(S: &crate::b_rep_adaptor::Surface, R3d: f64) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_resolution(S, R3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_resolution(S, R3d) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:155 - `HLRBRep_BSurfaceTool::VResolution()`
     pub fn v_resolution(S: &crate::b_rep_adaptor::Surface, R3d: f64) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_resolution(S, R3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_resolution(S, R3d) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:157 - `HLRBRep_BSurfaceTool::GetType()`
     pub fn get_type(S: &crate::b_rep_adaptor::Surface) -> crate::geom_abs::SurfaceType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_get_type(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::SurfaceType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_get_type(S)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:159 - `HLRBRep_BSurfaceTool::Plane()`
     pub fn plane(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Pln> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_plane(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_plane(
+                S,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:161 - `HLRBRep_BSurfaceTool::Cylinder()`
     pub fn cylinder(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Cylinder> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_cylinder(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_BSurfaceTool_cylinder(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:163 - `HLRBRep_BSurfaceTool::Cone()`
     pub fn cone(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Cone> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_cone(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_cone(S)))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:165 - `HLRBRep_BSurfaceTool::Torus()`
     pub fn torus(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Torus> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_torus(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_torus(
+                S,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:167 - `HLRBRep_BSurfaceTool::Sphere()`
     pub fn sphere(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Sphere> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_sphere(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_sphere(
+                S,
+            )))
         }
     }
 
@@ -2100,13 +1404,10 @@ impl BSurfaceTool {
     pub fn bezier(
         S: &crate::b_rep_adaptor::Surface,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_bezier(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_bezier(
+                S,
+            )))
         }
     }
 
@@ -2114,37 +1415,28 @@ impl BSurfaceTool {
     pub fn b_spline(
         S: &crate::b_rep_adaptor::Surface,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_b_spline(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_BSurfaceTool_b_spline(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:173 - `HLRBRep_BSurfaceTool::AxeOfRevolution()`
     pub fn axe_of_revolution(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Ax1> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_axe_of_revolution(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_BSurfaceTool_axe_of_revolution(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:175 - `HLRBRep_BSurfaceTool::Direction()`
     pub fn direction(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Dir> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_direction(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_BSurfaceTool_direction(S),
+            ))
         }
     }
 
@@ -2152,76 +1444,42 @@ impl BSurfaceTool {
     pub fn basis_curve(
         S: &crate::b_rep_adaptor::Surface,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_basis_curve(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_BSurfaceTool_basis_curve(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:179 - `HLRBRep_BSurfaceTool::Axis()`
     pub fn axis(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Ax1> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_axis(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_axis(S)))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:181 - `HLRBRep_BSurfaceTool::NbSamplesU()`
     pub fn nb_samples_u_surface(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_samples_u_surface(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_samples_u_surface(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:183 - `HLRBRep_BSurfaceTool::NbSamplesV()`
     pub fn nb_samples_v_surface(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_samples_v_surface(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_samples_v_surface(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:185 - `HLRBRep_BSurfaceTool::NbSamplesU()`
     pub fn nb_samples_u_surface_real2(S: &crate::b_rep_adaptor::Surface, u1: f64, u2: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_samples_u_surface_real2(S, u1, u2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_nb_samples_u_surface_real2(S, u1, u2)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:189 - `HLRBRep_BSurfaceTool::NbSamplesV()`
     pub fn nb_samples_v_surface_real2(S: &crate::b_rep_adaptor::Surface, v1: f64, v2: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_samples_v_surface_real2(S, v1, v2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_BSurfaceTool_nb_samples_v_surface_real2(S, v1, v2)
+        })
     }
 }
 
@@ -2242,12 +1500,8 @@ unsafe impl crate::CppDeletable for BiPnt2D {
 impl BiPnt2D {
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:32 - `HLRBRep_BiPnt2D::HLRBRep_BiPnt2D()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPnt2D_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BiPnt2D_ctor()))
         }
     }
 
@@ -2263,16 +1517,12 @@ impl BiPnt2D {
         outl: bool,
         intl: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_BiPnt2D_ctor_real4_shape_bool4(
                     x1, y1, x2, y2, S, reg1, regn, outl, intl,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2286,151 +1536,83 @@ impl BiPnt2D {
         outl: bool,
         intl: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_BiPnt2D_ctor_xy2_shape_bool4(
                     thePoint1, thePoint2, S, reg1, regn, outl, intl,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:76 - `HLRBRep_BiPnt2D::P1()`
     pub fn p1(&self) -> &crate::gp::Pnt2d {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPnt2D_p1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPnt2D_p1(self as *const Self))) }
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:78 - `HLRBRep_BiPnt2D::P2()`
     pub fn p2(&self) -> &crate::gp::Pnt2d {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPnt2D_p2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPnt2D_p2(self as *const Self))) }
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:80 - `HLRBRep_BiPnt2D::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPnt2D_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPnt2D_shape(self as *const Self))) }
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:82 - `HLRBRep_BiPnt2D::Shape()`
     pub fn shape_shape(&mut self, S: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BiPnt2D_shape_shape(self as *mut Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BiPnt2D_shape_shape(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:84 - `HLRBRep_BiPnt2D::Rg1Line()`
     pub fn rg1_line(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPnt2D_rg1_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPnt2D_rg1_line(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:86 - `HLRBRep_BiPnt2D::Rg1Line()`
     pub fn rg1_line_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BiPnt2D_rg1_line_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BiPnt2D_rg1_line_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:88 - `HLRBRep_BiPnt2D::RgNLine()`
     pub fn rg_n_line(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPnt2D_rg_n_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPnt2D_rg_n_line(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:90 - `HLRBRep_BiPnt2D::RgNLine()`
     pub fn rg_n_line_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BiPnt2D_rg_n_line_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BiPnt2D_rg_n_line_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:92 - `HLRBRep_BiPnt2D::OutLine()`
     pub fn out_line(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPnt2D_out_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPnt2D_out_line(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:94 - `HLRBRep_BiPnt2D::OutLine()`
     pub fn out_line_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BiPnt2D_out_line_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BiPnt2D_out_line_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:96 - `HLRBRep_BiPnt2D::IntLine()`
     pub fn int_line(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPnt2D_int_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPnt2D_int_line(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:98 - `HLRBRep_BiPnt2D::IntLine()`
     pub fn int_line_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BiPnt2D_int_line_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BiPnt2D_int_line_bool(self as *mut Self, B)
+        })
     }
 }
 
@@ -2451,12 +1633,8 @@ unsafe impl crate::CppDeletable for BiPoint {
 impl BiPoint {
     /// **Source:** `HLRBRep_BiPoint.hxx`:34 - `HLRBRep_BiPoint::HLRBRep_BiPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPoint_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BiPoint_ctor()))
         }
     }
 
@@ -2474,151 +1652,83 @@ impl BiPoint {
         outl: bool,
         intl: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_BiPoint_ctor_real6_shape_bool4(
                     x1, y1, z1, x2, y2, z2, S, reg1, regn, outl, intl,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:63 - `HLRBRep_BiPoint::P1()`
     pub fn p1(&self) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPoint_p1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPoint_p1(self as *const Self))) }
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:65 - `HLRBRep_BiPoint::P2()`
     pub fn p2(&self) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPoint_p2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPoint_p2(self as *const Self))) }
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:67 - `HLRBRep_BiPoint::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPoint_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPoint_shape(self as *const Self))) }
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:69 - `HLRBRep_BiPoint::Shape()`
     pub fn shape_shape(&mut self, S: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BiPoint_shape_shape(self as *mut Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BiPoint_shape_shape(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:71 - `HLRBRep_BiPoint::Rg1Line()`
     pub fn rg1_line(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPoint_rg1_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPoint_rg1_line(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:73 - `HLRBRep_BiPoint::Rg1Line()`
     pub fn rg1_line_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BiPoint_rg1_line_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BiPoint_rg1_line_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:75 - `HLRBRep_BiPoint::RgNLine()`
     pub fn rg_n_line(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPoint_rg_n_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPoint_rg_n_line(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:77 - `HLRBRep_BiPoint::RgNLine()`
     pub fn rg_n_line_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BiPoint_rg_n_line_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BiPoint_rg_n_line_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:79 - `HLRBRep_BiPoint::OutLine()`
     pub fn out_line(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPoint_out_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPoint_out_line(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:81 - `HLRBRep_BiPoint::OutLine()`
     pub fn out_line_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BiPoint_out_line_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BiPoint_out_line_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:83 - `HLRBRep_BiPoint::IntLine()`
     pub fn int_line(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_BiPoint_int_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPoint_int_line(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:85 - `HLRBRep_BiPoint::IntLine()`
     pub fn int_line_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_BiPoint_int_line_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_BiPoint_int_line_bool(self as *mut Self, B)
+        })
     }
 }
 
@@ -2639,13 +1749,7 @@ impl CInter {
     /// **Source:** `HLRBRep_CInter.hxx`:49 - `HLRBRep_CInter::HLRBRep_CInter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CInter_ctor())) }
     }
 
     /// **Source:** `HLRBRep_CInter.hxx`:52 - `HLRBRep_CInter::HLRBRep_CInter()`
@@ -2655,13 +1759,10 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CInter_ctor_address_real2(C, TolConf, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_CInter_ctor_address_real2(C, TolConf, Tol),
+            ))
         }
     }
 
@@ -2673,13 +1774,10 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CInter_ctor_address_domain_real2(C, D, TolConf, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_CInter_ctor_address_domain_real2(C, D, TolConf, Tol),
+            ))
         }
     }
 
@@ -2691,13 +1789,10 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CInter_ctor_address2_real2(C1, C2, TolConf, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_CInter_ctor_address2_real2(C1, C2, TolConf, Tol),
+            ))
         }
     }
 
@@ -2710,16 +1805,12 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_CInter_ctor_address_domain_address_real2(
                     C1, D1, C2, TolConf, Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2732,14 +1823,10 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_CInter_ctor_address2_domain_real2(C1, C2, D2, TolConf, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_CInter_ctor_address2_domain_real2(C1, C2, D2, TolConf, Tol),
+            ))
         }
     }
 
@@ -2753,16 +1840,12 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_CInter_ctor_address_domain_address_domain_real2(
                     C1, D1, C2, D2, TolConf, Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2777,22 +1860,17 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_CInter_perform_address_domain_address_domain_real2(
-                    self as *mut Self,
-                    C1,
-                    D1,
-                    C2,
-                    D2,
-                    TolConf,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address_domain_address_domain_real2(
+                self as *mut Self,
+                C1,
+                D1,
+                C2,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_CInter.hxx`:97 - `HLRBRep_CInter::Perform()`
@@ -2804,20 +1882,15 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_CInter_perform_address2_real2(
-                    self as *mut Self,
-                    C1,
-                    C2,
-                    TolConf,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address2_real2(
+                self as *mut Self,
+                C1,
+                C2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_CInter.hxx`:103 - `HLRBRep_CInter::Perform()`
@@ -2829,20 +1902,15 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_CInter_perform_address_domain_real2(
-                    self as *mut Self,
-                    C1,
-                    D1,
-                    TolConf,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address_domain_real2(
+                self as *mut Self,
+                C1,
+                D1,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_CInter.hxx`:109 - `HLRBRep_CInter::Perform()`
@@ -2853,19 +1921,9 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_CInter_perform_address_real2(
-                    self as *mut Self,
-                    C1,
-                    TolConf,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address_real2(self as *mut Self, C1, TolConf, Tol)
+        })
     }
 
     /// **Source:** `HLRBRep_CInter.hxx`:114 - `HLRBRep_CInter::Perform()`
@@ -2878,21 +1936,16 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_CInter_perform_address_domain_address_real2(
-                    self as *mut Self,
-                    C1,
-                    D1,
-                    C2,
-                    TolConf,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address_domain_address_real2(
+                self as *mut Self,
+                C1,
+                D1,
+                C2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_CInter.hxx`:121 - `HLRBRep_CInter::Perform()`
@@ -2905,21 +1958,16 @@ impl CInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_CInter_perform_address2_domain_real2(
-                    self as *mut Self,
-                    C1,
-                    C2,
-                    D2,
-                    TolConf,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address2_domain_real2(
+                self as *mut Self,
+                C1,
+                C2,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_CInter.hxx`:128 - `HLRBRep_CInter::ComputeDomain()`
@@ -2929,155 +1977,102 @@ impl CInter {
         C1: &*mut std::ffi::c_void,
         TolDomain: f64,
     ) -> crate::OwnedPtr<crate::int_res2d::Domain> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_CInter_compute_domain(self as *const Self, C1, TolDomain)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_CInter_compute_domain(self as *const Self, C1, TolDomain),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_CInter.hxx`:132 - `HLRBRep_CInter::SetMinNbSamples()`
     /// Set / get minimum number of points in polygon intersection.
     pub fn set_min_nb_samples(&mut self, theMinNbSamples: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_CInter_set_min_nb_samples(self as *mut Self, theMinNbSamples)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CInter_set_min_nb_samples(self as *mut Self, theMinNbSamples)
+        })
     }
 
     /// **Source:** `HLRBRep_CInter.hxx`:133 - `HLRBRep_CInter::GetMinNbSamples()`
     pub fn get_min_nb_samples(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CInter_get_min_nb_samples(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CInter_get_min_nb_samples(self as *const Self)
+        })
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_CInter_as_IntRes2d_Intersection(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_CInter_as_IntRes2d_Intersection(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_CInter_as_IntRes2d_Intersection_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_CInter_as_IntRes2d_Intersection_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CInter_inherited_IsDone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CInter_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CInter_inherited_IsEmpty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CInter_inherited_IsEmpty(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CInter_inherited_NbPoints(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CInter_inherited_NbPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CInter_inherited_Point(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_CInter_inherited_Point(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CInter_inherited_NbSegments(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CInter_inherited_NbSegments(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CInter_inherited_Segment(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_CInter_inherited_Segment(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_CInter_inherited_SetReversedParameters(
-                    self as *mut Self,
-                    Reverseflag,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CInter_inherited_SetReversedParameters(
+                self as *mut Self,
+                Reverseflag,
+            )
+        })
     }
 }
 
@@ -3110,13 +2105,10 @@ impl CLProps {
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CLProps_ctor_curveptr_int_real(C, N, Resolution) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_CLProps_ctor_curveptr_int_real(C, N, Resolution),
+            ))
         }
     }
 
@@ -3130,14 +2122,10 @@ impl CLProps {
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_CLProps_ctor_curveptr_real_int_real(C, U, N, Resolution)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_CLProps_ctor_curveptr_real_int_real(C, U, N, Resolution),
+            ))
         }
     }
 
@@ -3149,12 +2137,10 @@ impl CLProps {
     /// All the computations done will be related to <C> and <U>
     /// when the functions "set" will be done.
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CLProps_ctor_int_real(N, Resolution) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_CLProps_ctor_int_real(N, Resolution),
+            ))
         }
     }
 
@@ -3162,79 +2148,45 @@ impl CLProps {
     /// Initializes the local properties of the curve
     /// for the parameter value <U>.
     pub fn set_parameter(&mut self, U: f64) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CLProps_set_parameter(self as *mut Self, U) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CLProps_set_parameter(self as *mut Self, U)
+        })
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:78 - `HLRBRep_CLProps::SetCurve()`
     /// Initializes the local properties of the curve
     /// for the new curve.
     pub unsafe fn set_curve(&mut self, C: &mut *const Curve) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CLProps_set_curve(self as *mut Self, C) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CLProps_set_curve(self as *mut Self, C)
+        })
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:81 - `HLRBRep_CLProps::Value()`
     /// Returns the Point.
     pub fn value(&self) -> &crate::gp::Pnt2d {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CLProps_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_CLProps_value(self as *const Self))) }
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:85 - `HLRBRep_CLProps::D1()`
     /// Returns the first derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1(&mut self) -> &crate::gp::Vec2d {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CLProps_d1(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_CLProps_d1(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:89 - `HLRBRep_CLProps::D2()`
     /// Returns the second derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d2(&mut self) -> &crate::gp::Vec2d {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CLProps_d2(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_CLProps_d2(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:93 - `HLRBRep_CLProps::D3()`
     /// Returns the third derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d3(&mut self) -> &crate::gp::Vec2d {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CLProps_d3(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_CLProps_d3(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:98 - `HLRBRep_CLProps::IsTangentDefined()`
@@ -3242,62 +2194,39 @@ impl CLProps {
     /// For example, the tangent is not defined if the
     /// three first derivatives are all null.
     pub fn is_tangent_defined(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CLProps_is_tangent_defined(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CLProps_is_tangent_defined(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:101 - `HLRBRep_CLProps::Tangent()`
     /// output  the tangent direction <D>
     pub fn tangent(&mut self, D: &mut crate::gp::Dir2d) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CLProps_tangent(self as *mut Self, D) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CLProps_tangent(self as *mut Self, D)
+        })
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:104 - `HLRBRep_CLProps::Curvature()`
     /// Returns the curvature.
     pub fn curvature(&mut self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CLProps_curvature(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CLProps_curvature(self as *mut Self) })
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:107 - `HLRBRep_CLProps::Normal()`
     /// Returns the normal direction <N>.
     pub fn normal(&mut self, N: &mut crate::gp::Dir2d) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CLProps_normal(self as *mut Self, N) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CLProps_normal(self as *mut Self, N)
+        })
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:110 - `HLRBRep_CLProps::CentreOfCurvature()`
     /// Returns the centre of curvature <P>.
     pub fn centre_of_curvature(&mut self, P: &mut crate::gp::Pnt2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_CLProps_centre_of_curvature(self as *mut Self, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CLProps_centre_of_curvature(self as *mut Self, P)
+        })
     }
 }
 
@@ -3318,12 +2247,8 @@ impl CLPropsATool {
     /// **Source:** `HLRBRep_CLPropsATool.hxx` - `HLRBRep_CLPropsATool::HLRBRep_CLPropsATool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CLPropsATool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CLPropsATool_ctor()))
         }
     }
 
@@ -3331,24 +2256,18 @@ impl CLPropsATool {
     /// Computes the  point <P> of  parameter <U>   on the
     /// Curve from HLRBRep <C>.
     pub fn value(A: &Curve, U: f64, P: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CLPropsATool_value(A as *const _, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CLPropsATool_value(A as *const _, U, P)
+        })
     }
 
     /// **Source:** `HLRBRep_CLPropsATool.hxx`:39 - `HLRBRep_CLPropsATool::D1()`
     /// Computes the point <P>  and  first derivative <V1>
     /// of parameter <U> on the curve <C>.
     pub fn d1(A: &Curve, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CLPropsATool_d1(A as *const _, U, P, V1) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CLPropsATool_d1(A as *const _, U, P, V1)
+        })
     }
 
     /// **Source:** `HLRBRep_CLPropsATool.hxx`:44 - `HLRBRep_CLPropsATool::D2()`
@@ -3362,12 +2281,9 @@ impl CLPropsATool {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CLPropsATool_d2(A as *const _, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CLPropsATool_d2(A as *const _, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `HLRBRep_CLPropsATool.hxx`:53 - `HLRBRep_CLPropsATool::D3()`
@@ -3382,13 +2298,9 @@ impl CLPropsATool {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_CLPropsATool_d3(A as *const _, U, P, V1, V2, V3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CLPropsATool_d3(A as *const _, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `HLRBRep_CLPropsATool.hxx`:65 - `HLRBRep_CLPropsATool::Continuity()`
@@ -3398,43 +2310,24 @@ impl CLPropsATool {
     /// computable.  returns  3 : first,  second and third
     /// are computable.
     pub fn continuity(A: &Curve) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CLPropsATool_continuity(A as *const _) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CLPropsATool_continuity(A as *const _) })
     }
 
     /// **Source:** `HLRBRep_CLPropsATool.hxx`:68 - `HLRBRep_CLPropsATool::FirstParameter()`
     /// returns the first parameter bound of the curve.
     pub fn first_parameter(A: &Curve) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CLPropsATool_first_parameter(A as *const _) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CLPropsATool_first_parameter(A as *const _)
+        })
     }
 
     /// **Source:** `HLRBRep_CLPropsATool.hxx`:72 - `HLRBRep_CLPropsATool::LastParameter()`
     /// returns the  last  parameter bound  of  the curve.
     /// FirstParameter must be less than LastParamenter.
     pub fn last_parameter(A: &Curve) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CLPropsATool_last_parameter(A as *const _) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CLPropsATool_last_parameter(A as *const _)
+        })
     }
 }
 
@@ -3458,156 +2351,94 @@ impl Curve {
     /// **Source:** `HLRBRep_Curve.hxx`:55 - `HLRBRep_Curve::HLRBRep_Curve()`
     /// Creates an undefined Curve.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_ctor())) }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:57 - `HLRBRep_Curve::Projector()`
     pub fn projector(&mut self, Proj: &crate::hlr_algo::Projector) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Curve_projector(self as *mut Self, Proj as *const _) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_projector(self as *mut Self, Proj as *const _)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:60 - `HLRBRep_Curve::Curve()`
     /// Returns the 3D curve.
     pub fn curve(&mut self) -> &mut crate::b_rep_adaptor::Curve {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_curve(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
-        }
+        unsafe { &mut *(crate::check_result(crate::ffi::HLRBRep_Curve_curve(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:63 - `HLRBRep_Curve::Curve()`
     /// Sets the 3D curve to be projected.
     pub fn curve_edge(&mut self, E: &crate::topo_ds::Edge) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Curve_curve_edge(self as *mut Self, E) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_curve_edge(self as *mut Self, E)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:66 - `HLRBRep_Curve::GetCurve()`
     /// Returns the 3D curve.
     pub fn get_curve(&self) -> &crate::b_rep_adaptor::Curve {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_get_curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_Curve_get_curve(self as *const Self))) }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:70 - `HLRBRep_Curve::Parameter2d()`
     /// Returns the parameter   on the 2d  curve  from the
     /// parameter on the 3d curve.
     pub fn parameter2d(&self, P3d: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Curve_parameter2d(self as *const Self, P3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Curve_parameter2d(self as *const Self, P3d)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:74 - `HLRBRep_Curve::Parameter3d()`
     /// Returns the parameter   on the 3d  curve  from the
     /// parameter on the 2d curve.
     pub fn parameter3d(&self, P2d: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Curve_parameter3d(self as *const Self, P2d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Curve_parameter3d(self as *const Self, P2d)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:77 - `HLRBRep_Curve::Update()`
     /// Update the minmax and the internal data
     pub fn update(&mut self, TotMin: &mut [f64; 16], TotMax: &mut [f64; 16]) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_Curve_update(
-                    self as *mut Self,
-                    TotMin.as_mut_ptr(),
-                    TotMax.as_mut_ptr(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Curve_update(
+                self as *mut Self,
+                TotMin.as_mut_ptr(),
+                TotMax.as_mut_ptr(),
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:80 - `HLRBRep_Curve::UpdateMinMax()`
     /// Update the minmax returns tol for enlarge;
     pub fn update_min_max(&mut self, TotMin: &mut [f64; 16], TotMax: &mut [f64; 16]) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_Curve_update_min_max(
-                    self as *mut Self,
-                    TotMin.as_mut_ptr(),
-                    TotMax.as_mut_ptr(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Curve_update_min_max(
+                self as *mut Self,
+                TotMin.as_mut_ptr(),
+                TotMax.as_mut_ptr(),
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:84 - `HLRBRep_Curve::Z()`
     /// Computes the Z    coordinate  of the  point  of
     /// parameter U on the curve in the viewing coordinate system
     pub fn z(&self, U: f64) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_z(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_z(self as *const Self, U) })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:88 - `HLRBRep_Curve::Value3D()`
     /// Computes the 3D point   of parameter U  on the
     /// curve.
     pub fn value3_d(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_value3_d(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_value3_d(
+                self as *const Self,
+                U,
+            )))
         }
     }
 
@@ -3615,25 +2446,18 @@ impl Curve {
     /// Computes the 3D point   of parameter U  on the
     /// curve.
     pub fn d0_real_pnt(&self, U: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Curve_d0_real_pnt(self as *const Self, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_d0_real_pnt(self as *const Self, U, P)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:96 - `HLRBRep_Curve::D1()`
     /// Computes the point of parameter  U on the curve
     /// with its first derivative.
     pub fn d1_real_pnt_vec(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Curve_d1_real_pnt_vec(self as *const Self, U, P, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_d1_real_pnt_vec(self as *const Self, U, P, V)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:102 - `HLRBRep_Curve::Tangent()`
@@ -3642,50 +2466,31 @@ impl Curve {
     /// derivative is null look after  at start (or before at end)
     /// with the second derivative.
     pub fn tangent(&self, AtStart: bool, P: &mut crate::gp::Pnt2d, D: &mut crate::gp::Dir2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Curve_tangent(self as *const Self, AtStart, P, D) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_tangent(self as *const Self, AtStart, P, D)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:104 - `HLRBRep_Curve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Curve_first_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Curve_first_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:106 - `HLRBRep_Curve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_last_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Curve_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:108 - `HLRBRep_Curve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Curve_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:113 - `HLRBRep_Curve::NbIntervals()`
@@ -3693,15 +2498,9 @@ impl Curve {
     /// continuity  <S>.    And  returns   the number   of
     /// intervals.
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Curve_nb_intervals(self as *const Self, S.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Curve_nb_intervals(self as *const Self, S.into())
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:120 - `HLRBRep_Curve::Intervals()`
@@ -3711,74 +2510,43 @@ impl Curve {
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Curve_intervals(self as *const Self, T, S.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_intervals(self as *const Self, T, S.into())
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:122 - `HLRBRep_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_is_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_is_closed(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:124 - `HLRBRep_Curve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_is_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_is_periodic(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:126 - `HLRBRep_Curve::Period()`
     pub fn period(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_period(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:129 - `HLRBRep_Curve::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_value(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_value(
+                self as *const Self,
+                U,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:132 - `HLRBRep_Curve::D0()`
     /// Computes the point of parameter U on the curve.
     pub fn d0_real_pnt2d(&self, U: f64, P: &mut crate::gp::Pnt2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Curve_d0_real_pnt2d(self as *const Self, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_d0_real_pnt2d(self as *const Self, U, P)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:138 - `HLRBRep_Curve::D1()`
@@ -3787,14 +2555,9 @@ impl Curve {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1_real_pnt2d_vec2d(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Curve_d1_real_pnt2d_vec2d(self as *const Self, U, P, V)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_d1_real_pnt2d_vec2d(self as *const Self, U, P, V)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:142 - `HLRBRep_Curve::D2()`
@@ -3807,12 +2570,9 @@ impl Curve {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Curve_d2(self as *const Self, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_d2(self as *const Self, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:148 - `HLRBRep_Curve::D3()`
@@ -3828,13 +2588,9 @@ impl Curve {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Curve_d3(self as *const Self, U, P, V1, V2, V3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_d3(self as *const Self, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:159 - `HLRBRep_Curve::DN()`
@@ -3844,13 +2600,12 @@ impl Curve {
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_dn(self as *const Self, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_dn(
+                self as *const Self,
+                U,
+                N,
+            )))
         }
     }
 
@@ -3858,15 +2613,9 @@ impl Curve {
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Curve_resolution(self as *const Self, R3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Curve_resolution(self as *const Self, R3d)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:168 - `HLRBRep_Curve::GetType()`
@@ -3874,121 +2623,77 @@ impl Curve {
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_get_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::CurveType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Curve_get_type(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:170 - `HLRBRep_Curve::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_line(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:172 - `HLRBRep_Curve::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_circle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_circle(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:174 - `HLRBRep_Curve::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_ellipse(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_ellipse(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:176 - `HLRBRep_Curve::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_hyperbola(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_hyperbola(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:178 - `HLRBRep_Curve::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_parabola(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_parabola(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:180 - `HLRBRep_Curve::IsRational()`
     pub fn is_rational(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_is_rational(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_is_rational(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:182 - `HLRBRep_Curve::Degree()`
     pub fn degree(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_degree(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_degree(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:184 - `HLRBRep_Curve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_nb_poles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_nb_poles(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:186 - `HLRBRep_Curve::Poles()`
     pub fn poles_array1ofpnt2d(&self, TP: &mut crate::ffi::TColgp_Array1OfPnt2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Curve_poles_array1ofpnt2d(self as *const Self, TP) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_poles_array1ofpnt2d(self as *const Self, TP)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:188 - `HLRBRep_Curve::Poles()`
@@ -3997,18 +2702,13 @@ impl Curve {
         aCurve: &crate::ffi::HandleGeomBSplineCurve,
         TP: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Curve_poles_handlegeombsplinecurve_array1ofpnt2d(
-                    self as *const Self,
-                    aCurve,
-                    TP,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_poles_handlegeombsplinecurve_array1ofpnt2d(
+                self as *const Self,
+                aCurve,
+                TP,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:191 - `HLRBRep_Curve::PolesAndWeights()`
@@ -4017,18 +2717,13 @@ impl Curve {
         TP: &mut crate::ffi::TColgp_Array1OfPnt2d,
         TW: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Curve_poles_and_weights_array1ofpnt2d_array1ofreal(
-                    self as *const Self,
-                    TP,
-                    TW,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_poles_and_weights_array1ofpnt2d_array1ofreal(
+                self as *const Self,
+                TP,
+                TW,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:193 - `HLRBRep_Curve::PolesAndWeights()`
@@ -4038,47 +2733,28 @@ impl Curve {
         TP: &mut crate::ffi::TColgp_Array1OfPnt2d,
         TW: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Curve_poles_and_weights_handlegeombsplinecurve_array1ofpnt2d_array1ofreal(self as *const Self, aCurve, TP, TW)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_poles_and_weights_handlegeombsplinecurve_array1ofpnt2d_array1ofreal(self as *const Self, aCurve, TP, TW)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:197 - `HLRBRep_Curve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Curve_nb_knots(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_nb_knots(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:199 - `HLRBRep_Curve::Knots()`
     pub fn knots(&self, kn: &mut crate::ffi::TColStd_Array1OfReal) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Curve_knots(self as *const Self, kn) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_knots(self as *const Self, kn)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:201 - `HLRBRep_Curve::Multiplicities()`
     pub fn multiplicities(&self, mu: &mut crate::ffi::TColStd_Array1OfInteger) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Curve_multiplicities(self as *const Self, mu) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Curve_multiplicities(self as *const Self, mu)
+        })
     }
 }
 
@@ -4099,63 +2775,34 @@ impl CurveTool {
     /// **Source:** `HLRBRep_CurveTool.hxx` - `HLRBRep_CurveTool::HLRBRep_CurveTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_ctor()))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:45 - `HLRBRep_CurveTool::FirstParameter()`
     pub unsafe fn first_parameter(C: *mut std::ffi::c_void) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_first_parameter(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_first_parameter(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:47 - `HLRBRep_CurveTool::LastParameter()`
     pub unsafe fn last_parameter(C: *mut std::ffi::c_void) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_last_parameter(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_last_parameter(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:49 - `HLRBRep_CurveTool::Continuity()`
     pub unsafe fn continuity(C: *mut std::ffi::c_void) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_continuity(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CurveTool_continuity(C)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:53 - `HLRBRep_CurveTool::NbIntervals()`
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(myclass) >= <S>
     pub unsafe fn nb_intervals(C: *mut std::ffi::c_void) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_nb_intervals(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_nb_intervals(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:60 - `HLRBRep_CurveTool::Intervals()`
@@ -4165,12 +2812,7 @@ impl CurveTool {
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub unsafe fn intervals(C: *mut std::ffi::c_void, T: &mut crate::ffi::TColStd_Array1OfReal) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CurveTool_intervals(C, T) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_CurveTool_intervals(C, T) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:64 - `HLRBRep_CurveTool::GetInterval()`
@@ -4183,73 +2825,40 @@ impl CurveTool {
         U1: &mut f64,
         U2: &mut f64,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_CurveTool_get_interval(C, Index, Tab, U1, U2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_CurveTool_get_interval(C, Index, Tab, U1, U2)
+        })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:70 - `HLRBRep_CurveTool::IsClosed()`
     pub unsafe fn is_closed(C: *mut std::ffi::c_void) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_is_closed(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_is_closed(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:72 - `HLRBRep_CurveTool::IsPeriodic()`
     pub unsafe fn is_periodic(C: *mut std::ffi::c_void) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_is_periodic(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_is_periodic(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:74 - `HLRBRep_CurveTool::Period()`
     pub unsafe fn period(C: *mut std::ffi::c_void) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_period(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_period(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:77 - `HLRBRep_CurveTool::Value()`
     /// Computes the point of parameter U on the curve.
     pub unsafe fn value(C: *mut std::ffi::c_void, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_value(C, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_value(
+                C, U,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:80 - `HLRBRep_CurveTool::D0()`
     /// Computes the point of parameter U on the curve.
     pub unsafe fn d0(C: *mut std::ffi::c_void, U: f64, P: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CurveTool_d0(C, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_CurveTool_d0(C, U, P) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:86 - `HLRBRep_CurveTool::D1()`
@@ -4263,12 +2872,7 @@ impl CurveTool {
         P: &mut crate::gp::Pnt2d,
         V: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CurveTool_d1(C, U, P, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_CurveTool_d1(C, U, P, V) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:92 - `HLRBRep_CurveTool::D2()`
@@ -4283,12 +2887,7 @@ impl CurveTool {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CurveTool_d2(C, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_CurveTool_d2(C, U, P, V1, V2) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:102 - `HLRBRep_CurveTool::D3()`
@@ -4304,12 +2903,7 @@ impl CurveTool {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_CurveTool_d3(C, U, P, V1, V2, V3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_CurveTool_d3(C, U, P, V1, V2, V3) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:114 - `HLRBRep_CurveTool::DN()`
@@ -4323,13 +2917,10 @@ impl CurveTool {
         U: f64,
         N: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_dn(C, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_dn(
+                C, U, N,
+            )))
         }
     }
 
@@ -4337,14 +2928,7 @@ impl CurveTool {
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
     pub unsafe fn resolution(C: *mut std::ffi::c_void, R3d: f64) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_resolution(C, R3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_resolution(C, R3d) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:123 - `HLRBRep_CurveTool::GetType()`
@@ -4352,14 +2936,10 @@ impl CurveTool {
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub unsafe fn get_type(C: *mut std::ffi::c_void) -> crate::geom_abs::CurveType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_get_type(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::CurveType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CurveTool_get_type(C)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:128 - `HLRBRep_CurveTool::TheType()`
@@ -4367,73 +2947,48 @@ impl CurveTool {
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub unsafe fn the_type(C: *mut std::ffi::c_void) -> crate::geom_abs::CurveType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_the_type(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::CurveType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CurveTool_the_type(C)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:130 - `HLRBRep_CurveTool::Line()`
     pub unsafe fn line(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_line(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_line(C)))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:132 - `HLRBRep_CurveTool::Circle()`
     pub unsafe fn circle(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_circle(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_circle(C)))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:134 - `HLRBRep_CurveTool::Ellipse()`
     pub unsafe fn ellipse(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_ellipse(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_ellipse(C)))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:136 - `HLRBRep_CurveTool::Hyperbola()`
     pub unsafe fn hyperbola(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_hyperbola(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_hyperbola(
+                C,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:138 - `HLRBRep_CurveTool::Parabola()`
     pub unsafe fn parabola(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_parabola(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_parabola(
+                C,
+            )))
         }
     }
 
@@ -4441,13 +2996,8 @@ impl CurveTool {
     pub unsafe fn bezier(
         C: *mut std::ffi::c_void,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_bezier(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_bezier(C)))
         }
     }
 
@@ -4455,63 +3005,33 @@ impl CurveTool {
     pub unsafe fn b_spline(
         C: *mut std::ffi::c_void,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_b_spline(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_b_spline(
+                C,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:144 - `HLRBRep_CurveTool::EpsX()`
     pub unsafe fn eps_x(C: *mut std::ffi::c_void) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_eps_x(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_eps_x(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:146 - `HLRBRep_CurveTool::NbSamples()`
     pub unsafe fn nb_samples_address_real2(C: *mut std::ffi::c_void, U0: f64, U1: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_CurveTool_nb_samples_address_real2(C, U0, U1) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_CurveTool_nb_samples_address_real2(C, U0, U1)
+        })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:150 - `HLRBRep_CurveTool::NbSamples()`
     pub unsafe fn nb_samples_address(C: *mut std::ffi::c_void) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_nb_samples_address(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_nb_samples_address(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:152 - `HLRBRep_CurveTool::Degree()`
     pub unsafe fn degree(C: *mut std::ffi::c_void) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_CurveTool_degree(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_degree(C) })
     }
 }
 
@@ -4533,12 +3053,10 @@ impl Data {
     /// Create an  empty data structure  of <NV> vertices,
     /// <NE> edges and <NF> faces.
     pub fn new_int3(NV: i32, NE: i32, NF: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_ctor_int3(NV, NE, NF) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Data_ctor_int3(
+                NV, NE, NF,
+            )))
         }
     }
 
@@ -4546,36 +3064,22 @@ impl Data {
     /// Write <DS>    in   me  with   a     translation of
     /// <dv>,<de>,<df>.
     pub fn write(&mut self, DS: &crate::ffi::HandleHLRBRepData, dv: i32, de: i32, df: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Data_write(self as *mut Self, DS, dv, de, df) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_write(self as *mut Self, DS, dv, de, df)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:71 - `HLRBRep_Data::EDataArray()`
     pub fn e_data_array(&mut self) -> &mut crate::ffi::HLRBRep_Array1OfEData {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_e_data_array(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_Data_e_data_array(self as *mut Self)))
         }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:73 - `HLRBRep_Data::FDataArray()`
     pub fn f_data_array(&mut self) -> &mut crate::ffi::HLRBRep_Array1OfFData {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_f_data_array(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_Data_f_data_array(self as *mut Self)))
         }
     }
 
@@ -4583,110 +3087,55 @@ impl Data {
     /// Set the  tolerance for the  rejections  during the
     /// exploration
     pub fn tolerance_float(&mut self, tol: f32) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Data_tolerance_float(self as *mut Self, tol) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_tolerance_float(self as *mut Self, tol)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:81 - `HLRBRep_Data::Tolerance()`
     /// returns  the tolerance for the  rejections  during
     /// the exploration
     pub fn tolerance(&self) -> f32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_tolerance(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:85 - `HLRBRep_Data::Update()`
     /// end of building  of the Data and updating
     /// all the information linked to the projection.
     pub fn update(&mut self, P: &crate::hlr_algo::Projector) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Data_update(self as *mut Self, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_Data_update(self as *mut Self, P) })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:87 - `HLRBRep_Data::Projector()`
     pub fn projector(&mut self) -> &mut crate::hlr_algo::Projector {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_projector(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_Data_projector(self as *mut Self)))
         }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:89 - `HLRBRep_Data::NbVertices()`
     pub fn nb_vertices(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_nb_vertices(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_nb_vertices(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:91 - `HLRBRep_Data::NbEdges()`
     pub fn nb_edges(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_nb_edges(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_nb_edges(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:93 - `HLRBRep_Data::NbFaces()`
     pub fn nb_faces(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_nb_faces(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_nb_faces(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:95 - `HLRBRep_Data::EdgeMap()`
     pub fn edge_map(&mut self) -> &mut crate::ffi::TopTools_IndexedMapOfShape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_edge_map(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
-        }
+        unsafe { &mut *(crate::check_result(crate::ffi::HLRBRep_Data_edge_map(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:97 - `HLRBRep_Data::FaceMap()`
     pub fn face_map(&mut self) -> &mut crate::ffi::TopTools_IndexedMapOfShape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_face_map(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
-        }
+        unsafe { &mut *(crate::check_result(crate::ffi::HLRBRep_Data_face_map(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:100 - `HLRBRep_Data::InitBoundSort()`
@@ -4697,90 +3146,54 @@ impl Data {
         e1: i32,
         e2: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Data_init_bound_sort(self as *mut Self, MinMaxTot, e1, e2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_init_bound_sort(self as *mut Self, MinMaxTot, e1, e2)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:106 - `HLRBRep_Data::InitEdge()`
     /// Begin an iteration only  on visible Edges
     /// crossing the face number <FI>.
     pub fn init_edge(&mut self, FI: i32, MST: &mut crate::ffi::BRepTopAdaptor_MapOfShapeTool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Data_init_edge(self as *mut Self, FI, MST) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_init_edge(self as *mut Self, FI, MST)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:108 - `HLRBRep_Data::MoreEdge()`
     pub fn more_edge(&mut self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_more_edge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_more_edge(self as *mut Self) })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:110 - `HLRBRep_Data::NextEdge()`
     pub fn next_edge(&mut self, skip: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Data_next_edge(self as *mut Self, skip) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_next_edge(self as *mut Self, skip)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:113 - `HLRBRep_Data::Edge()`
     /// Returns the  current Edge
     pub fn edge(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_edge(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:117 - `HLRBRep_Data::HidingTheFace()`
     /// Returns true if   the  current edge to   be hidden
     /// belongs to the hiding face.
     pub fn hiding_the_face(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_hiding_the_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_hiding_the_face(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:121 - `HLRBRep_Data::SimpleHidingFace()`
     /// Returns true if the current hiding face is not  an
     /// auto-intersected one.
     pub fn simple_hiding_face(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Data_simple_hiding_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_simple_hiding_face(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:126 - `HLRBRep_Data::InitInterference()`
@@ -4788,75 +3201,46 @@ impl Data {
     /// the hiding  face.   The interferences are given by
     /// the More, Next, and Value methods.
     pub fn init_interference(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Data_init_interference(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_init_interference(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:128 - `HLRBRep_Data::MoreInterference()`
     pub fn more_interference(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Data_more_interference(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_more_interference(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:130 - `HLRBRep_Data::NextInterference()`
     pub fn next_interference(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Data_next_interference(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_next_interference(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:133 - `HLRBRep_Data::RejectedInterference()`
     /// Returns  True if the  interference is rejected.
     pub fn rejected_interference(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Data_rejected_interference(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_rejected_interference(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:137 - `HLRBRep_Data::AboveInterference()`
     /// Returns True if the rejected interference is above
     /// the face.
     pub fn above_interference(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Data_above_interference(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_above_interference(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:139 - `HLRBRep_Data::Interference()`
     pub fn interference(&mut self) -> &mut crate::hlr_algo::Interference {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_interference(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_Data_interference(self as *mut Self)))
         }
     }
 
@@ -4870,14 +3254,9 @@ impl Data {
         Nm: &mut crate::gp::Dir2d,
         Cu: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Data_local_le_geometry2_d(self as *mut Self, Param, Tg, Nm, Cu)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_local_le_geometry2_d(self as *mut Self, Param, Tg, Nm, Cu)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:150 - `HLRBRep_Data::LocalFEGeometry2D()`
@@ -4891,21 +3270,9 @@ impl Data {
         Nm: &mut crate::gp::Dir2d,
         Cu: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Data_local_fe_geometry2_d(
-                    self as *mut Self,
-                    FE,
-                    Param,
-                    Tg,
-                    Nm,
-                    Cu,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_local_fe_geometry2_d(self as *mut Self, FE, Param, Tg, Nm, Cu)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:159 - `HLRBRep_Data::EdgeState()`
@@ -4921,20 +3288,15 @@ impl Data {
     ) {
         let mut stbef_i32_: i32 = (*stbef).into();
         let mut staf_i32_: i32 = (*staf).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Data_edge_state(
-                    self as *mut Self,
-                    p1,
-                    p2,
-                    &mut stbef_i32_,
-                    &mut staf_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_edge_state(
+                self as *mut Self,
+                p1,
+                p2,
+                &mut stbef_i32_,
+                &mut staf_i32_,
+            )
+        });
         *stbef = crate::top_abs::State::try_from(stbef_i32_).unwrap();
         *staf = crate::top_abs::State::try_from(staf_i32_).unwrap();
     }
@@ -4943,16 +3305,9 @@ impl Data {
     /// Returns the  true if the  Edge <ED> belongs to the
     /// Hiding Face.
     pub fn edge_of_the_hiding_face(&self, E: i32, ED: &EdgeData) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_Data_edge_of_the_hiding_face(self as *const Self, E, ED)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_edge_of_the_hiding_face(self as *const Self, E, ED)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:172 - `HLRBRep_Data::HidingStartLevel()`
@@ -4966,30 +3321,19 @@ impl Data {
         ED: &EdgeData,
         IL: &crate::ffi::HLRAlgo_InterferenceList,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_Data_hiding_start_level(self as *mut Self, E, ED, IL)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_hiding_start_level(self as *mut Self, E, ED, IL)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:178 - `HLRBRep_Data::Compare()`
     /// Returns   the  state   of  the   Edge  <ED>  after
     /// classification.
     pub fn compare(&mut self, E: i32, ED: &EdgeData) -> crate::top_abs::State {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_compare(self as *mut Self, E, ED) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_compare(self as *mut Self, E, ED)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:183 - `HLRBRep_Data::SimplClassify()`
@@ -5004,16 +3348,10 @@ impl Data {
         p1: f64,
         p2: f64,
     ) -> crate::top_abs::State {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_Data_simpl_classify(self as *mut Self, E, ED, Nbp, p1, p2)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_simpl_classify(self as *mut Self, E, ED, Nbp, p1, p2)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:190 - `HLRBRep_Data::Classify()`
@@ -5026,141 +3364,91 @@ impl Data {
         Level: &mut i32,
         param: f64,
     ) -> crate::top_abs::State {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_Data_classify(self as *mut Self, E, ED, LevelFlag, Level, param)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_classify(self as *mut Self, E, ED, LevelFlag, Level, param)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:197 - `HLRBRep_Data::IsBadFace()`
     /// Returns true if the current face is bad.
     pub fn is_bad_face(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_is_bad_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_is_bad_face(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:199 - `HLRBRep_Data::Destroy()`
     pub fn destroy(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Data_destroy(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_Data_destroy(self as *mut Self) })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:203 - `HLRBRep_Data::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_Data_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:203 - `HLRBRep_Data::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::HLRBRep_Data_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:203 - `HLRBRep_Data::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_Data_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_Data_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_Data_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_Data_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_Data_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepData> {
-        let __result = unsafe { crate::ffi::HLRBRep_Data_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Data_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_Data_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Data_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::HLRBRep_Data_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::HLRBRep_Data_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -5171,51 +3459,30 @@ impl Data {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Data_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Data_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_Data_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Data_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Data_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Data_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -5230,31 +3497,23 @@ unsafe impl crate::CppDeletable for HandleHLRBRepData {
 impl HandleHLRBRepData {
     /// Dereference this Handle to access the underlying HLRBRep_Data
     pub fn get(&self) -> &crate::ffi::HLRBRep_Data {
-        let __result = unsafe { crate::ffi::HandleHLRBRepData_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleHLRBRepData_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRBRep_Data
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_Data {
-        let __result = unsafe { crate::ffi::HandleHLRBRepData_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleHLRBRepData_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRBRep_Data> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleHLRBRepData_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHLRBRepData_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5278,87 +3537,61 @@ impl EdgeBuilder {
     /// AreaLimits   are   created  from   the   vertices.
     /// Builds(IN) is automatically called.
     pub fn new_vertexlist(VList: &mut VertexList) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeBuilder_ctor_vertexlist(VList) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_EdgeBuilder_ctor_vertexlist(VList),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:43 - `HLRBRep_EdgeBuilder::InitAreas()`
     /// Initialize an iteration on the areas.
     pub fn init_areas(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeBuilder_init_areas(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_init_areas(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:46 - `HLRBRep_EdgeBuilder::NextArea()`
     /// Set the current area to the next area.
     pub fn next_area(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeBuilder_next_area(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_next_area(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:49 - `HLRBRep_EdgeBuilder::PreviousArea()`
     /// Set the current area to the previous area.
     pub fn previous_area(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeBuilder_previous_area(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_previous_area(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:52 - `HLRBRep_EdgeBuilder::HasArea()`
     /// Returns True if there is a current area.
     pub fn has_area(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeBuilder_has_area(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_has_area(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:55 - `HLRBRep_EdgeBuilder::AreaState()`
     /// Returns the state of the current area.
     pub fn area_state(&self) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeBuilder_area_state(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_area_state(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:58 - `HLRBRep_EdgeBuilder::AreaEdgeState()`
     /// Returns the edge state of the current area.
     pub fn area_edge_state(&self) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeBuilder_area_edge_state(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_area_edge_state(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:63 - `HLRBRep_EdgeBuilder::LeftLimit()`
@@ -5366,14 +3599,10 @@ impl EdgeBuilder {
     /// This is a NULL handle when the area is infinite on
     /// the left.
     pub fn left_limit(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAreaLimit> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeBuilder_left_limit(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_EdgeBuilder_left_limit(self as *const Self),
+            ))
         }
     }
 
@@ -5382,14 +3611,10 @@ impl EdgeBuilder {
     /// This is a NULL handle when the area is infinite on
     /// the right.
     pub fn right_limit(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAreaLimit> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeBuilder_right_limit(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_EdgeBuilder_right_limit(self as *const Self),
+            ))
         }
     }
 
@@ -5398,78 +3623,50 @@ impl EdgeBuilder {
     /// with State <ToBuild>. If this method is not called
     /// after construction the default is <ToBuild> = IN.
     pub fn builds(&mut self, ToBuild: crate::top_abs::State) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_EdgeBuilder_builds(self as *mut Self, ToBuild.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_builds(self as *mut Self, ToBuild.into())
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:76 - `HLRBRep_EdgeBuilder::MoreEdges()`
     /// Returns True if there are more new edges to build.
     pub fn more_edges(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeBuilder_more_edges(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_more_edges(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:80 - `HLRBRep_EdgeBuilder::NextEdge()`
     /// Proceeds  to  the  next  edge to  build.  Skip all
     /// remaining vertices on the current edge.
     pub fn next_edge(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeBuilder_next_edge(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_next_edge(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:84 - `HLRBRep_EdgeBuilder::MoreVertices()`
     /// True if there are more vertices in the current new
     /// edge.
     pub fn more_vertices(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeBuilder_more_vertices(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_more_vertices(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:87 - `HLRBRep_EdgeBuilder::NextVertex()`
     /// Proceeds to the next vertex of the current edge.
     pub fn next_vertex(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeBuilder_next_vertex(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_next_vertex(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:90 - `HLRBRep_EdgeBuilder::Current()`
     /// Returns the current vertex of the current edge.
     pub fn current(&self) -> &crate::hlr_algo::Intersection {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeBuilder_current(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_EdgeBuilder_current(self as *const Self)))
         }
     }
 
@@ -5477,54 +3674,34 @@ impl EdgeBuilder {
     /// Returns True if the  current vertex comes from the
     /// boundary of the edge.
     pub fn is_boundary(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeBuilder_is_boundary(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_is_boundary(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:98 - `HLRBRep_EdgeBuilder::IsInterference()`
     /// Returns  True if    the  current  vertex  was   an
     /// interference.
     pub fn is_interference(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeBuilder_is_interference(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_is_interference(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:101 - `HLRBRep_EdgeBuilder::Orientation()`
     /// Returns the new orientation of the current vertex.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeBuilder_orientation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_orientation(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:103 - `HLRBRep_EdgeBuilder::Destroy()`
     pub fn destroy(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeBuilder_destroy(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeBuilder_destroy(self as *mut Self)
+        })
     }
 }
 
@@ -5544,12 +3721,8 @@ unsafe impl crate::CppDeletable for EdgeData {
 impl EdgeData {
     /// **Source:** `HLRBRep_EdgeData.hxx`:40 - `HLRBRep_EdgeData::HLRBRep_EdgeData()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_EdgeData_ctor()))
         }
     }
 
@@ -5570,463 +3743,263 @@ impl EdgeData {
         End: f64,
         TolEnd: f32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_EdgeData_set(
-                    self as *mut Self,
-                    Reg1,
-                    RegN,
-                    EG,
-                    V1,
-                    V2,
-                    Out1,
-                    Out2,
-                    Cut1,
-                    Cut2,
-                    Start,
-                    TolStart,
-                    End,
-                    TolEnd,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_set(
+                self as *mut Self,
+                Reg1,
+                RegN,
+                EG,
+                V1,
+                V2,
+                Out1,
+                Out2,
+                Cut1,
+                Cut2,
+                Start,
+                TolStart,
+                End,
+                TolEnd,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:61 - `HLRBRep_EdgeData::Selected()`
     pub fn selected(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_selected(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_selected(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:63 - `HLRBRep_EdgeData::Selected()`
     pub fn selected_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeData_selected_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_selected_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:65 - `HLRBRep_EdgeData::Rg1Line()`
     pub fn rg1_line(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_rg1_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_rg1_line(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:67 - `HLRBRep_EdgeData::Rg1Line()`
     pub fn rg1_line_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeData_rg1_line_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_rg1_line_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:69 - `HLRBRep_EdgeData::RgNLine()`
     pub fn rg_n_line(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_rg_n_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_rg_n_line(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:71 - `HLRBRep_EdgeData::RgNLine()`
     pub fn rg_n_line_bool(&mut self, B: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_EdgeData_rg_n_line_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_rg_n_line_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:73 - `HLRBRep_EdgeData::Vertical()`
     pub fn vertical(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_vertical(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_vertical(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:75 - `HLRBRep_EdgeData::Vertical()`
     pub fn vertical_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeData_vertical_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_vertical_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:77 - `HLRBRep_EdgeData::Simple()`
     pub fn simple(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_simple(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_simple(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:79 - `HLRBRep_EdgeData::Simple()`
     pub fn simple_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeData_simple_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_simple_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:81 - `HLRBRep_EdgeData::OutLVSta()`
     pub fn out_lv_sta(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_out_lv_sta(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_out_lv_sta(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:83 - `HLRBRep_EdgeData::OutLVSta()`
     pub fn out_lv_sta_bool(&mut self, B: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_EdgeData_out_lv_sta_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_out_lv_sta_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:85 - `HLRBRep_EdgeData::OutLVEnd()`
     pub fn out_lv_end(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_out_lv_end(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_out_lv_end(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:87 - `HLRBRep_EdgeData::OutLVEnd()`
     pub fn out_lv_end_bool(&mut self, B: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_EdgeData_out_lv_end_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_out_lv_end_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:89 - `HLRBRep_EdgeData::CutAtSta()`
     pub fn cut_at_sta(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_cut_at_sta(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_cut_at_sta(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:91 - `HLRBRep_EdgeData::CutAtSta()`
     pub fn cut_at_sta_bool(&mut self, B: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_EdgeData_cut_at_sta_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_cut_at_sta_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:93 - `HLRBRep_EdgeData::CutAtEnd()`
     pub fn cut_at_end(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_cut_at_end(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_cut_at_end(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:95 - `HLRBRep_EdgeData::CutAtEnd()`
     pub fn cut_at_end_bool(&mut self, B: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_EdgeData_cut_at_end_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_cut_at_end_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:97 - `HLRBRep_EdgeData::VerAtSta()`
     pub fn ver_at_sta(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_ver_at_sta(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_ver_at_sta(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:99 - `HLRBRep_EdgeData::VerAtSta()`
     pub fn ver_at_sta_bool(&mut self, B: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_EdgeData_ver_at_sta_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_ver_at_sta_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:101 - `HLRBRep_EdgeData::VerAtEnd()`
     pub fn ver_at_end(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_ver_at_end(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_ver_at_end(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:103 - `HLRBRep_EdgeData::VerAtEnd()`
     pub fn ver_at_end_bool(&mut self, B: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_EdgeData_ver_at_end_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_ver_at_end_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:105 - `HLRBRep_EdgeData::AutoIntersectionDone()`
     pub fn auto_intersection_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeData_auto_intersection_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_auto_intersection_done(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:107 - `HLRBRep_EdgeData::AutoIntersectionDone()`
     pub fn auto_intersection_done_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_EdgeData_auto_intersection_done_bool(self as *mut Self, B)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_auto_intersection_done_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:109 - `HLRBRep_EdgeData::Used()`
     pub fn used(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_used(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_used(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:111 - `HLRBRep_EdgeData::Used()`
     pub fn used_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeData_used_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_used_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:113 - `HLRBRep_EdgeData::HideCount()`
     pub fn hide_count(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_hide_count(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_hide_count(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:115 - `HLRBRep_EdgeData::HideCount()`
     pub fn hide_count_int(&mut self, I: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_EdgeData_hide_count_int(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_hide_count_int(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:117 - `HLRBRep_EdgeData::VSta()`
     pub fn v_sta(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_v_sta(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_v_sta(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:119 - `HLRBRep_EdgeData::VSta()`
     pub fn v_sta_int(&mut self, I: i32) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeData_v_sta_int(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_v_sta_int(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:121 - `HLRBRep_EdgeData::VEnd()`
     pub fn v_end(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_v_end(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_v_end(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:123 - `HLRBRep_EdgeData::VEnd()`
     pub fn v_end_int(&mut self, I: i32) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeData_v_end_int(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_v_end_int(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:125 - `HLRBRep_EdgeData::UpdateMinMax()`
     pub fn update_min_max(&mut self, theTotMinMax: &crate::hlr_algo::EdgesBlock_MinMaxIndices) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_EdgeData_update_min_max(self as *mut Self, theTotMinMax)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeData_update_min_max(self as *mut Self, theTotMinMax)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:130 - `HLRBRep_EdgeData::MinMax()`
     pub fn min_max(&mut self) -> &mut crate::hlr_algo::EdgesBlock_MinMaxIndices {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_min_max(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_EdgeData_min_max(self as *mut Self)))
         }
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:132 - `HLRBRep_EdgeData::Status()`
     pub fn status(&mut self) -> &mut crate::hlr_algo::EdgeStatus {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_status(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_EdgeData_status(self as *mut Self)))
         }
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:134 - `HLRBRep_EdgeData::ChangeGeometry()`
     pub fn change_geometry(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeData_change_geometry(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_EdgeData_change_geometry(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:136 - `HLRBRep_EdgeData::Geometry()`
     pub fn geometry(&self) -> &Curve {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_geometry(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_EdgeData_geometry(self as *const Self)))
         }
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:138 - `HLRBRep_EdgeData::Curve()`
     pub fn curve(&mut self) -> Option<&mut Curve> {
         {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_curve(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::HLRBRep_EdgeData_curve(self as *mut Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -6037,14 +4010,7 @@ impl EdgeData {
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:140 - `HLRBRep_EdgeData::Tolerance()`
     pub fn tolerance(&self) -> f32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeData_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_tolerance(self as *const Self) })
     }
 }
 
@@ -6069,12 +4035,8 @@ impl EdgeFaceTool {
     /// **Source:** `HLRBRep_EdgeFaceTool.hxx` - `HLRBRep_EdgeFaceTool::HLRBRep_EdgeFaceTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeFaceTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_EdgeFaceTool_ctor()))
         }
     }
 
@@ -6085,14 +4047,9 @@ impl EdgeFaceTool {
         V: f64,
         Tg: &crate::gp::Dir,
     ) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeFaceTool_curvature_value(F, U, V, Tg) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeFaceTool_curvature_value(F, U, V, Tg)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeFaceTool.hxx`:40 - `HLRBRep_EdgeFaceTool::UVPoint()`
@@ -6104,14 +4061,7 @@ impl EdgeFaceTool {
         U: &mut f64,
         V: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeFaceTool_uv_point(Par, E, F, U, V) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeFaceTool_uv_point(Par, E, F, U, V) })
     }
 }
 
@@ -6132,12 +4082,8 @@ impl EdgeIList {
     /// **Source:** `HLRBRep_EdgeIList.hxx` - `HLRBRep_EdgeIList::HLRBRep_EdgeIList()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_EdgeIList_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_EdgeIList_ctor()))
         }
     }
 
@@ -6148,12 +4094,9 @@ impl EdgeIList {
         I: &crate::hlr_algo::Interference,
         T: &EdgeInterferenceTool,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeIList_add_interference(IL, I, T) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeIList_add_interference(IL, I, T)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeIList.hxx`:39 - `HLRBRep_EdgeIList::ProcessComplex()`
@@ -6162,12 +4105,7 @@ impl EdgeIList {
         IL: &mut crate::ffi::HLRAlgo_InterferenceList,
         T: &EdgeInterferenceTool,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_EdgeIList_process_complex(IL, T) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_EdgeIList_process_complex(IL, T) })
     }
 }
 
@@ -6189,118 +4127,70 @@ unsafe impl crate::CppDeletable for EdgeInterferenceTool {
 impl EdgeInterferenceTool {
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:38 - `HLRBRep_EdgeInterferenceTool::HLRBRep_EdgeInterferenceTool()`
     pub fn new_handlehlrbrepdata(DS: &crate::ffi::HandleHLRBRepData) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_EdgeInterferenceTool_ctor_handlehlrbrepdata(DS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_EdgeInterferenceTool_ctor_handlehlrbrepdata(DS),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:40 - `HLRBRep_EdgeInterferenceTool::LoadEdge()`
     pub fn load_edge(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_EdgeInterferenceTool_load_edge(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_load_edge(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:42 - `HLRBRep_EdgeInterferenceTool::InitVertices()`
     pub fn init_vertices(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_EdgeInterferenceTool_init_vertices(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_init_vertices(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:44 - `HLRBRep_EdgeInterferenceTool::MoreVertices()`
     pub fn more_vertices(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_EdgeInterferenceTool_more_vertices(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_more_vertices(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:46 - `HLRBRep_EdgeInterferenceTool::NextVertex()`
     pub fn next_vertex(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_EdgeInterferenceTool_next_vertex(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_next_vertex(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:48 - `HLRBRep_EdgeInterferenceTool::CurrentVertex()`
     pub fn current_vertex(&self) -> &crate::hlr_algo::Intersection {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_EdgeInterferenceTool_current_vertex(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_EdgeInterferenceTool_current_vertex(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:50 - `HLRBRep_EdgeInterferenceTool::CurrentOrientation()`
     pub fn current_orientation(&self) -> crate::top_abs::Orientation {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_EdgeInterferenceTool_current_orientation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_current_orientation(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:52 - `HLRBRep_EdgeInterferenceTool::CurrentParameter()`
     pub fn current_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_EdgeInterferenceTool_current_parameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_current_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:54 - `HLRBRep_EdgeInterferenceTool::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_EdgeInterferenceTool_is_periodic(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:59 - `HLRBRep_EdgeInterferenceTool::EdgeGeometry()`
@@ -6314,37 +4204,25 @@ impl EdgeInterferenceTool {
         Nrm: &mut crate::gp::Dir,
         Curv: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_EdgeInterferenceTool_edge_geometry(
-                    self as *const Self,
-                    Param,
-                    Tgt,
-                    Nrm,
-                    Curv,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_edge_geometry(
+                self as *const Self,
+                Param,
+                Tgt,
+                Nrm,
+                Curv,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:64 - `HLRBRep_EdgeInterferenceTool::ParameterOfInterference()`
     pub fn parameter_of_interference(&self, I: &crate::hlr_algo::Interference) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_EdgeInterferenceTool_parameter_of_interference(
-                    self as *const Self,
-                    I,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_parameter_of_interference(
+                self as *const Self,
+                I,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:68 - `HLRBRep_EdgeInterferenceTool::SameInterferences()`
@@ -6355,39 +4233,21 @@ impl EdgeInterferenceTool {
         I1: &crate::hlr_algo::Interference,
         I2: &crate::hlr_algo::Interference,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_EdgeInterferenceTool_same_interferences(
-                    self as *const Self,
-                    I1,
-                    I2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_same_interferences(self as *const Self, I1, I2)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:73 - `HLRBRep_EdgeInterferenceTool::SameVertexAndInterference()`
     /// True if the  Interference and the  current  Vertex
     /// are on the same geometric locus.
     pub fn same_vertex_and_interference(&self, I: &crate::hlr_algo::Interference) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_EdgeInterferenceTool_same_vertex_and_interference(
-                    self as *const Self,
-                    I,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_same_vertex_and_interference(
+                self as *const Self,
+                I,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:79 - `HLRBRep_EdgeInterferenceTool::InterferenceBoundaryGeometry()`
@@ -6402,20 +4262,15 @@ impl EdgeInterferenceTool {
         Norm: &mut crate::gp::Dir,
         Curv: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_EdgeInterferenceTool_interference_boundary_geometry(
-                    self as *const Self,
-                    I,
-                    Tang,
-                    Norm,
-                    Curv,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_EdgeInterferenceTool_interference_boundary_geometry(
+                self as *const Self,
+                I,
+                Tang,
+                Norm,
+                Curv,
+            )
+        })
     }
 }
 
@@ -6439,14 +4294,8 @@ impl ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
         C2: &*mut std::ffi::c_void,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_ctor_address2_real(C1, C2, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_ctor_address2_real(C1, C2, Tol)))
         }
     }
 
@@ -6460,80 +4309,53 @@ impl ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
         ParamOnSeg1: &mut f64,
         ParamOnSeg2: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_thepolygon2doftheintpcurvepcurveofcinter2_int2_real2(self as *mut Self, Poly1, Poly2, NumSegOn1, NumSegOn2, ParamOnSeg1, ParamOnSeg2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_thepolygon2doftheintpcurvepcurveofcinter2_int2_real2(self as *mut Self, Poly1, Poly2, NumSegOn1, NumSegOn2, ParamOnSeg1, ParamOnSeg2)
+        })
     }
 
     /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:50 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
     pub fn perform_real6(&mut self, Uo: f64, Vo: f64, UInf: f64, VInf: f64, USup: f64, VSup: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_real6(
-                    self as *mut Self,
-                    Uo,
-                    Vo,
-                    UInf,
-                    VInf,
-                    USup,
-                    VSup,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_real6(
+                self as *mut Self,
+                Uo,
+                Vo,
+                UInf,
+                VInf,
+                USup,
+                VSup,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:57 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::NbRoots()`
     pub fn nb_roots(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_nb_roots(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_nb_roots(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:59 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Roots()`
     pub fn roots(&mut self, U: &mut f64, V: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_roots(
-                    self as *mut Self,
-                    U,
-                    V,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_roots(
+                self as *mut Self,
+                U,
+                V,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:61 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::AnErrorOccurred()`
     pub fn an_error_occurred(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_an_error_occurred(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_an_error_occurred(
+                self as *const Self,
+            )
+        })
     }
 }
 
@@ -6553,12 +4375,8 @@ unsafe impl crate::CppDeletable for FaceData {
 impl FaceData {
     /// **Source:** `HLRBRep_FaceData.hxx`:35 - `HLRBRep_FaceData::HLRBRep_FaceData()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_FaceData_ctor()))
         }
     }
 
@@ -6574,26 +4392,18 @@ impl FaceData {
         Cl: bool,
         NW: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_FaceData_set(self as *mut Self, FG, Or.into(), Cl, NW)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_set(self as *mut Self, FG, Or.into(), Cl, NW)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:48 - `HLRBRep_FaceData::SetWire()`
     /// Set <NE> the number  of  edges of the wire  number
     /// <WI>.
     pub fn set_wire(&mut self, WI: i32, NE: i32) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_set_wire(self as *mut Self, WI, NE) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_set_wire(self as *mut Self, WI, NE)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:51 - `HLRBRep_FaceData::SetWEdge()`
@@ -6609,393 +4419,221 @@ impl FaceData {
         Dble: bool,
         IsoL: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_FaceData_set_w_edge(
-                    self as *mut Self,
-                    WI,
-                    EWI,
-                    EI,
-                    Or.into(),
-                    OutL,
-                    Inte,
-                    Dble,
-                    IsoL,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_set_w_edge(
+                self as *mut Self,
+                WI,
+                EWI,
+                EI,
+                Or.into(),
+                OutL,
+                Inte,
+                Dble,
+                IsoL,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:60 - `HLRBRep_FaceData::Selected()`
     pub fn selected(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_selected(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_selected(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:62 - `HLRBRep_FaceData::Selected()`
     pub fn selected_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_selected_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_selected_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:64 - `HLRBRep_FaceData::Back()`
     pub fn back(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_back(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_back(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:66 - `HLRBRep_FaceData::Back()`
     pub fn back_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_back_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_back_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:68 - `HLRBRep_FaceData::Side()`
     pub fn side(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_side(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_side(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:70 - `HLRBRep_FaceData::Side()`
     pub fn side_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_side_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_side_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:72 - `HLRBRep_FaceData::Closed()`
     pub fn closed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_closed(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:74 - `HLRBRep_FaceData::Closed()`
     pub fn closed_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_closed_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_closed_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:76 - `HLRBRep_FaceData::Hiding()`
     pub fn hiding(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_hiding(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_hiding(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:78 - `HLRBRep_FaceData::Hiding()`
     pub fn hiding_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_hiding_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_hiding_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:80 - `HLRBRep_FaceData::Simple()`
     pub fn simple(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_simple(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_simple(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:82 - `HLRBRep_FaceData::Simple()`
     pub fn simple_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_simple_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_simple_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:84 - `HLRBRep_FaceData::Cut()`
     pub fn cut(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_cut(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_cut(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:86 - `HLRBRep_FaceData::Cut()`
     pub fn cut_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_cut_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_cut_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:88 - `HLRBRep_FaceData::WithOutL()`
     pub fn with_out_l(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_with_out_l(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_with_out_l(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:90 - `HLRBRep_FaceData::WithOutL()`
     pub fn with_out_l_bool(&mut self, B: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_FaceData_with_out_l_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_with_out_l_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:92 - `HLRBRep_FaceData::Plane()`
     pub fn plane(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_plane(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_plane(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:94 - `HLRBRep_FaceData::Plane()`
     pub fn plane_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_plane_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_plane_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:96 - `HLRBRep_FaceData::Cylinder()`
     pub fn cylinder(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_cylinder(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_cylinder(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:98 - `HLRBRep_FaceData::Cylinder()`
     pub fn cylinder_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_cylinder_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_cylinder_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:100 - `HLRBRep_FaceData::Cone()`
     pub fn cone(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_cone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_cone(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:102 - `HLRBRep_FaceData::Cone()`
     pub fn cone_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_cone_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_cone_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:104 - `HLRBRep_FaceData::Sphere()`
     pub fn sphere(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_sphere(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_sphere(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:106 - `HLRBRep_FaceData::Sphere()`
     pub fn sphere_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_sphere_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_sphere_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:108 - `HLRBRep_FaceData::Torus()`
     pub fn torus(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_torus(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_torus(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:110 - `HLRBRep_FaceData::Torus()`
     pub fn torus_bool(&mut self, B: bool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_torus_bool(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_torus_bool(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:112 - `HLRBRep_FaceData::Size()`
     pub fn size(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_size(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_size(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:114 - `HLRBRep_FaceData::Size()`
     pub fn size_real(&mut self, S: f64) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceData_size_real(self as *mut Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_size_real(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:116 - `HLRBRep_FaceData::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_orientation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_orientation(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:118 - `HLRBRep_FaceData::Orientation()`
     pub fn orientation_orientation(&mut self, O: crate::top_abs::Orientation) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_FaceData_orientation_orientation(self as *mut Self, O.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceData_orientation_orientation(self as *mut Self, O.into())
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:120 - `HLRBRep_FaceData::Wires()`
     pub fn wires(&mut self) -> &mut crate::ffi::HandleHLRAlgoWiresBlock {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_wires(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_FaceData_wires(self as *mut Self)))
         }
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:122 - `HLRBRep_FaceData::Geometry()`
     pub fn geometry(&mut self) -> &mut Surface {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_geometry(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_FaceData_geometry(self as *mut Self)))
         }
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:124 - `HLRBRep_FaceData::Tolerance()`
     pub fn tolerance(&self) -> f32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceData_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_tolerance(self as *const Self) })
     }
 }
 
@@ -7015,178 +4653,106 @@ unsafe impl crate::CppDeletable for FaceIterator {
 impl FaceIterator {
     /// **Source:** `HLRBRep_FaceIterator.hxx`:35 - `HLRBRep_FaceIterator::HLRBRep_FaceIterator()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceIterator_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_FaceIterator_ctor()))
         }
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:38 - `HLRBRep_FaceIterator::InitEdge()`
     /// Begin an exploration of the edges of the face <fd>
     pub fn init_edge(&mut self, fd: &mut FaceData) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_FaceIterator_init_edge(self as *mut Self, fd) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceIterator_init_edge(self as *mut Self, fd)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:40 - `HLRBRep_FaceIterator::MoreEdge()`
     pub fn more_edge(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_FaceIterator_more_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_FaceIterator_more_edge(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:42 - `HLRBRep_FaceIterator::NextEdge()`
     pub fn next_edge(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceIterator_next_edge(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceIterator_next_edge(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:46 - `HLRBRep_FaceIterator::BeginningOfWire()`
     /// Returns True if the current edge is the first of a
     /// wire.
     pub fn beginning_of_wire(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_FaceIterator_beginning_of_wire(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_FaceIterator_beginning_of_wire(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:50 - `HLRBRep_FaceIterator::EndOfWire()`
     /// Returns True if the current edge is the  last of a
     /// wire.
     pub fn end_of_wire(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_FaceIterator_end_of_wire(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_FaceIterator_end_of_wire(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:53 - `HLRBRep_FaceIterator::SkipWire()`
     /// Skip the current wire in the exploration.
     pub fn skip_wire(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_FaceIterator_skip_wire(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_FaceIterator_skip_wire(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:56 - `HLRBRep_FaceIterator::Wire()`
     /// Returns the edges of the current wire.
     pub fn wire(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoEdgesBlock> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceIterator_wire(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_FaceIterator_wire(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:58 - `HLRBRep_FaceIterator::Edge()`
     pub fn edge(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceIterator_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceIterator_edge(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:60 - `HLRBRep_FaceIterator::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_FaceIterator_orientation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_FaceIterator_orientation(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:62 - `HLRBRep_FaceIterator::OutLine()`
     pub fn out_line(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_FaceIterator_out_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_FaceIterator_out_line(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:64 - `HLRBRep_FaceIterator::Internal()`
     pub fn internal(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_FaceIterator_internal(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_FaceIterator_internal(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:66 - `HLRBRep_FaceIterator::Double()`
     pub fn double(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_FaceIterator_double(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceIterator_double(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:68 - `HLRBRep_FaceIterator::IsoLine()`
     pub fn iso_line(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_FaceIterator_iso_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_FaceIterator_iso_line(self as *const Self)
+        })
     }
 }
 
@@ -7237,24 +4803,19 @@ impl HLRToShape {
     /// results of the HLRBRep_Algo algorithm, A.
     /// Use the extraction filters to obtain the results you want for A.
     pub fn new_handlehlrbrepalgo(A: &crate::ffi::HandleHLRBRepAlgo) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_HLRToShape_ctor_handlehlrbrepalgo(A) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_ctor_handlehlrbrepalgo(A),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_HLRToShape.hxx`:70 - `HLRBRep_HLRToShape::VCompound()`
     pub fn v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_HLRToShape_v_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_v_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -7263,27 +4824,19 @@ impl HLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_HLRToShape_v_compound_shape(self as *mut Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_v_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_HLRToShape.hxx`:74 - `HLRBRep_HLRToShape::Rg1LineVCompound()`
     pub fn rg1_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_HLRToShape_rg1_line_v_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_rg1_line_v_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -7292,28 +4845,19 @@ impl HLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_HLRToShape_rg1_line_v_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_rg1_line_v_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_HLRToShape.hxx`:78 - `HLRBRep_HLRToShape::RgNLineVCompound()`
     pub fn rg_n_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_HLRToShape_rg_n_line_v_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_rg_n_line_v_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -7322,41 +4866,28 @@ impl HLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_HLRToShape_rg_n_line_v_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_rg_n_line_v_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_HLRToShape.hxx`:82 - `HLRBRep_HLRToShape::OutLineVCompound()`
     pub fn out_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_HLRToShape_out_line_v_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_out_line_v_compound(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_HLRToShape.hxx`:84 - `HLRBRep_HLRToShape::OutLineVCompound3d()`
     pub fn out_line_v_compound3d(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_HLRToShape_out_line_v_compound3d(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_out_line_v_compound3d(self as *mut Self),
+            ))
         }
     }
 
@@ -7365,28 +4896,19 @@ impl HLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_HLRToShape_out_line_v_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_out_line_v_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_HLRToShape.hxx`:88 - `HLRBRep_HLRToShape::IsoLineVCompound()`
     pub fn iso_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_HLRToShape_iso_line_v_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_iso_line_v_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -7395,27 +4917,19 @@ impl HLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_HLRToShape_iso_line_v_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_iso_line_v_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_HLRToShape.hxx`:92 - `HLRBRep_HLRToShape::HCompound()`
     pub fn h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_HLRToShape_h_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_h_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -7424,27 +4938,19 @@ impl HLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_HLRToShape_h_compound_shape(self as *mut Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_h_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_HLRToShape.hxx`:96 - `HLRBRep_HLRToShape::Rg1LineHCompound()`
     pub fn rg1_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_HLRToShape_rg1_line_h_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_rg1_line_h_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -7453,28 +4959,19 @@ impl HLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_HLRToShape_rg1_line_h_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_rg1_line_h_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_HLRToShape.hxx`:100 - `HLRBRep_HLRToShape::RgNLineHCompound()`
     pub fn rg_n_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_HLRToShape_rg_n_line_h_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_rg_n_line_h_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -7483,28 +4980,19 @@ impl HLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_HLRToShape_rg_n_line_h_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_rg_n_line_h_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_HLRToShape.hxx`:104 - `HLRBRep_HLRToShape::OutLineHCompound()`
     pub fn out_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_HLRToShape_out_line_h_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_out_line_h_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -7513,28 +5001,19 @@ impl HLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_HLRToShape_out_line_h_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_out_line_h_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_HLRToShape.hxx`:108 - `HLRBRep_HLRToShape::IsoLineHCompound()`
     pub fn iso_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_HLRToShape_iso_line_h_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_iso_line_h_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -7543,15 +5022,10 @@ impl HLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_HLRToShape_iso_line_h_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_HLRToShape_iso_line_h_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
@@ -7566,20 +5040,15 @@ impl HLRToShape {
         visible: bool,
         In3d: bool,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_HLRToShape_compound_of_edges_typeofresultingedge_bool2(
                     self as *mut Self,
                     type_.into(),
                     visible,
                     In3d,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -7596,21 +5065,16 @@ impl HLRToShape {
         visible: bool,
         In3d: bool,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_HLRToShape_compound_of_edges_shape_typeofresultingedge_bool2(
                     self as *mut Self,
                     S,
                     type_.into(),
                     visible,
                     In3d,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 }
@@ -7634,36 +5098,28 @@ impl Hider {
     /// hiding faces described by <DS>.  Stores the hidden
     /// parts in <DS>.
     pub fn new_handlehlrbrepdata(DS: &crate::ffi::HandleHLRBRepData) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Hider_ctor_handlehlrbrepdata(DS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_Hider_ctor_handlehlrbrepdata(DS),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Hider.hxx`:39 - `HLRBRep_Hider::OwnHiding()`
     /// own hiding the side face number <FI>.
     pub fn own_hiding(&mut self, FI: i32) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Hider_own_hiding(self as *mut Self, FI) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Hider_own_hiding(self as *mut Self, FI)
+        })
     }
 
     /// **Source:** `HLRBRep_Hider.hxx`:43 - `HLRBRep_Hider::Hide()`
     /// Removes from the edges,   the parts hidden by  the
     /// hiding face number <FI>.
     pub fn hide(&mut self, FI: i32, MST: &mut crate::ffi::BRepTopAdaptor_MapOfShapeTool) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Hider_hide(self as *mut Self, FI, MST) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Hider_hide(self as *mut Self, FI, MST)
+        })
     }
 }
 
@@ -7684,12 +5140,10 @@ impl IntConicCurveOfCInter {
     /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:45 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor(),
+            ))
         }
     }
 
@@ -7703,16 +5157,12 @@ impl IntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(
                     L, D1, PCurve, D2, TolConf, Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -7726,16 +5176,12 @@ impl IntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(
                     C, D1, PCurve, D2, TolConf, Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -7749,16 +5195,12 @@ impl IntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(
                     E, D1, PCurve, D2, TolConf, Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -7772,16 +5214,12 @@ impl IntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(
                     Prb, D1, PCurve, D2, TolConf, Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -7796,16 +5234,12 @@ impl IntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(
                     H, D1, PCurve, D2, TolConf, Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -7820,22 +5254,17 @@ impl IntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(
-                    self as *mut Self,
-                    L,
-                    D1,
-                    PCurve,
-                    D2,
-                    TolConf,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(
+                self as *mut Self,
+                L,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:97 - `HLRBRep_IntConicCurveOfCInter::Perform()`
@@ -7849,22 +5278,17 @@ impl IntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(
-                    self as *mut Self,
-                    C,
-                    D1,
-                    PCurve,
-                    D2,
-                    TolConf,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(
+                self as *mut Self,
+                C,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:105 - `HLRBRep_IntConicCurveOfCInter::Perform()`
@@ -7878,14 +5302,17 @@ impl IntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(self as *mut Self, E, D1, PCurve, D2, TolConf, Tol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(
+                self as *mut Self,
+                E,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:113 - `HLRBRep_IntConicCurveOfCInter::Perform()`
@@ -7899,14 +5326,17 @@ impl IntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(self as *mut Self, Prb, D1, PCurve, D2, TolConf, Tol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(
+                self as *mut Self,
+                Prb,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:122 - `HLRBRep_IntConicCurveOfCInter::Perform()`
@@ -7921,145 +5351,97 @@ impl IntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(
-                    self as *mut Self,
-                    H,
-                    D1,
-                    PCurve,
-                    D2,
-                    TolConf,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(
+                self as *mut Self,
+                H,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_as_IntRes2d_Intersection(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::HLRBRep_IntConicCurveOfCInter_as_IntRes2d_Intersection(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::HLRBRep_IntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_IsEmpty(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_IsEmpty(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_NbPoints(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_NbPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_Point(self as *const Self, N)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_Point(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_NbSegments(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_NbSegments(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_Segment(self as *const Self, N)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_Segment(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_SetReversedParameters(
-                    self as *mut Self,
-                    Reverseflag,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_SetReversedParameters(
+                self as *mut Self,
+                Reverseflag,
+            )
+        })
     }
 }
 
@@ -8080,12 +5462,8 @@ impl InterCSurf {
     /// **Source:** `HLRBRep_InterCSurf.hxx`:52 - `HLRBRep_InterCSurf::HLRBRep_InterCSurf()`
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_InterCSurf_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_InterCSurf_ctor()))
         }
     }
 
@@ -8097,18 +5475,9 @@ impl InterCSurf {
         Curve: &crate::gp::Lin,
         Surface: &*mut std::ffi::c_void,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_InterCSurf_perform_lin_address(
-                    self as *mut Self,
-                    Curve,
-                    Surface,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InterCSurf_perform_lin_address(self as *mut Self, Curve, Surface)
+        })
     }
 
     /// **Source:** `HLRBRep_InterCSurf.hxx`:61 - `HLRBRep_InterCSurf::Perform()`
@@ -8121,19 +5490,14 @@ impl InterCSurf {
         Polygon: &ThePolygonOfInterCSurf,
         Surface: &*mut std::ffi::c_void,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address(
-                    self as *mut Self,
-                    Curve,
-                    Polygon,
-                    Surface,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address(
+                self as *mut Self,
+                Curve,
+                Polygon,
+                Surface,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_InterCSurf.hxx`:69 - `HLRBRep_InterCSurf::Perform()`
@@ -8148,14 +5512,9 @@ impl InterCSurf {
         Surface: &*mut std::ffi::c_void,
         Polyhedron: &ThePolyhedronOfInterCSurf,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron)
+        })
     }
 
     /// **Source:** `HLRBRep_InterCSurf.hxx`:78 - `HLRBRep_InterCSurf::Perform()`
@@ -8171,14 +5530,9 @@ impl InterCSurf {
         Polyhedron: &ThePolyhedronOfInterCSurf,
         BndBSB: &mut crate::bnd::BoundSortBox,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron, BndBSB)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron, BndBSB)
+        })
     }
 
     /// **Source:** `HLRBRep_InterCSurf.hxx`:87 - `HLRBRep_InterCSurf::Perform()`
@@ -8191,134 +5545,91 @@ impl InterCSurf {
         Surface: &*mut std::ffi::c_void,
         Polyhedron: &ThePolyhedronOfInterCSurf,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_InterCSurf_perform_lin_address_thepolyhedronofintercsurf(
-                    self as *mut Self,
-                    Curve,
-                    Surface,
-                    Polyhedron,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InterCSurf_perform_lin_address_thepolyhedronofintercsurf(
+                self as *mut Self,
+                Curve,
+                Surface,
+                Polyhedron,
+            )
+        })
     }
 
     /// Upcast to IntCurveSurface_Intersection
     pub fn as_int_curve_surface_intersection(&self) -> &crate::int_curve_surface::Intersection {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_InterCSurf_as_IntCurveSurface_Intersection(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_InterCSurf_as_IntCurveSurface_Intersection(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntCurveSurface_Intersection (mutable)
     pub fn as_int_curve_surface_intersection_mut(
         &mut self,
     ) -> &mut crate::int_curve_surface::Intersection {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_InterCSurf_as_IntCurveSurface_Intersection_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::HLRBRep_InterCSurf_as_IntCurveSurface_Intersection_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:36 - `IntCurveSurface_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InterCSurf_inherited_IsDone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_InterCSurf_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:41 - `IntCurveSurface_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InterCSurf_inherited_NbPoints(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_InterCSurf_inherited_NbPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:47 - `IntCurveSurface_Intersection::Point()`
     pub fn point(&self, Index: i32) -> &crate::int_curve_surface::IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_InterCSurf_inherited_Point(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_InterCSurf_inherited_Point(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:53 - `IntCurveSurface_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InterCSurf_inherited_NbSegments(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_InterCSurf_inherited_NbSegments(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:59 - `IntCurveSurface_Intersection::Segment()`
     pub fn segment(&self, Index: i32) -> &crate::int_curve_surface::IntersectionSegment {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_InterCSurf_inherited_Segment(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_InterCSurf_inherited_Segment(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:65 - `IntCurveSurface_Intersection::IsParallel()`
     pub fn is_parallel(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InterCSurf_inherited_IsParallel(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_InterCSurf_inherited_IsParallel(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:68 - `IntCurveSurface_Intersection::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_InterCSurf_inherited_Dump(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InterCSurf_inherited_Dump(self as *const Self)
+        })
     }
 }
 
@@ -8338,12 +5649,8 @@ unsafe impl crate::CppDeletable for InternalAlgo {
 impl InternalAlgo {
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:39 - `HLRBRep_InternalAlgo::HLRBRep_InternalAlgo()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_InternalAlgo_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_ctor()))
         }
     }
 
@@ -8351,51 +5658,37 @@ impl InternalAlgo {
     pub fn new_handlehlrbrepinternalalgo(
         A: &crate::ffi::HandleHLRBRepInternalAlgo,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_ctor_handlehlrbrepinternalalgo(A) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_InternalAlgo_ctor_handlehlrbrepinternalalgo(A),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:44 - `HLRBRep_InternalAlgo::Projector()`
     /// set the projector.
     pub fn projector_projector(&mut self, P: &crate::hlr_algo::Projector) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_InternalAlgo_projector_projector(self as *mut Self, P)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_projector_projector(self as *mut Self, P)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:47 - `HLRBRep_InternalAlgo::Projector()`
     /// set the projector.
     pub fn projector(&mut self) -> &mut crate::hlr_algo::Projector {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_InternalAlgo_projector(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_projector(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:50 - `HLRBRep_InternalAlgo::Update()`
     /// update the DataStructure.
     pub fn update(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_InternalAlgo_update(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_update(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:53 - `HLRBRep_InternalAlgo::Load()`
@@ -8406,14 +5699,9 @@ impl InternalAlgo {
         SData: &crate::ffi::HandleStandardTransient,
         nbIso: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_handlestandardtransient_int(self as *mut Self, S, SData, nbIso)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_handlestandardtransient_int(self as *mut Self, S, SData, nbIso)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:58 - `HLRBRep_InternalAlgo::Load()`
@@ -8423,94 +5711,63 @@ impl InternalAlgo {
         S: &crate::ffi::HandleHLRTopoBRepOutLiner,
         nbIso: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_int(
-                    self as *mut Self,
-                    S,
-                    nbIso,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_int(
+                self as *mut Self,
+                S,
+                nbIso,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:63 - `HLRBRep_InternalAlgo::Index()`
     /// return the index of the Shape <S> and  return 0 if
     /// the Shape <S> is not found.
     pub fn index(&self, S: &crate::ffi::HandleHLRTopoBRepOutLiner) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_index(self as *const Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_index(self as *const Self, S)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:66 - `HLRBRep_InternalAlgo::Remove()`
     /// remove the Shape of Index <I>.
     pub fn remove(&mut self, I: i32) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_InternalAlgo_remove(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_remove(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:69 - `HLRBRep_InternalAlgo::ShapeData()`
     /// Change the Shape Data of the Shape of index <I>.
     pub fn shape_data(&mut self, I: i32, SData: &crate::ffi::HandleStandardTransient) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_shape_data(self as *mut Self, I, SData) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_shape_data(self as *mut Self, I, SData)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:71 - `HLRBRep_InternalAlgo::SeqOfShapeBounds()`
     pub fn seq_of_shape_bounds(&mut self) -> &mut crate::ffi::HLRBRep_SeqOfShapeBounds {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_seq_of_shape_bounds(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_seq_of_shape_bounds(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:73 - `HLRBRep_InternalAlgo::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_nb_shapes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_nb_shapes(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:75 - `HLRBRep_InternalAlgo::ShapeBounds()`
     pub fn shape_bounds(&mut self, I: i32) -> &mut ShapeBounds {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_shape_bounds(self as *mut Self, I) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_shape_bounds(
+                self as *mut Self,
+                I,
+            )))
         }
     }
 
@@ -8518,296 +5775,203 @@ impl InternalAlgo {
     /// init the status of the selected edges depending of
     /// the back faces of a closed shell.
     pub fn init_edge_status(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_init_edge_status(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_init_edge_status(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:82 - `HLRBRep_InternalAlgo::Select()`
     /// select all the DataStructure.
     pub fn select(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_InternalAlgo_select(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_select(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:85 - `HLRBRep_InternalAlgo::Select()`
     /// select  only   the Shape of index <I>.
     pub fn select_int(&mut self, I: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_select_int(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_select_int(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:88 - `HLRBRep_InternalAlgo::SelectEdge()`
     /// select only the edges of the Shape <S>.
     pub fn select_edge(&mut self, I: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_select_edge(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_select_edge(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:91 - `HLRBRep_InternalAlgo::SelectFace()`
     /// select only the faces of the Shape <S>.
     pub fn select_face(&mut self, I: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_select_face(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_select_face(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:94 - `HLRBRep_InternalAlgo::ShowAll()`
     /// set to visible all the edges.
     pub fn show_all(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_InternalAlgo_show_all(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_show_all(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:97 - `HLRBRep_InternalAlgo::ShowAll()`
     /// set to visible all the edges of the Shape <S>.
     pub fn show_all_int(&mut self, I: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_show_all_int(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_show_all_int(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:100 - `HLRBRep_InternalAlgo::HideAll()`
     /// set to hide all the edges.
     pub fn hide_all(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_InternalAlgo_hide_all(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_hide_all(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:103 - `HLRBRep_InternalAlgo::HideAll()`
     /// set to  hide all the  edges of the  Shape <S>.
     pub fn hide_all_int(&mut self, I: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_hide_all_int(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_hide_all_int(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:107 - `HLRBRep_InternalAlgo::PartialHide()`
     /// own hiding  of all the shapes of the DataStructure
     /// without hiding by each other.
     pub fn partial_hide(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_InternalAlgo_partial_hide(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_partial_hide(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:110 - `HLRBRep_InternalAlgo::Hide()`
     /// hide all the DataStructure.
     pub fn hide(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_InternalAlgo_hide(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_hide(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:113 - `HLRBRep_InternalAlgo::Hide()`
     /// hide the Shape <S> by itself.
     pub fn hide_int(&mut self, I: i32) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_InternalAlgo_hide_int(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_hide_int(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:116 - `HLRBRep_InternalAlgo::Hide()`
     /// hide the Shape <S1> by the shape <S2>.
     pub fn hide_int2(&mut self, I: i32, J: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_hide_int2(self as *mut Self, I, J) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_hide_int2(self as *mut Self, I, J)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:118 - `HLRBRep_InternalAlgo::Debug()`
     pub fn debug_bool(&mut self, deb: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_debug_bool(self as *mut Self, deb) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_debug_bool(self as *mut Self, deb)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:120 - `HLRBRep_InternalAlgo::Debug()`
     pub fn debug(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_InternalAlgo_debug(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_InternalAlgo_debug(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:122 - `HLRBRep_InternalAlgo::DataStructure()`
     pub fn data_structure(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepData> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_data_structure(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_InternalAlgo_data_structure(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:124 - `HLRBRep_InternalAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:124 - `HLRBRep_InternalAlgo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_InternalAlgo_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::HLRBRep_InternalAlgo_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:124 - `HLRBRep_InternalAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_InternalAlgo_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_InternalAlgo_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_InternalAlgo_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_InternalAlgo_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepInternalAlgo> {
-        let __result = unsafe { crate::ffi::HLRBRep_InternalAlgo_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_InternalAlgo_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_InternalAlgo_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_InternalAlgo_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::HLRBRep_InternalAlgo_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -8818,53 +5982,30 @@ impl InternalAlgo {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_InternalAlgo_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_InternalAlgo_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_InternalAlgo_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_InternalAlgo_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -8879,47 +6020,42 @@ unsafe impl crate::CppDeletable for HandleHLRBRepInternalAlgo {
 impl HandleHLRBRepInternalAlgo {
     /// Dereference this Handle to access the underlying HLRBRep_InternalAlgo
     pub fn get(&self) -> &crate::ffi::HLRBRep_InternalAlgo {
-        let __result = unsafe { crate::ffi::HandleHLRBRepInternalAlgo_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleHLRBRepInternalAlgo_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRBRep_InternalAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_InternalAlgo {
-        let __result = unsafe { crate::ffi::HandleHLRBRepInternalAlgo_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleHLRBRepInternalAlgo_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRBRep_InternalAlgo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleHLRBRepInternalAlgo_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHLRBRepInternalAlgo_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<HLRBRep_InternalAlgo> to Handle<HLRBRep_Algo>
     ///
     /// Returns `None` if the handle does not point to a `HLRBRep_Algo` (or subclass).
     pub fn downcast_to_algo(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleHLRBRepAlgo>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleHLRBRepInternalAlgo_downcast_to_HandleHLRBRepAlgo(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -8942,12 +6078,8 @@ unsafe impl crate::CppDeletable for Intersector {
 impl Intersector {
     /// **Source:** `HLRBRep_Intersector.hxx`:38 - `HLRBRep_Intersector::HLRBRep_Intersector()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Intersector_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Intersector_ctor()))
         }
     }
 
@@ -8955,19 +6087,9 @@ impl Intersector {
     /// Performs the auto intersection of an edge.
     /// The edge domain is cut at start with da1*(b-a) and at end with db1*(b-a).
     pub unsafe fn perform_address_real2(&mut self, A1: *mut std::ffi::c_void, da1: f64, db1: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Intersector_perform_address_real2(
-                    self as *mut Self,
-                    A1,
-                    da1,
-                    db1,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Intersector_perform_address_real2(self as *mut Self, A1, da1, db1)
+        })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:48 - `HLRBRep_Intersector::Perform()`
@@ -8985,25 +6107,20 @@ impl Intersector {
         db2: f64,
         NoBound: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Intersector_perform_int_address_real2_int_address_real2_bool(
-                    self as *mut Self,
-                    nA,
-                    A1,
-                    da1,
-                    db1,
-                    nB,
-                    A2,
-                    da2,
-                    db2,
-                    NoBound,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Intersector_perform_int_address_real2_int_address_real2_bool(
+                self as *mut Self,
+                nA,
+                A1,
+                da1,
+                db1,
+                nB,
+                A2,
+                da2,
+                db2,
+                NoBound,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:60 - `HLRBRep_Intersector::SimulateOnePoint()`
@@ -9016,135 +6133,83 @@ impl Intersector {
         A2: *mut std::ffi::c_void,
         V: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Intersector_simulate_one_point(self as *mut Self, A1, U, A2, V)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Intersector_simulate_one_point(self as *mut Self, A1, U, A2, V)
+        })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:65 - `HLRBRep_Intersector::Load()`
     pub unsafe fn load(&mut self, A: &mut *mut std::ffi::c_void) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Intersector_load(self as *mut Self, A) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Intersector_load(self as *mut Self, A)
+        })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:67 - `HLRBRep_Intersector::Perform()`
     pub fn perform_lin_real(&mut self, L: &crate::gp::Lin, P: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Intersector_perform_lin_real(self as *mut Self, L, P)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Intersector_perform_lin_real(self as *mut Self, L, P)
+        })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:69 - `HLRBRep_Intersector::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Intersector_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Intersector_is_done(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:71 - `HLRBRep_Intersector::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Intersector_nb_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Intersector_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:73 - `HLRBRep_Intersector::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Intersector_point(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_Intersector_point(self as *const Self, N)))
         }
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:75 - `HLRBRep_Intersector::CSPoint()`
     pub fn cs_point(&self, N: i32) -> &crate::int_curve_surface::IntersectionPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Intersector_cs_point(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_Intersector_cs_point(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:77 - `HLRBRep_Intersector::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Intersector_nb_segments(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Intersector_nb_segments(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:79 - `HLRBRep_Intersector::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Intersector_segment(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_Intersector_segment(self as *const Self, N)))
         }
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:81 - `HLRBRep_Intersector::CSSegment()`
     pub fn cs_segment(&self, N: i32) -> &crate::int_curve_surface::IntersectionSegment {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Intersector_cs_segment(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_Intersector_cs_segment(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:84 - `HLRBRep_Intersector::Destroy()`
     pub fn destroy(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Intersector_destroy(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Intersector_destroy(self as *mut Self)
+        })
     }
 }
 
@@ -9167,49 +6232,27 @@ impl LineTool {
     /// **Source:** `HLRBRep_LineTool.hxx` - `HLRBRep_LineTool::HLRBRep_LineTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_ctor()))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:53 - `HLRBRep_LineTool::FirstParameter()`
     pub fn first_parameter(C: &crate::gp::Lin) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_first_parameter(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_first_parameter(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:55 - `HLRBRep_LineTool::LastParameter()`
     pub fn last_parameter(C: &crate::gp::Lin) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_last_parameter(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_last_parameter(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:57 - `HLRBRep_LineTool::Continuity()`
     pub fn continuity(C: &crate::gp::Lin) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_continuity(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_LineTool_continuity(C)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:62 - `HLRBRep_LineTool::NbIntervals()`
@@ -9217,14 +6260,7 @@ impl LineTool {
     /// continuity <S>.     And   returns  the  number  of
     /// intervals.
     pub fn nb_intervals(C: &crate::gp::Lin, S: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_nb_intervals(C, S.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_nb_intervals(C, S.into()) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:65 - `HLRBRep_LineTool::Intervals()`
@@ -9234,112 +6270,58 @@ impl LineTool {
         T: &mut crate::ffi::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_LineTool_intervals(C, T, Sh.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_intervals(C, T, Sh.into()) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:69 - `HLRBRep_LineTool::IntervalFirst()`
     /// Returns  the  first  parameter    of  the  current
     /// interval.
     pub fn interval_first(C: &crate::gp::Lin) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_interval_first(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_interval_first(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:73 - `HLRBRep_LineTool::IntervalLast()`
     /// Returns  the  last  parameter    of  the  current
     /// interval.
     pub fn interval_last(C: &crate::gp::Lin) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_interval_last(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_interval_last(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:75 - `HLRBRep_LineTool::IntervalContinuity()`
     pub fn interval_continuity(C: &crate::gp::Lin) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_interval_continuity(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_LineTool_interval_continuity(C)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:77 - `HLRBRep_LineTool::IsClosed()`
     pub fn is_closed(C: &crate::gp::Lin) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_is_closed(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_is_closed(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:79 - `HLRBRep_LineTool::IsPeriodic()`
     pub fn is_periodic(C: &crate::gp::Lin) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_is_periodic(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_is_periodic(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:81 - `HLRBRep_LineTool::Period()`
     pub fn period(C: &crate::gp::Lin) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_period(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_period(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:84 - `HLRBRep_LineTool::Value()`
     /// Computes the point of parameter U on the line.
     pub fn value(C: &crate::gp::Lin, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_value(C, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_value(C, U)))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:87 - `HLRBRep_LineTool::D0()`
     /// Computes the point of parameter U on the line.
     pub fn d0(C: &crate::gp::Lin, U: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_LineTool_d0(C, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_d0(C, U, P) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:93 - `HLRBRep_LineTool::D1()`
@@ -9348,12 +6330,7 @@ impl LineTool {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1(C: &crate::gp::Lin, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_LineTool_d1(C, U, P, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_d1(C, U, P, V) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:99 - `HLRBRep_LineTool::D2()`
@@ -9368,12 +6345,7 @@ impl LineTool {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_LineTool_d2(C, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_d2(C, U, P, V1, V2) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:105 - `HLRBRep_LineTool::D3()`
@@ -9389,12 +6361,7 @@ impl LineTool {
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_LineTool_d3(C, U, P, V1, V2, V3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_d3(C, U, P, V1, V2, V3) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:117 - `HLRBRep_LineTool::DN()`
@@ -9404,13 +6371,8 @@ impl LineTool {
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(C: &crate::gp::Lin, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_dn(C, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_dn(C, U, N)))
         }
     }
 
@@ -9418,14 +6380,7 @@ impl LineTool {
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(C: &crate::gp::Lin, R3d: f64) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_resolution(C, R3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_resolution(C, R3d) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:126 - `HLRBRep_LineTool::GetType()`
@@ -9433,144 +6388,81 @@ impl LineTool {
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(C: &crate::gp::Lin) -> crate::geom_abs::CurveType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_get_type(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::CurveType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_LineTool_get_type(C)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:128 - `HLRBRep_LineTool::Line()`
     pub fn line(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::gp::Lin> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_line(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_line(C)))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:130 - `HLRBRep_LineTool::Circle()`
     pub fn circle(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::gp::Circ> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_circle(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_circle(C)))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:132 - `HLRBRep_LineTool::Ellipse()`
     pub fn ellipse(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::gp::Elips> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_ellipse(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_ellipse(C)))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:134 - `HLRBRep_LineTool::Hyperbola()`
     pub fn hyperbola(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::gp::Hypr> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_hyperbola(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_hyperbola(
+                C,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:136 - `HLRBRep_LineTool::Parabola()`
     pub fn parabola(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::gp::Parab> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_parabola(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_parabola(C)))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:138 - `HLRBRep_LineTool::Bezier()`
     pub fn bezier(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_bezier(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_bezier(C)))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:140 - `HLRBRep_LineTool::BSpline()`
     pub fn b_spline(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_b_spline(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_b_spline(C)))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:142 - `HLRBRep_LineTool::Degree()`
     pub fn degree(C: &crate::gp::Lin) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_degree(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_degree(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:144 - `HLRBRep_LineTool::NbPoles()`
     pub fn nb_poles(C: &crate::gp::Lin) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_nb_poles(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_nb_poles(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:146 - `HLRBRep_LineTool::Poles()`
     pub fn poles(C: &crate::gp::Lin, TP: &mut crate::ffi::TColgp_Array1OfPnt) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_LineTool_poles(C, TP) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_poles(C, TP) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:148 - `HLRBRep_LineTool::IsRational()`
     pub fn is_rational(C: &crate::gp::Lin) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_is_rational(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_is_rational(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:150 - `HLRBRep_LineTool::PolesAndWeights()`
@@ -9579,24 +6471,14 @@ impl LineTool {
         TP: &mut crate::ffi::TColgp_Array1OfPnt,
         TW: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_LineTool_poles_and_weights(C, TP, TW) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_LineTool_poles_and_weights(C, TP, TW)
+        })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:152 - `HLRBRep_LineTool::NbKnots()`
     pub fn nb_knots(C: &crate::gp::Lin) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_nb_knots(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_nb_knots(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:154 - `HLRBRep_LineTool::KnotsAndMultiplicities()`
@@ -9605,24 +6487,14 @@ impl LineTool {
         TK: &mut crate::ffi::TColStd_Array1OfReal,
         TM: &mut crate::ffi::TColStd_Array1OfInteger,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_LineTool_knots_and_multiplicities(C, TK, TM) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_LineTool_knots_and_multiplicities(C, TK, TM)
+        })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:158 - `HLRBRep_LineTool::NbSamples()`
     pub fn nb_samples(C: &crate::gp::Lin, U0: f64, U1: f64) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_LineTool_nb_samples(C, U0, U1) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_nb_samples(C, U0, U1) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:162 - `HLRBRep_LineTool::SamplePars()`
@@ -9634,13 +6506,9 @@ impl LineTool {
         NbMin: i32,
         Pars: &mut crate::ffi::HandleTColStdHArray1OfReal,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_LineTool_sample_pars(C, U0, U1, Defl, NbMin, Pars) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_LineTool_sample_pars(C, U0, U1, Defl, NbMin, Pars)
+        })
     }
 }
 
@@ -9664,14 +6532,8 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
         IT: &crate::int_curve::IConicTool,
         PC: &*mut std::ffi::c_void,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_address(IT, PC)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_address(IT, PC)))
         }
     }
 
@@ -9680,116 +6542,76 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
     /// the implicit curve and the point at parameter Param
     /// on the parametrised curve.
     pub fn value(&mut self, Param: f64, F: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_value(
-                    self as *mut Self,
-                    Param,
-                    F,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_value(
+                self as *mut Self,
+                Param,
+                F,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:49 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::Derivative()`
     /// Computes the derivative of the previous function at
     /// parameter Param.
     pub fn derivative(&mut self, Param: f64, D: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_derivative(self as *mut Self, Param, D)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_derivative(
+                self as *mut Self,
+                Param,
+                D,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:53 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::Values()`
     /// Computes the value and the derivative of the function.
     pub fn values(&mut self, Param: f64, F: &mut f64, D: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_values(
-                    self as *mut Self,
-                    Param,
-                    F,
-                    D,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_values(
+                self as *mut Self,
+                Param,
+                F,
+                D,
+            )
+        })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_FunctionWithDerivative(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_FunctionWithDerivative(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_FunctionWithDerivative_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -9809,13 +6631,10 @@ unsafe impl crate::CppDeletable for PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter 
 impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:42 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor(),
+            ))
         }
     }
 
@@ -9824,276 +6643,184 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
         P: &crate::gp::Pnt2d,
         C: &*mut std::ffi::c_void,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address(
                     P, C,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:48 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Initialize()`
     /// sets the field mycurve of the function.
     pub unsafe fn initialize(&mut self, C: &*mut std::ffi::c_void) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_initialize(
-                    self as *mut Self,
-                    C,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_initialize(
+                self as *mut Self,
+                C,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:51 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SetPoint()`
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_set_point(
-                    self as *mut Self,
-                    P,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_set_point(
+                self as *mut Self,
+                P,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:54 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Value()`
     /// Calculation of F(U).
     pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_value(
-                    self as *mut Self,
-                    U,
-                    F,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_value(
+                self as *mut Self,
+                U,
+                F,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:57 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Derivative()`
     /// Calculation of F'(U).
     pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_derivative(
-                    self as *mut Self,
-                    U,
-                    DF,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_derivative(
+                self as *mut Self,
+                U,
+                DF,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:61 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Values()`
     /// Calculation of F(U) and F'(U).
     pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_values(
-                    self as *mut Self,
-                    U,
-                    F,
-                    DF,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_values(
+                self as *mut Self,
+                U,
+                F,
+                DF,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:66 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_get_state_number(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_get_state_number(
+                self as *mut Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:69 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_nb_ext(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_nb_ext(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:72 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SquareDistance()`
     /// Returns the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_square_distance(
-                    self as *const Self,
-                    N,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_square_distance(
+                self as *const Self,
+                N,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:75 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::IsMin()`
     /// Shows if the Nth distance is a minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_is_min(
-                    self as *const Self,
-                    N,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_is_min(
+                self as *const Self,
+                N,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:78 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Point()`
     /// Returns the Nth extremum.
     pub fn point(&self, N: i32) -> &crate::extrema::POnCurv2d {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_point(
                     self as *const Self,
                     N,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:81 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SubIntervalInitialize()`
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_sub_interval_initialize(self as *mut Self, theUfirst, theUlast)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_sub_interval_initialize(
+                self as *mut Self,
+                theUfirst,
+                theUlast,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:86 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SearchOfTolerance()`
     /// Computes a Tol value. If 1st derivative of curve
     /// |D1|<Tol, it is considered D1=0.
     pub fn search_of_tolerance(&mut self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_search_of_tolerance(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_search_of_tolerance(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function_mut(
-                self as *mut Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 }
 
@@ -10167,12 +6894,8 @@ impl PolyAlgo {
     /// Warning
     /// The shape or shapes to be visualized must have already been triangulated.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_ctor()))
         }
     }
 
@@ -10180,97 +6903,61 @@ impl PolyAlgo {
     pub fn new_handlehlrbreppolyalgo(
         A: &crate::ffi::HandleHLRBRepPolyAlgo,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_ctor_handlehlrbreppolyalgo(A) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyAlgo_ctor_handlehlrbreppolyalgo(A),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:108 - `HLRBRep_PolyAlgo::HLRBRep_PolyAlgo()`
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_ctor_shape(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_ctor_shape(
+                S,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:110 - `HLRBRep_PolyAlgo::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_nb_shapes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_nb_shapes(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:112 - `HLRBRep_PolyAlgo::Shape()`
     pub fn shape(&mut self, I: i32) -> &mut crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_shape(self as *mut Self, I) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_shape(self as *mut Self, I)))
         }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:115 - `HLRBRep_PolyAlgo::Remove()`
     /// remove the Shape of Index <I>.
     pub fn remove(&mut self, I: i32) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_PolyAlgo_remove(self as *mut Self, I) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_remove(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:119 - `HLRBRep_PolyAlgo::Index()`
     /// return the index of the Shape <S> and  return 0 if
     /// the Shape <S> is not found.
     pub fn index(&self, S: &crate::topo_ds::Shape) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_index(self as *const Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_index(self as *const Self, S) })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:123 - `HLRBRep_PolyAlgo::Load()`
     /// Loads the shape S into this framework.
     /// Warning S must have already been triangulated.
     pub fn load(&mut self, theShape: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_PolyAlgo_load(self as *mut Self, theShape) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_load(self as *mut Self, theShape)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:125 - `HLRBRep_PolyAlgo::Algo()`
     pub fn algo(&self) -> &crate::ffi::HandleHLRAlgoPolyAlgo {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_algo(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_algo(self as *const Self))) }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:130 - `HLRBRep_PolyAlgo::Projector()`
@@ -10278,72 +6965,42 @@ impl PolyAlgo {
     /// These parameters are defined by an HLRAlgo_Projector object,
     /// which is returned by the Projector function on a Prs3d_Projector object.
     pub fn projector(&self) -> &crate::hlr_algo::Projector {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_projector(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_projector(self as *const Self)))
         }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:132 - `HLRBRep_PolyAlgo::Projector()`
     pub fn projector_projector(&mut self, theProj: &crate::hlr_algo::Projector) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_PolyAlgo_projector_projector(self as *mut Self, theProj)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_projector_projector(self as *mut Self, theProj)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:134 - `HLRBRep_PolyAlgo::TolAngular()`
     pub fn tol_angular(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_tol_angular(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_tol_angular(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:136 - `HLRBRep_PolyAlgo::TolAngular()`
     pub fn tol_angular_real(&mut self, theTol: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_PolyAlgo_tol_angular_real(self as *mut Self, theTol) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_tol_angular_real(self as *mut Self, theTol)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:138 - `HLRBRep_PolyAlgo::TolCoef()`
     pub fn tol_coef(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_tol_coef(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_tol_coef(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:140 - `HLRBRep_PolyAlgo::TolCoef()`
     pub fn tol_coef_real(&mut self, theTol: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_PolyAlgo_tol_coef_real(self as *mut Self, theTol) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_tol_coef_real(self as *mut Self, theTol)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:149 - `HLRBRep_PolyAlgo::Update()`
@@ -10351,44 +7008,26 @@ impl PolyAlgo {
     /// visualized by this framework. Used after setting the point of view and
     /// defining the shape or shapes to be visualized.
     pub fn update(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_PolyAlgo_update(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_update(self as *mut Self) })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:151 - `HLRBRep_PolyAlgo::InitHide()`
     pub fn init_hide(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_PolyAlgo_init_hide(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_init_hide(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:153 - `HLRBRep_PolyAlgo::MoreHide()`
     pub fn more_hide(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_more_hide(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_more_hide(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:155 - `HLRBRep_PolyAlgo::NextHide()`
     pub fn next_hide(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_PolyAlgo_next_hide(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_next_hide(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:157 - `HLRBRep_PolyAlgo::Hide()`
@@ -10407,56 +7046,36 @@ impl PolyAlgo {
         outl: &mut bool,
         intl: &mut bool,
     ) -> &mut crate::hlr_algo::BiPoint_PointsT {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyAlgo_hide(
-                    self as *mut Self,
-                    status,
-                    S,
-                    reg1,
-                    regn,
-                    outl,
-                    intl,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_hide(
+                self as *mut Self,
+                status,
+                S,
+                reg1,
+                regn,
+                outl,
+                intl,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:164 - `HLRBRep_PolyAlgo::InitShow()`
     pub fn init_show(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_PolyAlgo_init_show(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_init_show(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:166 - `HLRBRep_PolyAlgo::MoreShow()`
     pub fn more_show(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_more_show(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_more_show(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:168 - `HLRBRep_PolyAlgo::NextShow()`
     pub fn next_show(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_PolyAlgo_next_show(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_next_show(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:170 - `HLRBRep_PolyAlgo::Show()`
@@ -10474,15 +7093,15 @@ impl PolyAlgo {
         outl: &mut bool,
         intl: &mut bool,
     ) -> &mut crate::hlr_algo::BiPoint_PointsT {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyAlgo_show(self as *mut Self, S, reg1, regn, outl, intl)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_show(
+                self as *mut Self,
+                S,
+                reg1,
+                regn,
+                outl,
+                intl,
+            )))
         }
     }
 
@@ -10493,145 +7112,97 @@ impl PolyAlgo {
         &self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_PolyAlgo_out_lined_shape(self as *const Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyAlgo_out_lined_shape(self as *const Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:180 - `HLRBRep_PolyAlgo::Debug()`
     pub fn debug(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_debug(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_debug(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:182 - `HLRBRep_PolyAlgo::Debug()`
     pub fn debug_bool(&mut self, theDebug: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_PolyAlgo_debug_bool(self as *mut Self, theDebug) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_debug_bool(self as *mut Self, theDebug)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:184 - `HLRBRep_PolyAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_PolyAlgo_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:184 - `HLRBRep_PolyAlgo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::HLRBRep_PolyAlgo_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:184 - `HLRBRep_PolyAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_PolyAlgo_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_PolyAlgo_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::HLRBRep_PolyAlgo_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_PolyAlgo_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepPolyAlgo> {
-        let __result = unsafe { crate::ffi::HLRBRep_PolyAlgo_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyAlgo_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyAlgo_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_PolyAlgo_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::HLRBRep_PolyAlgo_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -10642,52 +7213,30 @@ impl PolyAlgo {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_PolyAlgo_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_PolyAlgo_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyAlgo_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_PolyAlgo_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyAlgo_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -10702,31 +7251,23 @@ unsafe impl crate::CppDeletable for HandleHLRBRepPolyAlgo {
 impl HandleHLRBRepPolyAlgo {
     /// Dereference this Handle to access the underlying HLRBRep_PolyAlgo
     pub fn get(&self) -> &crate::ffi::HLRBRep_PolyAlgo {
-        let __result = unsafe { crate::ffi::HandleHLRBRepPolyAlgo_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleHLRBRepPolyAlgo_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRBRep_PolyAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_PolyAlgo {
-        let __result = unsafe { crate::ffi::HandleHLRBRepPolyAlgo_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleHLRBRepPolyAlgo_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRBRep_PolyAlgo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleHLRBRepPolyAlgo_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHLRBRepPolyAlgo_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10776,55 +7317,40 @@ impl PolyHLRToShape {
     /// of the HLRBRep_Algo algorithm, A.
     /// Use the extraction filters to obtain the results you want for A.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_PolyHLRToShape_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::HLRBRep_PolyHLRToShape_ctor()),
+            )
         }
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:67 - `HLRBRep_PolyHLRToShape::Update()`
     pub fn update(&mut self, A: &crate::ffi::HandleHLRBRepPolyAlgo) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_PolyHLRToShape_update(self as *mut Self, A) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyHLRToShape_update(self as *mut Self, A)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:69 - `HLRBRep_PolyHLRToShape::Show()`
     pub fn show(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_PolyHLRToShape_show(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyHLRToShape_show(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:71 - `HLRBRep_PolyHLRToShape::Hide()`
     pub fn hide(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_PolyHLRToShape_hide(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_PolyHLRToShape_hide(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:73 - `HLRBRep_PolyHLRToShape::VCompound()`
     pub fn v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_PolyHLRToShape_v_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_v_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -10833,30 +7359,20 @@ impl PolyHLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_v_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_v_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:78 - `HLRBRep_PolyHLRToShape::Rg1LineVCompound()`
     /// Sets the extraction filter for visible smooth edges.
     pub fn rg1_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_v_compound(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_v_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -10865,30 +7381,20 @@ impl PolyHLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_v_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_v_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:83 - `HLRBRep_PolyHLRToShape::RgNLineVCompound()`
     /// Sets the extraction filter for visible sewn edges.
     pub fn rg_n_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_v_compound(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_v_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -10897,29 +7403,19 @@ impl PolyHLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_v_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_v_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:87 - `HLRBRep_PolyHLRToShape::OutLineVCompound()`
     pub fn out_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_out_line_v_compound(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_out_line_v_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -10929,28 +7425,19 @@ impl PolyHLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_out_line_v_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_out_line_v_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:92 - `HLRBRep_PolyHLRToShape::HCompound()`
     pub fn h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_PolyHLRToShape_h_compound(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_h_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -10959,29 +7446,19 @@ impl PolyHLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_h_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_h_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:96 - `HLRBRep_PolyHLRToShape::Rg1LineHCompound()`
     pub fn rg1_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_h_compound(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_h_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -10991,29 +7468,19 @@ impl PolyHLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_h_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_h_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:101 - `HLRBRep_PolyHLRToShape::RgNLineHCompound()`
     pub fn rg_n_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_h_compound(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_h_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -11023,29 +7490,19 @@ impl PolyHLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_h_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_h_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:106 - `HLRBRep_PolyHLRToShape::OutLineHCompound()`
     pub fn out_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_out_line_h_compound(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_out_line_h_compound(self as *mut Self),
+            ))
         }
     }
 
@@ -11057,15 +7514,10 @@ impl PolyHLRToShape {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_PolyHLRToShape_out_line_h_compound_shape(self as *mut Self, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_PolyHLRToShape_out_line_h_compound_shape(self as *mut Self, S),
+            ))
         }
     }
 }
@@ -11102,14 +7554,10 @@ impl SLProps {
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_SLProps_ctor_address_real2_int_real(S, U, V, N, Resolution)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_SLProps_ctor_address_real2_int_real(S, U, V, N, Resolution),
+            ))
         }
     }
 
@@ -11121,13 +7569,10 @@ impl SLProps {
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_SLProps_ctor_address_int_real(S, N, Resolution) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_SLProps_ctor_address_int_real(S, N, Resolution),
+            ))
         }
     }
 
@@ -11136,12 +7581,10 @@ impl SLProps {
     /// of parameters <U> and <V> and the surface.
     /// the surface can have an empty constructor.
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_ctor_int_real(N, Resolution) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_SLProps_ctor_int_real(N, Resolution),
+            ))
         }
     }
 
@@ -11149,108 +7592,59 @@ impl SLProps {
     /// Initializes the local properties of the surface S
     /// for the new surface.
     pub unsafe fn set_surface(&mut self, S: &*mut std::ffi::c_void) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_SLProps_set_surface(self as *mut Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SLProps_set_surface(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:75 - `HLRBRep_SLProps::SetParameters()`
     /// Initializes the local properties of the surface S
     /// for the new parameter values (<U>, <V>).
     pub fn set_parameters(&mut self, U: f64, V: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_SLProps_set_parameters(self as *mut Self, U, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SLProps_set_parameters(self as *mut Self, U, V)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:78 - `HLRBRep_SLProps::Value()`
     /// Returns the point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_value(self as *const Self))) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:82 - `HLRBRep_SLProps::D1U()`
     /// Returns the first U derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1u(&mut self) -> &crate::gp::Vec {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_d1u(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_d1u(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:86 - `HLRBRep_SLProps::D1V()`
     /// Returns the first V derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1v(&mut self) -> &crate::gp::Vec {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_d1v(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_d1v(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:90 - `HLRBRep_SLProps::D2U()`
     /// Returns the second U derivatives
     /// The derivative is computed if it has not been yet.
     pub fn d2u(&mut self) -> &crate::gp::Vec {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_d2u(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_d2u(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:94 - `HLRBRep_SLProps::D2V()`
     /// Returns the second V derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d2v(&mut self) -> &crate::gp::Vec {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_d2v(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_d2v(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:98 - `HLRBRep_SLProps::DUV()`
     /// Returns the second UV cross-derivative.
     /// The derivative is computed if it has not been yet.
     pub fn duv(&mut self) -> &crate::gp::Vec {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_duv(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_duv(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:103 - `HLRBRep_SLProps::IsTangentUDefined()`
@@ -11258,26 +7652,17 @@ impl SLProps {
     /// For example, the tangent is not defined if the
     /// two first U derivatives are null.
     pub fn is_tangent_u_defined(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_SLProps_is_tangent_u_defined(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_SLProps_is_tangent_u_defined(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:106 - `HLRBRep_SLProps::TangentU()`
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_u(&mut self, D: &mut crate::gp::Dir) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_SLProps_tangent_u(self as *mut Self, D) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SLProps_tangent_u(self as *mut Self, D)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:111 - `HLRBRep_SLProps::IsTangentVDefined()`
@@ -11285,148 +7670,83 @@ impl SLProps {
     /// For example, the tangent is not defined if the
     /// two first V derivatives are null.
     pub fn is_tangent_v_defined(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_SLProps_is_tangent_v_defined(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_SLProps_is_tangent_v_defined(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:114 - `HLRBRep_SLProps::TangentV()`
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_v(&mut self, D: &mut crate::gp::Dir) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_SLProps_tangent_v(self as *mut Self, D) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SLProps_tangent_v(self as *mut Self, D)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:117 - `HLRBRep_SLProps::IsNormalDefined()`
     /// Tells if the normal is defined.
     pub fn is_normal_defined(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_SLProps_is_normal_defined(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_SLProps_is_normal_defined(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:120 - `HLRBRep_SLProps::Normal()`
     /// Returns the normal direction.
     pub fn normal(&mut self) -> &crate::gp::Dir {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_normal(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_normal(self as *mut Self))) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:123 - `HLRBRep_SLProps::IsCurvatureDefined()`
     /// returns True if the curvature is defined.
     pub fn is_curvature_defined(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_SLProps_is_curvature_defined(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_SLProps_is_curvature_defined(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:127 - `HLRBRep_SLProps::IsUmbilic()`
     /// returns True if the point is umbilic (i.e. if the
     /// curvature is constant).
     pub fn is_umbilic(&mut self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_is_umbilic(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SLProps_is_umbilic(self as *mut Self) })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:130 - `HLRBRep_SLProps::MaxCurvature()`
     /// Returns the maximum curvature
     pub fn max_curvature(&mut self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_max_curvature(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SLProps_max_curvature(self as *mut Self) })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:133 - `HLRBRep_SLProps::MinCurvature()`
     /// Returns the minimum curvature
     pub fn min_curvature(&mut self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_min_curvature(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SLProps_min_curvature(self as *mut Self) })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:137 - `HLRBRep_SLProps::CurvatureDirections()`
     /// Returns the direction of the maximum and minimum curvature
     /// <MaxD> and <MinD>
     pub fn curvature_directions(&mut self, MaxD: &mut crate::gp::Dir, MinD: &mut crate::gp::Dir) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_SLProps_curvature_directions(self as *mut Self, MaxD, MinD)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SLProps_curvature_directions(self as *mut Self, MaxD, MinD)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:140 - `HLRBRep_SLProps::MeanCurvature()`
     /// Returns the mean curvature.
     pub fn mean_curvature(&mut self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLProps_mean_curvature(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_SLProps_mean_curvature(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:143 - `HLRBRep_SLProps::GaussianCurvature()`
     /// Returns the Gaussian curvature
     pub fn gaussian_curvature(&mut self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_SLProps_gaussian_curvature(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_SLProps_gaussian_curvature(self as *mut Self)
+        })
     }
 }
 
@@ -11447,12 +7767,8 @@ impl SLPropsATool {
     /// **Source:** `HLRBRep_SLPropsATool.hxx` - `HLRBRep_SLPropsATool::HLRBRep_SLPropsATool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLPropsATool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SLPropsATool_ctor()))
         }
     }
 
@@ -11460,12 +7776,7 @@ impl SLPropsATool {
     /// Computes the point  <P> of 	parameter <U> and <V>
     /// on the Surface <A>.
     pub unsafe fn value(A: *mut std::ffi::c_void, U: f64, V: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_SLPropsATool_value(A, U, V, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_SLPropsATool_value(A, U, V, P) })
     }
 
     /// **Source:** `HLRBRep_SLPropsATool.hxx`:42 - `HLRBRep_SLPropsATool::D1()`
@@ -11479,12 +7790,9 @@ impl SLPropsATool {
         D1U: &mut crate::gp::Vec,
         D1V: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_SLPropsATool_d1(A, U, V, P, D1U, D1V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SLPropsATool_d1(A, U, V, P, D1U, D1V)
+        })
     }
 
     /// **Source:** `HLRBRep_SLPropsATool.hxx`:52 - `HLRBRep_SLPropsATool::D2()`
@@ -11502,13 +7810,9 @@ impl SLPropsATool {
         D2V: &mut crate::gp::Vec,
         DUV: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_SLPropsATool_d2(A, U, V, P, D1U, D1V, D2U, D2V, DUV) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SLPropsATool_d2(A, U, V, P, D1U, D1V, D2U, D2V, DUV)
+        })
     }
 
     /// **Source:** `HLRBRep_SLPropsATool.hxx`:62 - `HLRBRep_SLPropsATool::DN()`
@@ -11519,13 +7823,10 @@ impl SLPropsATool {
         Nu: i32,
         Nv: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLPropsATool_dn(A, U, V, Nu, Nv) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SLPropsATool_dn(
+                A, U, V, Nu, Nv,
+            )))
         }
     }
 
@@ -11535,14 +7836,7 @@ impl SLPropsATool {
     /// computable returns 2 : first and second derivative
     /// only are computable.
     pub unsafe fn continuity(A: *mut std::ffi::c_void) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SLPropsATool_continuity(A) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SLPropsATool_continuity(A) })
     }
 
     /// **Source:** `HLRBRep_SLPropsATool.hxx`:75 - `HLRBRep_SLPropsATool::Bounds()`
@@ -11554,12 +7848,9 @@ impl SLPropsATool {
         U2: &mut f64,
         V2: &mut f64,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_SLPropsATool_bounds(A, U1, V1, U2, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SLPropsATool_bounds(A, U1, V1, U2, V2)
+        })
     }
 }
 
@@ -11581,12 +7872,8 @@ unsafe impl crate::CppDeletable for ShapeBounds {
 impl ShapeBounds {
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:36 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_ShapeBounds_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ShapeBounds_ctor()))
         }
     }
 
@@ -11602,14 +7889,8 @@ impl ShapeBounds {
         F1: i32,
         F2: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ShapeBounds_ctor_handlehlrtopobrepoutliner_handlestandardtransient_int7(S, SData, nbIso, V1, V2, E1, E2, F1, F2)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ShapeBounds_ctor_handlehlrtopobrepoutliner_handlestandardtransient_int7(S, SData, nbIso, V1, V2, E1, E2, F1, F2)))
         }
     }
 
@@ -11624,118 +7905,72 @@ impl ShapeBounds {
         F1: i32,
         F2: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_ShapeBounds_ctor_handlehlrtopobrepoutliner_int7(
                     S, nbIso, V1, V2, E1, E2, F1, F2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:57 - `HLRBRep_ShapeBounds::Translate()`
     pub fn translate(&mut self, NV: i32, NE: i32, NF: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_ShapeBounds_translate(self as *mut Self, NV, NE, NF) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ShapeBounds_translate(self as *mut Self, NV, NE, NF)
+        })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:61 - `HLRBRep_ShapeBounds::Shape()`
     pub fn shape_handlehlrtopobrepoutliner(&mut self, S: &crate::ffi::HandleHLRTopoBRepOutLiner) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ShapeBounds_shape_handlehlrtopobrepoutliner(
-                    self as *mut Self,
-                    S,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ShapeBounds_shape_handlehlrtopobrepoutliner(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:63 - `HLRBRep_ShapeBounds::Shape()`
     pub fn shape(&self) -> &crate::ffi::HandleHLRTopoBRepOutLiner {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_ShapeBounds_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ShapeBounds_shape(self as *const Self)))
         }
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:65 - `HLRBRep_ShapeBounds::ShapeData()`
     pub fn shape_data_handlestandardtransient(&mut self, SD: &crate::ffi::HandleStandardTransient) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ShapeBounds_shape_data_handlestandardtransient(
-                    self as *mut Self,
-                    SD,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ShapeBounds_shape_data_handlestandardtransient(
+                self as *mut Self,
+                SD,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:67 - `HLRBRep_ShapeBounds::ShapeData()`
     pub fn shape_data(&self) -> &crate::ffi::HandleStandardTransient {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_ShapeBounds_shape_data(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ShapeBounds_shape_data(self as *const Self)))
         }
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:69 - `HLRBRep_ShapeBounds::NbOfIso()`
     pub fn nb_of_iso_int(&mut self, nbIso: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_ShapeBounds_nb_of_iso_int(self as *mut Self, nbIso) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ShapeBounds_nb_of_iso_int(self as *mut Self, nbIso)
+        })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:71 - `HLRBRep_ShapeBounds::NbOfIso()`
     pub fn nb_of_iso(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_ShapeBounds_nb_of_iso(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ShapeBounds_nb_of_iso(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:73 - `HLRBRep_ShapeBounds::Sizes()`
     pub fn sizes(&self, NV: &mut i32, NE: &mut i32, NF: &mut i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_ShapeBounds_sizes(self as *const Self, NV, NE, NF) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ShapeBounds_sizes(self as *const Self, NV, NE, NF)
+        })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:77 - `HLRBRep_ShapeBounds::Bounds()`
@@ -11748,37 +7983,22 @@ impl ShapeBounds {
         F1: &mut i32,
         F2: &mut i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ShapeBounds_bounds(self as *const Self, V1, V2, E1, E2, F1, F2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ShapeBounds_bounds(self as *const Self, V1, V2, E1, E2, F1, F2)
+        })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:84 - `HLRBRep_ShapeBounds::UpdateMinMax()`
     pub fn update_min_max(&mut self, theTotMinMax: &crate::hlr_algo::EdgesBlock_MinMaxIndices) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ShapeBounds_update_min_max(self as *mut Self, theTotMinMax)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ShapeBounds_update_min_max(self as *mut Self, theTotMinMax)
+        })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:89 - `HLRBRep_ShapeBounds::MinMax()`
     pub fn min_max(&mut self) -> &mut crate::hlr_algo::EdgesBlock_MinMaxIndices {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_ShapeBounds_min_max(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_ShapeBounds_min_max(self as *mut Self)))
         }
     }
 }
@@ -11803,12 +8023,8 @@ impl ShapeToHLR {
     /// **Source:** `HLRBRep_ShapeToHLR.hxx` - `HLRBRep_ShapeToHLR::HLRBRep_ShapeToHLR()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_ShapeToHLR_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ShapeToHLR_ctor()))
         }
     }
 
@@ -11821,13 +8037,10 @@ impl ShapeToHLR {
         MST: &mut crate::ffi::BRepTopAdaptor_MapOfShapeTool,
         nbIso: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepData> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_ShapeToHLR_load(S, P, MST, nbIso) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ShapeToHLR_load(
+                S, P, MST, nbIso,
+            )))
         }
     }
 }
@@ -11849,153 +8062,91 @@ impl Surface {
     /// **Source:** `HLRBRep_Surface.hxx`:46 - `HLRBRep_Surface::HLRBRep_Surface()`
     /// Creates an undefined surface with no face loaded.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_ctor()))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:48 - `HLRBRep_Surface::Projector()`
     pub fn projector(&mut self, Proj: &crate::hlr_algo::Projector) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Surface_projector(self as *mut Self, Proj as *const _)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Surface_projector(self as *mut Self, Proj as *const _)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:51 - `HLRBRep_Surface::Surface()`
     /// Returns the 3D Surface.
     pub fn surface(&mut self) -> &mut crate::b_rep_adaptor::Surface {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_surface(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_Surface_surface(self as *mut Self)))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:54 - `HLRBRep_Surface::Surface()`
     /// Sets the 3D Surface to be projected.
     pub fn surface_face(&mut self, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Surface_surface_face(self as *mut Self, F) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Surface_surface_face(self as *mut Self, F)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:57 - `HLRBRep_Surface::IsSide()`
     /// returns true if it is a side face
     pub fn is_side(&self, tolf: f64, toler: f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_is_side(self as *const Self, tolf, toler) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_is_side(self as *const Self, tolf, toler)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:60 - `HLRBRep_Surface::IsAbove()`
     pub fn is_above(&self, back: bool, A: &Curve, tolC: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_Surface_is_above(self as *const Self, back, A as *const _, tolC)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_is_above(self as *const Self, back, A as *const _, tolC)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:64 - `HLRBRep_Surface::FirstUParameter()`
     pub fn first_u_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_first_u_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_first_u_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:66 - `HLRBRep_Surface::LastUParameter()`
     pub fn last_u_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_last_u_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_last_u_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:68 - `HLRBRep_Surface::FirstVParameter()`
     pub fn first_v_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_first_v_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_first_v_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:70 - `HLRBRep_Surface::LastVParameter()`
     pub fn last_v_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_last_v_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_last_v_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:72 - `HLRBRep_Surface::UContinuity()`
     pub fn u_continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_u_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_u_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:74 - `HLRBRep_Surface::VContinuity()`
     pub fn v_continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_v_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_v_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:79 - `HLRBRep_Surface::NbUIntervals()`
@@ -12003,15 +8154,9 @@ impl Surface {
     /// continuity    <S>.  And   returns  the  number  of
     /// intervals.
     pub fn nb_u_intervals(&mut self, S: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_nb_u_intervals(self as *mut Self, S.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_nb_u_intervals(self as *mut Self, S.into())
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:84 - `HLRBRep_Surface::NbVIntervals()`
@@ -12019,139 +8164,79 @@ impl Surface {
     /// continuity    <S>.  And   returns  the  number  of
     /// intervals.
     pub fn nb_v_intervals(&mut self, S: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_nb_v_intervals(self as *mut Self, S.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_nb_v_intervals(self as *mut Self, S.into())
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:86 - `HLRBRep_Surface::UIntervalContinuity()`
     pub fn u_interval_continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_u_interval_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_u_interval_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:88 - `HLRBRep_Surface::VIntervalContinuity()`
     pub fn v_interval_continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_v_interval_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_v_interval_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:90 - `HLRBRep_Surface::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_is_u_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_is_u_closed(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:92 - `HLRBRep_Surface::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_is_v_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_is_v_closed(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:94 - `HLRBRep_Surface::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_is_u_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_is_u_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:96 - `HLRBRep_Surface::UPeriod()`
     pub fn u_period(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_u_period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_u_period(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:98 - `HLRBRep_Surface::IsVPeriodic()`
     pub fn is_v_periodic(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_is_v_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_is_v_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:100 - `HLRBRep_Surface::VPeriod()`
     pub fn v_period(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_v_period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_v_period(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:103 - `HLRBRep_Surface::Value()`
     /// Computes the point of parameters U,V on the surface.
     pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_value(self as *const Self, U, V) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_value(
+                self as *const Self,
+                U,
+                V,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:106 - `HLRBRep_Surface::D0()`
     /// Computes the point of parameters U,V on the surface.
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_Surface_d0(self as *const Self, U, V, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Surface_d0(self as *const Self, U, V, P)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:112 - `HLRBRep_Surface::D1()`
@@ -12167,13 +8252,9 @@ impl Surface {
         D1U: &mut crate::gp::Vec,
         D1V: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_Surface_d1(self as *const Self, U, V, P, D1U, D1V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Surface_d1(self as *const Self, U, V, P, D1U, D1V)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:118 - `HLRBRep_Surface::D2()`
@@ -12192,24 +8273,9 @@ impl Surface {
         D2V: &mut crate::gp::Vec,
         D2UV: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Surface_d2(
-                    self as *const Self,
-                    U,
-                    V,
-                    P,
-                    D1U,
-                    D1V,
-                    D2U,
-                    D2V,
-                    D2UV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Surface_d2(self as *const Self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:131 - `HLRBRep_Surface::D3()`
@@ -12232,28 +8298,23 @@ impl Surface {
         D3UUV: &mut crate::gp::Vec,
         D3UVV: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_Surface_d3(
-                    self as *const Self,
-                    U,
-                    V,
-                    P,
-                    D1U,
-                    D1V,
-                    D2U,
-                    D2V,
-                    D2UV,
-                    D3U,
-                    D3V,
-                    D3UUV,
-                    D3UVV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_Surface_d3(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+                D2U,
+                D2V,
+                D2UV,
+                D3U,
+                D3V,
+                D3UUV,
+                D3UVV,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:150 - `HLRBRep_Surface::DN()`
@@ -12264,14 +8325,14 @@ impl Surface {
     /// and the current V interval is not CNv.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_Surface_dn(self as *const Self, U, V, Nu, Nv) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_dn(
+                self as *const Self,
+                U,
+                V,
+                Nu,
+                Nv,
+            )))
         }
     }
 
@@ -12281,157 +8342,93 @@ impl Surface {
     /// BSplineSurface,               SurfaceOfRevolution,
     /// SurfaceOfExtrusion, OtherSurface
     pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_get_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::SurfaceType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_Surface_get_type(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:161 - `HLRBRep_Surface::Plane()`
     pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_plane(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_plane(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:163 - `HLRBRep_Surface::Cylinder()`
     pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_cylinder(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_cylinder(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:165 - `HLRBRep_Surface::Cone()`
     pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_cone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_cone(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:167 - `HLRBRep_Surface::Sphere()`
     pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_sphere(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_sphere(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:169 - `HLRBRep_Surface::Torus()`
     pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_torus(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_torus(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:171 - `HLRBRep_Surface::UDegree()`
     pub fn u_degree(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_u_degree(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_u_degree(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:173 - `HLRBRep_Surface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_nb_u_poles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_nb_u_poles(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:175 - `HLRBRep_Surface::VDegree()`
     pub fn v_degree(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_v_degree(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_v_degree(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:177 - `HLRBRep_Surface::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_nb_v_poles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_nb_v_poles(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:179 - `HLRBRep_Surface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_nb_u_knots(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_nb_u_knots(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:181 - `HLRBRep_Surface::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_nb_v_knots(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_nb_v_knots(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:183 - `HLRBRep_Surface::Axis()`
     pub fn axis(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_Surface_axis(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_axis(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -12453,85 +8450,39 @@ impl SurfaceTool {
     /// **Source:** `HLRBRep_SurfaceTool.hxx` - `HLRBRep_SurfaceTool::HLRBRep_SurfaceTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_ctor()))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:45 - `HLRBRep_SurfaceTool::FirstUParameter()`
     pub unsafe fn first_u_parameter(S: *mut std::ffi::c_void) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_first_u_parameter(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_first_u_parameter(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:47 - `HLRBRep_SurfaceTool::FirstVParameter()`
     pub unsafe fn first_v_parameter(S: *mut std::ffi::c_void) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_first_v_parameter(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_first_v_parameter(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:49 - `HLRBRep_SurfaceTool::LastUParameter()`
     pub unsafe fn last_u_parameter(S: *mut std::ffi::c_void) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_last_u_parameter(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_last_u_parameter(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:51 - `HLRBRep_SurfaceTool::LastVParameter()`
     pub unsafe fn last_v_parameter(S: *mut std::ffi::c_void) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_last_v_parameter(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_last_v_parameter(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:53 - `HLRBRep_SurfaceTool::NbUIntervals()`
     pub unsafe fn nb_u_intervals(S: *mut std::ffi::c_void, Sh: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_u_intervals(S, Sh.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_u_intervals(S, Sh.into()) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:55 - `HLRBRep_SurfaceTool::NbVIntervals()`
     pub unsafe fn nb_v_intervals(S: *mut std::ffi::c_void, Sh: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_v_intervals(S, Sh.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_v_intervals(S, Sh.into()) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:57 - `HLRBRep_SurfaceTool::UIntervals()`
@@ -12540,12 +8491,9 @@ impl SurfaceTool {
         T: &mut crate::ffi::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_SurfaceTool_u_intervals(S, T, Sh.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SurfaceTool_u_intervals(S, T, Sh.into())
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:59 - `HLRBRep_SurfaceTool::VIntervals()`
@@ -12554,12 +8502,9 @@ impl SurfaceTool {
         T: &mut crate::ffi::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_SurfaceTool_v_intervals(S, T, Sh.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SurfaceTool_v_intervals(S, T, Sh.into())
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:62 - `HLRBRep_SurfaceTool::UTrim()`
@@ -12570,13 +8515,10 @@ impl SurfaceTool {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_u_trim(S, First, Last, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_u_trim(
+                S, First, Last, Tol,
+            )))
         }
     }
 
@@ -12588,86 +8530,41 @@ impl SurfaceTool {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_v_trim(S, First, Last, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_v_trim(
+                S, First, Last, Tol,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:73 - `HLRBRep_SurfaceTool::IsUClosed()`
     pub unsafe fn is_u_closed(S: *mut std::ffi::c_void) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_is_u_closed(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_is_u_closed(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:75 - `HLRBRep_SurfaceTool::IsVClosed()`
     pub unsafe fn is_v_closed(S: *mut std::ffi::c_void) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_is_v_closed(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_is_v_closed(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:77 - `HLRBRep_SurfaceTool::IsUPeriodic()`
     pub unsafe fn is_u_periodic(S: *mut std::ffi::c_void) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_is_u_periodic(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_is_u_periodic(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:79 - `HLRBRep_SurfaceTool::UPeriod()`
     pub unsafe fn u_period(S: *mut std::ffi::c_void) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_u_period(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_u_period(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:81 - `HLRBRep_SurfaceTool::IsVPeriodic()`
     pub unsafe fn is_v_periodic(S: *mut std::ffi::c_void) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_is_v_periodic(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_is_v_periodic(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:83 - `HLRBRep_SurfaceTool::VPeriod()`
     pub unsafe fn v_period(S: *mut std::ffi::c_void) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_v_period(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_v_period(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:85 - `HLRBRep_SurfaceTool::Value()`
@@ -12676,24 +8573,16 @@ impl SurfaceTool {
         u: f64,
         v: f64,
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_value(S, u, v) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_value(
+                S, u, v,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:87 - `HLRBRep_SurfaceTool::D0()`
     pub unsafe fn d0(S: *mut std::ffi::c_void, u: f64, v: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_SurfaceTool_d0(S, u, v, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_d0(S, u, v, P) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:89 - `HLRBRep_SurfaceTool::D1()`
@@ -12705,12 +8594,9 @@ impl SurfaceTool {
         D1u: &mut crate::gp::Vec,
         D1v: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_SurfaceTool_d1(S, u, v, P, D1u, D1v) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SurfaceTool_d1(S, u, v, P, D1u, D1v)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:96 - `HLRBRep_SurfaceTool::D2()`
@@ -12725,13 +8611,9 @@ impl SurfaceTool {
         D2V: &mut crate::gp::Vec,
         D2UV: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_SurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:106 - `HLRBRep_SurfaceTool::D3()`
@@ -12750,16 +8632,11 @@ impl SurfaceTool {
         D3UUV: &mut crate::gp::Vec,
         D3UVV: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_SurfaceTool_d3(
-                    S, u, v, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_SurfaceTool_d3(
+                S, u, v, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:120 - `HLRBRep_SurfaceTool::DN()`
@@ -12770,109 +8647,67 @@ impl SurfaceTool {
         Nu: i32,
         Nv: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_dn(S, u, v, Nu, Nv) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_dn(
+                S, u, v, Nu, Nv,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:126 - `HLRBRep_SurfaceTool::UResolution()`
     pub unsafe fn u_resolution(S: *mut std::ffi::c_void, R3d: f64) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_u_resolution(S, R3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_u_resolution(S, R3d) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:128 - `HLRBRep_SurfaceTool::VResolution()`
     pub unsafe fn v_resolution(S: *mut std::ffi::c_void, R3d: f64) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_v_resolution(S, R3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_v_resolution(S, R3d) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:130 - `HLRBRep_SurfaceTool::GetType()`
     pub unsafe fn get_type(S: *mut std::ffi::c_void) -> crate::geom_abs::SurfaceType {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_get_type(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::SurfaceType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_SurfaceTool_get_type(S)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:132 - `HLRBRep_SurfaceTool::Plane()`
     pub unsafe fn plane(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Pln> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_plane(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_plane(S)))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:134 - `HLRBRep_SurfaceTool::Cylinder()`
     pub unsafe fn cylinder(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Cylinder> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_cylinder(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_SurfaceTool_cylinder(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:136 - `HLRBRep_SurfaceTool::Cone()`
     pub unsafe fn cone(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Cone> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_cone(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_cone(S)))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:138 - `HLRBRep_SurfaceTool::Torus()`
     pub unsafe fn torus(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Torus> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_torus(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_torus(S)))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:140 - `HLRBRep_SurfaceTool::Sphere()`
     pub unsafe fn sphere(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Sphere> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_sphere(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_sphere(
+                S,
+            )))
         }
     }
 
@@ -12880,13 +8715,10 @@ impl SurfaceTool {
     pub unsafe fn bezier(
         S: *mut std::ffi::c_void,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_bezier(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_bezier(
+                S,
+            )))
         }
     }
 
@@ -12894,37 +8726,28 @@ impl SurfaceTool {
     pub unsafe fn b_spline(
         S: *mut std::ffi::c_void,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_b_spline(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_SurfaceTool_b_spline(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:146 - `HLRBRep_SurfaceTool::AxeOfRevolution()`
     pub unsafe fn axe_of_revolution(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Ax1> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_axe_of_revolution(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_SurfaceTool_axe_of_revolution(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:148 - `HLRBRep_SurfaceTool::Direction()`
     pub unsafe fn direction(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Dir> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_direction(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_SurfaceTool_direction(S),
+            ))
         }
     }
 
@@ -12932,13 +8755,10 @@ impl SurfaceTool {
     pub unsafe fn basis_curve(
         S: *mut std::ffi::c_void,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_basis_curve(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_SurfaceTool_basis_curve(S),
+            ))
         }
     }
 
@@ -12946,76 +8766,40 @@ impl SurfaceTool {
     pub unsafe fn basis_surface(
         S: *mut std::ffi::c_void,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_basis_surface(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_SurfaceTool_basis_surface(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:154 - `HLRBRep_SurfaceTool::OffsetValue()`
     pub unsafe fn offset_value(S: *mut std::ffi::c_void) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_offset_value(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_offset_value(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:156 - `HLRBRep_SurfaceTool::NbSamplesU()`
     pub unsafe fn nb_samples_u_address(S: *mut std::ffi::c_void) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_u_address(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_u_address(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:158 - `HLRBRep_SurfaceTool::NbSamplesV()`
     pub unsafe fn nb_samples_v_address(S: *mut std::ffi::c_void) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_v_address(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_v_address(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:160 - `HLRBRep_SurfaceTool::NbSamplesU()`
     pub unsafe fn nb_samples_u_address_real2(S: *mut std::ffi::c_void, u1: f64, u2: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_u_address_real2(S, u1, u2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_SurfaceTool_nb_samples_u_address_real2(S, u1, u2)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:164 - `HLRBRep_SurfaceTool::NbSamplesV()`
     pub unsafe fn nb_samples_v_address_real2(S: *mut std::ffi::c_void, v1: f64, v2: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_v_address_real2(S, v1, v2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_SurfaceTool_nb_samples_v_address_real2(S, v1, v2)
+        })
     }
 }
 
@@ -13038,56 +8822,32 @@ impl TheCSFunctionOfInterCSurf {
         S: &*mut std::ffi::c_void,
         C: &crate::gp::Lin,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_ctor_address_lin(S, C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_ctor_address_lin(S, C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:42 - `HLRBRep_TheCSFunctionOfInterCSurf::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_nb_variables(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_nb_variables(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:44 - `HLRBRep_TheCSFunctionOfInterCSurf::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_nb_equations(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_nb_equations(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:46 - `HLRBRep_TheCSFunctionOfInterCSurf::Value()`
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_value(self as *mut Self, X, F)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:48 - `HLRBRep_TheCSFunctionOfInterCSurf::Derivatives()`
@@ -13096,16 +8856,9 @@ impl TheCSFunctionOfInterCSurf {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_derivatives(self as *mut Self, X, D)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_derivatives(self as *mut Self, X, D)
+        })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:50 - `HLRBRep_TheCSFunctionOfInterCSurf::Values()`
@@ -13115,69 +8868,42 @@ impl TheCSFunctionOfInterCSurf {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_values(self as *mut Self, X, F, D)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_values(self as *mut Self, X, F, D)
+        })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:52 - `HLRBRep_TheCSFunctionOfInterCSurf::Point()`
     pub fn point(&self) -> &crate::gp::Pnt {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_point(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_point(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:54 - `HLRBRep_TheCSFunctionOfInterCSurf::Root()`
     pub fn root(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_root(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_root(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:56 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarSurface()`
     pub unsafe fn auxillar_surface(&self) -> &*mut std::ffi::c_void {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_auxillar_surface(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_auxillar_surface(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:58 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarCurve()`
     pub fn auxillar_curve(&self) -> &crate::gp::Lin {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_auxillar_curve(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_auxillar_curve(
+                self as *const Self,
+            )))
         }
     }
 
@@ -13185,68 +8911,53 @@ impl TheCSFunctionOfInterCSurf {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_inherited_GetStateNumber(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_inherited_GetStateNumber(
+                self as *mut Self,
+            )
+        })
     }
 }
 
@@ -13267,13 +8978,10 @@ impl TheCurveLocatorOfTheProjPCurOfCInter {
     /// **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx` - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_ctor(),
+            ))
         }
     }
 
@@ -13287,14 +8995,9 @@ impl TheCurveLocatorOfTheProjPCurOfCInter {
         NbU: i32,
         Papp: &mut crate::extrema::POnCurv2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_poncurv2d(P, C, NbU, Papp)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_poncurv2d(P, C, NbU, Papp)
+        })
     }
 
     /// **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:46 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate()`
@@ -13310,14 +9013,9 @@ impl TheCurveLocatorOfTheProjPCurOfCInter {
         Usup: f64,
         Papp: &mut crate::extrema::POnCurv2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_real2_poncurv2d(P, C, NbU, Umin, Usup, Papp)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_real2_poncurv2d(P, C, NbU, Umin, Usup, Papp)
+        })
     }
 
     /// **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:57 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate()`
@@ -13333,14 +9031,11 @@ impl TheCurveLocatorOfTheProjPCurOfCInter {
         Papp1: &mut crate::extrema::POnCurv2d,
         Papp2: &mut crate::extrema::POnCurv2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_address2_int2_poncurv2d2(C1, C2, NbU, NbV, Papp1, Papp2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_address2_int2_poncurv2d2(
+                C1, C2, NbU, NbV, Papp1, Papp2,
+            )
+        })
     }
 }
 
@@ -13363,51 +9058,33 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
         curve1: &*mut std::ffi::c_void,
         curve2: &*mut std::ffi::c_void,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_ctor_address2(
                     curve1, curve2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:41 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::NbVariables()`
     /// returns 2.
     pub fn nb_variables(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_nb_variables(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_nb_variables(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:44 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::NbEquations()`
     /// returns 2.
     pub fn nb_equations(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_nb_equations(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_nb_equations(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:50 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Value()`
@@ -13416,20 +9093,13 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
     /// returns True if the computation was done successfully,
     /// False otherwise.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_value(
-                    self as *mut Self,
-                    X,
-                    F,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_value(
+                self as *mut Self,
+                X,
+                F,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:56 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Derivatives()`
@@ -13442,20 +9112,13 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_derivatives(
-                    self as *mut Self,
-                    X,
-                    D,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:62 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Values()`
@@ -13469,83 +9132,53 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_values(
-                    self as *mut Self,
-                    X,
-                    F,
-                    D,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
+        })
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSetWithDerivatives(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -13575,8 +9208,8 @@ impl TheExactInterCSurf {
         TolTangency: f64,
         MarginCoef: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_TheExactInterCSurf_ctor_real3_thecsfunctionofintercsurf_real2(
                     U,
                     V,
@@ -13584,12 +9217,8 @@ impl TheExactInterCSurf {
                     F,
                     TolTangency,
                     MarginCoef,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -13599,17 +9228,13 @@ impl TheExactInterCSurf {
         F: &TheCSFunctionOfInterCSurf,
         TolTangency: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_TheExactInterCSurf_ctor_thecsfunctionofintercsurf_real(
                     F,
                     TolTangency,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -13663,53 +9288,36 @@ impl TheExactInterCSurf {
         w0: f64,
         w1: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheExactInterCSurf_perform(
-                    self as *mut Self,
-                    U,
-                    V,
-                    W,
-                    Rsnld,
-                    u0,
-                    v0,
-                    u1,
-                    v1,
-                    w0,
-                    w1,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheExactInterCSurf_perform(
+                self as *mut Self,
+                U,
+                V,
+                W,
+                Rsnld,
+                u0,
+                v0,
+                u1,
+                v1,
+                w0,
+                w1,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheExactInterCSurf.hxx`:88 - `HLRBRep_TheExactInterCSurf::IsDone()`
     /// Returns TRUE if the creation completed without failure.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_TheExactInterCSurf_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheExactInterCSurf_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_TheExactInterCSurf.hxx`:90 - `HLRBRep_TheExactInterCSurf::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_TheExactInterCSurf_is_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheExactInterCSurf_is_empty(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_TheExactInterCSurf.hxx`:95 - `HLRBRep_TheExactInterCSurf::Point()`
@@ -13717,59 +9325,35 @@ impl TheExactInterCSurf {
     /// The exception NotDone is raised if IsDone is false.
     /// The exception DomainError is raised if IsEmpty is true.
     pub fn point(&self) -> &crate::gp::Pnt {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_TheExactInterCSurf_point(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_TheExactInterCSurf_point(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_TheExactInterCSurf.hxx`:97 - `HLRBRep_TheExactInterCSurf::ParameterOnCurve()`
     pub fn parameter_on_curve(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheExactInterCSurf_parameter_on_curve(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheExactInterCSurf_parameter_on_curve(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_TheExactInterCSurf.hxx`:99 - `HLRBRep_TheExactInterCSurf::ParameterOnSurface()`
     pub fn parameter_on_surface(&self, U: &mut f64, V: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheExactInterCSurf_parameter_on_surface(
-                    self as *const Self,
-                    U,
-                    V,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheExactInterCSurf_parameter_on_surface(self as *const Self, U, V)
+        })
     }
 
     /// **Source:** `HLRBRep_TheExactInterCSurf.hxx`:103 - `HLRBRep_TheExactInterCSurf::Function()`
     /// return the math function which
     /// is used to compute the intersection
     pub fn function(&mut self) -> &mut TheCSFunctionOfInterCSurf {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_TheExactInterCSurf_function(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRBRep_TheExactInterCSurf_function(
+                self as *mut Self,
+            )))
         }
     }
 }
@@ -13791,12 +9375,10 @@ impl TheIntConicCurveOfCInter {
     /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:42 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor(),
+            ))
         }
     }
 
@@ -13810,16 +9392,12 @@ impl TheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(
                     L, D1, PCurve, D2, TolConf, Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -13833,16 +9411,8 @@ impl TheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(
-                    C, D1, PCurve, D2, TolConf, Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(C, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -13856,14 +9426,8 @@ impl TheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(E, D1, PCurve, D2, TolConf, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(E, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -13877,14 +9441,8 @@ impl TheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(Prb, D1, PCurve, D2, TolConf, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(Prb, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -13899,16 +9457,8 @@ impl TheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(
-                    H, D1, PCurve, D2, TolConf, Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(H, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -13923,14 +9473,17 @@ impl TheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(self as *mut Self, L, D1, PCurve, D2, TolConf, Tol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(
+                self as *mut Self,
+                L,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:94 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
@@ -13944,14 +9497,17 @@ impl TheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(self as *mut Self, C, D1, PCurve, D2, TolConf, Tol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(
+                self as *mut Self,
+                C,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:102 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
@@ -13965,14 +9521,17 @@ impl TheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(self as *mut Self, E, D1, PCurve, D2, TolConf, Tol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(
+                self as *mut Self,
+                E,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:110 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
@@ -13986,14 +9545,17 @@ impl TheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(self as *mut Self, Prb, D1, PCurve, D2, TolConf, Tol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(
+                self as *mut Self,
+                Prb,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:119 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
@@ -14008,144 +9570,97 @@ impl TheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(self as *mut Self, H, D1, PCurve, D2, TolConf, Tol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(
+                self as *mut Self,
+                H,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_as_IntRes2d_Intersection(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_as_IntRes2d_Intersection(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_IsEmpty(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_IsEmpty(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_NbPoints(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_NbPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_Point(self as *const Self, N)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_Point(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_NbSegments(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_NbSegments(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_Segment(
-                    self as *const Self,
-                    N,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_Segment(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_SetReversedParameters(
-                    self as *mut Self,
-                    Reverseflag,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_SetReversedParameters(
+                self as *mut Self,
+                Reverseflag,
+            )
+        })
     }
 }
 
@@ -14165,12 +9680,10 @@ unsafe impl crate::CppDeletable for TheIntPCurvePCurveOfCInter {
 impl TheIntPCurvePCurveOfCInter {
     /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:38 - `HLRBRep_TheIntPCurvePCurveOfCInter::HLRBRep_TheIntPCurvePCurveOfCInter()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_ctor(),
+            ))
         }
     }
 
@@ -14184,14 +9697,9 @@ impl TheIntPCurvePCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_address_domain_real2(self as *mut Self, Curve1, Domain1, Curve2, Domain2, TolConf, Tol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_address_domain_real2(self as *mut Self, Curve1, Domain1, Curve2, Domain2, TolConf, Tol)
+        })
     }
 
     /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:47 - `HLRBRep_TheIntPCurvePCurveOfCInter::Perform()`
@@ -14202,189 +9710,115 @@ impl TheIntPCurvePCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_real2(
-                    self as *mut Self,
-                    Curve1,
-                    Domain1,
-                    TolConf,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_real2(
+                self as *mut Self,
+                Curve1,
+                Domain1,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:53 - `HLRBRep_TheIntPCurvePCurveOfCInter::SetMinNbSamples()`
     /// Set / get minimum number of points in polygon for intersection.
     pub fn set_min_nb_samples(&mut self, theMinNbSamples: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_set_min_nb_samples(
-                    self as *mut Self,
-                    theMinNbSamples,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_set_min_nb_samples(
+                self as *mut Self,
+                theMinNbSamples,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:54 - `HLRBRep_TheIntPCurvePCurveOfCInter::GetMinNbSamples()`
     pub fn get_min_nb_samples(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_get_min_nb_samples(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_get_min_nb_samples(self as *const Self)
+        })
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_as_IntRes2d_Intersection(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_as_IntRes2d_Intersection(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_as_IntRes2d_Intersection_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_as_IntRes2d_Intersection_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_IsEmpty(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_IsEmpty(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_NbPoints(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_NbPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_Point(
-                    self as *const Self,
-                    N,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_Point(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_NbSegments(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_NbSegments(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_Segment(
                     self as *const Self,
                     N,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_SetReversedParameters(
-                    self as *mut Self,
-                    Reverseflag,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_SetReversedParameters(
+                self as *mut Self,
+                Reverseflag,
+            )
+        })
     }
 }
 
@@ -14406,12 +9840,10 @@ impl TheInterferenceOfInterCSurf {
     /// Constructs  an  empty   interference  between Polygon   and
     /// Polyhedron.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor(),
+            ))
         }
     }
 
@@ -14422,14 +9854,8 @@ impl TheInterferenceOfInterCSurf {
         thePolyg: &ThePolygonOfInterCSurf,
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_thepolygonofintercsurf_thepolyhedronofintercsurf(thePolyg, thePolyh)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_thepolygonofintercsurf_thepolyhedronofintercsurf(thePolyg, thePolyh)))
         }
     }
 
@@ -14440,16 +9866,12 @@ impl TheInterferenceOfInterCSurf {
         theLin: &crate::gp::Lin,
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_lin_thepolyhedronofintercsurf(
                     theLin, thePolyh,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -14460,14 +9882,8 @@ impl TheInterferenceOfInterCSurf {
         theLins: &crate::ffi::Intf_Array1OfLin,
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf(theLins, thePolyh)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf(theLins, thePolyh)))
         }
     }
 
@@ -14479,14 +9895,8 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(thePolyg, thePolyh, theBoundSB)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(thePolyg, thePolyh, theBoundSB)))
         }
     }
 
@@ -14498,14 +9908,8 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_lin_thepolyhedronofintercsurf_boundsortbox(theLin, thePolyh, theBoundSB)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_lin_thepolyhedronofintercsurf_boundsortbox(theLin, thePolyh, theBoundSB)))
         }
     }
 
@@ -14517,14 +9921,8 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf_boundsortbox(theLins, thePolyh, theBoundSB)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf_boundsortbox(theLins, thePolyh, theBoundSB)))
         }
     }
 
@@ -14536,14 +9934,9 @@ impl TheInterferenceOfInterCSurf {
         thePolyg: &ThePolygonOfInterCSurf,
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_thepolygonofintercsurf_thepolyhedronofintercsurf(self as *mut Self, thePolyg, thePolyh)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_thepolygonofintercsurf_thepolyhedronofintercsurf(self as *mut Self, thePolyg, thePolyh)
+        })
     }
 
     /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:70 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
@@ -14554,14 +9947,13 @@ impl TheInterferenceOfInterCSurf {
         theLin: &crate::gp::Lin,
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhedronofintercsurf(self as *mut Self, theLin, thePolyh)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhedronofintercsurf(
+                self as *mut Self,
+                theLin,
+                thePolyh,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:75 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
@@ -14572,14 +9964,9 @@ impl TheInterferenceOfInterCSurf {
         theLins: &crate::ffi::Intf_Array1OfLin,
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf(self as *mut Self, theLins, thePolyh)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf(self as *mut Self, theLins, thePolyh)
+        })
     }
 
     /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:101 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
@@ -14591,14 +9978,9 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
+        })
     }
 
     /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:107 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
@@ -14610,14 +9992,9 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, theLin, thePolyh, theBoundSB)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, theLin, thePolyh, theBoundSB)
+        })
     }
 
     /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:113 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
@@ -14629,14 +10006,9 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, theLins, thePolyh, theBoundSB)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, theLins, thePolyh, theBoundSB)
+        })
     }
 
     /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:119 - `HLRBRep_TheInterferenceOfInterCSurf::Interference()`
@@ -14648,14 +10020,9 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_interference_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_interference_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
+        })
     }
 
     /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:125 - `HLRBRep_TheInterferenceOfInterCSurf::Interference()`
@@ -14666,201 +10033,130 @@ impl TheInterferenceOfInterCSurf {
         thePolyg: &ThePolygonOfInterCSurf,
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_interference_thepolygonofintercsurf_thepolyhedronofintercsurf(self as *mut Self, thePolyg, thePolyh)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_interference_thepolygonofintercsurf_thepolyhedronofintercsurf(self as *mut Self, thePolyg, thePolyh)
+        })
     }
 
     /// Upcast to Intf_Interference
     pub fn as_intf_interference(&self) -> &crate::intf::Interference {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_as_Intf_Interference(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_as_Intf_Interference(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Intf_Interference (mutable)
     pub fn as_intf_interference_mut(&mut self) -> &mut crate::intf::Interference {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_as_Intf_Interference_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_as_Intf_Interference_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
     pub fn nb_section_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbSectionPoints(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbSectionPoints(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
     pub fn pnt_value(&self, Index: i32) -> &crate::intf::SectionPoint {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_PntValue(
                     self as *const Self,
                     Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:51 - `Intf_Interference::NbSectionLines()`
     pub fn nb_section_lines(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbSectionLines(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbSectionLines(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
     pub fn line_value(&self, Index: i32) -> &crate::intf::SectionLine {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_LineValue(
                     self as *const Self,
                     Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
     pub fn nb_tangent_zones(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbTangentZones(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbTangentZones(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
     pub fn zone_value(&self, Index: i32) -> &crate::intf::TangentZone {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_ZoneValue(
                     self as *const Self,
                     Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
     pub fn get_tolerance(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_GetTolerance(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_GetTolerance(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
     pub fn contains(&self, ThePnt: &crate::intf::SectionPoint) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_Contains(
-                    self as *const Self,
-                    ThePnt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_Contains(
+                self as *const Self,
+                ThePnt,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
     pub fn insert(&mut self, TheZone: &crate::intf::TangentZone) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_Insert(
-                    self as *mut Self,
-                    TheZone,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_Insert(
+                self as *mut Self,
+                TheZone,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_Dump(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_Dump(self as *const Self)
+        })
     }
 }
 
@@ -14881,13 +10177,10 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
     /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:40 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor(),
+            ))
         }
     }
 
@@ -14905,14 +10198,8 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_domain_address_domain_real2(ITool, Dom1, PCurve, Dom2, TolConf, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_domain_address_domain_real2(ITool, Dom1, PCurve, Dom2, TolConf, Tol)))
         }
     }
 
@@ -14931,22 +10218,17 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_perform(
-                    self as *mut Self,
-                    ITool,
-                    Dom1,
-                    PCurve,
-                    Dom2,
-                    TolConf,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_perform(
+                self as *mut Self,
+                ITool,
+                Dom1,
+                PCurve,
+                Dom2,
+                TolConf,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:66 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindU()`
@@ -14957,22 +10239,15 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
         TheParCurev: &*mut std::ffi::c_void,
         IntCurve_IConicTool: &crate::int_curve::IConicTool,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_u(
-                    self as *const Self,
-                    parameter,
-                    point,
-                    TheParCurev,
-                    IntCurve_IConicTool,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_u(
+                self as *const Self,
+                parameter,
+                point,
+                TheParCurev,
+                IntCurve_IConicTool,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:71 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindV()`
@@ -14987,26 +10262,19 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
         V1: f64,
         Tolerance: f64,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_v(
-                    self as *const Self,
-                    parameter,
-                    point,
-                    IntCurve_IConicTool,
-                    ParCurve,
-                    TheParCurveDomain,
-                    V0,
-                    V1,
-                    Tolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_v(
+                self as *const Self,
+                parameter,
+                point,
+                IntCurve_IConicTool,
+                ParCurve,
+                TheParCurveDomain,
+                V0,
+                V1,
+                Tolerance,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:80 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::And_Domaine_Objet1_Intersections()`
@@ -15023,148 +10291,90 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
         Resultat2: &mut crate::ffi::TColStd_Array1OfReal,
         EpsNul: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_and_domaine_objet1_intersections(self as *const Self, IntCurve_IConicTool, TheParCurve, TheImpCurveDomain, TheParCurveDomain, NbResultats, Inter2_And_Domain2, Inter1, Resultat1, Resultat2, EpsNul)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_and_domaine_objet1_intersections(self as *const Self, IntCurve_IConicTool, TheParCurve, TheImpCurveDomain, TheParCurveDomain, NbResultats, Inter2_And_Domain2, Inter1, Resultat1, Resultat2, EpsNul)
+        })
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_as_IntRes2d_Intersection(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_as_IntRes2d_Intersection(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_IsDone(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_IsDone(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_IsEmpty(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_IsEmpty(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_NbPoints(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_NbPoints(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_Point(
                     self as *const Self,
                     N,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_NbSegments(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_NbSegments(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_Segment(
                     self as *const Self,
                     N,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_SetReversedParameters(self as *mut Self, Reverseflag)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_SetReversedParameters(self as *mut Self, Reverseflag)
+        })
     }
 }
 
@@ -15184,13 +10394,10 @@ unsafe impl crate::CppDeletable for TheLocateExtPCOfTheProjPCurOfCInter {
 impl TheLocateExtPCOfTheProjPCurOfCInter {
     /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:40 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor(),
+            ))
         }
     }
 
@@ -15208,16 +10415,12 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
         U0: f64,
         TolU: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real2(
                     P, C, U0, TolU,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -15238,16 +10441,12 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
         Usup: f64,
         TolU: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real4(
                     P, C, U0, Umin, Usup, TolU,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -15260,20 +10459,15 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
         Usup: f64,
         TolU: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_initialize(
-                    self as *mut Self,
-                    C,
-                    Umin,
-                    Usup,
-                    TolU,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_initialize(
+                self as *mut Self,
+                C,
+                Umin,
+                Usup,
+                TolU,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:78 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::Perform()`
@@ -15281,79 +10475,48 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
     /// An exception is raised if the fields have not
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d, U0: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_perform(
-                    self as *mut Self,
-                    P,
-                    U0,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_perform(
+                self as *mut Self,
+                P,
+                U0,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:81 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_done(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:84 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_square_distance(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_square_distance(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:87 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::IsMin()`
     /// Returns True if the extremum distance is a minimum.
     pub fn is_min(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_min(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_min(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:90 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::Point()`
     /// Returns the point of the extremum distance.
     pub fn point(&self) -> &crate::extrema::POnCurv2d {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_point(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_point(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -15380,14 +10543,8 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
         Domain: &crate::int_res2d::Domain,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_ctor_address_int_domain_real(Curve, NbPnt, Domain, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_ctor_address_int_domain_real(Curve, NbPnt, Domain, Tol)))
         }
     }
 
@@ -15402,93 +10559,57 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
         Curve: &*mut std::ffi::c_void,
         OtherBox: &crate::bnd::Box2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_compute_with_box(
-                    self as *mut Self,
-                    Curve,
-                    OtherBox,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_compute_with_box(
+                self as *mut Self,
+                Curve,
+                OtherBox,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:53 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_deflection_over_estimation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_deflection_over_estimation(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:55 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::SetDeflectionOverEstimation()`
     pub fn set_deflection_over_estimation(&mut self, x: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_set_deflection_over_estimation(self as *mut Self, x)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_set_deflection_over_estimation(self as *mut Self, x)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:57 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Closed()`
     pub fn closed_bool(&mut self, clos: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_closed_bool(
-                    self as *mut Self,
-                    clos,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_closed_bool(
+                self as *mut Self,
+                clos,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:60 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Closed()`
     /// Returns True if the polyline is closed.
     pub fn closed(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_closed(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:63 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::NbSegments()`
     /// Give the number of Segments in the polyline.
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_nb_segments(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_nb_segments(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:66 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Segment()`
@@ -15499,166 +10620,110 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
         theBegin: &mut crate::gp::Pnt2d,
         theEnd: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_segment(
-                    self as *const Self,
-                    theIndex,
-                    theBegin,
-                    theEnd,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_segment(
+                self as *const Self,
+                theIndex,
+                theBegin,
+                theEnd,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:72 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::InfParameter()`
     /// Returns the parameter (On the curve)
     /// of the first point of the Polygon
     pub fn inf_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_inf_parameter(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_inf_parameter(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:76 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::SupParameter()`
     /// Returns the parameter (On the curve)
     /// of the last point of the Polygon
     pub fn sup_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_sup_parameter(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_sup_parameter(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:78 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::AutoIntersectionIsPossible()`
     pub fn auto_intersection_is_possible(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_auto_intersection_is_possible(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_auto_intersection_is_possible(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:82 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::ApproxParamOnCurve()`
     /// Give an approximation of the parameter on the curve
     /// according to the discretization of the Curve.
     pub fn approx_param_on_curve(&self, Index: i32, ParamOnLine: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_approx_param_on_curve(
-                    self as *const Self,
-                    Index,
-                    ParamOnLine,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_approx_param_on_curve(
+                self as *const Self,
+                Index,
+                ParamOnLine,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:85 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::CalculRegion()`
     pub fn calcul_region(&self, x: f64, y: f64, x1: f64, x2: f64, y1: f64, y2: f64) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_calcul_region(
-                    self as *const Self,
-                    x,
-                    y,
-                    x1,
-                    x2,
-                    y1,
-                    y2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_calcul_region(
+                self as *const Self,
+                x,
+                y,
+                x1,
+                x2,
+                y1,
+                y2,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:92 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_dump(
-                    self as *const Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_dump(self as *const Self)
+        })
     }
 
     /// Upcast to Intf_Polygon2d
     pub fn as_intf_polygon2d(&self) -> &crate::intf::Polygon2d {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_as_Intf_Polygon2d(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_as_Intf_Polygon2d(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Intf_Polygon2d (mutable)
     pub fn as_intf_polygon2d_mut(&mut self) -> &mut crate::intf::Polygon2d {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_as_Intf_Polygon2d_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_as_Intf_Polygon2d_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Intf_Polygon2d.hxx`:35 - `Intf_Polygon2d::Bounding()`
     pub fn bounding(&self) -> &crate::bnd::Box2d {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_inherited_Bounding(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 }
@@ -15679,13 +10744,10 @@ unsafe impl crate::CppDeletable for ThePolygonOfInterCSurf {
 impl ThePolygonOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:40 - `HLRBRep_ThePolygonOfInterCSurf::HLRBRep_ThePolygonOfInterCSurf()`
     pub fn new_lin_int(Curve: &crate::gp::Lin, NbPnt: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_int(Curve, NbPnt) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_int(Curve, NbPnt),
+            ))
         }
     }
 
@@ -15696,14 +10758,10 @@ impl ThePolygonOfInterCSurf {
         U2: f64,
         NbPnt: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_real2_int(Curve, U1, U2, NbPnt)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_real2_int(Curve, U1, U2, NbPnt),
+            ))
         }
     }
 
@@ -15712,132 +10770,83 @@ impl ThePolygonOfInterCSurf {
         Curve: &crate::gp::Lin,
         Upars: &crate::ffi::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_array1ofreal(Curve, Upars)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_array1ofreal(Curve, Upars),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:51 - `HLRBRep_ThePolygonOfInterCSurf::Bounding()`
     /// Give the bounding box of the polygon.
     pub fn bounding(&self) -> &crate::bnd::Box {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_ThePolygonOfInterCSurf_bounding(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonOfInterCSurf_bounding(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:53 - `HLRBRep_ThePolygonOfInterCSurf::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_deflection_over_estimation(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_deflection_over_estimation(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:55 - `HLRBRep_ThePolygonOfInterCSurf::SetDeflectionOverEstimation()`
     pub fn set_deflection_over_estimation(&mut self, x: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_set_deflection_over_estimation(
-                    self as *mut Self,
-                    x,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_set_deflection_over_estimation(
+                self as *mut Self,
+                x,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:61 - `HLRBRep_ThePolygonOfInterCSurf::Closed()`
     pub fn closed_bool(&mut self, flag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_closed_bool(self as *mut Self, flag)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_closed_bool(self as *mut Self, flag)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:64 - `HLRBRep_ThePolygonOfInterCSurf::Closed()`
     pub fn closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_ThePolygonOfInterCSurf_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:69 - `HLRBRep_ThePolygonOfInterCSurf::NbSegments()`
     /// Give the number of Segments in the polyline.
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_nb_segments(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_nb_segments(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:72 - `HLRBRep_ThePolygonOfInterCSurf::BeginOfSeg()`
     /// Give the point of range Index in the Polygon.
     pub fn begin_of_seg(&self, theIndex: i32) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_begin_of_seg(
-                    self as *const Self,
-                    theIndex,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonOfInterCSurf_begin_of_seg(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:75 - `HLRBRep_ThePolygonOfInterCSurf::EndOfSeg()`
     /// Give the point of range Index in the Polygon.
     pub fn end_of_seg(&self, theIndex: i32) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_end_of_seg(self as *const Self, theIndex)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonOfInterCSurf_end_of_seg(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
@@ -15845,63 +10854,38 @@ impl ThePolygonOfInterCSurf {
     /// Returns the parameter (On the curve)
     /// of the first point of the Polygon
     pub fn inf_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_inf_parameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_inf_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:83 - `HLRBRep_ThePolygonOfInterCSurf::SupParameter()`
     /// Returns the parameter (On the curve)
     /// of the last point of the Polygon
     pub fn sup_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_sup_parameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_sup_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:87 - `HLRBRep_ThePolygonOfInterCSurf::ApproxParamOnCurve()`
     /// Give an approximation of the parameter on the curve
     /// according to the discretization of the Curve.
     pub fn approx_param_on_curve(&self, Index: i32, ParamOnLine: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_approx_param_on_curve(
-                    self as *const Self,
-                    Index,
-                    ParamOnLine,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_approx_param_on_curve(
+                self as *const Self,
+                Index,
+                ParamOnLine,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:90 - `HLRBRep_ThePolygonOfInterCSurf::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_ThePolygonOfInterCSurf_dump(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_dump(self as *const Self)
+        })
     }
 }
 
@@ -15922,69 +10906,42 @@ impl ThePolygonToolOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx` - `HLRBRep_ThePolygonToolOfInterCSurf::HLRBRep_ThePolygonToolOfInterCSurf()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:37 - `HLRBRep_ThePolygonToolOfInterCSurf::Bounding()`
     /// Give the bounding box of the polygon.
     pub fn bounding(thePolygon: &ThePolygonOfInterCSurf) -> &'static crate::bnd::Box {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_bounding(thePolygon) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_bounding(
+                thePolygon,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:39 - `HLRBRep_ThePolygonToolOfInterCSurf::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(thePolygon: &ThePolygonOfInterCSurf) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_deflection_over_estimation(
-                    thePolygon,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_deflection_over_estimation(thePolygon)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:41 - `HLRBRep_ThePolygonToolOfInterCSurf::Closed()`
     pub fn closed(thePolygon: &ThePolygonOfInterCSurf) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_closed(thePolygon) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_closed(thePolygon)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:43 - `HLRBRep_ThePolygonToolOfInterCSurf::NbSegments()`
     pub fn nb_segments(thePolygon: &ThePolygonOfInterCSurf) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_nb_segments(thePolygon) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_nb_segments(thePolygon)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:46 - `HLRBRep_ThePolygonToolOfInterCSurf::BeginOfSeg()`
@@ -15993,41 +10950,28 @@ impl ThePolygonToolOfInterCSurf {
         thePolygon: &ThePolygonOfInterCSurf,
         Index: i32,
     ) -> &'static crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_begin_of_seg(thePolygon, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_begin_of_seg(
+                thePolygon, Index,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:50 - `HLRBRep_ThePolygonToolOfInterCSurf::EndOfSeg()`
     /// Give the point of range Index in the Polygon.
     pub fn end_of_seg(thePolygon: &ThePolygonOfInterCSurf, Index: i32) -> &'static crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_end_of_seg(thePolygon, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_end_of_seg(
+                thePolygon, Index,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:53 - `HLRBRep_ThePolygonToolOfInterCSurf::Dump()`
     pub fn dump(thePolygon: &ThePolygonOfInterCSurf) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_dump(thePolygon) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_dump(thePolygon)
+        })
     }
 }
 
@@ -16055,16 +10999,12 @@ impl ThePolyhedronOfInterCSurf {
         U2: f64,
         V2: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_int2_real4(
                     Surface, nbdU, nbdV, U1, V1, U2, V2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -16074,43 +11014,30 @@ impl ThePolyhedronOfInterCSurf {
         Upars: &crate::ffi::TColStd_Array1OfReal,
         Vpars: &crate::ffi::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_array1ofreal2(
                     Surface, Upars, Vpars,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:51 - `HLRBRep_ThePolyhedronOfInterCSurf::Destroy()`
     pub fn destroy(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_destroy(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_destroy(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:55 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOverEstimation()`
     pub fn deflection_over_estimation_real(&mut self, flec: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation_real(
-                    self as *mut Self,
-                    flec,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation_real(
+                self as *mut Self,
+                flec,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:57 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOnTriangle()`
@@ -16119,128 +11046,72 @@ impl ThePolyhedronOfInterCSurf {
         Surface: &*mut std::ffi::c_void,
         Index: i32,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_deflection_on_triangle(
-                    self as *const Self,
-                    Surface,
-                    Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_deflection_on_triangle(
+                self as *const Self,
+                Surface,
+                Index,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:60 - `HLRBRep_ThePolyhedronOfInterCSurf::UMinSingularity()`
     pub fn u_min_singularity(&mut self, Sing: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_u_min_singularity(
-                    self as *mut Self,
-                    Sing,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_u_min_singularity(self as *mut Self, Sing)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:62 - `HLRBRep_ThePolyhedronOfInterCSurf::UMaxSingularity()`
     pub fn u_max_singularity(&mut self, Sing: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_u_max_singularity(
-                    self as *mut Self,
-                    Sing,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_u_max_singularity(self as *mut Self, Sing)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:64 - `HLRBRep_ThePolyhedronOfInterCSurf::VMinSingularity()`
     pub fn v_min_singularity(&mut self, Sing: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_v_min_singularity(
-                    self as *mut Self,
-                    Sing,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_v_min_singularity(self as *mut Self, Sing)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:66 - `HLRBRep_ThePolyhedronOfInterCSurf::VMaxSingularity()`
     pub fn v_max_singularity(&mut self, Sing: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_v_max_singularity(
-                    self as *mut Self,
-                    Sing,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_v_max_singularity(self as *mut Self, Sing)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:69 - `HLRBRep_ThePolyhedronOfInterCSurf::Size()`
     /// get the size of the discretization.
     pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_size(self as *const Self, nbdu, nbdv)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_size(self as *const Self, nbdu, nbdv)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:72 - `HLRBRep_ThePolyhedronOfInterCSurf::NbTriangles()`
     /// Give the number of triangles in this double array of
     pub fn nb_triangles(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_nb_triangles(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_nb_triangles(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:76 - `HLRBRep_ThePolyhedronOfInterCSurf::Triangle()`
     /// Give the 3 points of the triangle of address Index in
     /// the double array of triangles.
     pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_triangle(
-                    self as *const Self,
-                    Index,
-                    P1,
-                    P2,
-                    P3,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_triangle(
+                self as *const Self,
+                Index,
+                P1,
+                P2,
+                P3,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:87 - `HLRBRep_ThePolyhedronOfInterCSurf::TriConnex()`
@@ -16258,39 +11129,25 @@ impl ThePolyhedronOfInterCSurf {
         TriCon: &mut i32,
         OtherP: &mut i32,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_tri_connex(
-                    self as *const Self,
-                    Triang,
-                    Pivot,
-                    Pedge,
-                    TriCon,
-                    OtherP,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_tri_connex(
+                self as *const Self,
+                Triang,
+                Pivot,
+                Pedge,
+                TriCon,
+                OtherP,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:95 - `HLRBRep_ThePolyhedronOfInterCSurf::NbPoints()`
     /// Give the number of point in the double array of
     /// triangles ((nbdu+1)*(nbdv+1)).
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_nb_points(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:99 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
@@ -16304,21 +11161,16 @@ impl ThePolyhedronOfInterCSurf {
         U: f64,
         V: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_pnt_int2_real2(
-                    self as *mut Self,
-                    thePnt,
-                    lig,
-                    col,
-                    U,
-                    V,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_pnt_int2_real2(
+                self as *mut Self,
+                thePnt,
+                lig,
+                col,
+                U,
+                V,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:106 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
@@ -16330,67 +11182,46 @@ impl ThePolyhedronOfInterCSurf {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_int_real2(
-                    self as *const Self,
-                    Index,
-                    U,
-                    V,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_int_real2(
+                self as *const Self,
+                Index,
+                U,
+                V,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:111 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
     /// Give the point of index i in the MaTriangle.
     pub fn point_int(&self, Index: i32) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_int(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_int(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:114 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
     /// Give the point of index i in the MaTriangle.
     pub fn point_int_pnt(&self, Index: i32, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_int_pnt(
-                    self as *const Self,
-                    Index,
-                    P,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_int_pnt(
+                self as *const Self,
+                Index,
+                P,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:117 - `HLRBRep_ThePolyhedronOfInterCSurf::Bounding()`
     /// Give the bounding box of the MaTriangle.
     pub fn bounding(&self) -> &crate::bnd::Box {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_bounding(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_bounding(
+                self as *const Self,
+            )))
         }
     }
 
@@ -16398,112 +11229,59 @@ impl ThePolyhedronOfInterCSurf {
     /// Compute the array of boxes. The box <n> corresponding
     /// to the triangle <n>.
     pub fn fill_bounding(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_fill_bounding(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_fill_bounding(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:125 - `HLRBRep_ThePolyhedronOfInterCSurf::ComponentsBounding()`
     /// Give the array of boxes. The box <n> corresponding
     /// to the triangle <n>.
     pub fn components_bounding(&self) -> &crate::ffi::HandleBndHArray1OfBox {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_components_bounding(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:127 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:129 - `HLRBRep_ThePolyhedronOfInterCSurf::HasUMinSingularity()`
     pub fn has_u_min_singularity(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_u_min_singularity(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_u_min_singularity(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:131 - `HLRBRep_ThePolyhedronOfInterCSurf::HasUMaxSingularity()`
     pub fn has_u_max_singularity(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_u_max_singularity(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_u_max_singularity(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:133 - `HLRBRep_ThePolyhedronOfInterCSurf::HasVMinSingularity()`
     pub fn has_v_min_singularity(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_v_min_singularity(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_v_min_singularity(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:135 - `HLRBRep_ThePolyhedronOfInterCSurf::HasVMaxSingularity()`
     pub fn has_v_max_singularity(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_v_max_singularity(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_v_max_singularity(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:138 - `HLRBRep_ThePolyhedronOfInterCSurf::PlaneEquation()`
@@ -16514,55 +11292,38 @@ impl ThePolyhedronOfInterCSurf {
         NormalVector: &mut crate::gp::XYZ,
         PolarDistance: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_plane_equation(
-                    self as *const Self,
-                    Triang,
-                    NormalVector,
-                    PolarDistance,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_plane_equation(
+                self as *const Self,
+                Triang,
+                NormalVector,
+                PolarDistance,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:143 - `HLRBRep_ThePolyhedronOfInterCSurf::Contain()`
     /// Give the plane equation of the triangle of address Triang.
     pub fn contain(&self, Triang: i32, ThePnt: &crate::gp::Pnt) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_contain(
-                    self as *const Self,
-                    Triang,
-                    ThePnt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_contain(
+                self as *const Self,
+                Triang,
+                ThePnt,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:146 - `HLRBRep_ThePolyhedronOfInterCSurf::Parameters()`
     pub fn parameters(&self, Index: i32, U: &mut f64, V: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_parameters(
-                    self as *const Self,
-                    Index,
-                    U,
-                    V,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_parameters(
+                self as *const Self,
+                Index,
+                U,
+                V,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:154 - `HLRBRep_ThePolyhedronOfInterCSurf::IsOnBound()`
@@ -16571,48 +11332,28 @@ impl ThePolyhedronOfInterCSurf {
     /// necessary to take into account the boundary deflection for
     /// this edge.
     pub fn is_on_bound(&self, Index1: i32, Index2: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_is_on_bound(
-                    self as *const Self,
-                    Index1,
-                    Index2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_is_on_bound(
+                self as *const Self,
+                Index1,
+                Index2,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:158 - `HLRBRep_ThePolyhedronOfInterCSurf::GetBorderDeflection()`
     /// This method returns a border deflection.
     pub fn get_border_deflection(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_get_border_deflection(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_get_border_deflection(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:160 - `HLRBRep_ThePolyhedronOfInterCSurf::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_dump(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_dump(self as *const Self)
+        })
     }
 }
 
@@ -16633,26 +11374,20 @@ impl ThePolyhedronToolOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx` - `HLRBRep_ThePolyhedronToolOfInterCSurf::HLRBRep_ThePolyhedronToolOfInterCSurf()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:39 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Bounding()`
     /// Give the bounding box of the PolyhedronTool.
     pub fn bounding(thePolyh: &ThePolyhedronOfInterCSurf) -> &'static crate::bnd::Box {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_bounding(thePolyh) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_bounding(
+                thePolyh,
+            )))
         }
     }
 
@@ -16662,47 +11397,27 @@ impl ThePolyhedronToolOfInterCSurf {
     pub fn components_bounding(
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) -> &'static crate::ffi::HandleBndHArray1OfBox {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_components_bounding(thePolyh)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_components_bounding(thePolyh),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:47 - `HLRBRep_ThePolyhedronToolOfInterCSurf::DeflectionOverEstimation()`
     /// Give the tolerance of the polygon.
     pub fn deflection_over_estimation(thePolyh: &ThePolyhedronOfInterCSurf) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_deflection_over_estimation(
-                    thePolyh,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_deflection_over_estimation(thePolyh)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:50 - `HLRBRep_ThePolyhedronToolOfInterCSurf::NbTriangles()`
     /// Give the number of triangles in this polyhedral surface.
     pub fn nb_triangles(thePolyh: &ThePolyhedronOfInterCSurf) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_nb_triangles(thePolyh) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_nb_triangles(thePolyh)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:54 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Triangle()`
@@ -16715,29 +11430,18 @@ impl ThePolyhedronToolOfInterCSurf {
         P2: &mut i32,
         P3: &mut i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_triangle(
-                    thePolyh, Index, P1, P2, P3,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_triangle(thePolyh, Index, P1, P2, P3)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:61 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Point()`
     /// Give the point of index i in the polyhedral surface.
     pub fn point(thePolyh: &ThePolyhedronOfInterCSurf, Index: i32) -> &'static crate::gp::Pnt {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_point(thePolyh, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_point(
+                thePolyh, Index,
+            )))
         }
     }
 
@@ -16756,18 +11460,11 @@ impl ThePolyhedronToolOfInterCSurf {
         TriCon: &mut i32,
         OtherP: &mut i32,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_tri_connex(
-                    thePolyh, Triang, Pivot, Pedge, TriCon, OtherP,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_tri_connex(
+                thePolyh, Triang, Pivot, Pedge, TriCon, OtherP,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:80 - `HLRBRep_ThePolyhedronToolOfInterCSurf::IsOnBound()`
@@ -16775,43 +11472,24 @@ impl ThePolyhedronToolOfInterCSurf {
     /// indices Index1 and Index2 represents a boundary edge.
     /// It is necessary to take into account the boundary deflection for this edge.
     pub fn is_on_bound(thePolyh: &ThePolyhedronOfInterCSurf, Index1: i32, Index2: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_is_on_bound(
-                    thePolyh, Index1, Index2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_is_on_bound(thePolyh, Index1, Index2)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:85 - `HLRBRep_ThePolyhedronToolOfInterCSurf::GetBorderDeflection()`
     /// This method returns a border deflection of the polyhedron.
     pub fn get_border_deflection(thePolyh: &ThePolyhedronOfInterCSurf) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_get_border_deflection(thePolyh)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_get_border_deflection(thePolyh)
+        })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:87 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Dump()`
     pub fn dump(thePolyh: &ThePolyhedronOfInterCSurf) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_dump(thePolyh) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_dump(thePolyh)
+        })
     }
 }
 
@@ -16832,12 +11510,10 @@ impl TheProjPCurOfCInter {
     /// **Source:** `HLRBRep_TheProjPCurOfCInter.hxx` - `HLRBRep_TheProjPCurOfCInter::HLRBRep_TheProjPCurOfCInter()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_TheProjPCurOfCInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_TheProjPCurOfCInter_ctor(),
+            ))
         }
     }
 
@@ -16858,18 +11534,9 @@ impl TheProjPCurOfCInter {
         Pnt: &crate::gp::Pnt2d,
         Tol: f64,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real(
-                    C, Pnt, Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real(C, Pnt, Tol)
+        })
     }
 
     /// **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:65 - `HLRBRep_TheProjPCurOfCInter::FindParameter()`
@@ -16894,22 +11561,15 @@ impl TheProjPCurOfCInter {
         HighParameter: f64,
         Tol: f64,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real3(
-                    C,
-                    Pnt,
-                    LowParameter,
-                    HighParameter,
-                    Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real3(
+                C,
+                Pnt,
+                LowParameter,
+                HighParameter,
+                Tol,
+            )
+        })
     }
 }
 
@@ -16934,89 +11594,53 @@ impl TheQuadCurvExactInterCSurf {
         S: &*mut std::ffi::c_void,
         C: &crate::gp::Lin,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_ctor_address_lin(S, C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_ctor_address_lin(S, C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:40 - `HLRBRep_TheQuadCurvExactInterCSurf::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_is_done(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:42 - `HLRBRep_TheQuadCurvExactInterCSurf::NbRoots()`
     pub fn nb_roots(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_nb_roots(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_nb_roots(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:44 - `HLRBRep_TheQuadCurvExactInterCSurf::Root()`
     pub fn root(&self, Index: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_root(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_root(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:46 - `HLRBRep_TheQuadCurvExactInterCSurf::NbIntervals()`
     pub fn nb_intervals(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_nb_intervals(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_nb_intervals(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:50 - `HLRBRep_TheQuadCurvExactInterCSurf::Intervals()`
     /// U1 and U2 are the parameters of
     /// a segment on the curve.
     pub fn intervals(&self, Index: i32, U1: &mut f64, U2: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_intervals(
-                    self as *const Self,
-                    Index,
-                    U1,
-                    U2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_intervals(
+                self as *const Self,
+                Index,
+                U1,
+                U2,
+            )
+        })
     }
 }
 
@@ -17040,16 +11664,12 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
         Q: &crate::int_surf::Quadric,
         C: &crate::gp::Lin,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_ctor_quadric_lin(
                     Q, C,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -17059,20 +11679,13 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
     /// Param on the parametrised curve.
     /// Value always returns True.
     pub fn value(&mut self, Param: f64, F: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_value(
-                    self as *mut Self,
-                    Param,
-                    F,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_value(
+                self as *mut Self,
+                Param,
+                F,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx`:51 - `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf::Derivative()`
@@ -17080,105 +11693,70 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
     /// parameter Param.
     /// Derivative always returns True.
     pub fn derivative(&mut self, Param: f64, D: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_derivative(
-                    self as *mut Self,
-                    Param,
-                    D,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_derivative(
+                self as *mut Self,
+                Param,
+                D,
+            )
+        })
     }
 
     /// **Source:** `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx`:56 - `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf::Values()`
     /// Computes the value and the derivative of the function.
     /// returns True.
     pub fn values(&mut self, Param: f64, F: &mut f64, D: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_values(
-                    self as *mut Self,
-                    Param,
-                    F,
-                    D,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_values(
+                self as *mut Self,
+                Param,
+                F,
+                D,
+            )
+        })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_FunctionWithDerivative(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_FunctionWithDerivative(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_FunctionWithDerivative_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result = unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function_mut(
-                self as *mut Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_inherited_GetStateNumber(
+                self as *mut Self,
+            )
+        })
     }
 }
 
@@ -17201,140 +11779,84 @@ impl VertexList {
         T: &EdgeInterferenceTool,
         I: &crate::ffi::HLRAlgo_ListIteratorOfInterferenceList,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRBRep_VertexList_ctor_edgeinterferencetool_listiteratorofinterferencelist(T, I)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_VertexList_ctor_edgeinterferencetool_listiteratorofinterferencelist(T, I)))
         }
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:39 - `HLRBRep_VertexList::IsPeriodic()`
     /// Returns True when the curve is periodic.
     pub fn is_periodic(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_VertexList_is_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_VertexList_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:42 - `HLRBRep_VertexList::More()`
     /// Returns True when there are more vertices.
     pub fn more(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_VertexList_more(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRBRep_VertexList_more(self as *const Self) })
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:45 - `HLRBRep_VertexList::Next()`
     /// Proceeds to the next vertex.
     pub fn next(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRBRep_VertexList_next(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRBRep_VertexList_next(self as *mut Self) })
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:48 - `HLRBRep_VertexList::Current()`
     /// Returns the current vertex
     pub fn current(&self) -> &crate::hlr_algo::Intersection {
-        {
-            let __result = unsafe { crate::ffi::HLRBRep_VertexList_current(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRBRep_VertexList_current(self as *const Self)))
         }
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:51 - `HLRBRep_VertexList::IsBoundary()`
     /// Returns True if the current vertex is on the boundary of the edge.
     pub fn is_boundary(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_VertexList_is_boundary(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_VertexList_is_boundary(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:55 - `HLRBRep_VertexList::IsInterference()`
     /// Returns  True   if   the current    vertex  is  an
     /// interference.
     pub fn is_interference(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_VertexList_is_interference(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRBRep_VertexList_is_interference(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:59 - `HLRBRep_VertexList::Orientation()`
     /// Returns the  orientation of the  current vertex if
     /// it is on the boundary of the edge.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_VertexList_orientation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_VertexList_orientation(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:63 - `HLRBRep_VertexList::Transition()`
     /// Returns  the transition  of the  current vertex if
     /// it is an interference.
     pub fn transition(&self) -> crate::top_abs::Orientation {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_VertexList_transition(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_VertexList_transition(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:67 - `HLRBRep_VertexList::BoundaryTransition()`
     /// Returns  the  transition  of  the  current  vertex
     /// relative to the boundary if it is an interference.
     pub fn boundary_transition(&self) -> crate::top_abs::Orientation {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRBRep_VertexList_boundary_transition(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::HLRBRep_VertexList_boundary_transition(self as *const Self)
+        }))
+        .unwrap()
     }
 }
 

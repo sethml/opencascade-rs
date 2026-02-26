@@ -9,12 +9,9 @@
 /// **Source:** `Geom2dEvaluator.hxx`:36 - `Geom2dEvaluator::CalculateD0`
 /// Recalculate D1 values of base curve into D0 value of offset curve
 pub fn calculate_d0(theValue: &mut crate::gp::Pnt2d, theD1: &crate::gp::Vec2d, theOffset: f64) {
-    {
-        let __exc = unsafe { crate::ffi::Geom2dEvaluator_calculate_d0(theValue, theD1, theOffset) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::Geom2dEvaluator_calculate_d0(theValue, theD1, theOffset)
+    })
 }
 /// **Source:** `Geom2dEvaluator.hxx`:41 - `Geom2dEvaluator::CalculateD1`
 /// Recalculate D2 values of base curve into D1 values of offset curve
@@ -24,13 +21,9 @@ pub fn calculate_d1(
     theD2: &crate::gp::Vec2d,
     theOffset: f64,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::Geom2dEvaluator_calculate_d1(theValue, theD1, theD2, theOffset) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::Geom2dEvaluator_calculate_d1(theValue, theD1, theD2, theOffset)
+    })
 }
 /// **Source:** `Geom2dEvaluator.hxx`:47 - `Geom2dEvaluator::CalculateD2`
 /// Recalculate D3 values of base curve into D2 values of offset curve
@@ -42,21 +35,16 @@ pub fn calculate_d2(
     theIsDirChange: bool,
     theOffset: f64,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::Geom2dEvaluator_calculate_d2(
-                theValue,
-                theD1,
-                theD2,
-                theD3,
-                theIsDirChange,
-                theOffset,
-            )
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::Geom2dEvaluator_calculate_d2(
+            theValue,
+            theD1,
+            theD2,
+            theD3,
+            theIsDirChange,
+            theOffset,
+        )
+    })
 }
 /// **Source:** `Geom2dEvaluator.hxx`:55 - `Geom2dEvaluator::CalculateD3`
 /// Recalculate D3 values of base curve into D3 values of offset curve
@@ -69,22 +57,17 @@ pub fn calculate_d3(
     theIsDirChange: bool,
     theOffset: f64,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::Geom2dEvaluator_calculate_d3(
-                theValue,
-                theD1,
-                theD2,
-                theD3,
-                theD4,
-                theIsDirChange,
-                theOffset,
-            )
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::Geom2dEvaluator_calculate_d3(
+            theValue,
+            theD1,
+            theD2,
+            theD3,
+            theD4,
+            theIsDirChange,
+            theOffset,
+        )
+    })
 }
 /// **Source:** `Geom2dEvaluator.hxx`:65 - `Geom2dEvaluator::AdjustDerivative`
 /// Recalculate derivatives in the singular point
@@ -97,23 +80,16 @@ pub fn adjust_derivative(
     theD3: &mut crate::gp::Vec2d,
     theD4: &mut crate::gp::Vec2d,
 ) -> bool {
-    {
-        let __result = unsafe {
-            crate::ffi::Geom2dEvaluator_adjust_derivative(
-                theMaxDerivative,
-                theU,
-                theD1,
-                theD2,
-                theD3,
-                theD4,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::Geom2dEvaluator_adjust_derivative(
+            theMaxDerivative,
+            theU,
+            theD1,
+            theD2,
+            theD3,
+            theD4,
+        )
+    })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -138,27 +114,17 @@ impl Curve {
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:32 - `Geom2dEvaluator_Curve::D0()`
     /// Value of 2D curve
     pub fn d0(&self, theU: f64, theValue: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_Curve_d0(self as *const Self, theU, theValue)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_d0(self as *const Self, theU, theValue)
+        })
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:34 - `Geom2dEvaluator_Curve::D1()`
     /// Value and first derivatives of curve
     pub fn d1(&self, theU: f64, theValue: &mut crate::gp::Pnt2d, theD1: &mut crate::gp::Vec2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_Curve_d1(self as *const Self, theU, theValue, theD1)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_d1(self as *const Self, theU, theValue, theD1)
+        })
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:36 - `Geom2dEvaluator_Curve::D2()`
@@ -170,20 +136,9 @@ impl Curve {
         theD1: &mut crate::gp::Vec2d,
         theD2: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_Curve_d2(
-                    self as *const Self,
-                    theU,
-                    theValue,
-                    theD1,
-                    theD2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_d2(self as *const Self, theU, theValue, theD1, theD2)
+        })
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:41 - `Geom2dEvaluator_Curve::D3()`
@@ -196,145 +151,102 @@ impl Curve {
         theD2: &mut crate::gp::Vec2d,
         theD3: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_Curve_d3(
-                    self as *const Self,
-                    theU,
-                    theValue,
-                    theD1,
-                    theD2,
-                    theD3,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_d3(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+                theD2,
+                theD3,
+            )
+        })
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:47 - `Geom2dEvaluator_Curve::DN()`
     /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
     pub fn dn(&self, theU: f64, theDerU: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dEvaluator_Curve_dn(self as *const Self, theU, theDerU) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dEvaluator_Curve_dn(
+                self as *const Self,
+                theU,
+                theDerU,
+            )))
         }
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:49 - `Geom2dEvaluator_Curve::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dEvaluator_Curve_shallow_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dEvaluator_Curve_shallow_copy(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:51 - `Geom2dEvaluator_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dEvaluator_Curve_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Geom2dEvaluator_Curve_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:51 - `Geom2dEvaluator_Curve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Geom2dEvaluator_Curve_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Geom2dEvaluator_Curve_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:51 - `Geom2dEvaluator_Curve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Geom2dEvaluator_Curve_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Geom2dEvaluator_Curve_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Geom2dEvaluator_Curve_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dEvaluator_Curve_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Geom2dEvaluator_Curve_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Geom2dEvaluator_Curve_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dEvaluator_Curve_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dEvaluator_Curve_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Geom2dEvaluator_Curve_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Geom2dEvaluator_Curve_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -345,53 +257,30 @@ impl Curve {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dEvaluator_Curve_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_Curve_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dEvaluator_Curve_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Geom2dEvaluator_Curve_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -406,31 +295,29 @@ unsafe impl crate::CppDeletable for HandleGeom2dEvaluatorCurve {
 impl HandleGeom2dEvaluatorCurve {
     /// Dereference this Handle to access the underlying Geom2dEvaluator_Curve
     pub fn get(&self) -> &crate::ffi::Geom2dEvaluator_Curve {
-        let __result = unsafe { crate::ffi::HandleGeom2dEvaluatorCurve_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleGeom2dEvaluatorCurve_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2dEvaluator_Curve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2dEvaluator_Curve {
-        let __result = unsafe { crate::ffi::HandleGeom2dEvaluatorCurve_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleGeom2dEvaluatorCurve_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2dEvaluator_Curve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleGeom2dEvaluatorCurve_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleGeom2dEvaluatorCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Geom2dEvaluator_Curve> to Handle<Geom2dEvaluator_OffsetCurve>
@@ -439,18 +326,15 @@ impl HandleGeom2dEvaluatorCurve {
     pub fn downcast_to_offset_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorOffsetCurve>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleGeom2dEvaluatorCurve_downcast_to_HandleGeom2dEvaluatorOffsetCurve(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -476,16 +360,12 @@ impl OffsetCurve {
         theBase: &crate::ffi::HandleGeom2dCurve,
         theOffset: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dcurve_real(
                     theBase, theOffset,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -495,64 +375,37 @@ impl OffsetCurve {
         theBase: &crate::ffi::HandleGeom2dAdaptorCurve,
         theOffset: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dadaptorcurve_real(
                     theBase, theOffset,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:33 - `Geom2dEvaluator_OffsetCurve::SetOffsetValue()`
     /// Change the offset value
     pub fn set_offset_value(&mut self, theOffset: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_set_offset_value(
-                    self as *mut Self,
-                    theOffset,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_set_offset_value(self as *mut Self, theOffset)
+        })
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:36 - `Geom2dEvaluator_OffsetCurve::D0()`
     /// Value of curve
     pub fn d0(&self, theU: f64, theValue: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_d0(self as *const Self, theU, theValue)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_d0(self as *const Self, theU, theValue)
+        })
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:38 - `Geom2dEvaluator_OffsetCurve::D1()`
     /// Value and first derivatives of curve
     pub fn d1(&self, theU: f64, theValue: &mut crate::gp::Pnt2d, theD1: &mut crate::gp::Vec2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_d1(
-                    self as *const Self,
-                    theU,
-                    theValue,
-                    theD1,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_d1(self as *const Self, theU, theValue, theD1)
+        })
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:42 - `Geom2dEvaluator_OffsetCurve::D2()`
@@ -564,20 +417,15 @@ impl OffsetCurve {
         theD1: &mut crate::gp::Vec2d,
         theD2: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_d2(
-                    self as *const Self,
-                    theU,
-                    theValue,
-                    theD1,
-                    theD2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_d2(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+                theD2,
+            )
+        })
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:47 - `Geom2dEvaluator_OffsetCurve::D3()`
@@ -590,189 +438,138 @@ impl OffsetCurve {
         theD2: &mut crate::gp::Vec2d,
         theD3: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_d3(
-                    self as *const Self,
-                    theU,
-                    theValue,
-                    theD1,
-                    theD2,
-                    theD3,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_d3(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+                theD2,
+                theD3,
+            )
+        })
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:53 - `Geom2dEvaluator_OffsetCurve::DN()`
     /// Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1
     pub fn dn(&self, theU: f64, theDeriv: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_dn(self as *const Self, theU, theDeriv)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dEvaluator_OffsetCurve_dn(self as *const Self, theU, theDeriv),
+            ))
         }
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:56 - `Geom2dEvaluator_OffsetCurve::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_shallow_copy(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dEvaluator_OffsetCurve_shallow_copy(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:58 - `Geom2dEvaluator_OffsetCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Geom2dEvaluator_OffsetCurve_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:58 - `Geom2dEvaluator_OffsetCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:58 - `Geom2dEvaluator_OffsetCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_descriptor()))
         }
     }
 
     /// Upcast to Geom2dEvaluator_Curve
     pub fn as_curve(&self) -> &Curve {
-        let __result = unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2dEvaluator_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        let __result = unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dEvaluator_OffsetCurve_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Geom2dEvaluator_OffsetCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorOffsetCurve> {
-        let __result = unsafe { crate::ffi::Geom2dEvaluator_OffsetCurve_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dEvaluator_OffsetCurve_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -783,58 +580,30 @@ impl OffsetCurve {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -849,47 +618,41 @@ unsafe impl crate::CppDeletable for HandleGeom2dEvaluatorOffsetCurve {
 impl HandleGeom2dEvaluatorOffsetCurve {
     /// Dereference this Handle to access the underlying Geom2dEvaluator_OffsetCurve
     pub fn get(&self) -> &crate::ffi::Geom2dEvaluator_OffsetCurve {
-        let __result =
-            unsafe { crate::ffi::HandleGeom2dEvaluatorOffsetCurve_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleGeom2dEvaluatorOffsetCurve_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2dEvaluator_OffsetCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2dEvaluator_OffsetCurve {
-        let __result =
-            unsafe { crate::ffi::HandleGeom2dEvaluatorOffsetCurve_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleGeom2dEvaluatorOffsetCurve_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2dEvaluator_OffsetCurve> to Handle<Geom2dEvaluator_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
-        let __result = unsafe {
-            crate::ffi::HandleGeom2dEvaluatorOffsetCurve_to_HandleGeom2dEvaluatorCurve(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleGeom2dEvaluatorOffsetCurve_to_HandleGeom2dEvaluatorCurve(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2dEvaluator_OffsetCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleGeom2dEvaluatorOffsetCurve_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleGeom2dEvaluatorOffsetCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

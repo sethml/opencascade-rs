@@ -41,12 +41,10 @@ impl CurveTransition {
     /// **Source:** `TopTrans_CurveTransition.hxx`:51 - `TopTrans_CurveTransition::TopTrans_CurveTransition()`
     /// Create an empty  Curve Transition.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopTrans_CurveTransition_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopTrans_CurveTransition_ctor(),
+            ))
         }
     }
 
@@ -54,31 +52,17 @@ impl CurveTransition {
     /// Initialize a Transition with the local description
     /// of a Curve.
     pub fn reset_dir2_real(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir, Curv: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopTrans_CurveTransition_reset_dir2_real(
-                    self as *mut Self,
-                    Tgt,
-                    Norm,
-                    Curv,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopTrans_CurveTransition_reset_dir2_real(self as *mut Self, Tgt, Norm, Curv)
+        })
     }
 
     /// **Source:** `TopTrans_CurveTransition.hxx`:58 - `TopTrans_CurveTransition::Reset()`
     /// Initialize a Transition with the local description of a straight line.
     pub fn reset_dir(&mut self, Tgt: &crate::gp::Dir) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TopTrans_CurveTransition_reset_dir(self as *mut Self, Tgt) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopTrans_CurveTransition_reset_dir(self as *mut Self, Tgt)
+        })
     }
 
     /// **Source:** `TopTrans_CurveTransition.hxx`:65 - `TopTrans_CurveTransition::Compare()`
@@ -96,22 +80,17 @@ impl CurveTransition {
         S: crate::top_abs::Orientation,
         Or: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopTrans_CurveTransition_compare(
-                    self as *mut Self,
-                    Tole,
-                    Tang,
-                    Norm,
-                    Curv,
-                    S.into(),
-                    Or.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopTrans_CurveTransition_compare(
+                self as *mut Self,
+                Tole,
+                Tang,
+                Norm,
+                Curv,
+                S.into(),
+                Or.into(),
+            )
+        })
     }
 
     /// **Source:** `TopTrans_CurveTransition.hxx`:76 - `TopTrans_CurveTransition::StateBefore()`
@@ -120,15 +99,10 @@ impl CurveTransition {
     /// boundary of a point very close to the intersection
     /// on the negative side of the tangent.
     pub fn state_before(&self) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::TopTrans_CurveTransition_state_before(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::TopTrans_CurveTransition_state_before(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TopTrans_CurveTransition.hxx`:82 - `TopTrans_CurveTransition::StateAfter()`
@@ -137,15 +111,10 @@ impl CurveTransition {
     /// boundary of a point very close to the intersection
     /// on the positive side of the tangent.
     pub fn state_after(&self) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::TopTrans_CurveTransition_state_after(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::TopTrans_CurveTransition_state_after(self as *const Self)
+        }))
+        .unwrap()
     }
 }
 
@@ -187,12 +156,10 @@ impl SurfaceTransition {
     /// **Source:** `TopTrans_SurfaceTransition.hxx`:56 - `TopTrans_SurfaceTransition::TopTrans_SurfaceTransition()`
     /// Create an empty Surface Transition.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopTrans_SurfaceTransition_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopTrans_SurfaceTransition_ctor(),
+            ))
         }
     }
 
@@ -210,36 +177,26 @@ impl SurfaceTransition {
         MaxCurv: f64,
         MinCurv: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopTrans_SurfaceTransition_reset_dir4_real2(
-                    self as *mut Self,
-                    Tgt,
-                    Norm,
-                    MaxD,
-                    MinD,
-                    MaxCurv,
-                    MinCurv,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopTrans_SurfaceTransition_reset_dir4_real2(
+                self as *mut Self,
+                Tgt,
+                Norm,
+                MaxD,
+                MinD,
+                MaxCurv,
+                MinCurv,
+            )
+        })
     }
 
     /// **Source:** `TopTrans_SurfaceTransition.hxx`:71 - `TopTrans_SurfaceTransition::Reset()`
     /// Initialize  a  Surface Transition  with the  local
     /// description of a straight line.
     pub fn reset_dir2(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopTrans_SurfaceTransition_reset_dir2(self as *mut Self, Tgt, Norm)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopTrans_SurfaceTransition_reset_dir2(self as *mut Self, Tgt, Norm)
+        })
     }
 
     /// **Source:** `TopTrans_SurfaceTransition.hxx`:87 - `TopTrans_SurfaceTransition::Compare()`
@@ -268,24 +225,19 @@ impl SurfaceTransition {
         S: crate::top_abs::Orientation,
         O: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopTrans_SurfaceTransition_compare_real_dir3_real2_orientation2(
-                    self as *mut Self,
-                    Tole,
-                    Norm,
-                    MaxD,
-                    MinD,
-                    MaxCurv,
-                    MinCurv,
-                    S.into(),
-                    O.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopTrans_SurfaceTransition_compare_real_dir3_real2_orientation2(
+                self as *mut Self,
+                Tole,
+                Norm,
+                MaxD,
+                MinD,
+                MaxCurv,
+                MinCurv,
+                S.into(),
+                O.into(),
+            )
+        })
     }
 
     /// **Source:** `TopTrans_SurfaceTransition.hxx`:97 - `TopTrans_SurfaceTransition::Compare()`
@@ -297,20 +249,15 @@ impl SurfaceTransition {
         S: crate::top_abs::Orientation,
         O: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopTrans_SurfaceTransition_compare_real_dir_orientation2(
-                    self as *mut Self,
-                    Tole,
-                    Norm,
-                    S.into(),
-                    O.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopTrans_SurfaceTransition_compare_real_dir_orientation2(
+                self as *mut Self,
+                Tole,
+                Norm,
+                S.into(),
+                O.into(),
+            )
+        })
     }
 
     /// **Source:** `TopTrans_SurfaceTransition.hxx`:106 - `TopTrans_SurfaceTransition::StateBefore()`
@@ -319,15 +266,10 @@ impl SurfaceTransition {
     /// the surface of a  point very close to the intersection
     /// on the negative side of the tangent.
     pub fn state_before(&self) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::TopTrans_SurfaceTransition_state_before(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::TopTrans_SurfaceTransition_state_before(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TopTrans_SurfaceTransition.hxx`:112 - `TopTrans_SurfaceTransition::StateAfter()`
@@ -336,39 +278,25 @@ impl SurfaceTransition {
     /// surface of a point very  close to the intersection
     /// on the positive side of the tangent.
     pub fn state_after(&self) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::TopTrans_SurfaceTransition_state_after(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::TopTrans_SurfaceTransition_state_after(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TopTrans_SurfaceTransition.hxx`:114 - `TopTrans_SurfaceTransition::GetBefore()`
     pub fn get_before(Tran: crate::top_abs::Orientation) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::TopTrans_SurfaceTransition_get_before(Tran.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::TopTrans_SurfaceTransition_get_before(Tran.into())
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TopTrans_SurfaceTransition.hxx`:116 - `TopTrans_SurfaceTransition::GetAfter()`
     pub fn get_after(Tran: crate::top_abs::Orientation) -> crate::top_abs::State {
-        {
-            let __result = unsafe { crate::ffi::TopTrans_SurfaceTransition_get_after(Tran.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::TopTrans_SurfaceTransition_get_after(Tran.into())
+        }))
+        .unwrap()
     }
 }

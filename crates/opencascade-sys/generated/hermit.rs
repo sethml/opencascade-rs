@@ -14,15 +14,10 @@ pub fn solution_handlegeombsplinecurve_real2(
     TolPoles: f64,
     TolKnots: f64,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-    {
-        let __result = unsafe {
-            crate::ffi::Hermit_solution_handlegeombsplinecurve_real2(BS, TolPoles, TolKnots)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::Hermit_solution_handlegeombsplinecurve_real2(BS, TolPoles, TolKnots),
+        ))
     }
 }
 /// **Source:** `Hermit.hxx`:58 - `Hermit::Solution`
@@ -33,15 +28,10 @@ pub fn solution_handlegeom2dbsplinecurve_real2(
     TolPoles: f64,
     TolKnots: f64,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-    {
-        let __result = unsafe {
-            crate::ffi::Hermit_solution_handlegeom2dbsplinecurve_real2(BS, TolPoles, TolKnots)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::Hermit_solution_handlegeom2dbsplinecurve_real2(BS, TolPoles, TolKnots),
+        ))
     }
 }
 /// **Source:** `Hermit.hxx`:66 - `Hermit::Solutionbis`
@@ -55,11 +45,7 @@ pub fn solutionbis(
     TolPoles: f64,
     TolKnots: f64,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::Hermit_solutionbis(BS, Knotmin, Knotmax, TolPoles, TolKnots) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::Hermit_solutionbis(BS, Knotmin, Knotmax, TolPoles, TolKnots)
+    })
 }

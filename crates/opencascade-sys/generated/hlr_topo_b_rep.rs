@@ -27,12 +27,8 @@ impl DSFiller {
     /// **Source:** `HLRTopoBRep_DSFiller.hxx` - `HLRTopoBRep_DSFiller::HLRTopoBRep_DSFiller()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_DSFiller_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRTopoBRep_DSFiller_ctor()))
         }
     }
 
@@ -46,12 +42,9 @@ impl DSFiller {
         MST: &mut crate::ffi::BRepTopAdaptor_MapOfShapeTool,
         nbIso: i32,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::HLRTopoBRep_DSFiller_insert(S, FO, DS, MST, nbIso) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_DSFiller_insert(S, FO, DS, MST, nbIso)
+        })
     }
 }
 
@@ -73,148 +66,82 @@ unsafe impl crate::CppDeletable for Data {
 impl Data {
     /// **Source:** `HLRTopoBRep_Data.hxx`:44 - `HLRTopoBRep_Data::HLRTopoBRep_Data()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRTopoBRep_Data_ctor()))
         }
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:47 - `HLRTopoBRep_Data::Clear()`
     /// Clear of all the maps.
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRTopoBRep_Data_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRTopoBRep_Data_clear(self as *mut Self) })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:51 - `HLRTopoBRep_Data::Clean()`
     /// Clear of all the data  not needed during and after
     /// the hiding process.
     pub fn clean(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRTopoBRep_Data_clean(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::HLRTopoBRep_Data_clean(self as *mut Self) })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:54 - `HLRTopoBRep_Data::EdgeHasSplE()`
     /// Returns True if the Edge is split.
     pub fn edge_has_spl_e(&self, E: &crate::topo_ds::Edge) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_Data_edge_has_spl_e(self as *const Self, E) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_edge_has_spl_e(self as *const Self, E)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:57 - `HLRTopoBRep_Data::FaceHasIntL()`
     /// Returns True if the Face has internal outline.
     pub fn face_has_int_l(&self, F: &crate::topo_ds::Face) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_Data_face_has_int_l(self as *const Self, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_face_has_int_l(self as *const Self, F)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:60 - `HLRTopoBRep_Data::FaceHasOutL()`
     /// Returns True if the Face has outlines on restriction.
     pub fn face_has_out_l(&self, F: &crate::topo_ds::Face) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_Data_face_has_out_l(self as *const Self, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_face_has_out_l(self as *const Self, F)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:63 - `HLRTopoBRep_Data::FaceHasIsoL()`
     /// Returns True if the Face has isolines.
     pub fn face_has_iso_l(&self, F: &crate::topo_ds::Face) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_Data_face_has_iso_l(self as *const Self, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_face_has_iso_l(self as *const Self, F)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:65 - `HLRTopoBRep_Data::IsSplEEdgeEdge()`
     pub fn is_spl_e_edge_edge(&self, E1: &crate::topo_ds::Edge, E2: &crate::topo_ds::Edge) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRTopoBRep_Data_is_spl_e_edge_edge(self as *const Self, E1, E2)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_is_spl_e_edge_edge(self as *const Self, E1, E2)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:68 - `HLRTopoBRep_Data::IsIntLFaceEdge()`
     pub fn is_int_l_face_edge(&self, F: &crate::topo_ds::Face, E: &crate::topo_ds::Edge) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRTopoBRep_Data_is_int_l_face_edge(self as *const Self, F, E)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_is_int_l_face_edge(self as *const Self, F, E)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:70 - `HLRTopoBRep_Data::IsOutLFaceEdge()`
     pub fn is_out_l_face_edge(&self, F: &crate::topo_ds::Face, E: &crate::topo_ds::Edge) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRTopoBRep_Data_is_out_l_face_edge(self as *const Self, F, E)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_is_out_l_face_edge(self as *const Self, F, E)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:72 - `HLRTopoBRep_Data::IsIsoLFaceEdge()`
     pub fn is_iso_l_face_edge(&self, F: &crate::topo_ds::Face, E: &crate::topo_ds::Edge) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRTopoBRep_Data_is_iso_l_face_edge(self as *const Self, F, E)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_is_iso_l_face_edge(self as *const Self, F, E)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:74 - `HLRTopoBRep_Data::NewSOldS()`
@@ -222,14 +149,10 @@ impl Data {
         &self,
         New: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_Data_new_s_old_s(self as *const Self, New) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRTopoBRep_Data_new_s_old_s(self as *const Self, New),
+            ))
         }
     }
 
@@ -242,14 +165,8 @@ impl Data {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn edge_spl_e(&self, E: &crate::topo_ds::Edge) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_Data_edge_spl_e(self as *const Self, E) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRTopoBRep_Data_edge_spl_e(self as *const Self, E)))
         }
     }
 
@@ -262,14 +179,8 @@ impl Data {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn face_int_l(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_Data_face_int_l(self as *const Self, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRTopoBRep_Data_face_int_l(self as *const Self, F)))
         }
     }
 
@@ -282,14 +193,8 @@ impl Data {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn face_out_l(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_Data_face_out_l(self as *const Self, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRTopoBRep_Data_face_out_l(self as *const Self, F)))
         }
     }
 
@@ -302,14 +207,8 @@ impl Data {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn face_iso_l(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_Data_face_iso_l(self as *const Self, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRTopoBRep_Data_face_iso_l(self as *const Self, F)))
         }
     }
 
@@ -317,38 +216,24 @@ impl Data {
     /// Returns  True   if V is  an   outline vertex  on a
     /// restriction.
     pub fn is_out_v(&self, V: &crate::topo_ds::Vertex) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_is_out_v(self as *const Self, V) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_is_out_v(self as *const Self, V)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:93 - `HLRTopoBRep_Data::IsIntV()`
     /// Returns True if V is an internal outline vertex.
     pub fn is_int_v(&self, V: &crate::topo_ds::Vertex) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_is_int_v(self as *const Self, V) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_is_int_v(self as *const Self, V)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:95 - `HLRTopoBRep_Data::AddOldS()`
     pub fn add_old_s(&mut self, NewS: &crate::topo_ds::Shape, OldS: &crate::topo_ds::Shape) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRTopoBRep_Data_add_old_s(self as *mut Self, NewS, OldS) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_add_old_s(self as *mut Self, NewS, OldS)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:97 - `HLRTopoBRep_Data::AddSplE()`
@@ -362,13 +247,11 @@ impl Data {
         &mut self,
         E: &crate::topo_ds::Edge,
     ) -> &mut crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_add_spl_e(self as *mut Self, E) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRTopoBRep_Data_add_spl_e(
+                self as *mut Self,
+                E,
+            )))
         }
     }
 
@@ -383,13 +266,11 @@ impl Data {
         &mut self,
         F: &crate::topo_ds::Face,
     ) -> &mut crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_add_int_l(self as *mut Self, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRTopoBRep_Data_add_int_l(
+                self as *mut Self,
+                F,
+            )))
         }
     }
 
@@ -404,13 +285,11 @@ impl Data {
         &mut self,
         F: &crate::topo_ds::Face,
     ) -> &mut crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_add_out_l(self as *mut Self, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRTopoBRep_Data_add_out_l(
+                self as *mut Self,
+                F,
+            )))
         }
     }
 
@@ -425,157 +304,97 @@ impl Data {
         &mut self,
         F: &crate::topo_ds::Face,
     ) -> &mut crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_add_iso_l(self as *mut Self, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRTopoBRep_Data_add_iso_l(
+                self as *mut Self,
+                F,
+            )))
         }
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:105 - `HLRTopoBRep_Data::AddOutV()`
     pub fn add_out_v(&mut self, V: &crate::topo_ds::Vertex) {
-        {
-            let __exc = unsafe { crate::ffi::HLRTopoBRep_Data_add_out_v(self as *mut Self, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_add_out_v(self as *mut Self, V)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:107 - `HLRTopoBRep_Data::AddIntV()`
     pub fn add_int_v(&mut self, V: &crate::topo_ds::Vertex) {
-        {
-            let __exc = unsafe { crate::ffi::HLRTopoBRep_Data_add_int_v(self as *mut Self, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_add_int_v(self as *mut Self, V)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:109 - `HLRTopoBRep_Data::InitEdge()`
     pub fn init_edge(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRTopoBRep_Data_init_edge(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_init_edge(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:111 - `HLRTopoBRep_Data::MoreEdge()`
     pub fn more_edge(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_more_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRTopoBRep_Data_more_edge(self as *const Self) })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:113 - `HLRTopoBRep_Data::NextEdge()`
     pub fn next_edge(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRTopoBRep_Data_next_edge(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_next_edge(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:115 - `HLRTopoBRep_Data::Edge()`
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRTopoBRep_Data_edge(self as *const Self))) }
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:118 - `HLRTopoBRep_Data::InitVertex()`
     /// Start an iteration on the vertices of E.
     pub fn init_vertex(&mut self, E: &crate::topo_ds::Edge) {
-        {
-            let __exc = unsafe { crate::ffi::HLRTopoBRep_Data_init_vertex(self as *mut Self, E) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_init_vertex(self as *mut Self, E)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:120 - `HLRTopoBRep_Data::MoreVertex()`
     pub fn more_vertex(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_more_vertex(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_more_vertex(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:122 - `HLRTopoBRep_Data::NextVertex()`
     pub fn next_vertex(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::HLRTopoBRep_Data_next_vertex(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_next_vertex(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:124 - `HLRTopoBRep_Data::Vertex()`
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_vertex(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRTopoBRep_Data_vertex(self as *const Self))) }
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:126 - `HLRTopoBRep_Data::Parameter()`
     pub fn parameter(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_Data_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRTopoBRep_Data_parameter(self as *const Self) })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:129 - `HLRTopoBRep_Data::InsertBefore()`
     /// Insert before the current position.
     pub fn insert_before(&mut self, V: &crate::topo_ds::Vertex, P: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRTopoBRep_Data_insert_before(self as *mut Self, V, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_insert_before(self as *mut Self, V, P)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:131 - `HLRTopoBRep_Data::Append()`
     pub fn append(&mut self, V: &crate::topo_ds::Vertex, P: f64) {
-        {
-            let __exc = unsafe { crate::ffi::HLRTopoBRep_Data_append(self as *mut Self, V, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_Data_append(self as *mut Self, V, P)
+        })
     }
 }
 
@@ -597,87 +416,62 @@ unsafe impl crate::CppDeletable for FaceData {
 impl FaceData {
     /// **Source:** `HLRTopoBRep_FaceData.hxx`:33 - `HLRTopoBRep_FaceData::HLRTopoBRep_FaceData()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_FaceData_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRTopoBRep_FaceData_ctor()))
         }
     }
 
     /// **Source:** `HLRTopoBRep_FaceData.hxx`:35 - `HLRTopoBRep_FaceData::FaceIntL()`
     pub fn face_int_l(&self) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_FaceData_face_int_l(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRTopoBRep_FaceData_face_int_l(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRTopoBRep_FaceData.hxx`:37 - `HLRTopoBRep_FaceData::FaceOutL()`
     pub fn face_out_l(&self) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_FaceData_face_out_l(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRTopoBRep_FaceData_face_out_l(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRTopoBRep_FaceData.hxx`:39 - `HLRTopoBRep_FaceData::FaceIsoL()`
     pub fn face_iso_l(&self) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_FaceData_face_iso_l(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRTopoBRep_FaceData_face_iso_l(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRTopoBRep_FaceData.hxx`:41 - `HLRTopoBRep_FaceData::AddIntL()`
     pub fn add_int_l(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_FaceData_add_int_l(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRTopoBRep_FaceData_add_int_l(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRTopoBRep_FaceData.hxx`:43 - `HLRTopoBRep_FaceData::AddOutL()`
     pub fn add_out_l(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_FaceData_add_out_l(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRTopoBRep_FaceData_add_out_l(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRTopoBRep_FaceData.hxx`:45 - `HLRTopoBRep_FaceData::AddIsoL()`
     pub fn add_iso_l(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_FaceData_add_iso_l(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRTopoBRep_FaceData_add_iso_l(
+                self as *mut Self,
+            )))
         }
     }
 }
@@ -699,23 +493,18 @@ impl FaceIsoLiner {
     /// **Source:** `HLRTopoBRep_FaceIsoLiner.hxx` - `HLRTopoBRep_FaceIsoLiner::HLRTopoBRep_FaceIsoLiner()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_FaceIsoLiner_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRTopoBRep_FaceIsoLiner_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRTopoBRep_FaceIsoLiner.hxx`:37 - `HLRTopoBRep_FaceIsoLiner::Perform()`
     pub fn perform(FI: i32, F: &crate::topo_ds::Face, DS: &mut Data, nbIsos: i32) {
-        {
-            let __exc = unsafe { crate::ffi::HLRTopoBRep_FaceIsoLiner_perform(FI, F, DS, nbIsos) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_FaceIsoLiner_perform(FI, F, DS, nbIsos)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_FaceIsoLiner.hxx`:42 - `HLRTopoBRep_FaceIsoLiner::MakeVertex()`
@@ -726,14 +515,10 @@ impl FaceIsoLiner {
         Tol: f64,
         DS: &mut Data,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_FaceIsoLiner_make_vertex(E, P, Par, Tol, DS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRTopoBRep_FaceIsoLiner_make_vertex(E, P, Par, Tol, DS),
+            ))
         }
     }
 
@@ -748,14 +533,9 @@ impl FaceIsoLiner {
         Tol: f64,
         DS: &mut Data,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRTopoBRep_FaceIsoLiner_make_iso_line(F, Iso, V1, V2, U1, U2, Tol, DS)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_FaceIsoLiner_make_iso_line(F, Iso, V1, V2, U1, U2, Tol, DS)
+        })
     }
 }
 
@@ -775,23 +555,17 @@ unsafe impl crate::CppDeletable for OutLiner {
 impl OutLiner {
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:38 - `HLRTopoBRep_OutLiner::HLRTopoBRep_OutLiner()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_OutLiner_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRTopoBRep_OutLiner_ctor()))
         }
     }
 
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:40 - `HLRTopoBRep_OutLiner::HLRTopoBRep_OutLiner()`
     pub fn new_shape(OriSh: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_OutLiner_ctor_shape(OriSh) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRTopoBRep_OutLiner_ctor_shape(OriSh),
+            ))
         }
     }
 
@@ -800,75 +574,51 @@ impl OutLiner {
         OriS: &crate::topo_ds::Shape,
         OutS: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_OutLiner_ctor_shape2(OriS, OutS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRTopoBRep_OutLiner_ctor_shape2(OriS, OutS),
+            ))
         }
     }
 
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:44 - `HLRTopoBRep_OutLiner::OriginalShape()`
     pub fn original_shape_shape(&mut self, OriS: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRTopoBRep_OutLiner_original_shape_shape(self as *mut Self, OriS)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_OutLiner_original_shape_shape(self as *mut Self, OriS)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:46 - `HLRTopoBRep_OutLiner::OriginalShape()`
     pub fn original_shape(&mut self) -> &mut crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_OutLiner_original_shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRTopoBRep_OutLiner_original_shape(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:48 - `HLRTopoBRep_OutLiner::OutLinedShape()`
     pub fn out_lined_shape_shape(&mut self, OutS: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRTopoBRep_OutLiner_out_lined_shape_shape(self as *mut Self, OutS)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_OutLiner_out_lined_shape_shape(self as *mut Self, OutS)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:50 - `HLRTopoBRep_OutLiner::OutLinedShape()`
     pub fn out_lined_shape(&mut self) -> &mut crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_OutLiner_out_lined_shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRTopoBRep_OutLiner_out_lined_shape(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:52 - `HLRTopoBRep_OutLiner::DataStructure()`
     pub fn data_structure(&mut self) -> &mut Data {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_OutLiner_data_structure(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::HLRTopoBRep_OutLiner_data_structure(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -879,121 +629,85 @@ impl OutLiner {
         MST: &mut crate::ffi::BRepTopAdaptor_MapOfShapeTool,
         nbIso: i32,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRTopoBRep_OutLiner_fill(self as *mut Self, P, MST, nbIso) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_OutLiner_fill(self as *mut Self, P, MST, nbIso)
+        })
     }
 
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:58 - `HLRTopoBRep_OutLiner::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_OutLiner_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRTopoBRep_OutLiner_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:58 - `HLRTopoBRep_OutLiner::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_OutLiner_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::HLRTopoBRep_OutLiner_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:58 - `HLRTopoBRep_OutLiner::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_OutLiner_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HLRTopoBRep_OutLiner_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::HLRTopoBRep_OutLiner_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HLRTopoBRep_OutLiner_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::HLRTopoBRep_OutLiner_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HLRTopoBRep_OutLiner_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRTopoBRepOutLiner> {
-        let __result = unsafe { crate::ffi::HLRTopoBRep_OutLiner_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRTopoBRep_OutLiner_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRTopoBRep_OutLiner_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_OutLiner_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRTopoBRep_OutLiner_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_OutLiner_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::HLRTopoBRep_OutLiner_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::HLRTopoBRep_OutLiner_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1004,53 +718,30 @@ impl OutLiner {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRTopoBRep_OutLiner_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_OutLiner_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HLRTopoBRep_OutLiner_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_OutLiner_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRTopoBRep_OutLiner_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HLRTopoBRep_OutLiner_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HLRTopoBRep_OutLiner_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HLRTopoBRep_OutLiner_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1065,31 +756,29 @@ unsafe impl crate::CppDeletable for HandleHLRTopoBRepOutLiner {
 impl HandleHLRTopoBRepOutLiner {
     /// Dereference this Handle to access the underlying HLRTopoBRep_OutLiner
     pub fn get(&self) -> &crate::ffi::HLRTopoBRep_OutLiner {
-        let __result = unsafe { crate::ffi::HandleHLRTopoBRepOutLiner_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleHLRTopoBRepOutLiner_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRTopoBRep_OutLiner
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRTopoBRep_OutLiner {
-        let __result = unsafe { crate::ffi::HandleHLRTopoBRepOutLiner_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleHLRTopoBRepOutLiner_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRTopoBRep_OutLiner> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleHLRTopoBRepOutLiner_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHLRTopoBRepOutLiner_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1109,47 +798,29 @@ unsafe impl crate::CppDeletable for VData {
 impl VData {
     /// **Source:** `HLRTopoBRep_VData.hxx`:31 - `HLRTopoBRep_VData::HLRTopoBRep_VData()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_VData_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRTopoBRep_VData_ctor()))
         }
     }
 
     /// **Source:** `HLRTopoBRep_VData.hxx`:33 - `HLRTopoBRep_VData::HLRTopoBRep_VData()`
     pub fn new_real_shape(P: f64, V: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_VData_ctor_real_shape(P, V) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HLRTopoBRep_VData_ctor_real_shape(P, V),
+            ))
         }
     }
 
     /// **Source:** `HLRTopoBRep_VData.hxx`:35 - `HLRTopoBRep_VData::Parameter()`
     pub fn parameter(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_VData_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::HLRTopoBRep_VData_parameter(self as *const Self) })
     }
 
     /// **Source:** `HLRTopoBRep_VData.hxx`:37 - `HLRTopoBRep_VData::Vertex()`
     pub fn vertex(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::HLRTopoBRep_VData_vertex(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HLRTopoBRep_VData_vertex(self as *const Self)))
         }
     }
 }

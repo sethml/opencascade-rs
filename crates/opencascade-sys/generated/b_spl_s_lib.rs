@@ -99,16 +99,9 @@ pub fn rational_derivative_int4_real2_bool(
     RDers: &mut f64,
     All: bool,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::BSplSLib_rational_derivative_int4_real2_bool(
-                UDeg, VDeg, N, M, Ders, RDers, All,
-            )
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BSplSLib_rational_derivative_int4_real2_bool(UDeg, VDeg, N, M, Ders, RDers, All)
+    })
 }
 /// **Source:** `BSplSLib.hxx`:313 - `BSplSLib::Reverse`
 /// Reverses the array of poles. Last is the Index of
@@ -125,13 +118,9 @@ pub fn reverse_array2ofpnt_int_bool(
     Last: i32,
     UDirection: bool,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::BSplSLib_reverse_array2ofpnt_int_bool(Poles, Last, UDirection) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BSplSLib_reverse_array2ofpnt_int_bool(Poles, Last, UDirection)
+    })
 }
 /// **Source:** `BSplSLib.hxx`:647 - `BSplSLib::PolesCoefficients`
 /// Warning! To be used for BezierSurfaces ONLY!!!
@@ -139,13 +128,9 @@ pub fn poles_coefficients_array2ofpnt2(
     Poles: &crate::ffi::TColgp_Array2OfPnt,
     CachePoles: &mut crate::ffi::TColgp_Array2OfPnt,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::BSplSLib_poles_coefficients_array2ofpnt2(Poles, CachePoles) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BSplSLib_poles_coefficients_array2ofpnt2(Poles, CachePoles)
+    })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -187,14 +172,8 @@ impl Cache {
         theFlatKnotsV: &crate::ffi::TColStd_Array1OfReal,
         theWeights: Option<&crate::ffi::TColStd_Array2OfReal>,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BSplSLib_Cache_ctor_int_bool_array1ofreal_int_bool_array1ofreal_array2ofrealptr(theDegreeU, thePeriodicU, theFlatKnotsU, theDegreeV, thePeriodicV, theFlatKnotsV, theWeights.map_or(std::ptr::null(), |r| r as *const _))
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BSplSLib_Cache_ctor_int_bool_array1ofreal_int_bool_array1ofreal_array2ofrealptr(theDegreeU, thePeriodicU, theFlatKnotsU, theDegreeV, thePeriodicV, theFlatKnotsV, theWeights.map_or(std::ptr::null(), |r| r as *const _))))
         }
     }
 
@@ -203,20 +182,13 @@ impl Cache {
     /// \param theParameterU  first parameter of the point placed in the span
     /// \param theParameterV  second parameter of the point placed in the span
     pub fn is_cache_valid(&self, theParameterU: f64, theParameterV: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BSplSLib_Cache_is_cache_valid(
-                    self as *const Self,
-                    theParameterU,
-                    theParameterV,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BSplSLib_Cache_is_cache_valid(
+                self as *const Self,
+                theParameterU,
+                theParameterV,
+            )
+        })
     }
 
     /// **Source:** `BSplSLib_Cache.hxx`:62 - `BSplSLib_Cache::BuildCache()`
@@ -240,22 +212,17 @@ impl Cache {
         thePoles: &crate::ffi::TColgp_Array2OfPnt,
         theWeights: Option<&crate::ffi::TColStd_Array2OfReal>,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BSplSLib_Cache_build_cache(
-                    self as *mut Self,
-                    theParameterU,
-                    theParameterV,
-                    theFlatKnotsU,
-                    theFlatKnotsV,
-                    thePoles,
-                    theWeights.map_or(std::ptr::null(), |r| r as *const _),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BSplSLib_Cache_build_cache(
+                self as *mut Self,
+                theParameterU,
+                theParameterV,
+                theFlatKnotsU,
+                theFlatKnotsV,
+                thePoles,
+                theWeights.map_or(std::ptr::null(), |r| r as *const _),
+            )
+        })
     }
 
     /// **Source:** `BSplSLib_Cache.hxx`:73 - `BSplSLib_Cache::D0()`
@@ -264,13 +231,9 @@ impl Cache {
     /// \param[in]  theV      second parameter for calculation of the value
     /// \param[out] thePoint  the result of calculation (the point on the surface)
     pub fn d0(&self, theU: &f64, theV: &f64, thePoint: &mut crate::gp::Pnt) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BSplSLib_Cache_d0(self as *const Self, theU, theV, thePoint) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BSplSLib_Cache_d0(self as *const Self, theU, theV, thePoint)
+        })
     }
 
     /// **Source:** `BSplSLib_Cache.hxx`:83 - `BSplSLib_Cache::D1()`
@@ -288,21 +251,16 @@ impl Cache {
         theTangentU: &mut crate::gp::Vec,
         theTangentV: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BSplSLib_Cache_d1(
-                    self as *const Self,
-                    theU,
-                    theV,
-                    thePoint,
-                    theTangentU,
-                    theTangentV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BSplSLib_Cache_d1(
+                self as *const Self,
+                theU,
+                theV,
+                thePoint,
+                theTangentU,
+                theTangentV,
+            )
+        })
     }
 
     /// **Source:** `BSplSLib_Cache.hxx`:98 - `BSplSLib_Cache::D2()`
@@ -326,130 +284,93 @@ impl Cache {
         theCurvatureV: &mut crate::gp::Vec,
         theCurvatureUV: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BSplSLib_Cache_d2(
-                    self as *const Self,
-                    theU,
-                    theV,
-                    thePoint,
-                    theTangentU,
-                    theTangentV,
-                    theCurvatureU,
-                    theCurvatureV,
-                    theCurvatureUV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BSplSLib_Cache_d2(
+                self as *const Self,
+                theU,
+                theV,
+                thePoint,
+                theTangentU,
+                theTangentV,
+                theCurvatureU,
+                theCurvatureV,
+                theCurvatureUV,
+            )
+        })
     }
 
     /// **Source:** `BSplSLib_Cache.hxx`:107 - `BSplSLib_Cache::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BSplSLib_Cache_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BSplSLib_Cache_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `BSplSLib_Cache.hxx`:107 - `BSplSLib_Cache::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BSplSLib_Cache_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::check_result(crate::ffi::BSplSLib_Cache_get_type_name()),
+            )
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BSplSLib_Cache.hxx`:107 - `BSplSLib_Cache::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BSplSLib_Cache_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BSplSLib_Cache_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BSplSLib_Cache_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BSplSLib_Cache_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BSplSLib_Cache_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BSplSLib_Cache_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBSplSLibCache> {
-        let __result = unsafe { crate::ffi::BSplSLib_Cache_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BSplSLib_Cache_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BSplSLib_Cache_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BSplSLib_Cache_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BSplSLib_Cache_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BSplSLib_Cache_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BSplSLib_Cache_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BSplSLib_Cache_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -460,51 +381,30 @@ impl Cache {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BSplSLib_Cache_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BSplSLib_Cache_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BSplSLib_Cache_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BSplSLib_Cache_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BSplSLib_Cache_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BSplSLib_Cache_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::BSplSLib_Cache_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BSplSLib_Cache_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -519,31 +419,23 @@ unsafe impl crate::CppDeletable for HandleBSplSLibCache {
 impl HandleBSplSLibCache {
     /// Dereference this Handle to access the underlying BSplSLib_Cache
     pub fn get(&self) -> &crate::ffi::BSplSLib_Cache {
-        let __result = unsafe { crate::ffi::HandleBSplSLibCache_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleBSplSLibCache_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BSplSLib_Cache
     pub fn get_mut(&mut self) -> &mut crate::ffi::BSplSLib_Cache {
-        let __result = unsafe { crate::ffi::HandleBSplSLibCache_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBSplSLibCache_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BSplSLib_Cache> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBSplSLibCache_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBSplSLibCache_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -571,20 +463,15 @@ impl EvaluatorFunction {
         theResult: &mut f64,
         theErrorCode: &mut i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BSplSLib_EvaluatorFunction_evaluate(
-                    self as *const Self,
-                    theDerivativeRequest,
-                    theUParameter,
-                    theVParameter,
-                    theResult,
-                    theErrorCode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BSplSLib_EvaluatorFunction_evaluate(
+                self as *const Self,
+                theDerivativeRequest,
+                theUParameter,
+                theVParameter,
+                theResult,
+                theErrorCode,
+            )
+        })
     }
 }

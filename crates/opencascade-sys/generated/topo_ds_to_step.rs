@@ -10,55 +10,40 @@
 pub fn decode_builder_error_buildererror_2(
     E: crate::topo_ds_to_step::BuilderError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result =
-            unsafe { crate::ffi::TopoDSToStep_decode_builder_error_buildererror_2(E.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::TopoDSToStep_decode_builder_error_buildererror_2(E.into()),
+        ))
     }
 }
 /// **Source:** `TopoDSToStep.hxx`:57 - `TopoDSToStep::DecodeFaceError`
 pub fn decode_face_error_makefaceerror(
     E: crate::topo_ds_to_step::MakeFaceError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result =
-            unsafe { crate::ffi::TopoDSToStep_decode_face_error_makefaceerror(E.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::TopoDSToStep_decode_face_error_makefaceerror(E.into()),
+        ))
     }
 }
 /// **Source:** `TopoDSToStep.hxx`:60 - `TopoDSToStep::DecodeWireError`
 pub fn decode_wire_error(
     E: crate::topo_ds_to_step::MakeWireError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result = unsafe { crate::ffi::TopoDSToStep_decode_wire_error(E.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_decode_wire_error(
+            E.into(),
+        )))
     }
 }
 /// **Source:** `TopoDSToStep.hxx`:63 - `TopoDSToStep::DecodeEdgeError`
 pub fn decode_edge_error_makeedgeerror(
     E: crate::topo_ds_to_step::MakeEdgeError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result =
-            unsafe { crate::ffi::TopoDSToStep_decode_edge_error_makeedgeerror(E.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::TopoDSToStep_decode_edge_error_makeedgeerror(E.into()),
+        ))
     }
 }
 /// **Source:** `TopoDSToStep.hxx`:67 - `TopoDSToStep::DecodeVertexError`
@@ -66,14 +51,10 @@ pub fn decode_edge_error_makeedgeerror(
 pub fn decode_vertex_error_makevertexerror(
     E: crate::topo_ds_to_step::MakeVertexError,
 ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-    {
-        let __result =
-            unsafe { crate::ffi::TopoDSToStep_decode_vertex_error_makevertexerror(E.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::TopoDSToStep_decode_vertex_error_makevertexerror(E.into()),
+        ))
     }
 }
 /// **Source:** `TopoDSToStep.hxx`:72 - `TopoDSToStep::AddResult`
@@ -84,14 +65,9 @@ pub fn add_result_handletransferfinderprocess_shape_handlestandardtransient(
     Shape: &crate::topo_ds::Shape,
     entity: &crate::ffi::HandleStandardTransient,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::TopoDSToStep_add_result_handletransferfinderprocess_shape_handlestandardtransient(FP, Shape, entity)
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::TopoDSToStep_add_result_handletransferfinderprocess_shape_handlestandardtransient(FP, Shape, entity)
+    })
 }
 /// **Source:** `TopoDSToStep.hxx`:78 - `TopoDSToStep::AddResult`
 /// Adds all entities recorded in Tool into the map of results
@@ -100,14 +76,9 @@ pub fn add_result_handletransferfinderprocess_tool(
     FP: &crate::ffi::HandleTransferFinderProcess,
     Tool: &Tool,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::TopoDSToStep_add_result_handletransferfinderprocess_tool(FP, Tool)
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::TopoDSToStep_add_result_handletransferfinderprocess_tool(FP, Tool)
+    })
 }
 
 /// C++ enum: `TopoDSToStep_BuilderError`
@@ -298,12 +269,8 @@ unsafe impl crate::CppDeletable for Builder {
 impl Builder {
     /// **Source:** `TopoDSToStep_Builder.hxx`:42 - `TopoDSToStep_Builder::TopoDSToStep_Builder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_Builder_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_Builder_ctor()))
         }
     }
 
@@ -316,14 +283,8 @@ impl Builder {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_Builder_ctor_shape_tool_handletransferfinderprocess_int_factors_progressrange(S, T, FP, theTessellatedGeomParam, theLocalFactors, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_Builder_ctor_shape_tool_handletransferfinderprocess_int_factors_progressrange(S, T, FP, theTessellatedGeomParam, theLocalFactors, theProgress)))
         }
     }
 
@@ -337,105 +298,75 @@ impl Builder {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopoDSToStep_Builder_init(
-                    self as *mut Self,
-                    S,
-                    T,
-                    FP,
-                    theTessellatedGeomParam,
-                    theLocalFactors,
-                    theProgress,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_Builder_init(
+                self as *mut Self,
+                S,
+                T,
+                FP,
+                theTessellatedGeomParam,
+                theLocalFactors,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `TopoDSToStep_Builder.hxx`:59 - `TopoDSToStep_Builder::Error()`
     pub fn error(&self) -> crate::topo_ds_to_step::BuilderError {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_Builder_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::topo_ds_to_step::BuilderError::try_from(__val).unwrap()
-        }
+        crate::topo_ds_to_step::BuilderError::try_from(crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_Builder_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TopoDSToStep_Builder.hxx`:61 - `TopoDSToStep_Builder::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepShapeTopologicalRepresentationItem {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_Builder_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_Builder_value(self as *const Self)))
         }
     }
 
     /// **Source:** `TopoDSToStep_Builder.hxx`:62 - `TopoDSToStep_Builder::TessellatedValue()`
     pub fn tessellated_value(&self) -> &crate::ffi::HandleStepVisualTessellatedItem {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Builder_tessellated_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_Builder_tessellated_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result =
-            unsafe { crate::ffi::TopoDSToStep_Builder_as_TopoDSToStep_Root(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TopoDSToStep_Builder_as_TopoDSToStep_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result =
-            unsafe { crate::ffi::TopoDSToStep_Builder_as_TopoDSToStep_Root_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TopoDSToStep_Builder_as_TopoDSToStep_Root_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Builder_inherited_Tolerance(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TopoDSToStep_Builder_inherited_Tolerance(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Builder_inherited_IsDone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_Builder_inherited_IsDone(self as *const Self)
+        })
     }
 }
 
@@ -458,25 +389,19 @@ impl FacetedTool {
     /// **Source:** `TopoDSToStep_FacetedTool.hxx` - `TopoDSToStep_FacetedTool::TopoDSToStep_FacetedTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_FacetedTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopoDSToStep_FacetedTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TopoDSToStep_FacetedTool.hxx`:33 - `TopoDSToStep_FacetedTool::CheckTopoDSShape()`
     pub fn check_topo_ds_shape(SH: &crate::topo_ds::Shape) -> crate::topo_ds_to_step::FacetedError {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_FacetedTool_check_topo_ds_shape(SH) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::topo_ds_to_step::FacetedError::try_from(__val).unwrap()
-        }
+        crate::topo_ds_to_step::FacetedError::try_from(crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_FacetedTool_check_topo_ds_shape(SH)
+        }))
+        .unwrap()
     }
 }
 
@@ -506,92 +431,63 @@ impl MakeBrepWithVoids {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeBrepWithVoids_ctor_solid_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeBrepWithVoids_ctor_solid_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeBrepWithVoids.hxx`:48 - `TopoDSToStep_MakeBrepWithVoids::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepShapeBrepWithVoids {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_MakeBrepWithVoids_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeBrepWithVoids_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeBrepWithVoids.hxx`:49 - `TopoDSToStep_MakeBrepWithVoids::TessellatedValue()`
     pub fn tessellated_value(&self) -> &crate::ffi::HandleStepVisualTessellatedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeBrepWithVoids_tessellated_value(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeBrepWithVoids_tessellated_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeBrepWithVoids_as_TopoDSToStep_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TopoDSToStep_MakeBrepWithVoids_as_TopoDSToStep_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeBrepWithVoids_as_TopoDSToStep_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_MakeBrepWithVoids_as_TopoDSToStep_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeBrepWithVoids_inherited_Tolerance(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::TopoDSToStep_MakeBrepWithVoids_inherited_Tolerance(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeBrepWithVoids_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeBrepWithVoids_inherited_IsDone(self as *const Self)
+        })
     }
 }
 
@@ -621,14 +517,8 @@ impl MakeFacetedBrep {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeFacetedBrep_ctor_shell_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeFacetedBrep_ctor_shell_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)))
         }
     }
 
@@ -639,92 +529,63 @@ impl MakeFacetedBrep {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeFacetedBrep_ctor_solid_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeFacetedBrep_ctor_solid_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeFacetedBrep.hxx`:55 - `TopoDSToStep_MakeFacetedBrep::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepShapeFacetedBrep {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_MakeFacetedBrep_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeFacetedBrep_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeFacetedBrep.hxx`:56 - `TopoDSToStep_MakeFacetedBrep::TessellatedValue()`
     pub fn tessellated_value(&self) -> &crate::ffi::HandleStepVisualTessellatedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeFacetedBrep_tessellated_value(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeFacetedBrep_tessellated_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeFacetedBrep_as_TopoDSToStep_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TopoDSToStep_MakeFacetedBrep_as_TopoDSToStep_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeFacetedBrep_as_TopoDSToStep_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_MakeFacetedBrep_as_TopoDSToStep_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeFacetedBrep_inherited_Tolerance(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::TopoDSToStep_MakeFacetedBrep_inherited_Tolerance(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeFacetedBrep_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeFacetedBrep_inherited_IsDone(self as *const Self)
+        })
     }
 }
 
@@ -754,103 +615,71 @@ impl MakeFacetedBrepAndBrepWithVoids {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_ctor_solid_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_ctor_solid_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeFacetedBrepAndBrepWithVoids.hxx`:48 - `TopoDSToStep_MakeFacetedBrepAndBrepWithVoids::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepShapeFacetedBrepAndBrepWithVoids {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_value(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeFacetedBrepAndBrepWithVoids.hxx`:49 - `TopoDSToStep_MakeFacetedBrepAndBrepWithVoids::TessellatedValue()`
     pub fn tessellated_value(&self) -> &crate::ffi::HandleStepVisualTessellatedItem {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_tessellated_value(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_as_TopoDSToStep_Root(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_as_TopoDSToStep_Root(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_as_TopoDSToStep_Root_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_as_TopoDSToStep_Root_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
+        unsafe {
+            &mut *(crate::check_result(
                 crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_inherited_Tolerance(
                     self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_inherited_IsDone(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_inherited_IsDone(
+                self as *const Self,
+            )
+        })
     }
 }
 
@@ -877,83 +706,58 @@ impl MakeGeometricCurveSet {
         FP: &crate::ffi::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeGeometricCurveSet_ctor_shape_handletransferfinderprocess_factors(SH, FP, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeGeometricCurveSet_ctor_shape_handletransferfinderprocess_factors(SH, FP, theLocalFactors)))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeGeometricCurveSet.hxx`:42 - `TopoDSToStep_MakeGeometricCurveSet::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepShapeGeometricCurveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeGeometricCurveSet_value(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeGeometricCurveSet_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeGeometricCurveSet_as_TopoDSToStep_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::TopoDSToStep_MakeGeometricCurveSet_as_TopoDSToStep_Root(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeGeometricCurveSet_as_TopoDSToStep_Root_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_MakeGeometricCurveSet_as_TopoDSToStep_Root_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
+        unsafe {
+            &mut *(crate::check_result(
                 crate::ffi::TopoDSToStep_MakeGeometricCurveSet_inherited_Tolerance(
                     self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeGeometricCurveSet_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeGeometricCurveSet_inherited_IsDone(self as *const Self)
+        })
     }
 }
 
@@ -983,14 +787,8 @@ impl MakeManifoldSolidBrep {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_ctor_shell_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_ctor_shell_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)))
         }
     }
 
@@ -1001,99 +799,69 @@ impl MakeManifoldSolidBrep {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_ctor_solid_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_ctor_solid_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeManifoldSolidBrep.hxx`:55 - `TopoDSToStep_MakeManifoldSolidBrep::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepShapeManifoldSolidBrep {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_value(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeManifoldSolidBrep.hxx`:56 - `TopoDSToStep_MakeManifoldSolidBrep::TessellatedValue()`
     pub fn tessellated_value(&self) -> &crate::ffi::HandleStepVisualTessellatedItem {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_tessellated_value(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_as_TopoDSToStep_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_as_TopoDSToStep_Root(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_as_TopoDSToStep_Root_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_as_TopoDSToStep_Root_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
+        unsafe {
+            &mut *(crate::check_result(
                 crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_inherited_Tolerance(
                     self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeManifoldSolidBrep_inherited_IsDone(self as *const Self)
+        })
     }
 }
 
@@ -1122,14 +890,8 @@ impl MakeShellBasedSurfaceModel {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_ctor_face_handletransferfinderprocess_factors_progressrange(F, FP, theLocalFactors, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_ctor_face_handletransferfinderprocess_factors_progressrange(F, FP, theLocalFactors, theProgress)))
         }
     }
 
@@ -1140,14 +902,8 @@ impl MakeShellBasedSurfaceModel {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_ctor_shell_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_ctor_shell_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)))
         }
     }
 
@@ -1158,103 +914,71 @@ impl MakeShellBasedSurfaceModel {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_ctor_solid_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_ctor_solid_handletransferfinderprocess_factors_progressrange(S, FP, theLocalFactors, theProgress)))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeShellBasedSurfaceModel.hxx`:61 - `TopoDSToStep_MakeShellBasedSurfaceModel::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepShapeShellBasedSurfaceModel {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_value(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeShellBasedSurfaceModel.hxx`:62 - `TopoDSToStep_MakeShellBasedSurfaceModel::TessellatedValue()`
     pub fn tessellated_value(&self) -> &crate::ffi::HandleStepVisualTessellatedItem {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_tessellated_value(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_as_TopoDSToStep_Root(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_as_TopoDSToStep_Root(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_as_TopoDSToStep_Root_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_as_TopoDSToStep_Root_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
+        unsafe {
+            &mut *(crate::check_result(
                 crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_inherited_Tolerance(
                     self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_inherited_IsDone(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeShellBasedSurfaceModel_inherited_IsDone(
+                self as *const Self,
+            )
+        })
     }
 }
 
@@ -1277,12 +1001,10 @@ unsafe impl crate::CppDeletable for MakeStepEdge {
 impl MakeStepEdge {
     /// **Source:** `TopoDSToStep_MakeStepEdge.hxx`:39 - `TopoDSToStep_MakeStepEdge::TopoDSToStep_MakeStepEdge()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_MakeStepEdge_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopoDSToStep_MakeStepEdge_ctor(),
+            ))
         }
     }
 
@@ -1293,14 +1015,8 @@ impl MakeStepEdge {
         FP: &crate::ffi::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepEdge_ctor_edge_tool_handletransferfinderprocess_factors(E, T, FP, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeStepEdge_ctor_edge_tool_handletransferfinderprocess_factors(E, T, FP, theLocalFactors)))
         }
     }
 
@@ -1312,96 +1028,60 @@ impl MakeStepEdge {
         FP: &crate::ffi::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepEdge_init(
-                    self as *mut Self,
-                    E,
-                    T,
-                    FP,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepEdge_init(self as *mut Self, E, T, FP, theLocalFactors)
+        })
     }
 
     /// **Source:** `TopoDSToStep_MakeStepEdge.hxx`:52 - `TopoDSToStep_MakeStepEdge::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepShapeTopologicalRepresentationItem {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_MakeStepEdge_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeStepEdge_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeStepEdge.hxx`:54 - `TopoDSToStep_MakeStepEdge::Error()`
     pub fn error(&self) -> crate::topo_ds_to_step::MakeEdgeError {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_MakeStepEdge_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::topo_ds_to_step::MakeEdgeError::try_from(__val).unwrap()
-        }
+        crate::topo_ds_to_step::MakeEdgeError::try_from(crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepEdge_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeStepEdge_as_TopoDSToStep_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TopoDSToStep_MakeStepEdge_as_TopoDSToStep_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeStepEdge_as_TopoDSToStep_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_MakeStepEdge_as_TopoDSToStep_Root_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepEdge_inherited_Tolerance(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TopoDSToStep_MakeStepEdge_inherited_Tolerance(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepEdge_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepEdge_inherited_IsDone(self as *const Self)
+        })
     }
 }
 
@@ -1424,12 +1104,10 @@ unsafe impl crate::CppDeletable for MakeStepFace {
 impl MakeStepFace {
     /// **Source:** `TopoDSToStep_MakeStepFace.hxx`:39 - `TopoDSToStep_MakeStepFace::TopoDSToStep_MakeStepFace()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_MakeStepFace_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopoDSToStep_MakeStepFace_ctor(),
+            ))
         }
     }
 
@@ -1440,14 +1118,8 @@ impl MakeStepFace {
         FP: &crate::ffi::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepFace_ctor_face_tool_handletransferfinderprocess_factors(F, T, FP, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeStepFace_ctor_face_tool_handletransferfinderprocess_factors(F, T, FP, theLocalFactors)))
         }
     }
 
@@ -1459,96 +1131,60 @@ impl MakeStepFace {
         FP: &crate::ffi::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepFace_init(
-                    self as *mut Self,
-                    F,
-                    T,
-                    FP,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepFace_init(self as *mut Self, F, T, FP, theLocalFactors)
+        })
     }
 
     /// **Source:** `TopoDSToStep_MakeStepFace.hxx`:52 - `TopoDSToStep_MakeStepFace::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepShapeTopologicalRepresentationItem {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_MakeStepFace_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeStepFace_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeStepFace.hxx`:54 - `TopoDSToStep_MakeStepFace::Error()`
     pub fn error(&self) -> crate::topo_ds_to_step::MakeFaceError {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_MakeStepFace_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::topo_ds_to_step::MakeFaceError::try_from(__val).unwrap()
-        }
+        crate::topo_ds_to_step::MakeFaceError::try_from(crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepFace_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeStepFace_as_TopoDSToStep_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TopoDSToStep_MakeStepFace_as_TopoDSToStep_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeStepFace_as_TopoDSToStep_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_MakeStepFace_as_TopoDSToStep_Root_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepFace_inherited_Tolerance(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TopoDSToStep_MakeStepFace_inherited_Tolerance(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepFace_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepFace_inherited_IsDone(self as *const Self)
+        })
     }
 }
 
@@ -1571,12 +1207,10 @@ unsafe impl crate::CppDeletable for MakeStepVertex {
 impl MakeStepVertex {
     /// **Source:** `TopoDSToStep_MakeStepVertex.hxx`:39 - `TopoDSToStep_MakeStepVertex::TopoDSToStep_MakeStepVertex()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_MakeStepVertex_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopoDSToStep_MakeStepVertex_ctor(),
+            ))
         }
     }
 
@@ -1587,14 +1221,8 @@ impl MakeStepVertex {
         FP: &crate::ffi::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepVertex_ctor_vertex_tool_handletransferfinderprocess_factors(V, T, FP, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeStepVertex_ctor_vertex_tool_handletransferfinderprocess_factors(V, T, FP, theLocalFactors)))
         }
     }
 
@@ -1606,96 +1234,66 @@ impl MakeStepVertex {
         FP: &crate::ffi::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepVertex_init(
-                    self as *mut Self,
-                    V,
-                    T,
-                    FP,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepVertex_init(
+                self as *mut Self,
+                V,
+                T,
+                FP,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `TopoDSToStep_MakeStepVertex.hxx`:52 - `TopoDSToStep_MakeStepVertex::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepShapeTopologicalRepresentationItem {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_MakeStepVertex_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeStepVertex_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeStepVertex.hxx`:54 - `TopoDSToStep_MakeStepVertex::Error()`
     pub fn error(&self) -> crate::topo_ds_to_step::MakeVertexError {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_MakeStepVertex_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::topo_ds_to_step::MakeVertexError::try_from(__val).unwrap()
-        }
+        crate::topo_ds_to_step::MakeVertexError::try_from(crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepVertex_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeStepVertex_as_TopoDSToStep_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TopoDSToStep_MakeStepVertex_as_TopoDSToStep_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeStepVertex_as_TopoDSToStep_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_MakeStepVertex_as_TopoDSToStep_Root_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepVertex_inherited_Tolerance(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::TopoDSToStep_MakeStepVertex_inherited_Tolerance(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepVertex_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepVertex_inherited_IsDone(self as *const Self)
+        })
     }
 }
 
@@ -1718,12 +1316,10 @@ unsafe impl crate::CppDeletable for MakeStepWire {
 impl MakeStepWire {
     /// **Source:** `TopoDSToStep_MakeStepWire.hxx`:39 - `TopoDSToStep_MakeStepWire::TopoDSToStep_MakeStepWire()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_MakeStepWire_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopoDSToStep_MakeStepWire_ctor(),
+            ))
         }
     }
 
@@ -1734,14 +1330,8 @@ impl MakeStepWire {
         FP: &crate::ffi::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepWire_ctor_wire_tool_handletransferfinderprocess_factors(W, T, FP, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeStepWire_ctor_wire_tool_handletransferfinderprocess_factors(W, T, FP, theLocalFactors)))
         }
     }
 
@@ -1753,96 +1343,60 @@ impl MakeStepWire {
         FP: &crate::ffi::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepWire_init(
-                    self as *mut Self,
-                    W,
-                    T,
-                    FP,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepWire_init(self as *mut Self, W, T, FP, theLocalFactors)
+        })
     }
 
     /// **Source:** `TopoDSToStep_MakeStepWire.hxx`:52 - `TopoDSToStep_MakeStepWire::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepShapeTopologicalRepresentationItem {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_MakeStepWire_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeStepWire_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_MakeStepWire.hxx`:54 - `TopoDSToStep_MakeStepWire::Error()`
     pub fn error(&self) -> crate::topo_ds_to_step::MakeWireError {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_MakeStepWire_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::topo_ds_to_step::MakeWireError::try_from(__val).unwrap()
-        }
+        crate::topo_ds_to_step::MakeWireError::try_from(crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepWire_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeStepWire_as_TopoDSToStep_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TopoDSToStep_MakeStepWire_as_TopoDSToStep_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeStepWire_as_TopoDSToStep_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_MakeStepWire_as_TopoDSToStep_Root_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepWire_inherited_Tolerance(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TopoDSToStep_MakeStepWire_inherited_Tolerance(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeStepWire_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeStepWire_inherited_IsDone(self as *const Self)
+        })
     }
 }
 
@@ -1864,12 +1418,10 @@ unsafe impl crate::CppDeletable for MakeTessellatedItem {
 impl MakeTessellatedItem {
     /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:36 - `TopoDSToStep_MakeTessellatedItem::TopoDSToStep_MakeTessellatedItem()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_MakeTessellatedItem_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopoDSToStep_MakeTessellatedItem_ctor(),
+            ))
         }
     }
 
@@ -1881,14 +1433,8 @@ impl MakeTessellatedItem {
         theToPreferSurfaceSet: bool,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeTessellatedItem_ctor_face_tool_handletransferfinderprocess_bool_progressrange(theFace, theTool, theFP, theToPreferSurfaceSet, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeTessellatedItem_ctor_face_tool_handletransferfinderprocess_bool_progressrange(theFace, theTool, theFP, theToPreferSurfaceSet, theProgress)))
         }
     }
 
@@ -1899,14 +1445,8 @@ impl MakeTessellatedItem {
         theFP: &crate::ffi::HandleTransferFinderProcess,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeTessellatedItem_ctor_shell_tool_handletransferfinderprocess_progressrange(theShell, theTool, theFP, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_MakeTessellatedItem_ctor_shell_tool_handletransferfinderprocess_progressrange(theShell, theTool, theFP, theProgress)))
         }
     }
 
@@ -1919,14 +1459,9 @@ impl MakeTessellatedItem {
         theToPreferSurfaceSet: bool,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopoDSToStep_MakeTessellatedItem_init_face_tool_handletransferfinderprocess_bool_progressrange(self as *mut Self, theFace, theTool, theFP, theToPreferSurfaceSet, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeTessellatedItem_init_face_tool_handletransferfinderprocess_bool_progressrange(self as *mut Self, theFace, theTool, theFP, theToPreferSurfaceSet, theProgress)
+        })
     }
 
     /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:57 - `TopoDSToStep_MakeTessellatedItem::Init()`
@@ -1937,77 +1472,56 @@ impl MakeTessellatedItem {
         theFP: &crate::ffi::HandleTransferFinderProcess,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopoDSToStep_MakeTessellatedItem_init_shell_tool_handletransferfinderprocess_progressrange(self as *mut Self, theShell, theTool, theFP, theProgress)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeTessellatedItem_init_shell_tool_handletransferfinderprocess_progressrange(self as *mut Self, theShell, theTool, theFP, theProgress)
+        })
     }
 
     /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:62 - `TopoDSToStep_MakeTessellatedItem::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStepVisualTessellatedItem {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_MakeTessellatedItem_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_MakeTessellatedItem_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeTessellatedItem_as_TopoDSToStep_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::TopoDSToStep_MakeTessellatedItem_as_TopoDSToStep_Root(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_MakeTessellatedItem_as_TopoDSToStep_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_MakeTessellatedItem_as_TopoDSToStep_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeTessellatedItem_inherited_Tolerance(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::TopoDSToStep_MakeTessellatedItem_inherited_Tolerance(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_MakeTessellatedItem_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_MakeTessellatedItem_inherited_IsDone(self as *const Self)
+        })
     }
 }
 
@@ -2031,26 +1545,14 @@ impl Root {
     /// Returns (modifiable) the tolerance to be used for writing
     /// If not set, starts at 0.0001
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_Root_tolerance(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TopoDSToStep_Root_tolerance(self as *mut Self)))
         }
     }
 
     /// **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_Root_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TopoDSToStep_Root_is_done(self as *const Self) })
     }
 }
 
@@ -2074,13 +1576,10 @@ impl Tool {
     pub fn new_handlestepdatastepmodel(
         theModel: &crate::ffi::HandleStepDataStepModel,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Tool_ctor_handlestepdatastepmodel(theModel) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopoDSToStep_Tool_ctor_handlestepdatastepmodel(theModel),
+            ))
         }
     }
 
@@ -2090,18 +1589,14 @@ impl Tool {
         FacetedContext: bool,
         theSurfCurveMode: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TopoDSToStep_Tool_ctor_datamapofshapetransient_bool_int(
                     M,
                     FacetedContext,
                     theSurfCurveMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2112,31 +1607,19 @@ impl Tool {
         FacetedContext: bool,
         theSurfCurveMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopoDSToStep_Tool_init(
-                    self as *mut Self,
-                    M,
-                    FacetedContext,
-                    theSurfCurveMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_Tool_init(
+                self as *mut Self,
+                M,
+                FacetedContext,
+                theSurfCurveMode,
+            )
+        })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:52 - `TopoDSToStep_Tool::IsBound()`
     pub fn is_bound(&mut self, S: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_Tool_is_bound(self as *mut Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TopoDSToStep_Tool_is_bound(self as *mut Self, S) })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:54 - `TopoDSToStep_Tool::Bind()`
@@ -2145,12 +1628,9 @@ impl Tool {
         S: &crate::topo_ds::Shape,
         T: &crate::ffi::HandleStepShapeTopologicalRepresentationItem,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::TopoDSToStep_Tool_bind(self as *mut Self, S, T) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_Tool_bind(self as *mut Self, S, T)
+        })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:57 - `TopoDSToStep_Tool::Find()`
@@ -2158,210 +1638,126 @@ impl Tool {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepShapeTopologicalRepresentationItem> {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_Tool_find(self as *mut Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopoDSToStep_Tool_find(
+                self as *mut Self,
+                S,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:59 - `TopoDSToStep_Tool::Faceted()`
     pub fn faceted(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_Tool_faceted(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TopoDSToStep_Tool_faceted(self as *const Self) })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:61 - `TopoDSToStep_Tool::SetCurrentShell()`
     pub fn set_current_shell(&mut self, S: &crate::topo_ds::Shell) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TopoDSToStep_Tool_set_current_shell(self as *mut Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_Tool_set_current_shell(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:63 - `TopoDSToStep_Tool::CurrentShell()`
     pub fn current_shell(&self) -> &crate::topo_ds::Shell {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Tool_current_shell(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_Tool_current_shell(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:65 - `TopoDSToStep_Tool::SetCurrentFace()`
     pub fn set_current_face(&mut self, F: &crate::topo_ds::Face) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TopoDSToStep_Tool_set_current_face(self as *mut Self, F) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_Tool_set_current_face(self as *mut Self, F)
+        })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:67 - `TopoDSToStep_Tool::CurrentFace()`
     pub fn current_face(&self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Tool_current_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_Tool_current_face(self as *const Self)))
         }
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:69 - `TopoDSToStep_Tool::SetCurrentWire()`
     pub fn set_current_wire(&mut self, W: &crate::topo_ds::Wire) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TopoDSToStep_Tool_set_current_wire(self as *mut Self, W) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_Tool_set_current_wire(self as *mut Self, W)
+        })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:71 - `TopoDSToStep_Tool::CurrentWire()`
     pub fn current_wire(&self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Tool_current_wire(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_Tool_current_wire(self as *const Self)))
         }
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:73 - `TopoDSToStep_Tool::SetCurrentEdge()`
     pub fn set_current_edge(&mut self, E: &crate::topo_ds::Edge) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TopoDSToStep_Tool_set_current_edge(self as *mut Self, E) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_Tool_set_current_edge(self as *mut Self, E)
+        })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:75 - `TopoDSToStep_Tool::CurrentEdge()`
     pub fn current_edge(&self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Tool_current_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_Tool_current_edge(self as *const Self)))
         }
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:77 - `TopoDSToStep_Tool::SetCurrentVertex()`
     pub fn set_current_vertex(&mut self, V: &crate::topo_ds::Vertex) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TopoDSToStep_Tool_set_current_vertex(self as *mut Self, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_Tool_set_current_vertex(self as *mut Self, V)
+        })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:79 - `TopoDSToStep_Tool::CurrentVertex()`
     pub fn current_vertex(&self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Tool_current_vertex(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_Tool_current_vertex(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:81 - `TopoDSToStep_Tool::Lowest3DTolerance()`
     pub fn lowest3_d_tolerance(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Tool_lowest3_d_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_Tool_lowest3_d_tolerance(self as *const Self)
+        })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:83 - `TopoDSToStep_Tool::SetSurfaceReversed()`
     pub fn set_surface_reversed(&mut self, B: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TopoDSToStep_Tool_set_surface_reversed(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_Tool_set_surface_reversed(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:85 - `TopoDSToStep_Tool::SurfaceReversed()`
     pub fn surface_reversed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Tool_surface_reversed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_Tool_surface_reversed(self as *const Self)
+        })
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:87 - `TopoDSToStep_Tool::Map()`
     pub fn map(&self) -> &crate::ffi::MoniTool_DataMapOfShapeTransient {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_Tool_map(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TopoDSToStep_Tool_map(self as *const Self))) }
     }
 
     /// **Source:** `TopoDSToStep_Tool.hxx`:91 - `TopoDSToStep_Tool::PCurveMode()`
     /// Returns mode for writing pcurves
     /// (initialized by parameter write.surfacecurve.mode)
     pub fn p_curve_mode(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_Tool_p_curve_mode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_Tool_p_curve_mode(self as *const Self)
+        })
     }
 }
 
@@ -2383,12 +1779,10 @@ unsafe impl crate::CppDeletable for WireframeBuilder {
 impl WireframeBuilder {
     /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:41 - `TopoDSToStep_WireframeBuilder::TopoDSToStep_WireframeBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDSToStep_WireframeBuilder_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopoDSToStep_WireframeBuilder_ctor(),
+            ))
         }
     }
 
@@ -2398,18 +1792,14 @@ impl WireframeBuilder {
         T: &mut Tool,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TopoDSToStep_WireframeBuilder_ctor_shape_tool_factors(
                     S,
                     T,
                     theLocalFactors,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2420,44 +1810,25 @@ impl WireframeBuilder {
         T: &mut Tool,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopoDSToStep_WireframeBuilder_init(
-                    self as *mut Self,
-                    S,
-                    T,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopoDSToStep_WireframeBuilder_init(self as *mut Self, S, T, theLocalFactors)
+        })
     }
 
     /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:52 - `TopoDSToStep_WireframeBuilder::Error()`
     pub fn error(&self) -> crate::topo_ds_to_step::BuilderError {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_WireframeBuilder_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::topo_ds_to_step::BuilderError::try_from(__val).unwrap()
-        }
+        crate::topo_ds_to_step::BuilderError::try_from(crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_WireframeBuilder_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:54 - `TopoDSToStep_WireframeBuilder::Value()`
     pub fn value(&self) -> &crate::ffi::HandleTColStdHSequenceOfTransient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDSToStep_WireframeBuilder_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopoDSToStep_WireframeBuilder_value(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2472,23 +1843,16 @@ impl WireframeBuilder {
         L: &mut crate::ffi::HandleTColStdHSequenceOfTransient,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_edge(
-                    self as *const Self,
-                    E,
-                    F,
-                    M,
-                    L,
-                    theLocalFactors,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_edge(
+                self as *const Self,
+                E,
+                F,
+                M,
+                L,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:68 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromFace()`
@@ -2501,22 +1865,15 @@ impl WireframeBuilder {
         L: &mut crate::ffi::HandleTColStdHSequenceOfTransient,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_face(
-                    self as *const Self,
-                    F,
-                    M,
-                    L,
-                    theLocalFactors,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_face(
+                self as *const Self,
+                F,
+                M,
+                L,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:76 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromShape()`
@@ -2529,71 +1886,50 @@ impl WireframeBuilder {
         L: &mut crate::ffi::HandleTColStdHSequenceOfTransient,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_shape(
-                    self as *const Self,
-                    S,
-                    M,
-                    L,
-                    theLocalFactors,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_shape(
+                self as *const Self,
+                S,
+                M,
+                L,
+                theLocalFactors,
+            )
+        })
     }
 
     /// Upcast to TopoDSToStep_Root
     pub fn as_root(&self) -> &Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_WireframeBuilder_as_TopoDSToStep_Root(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TopoDSToStep_WireframeBuilder_as_TopoDSToStep_Root(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDSToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        let __result = unsafe {
-            crate::ffi::TopoDSToStep_WireframeBuilder_as_TopoDSToStep_Root_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TopoDSToStep_WireframeBuilder_as_TopoDSToStep_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:36 - `TopoDSToStep_Root::Tolerance()`
     pub fn tolerance(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_WireframeBuilder_inherited_Tolerance(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::TopoDSToStep_WireframeBuilder_inherited_Tolerance(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TopoDSToStep_Root.hxx`:38 - `TopoDSToStep_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDSToStep_WireframeBuilder_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TopoDSToStep_WireframeBuilder_inherited_IsDone(self as *const Self)
+        })
     }
 }

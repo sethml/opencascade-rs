@@ -14,13 +14,10 @@
 pub fn make_curve_curve2d(
     HC: &crate::adaptor2d::Curve2d,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-    {
-        let __result = unsafe { crate::ffi::Geom2dAdaptor_make_curve_curve2d(HC) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::Geom2dAdaptor_make_curve_curve2d(HC),
+        ))
     }
 }
 
@@ -50,23 +47,17 @@ unsafe impl crate::CppDeletable for Curve {
 impl Curve {
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:51 - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dAdaptor_Curve_ctor()))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:53 - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
     pub fn new_handlegeom2dcurve(C: &crate::ffi::HandleGeom2dCurve) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_ctor_handlegeom2dcurve(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dAdaptor_Curve_ctor_handlegeom2dcurve(C),
+            ))
         }
     }
 
@@ -77,65 +68,45 @@ impl Curve {
         UFirst: f64,
         ULast: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_ctor_handlegeom2dcurve_real2(C, UFirst, ULast)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dAdaptor_Curve_ctor_handlegeom2dcurve_real2(C, UFirst, ULast),
+            ))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:49 - `Geom2dAdaptor_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Geom2dAdaptor_Curve_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:61 - `Geom2dAdaptor_Curve::ShallowCopy()`
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_shallow_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dAdaptor_Curve_shallow_copy(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:64 - `Geom2dAdaptor_Curve::Reset()`
     /// Reset currently loaded curve (undone Load()).
     pub fn reset(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Geom2dAdaptor_Curve_reset(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_reset(self as *mut Self)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:66 - `Geom2dAdaptor_Curve::Load()`
     pub fn load_handlegeom2dcurve(&mut self, theCurve: &crate::ffi::HandleGeom2dCurve) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_load_handlegeom2dcurve(self as *mut Self, theCurve)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_load_handlegeom2dcurve(self as *mut Self, theCurve)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:76 - `Geom2dAdaptor_Curve::Load()`
@@ -146,70 +117,43 @@ impl Curve {
         theUFirst: f64,
         theULast: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_load_handlegeom2dcurve_real2(
-                    self as *mut Self,
-                    theCurve,
-                    theUFirst,
-                    theULast,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_load_handlegeom2dcurve_real2(
+                self as *mut Self,
+                theCurve,
+                theUFirst,
+                theULast,
+            )
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:91 - `Geom2dAdaptor_Curve::Curve()`
     pub fn curve(&self) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Geom2dAdaptor_Curve_curve(self as *const Self)))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:93 - `Geom2dAdaptor_Curve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_first_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_first_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:95 - `Geom2dAdaptor_Curve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_last_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:97 - `Geom2dAdaptor_Curve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:102 - `Geom2dAdaptor_Curve::NbIntervals()`
@@ -217,16 +161,9 @@ impl Curve {
     /// continuity  <S>.    And  returns   the number   of
     /// intervals.
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_nb_intervals(self as *const Self, S.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_nb_intervals(self as *const Self, S.into())
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:109 - `Geom2dAdaptor_Curve::Intervals()`
@@ -236,14 +173,9 @@ impl Curve {
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_intervals(self as *const Self, T, S.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_intervals(self as *const Self, T, S.into())
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:116 - `Geom2dAdaptor_Curve::Trim()`
@@ -257,78 +189,52 @@ impl Curve {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_trim(self as *const Self, First, Last, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dAdaptor_Curve_trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            )))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:120 - `Geom2dAdaptor_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_is_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_is_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:122 - `Geom2dAdaptor_Curve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_is_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:124 - `Geom2dAdaptor_Curve::Period()`
     pub fn period(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Geom2dAdaptor_Curve_period(self as *const Self) })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:127 - `Geom2dAdaptor_Curve::Value()`
     /// Computes the point of parameter U on the curve
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_value(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dAdaptor_Curve_value(
+                self as *const Self,
+                U,
+            )))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:130 - `Geom2dAdaptor_Curve::D0()`
     /// Computes the point of parameter U.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe { crate::ffi::Geom2dAdaptor_Curve_d0(self as *const Self, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_d0(self as *const Self, U, P)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:136 - `Geom2dAdaptor_Curve::D1()`
@@ -337,12 +243,9 @@ impl Curve {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
-        {
-            let __exc = unsafe { crate::ffi::Geom2dAdaptor_Curve_d1(self as *const Self, U, P, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_d1(self as *const Self, U, P, V)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:142 - `Geom2dAdaptor_Curve::D2()`
@@ -357,13 +260,9 @@ impl Curve {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_d2(self as *const Self, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_d2(self as *const Self, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:151 - `Geom2dAdaptor_Curve::D3()`
@@ -379,14 +278,9 @@ impl Curve {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_d3(self as *const Self, U, P, V1, V2, V3)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_d3(self as *const Self, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:162 - `Geom2dAdaptor_Curve::DN()`
@@ -396,301 +290,210 @@ impl Curve {
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_dn(self as *const Self, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dAdaptor_Curve_dn(
+                self as *const Self,
+                U,
+                N,
+            )))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:166 - `Geom2dAdaptor_Curve::Resolution()`
     /// returns the parametric resolution
     pub fn resolution(&self, Ruv: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_resolution(self as *const Self, Ruv) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_resolution(self as *const Self, Ruv)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:168 - `Geom2dAdaptor_Curve::GetType()`
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_get_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::CurveType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_get_type(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:170 - `Geom2dAdaptor_Curve::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dAdaptor_Curve_line(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:172 - `Geom2dAdaptor_Curve::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_circle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dAdaptor_Curve_circle(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:174 - `Geom2dAdaptor_Curve::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_ellipse(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dAdaptor_Curve_ellipse(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:176 - `Geom2dAdaptor_Curve::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_hyperbola(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dAdaptor_Curve_hyperbola(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:178 - `Geom2dAdaptor_Curve::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_parabola(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dAdaptor_Curve_parabola(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:180 - `Geom2dAdaptor_Curve::Degree()`
     pub fn degree(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_degree(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Geom2dAdaptor_Curve_degree(self as *const Self) })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:182 - `Geom2dAdaptor_Curve::IsRational()`
     pub fn is_rational(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_is_rational(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_is_rational(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:184 - `Geom2dAdaptor_Curve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_nb_poles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_nb_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:186 - `Geom2dAdaptor_Curve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_nb_knots(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_nb_knots(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:188 - `Geom2dAdaptor_Curve::NbSamples()`
     pub fn nb_samples(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_nb_samples(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_nb_samples(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:190 - `Geom2dAdaptor_Curve::Bezier()`
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_bezier(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dAdaptor_Curve_bezier(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:192 - `Geom2dAdaptor_Curve::BSpline()`
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_b_spline(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dAdaptor_Curve_b_spline(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:49 - `Geom2dAdaptor_Curve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Geom2dAdaptor_Curve_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:49 - `Geom2dAdaptor_Curve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Geom2dAdaptor_Curve_get_type_descriptor())) }
     }
 
     /// Upcast to Adaptor2d_Curve2d
     pub fn as_adaptor2d_curve2d(&self) -> &crate::adaptor2d::Curve2d {
-        let __result =
-            unsafe { crate::ffi::Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor2d_Curve2d (mutable)
     pub fn as_adaptor2d_curve2d_mut(&mut self) -> &mut crate::adaptor2d::Curve2d {
-        let __result =
-            unsafe { crate::ffi::Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Geom2dAdaptor_Curve_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Geom2dAdaptor_Curve_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Geom2dAdaptor_Curve_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Geom2dAdaptor_Curve_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dAdaptorCurve> {
-        let __result = unsafe { crate::ffi::Geom2dAdaptor_Curve_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Geom2dAdaptor_Curve_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Geom2dAdaptor_Curve_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -701,53 +504,30 @@ impl Curve {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dAdaptor_Curve_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Geom2dAdaptor_Curve_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Geom2dAdaptor_Curve_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -762,42 +542,38 @@ unsafe impl crate::CppDeletable for HandleGeom2dAdaptorCurve {
 impl HandleGeom2dAdaptorCurve {
     /// Dereference this Handle to access the underlying Geom2dAdaptor_Curve
     pub fn get(&self) -> &crate::ffi::Geom2dAdaptor_Curve {
-        let __result = unsafe { crate::ffi::HandleGeom2dAdaptorCurve_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleGeom2dAdaptorCurve_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2dAdaptor_Curve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2dAdaptor_Curve {
-        let __result = unsafe { crate::ffi::HandleGeom2dAdaptorCurve_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleGeom2dAdaptorCurve_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2dAdaptor_Curve> to Handle<Adaptor2d_Curve2d>
     pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        let __result = unsafe {
-            crate::ffi::HandleGeom2dAdaptorCurve_to_HandleAdaptor2dCurve2d(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleGeom2dAdaptorCurve_to_HandleAdaptor2dCurve2d(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2dAdaptor_Curve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleGeom2dAdaptorCurve_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleGeom2dAdaptorCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Geom2dAdaptor_Curve> to Handle<BRepAdaptor_Curve2d>
@@ -806,18 +582,15 @@ impl HandleGeom2dAdaptorCurve {
     pub fn downcast_to_curve2d(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCurve2d>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleGeom2dAdaptorCurve_downcast_to_HandleBRepAdaptorCurve2d(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }

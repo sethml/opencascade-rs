@@ -16,16 +16,9 @@ pub fn write_shape_charptr_bool(
     theAsciiMode: bool,
 ) -> bool {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
-    {
-        let __result = unsafe {
-            crate::ffi::StlAPI_write_shape_charptr_bool(theShape, c_theFile.as_ptr(), theAsciiMode)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::StlAPI_write_shape_charptr_bool(theShape, c_theFile.as_ptr(), theAsciiMode)
+    })
 }
 
 // ========================
@@ -49,13 +42,7 @@ impl Reader {
     /// **Source:** `StlAPI_Reader.hxx` - `StlAPI_Reader::StlAPI_Reader()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StlAPI_Reader_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StlAPI_Reader_ctor())) }
     }
 
     /// **Source:** `StlAPI_Reader.hxx`:32 - `StlAPI_Reader::Read()`
@@ -63,16 +50,9 @@ impl Reader {
     /// @return True if reading is successful
     pub fn read(&mut self, theShape: &mut crate::topo_ds::Shape, theFileName: &str) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::StlAPI_Reader_read(self as *mut Self, theShape, c_theFileName.as_ptr())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StlAPI_Reader_read(self as *mut Self, theShape, c_theFileName.as_ptr())
+        })
     }
 }
 
@@ -96,13 +76,7 @@ impl Writer {
     /// **Source:** `StlAPI_Writer.hxx`:33 - `StlAPI_Writer::StlAPI_Writer()`
     /// Creates a writer object with default parameters: ASCIIMode.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::StlAPI_Writer_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StlAPI_Writer_ctor())) }
     }
 
     /// **Source:** `StlAPI_Writer.hxx`:39 - `StlAPI_Writer::ASCIIMode()`
@@ -111,13 +85,8 @@ impl Writer {
     /// If the mode returns True (default value) the generated file is an ASCII file.
     /// If the mode returns False, the generated file is a binary file.
     pub fn ascii_mode(&mut self) -> &mut bool {
-        {
-            let __result = unsafe { crate::ffi::StlAPI_Writer_ascii_mode(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::StlAPI_Writer_ascii_mode(self as *mut Self)))
         }
     }
 
@@ -131,20 +100,13 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::StlAPI_Writer_write(
-                    self as *mut Self,
-                    theShape,
-                    c_theFileName.as_ptr(),
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::StlAPI_Writer_write(
+                self as *mut Self,
+                theShape,
+                c_theFileName.as_ptr(),
+                theProgress,
+            )
+        })
     }
 }

@@ -22,12 +22,10 @@ unsafe impl crate::CppDeletable for TestInterference {
 impl TestInterference {
     /// **Source:** `TopBas_TestInterference.hxx`:32 - `TopBas_TestInterference::TopBas_TestInterference()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopBas_TestInterference_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopBas_TestInterference_ctor(),
+            ))
         }
     }
 
@@ -39,181 +37,114 @@ impl TestInterference {
         Trans: crate::top_abs::Orientation,
         BTrans: crate::top_abs::Orientation,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TopBas_TestInterference_ctor_real_int_orientation3(
                     Inters,
                     Bound,
                     Orient.into(),
                     Trans.into(),
                     BTrans.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:40 - `TopBas_TestInterference::Intersection()`
     pub fn intersection_real(&mut self, I: &f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopBas_TestInterference_intersection_real(self as *mut Self, I)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopBas_TestInterference_intersection_real(self as *mut Self, I)
+        })
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:42 - `TopBas_TestInterference::Boundary()`
     pub fn boundary_int(&mut self, B: &i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TopBas_TestInterference_boundary_int(self as *mut Self, B) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopBas_TestInterference_boundary_int(self as *mut Self, B)
+        })
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:44 - `TopBas_TestInterference::Orientation()`
     pub fn orientation_orientation(&mut self, O: crate::top_abs::Orientation) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopBas_TestInterference_orientation_orientation(
-                    self as *mut Self,
-                    O.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopBas_TestInterference_orientation_orientation(self as *mut Self, O.into())
+        })
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:46 - `TopBas_TestInterference::Transition()`
     pub fn transition_orientation(&mut self, Tr: crate::top_abs::Orientation) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopBas_TestInterference_transition_orientation(
-                    self as *mut Self,
-                    Tr.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopBas_TestInterference_transition_orientation(self as *mut Self, Tr.into())
+        })
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:48 - `TopBas_TestInterference::BoundaryTransition()`
     pub fn boundary_transition_orientation(&mut self, BTr: crate::top_abs::Orientation) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopBas_TestInterference_boundary_transition_orientation(
-                    self as *mut Self,
-                    BTr.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopBas_TestInterference_boundary_transition_orientation(
+                self as *mut Self,
+                BTr.into(),
+            )
+        })
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:50 - `TopBas_TestInterference::Intersection()`
     pub fn intersection(&self) -> &f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::TopBas_TestInterference_intersection(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopBas_TestInterference_intersection(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:52 - `TopBas_TestInterference::ChangeIntersection()`
     pub fn change_intersection(&mut self) -> &mut f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::TopBas_TestInterference_change_intersection(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TopBas_TestInterference_change_intersection(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:54 - `TopBas_TestInterference::Boundary()`
     pub fn boundary(&self) -> &i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TopBas_TestInterference_boundary(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TopBas_TestInterference_boundary(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:56 - `TopBas_TestInterference::ChangeBoundary()`
     pub fn change_boundary(&mut self) -> &mut i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TopBas_TestInterference_change_boundary(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TopBas_TestInterference_change_boundary(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:58 - `TopBas_TestInterference::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
-        {
-            let __result =
-                unsafe { crate::ffi::TopBas_TestInterference_orientation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::TopBas_TestInterference_orientation(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:60 - `TopBas_TestInterference::Transition()`
     pub fn transition(&self) -> crate::top_abs::Orientation {
-        {
-            let __result =
-                unsafe { crate::ffi::TopBas_TestInterference_transition(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::TopBas_TestInterference_transition(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:62 - `TopBas_TestInterference::BoundaryTransition()`
     pub fn boundary_transition(&self) -> crate::top_abs::Orientation {
-        {
-            let __result = unsafe {
-                crate::ffi::TopBas_TestInterference_boundary_transition(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::TopBas_TestInterference_boundary_transition(self as *const Self)
+        }))
+        .unwrap()
     }
 }

@@ -156,12 +156,8 @@ impl Application {
     /// **Source:** `TDocStd_Application.hxx`:72 - `TDocStd_Application::TDocStd_Application()`
     /// Constructs the new instance and registers it in CDM_Session
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Application_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Application_ctor()))
         }
     }
 
@@ -169,15 +165,9 @@ impl Application {
     /// Check if meta data driver was successfully loaded
     /// by the application constructor
     pub fn is_driver_loaded(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Application_is_driver_loaded(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_is_driver_loaded(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:96 - `TDocStd_Application::Resources()`
@@ -200,13 +190,10 @@ impl Application {
     /// - [Format].RetrievalPlugin: [GUID] (optional)
     /// - [Format].StoragePlugin: [GUID] (optional)
     pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Application_resources(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Application_resources(self as *mut Self),
+            ))
         }
     }
 
@@ -241,15 +228,13 @@ impl Application {
     ///
     /// Default implementation returns empty string.
     pub fn resources_name(&mut self) -> std::string::String {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Application_resources_name(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::TDocStd_Application_resources_name(self as *mut Self),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:140 - `TDocStd_Application::DefineFormat()`
@@ -272,21 +257,16 @@ impl Application {
         theReader: &crate::ffi::HandlePCDMRetrievalDriver,
         theWriter: &crate::ffi::HandlePCDMStorageDriver,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_define_format(
-                    self as *mut Self,
-                    theFormat,
-                    theDescription,
-                    theExtension,
-                    theReader,
-                    theWriter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_define_format(
+                self as *mut Self,
+                theFormat,
+                theDescription,
+                theExtension,
+                theReader,
+                theWriter,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:149 - `TDocStd_Application::ReadingFormats()`
@@ -294,14 +274,9 @@ impl Application {
     ///
     /// @param theFormats - sequence of reading formats. Output parameter.
     pub fn reading_formats(&mut self, theFormats: &mut crate::ffi::TColStd_SequenceOfAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_reading_formats(self as *mut Self, theFormats)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_reading_formats(self as *mut Self, theFormats)
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:154 - `TDocStd_Application::WritingFormats()`
@@ -309,28 +284,17 @@ impl Application {
     ///
     /// @param theFormats - sequence of writing formats. Output parameter.
     pub fn writing_formats(&mut self, theFormats: &mut crate::ffi::TColStd_SequenceOfAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_writing_formats(self as *mut Self, theFormats)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_writing_formats(self as *mut Self, theFormats)
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:157 - `TDocStd_Application::NbDocuments()`
     /// returns the number of documents handled by the current applicative session.
     pub fn nb_documents(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Application_nb_documents(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_nb_documents(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument()`
@@ -347,14 +311,9 @@ impl Application {
     /// for (Standard_Integer i = 1; i <= nbdoc; i++) {
     /// aApp->GetDocument(i,aDoc);
     pub fn get_document(&self, index: i32, aDoc: &mut crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_get_document(self as *const Self, index, aDoc)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_get_document(self as *const Self, index, aDoc)
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:179 - `TDocStd_Application::NewDocument()`
@@ -368,18 +327,13 @@ impl Application {
         format: &crate::t_collection::ExtendedString,
         aDoc: &mut crate::ffi::HandleCDMDocument,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_new_document_extendedstring_handlecdmdocument(
-                    self as *mut Self,
-                    format,
-                    aDoc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_new_document_extendedstring_handlecdmdocument(
+                self as *mut Self,
+                format,
+                aDoc,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:184 - `TDocStd_Application::NewDocument()`
@@ -390,18 +344,13 @@ impl Application {
         format: &crate::t_collection::ExtendedString,
         aDoc: &mut crate::ffi::HandleTDocStdDocument,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_new_document_extendedstring_handletdocstddocument(
-                    self as *mut Self,
-                    format,
-                    aDoc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_new_document_extendedstring_handletdocstddocument(
+                self as *mut Self,
+                format,
+                aDoc,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:194 - `TDocStd_Application::InitDocument()`
@@ -413,25 +362,18 @@ impl Application {
     /// to open/save a document
     /// =======================
     pub fn init_document(&self, aDoc: &crate::ffi::HandleCDMDocument) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Application_init_document(self as *const Self, aDoc) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_init_document(self as *const Self, aDoc)
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close()`
     /// Close the given document. the document is not any more
     /// handled by the applicative session.
     pub fn close(&mut self, aDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Application_close(self as *mut Self, aDoc) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_close(self as *mut Self, aDoc)
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
@@ -456,15 +398,9 @@ impl Application {
     /// return 0;
     /// }
     pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Application_is_in_session(self as *const Self, path) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_is_in_session(self as *const Self, path)
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:232 - `TDocStd_Application::Open()`
@@ -483,16 +419,7 @@ impl Application {
         theFilter: &crate::ffi::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::ReaderStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_open_extendedstring_handletdocstddocument_handlepcdmreaderfilter_progressrange(self as *mut Self, thePath, theDoc, theFilter, theRange)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::ReaderStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe { crate::ffi::TDocStd_Application_open_extendedstring_handletdocstddocument_handlepcdmreaderfilter_progressrange(self as *mut Self, thePath, theDoc, theFilter, theRange) })).unwrap()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:244 - `TDocStd_Application::Open()`
@@ -509,16 +436,15 @@ impl Application {
         theDoc: &mut crate::ffi::HandleTDocStdDocument,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::ReaderStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_open_extendedstring_handletdocstddocument_progressrange(self as *mut Self, thePath, theDoc, theRange)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::ReaderStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_open_extendedstring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDoc,
+                theRange,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:258 - `TDocStd_Application::Open()`
@@ -535,16 +461,7 @@ impl Application {
         theFilter: &crate::ffi::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::ReaderStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_open_istream_handletdocstddocument_handlepcdmreaderfilter_progressrange(self as *mut Self, theIStream, theDoc, theFilter, theRange)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::ReaderStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe { crate::ffi::TDocStd_Application_open_istream_handletdocstddocument_handlepcdmreaderfilter_progressrange(self as *mut Self, theIStream, theDoc, theFilter, theRange) })).unwrap()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:268 - `TDocStd_Application::Open()`
@@ -559,21 +476,15 @@ impl Application {
         theDoc: &mut crate::ffi::HandleTDocStdDocument,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::ReaderStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_open_istream_handletdocstddocument_progressrange(
-                    self as *mut Self,
-                    theIStream,
-                    theDoc,
-                    theRange,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::ReaderStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_open_istream_handletdocstddocument_progressrange(
+                self as *mut Self,
+                theIStream,
+                theDoc,
+                theRange,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs()`
@@ -585,16 +496,7 @@ impl Application {
         path: &crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_save_as_handletdocstddocument_extendedstring_progressrange(self as *mut Self, theDoc, path, theRange)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::StoreStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe { crate::ffi::TDocStd_Application_save_as_handletdocstddocument_extendedstring_progressrange(self as *mut Self, theDoc, path, theRange) })).unwrap()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:285 - `TDocStd_Application::SaveAs()`
@@ -606,21 +508,15 @@ impl Application {
         theOStream: &mut crate::ffi::Standard_OStream,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_save_as_handletdocstddocument_ostream_progressrange(
-                    self as *mut Self,
-                    theDoc,
-                    theOStream,
-                    theRange,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::StoreStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_save_as_handletdocstddocument_ostream_progressrange(
+                self as *mut Self,
+                theDoc,
+                theOStream,
+                theRange,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save()`
@@ -633,20 +529,14 @@ impl Application {
         theDoc: &crate::ffi::HandleTDocStdDocument,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_save_handletdocstddocument_progressrange(
-                    self as *mut Self,
-                    theDoc,
-                    theRange,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::StoreStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_save_handletdocstddocument_progressrange(
+                self as *mut Self,
+                theDoc,
+                theRange,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:301 - `TDocStd_Application::SaveAs()`
@@ -660,16 +550,7 @@ impl Application {
         theStatusMessage: &mut crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_save_as_handletdocstddocument_extendedstring2_progressrange(self as *mut Self, theDoc, path, theStatusMessage, theRange)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::StoreStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe { crate::ffi::TDocStd_Application_save_as_handletdocstddocument_extendedstring2_progressrange(self as *mut Self, theDoc, path, theStatusMessage, theRange) })).unwrap()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:309 - `TDocStd_Application::SaveAs()`
@@ -682,16 +563,7 @@ impl Application {
         theStatusMessage: &mut crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_save_as_handletdocstddocument_ostream_extendedstring_progressrange(self as *mut Self, theDoc, theOStream, theStatusMessage, theRange)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::StoreStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe { crate::ffi::TDocStd_Application_save_as_handletdocstddocument_ostream_extendedstring_progressrange(self as *mut Self, theDoc, theOStream, theStatusMessage, theRange) })).unwrap()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:316 - `TDocStd_Application::Save()`
@@ -702,163 +574,129 @@ impl Application {
         theStatusMessage: &mut crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_save_handletdocstddocument_extendedstring_progressrange(self as *mut Self, theDoc, theStatusMessage, theRange)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::StoreStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_save_handletdocstddocument_extendedstring_progressrange(
+                self as *mut Self,
+                theDoc,
+                theStatusMessage,
+                theRange,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction()`
     /// Notification that is fired at each OpenTransaction event.
     pub fn on_open_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_on_open_transaction(self as *mut Self, theDoc)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_on_open_transaction(self as *mut Self, theDoc)
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction()`
     /// Notification that is fired at each CommitTransaction event.
     pub fn on_commit_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_on_commit_transaction(self as *mut Self, theDoc)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_on_commit_transaction(self as *mut Self, theDoc)
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction()`
     /// Notification that is fired at each AbortTransaction event.
     pub fn on_abort_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_on_abort_transaction(self as *mut Self, theDoc)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_on_abort_transaction(self as *mut Self, theDoc)
+        })
     }
 
     /// **Source:** `TDocStd_Application.hxx`:332 - `TDocStd_Application::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Application_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_Application_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_Application.hxx`:332 - `TDocStd_Application::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Application_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::TDocStd_Application_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `TDocStd_Application.hxx`:332 - `TDocStd_Application::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Application_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_Application_get_type_descriptor())) }
     }
 
     /// Upcast to CDF_Application
     pub fn as_cdf_application(&self) -> &crate::cdf::Application {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Application_as_CDF_Application(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_Application_as_CDF_Application(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to CDF_Application (mutable)
     pub fn as_cdf_application_mut(&mut self) -> &mut crate::cdf::Application {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Application_as_CDF_Application_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_Application_as_CDF_Application_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to CDM_Application
     pub fn as_cdm_application(&self) -> &crate::cdm::Application {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Application_as_CDM_Application(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_Application_as_CDM_Application(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to CDM_Application (mutable)
     pub fn as_cdm_application_mut(&mut self) -> &mut crate::cdm::Application {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Application_as_CDM_Application_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_Application_as_CDM_Application_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Application_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_Application_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Application_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_Application_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdApplication> {
-        let __result = unsafe { crate::ffi::TDocStd_Application_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Application_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
@@ -866,16 +704,10 @@ impl Application {
         &mut self,
         aDocument: &crate::ffi::HandleCDMDocument,
     ) -> crate::cdm::CanCloseStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_inherited_CanClose(self as *mut Self, aDocument)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::cdm::CanCloseStatus::try_from(__val).unwrap()
-        }
+        crate::cdm::CanCloseStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_CanClose(self as *mut Self, aDocument)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:97 - `CDF_Application::Retrieve()`
@@ -887,8 +719,8 @@ impl Application {
         theFilter: &crate::ffi::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TDocStd_Application_inherited_Retrieve(
                     self as *mut Self,
                     aFolder,
@@ -896,13 +728,8 @@ impl Application {
                     UseStorageConfiguration,
                     theFilter,
                     theRange,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -913,35 +740,23 @@ impl Application {
         theName: &crate::t_collection::ExtendedString,
         theAppendMode: bool,
     ) -> crate::pcdm::ReaderStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_inherited_CanRetrieve(
-                    self as *mut Self,
-                    theFolder,
-                    theName,
-                    theAppendMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::ReaderStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_CanRetrieve(
+                self as *mut Self,
+                theFolder,
+                theName,
+                theAppendMode,
+            )
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:136 - `CDF_Application::GetRetrieveStatus()`
     pub fn get_retrieve_status(&self) -> crate::pcdm::ReaderStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_inherited_GetRetrieveStatus(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::ReaderStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_GetRetrieveStatus(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:140 - `CDF_Application::Read()`
@@ -952,20 +767,15 @@ impl Application {
         theFilter: &crate::ffi::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_inherited_Read(
-                    self as *mut Self,
-                    theIStream,
-                    theDocument,
-                    theFilter,
-                    theRange,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_Read(
+                self as *mut Self,
+                theIStream,
+                theDocument,
+                theFilter,
+                theRange,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:158 - `CDF_Application::ReaderFromFormat()`
@@ -973,18 +783,13 @@ impl Application {
         &mut self,
         aFormat: &crate::t_collection::ExtendedString,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReader> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TDocStd_Application_inherited_ReaderFromFormat(
                     self as *mut Self,
                     aFormat,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -993,18 +798,13 @@ impl Application {
         &mut self,
         aFormat: &crate::t_collection::ExtendedString,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMStorageDriver> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TDocStd_Application_inherited_WriterFromFormat(
                     self as *mut Self,
                     aFormat,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1014,63 +814,38 @@ impl Application {
         aFileName: &crate::t_collection::ExtendedString,
         theFormat: &mut crate::t_collection::ExtendedString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_inherited_Format(
-                    self as *mut Self,
-                    aFileName,
-                    theFormat,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_Format(
+                self as *mut Self,
+                aFileName,
+                theFormat,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:187 - `CDF_Application::MetaDataDriver()`
     pub fn meta_data_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFMetaDataDriver> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_inherited_MetaDataDriver(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Application_inherited_MetaDataDriver(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
     pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_inherited_MessageDriver(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Application_inherited_MessageDriver(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
     pub fn begin_of_update(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_inherited_BeginOfUpdate(
-                    self as *mut Self,
-                    aDocument,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_BeginOfUpdate(self as *mut Self, aDocument)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
@@ -1080,98 +855,63 @@ impl Application {
         theStatus: bool,
         ErrorString: &crate::t_collection::ExtendedString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_inherited_EndOfUpdate(
-                    self as *mut Self,
-                    aDocument,
-                    theStatus,
-                    ErrorString,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_EndOfUpdate(
+                self as *mut Self,
+                aDocument,
+                theStatus,
+                ErrorString,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Application_inherited_Name(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Application_inherited_Name(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
     pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Application_inherited_Version(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Application_inherited_Version(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
     pub fn meta_data_look_up_table(&mut self) -> &mut crate::ffi::CDM_MetaDataLookUpTable {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_inherited_MetaDataLookUpTable(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::TDocStd_Application_inherited_MetaDataLookUpTable(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Application_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::TDocStd_Application_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1182,53 +922,30 @@ impl Application {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Application_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Application_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Application_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Application_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1243,53 +960,47 @@ unsafe impl crate::CppDeletable for HandleTDocStdApplication {
 impl HandleTDocStdApplication {
     /// Dereference this Handle to access the underlying TDocStd_Application
     pub fn get(&self) -> &crate::ffi::TDocStd_Application {
-        let __result = unsafe { crate::ffi::HandleTDocStdApplication_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleTDocStdApplication_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDocStd_Application
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Application {
-        let __result = unsafe { crate::ffi::HandleTDocStdApplication_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleTDocStdApplication_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDocStd_Application> to Handle<CDF_Application>
     pub fn to_handle_cdf_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFApplication> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdApplication_to_HandleCDFApplication(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdApplication_to_HandleCDFApplication(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDocStd_Application> to Handle<CDM_Application>
     pub fn to_handle_cdm_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMApplication> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdApplication_to_HandleCDMApplication(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdApplication_to_HandleCDMApplication(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDocStd_Application> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdApplication_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdApplication_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TDocStd_Application> to Handle<AppStdL_Application>
@@ -1298,18 +1009,15 @@ impl HandleTDocStdApplication {
     pub fn downcast_to_app_std_l_application(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppStdLApplication>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleTDocStdApplication_downcast_to_HandleAppStdLApplication(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1319,18 +1027,15 @@ impl HandleTDocStdApplication {
     pub fn downcast_to_app_std_application(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppStdApplication>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleTDocStdApplication_downcast_to_HandleAppStdApplication(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1340,18 +1045,15 @@ impl HandleTDocStdApplication {
     pub fn downcast_to_t_obj_application(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjApplication>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleTDocStdApplication_downcast_to_HandleTObjApplication(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1361,18 +1063,15 @@ impl HandleTDocStdApplication {
     pub fn downcast_to_xcaf_app_application(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleTDocStdApplication_downcast_to_HandleXCAFAppApplication(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -1393,174 +1092,121 @@ unsafe impl crate::CppDeletable for ApplicationDelta {
 impl ApplicationDelta {
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:33 - `TDocStd_ApplicationDelta::TDocStd_ApplicationDelta()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_ApplicationDelta_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_ApplicationDelta_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:35 - `TDocStd_ApplicationDelta::GetDocuments()`
     pub fn get_documents(&mut self) -> &mut crate::ffi::TDocStd_SequenceOfDocument {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_ApplicationDelta_get_documents(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TDocStd_ApplicationDelta_get_documents(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:37 - `TDocStd_ApplicationDelta::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::ExtendedString {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_ApplicationDelta_get_name(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_ApplicationDelta_get_name(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:39 - `TDocStd_ApplicationDelta::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::ExtendedString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_ApplicationDelta_set_name(self as *mut Self, theName)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_ApplicationDelta_set_name(self as *mut Self, theName)
+        })
     }
 
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:41 - `TDocStd_ApplicationDelta::Dump()`
     pub fn dump(&self, anOS: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_ApplicationDelta_dump(self as *const Self, anOS) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_ApplicationDelta_dump(self as *const Self, anOS)
+        })
     }
 
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:43 - `TDocStd_ApplicationDelta::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_ApplicationDelta_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_ApplicationDelta_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:43 - `TDocStd_ApplicationDelta::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_ApplicationDelta_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::TDocStd_ApplicationDelta_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:43 - `TDocStd_ApplicationDelta::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_ApplicationDelta_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_ApplicationDelta_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::TDocStd_ApplicationDelta_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_ApplicationDelta_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::TDocStd_ApplicationDelta_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TDocStd_ApplicationDelta_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdApplicationDelta> {
-        let __result = unsafe { crate::ffi::TDocStd_ApplicationDelta_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_ApplicationDelta_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_ApplicationDelta_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_ApplicationDelta_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_ApplicationDelta_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_ApplicationDelta_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::TDocStd_ApplicationDelta_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::TDocStd_ApplicationDelta_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1571,58 +1217,30 @@ impl ApplicationDelta {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_ApplicationDelta_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_ApplicationDelta_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_ApplicationDelta_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_ApplicationDelta_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_ApplicationDelta_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_ApplicationDelta_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_ApplicationDelta_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_ApplicationDelta_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1637,35 +1255,31 @@ unsafe impl crate::CppDeletable for HandleTDocStdApplicationDelta {
 impl HandleTDocStdApplicationDelta {
     /// Dereference this Handle to access the underlying TDocStd_ApplicationDelta
     pub fn get(&self) -> &crate::ffi::TDocStd_ApplicationDelta {
-        let __result =
-            unsafe { crate::ffi::HandleTDocStdApplicationDelta_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleTDocStdApplicationDelta_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDocStd_ApplicationDelta
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_ApplicationDelta {
-        let __result =
-            unsafe { crate::ffi::HandleTDocStdApplicationDelta_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleTDocStdApplicationDelta_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDocStd_ApplicationDelta> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdApplicationDelta_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdApplicationDelta_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1692,261 +1306,173 @@ impl CompoundDelta {
     /// restores the TDF_Data in the state it was at
     /// <anEndTime>. Reserved to TDF_Data.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_CompoundDelta_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_CompoundDelta_ctor()))
         }
     }
 
     /// **Source:** `TDocStd_CompoundDelta.hxx`:40 - `TDocStd_CompoundDelta::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_CompoundDelta_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_CompoundDelta_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_CompoundDelta.hxx`:40 - `TDocStd_CompoundDelta::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_CompoundDelta_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::TDocStd_CompoundDelta_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `TDocStd_CompoundDelta.hxx`:40 - `TDocStd_CompoundDelta::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_CompoundDelta_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_CompoundDelta_get_type_descriptor())) }
     }
 
     /// Upcast to TDF_Delta
     pub fn as_tdf_delta(&self) -> &crate::tdf::Delta {
-        let __result =
-            unsafe { crate::ffi::TDocStd_CompoundDelta_as_TDF_Delta(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_CompoundDelta_as_TDF_Delta(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Delta (mutable)
     pub fn as_tdf_delta_mut(&mut self) -> &mut crate::tdf::Delta {
-        let __result =
-            unsafe { crate::ffi::TDocStd_CompoundDelta_as_TDF_Delta_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_CompoundDelta_as_TDF_Delta_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_CompoundDelta_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_CompoundDelta_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::TDocStd_CompoundDelta_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_CompoundDelta_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdCompoundDelta> {
-        let __result = unsafe { crate::ffi::TDocStd_CompoundDelta_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_CompoundDelta_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:46 - `TDF_Delta::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_CompoundDelta_inherited_IsEmpty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_IsEmpty(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:50 - `TDF_Delta::IsApplicable()`
     pub fn is_applicable(&self, aCurrentTime: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_CompoundDelta_inherited_IsApplicable(
-                    self as *const Self,
-                    aCurrentTime,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_IsApplicable(
+                self as *const Self,
+                aCurrentTime,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:53 - `TDF_Delta::BeginTime()`
     pub fn begin_time(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_CompoundDelta_inherited_BeginTime(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_BeginTime(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:56 - `TDF_Delta::EndTime()`
     pub fn end_time(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_CompoundDelta_inherited_EndTime(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_EndTime(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:60 - `TDF_Delta::Labels()`
     pub fn labels(&self, aLabelList: &mut crate::ffi::TDF_LabelList) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_CompoundDelta_inherited_Labels(self as *const Self, aLabelList)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_Labels(self as *const Self, aLabelList)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:63 - `TDF_Delta::AttributeDeltas()`
     pub fn attribute_deltas(&self) -> &crate::ffi::TDF_AttributeDeltaList {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_CompoundDelta_inherited_AttributeDeltas(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_CompoundDelta_inherited_AttributeDeltas(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:66 - `TDF_Delta::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_CompoundDelta_inherited_Name(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_CompoundDelta_inherited_Name(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:69 - `TDF_Delta::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::ExtendedString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_CompoundDelta_inherited_SetName(self as *mut Self, theName)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_SetName(self as *mut Self, theName)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:71 - `TDF_Delta::Dump()`
     pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_CompoundDelta_inherited_Dump(self as *const Self, OS)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_Dump(self as *const Self, OS)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_CompoundDelta_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_CompoundDelta_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::TDocStd_CompoundDelta_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::TDocStd_CompoundDelta_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1957,53 +1483,30 @@ impl CompoundDelta {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_CompoundDelta_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_CompoundDelta_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_CompoundDelta_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_CompoundDelta_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2018,42 +1521,38 @@ unsafe impl crate::CppDeletable for HandleTDocStdCompoundDelta {
 impl HandleTDocStdCompoundDelta {
     /// Dereference this Handle to access the underlying TDocStd_CompoundDelta
     pub fn get(&self) -> &crate::ffi::TDocStd_CompoundDelta {
-        let __result = unsafe { crate::ffi::HandleTDocStdCompoundDelta_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleTDocStdCompoundDelta_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDocStd_CompoundDelta
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_CompoundDelta {
-        let __result = unsafe { crate::ffi::HandleTDocStdCompoundDelta_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleTDocStdCompoundDelta_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDocStd_CompoundDelta> to Handle<TDF_Delta>
     pub fn to_handle_delta(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDelta> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdCompoundDelta_to_HandleTDFDelta(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdCompoundDelta_to_HandleTDFDelta(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDocStd_CompoundDelta> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdCompoundDelta_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdCompoundDelta_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2073,38 +1572,23 @@ unsafe impl crate::CppDeletable for Context {
 impl Context {
     /// **Source:** `TDocStd_Context.hxx`:31 - `TDocStd_Context::TDocStd_Context()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Context_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Context_ctor()))
         }
     }
 
     /// **Source:** `TDocStd_Context.hxx`:33 - `TDocStd_Context::SetModifiedReferences()`
     pub fn set_modified_references(&mut self, Mod: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Context_set_modified_references(self as *mut Self, Mod)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Context_set_modified_references(self as *mut Self, Mod)
+        })
     }
 
     /// **Source:** `TDocStd_Context.hxx`:35 - `TDocStd_Context::ModifiedReferences()`
     pub fn modified_references(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Context_modified_references(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Context_modified_references(self as *const Self)
+        })
     }
 }
 
@@ -2142,91 +1626,58 @@ impl Document {
     pub fn new_extendedstring(
         astorageformat: &crate::t_collection::ExtendedString,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_ctor_extendedstring(astorageformat) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Document_ctor_extendedstring(astorageformat),
+            ))
         }
     }
 
     /// **Source:** `TDocStd_Document.hxx`:65 - `TDocStd_Document::IsSaved()`
     /// the document is saved in a file.
     pub fn is_saved(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_is_saved(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Document_is_saved(self as *const Self) })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:69 - `TDocStd_Document::IsChanged()`
     /// returns True if document differs from the state of last saving.
     /// this method have to be called only working in the transaction mode
     pub fn is_changed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_is_changed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Document_is_changed(self as *const Self) })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:72 - `TDocStd_Document::SetSaved()`
     /// This method have to be called to show document that it has been saved
     pub fn set_saved(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_set_saved(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_set_saved(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:76 - `TDocStd_Document::SetSavedTime()`
     /// Say to document what it is not saved.
     /// Use value, returned earlier by GetSavedTime().
     pub fn set_saved_time(&mut self, theTime: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Document_set_saved_time(self as *mut Self, theTime) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_set_saved_time(self as *mut Self, theTime)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:79 - `TDocStd_Document::GetSavedTime()`
     /// Returns value of <mySavedTime> to be used later in SetSavedTime()
     pub fn get_saved_time(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_get_saved_time(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_get_saved_time(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:82 - `TDocStd_Document::GetName()`
     /// raise if <me> is not saved.
     pub fn get_name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_get_name(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Document_get_name(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2234,35 +1685,26 @@ impl Document {
     /// returns the OS  path of the  file, in which one <me> is
     /// saved. Raise an exception if <me> is not saved.
     pub fn get_path(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_get_path(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Document_get_path(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_Document.hxx`:88 - `TDocStd_Document::SetData()`
     pub fn set_data(&mut self, data: &crate::ffi::HandleTDFData) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_set_data(self as *mut Self, data) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_set_data(self as *mut Self, data)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:90 - `TDocStd_Document::GetData()`
     pub fn get_data(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFData> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_get_data(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Document_get_data(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2270,105 +1712,67 @@ impl Document {
     /// Returns the main label in this data framework.
     /// By definition, this is the label with the entry 0:1.
     pub fn main(&self) -> crate::OwnedPtr<crate::tdf::Label> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_main(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Document_main(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_Document.hxx`:97 - `TDocStd_Document::IsEmpty()`
     /// Returns True if the main label has no attributes
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_is_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Document_is_empty(self as *const Self) })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:101 - `TDocStd_Document::IsValid()`
     /// Returns False if the document has been modified
     /// but not recomputed.
     pub fn is_valid(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_is_valid(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Document_is_valid(self as *const Self) })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:105 - `TDocStd_Document::SetModified()`
     /// Notify the label as modified, the Document becomes UnValid.
     /// returns True if <L> has been notified as modified.
     pub fn set_modified(&mut self, L: &crate::tdf::Label) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_set_modified(self as *mut Self, L) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_set_modified(self as *mut Self, L)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:109 - `TDocStd_Document::PurgeModified()`
     /// Remove all modifications. After this call The document
     /// becomesagain Valid.
     pub fn purge_modified(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_purge_modified(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_purge_modified(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:113 - `TDocStd_Document::GetModified()`
     /// Returns the labels which have been modified in
     /// this document.
     pub fn get_modified(&self) -> &crate::ffi::TDF_LabelMap {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_get_modified(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_Document_get_modified(self as *const Self)))
         }
     }
 
     /// **Source:** `TDocStd_Document.hxx`:116 - `TDocStd_Document::NewCommand()`
     /// Launches a new command. This command may be undone.
     pub fn new_command(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_new_command(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_new_command(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:119 - `TDocStd_Document::HasOpenCommand()`
     /// returns True if a Command transaction is open in the current .
     pub fn has_open_command(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_has_open_command(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_has_open_command(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:125 - `TDocStd_Document::OpenCommand()`
@@ -2377,12 +1781,9 @@ impl Document {
     /// Exceptions
     /// Standard_DomainError if a command is already open in this document.
     pub fn open_command(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_open_command(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_open_command(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:132 - `TDocStd_Document::CommitCommand()`
@@ -2392,41 +1793,26 @@ impl Document {
     /// If no command transaction is open, nothing is done.
     /// Returns True if a new delta has been added to myUndos.
     pub fn commit_command(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_commit_command(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_commit_command(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:136 - `TDocStd_Document::AbortCommand()`
     /// Abort the  Command  transaction. Does nothing If there is
     /// no Command transaction open.
     pub fn abort_command(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_abort_command(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_abort_command(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:139 - `TDocStd_Document::GetUndoLimit()`
     /// The current limit on the number of undos
     pub fn get_undo_limit(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_get_undo_limit(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_get_undo_limit(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:146 - `TDocStd_Document::SetUndoLimit()`
@@ -2436,35 +1822,25 @@ impl Document {
     /// Enabling  it will  take effect with  the next  call to
     /// NewCommand. Of course this limit is the same for Redo
     pub fn set_undo_limit(&mut self, L: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Document_set_undo_limit(self as *mut Self, L) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_set_undo_limit(self as *mut Self, L)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:149 - `TDocStd_Document::ClearUndos()`
     /// Remove all stored Undos and Redos
     pub fn clear_undos(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_clear_undos(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_clear_undos(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:152 - `TDocStd_Document::ClearRedos()`
     /// Remove all stored Redos
     pub fn clear_redos(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_clear_redos(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_clear_redos(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:157 - `TDocStd_Document::GetAvailableUndos()`
@@ -2472,15 +1848,9 @@ impl Document {
     /// document. If this figure is greater than 0, the method Undo
     /// can be used.
     pub fn get_available_undos(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_get_available_undos(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_get_available_undos(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:163 - `TDocStd_Document::Undo()`
@@ -2489,14 +1859,7 @@ impl Document {
     /// Otherwise, true is returned and one step in the
     /// list of undoes is undone.
     pub fn undo(&mut self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_undo(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Document_undo(self as *mut Self) })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:168 - `TDocStd_Document::GetAvailableRedos()`
@@ -2504,15 +1867,9 @@ impl Document {
     /// document. If this figure is greater than 0, the method Redo
     /// can be used.
     pub fn get_available_redos(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_get_available_redos(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_get_available_redos(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:173 - `TDocStd_Document::Redo()`
@@ -2520,37 +1877,20 @@ impl Document {
     /// done (Redos == 0).
     /// Otherwise, true is returned, and one step in the list of redoes is done again.
     pub fn redo(&mut self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_redo(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Document_redo(self as *mut Self) })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:175 - `TDocStd_Document::GetUndos()`
     pub fn get_undos(&self) -> &crate::ffi::TDF_DeltaList {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_get_undos(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_Document_get_undos(self as *const Self)))
         }
     }
 
     /// **Source:** `TDocStd_Document.hxx`:177 - `TDocStd_Document::GetRedos()`
     pub fn get_redos(&self) -> &crate::ffi::TDF_DeltaList {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_get_redos(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_Document_get_redos(self as *const Self)))
         }
     }
 
@@ -2558,13 +1898,9 @@ impl Document {
     /// Removes the first undo in the list of document undos.
     /// It is used in the application when the undo limit is exceed.
     pub fn remove_first_undo(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Document_remove_first_undo(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_remove_first_undo(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:186 - `TDocStd_Document::InitDeltaCompaction()`
@@ -2572,15 +1908,9 @@ impl Document {
     /// Returns false if there is no delta to compact
     /// Marks the last delta as a "from" delta
     pub fn init_delta_compaction(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_init_delta_compaction(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_init_delta_compaction(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:191 - `TDocStd_Document::PerformDeltaCompaction()`
@@ -2588,15 +1918,9 @@ impl Document {
     /// Makes all deltas starting from "from" delta
     /// till the last one to be one delta.
     pub fn perform_delta_compaction(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_perform_delta_compaction(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_perform_delta_compaction(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:196 - `TDocStd_Document::UpdateReferences()`
@@ -2604,26 +1928,18 @@ impl Document {
     /// references to the entry.  The document becomes invalid
     /// and must be recomputed.
     pub fn update_references(&mut self, aDocEntry: &crate::t_collection::AsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_update_references(self as *mut Self, aDocEntry)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_update_references(self as *mut Self, aDocEntry)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:200 - `TDocStd_Document::Recompute()`
     /// Recompute if the document was  not valid and propagate
     /// the recorded modification.
     pub fn recompute(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_recompute(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_recompute(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:216 - `TDocStd_Document::Update()`
@@ -2647,63 +1963,39 @@ impl Document {
         aReferenceIdentifier: i32,
         aModifContext: *mut std::ffi::c_void,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_update(
-                    self as *mut Self,
-                    aToDocument,
-                    aReferenceIdentifier,
-                    aModifContext,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_update(
+                self as *mut Self,
+                aToDocument,
+                aReferenceIdentifier,
+                aModifContext,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:220 - `TDocStd_Document::StorageFormat()`
     pub fn storage_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_storage_format(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Document_storage_format(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TDocStd_Document.hxx`:223 - `TDocStd_Document::SetEmptyLabelsSavingMode()`
     /// Sets saving mode for empty labels. If Standard_True, empty labels will be saved.
     pub fn set_empty_labels_saving_mode(&mut self, isAllowed: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_set_empty_labels_saving_mode(
-                    self as *mut Self,
-                    isAllowed,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_set_empty_labels_saving_mode(self as *mut Self, isAllowed)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:226 - `TDocStd_Document::EmptyLabelsSavingMode()`
     /// Returns saving mode for empty labels.
     pub fn empty_labels_saving_mode(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_empty_labels_saving_mode(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_empty_labels_saving_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:229 - `TDocStd_Document::ChangeStorageFormat()`
@@ -2712,131 +2004,78 @@ impl Document {
         &mut self,
         newStorageFormat: &crate::t_collection::ExtendedString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_change_storage_format(
-                    self as *mut Self,
-                    newStorageFormat,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_change_storage_format(self as *mut Self, newStorageFormat)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:233 - `TDocStd_Document::SetNestedTransactionMode()`
     /// Sets nested transaction mode if isAllowed == Standard_True
     pub fn set_nested_transaction_mode(&mut self, isAllowed: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_set_nested_transaction_mode(
-                    self as *mut Self,
-                    isAllowed,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_set_nested_transaction_mode(self as *mut Self, isAllowed)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:236 - `TDocStd_Document::IsNestedTransactionMode()`
     /// Returns Standard_True if mode is set
     pub fn is_nested_transaction_mode(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_is_nested_transaction_mode(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_is_nested_transaction_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:239 - `TDocStd_Document::SetModificationMode()`
     /// if theTransactionOnly is True changes is denied outside transactions
     pub fn set_modification_mode(&mut self, theTransactionOnly: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_set_modification_mode(
-                    self as *mut Self,
-                    theTransactionOnly,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_set_modification_mode(
+                self as *mut Self,
+                theTransactionOnly,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:242 - `TDocStd_Document::ModificationMode()`
     /// returns True if changes allowed only inside transactions
     pub fn modification_mode(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_modification_mode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_modification_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:245 - `TDocStd_Document::BeforeClose()`
     /// Prepares document for closing
     pub fn before_close(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_before_close(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_before_close(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:248 - `TDocStd_Document::StorageFormatVersion()`
     /// Returns version of the format to be used to store the document
     pub fn storage_format_version(&self) -> crate::t_doc_std::FormatVersion {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_storage_format_version(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::t_doc_std::FormatVersion::try_from(__val).unwrap()
-        }
+        crate::t_doc_std::FormatVersion::try_from(crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_storage_format_version(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TDocStd_Document.hxx`:251 - `TDocStd_Document::ChangeStorageFormatVersion()`
     /// Sets version of the format to be used to store the document
     pub fn change_storage_format_version(&mut self, theVersion: crate::t_doc_std::FormatVersion) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_change_storage_format_version(
-                    self as *mut Self,
-                    theVersion.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_change_storage_format_version(
+                self as *mut Self,
+                theVersion.into(),
+            )
+        })
     }
 
     /// **Source:** `TDocStd_Document.hxx`:259 - `TDocStd_Document::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_Document_dynamic_type(self as *const Self)))
         }
     }
 
@@ -2845,113 +2084,86 @@ impl Document {
     /// returns the    document which contains <L>.  raises  an
     /// exception if the document is not found.
     pub fn get(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_get(L) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Document_get(L)))
         }
     }
 
     /// **Source:** `TDocStd_Document.hxx`:254 - `TDocStd_Document::CurrentStorageFormatVersion()`
     /// Returns current storage format version of the document.
     pub fn current_storage_format_version() -> crate::t_doc_std::FormatVersion {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_current_storage_format_version() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::t_doc_std::FormatVersion::try_from(__val).unwrap()
-        }
+        crate::t_doc_std::FormatVersion::try_from(crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_current_storage_format_version()
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TDocStd_Document.hxx`:259 - `TDocStd_Document::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::TDocStd_Document_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `TDocStd_Document.hxx`:259 - `TDocStd_Document::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Document_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_Document_get_type_descriptor())) }
     }
 
     /// Upcast to CDM_Document
     pub fn as_cdm_document(&self) -> &crate::cdm::Document {
-        let __result = unsafe { crate::ffi::TDocStd_Document_as_CDM_Document(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_Document_as_CDM_Document(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to CDM_Document (mutable)
     pub fn as_cdm_document_mut(&mut self) -> &mut crate::cdm::Document {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Document_as_CDM_Document_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_Document_as_CDM_Document_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Document_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_Document_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Document_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_Document_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
-        let __result = unsafe { crate::ffi::TDocStd_Document_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Document_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:95 - `CDM_Document::Extensions()`
     pub fn extensions(&self, Extensions: &mut crate::ffi::TColStd_SequenceOfExtendedString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_Extensions(self as *const Self, Extensions)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_Extensions(self as *const Self, Extensions)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:100 - `CDM_Document::GetAlternativeDocument()`
@@ -2960,64 +2172,40 @@ impl Document {
         aFormat: &crate::t_collection::ExtendedString,
         anAlternativeDocument: &mut crate::ffi::HandleCDMDocument,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_GetAlternativeDocument(
-                    self as *mut Self,
-                    aFormat,
-                    anAlternativeDocument,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_GetAlternativeDocument(
+                self as *mut Self,
+                aFormat,
+                anAlternativeDocument,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:111 - `CDM_Document::CreateReference()`
     pub fn create_reference(&mut self, anOtherDocument: &crate::ffi::HandleCDMDocument) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_CreateReference(
-                    self as *mut Self,
-                    anOtherDocument,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_CreateReference(
+                self as *mut Self,
+                anOtherDocument,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:115 - `CDM_Document::RemoveReference()`
     pub fn remove_reference(&mut self, aReferenceIdentifier: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_RemoveReference(
-                    self as *mut Self,
-                    aReferenceIdentifier,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_RemoveReference(
+                self as *mut Self,
+                aReferenceIdentifier,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:118 - `CDM_Document::RemoveAllReferences()`
     pub fn remove_all_references(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_RemoveAllReferences(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_RemoveAllReferences(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:123 - `CDM_Document::Document()`
@@ -3025,53 +2213,34 @@ impl Document {
         &self,
         aReferenceIdentifier: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TDocStd_Document_inherited_Document(
                     self as *const Self,
                     aReferenceIdentifier,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:128 - `CDM_Document::IsInSession()`
     pub fn is_in_session(&self, aReferenceIdentifier: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_IsInSession(
-                    self as *const Self,
-                    aReferenceIdentifier,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsInSession(
+                self as *const Self,
+                aReferenceIdentifier,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:133 - `CDM_Document::IsStored()`
     pub fn is_stored(&self, aReferenceIdentifier: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_IsStored(
-                    self as *const Self,
-                    aReferenceIdentifier,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsStored(
+                self as *const Self,
+                aReferenceIdentifier,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:138 - `CDM_Document::Name()`
@@ -3079,96 +2248,52 @@ impl Document {
         &self,
         aReferenceIdentifier: i32,
     ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TDocStd_Document_inherited_Name(
                     self as *const Self,
                     aReferenceIdentifier,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:148 - `CDM_Document::UpdateFromDocuments()`
     pub unsafe fn update_from_documents(&self, aModifContext: *mut std::ffi::c_void) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_UpdateFromDocuments(
-                    self as *const Self,
-                    aModifContext,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_UpdateFromDocuments(
+                self as *const Self,
+                aModifContext,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:152 - `CDM_Document::ToReferencesNumber()`
     pub fn to_references_number(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_ToReferencesNumber(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_ToReferencesNumber(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:156 - `CDM_Document::FromReferencesNumber()`
     pub fn from_references_number(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_FromReferencesNumber(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_FromReferencesNumber(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:159 - `CDM_Document::ShallowReferences()`
     pub fn shallow_references(&self, aDocument: &crate::ffi::HandleCDMDocument) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_ShallowReferences(
-                    self as *const Self,
-                    aDocument,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_ShallowReferences(self as *const Self, aDocument)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:162 - `CDM_Document::DeepReferences()`
     pub fn deep_references(&self, aDocument: &crate::ffi::HandleCDMDocument) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_DeepReferences(
-                    self as *const Self,
-                    aDocument,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_DeepReferences(self as *const Self, aDocument)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:168 - `CDM_Document::CopyReference()`
@@ -3177,301 +2302,180 @@ impl Document {
         aFromDocument: &crate::ffi::HandleCDMDocument,
         aReferenceIdentifier: i32,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_CopyReference(
-                    self as *mut Self,
-                    aFromDocument,
-                    aReferenceIdentifier,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_CopyReference(
+                self as *mut Self,
+                aFromDocument,
+                aReferenceIdentifier,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:172 - `CDM_Document::IsReadOnly()`
     pub fn is_read_only(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_IsReadOnly(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsReadOnly(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:177 - `CDM_Document::SetIsReadOnly()`
     pub fn set_is_read_only(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Document_inherited_SetIsReadOnly(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetIsReadOnly(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:179 - `CDM_Document::UnsetIsReadOnly()`
     pub fn unset_is_read_only(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_UnsetIsReadOnly(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_UnsetIsReadOnly(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:183 - `CDM_Document::Modify()`
     pub fn modify(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_inherited_Modify(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_Modify(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:186 - `CDM_Document::Modifications()`
     pub fn modifications(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_Modifications(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_Modifications(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:188 - `CDM_Document::UnModify()`
     pub fn un_modify(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Document_inherited_UnModify(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_UnModify(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:194 - `CDM_Document::IsUpToDate()`
     pub fn is_up_to_date(&self, aReferenceIdentifier: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_IsUpToDate(
-                    self as *const Self,
-                    aReferenceIdentifier,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsUpToDate(
+                self as *const Self,
+                aReferenceIdentifier,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:200 - `CDM_Document::SetIsUpToDate()`
     pub fn set_is_up_to_date(&mut self, aReferenceIdentifier: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_SetIsUpToDate(
-                    self as *mut Self,
-                    aReferenceIdentifier,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetIsUpToDate(
+                self as *mut Self,
+                aReferenceIdentifier,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:203 - `CDM_Document::SetComment()`
     pub fn set_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_SetComment(self as *mut Self, aComment)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetComment(self as *mut Self, aComment)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:206 - `CDM_Document::AddComment()`
     pub fn add_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_AddComment(self as *mut Self, aComment)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_AddComment(self as *mut Self, aComment)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:209 - `CDM_Document::SetComments()`
     pub fn set_comments(&mut self, aComments: &crate::ffi::TColStd_SequenceOfExtendedString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_SetComments(self as *mut Self, aComments)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetComments(self as *mut Self, aComments)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:213 - `CDM_Document::Comments()`
     pub fn comments(&self, aComments: &mut crate::ffi::TColStd_SequenceOfExtendedString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_Comments(self as *const Self, aComments)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_Comments(self as *const Self, aComments)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:223 - `CDM_Document::StorageVersion()`
     pub fn storage_version(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_StorageVersion(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_StorageVersion(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:228 - `CDM_Document::SetMetaData()`
     pub fn set_meta_data(&mut self, aMetaData: &crate::ffi::HandleCDMMetaData) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_SetMetaData(self as *mut Self, aMetaData)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetMetaData(self as *mut Self, aMetaData)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:230 - `CDM_Document::UnsetIsStored()`
     pub fn unset_is_stored(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Document_inherited_UnsetIsStored(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_UnsetIsStored(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:232 - `CDM_Document::MetaData()`
     pub fn meta_data(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMMetaData> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_MetaData(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Document_inherited_MetaData(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:234 - `CDM_Document::Folder()`
     pub fn folder(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_Folder(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Document_inherited_Folder(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:237 - `CDM_Document::SetRequestedFolder()`
     pub fn set_requested_folder(&mut self, aFolder: &crate::t_collection::ExtendedString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_SetRequestedFolder(
-                    self as *mut Self,
-                    aFolder,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetRequestedFolder(self as *mut Self, aFolder)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:239 - `CDM_Document::RequestedFolder()`
     pub fn requested_folder(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_RequestedFolder(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Document_inherited_RequestedFolder(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:241 - `CDM_Document::HasRequestedFolder()`
     pub fn has_requested_folder(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_HasRequestedFolder(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_HasRequestedFolder(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:244 - `CDM_Document::SetRequestedName()`
     pub fn set_requested_name(&mut self, aName: &crate::t_collection::ExtendedString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_SetRequestedName(self as *mut Self, aName)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetRequestedName(self as *mut Self, aName)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:249 - `CDM_Document::RequestedName()`
     pub fn requested_name(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_RequestedName(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Document_inherited_RequestedName(self as *mut Self),
+            ))
         }
     }
 
@@ -3480,230 +2484,138 @@ impl Document {
         &mut self,
         aPreviousVersion: &crate::t_collection::ExtendedString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_SetRequestedPreviousVersion(
-                    self as *mut Self,
-                    aPreviousVersion,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetRequestedPreviousVersion(
+                self as *mut Self,
+                aPreviousVersion,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:254 - `CDM_Document::UnsetRequestedPreviousVersion()`
     pub fn unset_requested_previous_version(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_UnsetRequestedPreviousVersion(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_UnsetRequestedPreviousVersion(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:256 - `CDM_Document::HasRequestedPreviousVersion()`
     pub fn has_requested_previous_version(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_HasRequestedPreviousVersion(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_HasRequestedPreviousVersion(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:258 - `CDM_Document::RequestedPreviousVersion()`
     pub fn requested_previous_version(
         &self,
     ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_RequestedPreviousVersion(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Document_inherited_RequestedPreviousVersion(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:261 - `CDM_Document::SetRequestedComment()`
     pub fn set_requested_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_SetRequestedComment(
-                    self as *mut Self,
-                    aComment,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetRequestedComment(self as *mut Self, aComment)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:263 - `CDM_Document::RequestedComment()`
     pub fn requested_comment(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_RequestedComment(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Document_inherited_RequestedComment(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:266 - `CDM_Document::LoadResources()`
     pub fn load_resources(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Document_inherited_LoadResources(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_LoadResources(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:268 - `CDM_Document::FindFileExtension()`
     pub fn find_file_extension(&mut self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_FindFileExtension(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_FindFileExtension(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:271 - `CDM_Document::FileExtension()`
     pub fn file_extension(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_FileExtension(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Document_inherited_FileExtension(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:273 - `CDM_Document::FindDescription()`
     pub fn find_description(&mut self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_FindDescription(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_FindDescription(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:276 - `CDM_Document::Description()`
     pub fn description(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_Description(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Document_inherited_Description(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:280 - `CDM_Document::IsModified()`
     pub fn is_modified(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_IsModified(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsModified(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:285 - `CDM_Document::IsOpened()`
     pub fn is_opened(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_IsOpened(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsOpened(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:287 - `CDM_Document::Open()`
     pub fn open(&mut self, anApplication: &crate::ffi::HandleCDMApplication) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_Open(self as *mut Self, anApplication)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_Open(self as *mut Self, anApplication)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:289 - `CDM_Document::CanClose()`
     pub fn can_close(&self) -> crate::cdm::CanCloseStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_CanClose(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::cdm::CanCloseStatus::try_from(__val).unwrap()
-        }
+        crate::cdm::CanCloseStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_CanClose(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:291 - `CDM_Document::Close()`
     pub fn close(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Document_inherited_Close(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_Close(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:293 - `CDM_Document::Application()`
     pub fn application(&self) -> &crate::ffi::HandleCDMApplication {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_Application(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_Document_inherited_Application(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3713,20 +2625,13 @@ impl Document {
         aDocument: &crate::ffi::HandleCDMDocument,
         aReferenceIdentifier: i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_CanCloseReference(
-                    self as *const Self,
-                    aDocument,
-                    aReferenceIdentifier,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_CanCloseReference(
+                self as *const Self,
+                aDocument,
+                aReferenceIdentifier,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:307 - `CDM_Document::CloseReference()`
@@ -3735,32 +2640,20 @@ impl Document {
         aDocument: &crate::ffi::HandleCDMDocument,
         aReferenceIdentifier: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_CloseReference(
-                    self as *mut Self,
-                    aDocument,
-                    aReferenceIdentifier,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_CloseReference(
+                self as *mut Self,
+                aDocument,
+                aReferenceIdentifier,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:327 - `CDM_Document::ReferenceCounter()`
     pub fn reference_counter(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_ReferenceCounter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_ReferenceCounter(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:335 - `CDM_Document::Reference()`
@@ -3768,88 +2661,56 @@ impl Document {
         &self,
         aReferenceIdentifier: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleCDMReference> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TDocStd_Document_inherited_Reference(
                     self as *const Self,
                     aReferenceIdentifier,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:338 - `CDM_Document::SetModifications()`
     pub fn set_modifications(&mut self, Modifications: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_SetModifications(
-                    self as *mut Self,
-                    Modifications,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetModifications(
+                self as *mut Self,
+                Modifications,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:340 - `CDM_Document::SetReferenceCounter()`
     pub fn set_reference_counter(&mut self, aReferenceCounter: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_SetReferenceCounter(
-                    self as *mut Self,
-                    aReferenceCounter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetReferenceCounter(
+                self as *mut Self,
+                aReferenceCounter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::TDocStd_Document_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3860,52 +2721,30 @@ impl Document {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Document_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Document_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Document_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Document_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Document_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3920,41 +2759,32 @@ unsafe impl crate::CppDeletable for HandleTDocStdDocument {
 impl HandleTDocStdDocument {
     /// Dereference this Handle to access the underlying TDocStd_Document
     pub fn get(&self) -> &crate::ffi::TDocStd_Document {
-        let __result = unsafe { crate::ffi::HandleTDocStdDocument_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleTDocStdDocument_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TDocStd_Document
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Document {
-        let __result = unsafe { crate::ffi::HandleTDocStdDocument_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleTDocStdDocument_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDocStd_Document> to Handle<CDM_Document>
     pub fn to_handle_document(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
-        let __result =
-            unsafe { crate::ffi::HandleTDocStdDocument_to_HandleCDMDocument(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdDocument_to_HandleCDMDocument(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDocStd_Document> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdDocument_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdDocument_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3976,108 +2806,59 @@ unsafe impl crate::CppDeletable for Modified {
 impl Modified {
     /// **Source:** `TDocStd_Modified.hxx`:59 - `TDocStd_Modified::TDocStd_Modified()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Modified_ctor()))
         }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:61 - `TDocStd_Modified::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_is_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Modified_is_empty(self as *const Self) })
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:63 - `TDocStd_Modified::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Modified_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::TDocStd_Modified_clear(self as *mut Self) })
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:66 - `TDocStd_Modified::AddLabel()`
     /// add <L> as modified
     pub fn add_label(&mut self, L: &crate::tdf::Label) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_add_label(self as *mut Self, L) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Modified_add_label(self as *mut Self, L) })
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:69 - `TDocStd_Modified::RemoveLabel()`
     /// remove  <L> as modified
     pub fn remove_label(&mut self, L: &crate::tdf::Label) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Modified_remove_label(self as *mut Self, L) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_remove_label(self as *mut Self, L)
+        })
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:72 - `TDocStd_Modified::Get()`
     /// returns modified label map
     pub fn get(&self) -> &crate::ffi::TDF_LabelMap {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_get(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_Modified_get(self as *const Self))) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:74 - `TDocStd_Modified::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_id(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_Modified_id(self as *const Self))) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:76 - `TDocStd_Modified::Restore()`
     pub fn restore(&mut self, With: &crate::ffi::HandleTDFAttribute) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Modified_restore(self as *mut Self, With) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_restore(self as *mut Self, With)
+        })
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:78 - `TDocStd_Modified::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_new_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Modified_new_empty(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4087,13 +2868,9 @@ impl Modified {
         Into: &crate::ffi::HandleTDFAttribute,
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Modified_paste(self as *const Self, Into, RT) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_paste(self as *const Self, Into, RT)
+        })
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:83 - `TDocStd_Modified::Dump()`
@@ -4107,26 +2884,15 @@ impl Modified {
         &mut self,
         anOS: &mut crate::ffi::Standard_OStream,
     ) -> &mut crate::ffi::Standard_OStream {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_dump(self as *mut Self, anOS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TDocStd_Modified_dump(self as *mut Self, anOS)))
         }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:85 - `TDocStd_Modified::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Modified_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_Modified_dynamic_type(self as *const Self)))
         }
     }
 
@@ -4134,267 +2900,162 @@ impl Modified {
     /// API class methods
     /// =================
     pub fn is_empty_label(access: &crate::tdf::Label) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_is_empty_label(access) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Modified_is_empty_label(access) })
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:43 - `TDocStd_Modified::Add()`
     pub fn add(alabel: &crate::tdf::Label) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_add(alabel) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Modified_add(alabel) })
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:45 - `TDocStd_Modified::Remove()`
     pub fn remove(alabel: &crate::tdf::Label) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_remove(alabel) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Modified_remove(alabel) })
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:47 - `TDocStd_Modified::Contains()`
     pub fn contains(alabel: &crate::tdf::Label) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_contains(alabel) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_Modified_contains(alabel) })
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:50 - `TDocStd_Modified::Get()`
     /// if <IsEmpty> raise an exception.
     pub fn get_label(access: &crate::tdf::Label) -> &'static crate::ffi::TDF_LabelMap {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_get_label(access) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_Modified_get_label(access))) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:53 - `TDocStd_Modified::Clear()`
     /// remove all modified labels. becomes empty
     pub fn clear_label(access: &crate::tdf::Label) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Modified_clear_label(access) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::TDocStd_Modified_clear_label(access) })
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:57 - `TDocStd_Modified::GetID()`
     /// Modified methods
     /// ================
     pub fn get_id() -> &'static crate::standard::GUID {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_get_id() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_Modified_get_id())) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:85 - `TDocStd_Modified::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::TDocStd_Modified_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:85 - `TDocStd_Modified::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Modified_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_Modified_get_type_descriptor())) }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Modified_as_TDF_Attribute(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_Modified_as_TDF_Attribute(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Modified_as_TDF_Attribute_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_Modified_as_TDF_Attribute_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Modified_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_Modified_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Modified_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_Modified_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdModified> {
-        let __result = unsafe { crate::ffi::TDocStd_Modified_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Modified_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_SetID(self as *mut Self, arg0) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_SetID(self as *mut Self, arg0)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_Label(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Modified_inherited_Label(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_Transaction(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_Transaction(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_UntilTransaction(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_UntilTransaction(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_IsValid(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_IsValid(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_IsNew(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_IsNew(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_IsForgotten(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_IsForgotten(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_IsAttribute(self as *const Self, anID)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_IsAttribute(self as *const Self, anID)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
@@ -4403,119 +3064,72 @@ impl Modified {
         anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_FindAttribute(
-                    self as *const Self,
-                    anID,
-                    anAttribute,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_AddAttribute(self as *const Self, other)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_AddAttribute(self as *const Self, other)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_ForgetAttribute(self as *const Self, aguid)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_ForgetAttribute(self as *const Self, aguid)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_ForgetAllAttributes(
-                    self as *const Self,
-                    clearChildren,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_ForgetAllAttributes(
+                self as *const Self,
+                clearChildren,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_AfterAddition(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_AfterAddition(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_BeforeRemoval(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_BeforeRemoval(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_BeforeForget(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_BeforeForget(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_AfterResume(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_AfterResume(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_AfterRetrieval(self as *mut Self, forceIt)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_AfterRetrieval(self as *mut Self, forceIt)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
@@ -4524,20 +3138,13 @@ impl Modified {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_BeforeUndo(
-                    self as *mut Self,
-                    anAttDelta,
-                    forceIt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
@@ -4546,109 +3153,65 @@ impl Modified {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_AfterUndo(
-                    self as *mut Self,
-                    anAttDelta,
-                    forceIt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_AfterUndo(self as *mut Self, anAttDelta, forceIt)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_BeforeCommitTransaction(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_BeforeCommitTransaction(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Modified_inherited_Backup(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_Backup(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_IsBackuped(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_IsBackuped(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
     pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_BackupCopy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Modified_inherited_BackupCopy(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
     pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_DeltaOnAddition(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Modified_inherited_DeltaOnAddition(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
     pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_DeltaOnForget(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Modified_inherited_DeltaOnForget(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
     pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_DeltaOnResume(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Modified_inherited_DeltaOnResume(self as *const Self),
+            ))
         }
     }
 
@@ -4657,45 +3220,30 @@ impl Modified {
         &self,
         anOldAttribute: &crate::ffi::HandleTDFAttribute,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TDocStd_Modified_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_DeltaOnRemoval(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Modified_inherited_DeltaOnRemoval(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_References(self as *const Self, aDataSet)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_References(self as *const Self, aDataSet)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
@@ -4705,70 +3253,43 @@ impl Modified {
         aFilter: &crate::tdf::IDFilter,
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_ExtendedDump(
-                    self as *const Self,
-                    anOS,
-                    aFilter,
-                    aMap,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_Forget(self as *mut Self, aTransaction)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_Forget(self as *mut Self, aTransaction)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::TDocStd_Modified_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -4779,52 +3300,30 @@ impl Modified {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Modified_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Modified_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Modified_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -4839,41 +3338,32 @@ unsafe impl crate::CppDeletable for HandleTDocStdModified {
 impl HandleTDocStdModified {
     /// Dereference this Handle to access the underlying TDocStd_Modified
     pub fn get(&self) -> &crate::ffi::TDocStd_Modified {
-        let __result = unsafe { crate::ffi::HandleTDocStdModified_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleTDocStdModified_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TDocStd_Modified
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Modified {
-        let __result = unsafe { crate::ffi::HandleTDocStdModified_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleTDocStdModified_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDocStd_Modified> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        let __result =
-            unsafe { crate::ffi::HandleTDocStdModified_to_HandleTDFAttribute(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdModified_to_HandleTDFAttribute(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDocStd_Modified> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdModified_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdModified_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4909,44 +3399,27 @@ impl MultiTransactionManager {
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:52 - `TDocStd_MultiTransactionManager::TDocStd_MultiTransactionManager()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_MultiTransactionManager_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_MultiTransactionManager_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:55 - `TDocStd_MultiTransactionManager::SetUndoLimit()`
     /// Sets undo limit for the manager and all documents.
     pub fn set_undo_limit(&mut self, theLimit: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_set_undo_limit(
-                    self as *mut Self,
-                    theLimit,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_set_undo_limit(self as *mut Self, theLimit)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:58 - `TDocStd_MultiTransactionManager::GetUndoLimit()`
     /// Returns undo limit for the manager.
     pub fn get_undo_limit(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_get_undo_limit(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_get_undo_limit(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:65 - `TDocStd_MultiTransactionManager::Undo()`
@@ -4956,13 +3429,9 @@ impl MultiTransactionManager {
     /// and moves the list item to the top of the list of manager
     /// redos (list.Prepend(item)).
     pub fn undo(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_MultiTransactionManager_undo(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_undo(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:71 - `TDocStd_MultiTransactionManager::Redo()`
@@ -4971,42 +3440,32 @@ impl MultiTransactionManager {
     /// manager list of redos (list.First()) and moves the list
     /// item to the top of the list of manager undos (list.Prepend(item)).
     pub fn redo(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_MultiTransactionManager_redo(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_redo(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:74 - `TDocStd_MultiTransactionManager::GetAvailableUndos()`
     /// Returns available manager undos.
     pub fn get_available_undos(&self) -> &crate::ffi::TDocStd_SequenceOfApplicationDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_get_available_undos(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::TDocStd_MultiTransactionManager_get_available_undos(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:77 - `TDocStd_MultiTransactionManager::GetAvailableRedos()`
     /// Returns available manager redos.
     pub fn get_available_redos(&self) -> &crate::ffi::TDocStd_SequenceOfApplicationDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_get_available_redos(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::TDocStd_MultiTransactionManager_get_available_redos(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5015,28 +3474,18 @@ impl MultiTransactionManager {
     /// transaction is opened. If there are already opened transactions in the documents,
     /// these transactions will be aborted before opening new ones.
     pub fn open_command(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_open_command(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_open_command(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:86 - `TDocStd_MultiTransactionManager::AbortCommand()`
     /// Unsets the flag of started manager transaction and aborts
     /// transaction in each document.
     pub fn abort_command(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_abort_command(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_abort_command(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:92 - `TDocStd_MultiTransactionManager::CommitCommand()`
@@ -5045,16 +3494,9 @@ impl MultiTransactionManager {
     /// Returns True if new data has been added to myUndos.
     /// NOTE: All nested transactions in the documents will be committed.
     pub fn commit_command(&mut self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_commit_command(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_commit_command(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:96 - `TDocStd_MultiTransactionManager::CommitCommand()`
@@ -5064,108 +3506,63 @@ impl MultiTransactionManager {
         &mut self,
         theName: &crate::t_collection::ExtendedString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_commit_command_extendedstring(
-                    self as *mut Self,
-                    theName,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_commit_command_extendedstring(
+                self as *mut Self,
+                theName,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:99 - `TDocStd_MultiTransactionManager::HasOpenCommand()`
     /// Returns true if a transaction is opened.
     pub fn has_open_command(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_has_open_command(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_has_open_command(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:103 - `TDocStd_MultiTransactionManager::RemoveLastUndo()`
     /// Removes undo information from the list of undos of the manager and
     /// all documents which have been modified during the transaction.
     pub fn remove_last_undo(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_remove_last_undo(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_remove_last_undo(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:106 - `TDocStd_MultiTransactionManager::DumpTransaction()`
     /// Dumps transactions in undos and redos
     pub fn dump_transaction(&self, theOS: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_dump_transaction(
-                    self as *const Self,
-                    theOS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_dump_transaction(self as *const Self, theOS)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:110 - `TDocStd_MultiTransactionManager::AddDocument()`
     /// Adds the document to the transaction manager and
     /// checks if it has been already added
     pub fn add_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_add_document(self as *mut Self, theDoc)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_add_document(self as *mut Self, theDoc)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:113 - `TDocStd_MultiTransactionManager::RemoveDocument()`
     /// Removes the document from the transaction manager.
     pub fn remove_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_remove_document(
-                    self as *mut Self,
-                    theDoc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_remove_document(self as *mut Self, theDoc)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:116 - `TDocStd_MultiTransactionManager::Documents()`
     /// Returns the added documents to the transaction manager.
     pub fn documents(&self) -> &crate::ffi::TDocStd_SequenceOfDocument {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_documents(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_MultiTransactionManager_documents(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5175,211 +3572,148 @@ impl MultiTransactionManager {
     /// between several documents and has no effect on transactions
     /// of multitransaction manager.
     pub fn set_nested_transaction_mode(&mut self, isAllowed: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_set_nested_transaction_mode(
-                    self as *mut Self,
-                    isAllowed,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_set_nested_transaction_mode(
+                self as *mut Self,
+                isAllowed,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:126 - `TDocStd_MultiTransactionManager::IsNestedTransactionMode()`
     /// Returns Standard_True if NestedTransaction mode is set.
     /// Methods for protection of changes outside transactions
     pub fn is_nested_transaction_mode(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_is_nested_transaction_mode(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_is_nested_transaction_mode(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:129 - `TDocStd_MultiTransactionManager::SetModificationMode()`
     /// If theTransactionOnly is True, denies all changes outside transactions.
     pub fn set_modification_mode(&mut self, theTransactionOnly: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_set_modification_mode(
-                    self as *mut Self,
-                    theTransactionOnly,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_set_modification_mode(
+                self as *mut Self,
+                theTransactionOnly,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:132 - `TDocStd_MultiTransactionManager::ModificationMode()`
     /// Returns True if changes are allowed only inside transactions.
     pub fn modification_mode(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_modification_mode(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_modification_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:135 - `TDocStd_MultiTransactionManager::ClearUndos()`
     /// Clears undos in the manager and in documents.
     pub fn clear_undos(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_clear_undos(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_clear_undos(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:138 - `TDocStd_MultiTransactionManager::ClearRedos()`
     /// Clears redos in the manager and in documents.
     pub fn clear_redos(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_clear_redos(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_clear_redos(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:140 - `TDocStd_MultiTransactionManager::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_MultiTransactionManager_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:140 - `TDocStd_MultiTransactionManager::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_MultiTransactionManager_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::TDocStd_MultiTransactionManager_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:140 - `TDocStd_MultiTransactionManager::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_MultiTransactionManager_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::TDocStd_MultiTransactionManager_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::TDocStd_MultiTransactionManager_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::TDocStd_MultiTransactionManager_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::TDocStd_MultiTransactionManager_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::TDocStd_MultiTransactionManager_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdMultiTransactionManager> {
-        let __result =
-            unsafe { crate::ffi::TDocStd_MultiTransactionManager_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_MultiTransactionManager_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::TDocStd_MultiTransactionManager_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -5390,60 +3724,34 @@ impl MultiTransactionManager {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_inherited_GetRefCount(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_MultiTransactionManager_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -5458,35 +3766,31 @@ unsafe impl crate::CppDeletable for HandleTDocStdMultiTransactionManager {
 impl HandleTDocStdMultiTransactionManager {
     /// Dereference this Handle to access the underlying TDocStd_MultiTransactionManager
     pub fn get(&self) -> &crate::ffi::TDocStd_MultiTransactionManager {
-        let __result =
-            unsafe { crate::ffi::HandleTDocStdMultiTransactionManager_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleTDocStdMultiTransactionManager_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDocStd_MultiTransactionManager
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_MultiTransactionManager {
-        let __result =
-            unsafe { crate::ffi::HandleTDocStdMultiTransactionManager_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleTDocStdMultiTransactionManager_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDocStd_MultiTransactionManager> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdMultiTransactionManager_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdMultiTransactionManager_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5510,13 +3814,7 @@ unsafe impl crate::CppDeletable for Owner {
 impl Owner {
     /// **Source:** `TDocStd_Owner.hxx`:54 - `TDocStd_Owner::TDocStd_Owner()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Owner_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Owner_ctor())) }
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:56 - `TDocStd_Owner::SetDocument()`
@@ -5524,77 +3822,51 @@ impl Owner {
         &mut self,
         document: &crate::ffi::HandleTDocStdDocument,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Owner_set_document_handletdocstddocument(
-                    self as *mut Self,
-                    document,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_set_document_handletdocstddocument(
+                self as *mut Self,
+                document,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:58 - `TDocStd_Owner::SetDocument()`
     pub fn set_document_documentptr(&mut self, document: &mut Document) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Owner_set_document_documentptr(
-                    self as *mut Self,
-                    document as *mut _,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_set_document_documentptr(
+                self as *mut Self,
+                document as *mut _,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:60 - `TDocStd_Owner::GetDocument()`
     pub fn get_document(&self) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Owner_get_document(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Owner_get_document(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:62 - `TDocStd_Owner::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Owner_id(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_Owner_id(self as *const Self))) }
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:64 - `TDocStd_Owner::Restore()`
     pub fn restore(&mut self, With: &crate::ffi::HandleTDFAttribute) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Owner_restore(self as *mut Self, With) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_restore(self as *mut Self, With)
+        })
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:66 - `TDocStd_Owner::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Owner_new_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Owner_new_empty(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5604,12 +3876,9 @@ impl Owner {
         Into: &crate::ffi::HandleTDFAttribute,
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Owner_paste(self as *const Self, Into, RT) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_paste(self as *const Self, Into, RT)
+        })
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:71 - `TDocStd_Owner::Dump()`
@@ -5623,25 +3892,15 @@ impl Owner {
         &mut self,
         anOS: &mut crate::ffi::Standard_OStream,
     ) -> &mut crate::ffi::Standard_OStream {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Owner_dump(self as *mut Self, anOS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TDocStd_Owner_dump(self as *mut Self, anOS)))
         }
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:77 - `TDocStd_Owner::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Owner_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_Owner_dynamic_type(self as *const Self)))
         }
     }
 
@@ -5649,14 +3908,7 @@ impl Owner {
     /// class methods
     /// =============
     pub fn get_id() -> &'static crate::standard::GUID {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Owner_get_id() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_Owner_get_id())) }
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:45 - `TDocStd_Owner::SetDocument()`
@@ -5664,16 +3916,9 @@ impl Owner {
         indata: &crate::ffi::HandleTDFData,
         doc: &crate::ffi::HandleTDocStdDocument,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Owner_set_document_handletdfdata_handletdocstddocument(
-                    indata, doc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_set_document_handletdfdata_handletdocstddocument(indata, doc)
+        })
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:48 - `TDocStd_Owner::SetDocument()`
@@ -5681,17 +3926,9 @@ impl Owner {
         indata: &crate::ffi::HandleTDFData,
         doc: &mut Document,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Owner_set_document_handletdfdata_documentptr(
-                    indata,
-                    doc as *mut _,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_set_document_handletdfdata_documentptr(indata, doc as *mut _)
+        })
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:52 - `TDocStd_Owner::GetDocument()`
@@ -5700,191 +3937,128 @@ impl Owner {
     pub fn get_document_handletdfdata(
         ofdata: &crate::ffi::HandleTDFData,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Owner_get_document_handletdfdata(ofdata) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Owner_get_document_handletdfdata(ofdata),
+            ))
         }
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:77 - `TDocStd_Owner::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Owner_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::TDocStd_Owner_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:77 - `TDocStd_Owner::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_Owner_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_Owner_get_type_descriptor())) }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        let __result = unsafe { crate::ffi::TDocStd_Owner_as_TDF_Attribute(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_Owner_as_TDF_Attribute(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        let __result = unsafe { crate::ffi::TDocStd_Owner_as_TDF_Attribute_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_Owner_as_TDF_Attribute_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Owner_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_Owner_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_Owner_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_Owner_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdOwner> {
-        let __result = unsafe { crate::ffi::TDocStd_Owner_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_Owner_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_SetID(self as *mut Self, arg0) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_SetID(self as *mut Self, arg0)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_Label(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Owner_inherited_Label(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_Transaction(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_Transaction(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_UntilTransaction(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_UntilTransaction(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_IsValid(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_IsValid(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_IsNew(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_IsNew(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_IsForgotten(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_IsForgotten(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_IsAttribute(self as *const Self, anID)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_IsAttribute(self as *const Self, anID)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
@@ -5893,119 +4067,72 @@ impl Owner {
         anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_FindAttribute(
-                    self as *const Self,
-                    anID,
-                    anAttribute,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_AddAttribute(self as *const Self, other)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_AddAttribute(self as *const Self, other)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_ForgetAttribute(self as *const Self, aguid)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_ForgetAttribute(self as *const Self, aguid)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_ForgetAllAttributes(
-                    self as *const Self,
-                    clearChildren,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_ForgetAllAttributes(
+                self as *const Self,
+                clearChildren,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_AfterAddition(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_AfterAddition(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_BeforeRemoval(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_BeforeRemoval(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_BeforeForget(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_BeforeForget(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_AfterResume(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_AfterResume(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_AfterRetrieval(self as *mut Self, forceIt)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_AfterRetrieval(self as *mut Self, forceIt)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
@@ -6014,20 +4141,9 @@ impl Owner {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_BeforeUndo(
-                    self as *mut Self,
-                    anAttDelta,
-                    forceIt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_BeforeUndo(self as *mut Self, anAttDelta, forceIt)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
@@ -6036,106 +4152,65 @@ impl Owner {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_AfterUndo(
-                    self as *mut Self,
-                    anAttDelta,
-                    forceIt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_AfterUndo(self as *mut Self, anAttDelta, forceIt)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_BeforeCommitTransaction(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_BeforeCommitTransaction(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Owner_inherited_Backup(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_Backup(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_IsBackuped(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_IsBackuped(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
     pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_BackupCopy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Owner_inherited_BackupCopy(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
     pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_DeltaOnAddition(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Owner_inherited_DeltaOnAddition(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
     pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_DeltaOnForget(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Owner_inherited_DeltaOnForget(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
     pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_DeltaOnResume(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Owner_inherited_DeltaOnResume(self as *const Self),
+            ))
         }
     }
 
@@ -6144,44 +4219,30 @@ impl Owner {
         &self,
         anOldAttribute: &crate::ffi::HandleTDFAttribute,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TDocStd_Owner_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_DeltaOnRemoval(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_Owner_inherited_DeltaOnRemoval(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_References(self as *const Self, aDataSet)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_References(self as *const Self, aDataSet)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
@@ -6191,68 +4252,43 @@ impl Owner {
         aFilter: &crate::tdf::IDFilter,
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_ExtendedDump(
-                    self as *const Self,
-                    anOS,
-                    aFilter,
-                    aMap,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_Forget(self as *mut Self, aTransaction)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_Forget(self as *mut Self, aTransaction)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::TDocStd_Owner_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::TDocStd_Owner_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -6263,51 +4299,30 @@ impl Owner {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_Owner_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_Owner_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_Owner_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_Owner_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -6322,41 +4337,32 @@ unsafe impl crate::CppDeletable for HandleTDocStdOwner {
 impl HandleTDocStdOwner {
     /// Dereference this Handle to access the underlying TDocStd_Owner
     pub fn get(&self) -> &crate::ffi::TDocStd_Owner {
-        let __result = unsafe { crate::ffi::HandleTDocStdOwner_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleTDocStdOwner_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TDocStd_Owner
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Owner {
-        let __result = unsafe { crate::ffi::HandleTDocStdOwner_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleTDocStdOwner_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDocStd_Owner> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        let __result =
-            unsafe { crate::ffi::HandleTDocStdOwner_to_HandleTDFAttribute(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdOwner_to_HandleTDFAttribute(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDocStd_Owner> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdOwner_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdOwner_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6377,83 +4383,57 @@ unsafe impl crate::CppDeletable for PathParser {
 impl PathParser {
     /// **Source:** `TDocStd_PathParser.hxx`:32 - `TDocStd_PathParser::TDocStd_PathParser()`
     pub fn new_extendedstring(path: &crate::t_collection::ExtendedString) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_PathParser_ctor_extendedstring(path) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_PathParser_ctor_extendedstring(path),
+            ))
         }
     }
 
     /// **Source:** `TDocStd_PathParser.hxx`:34 - `TDocStd_PathParser::Parse()`
     pub fn parse(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_PathParser_parse(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::TDocStd_PathParser_parse(self as *mut Self) })
     }
 
     /// **Source:** `TDocStd_PathParser.hxx`:36 - `TDocStd_PathParser::Trek()`
     pub fn trek(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_PathParser_trek(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_PathParser_trek(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_PathParser.hxx`:38 - `TDocStd_PathParser::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_PathParser_name(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_PathParser_name(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_PathParser.hxx`:40 - `TDocStd_PathParser::Extension()`
     pub fn extension(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_PathParser_extension(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_PathParser_extension(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TDocStd_PathParser.hxx`:42 - `TDocStd_PathParser::Path()`
     pub fn path(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_PathParser_path(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_PathParser_path(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_PathParser.hxx`:44 - `TDocStd_PathParser::Length()`
     pub fn length(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_PathParser_length(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_PathParser_length(self as *const Self) })
     }
 }
 
@@ -6478,66 +4458,40 @@ impl XLink {
     /// **Source:** `TDocStd_XLink.hxx`:46 - `TDocStd_XLink::TDocStd_XLink()`
     /// Initializes fields.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLink_ctor())) }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:49 - `TDocStd_XLink::Update()`
     /// Updates the data referenced in this external link attribute.
     pub fn update(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTDFReference> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_update(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLink_update(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:52 - `TDocStd_XLink::ID()`
     /// Returns the ID of the attribute.
     pub fn id(&self) -> &crate::standard::GUID {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_id(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_XLink_id(self as *const Self))) }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:59 - `TDocStd_XLink::DocumentEntry()`
     /// Sets the name aDocEntry for the external
     /// document in this external link attribute.
     pub fn document_entry_asciistring(&mut self, aDocEntry: &crate::t_collection::AsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLink_document_entry_asciistring(self as *mut Self, aDocEntry)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_document_entry_asciistring(self as *mut Self, aDocEntry)
+        })
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:63 - `TDocStd_XLink::DocumentEntry()`
     /// Returns the contents of the document identified by aDocEntry.
     /// aDocEntry provides external data to this external link attribute.
     pub fn document_entry(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_document_entry(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_XLink_document_entry(self as *const Self)))
         }
     }
 
@@ -6545,39 +4499,25 @@ impl XLink {
     /// Sets the label entry for this external link attribute with the label aLabel.
     /// aLabel pilots the importation of data from the document entry.
     pub fn label_entry_label(&mut self, aLabel: &crate::tdf::Label) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLink_label_entry_label(self as *mut Self, aLabel) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_label_entry_label(self as *mut Self, aLabel)
+        })
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:71 - `TDocStd_XLink::LabelEntry()`
     /// Sets the label entry for this external link attribute
     /// as a document identified by aLabEntry.
     pub fn label_entry_asciistring(&mut self, aLabEntry: &crate::t_collection::AsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLink_label_entry_asciistring(self as *mut Self, aLabEntry)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_label_entry_asciistring(self as *mut Self, aLabEntry)
+        })
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:74 - `TDocStd_XLink::LabelEntry()`
     /// Returns the contents of the field <myLabelEntry>.
     pub fn label_entry(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_label_entry(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_XLink_label_entry(self as *const Self)))
         }
     }
 
@@ -6585,24 +4525,18 @@ impl XLink {
     /// Updates the XLinkRoot attribute by adding <me>
     /// to its list.
     pub fn after_addition(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_XLink_after_addition(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_after_addition(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:82 - `TDocStd_XLink::BeforeRemoval()`
     /// Updates the XLinkRoot attribute by removing <me>
     /// from its list.
     pub fn before_removal(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_XLink_before_removal(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_before_removal(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:85 - `TDocStd_XLink::BeforeUndo()`
@@ -6612,16 +4546,9 @@ impl XLink {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLink_before_undo(self as *mut Self, anAttDelta, forceIt)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_before_undo(self as *mut Self, anAttDelta, forceIt)
+        })
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:90 - `TDocStd_XLink::AfterUndo()`
@@ -6631,54 +4558,37 @@ impl XLink {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLink_after_undo(self as *mut Self, anAttDelta, forceIt)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_after_undo(self as *mut Self, anAttDelta, forceIt)
+        })
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:96 - `TDocStd_XLink::BackupCopy()`
     /// Returns a null handle. Raise always for it is
     /// nonsense to use this method.
     pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_backup_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLink_backup_copy(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:99 - `TDocStd_XLink::Restore()`
     /// Does nothing.
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLink_restore(self as *mut Self, anAttribute) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_restore(self as *mut Self, anAttribute)
+        })
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:102 - `TDocStd_XLink::NewEmpty()`
     /// Returns a null handle.
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_new_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLink_new_empty(
+                self as *const Self,
+            )))
         }
     }
 
@@ -6689,18 +4599,9 @@ impl XLink {
         intoAttribute: &crate::ffi::HandleTDFAttribute,
         aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLink_paste(
-                    self as *const Self,
-                    intoAttribute,
-                    aRelocationTable,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_paste(self as *const Self, intoAttribute, aRelocationTable)
+        })
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:110 - `TDocStd_XLink::Dump()`
@@ -6715,229 +4616,147 @@ impl XLink {
         &mut self,
         anOS: &mut crate::ffi::Standard_OStream,
     ) -> &mut crate::ffi::Standard_OStream {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_dump(self as *mut Self, anOS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TDocStd_XLink_dump(self as *mut Self, anOS)))
         }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:115 - `TDocStd_XLink::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_XLink_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:43 - `TDocStd_XLink::Set()`
     /// Sets an empty external reference, at the label aLabel.
     pub fn set(atLabel: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDocStdXLink> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_set(atLabel) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLink_set(atLabel)))
         }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:55 - `TDocStd_XLink::GetID()`
     /// Returns the GUID for external links.
     pub fn get_id() -> &'static crate::standard::GUID {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_get_id() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_XLink_get_id())) }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:115 - `TDocStd_XLink::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::TDocStd_XLink_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:115 - `TDocStd_XLink::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_XLink_get_type_descriptor())) }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        let __result = unsafe { crate::ffi::TDocStd_XLink_as_TDF_Attribute(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_XLink_as_TDF_Attribute(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        let __result = unsafe { crate::ffi::TDocStd_XLink_as_TDF_Attribute_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_XLink_as_TDF_Attribute_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_XLink_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_XLink_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_XLink_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_XLink_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdXLink> {
-        let __result = unsafe { crate::ffi::TDocStd_XLink_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLink_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_SetID(self as *mut Self, arg0) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_SetID(self as *mut Self, arg0)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_Label(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLink_inherited_Label(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_Transaction(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_Transaction(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_UntilTransaction(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_UntilTransaction(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_IsValid(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_IsValid(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_IsNew(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_IsNew(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_IsForgotten(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_IsForgotten(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_IsAttribute(self as *const Self, anID)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_IsAttribute(self as *const Self, anID)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
@@ -6946,170 +4765,105 @@ impl XLink {
         anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_FindAttribute(
-                    self as *const Self,
-                    anID,
-                    anAttribute,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_AddAttribute(self as *const Self, other)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_AddAttribute(self as *const Self, other)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_ForgetAttribute(self as *const Self, aguid)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_ForgetAttribute(self as *const Self, aguid)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_ForgetAllAttributes(
-                    self as *const Self,
-                    clearChildren,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_ForgetAllAttributes(
+                self as *const Self,
+                clearChildren,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_BeforeForget(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_BeforeForget(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_AfterResume(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_AfterResume(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_AfterRetrieval(self as *mut Self, forceIt)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_AfterRetrieval(self as *mut Self, forceIt)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_BeforeCommitTransaction(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_BeforeCommitTransaction(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_XLink_inherited_Backup(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_Backup(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_IsBackuped(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_IsBackuped(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
     pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_DeltaOnAddition(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLink_inherited_DeltaOnAddition(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
     pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_DeltaOnForget(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLink_inherited_DeltaOnForget(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
     pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_DeltaOnResume(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLink_inherited_DeltaOnResume(self as *const Self),
+            ))
         }
     }
 
@@ -7118,44 +4872,30 @@ impl XLink {
         &self,
         anOldAttribute: &crate::ffi::HandleTDFAttribute,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TDocStd_XLink_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_DeltaOnRemoval(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLink_inherited_DeltaOnRemoval(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_References(self as *const Self, aDataSet)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_References(self as *const Self, aDataSet)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
@@ -7165,68 +4905,43 @@ impl XLink {
         aFilter: &crate::tdf::IDFilter,
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_ExtendedDump(
-                    self as *const Self,
-                    anOS,
-                    aFilter,
-                    aMap,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_Forget(self as *mut Self, aTransaction)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_Forget(self as *mut Self, aTransaction)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::TDocStd_XLink_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::TDocStd_XLink_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -7237,51 +4952,30 @@ impl XLink {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLink_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLink_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_XLink_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLink_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -7296,41 +4990,32 @@ unsafe impl crate::CppDeletable for HandleTDocStdXLink {
 impl HandleTDocStdXLink {
     /// Dereference this Handle to access the underlying TDocStd_XLink
     pub fn get(&self) -> &crate::ffi::TDocStd_XLink {
-        let __result = unsafe { crate::ffi::HandleTDocStdXLink_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleTDocStdXLink_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TDocStd_XLink
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_XLink {
-        let __result = unsafe { crate::ffi::HandleTDocStdXLink_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleTDocStdXLink_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDocStd_XLink> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        let __result =
-            unsafe { crate::ffi::HandleTDocStdXLink_to_HandleTDFAttribute(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdXLink_to_HandleTDFAttribute(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDocStd_XLink> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdXLink_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdXLink_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7354,12 +5039,8 @@ impl XLinkIterator {
     /// **Source:** `TDocStd_XLinkIterator.hxx`:36 - `TDocStd_XLinkIterator::TDocStd_XLinkIterator()`
     /// Returns an empty iterator;
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkIterator_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLinkIterator_ctor()))
         }
     }
 
@@ -7368,62 +5049,43 @@ impl XLinkIterator {
     pub fn new_handletdocstddocument(
         D: &crate::ffi::HandleTDocStdDocument,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkIterator_ctor_handletdocstddocument(D) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLinkIterator_ctor_handletdocstddocument(D),
+            ))
         }
     }
 
     /// **Source:** `TDocStd_XLinkIterator.hxx`:42 - `TDocStd_XLinkIterator::Initialize()`
     /// Restarts an iteration with <D>.
     pub fn initialize(&mut self, D: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLinkIterator_initialize(self as *mut Self, D) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkIterator_initialize(self as *mut Self, D)
+        })
     }
 
     /// **Source:** `TDocStd_XLinkIterator.hxx`:46 - `TDocStd_XLinkIterator::More()`
     /// Returns True if there is a current Item in the
     /// iteration.
     pub fn more(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkIterator_more(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_XLinkIterator_more(self as *const Self) })
     }
 
     /// **Source:** `TDocStd_XLinkIterator.hxx`:49 - `TDocStd_XLinkIterator::Next()`
     /// Move to the next item; raises if there is no more item.
     pub fn next(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_XLinkIterator_next(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkIterator_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `TDocStd_XLinkIterator.hxx`:52 - `TDocStd_XLinkIterator::Value()`
     /// Returns the current item; a null handle if there is none.
     pub fn value(&self) -> Option<&XLink> {
         {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkIterator_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::TDocStd_XLinkIterator_value(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -7455,52 +5117,34 @@ impl XLinkRoot {
     /// **Source:** `TDocStd_XLinkRoot.hxx`:55 - `TDocStd_XLinkRoot::ID()`
     /// Returns the ID of the attribute.
     pub fn id(&self) -> &crate::standard::GUID {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkRoot_id(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_XLinkRoot_id(self as *const Self))) }
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:58 - `TDocStd_XLinkRoot::BackupCopy()`
     /// Returns a null handle.
     pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_backup_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLinkRoot_backup_copy(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:61 - `TDocStd_XLinkRoot::Restore()`
     /// Does nothing.
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_restore(self as *mut Self, anAttribute) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_restore(self as *mut Self, anAttribute)
+        })
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:64 - `TDocStd_XLinkRoot::NewEmpty()`
     /// Returns a null handle.
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkRoot_new_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLinkRoot_new_empty(
+                self as *const Self,
+            )))
         }
     }
 
@@ -7511,18 +5155,13 @@ impl XLinkRoot {
         intoAttribute: &crate::ffi::HandleTDFAttribute,
         aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_paste(
-                    self as *const Self,
-                    intoAttribute,
-                    aRelocationTable,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        })
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:72 - `TDocStd_XLinkRoot::Dump()`
@@ -7537,40 +5176,22 @@ impl XLinkRoot {
         &mut self,
         anOS: &mut crate::ffi::Standard_OStream,
     ) -> &mut crate::ffi::Standard_OStream {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkRoot_dump(self as *mut Self, anOS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::TDocStd_XLinkRoot_dump(self as *mut Self, anOS)))
         }
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:76 - `TDocStd_XLinkRoot::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::TDocStd_XLinkRoot_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:42 - `TDocStd_XLinkRoot::GetID()`
     /// Returns the ID: 2a96b61d-ec8b-11d0-bee7-080009dc3333
     pub fn get_id() -> &'static crate::standard::GUID {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkRoot_get_id() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_XLinkRoot_get_id())) }
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:46 - `TDocStd_XLinkRoot::Set()`
@@ -7579,215 +5200,142 @@ impl XLinkRoot {
     pub fn set(
         aDF: &crate::ffi::HandleTDFData,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdXLinkRoot> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkRoot_set(aDF) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLinkRoot_set(aDF)))
         }
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:49 - `TDocStd_XLinkRoot::Insert()`
     /// Inserts <anXLinkPtr> at the beginning of the XLink chain.
     pub unsafe fn insert(anXLinkPtr: &*mut XLink) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_XLinkRoot_insert(anXLinkPtr) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::TDocStd_XLinkRoot_insert(anXLinkPtr) })
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:52 - `TDocStd_XLinkRoot::Remove()`
     /// Removes <anXLinkPtr> from the XLink chain, if it exists.
     pub unsafe fn remove(anXLinkPtr: &*mut XLink) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_XLinkRoot_remove(anXLinkPtr) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::TDocStd_XLinkRoot_remove(anXLinkPtr) })
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:76 - `TDocStd_XLinkRoot::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkRoot_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::TDocStd_XLinkRoot_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:76 - `TDocStd_XLinkRoot::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkRoot_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::TDocStd_XLinkRoot_get_type_descriptor())) }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        let __result =
-            unsafe { crate::ffi::TDocStd_XLinkRoot_as_TDF_Attribute(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_XLinkRoot_as_TDF_Attribute(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        let __result =
-            unsafe { crate::ffi::TDocStd_XLinkRoot_as_TDF_Attribute_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_XLinkRoot_as_TDF_Attribute_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_XLinkRoot_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::TDocStd_XLinkRoot_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::TDocStd_XLinkRoot_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::TDocStd_XLinkRoot_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdXLinkRoot> {
-        let __result = unsafe { crate::ffi::TDocStd_XLinkRoot_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLinkRoot_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_SetID(self as *mut Self, arg0) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_SetID(self as *mut Self, arg0)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_Label(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLinkRoot_inherited_Label(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_Transaction(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_Transaction(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_UntilTransaction(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_UntilTransaction(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_IsValid(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_IsValid(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_IsNew(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_IsNew(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_IsForgotten(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_IsForgotten(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_IsAttribute(self as *const Self, anID)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_IsAttribute(self as *const Self, anID)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
@@ -7796,119 +5344,72 @@ impl XLinkRoot {
         anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_FindAttribute(
-                    self as *const Self,
-                    anID,
-                    anAttribute,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_AddAttribute(self as *const Self, other)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_AddAttribute(self as *const Self, other)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_ForgetAttribute(self as *const Self, aguid)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_ForgetAttribute(self as *const Self, aguid)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_ForgetAllAttributes(
-                    self as *const Self,
-                    clearChildren,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_ForgetAllAttributes(
+                self as *const Self,
+                clearChildren,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_AfterAddition(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_AfterAddition(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_BeforeRemoval(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_BeforeRemoval(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_BeforeForget(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_BeforeForget(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_AfterResume(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_AfterResume(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_AfterRetrieval(self as *mut Self, forceIt)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_AfterRetrieval(self as *mut Self, forceIt)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
@@ -7917,20 +5418,13 @@ impl XLinkRoot {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_BeforeUndo(
-                    self as *mut Self,
-                    anAttDelta,
-                    forceIt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
@@ -7939,97 +5433,60 @@ impl XLinkRoot {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_AfterUndo(
-                    self as *mut Self,
-                    anAttDelta,
-                    forceIt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_AfterUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_BeforeCommitTransaction(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_BeforeCommitTransaction(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_Backup(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_Backup(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_IsBackuped(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_IsBackuped(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
     pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnAddition(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnAddition(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
     pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnForget(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnForget(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
     pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnResume(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnResume(self as *const Self),
+            ))
         }
     }
 
@@ -8038,45 +5495,30 @@ impl XLinkRoot {
         &self,
         anOldAttribute: &crate::ffi::HandleTDFAttribute,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnRemoval(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnRemoval(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_References(self as *const Self, aDataSet)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_References(self as *const Self, aDataSet)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
@@ -8086,70 +5528,43 @@ impl XLinkRoot {
         aFilter: &crate::tdf::IDFilter,
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_ExtendedDump(
-                    self as *const Self,
-                    anOS,
-                    aFilter,
-                    aMap,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_Forget(self as *mut Self, aTransaction)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_Forget(self as *mut Self, aTransaction)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::TDocStd_XLinkRoot_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -8160,52 +5575,30 @@ impl XLinkRoot {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::TDocStd_XLinkRoot_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -8220,42 +5613,34 @@ unsafe impl crate::CppDeletable for HandleTDocStdXLinkRoot {
 impl HandleTDocStdXLinkRoot {
     /// Dereference this Handle to access the underlying TDocStd_XLinkRoot
     pub fn get(&self) -> &crate::ffi::TDocStd_XLinkRoot {
-        let __result = unsafe { crate::ffi::HandleTDocStdXLinkRoot_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleTDocStdXLinkRoot_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDocStd_XLinkRoot
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_XLinkRoot {
-        let __result = unsafe { crate::ffi::HandleTDocStdXLinkRoot_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleTDocStdXLinkRoot_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDocStd_XLinkRoot> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdXLinkRoot_to_HandleTDFAttribute(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdXLinkRoot_to_HandleTDFAttribute(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDocStd_XLinkRoot> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleTDocStdXLinkRoot_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleTDocStdXLinkRoot_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8291,12 +5676,8 @@ unsafe impl crate::CppDeletable for XLinkTool {
 impl XLinkTool {
     /// **Source:** `TDocStd_XLinkTool.hxx`:50 - `TDocStd_XLinkTool::TDocStd_XLinkTool()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLinkTool_ctor()))
         }
     }
 
@@ -8307,18 +5688,9 @@ impl XLinkTool {
     /// self-contained,  and/or <intarget> has already an XLink
     /// attribute, an exception is raised.
     pub fn copy_with_link(&mut self, intarget: &crate::tdf::Label, fromsource: &crate::tdf::Label) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLinkTool_copy_with_link(
-                    self as *mut Self,
-                    intarget,
-                    fromsource,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkTool_copy_with_link(self as *mut Self, intarget, fromsource)
+        })
     }
 
     /// **Source:** `TDocStd_XLinkTool.hxx`:71 - `TDocStd_XLinkTool::UpdateLink()`
@@ -8335,12 +5707,9 @@ impl XLinkTool {
     /// Exceptions
     /// Standard_DomainError if <L> has no XLink attribute.
     pub fn update_link(&mut self, L: &crate::tdf::Label) {
-        {
-            let __exc = unsafe { crate::ffi::TDocStd_XLinkTool_update_link(self as *mut Self, L) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkTool_update_link(self as *mut Self, L)
+        })
     }
 
     /// **Source:** `TDocStd_XLinkTool.hxx`:90 - `TDocStd_XLinkTool::Copy()`
@@ -8362,50 +5731,31 @@ impl XLinkTool {
     /// TopTools_DataMapOfShapeShape M;
     /// TNaming::ChangeShapes(target,M);
     pub fn copy(&mut self, intarget: &crate::tdf::Label, fromsource: &crate::tdf::Label) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TDocStd_XLinkTool_copy(self as *mut Self, intarget, fromsource)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TDocStd_XLinkTool_copy(self as *mut Self, intarget, fromsource)
+        })
     }
 
     /// **Source:** `TDocStd_XLinkTool.hxx`:92 - `TDocStd_XLinkTool::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkTool_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::TDocStd_XLinkTool_is_done(self as *const Self) })
     }
 
     /// **Source:** `TDocStd_XLinkTool.hxx`:94 - `TDocStd_XLinkTool::DataSet()`
     pub fn data_set(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDataSet> {
-        {
-            let __result = unsafe { crate::ffi::TDocStd_XLinkTool_data_set(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TDocStd_XLinkTool_data_set(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TDocStd_XLinkTool.hxx`:96 - `TDocStd_XLinkTool::RelocationTable()`
     pub fn relocation_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFRelocationTable> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDocStd_XLinkTool_relocation_table(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TDocStd_XLinkTool_relocation_table(self as *const Self),
+            ))
         }
     }
 }

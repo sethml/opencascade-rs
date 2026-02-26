@@ -39,12 +39,8 @@ impl CompCurve {
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:63 - `BRepAdaptor_CompCurve::BRepAdaptor_CompCurve()`
     /// Creates an undefined Curve with no Wire loaded.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_CompCurve_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_CompCurve_ctor()))
         }
     }
 
@@ -53,14 +49,10 @@ impl CompCurve {
         W: &crate::topo_ds::Wire,
         KnotByCurvilinearAbcissa: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_ctor_wire_bool(W, KnotByCurvilinearAbcissa)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_CompCurve_ctor_wire_bool(W, KnotByCurvilinearAbcissa),
+            ))
         }
     }
 
@@ -74,20 +66,16 @@ impl CompCurve {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepAdaptor_CompCurve_ctor_wire_bool_real3(
                     W,
                     KnotByCurvilinearAbcissa,
                     First,
                     Last,
                     Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -98,28 +86,20 @@ impl CompCurve {
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:60 - `BRepAdaptor_CompCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_CompCurve_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:78 - `BRepAdaptor_CompCurve::ShallowCopy()`
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_shallow_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_CompCurve_shallow_copy(self as *const Self),
+            ))
         }
     }
 
@@ -130,18 +110,13 @@ impl CompCurve {
         W: &crate::topo_ds::Wire,
         KnotByCurvilinearAbcissa: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_initialize_wire_bool(
-                    self as *mut Self,
-                    W,
-                    KnotByCurvilinearAbcissa,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_initialize_wire_bool(
+                self as *mut Self,
+                W,
+                KnotByCurvilinearAbcissa,
+            )
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:85 - `BRepAdaptor_CompCurve::Initialize()`
@@ -154,33 +129,23 @@ impl CompCurve {
         Last: f64,
         Tol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_initialize_wire_bool_real3(
-                    self as *mut Self,
-                    W,
-                    KnotByCurvilinearAbcissa,
-                    First,
-                    Last,
-                    Tol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_initialize_wire_bool_real3(
+                self as *mut Self,
+                W,
+                KnotByCurvilinearAbcissa,
+                First,
+                Last,
+                Tol,
+            )
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:92 - `BRepAdaptor_CompCurve::Wire()`
     /// Returns the wire.
     pub fn wire(&self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_CompCurve_wire(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_CompCurve_wire(self as *const Self)))
         }
     }
 
@@ -188,68 +153,40 @@ impl CompCurve {
     /// returns an  edge  and   one  parameter on them
     /// corresponding to the parameter U.
     pub fn edge(&self, U: f64, E: &mut crate::topo_ds::Edge, UonE: &mut f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_edge(self as *const Self, U, E, UonE) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_edge(self as *const Self, U, E, UonE)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:98 - `BRepAdaptor_CompCurve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_first_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_first_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:100 - `BRepAdaptor_CompCurve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_last_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:102 - `BRepAdaptor_CompCurve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:106 - `BRepAdaptor_CompCurve::NbIntervals()`
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_nb_intervals(self as *const Self, S.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_nb_intervals(self as *const Self, S.into())
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:113 - `BRepAdaptor_CompCurve::Intervals()`
@@ -259,14 +196,9 @@ impl CompCurve {
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_intervals(self as *const Self, T, S.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_intervals(self as *const Self, T, S.into())
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:120 - `BRepAdaptor_CompCurve::Trim()`
@@ -280,79 +212,54 @@ impl CompCurve {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_trim(self as *const Self, First, Last, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_CompCurve_trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:124 - `BRepAdaptor_CompCurve::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_is_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_is_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:126 - `BRepAdaptor_CompCurve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_is_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:128 - `BRepAdaptor_CompCurve::Period()`
     pub fn period(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_CompCurve_period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_period(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:131 - `BRepAdaptor_CompCurve::Value()`
     /// Computes the point of parameter U on the curve
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_value(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_CompCurve_value(
+                self as *const Self,
+                U,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:134 - `BRepAdaptor_CompCurve::D0()`
     /// Computes the point of parameter U.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::BRepAdaptor_CompCurve_d0(self as *const Self, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_d0(self as *const Self, U, P)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:140 - `BRepAdaptor_CompCurve::D1()`
@@ -361,13 +268,9 @@ impl CompCurve {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_d1(self as *const Self, U, P, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_d1(self as *const Self, U, P, V)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:146 - `BRepAdaptor_CompCurve::D2()`
@@ -382,13 +285,9 @@ impl CompCurve {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_d2(self as *const Self, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_d2(self as *const Self, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:155 - `BRepAdaptor_CompCurve::D3()`
@@ -404,14 +303,9 @@ impl CompCurve {
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_d3(self as *const Self, U, P, V1, V2, V3)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_d3(self as *const Self, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:166 - `BRepAdaptor_CompCurve::DN()`
@@ -421,310 +315,214 @@ impl CompCurve {
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_dn(self as *const Self, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_CompCurve_dn(
+                self as *const Self,
+                U,
+                N,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:170 - `BRepAdaptor_CompCurve::Resolution()`
     /// returns the parametric resolution
     pub fn resolution(&self, R3d: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_resolution(self as *const Self, R3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_resolution(self as *const Self, R3d)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:172 - `BRepAdaptor_CompCurve::GetType()`
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_get_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::CurveType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_get_type(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:174 - `BRepAdaptor_CompCurve::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_CompCurve_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_CompCurve_line(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:176 - `BRepAdaptor_CompCurve::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_CompCurve_circle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_CompCurve_circle(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:178 - `BRepAdaptor_CompCurve::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_ellipse(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_CompCurve_ellipse(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:180 - `BRepAdaptor_CompCurve::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_hyperbola(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_CompCurve_hyperbola(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:182 - `BRepAdaptor_CompCurve::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_parabola(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_CompCurve_parabola(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:184 - `BRepAdaptor_CompCurve::Degree()`
     pub fn degree(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_CompCurve_degree(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:186 - `BRepAdaptor_CompCurve::IsRational()`
     pub fn is_rational(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_is_rational(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_is_rational(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:188 - `BRepAdaptor_CompCurve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_nb_poles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_nb_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:190 - `BRepAdaptor_CompCurve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_nb_knots(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_nb_knots(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:192 - `BRepAdaptor_CompCurve::Bezier()`
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_CompCurve_bezier(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_CompCurve_bezier(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:194 - `BRepAdaptor_CompCurve::BSpline()`
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_b_spline(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_CompCurve_b_spline(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:60 - `BRepAdaptor_CompCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_CompCurve_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepAdaptor_CompCurve_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:60 - `BRepAdaptor_CompCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_CompCurve_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepAdaptor_CompCurve_get_type_descriptor())) }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_CompCurve_as_Adaptor3d_Curve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepAdaptor_CompCurve_as_Adaptor3d_Curve(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_CompCurve_as_Adaptor3d_Curve_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepAdaptor_CompCurve_as_Adaptor3d_Curve_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_CompCurve_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepAdaptor_CompCurve_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepAdaptor_CompCurve_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepAdaptor_CompCurve_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCompCurve> {
-        let __result = unsafe { crate::ffi::BRepAdaptor_CompCurve_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_CompCurve_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_inherited_OffsetCurve(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_CompCurve_inherited_OffsetCurve(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepAdaptor_CompCurve_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -735,53 +533,30 @@ impl CompCurve {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_CompCurve_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_CompCurve_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -796,42 +571,38 @@ unsafe impl crate::CppDeletable for HandleBRepAdaptorCompCurve {
 impl HandleBRepAdaptorCompCurve {
     /// Dereference this Handle to access the underlying BRepAdaptor_CompCurve
     pub fn get(&self) -> &crate::ffi::BRepAdaptor_CompCurve {
-        let __result = unsafe { crate::ffi::HandleBRepAdaptorCompCurve_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepAdaptorCompCurve_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepAdaptor_CompCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAdaptor_CompCurve {
-        let __result = unsafe { crate::ffi::HandleBRepAdaptorCompCurve_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepAdaptorCompCurve_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepAdaptor_CompCurve> to Handle<Adaptor3d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepAdaptorCompCurve_to_HandleAdaptor3dCurve(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepAdaptorCompCurve_to_HandleAdaptor3dCurve(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepAdaptor_CompCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepAdaptorCompCurve_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepAdaptorCompCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -864,12 +635,8 @@ impl Curve {
     /// **Source:** `BRepAdaptor_Curve.hxx`:63 - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
     /// Creates an undefined Curve with no Edge loaded.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_ctor()))
         }
     }
 
@@ -877,12 +644,10 @@ impl Curve {
     /// Creates a Curve  to  access the geometry of edge
     /// <E>.
     pub fn new_edge(E: &crate::topo_ds::Edge) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_ctor_edge(E) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_ctor_edge(
+                E,
+            )))
         }
     }
 
@@ -896,64 +661,43 @@ impl Curve {
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_ctor_edge_face(E, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve_ctor_edge_face(E, F),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:60 - `BRepAdaptor_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_Curve_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:77 - `BRepAdaptor_Curve::ShallowCopy()`
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_shallow_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve_shallow_copy(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:80 - `BRepAdaptor_Curve::Reset()`
     /// Reset currently loaded curve (undone Load()).
     pub fn reset(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepAdaptor_Curve_reset(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::BRepAdaptor_Curve_reset(self as *mut Self) })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:84 - `BRepAdaptor_Curve::Initialize()`
     /// Sets  the Curve <me>  to access the  geometry of
     /// edge <E>.
     pub fn initialize_edge(&mut self, E: &crate::topo_ds::Edge) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_Curve_initialize_edge(self as *mut Self, E) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_initialize_edge(self as *mut Self, E)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:91 - `BRepAdaptor_Curve::Initialize()`
@@ -963,164 +707,92 @@ impl Curve {
     /// is raised if the edge  does not  have a pcurve  on
     /// the face.
     pub fn initialize_edge_face(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Curve_initialize_edge_face(self as *mut Self, E, F)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_initialize_edge_face(self as *mut Self, E, F)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:94 - `BRepAdaptor_Curve::Trsf()`
     /// Returns the coordinate system of the curve.
     pub fn trsf(&self) -> &crate::gp::Trsf {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_trsf(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepAdaptor_Curve_trsf(self as *const Self))) }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:98 - `BRepAdaptor_Curve::Is3DCurve()`
     /// Returns True if the edge geometry is computed from
     /// a 3D curve.
     pub fn is3_d_curve(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_is3_d_curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_is3_d_curve(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:102 - `BRepAdaptor_Curve::IsCurveOnSurface()`
     /// Returns True if the edge geometry is computed from
     /// a pcurve on a surface.
     pub fn is_curve_on_surface(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_is_curve_on_surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_is_curve_on_surface(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:105 - `BRepAdaptor_Curve::Curve()`
     /// Returns the Curve of  the  edge.
     pub fn curve(&self) -> &crate::geom_adaptor::Curve {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepAdaptor_Curve_curve(self as *const Self))) }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:108 - `BRepAdaptor_Curve::CurveOnSurface()`
     /// Returns the CurveOnSurface of the edge.
     pub fn curve_on_surface(&self) -> &crate::adaptor3d::CurveOnSurface {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_curve_on_surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_Curve_curve_on_surface(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:111 - `BRepAdaptor_Curve::Edge()`
     /// Returns the edge.
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepAdaptor_Curve_edge(self as *const Self))) }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:114 - `BRepAdaptor_Curve::Tolerance()`
     /// Returns the edge tolerance.
     pub fn tolerance(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepAdaptor_Curve_tolerance(self as *const Self) })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:116 - `BRepAdaptor_Curve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_first_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_first_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:118 - `BRepAdaptor_Curve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_last_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:120 - `BRepAdaptor_Curve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:124 - `BRepAdaptor_Curve::NbIntervals()`
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve_nb_intervals(self as *const Self, S.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_nb_intervals(self as *const Self, S.into())
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:131 - `BRepAdaptor_Curve::Intervals()`
@@ -1130,14 +802,9 @@ impl Curve {
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Curve_intervals(self as *const Self, T, S.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_intervals(self as *const Self, T, S.into())
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:138 - `BRepAdaptor_Curve::Trim()`
@@ -1151,77 +818,50 @@ impl Curve {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve_trim(self as *const Self, First, Last, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:142 - `BRepAdaptor_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_is_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepAdaptor_Curve_is_closed(self as *const Self) })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:144 - `BRepAdaptor_Curve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_is_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:146 - `BRepAdaptor_Curve::Period()`
     pub fn period(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepAdaptor_Curve_period(self as *const Self) })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:149 - `BRepAdaptor_Curve::Value()`
     /// Computes the point of parameter U on the curve
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_value(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_value(
+                self as *const Self,
+                U,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:152 - `BRepAdaptor_Curve::D0()`
     /// Computes the point of parameter U.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::BRepAdaptor_Curve_d0(self as *const Self, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_d0(self as *const Self, U, P)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:158 - `BRepAdaptor_Curve::D1()`
@@ -1230,12 +870,9 @@ impl Curve {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        {
-            let __exc = unsafe { crate::ffi::BRepAdaptor_Curve_d1(self as *const Self, U, P, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_d1(self as *const Self, U, P, V)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:164 - `BRepAdaptor_Curve::D2()`
@@ -1250,13 +887,9 @@ impl Curve {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_Curve_d2(self as *const Self, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_d2(self as *const Self, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:173 - `BRepAdaptor_Curve::D3()`
@@ -1272,13 +905,9 @@ impl Curve {
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_Curve_d3(self as *const Self, U, P, V1, V2, V3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_d3(self as *const Self, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:184 - `BRepAdaptor_Curve::DN()`
@@ -1288,149 +917,96 @@ impl Curve {
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_dn(self as *const Self, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_dn(
+                self as *const Self,
+                U,
+                N,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:188 - `BRepAdaptor_Curve::Resolution()`
     /// returns the parametric resolution
     pub fn resolution(&self, R3d: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_resolution(self as *const Self, R3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_resolution(self as *const Self, R3d)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:190 - `BRepAdaptor_Curve::GetType()`
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_get_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::CurveType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_get_type(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:192 - `BRepAdaptor_Curve::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_line(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:194 - `BRepAdaptor_Curve::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_circle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_circle(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:196 - `BRepAdaptor_Curve::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_ellipse(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_ellipse(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:198 - `BRepAdaptor_Curve::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_hyperbola(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_hyperbola(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:200 - `BRepAdaptor_Curve::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_parabola(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_parabola(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:202 - `BRepAdaptor_Curve::Degree()`
     pub fn degree(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_degree(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepAdaptor_Curve_degree(self as *const Self) })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:204 - `BRepAdaptor_Curve::IsRational()`
     pub fn is_rational(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_is_rational(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_is_rational(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:206 - `BRepAdaptor_Curve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_nb_poles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepAdaptor_Curve_nb_poles(self as *const Self) })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:208 - `BRepAdaptor_Curve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_nb_knots(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepAdaptor_Curve_nb_knots(self as *const Self) })
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:213 - `BRepAdaptor_Curve::Bezier()`
@@ -1438,13 +1014,10 @@ impl Curve {
     /// This will make a copy of the Bezier Curve since it applies to it myTsrf.
     /// Be careful when using this method.
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_bezier(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_bezier(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1453,141 +1026,105 @@ impl Curve {
     /// This will make a copy of the BSpline Curve since it applies to it myTsrf.
     /// Be careful when using this method.
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_b_spline(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_b_spline(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:220 - `BRepAdaptor_Curve::OffsetCurve()`
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_offset_curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve_offset_curve(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:60 - `BRepAdaptor_Curve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:60 - `BRepAdaptor_Curve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepAdaptor_Curve_get_type_descriptor())) }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Curve_as_Adaptor3d_Curve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepAdaptor_Curve_as_Adaptor3d_Curve(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Curve_as_Adaptor3d_Curve_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepAdaptor_Curve_as_Adaptor3d_Curve_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Curve_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepAdaptor_Curve_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Curve_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepAdaptor_Curve_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCurve> {
-        let __result = unsafe { crate::ffi::BRepAdaptor_Curve_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepAdaptor_Curve_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1598,52 +1135,30 @@ impl Curve {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Curve_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_Curve_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1658,42 +1173,34 @@ unsafe impl crate::CppDeletable for HandleBRepAdaptorCurve {
 impl HandleBRepAdaptorCurve {
     /// Dereference this Handle to access the underlying BRepAdaptor_Curve
     pub fn get(&self) -> &crate::ffi::BRepAdaptor_Curve {
-        let __result = unsafe { crate::ffi::HandleBRepAdaptorCurve_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepAdaptorCurve_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepAdaptor_Curve
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAdaptor_Curve {
-        let __result = unsafe { crate::ffi::HandleBRepAdaptorCurve_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepAdaptorCurve_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepAdaptor_Curve> to Handle<Adaptor3d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepAdaptorCurve_to_HandleAdaptor3dCurve(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepAdaptorCurve_to_HandleAdaptor3dCurve(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepAdaptor_Curve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepAdaptorCurve_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepAdaptorCurve_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1724,12 +1231,8 @@ impl Curve2d {
     /// **Source:** `BRepAdaptor_Curve2d.hxx`:43 - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
     /// Creates an uninitialized curve2d.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve2d_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Curve2d_ctor()))
         }
     }
 
@@ -1739,282 +1242,194 @@ impl Curve2d {
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve2d_ctor_edge_face(E, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_ctor_edge_face(E, F),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve2d.hxx`:40 - `BRepAdaptor_Curve2d::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_Curve2d_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve2d.hxx`:49 - `BRepAdaptor_Curve2d::ShallowCopy()`
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_shallow_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_shallow_copy(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve2d.hxx`:52 - `BRepAdaptor_Curve2d::Initialize()`
     /// Initialize with the pcurve of <E> on <F>.
     pub fn initialize(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_initialize(self as *mut Self, E, F) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_initialize(self as *mut Self, E, F)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Curve2d.hxx`:55 - `BRepAdaptor_Curve2d::Edge()`
     /// Returns the Edge.
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve2d_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_Curve2d_edge(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve2d.hxx`:58 - `BRepAdaptor_Curve2d::Face()`
     /// Returns the Face.
     pub fn face(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve2d_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_Curve2d_face(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepAdaptor_Curve2d.hxx`:40 - `BRepAdaptor_Curve2d::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve2d_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepAdaptor_Curve2d.hxx`:40 - `BRepAdaptor_Curve2d::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Curve2d_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepAdaptor_Curve2d_get_type_descriptor())) }
     }
 
     /// Upcast to Geom2dAdaptor_Curve
     pub fn as_geom2d_adaptor_curve(&self) -> &crate::geom2d_adaptor::Curve {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2dAdaptor_Curve (mutable)
     pub fn as_geom2d_adaptor_curve_mut(&mut self) -> &mut crate::geom2d_adaptor::Curve {
-        let __result = unsafe {
-            crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Adaptor2d_Curve2d
     pub fn as_adaptor2d_curve2d(&self) -> &crate::adaptor2d::Curve2d {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor2d_Curve2d (mutable)
     pub fn as_adaptor2d_curve2d_mut(&mut self) -> &mut crate::adaptor2d::Curve2d {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Curve2d_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepAdaptor_Curve2d_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Curve2d_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepAdaptor_Curve2d_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCurve2d> {
-        let __result = unsafe { crate::ffi::BRepAdaptor_Curve2d_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:64 - `Geom2dAdaptor_Curve::Reset()`
     pub fn reset(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Reset(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_Reset(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:66 - `Geom2dAdaptor_Curve::Load()`
     pub fn load(&mut self, theCurve: &crate::ffi::HandleGeom2dCurve) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_Load(self as *mut Self, theCurve)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_Load(self as *mut Self, theCurve)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:91 - `Geom2dAdaptor_Curve::Curve()`
     pub fn curve(&self) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_Curve2d_inherited_Curve(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:93 - `Geom2dAdaptor_Curve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_FirstParameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_FirstParameter(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:95 - `Geom2dAdaptor_Curve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_LastParameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_LastParameter(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:97 - `Geom2dAdaptor_Curve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_Continuity(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_Continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:102 - `Geom2dAdaptor_Curve::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_NbIntervals(self as *const Self, S.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_NbIntervals(self as *const Self, S.into())
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:109 - `Geom2dAdaptor_Curve::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_Intervals(
-                    self as *const Self,
-                    T,
-                    S.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_Intervals(self as *const Self, T, S.into())
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:116 - `Geom2dAdaptor_Curve::Trim()`
@@ -2024,97 +1439,60 @@ impl Curve2d {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepAdaptor_Curve2d_inherited_Trim(
                     self as *const Self,
                     First,
                     Last,
                     Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:120 - `Geom2dAdaptor_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_IsClosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_IsClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:122 - `Geom2dAdaptor_Curve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_IsPeriodic(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_IsPeriodic(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:124 - `Geom2dAdaptor_Curve::Period()`
     pub fn period(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_Period(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:127 - `Geom2dAdaptor_Curve::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Value(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_inherited_Value(self as *const Self, U),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:130 - `Geom2dAdaptor_Curve::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_D0(self as *const Self, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_D0(self as *const Self, U, P)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:136 - `Geom2dAdaptor_Curve::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_D1(self as *const Self, U, P, V)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_D1(self as *const Self, U, P, V)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:142 - `Geom2dAdaptor_Curve::D2()`
@@ -2125,14 +1503,9 @@ impl Curve2d {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_D2(self as *const Self, U, P, V1, V2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_D2(self as *const Self, U, P, V1, V2)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:151 - `Geom2dAdaptor_Curve::D3()`
@@ -2144,250 +1517,153 @@ impl Curve2d {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_D3(self as *const Self, U, P, V1, V2, V3)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_D3(self as *const Self, U, P, V1, V2, V3)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:162 - `Geom2dAdaptor_Curve::DN()`
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_DN(self as *const Self, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_inherited_DN(self as *const Self, U, N),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:166 - `Geom2dAdaptor_Curve::Resolution()`
     pub fn resolution(&self, Ruv: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_Resolution(self as *const Self, Ruv)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_Resolution(self as *const Self, Ruv)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:168 - `Geom2dAdaptor_Curve::GetType()`
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_GetType(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::CurveType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_GetType(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:170 - `Geom2dAdaptor_Curve::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Line(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_inherited_Line(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:172 - `Geom2dAdaptor_Curve::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Circle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_inherited_Circle(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:174 - `Geom2dAdaptor_Curve::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Ellipse(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_inherited_Ellipse(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:176 - `Geom2dAdaptor_Curve::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Hyperbola(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_inherited_Hyperbola(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:178 - `Geom2dAdaptor_Curve::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Parabola(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_inherited_Parabola(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:180 - `Geom2dAdaptor_Curve::Degree()`
     pub fn degree(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Degree(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_Degree(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:182 - `Geom2dAdaptor_Curve::IsRational()`
     pub fn is_rational(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_IsRational(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_IsRational(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:184 - `Geom2dAdaptor_Curve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbPoles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_NbPoles(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:186 - `Geom2dAdaptor_Curve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbKnots(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_NbKnots(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:188 - `Geom2dAdaptor_Curve::NbSamples()`
     pub fn nb_samples(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbSamples(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_NbSamples(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:190 - `Geom2dAdaptor_Curve::Bezier()`
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Bezier(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_inherited_Bezier(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:192 - `Geom2dAdaptor_Curve::BSpline()`
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_BSpline(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Curve2d_inherited_BSpline(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepAdaptor_Curve2d_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2398,53 +1674,30 @@ impl Curve2d {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Curve2d_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2459,53 +1712,49 @@ unsafe impl crate::CppDeletable for HandleBRepAdaptorCurve2d {
 impl HandleBRepAdaptorCurve2d {
     /// Dereference this Handle to access the underlying BRepAdaptor_Curve2d
     pub fn get(&self) -> &crate::ffi::BRepAdaptor_Curve2d {
-        let __result = unsafe { crate::ffi::HandleBRepAdaptorCurve2d_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepAdaptorCurve2d_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepAdaptor_Curve2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAdaptor_Curve2d {
-        let __result = unsafe { crate::ffi::HandleBRepAdaptorCurve2d_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepAdaptorCurve2d_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepAdaptor_Curve2d> to Handle<Geom2dAdaptor_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dAdaptorCurve> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepAdaptorCurve2d_to_HandleGeom2dAdaptorCurve(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepAdaptorCurve2d_to_HandleGeom2dAdaptorCurve(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepAdaptor_Curve2d> to Handle<Adaptor2d_Curve2d>
     pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepAdaptorCurve2d_to_HandleAdaptor2dCurve2d(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepAdaptorCurve2d_to_HandleAdaptor2dCurve2d(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepAdaptor_Curve2d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepAdaptorCurve2d_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepAdaptorCurve2d_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2525,37 +1774,30 @@ unsafe impl crate::CppDeletable for HArray1OfCurve {
 impl HArray1OfCurve {
     /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::BRepAdaptor_HArray1OfCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_HArray1OfCurve_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_HArray1OfCurve_ctor(),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::BRepAdaptor_HArray1OfCurve()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2(theLower, theUpper) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2(theLower, theUpper),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::BRepAdaptor_HArray1OfCurve()`
     pub fn new_int2_curve(theLower: i32, theUpper: i32, theValue: &Curve) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2_curve(theLower, theUpper, theValue)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2_curve(
+                    theLower, theUpper, theValue,
+                ),
+            ))
         }
     }
 
@@ -2566,16 +1808,12 @@ impl HArray1OfCurve {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_curve_int2_bool(
                     theBegin, theLower, theUpper, arg3,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2583,156 +1821,110 @@ impl HArray1OfCurve {
     pub fn new_array1ofcurve(
         theOther: &crate::ffi::BRepAdaptor_Array1OfCurve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_array1ofcurve(theOther) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_array1ofcurve(theOther),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::Array1()`
     pub fn array1(&self) -> &crate::ffi::BRepAdaptor_Array1OfCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_HArray1OfCurve_array1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_HArray1OfCurve_array1(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::BRepAdaptor_Array1OfCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_HArray1OfCurve_change_array1(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepAdaptor_HArray1OfCurve_change_array1(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_HArray1OfCurve_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_HArray1OfCurve_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepAdaptor_HArray1OfCurve_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepAdaptor_HArray1OfCurve_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepAdaptor_HArray1OfCurve_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepAdaptor_HArray1OfCurve_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorHArray1OfCurve> {
-        let __result = unsafe { crate::ffi::BRepAdaptor_HArray1OfCurve_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_HArray1OfCurve_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2743,58 +1935,30 @@ impl HArray1OfCurve {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_HArray1OfCurve_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2809,35 +1973,31 @@ unsafe impl crate::CppDeletable for HandleBRepAdaptorHArray1OfCurve {
 impl HandleBRepAdaptorHArray1OfCurve {
     /// Dereference this Handle to access the underlying BRepAdaptor_HArray1OfCurve
     pub fn get(&self) -> &crate::ffi::BRepAdaptor_HArray1OfCurve {
-        let __result =
-            unsafe { crate::ffi::HandleBRepAdaptorHArray1OfCurve_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepAdaptorHArray1OfCurve_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepAdaptor_HArray1OfCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAdaptor_HArray1OfCurve {
-        let __result =
-            unsafe { crate::ffi::HandleBRepAdaptorHArray1OfCurve_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepAdaptorHArray1OfCurve_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepAdaptor_HArray1OfCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepAdaptorHArray1OfCurve_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepAdaptorHArray1OfCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2870,12 +2030,8 @@ impl Surface {
     /// **Source:** `BRepAdaptor_Surface.hxx`:58 - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
     /// Creates an undefined surface with no face loaded.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Surface_ctor()))
         }
     }
 
@@ -2885,12 +2041,10 @@ impl Surface {
     /// the  parameter  range  in   the  UV space  of  the
     /// restriction.
     pub fn new_face_bool(F: &crate::topo_ds::Face, R: bool) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_ctor_face_bool(F, R) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Surface_ctor_face_bool(F, R),
+            ))
         }
     }
 
@@ -2905,187 +2059,115 @@ impl Surface {
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:55 - `BRepAdaptor_Surface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_Surface_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:68 - `BRepAdaptor_Surface::ShallowCopy()`
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_shallow_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Surface_shallow_copy(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:71 - `BRepAdaptor_Surface::Initialize()`
     /// Sets the surface to the geometry of <F>.
     pub fn initialize(&mut self, F: &crate::topo_ds::Face, Restriction: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Surface_initialize(self as *mut Self, F, Restriction)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_initialize(self as *mut Self, F, Restriction)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:75 - `BRepAdaptor_Surface::Surface()`
     /// Returns the surface.
     pub fn surface(&self) -> &crate::geom_adaptor::Surface {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_Surface_surface(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:78 - `BRepAdaptor_Surface::ChangeSurface()`
     /// Returns the surface.
     pub fn change_surface(&mut self) -> &mut crate::geom_adaptor::Surface {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_change_surface(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepAdaptor_Surface_change_surface(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:81 - `BRepAdaptor_Surface::Trsf()`
     /// Returns the surface coordinate system.
     pub fn trsf(&self) -> &crate::gp::Trsf {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_trsf(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_Surface_trsf(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:84 - `BRepAdaptor_Surface::Face()`
     /// Returns the face.
     pub fn face(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepAdaptor_Surface_face(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:87 - `BRepAdaptor_Surface::Tolerance()`
     /// Returns the face tolerance.
     pub fn tolerance(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_tolerance(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:89 - `BRepAdaptor_Surface::FirstUParameter()`
     pub fn first_u_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_first_u_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_first_u_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:94 - `BRepAdaptor_Surface::LastUParameter()`
     pub fn last_u_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_last_u_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_last_u_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:96 - `BRepAdaptor_Surface::FirstVParameter()`
     pub fn first_v_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_first_v_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_first_v_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:101 - `BRepAdaptor_Surface::LastVParameter()`
     pub fn last_v_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_last_v_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_last_v_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:103 - `BRepAdaptor_Surface::UContinuity()`
     pub fn u_continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_u_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_u_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:105 - `BRepAdaptor_Surface::VContinuity()`
     pub fn v_continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_v_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_v_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:110 - `BRepAdaptor_Surface::NbUIntervals()`
@@ -3093,16 +2175,9 @@ impl Surface {
     /// continuity    <S>.  And   returns  the  number  of
     /// intervals.
     pub fn nb_u_intervals(&self, theSh: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Surface_nb_u_intervals(self as *const Self, theSh.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_nb_u_intervals(self as *const Self, theSh.into())
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:118 - `BRepAdaptor_Surface::NbVIntervals()`
@@ -3110,44 +2185,27 @@ impl Surface {
     /// continuity    <S>.  And   returns  the  number  of
     /// intervals.
     pub fn nb_v_intervals(&self, theSh: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Surface_nb_v_intervals(self as *const Self, theSh.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_nb_v_intervals(self as *const Self, theSh.into())
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:125 - `BRepAdaptor_Surface::UIntervals()`
     /// Returns the  intervals with the requested continuity
     /// in the U direction.
     pub fn u_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Surface_u_intervals(self as *const Self, T, S.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_u_intervals(self as *const Self, T, S.into())
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:130 - `BRepAdaptor_Surface::VIntervals()`
     /// Returns the  intervals with the requested continuity
     /// in the V direction.
     pub fn v_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Surface_v_intervals(self as *const Self, T, S.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_v_intervals(self as *const Self, T, S.into())
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:138 - `BRepAdaptor_Surface::UTrim()`
@@ -3162,15 +2220,13 @@ impl Surface {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Surface_u_trim(self as *const Self, First, Last, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Surface_u_trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            )))
         }
     }
 
@@ -3185,118 +2241,77 @@ impl Surface {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Surface_v_trim(self as *const Self, First, Last, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Surface_v_trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:150 - `BRepAdaptor_Surface::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_is_u_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_is_u_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:152 - `BRepAdaptor_Surface::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_is_v_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_is_v_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:154 - `BRepAdaptor_Surface::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_is_u_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_is_u_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:156 - `BRepAdaptor_Surface::UPeriod()`
     pub fn u_period(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_u_period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_u_period(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:158 - `BRepAdaptor_Surface::IsVPeriodic()`
     pub fn is_v_periodic(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_is_v_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_is_v_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:160 - `BRepAdaptor_Surface::VPeriod()`
     pub fn v_period(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_v_period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_v_period(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:164 - `BRepAdaptor_Surface::Value()`
     /// Computes the point of parameters U,V on the surface.
     /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
     pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_value(self as *const Self, U, V) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Surface_value(
+                self as *const Self,
+                U,
+                V,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:168 - `BRepAdaptor_Surface::D0()`
     /// Computes the point of parameters U,V on the surface.
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::BRepAdaptor_Surface_d0(self as *const Self, U, V, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_d0(self as *const Self, U, V, P)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:176 - `BRepAdaptor_Surface::D1()`
@@ -3312,14 +2327,9 @@ impl Surface {
         D1U: &mut crate::gp::Vec,
         D1V: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Surface_d1(self as *const Self, U, V, P, D1U, D1V)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_d1(self as *const Self, U, V, P, D1U, D1V)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:186 - `BRepAdaptor_Surface::D2()`
@@ -3338,24 +2348,19 @@ impl Surface {
         D2V: &mut crate::gp::Vec,
         D2UV: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Surface_d2(
-                    self as *const Self,
-                    U,
-                    V,
-                    P,
-                    D1U,
-                    D1V,
-                    D2U,
-                    D2V,
-                    D2UV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_d2(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+                D2U,
+                D2V,
+                D2UV,
+            )
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:199 - `BRepAdaptor_Surface::D3()`
@@ -3378,28 +2383,23 @@ impl Surface {
         D3UUV: &mut crate::gp::Vec,
         D3UVV: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Surface_d3(
-                    self as *const Self,
-                    U,
-                    V,
-                    P,
-                    D1U,
-                    D1V,
-                    D2U,
-                    D2V,
-                    D2UV,
-                    D3U,
-                    D3V,
-                    D3UUV,
-                    D3UVV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_d3(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+                D2U,
+                D2V,
+                D2UV,
+                D3U,
+                D3V,
+                D3UUV,
+                D3UVV,
+            )
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:217 - `BRepAdaptor_Surface::DN()`
@@ -3409,14 +2409,14 @@ impl Surface {
     /// and the current V interval is not CNv.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_dn(self as *const Self, U, V, Nu, Nv) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Surface_dn(
+                self as *const Self,
+                U,
+                V,
+                Nu,
+                Nv,
+            )))
         }
     }
 
@@ -3424,32 +2424,18 @@ impl Surface {
     /// Returns the parametric U  resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn u_resolution(&self, theR3d: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Surface_u_resolution(self as *const Self, theR3d)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_u_resolution(self as *const Self, theR3d)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:231 - `BRepAdaptor_Surface::VResolution()`
     /// Returns the parametric V  resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn v_resolution(&self, theR3d: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Surface_v_resolution(self as *const Self, theR3d)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_v_resolution(self as *const Self, theR3d)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:240 - `BRepAdaptor_Surface::GetType()`
@@ -3458,187 +2444,119 @@ impl Surface {
     /// BSplineSurface,               SurfaceOfRevolution,
     /// SurfaceOfExtrusion, OtherSurface
     pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_get_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::SurfaceType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_get_type(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:242 - `BRepAdaptor_Surface::Plane()`
     pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_plane(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Surface_plane(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:244 - `BRepAdaptor_Surface::Cylinder()`
     pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_cylinder(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Surface_cylinder(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:246 - `BRepAdaptor_Surface::Cone()`
     pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_cone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Surface_cone(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:248 - `BRepAdaptor_Surface::Sphere()`
     pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_sphere(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Surface_sphere(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:250 - `BRepAdaptor_Surface::Torus()`
     pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_torus(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Surface_torus(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:252 - `BRepAdaptor_Surface::UDegree()`
     pub fn u_degree(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_u_degree(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_u_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:254 - `BRepAdaptor_Surface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_nb_u_poles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_nb_u_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:256 - `BRepAdaptor_Surface::VDegree()`
     pub fn v_degree(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_v_degree(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_v_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:258 - `BRepAdaptor_Surface::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_nb_v_poles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_nb_v_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:260 - `BRepAdaptor_Surface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_nb_u_knots(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_nb_u_knots(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:262 - `BRepAdaptor_Surface::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_nb_v_knots(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_nb_v_knots(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:264 - `BRepAdaptor_Surface::IsURational()`
     pub fn is_u_rational(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_is_u_rational(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_is_u_rational(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:266 - `BRepAdaptor_Surface::IsVRational()`
     pub fn is_v_rational(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_is_v_rational(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_is_v_rational(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:268 - `BRepAdaptor_Surface::Bezier()`
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_bezier(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepAdaptor_Surface_bezier(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3648,39 +2566,28 @@ impl Surface {
     /// to it the myTsrf transformation
     /// Be Careful when using this method
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_b_spline(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Surface_b_spline(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:276 - `BRepAdaptor_Surface::AxeOfRevolution()`
     pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_axe_of_revolution(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Surface_axe_of_revolution(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:278 - `BRepAdaptor_Surface::Direction()`
     pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_direction(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Surface_direction(self as *const Self),
+            ))
         }
     }
 
@@ -3690,155 +2597,112 @@ impl Surface {
     /// since it applies to it the transformation
     /// myTrsf. Be careful when using this method.
     pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_basis_curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Surface_basis_curve(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:286 - `BRepAdaptor_Surface::BasisSurface()`
     pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_basis_surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Surface_basis_surface(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:288 - `BRepAdaptor_Surface::OffsetValue()`
     pub fn offset_value(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_offset_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_offset_value(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:55 - `BRepAdaptor_Surface::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepAdaptor_Surface_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:55 - `BRepAdaptor_Surface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepAdaptor_Surface_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepAdaptor_Surface_get_type_descriptor())) }
     }
 
     /// Upcast to Adaptor3d_Surface
     pub fn as_adaptor3d_surface(&self) -> &crate::adaptor3d::Surface {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor3d_Surface (mutable)
     pub fn as_adaptor3d_surface_mut(&mut self) -> &mut crate::adaptor3d::Surface {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Surface_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepAdaptor_Surface_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepAdaptor_Surface_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepAdaptor_Surface_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorSurface> {
-        let __result = unsafe { crate::ffi::BRepAdaptor_Surface_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepAdaptor_Surface_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Surface_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Surface_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepAdaptor_Surface_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepAdaptor_Surface_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3849,53 +2713,30 @@ impl Surface {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Surface_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepAdaptor_Surface_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAdaptor_Surface_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepAdaptor_Surface_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepAdaptor_Surface_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3910,42 +2751,38 @@ unsafe impl crate::CppDeletable for HandleBRepAdaptorSurface {
 impl HandleBRepAdaptorSurface {
     /// Dereference this Handle to access the underlying BRepAdaptor_Surface
     pub fn get(&self) -> &crate::ffi::BRepAdaptor_Surface {
-        let __result = unsafe { crate::ffi::HandleBRepAdaptorSurface_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepAdaptorSurface_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepAdaptor_Surface
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAdaptor_Surface {
-        let __result = unsafe { crate::ffi::HandleBRepAdaptorSurface_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepAdaptorSurface_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepAdaptor_Surface> to Handle<Adaptor3d_Surface>
     pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepAdaptorSurface_to_HandleAdaptor3dSurface(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepAdaptorSurface_to_HandleAdaptor3dSurface(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepAdaptor_Surface> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepAdaptorSurface_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepAdaptorSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

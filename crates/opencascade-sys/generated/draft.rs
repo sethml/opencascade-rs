@@ -15,14 +15,7 @@
 /// direction.
 /// Otherwise, the exception DomainError is raised.
 pub fn angle(F: &crate::topo_ds::Face, Direction: &crate::gp::Dir) -> f64 {
-    {
-        let __result = unsafe { crate::ffi::Draft_angle(F, Direction) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::Draft_angle(F, Direction) })
 }
 
 /// C++ enum: `Draft_ErrorStatus`
@@ -74,221 +67,131 @@ unsafe impl crate::CppDeletable for EdgeInfo {
 impl EdgeInfo {
     /// **Source:** `Draft_EdgeInfo.hxx`:34 - `Draft_EdgeInfo::Draft_EdgeInfo()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Draft_EdgeInfo_ctor())) }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:36 - `Draft_EdgeInfo::Draft_EdgeInfo()`
     pub fn new_bool(HasNewGeometry: bool) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_ctor_bool(HasNewGeometry) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Draft_EdgeInfo_ctor_bool(
+                HasNewGeometry,
+            )))
         }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:38 - `Draft_EdgeInfo::Add()`
     pub fn add(&mut self, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe { crate::ffi::Draft_EdgeInfo_add(self as *mut Self, F) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Draft_EdgeInfo_add(self as *mut Self, F) })
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:40 - `Draft_EdgeInfo::RootFace()`
     pub fn root_face_face(&mut self, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe { crate::ffi::Draft_EdgeInfo_root_face_face(self as *mut Self, F) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_EdgeInfo_root_face_face(self as *mut Self, F)
+        })
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:42 - `Draft_EdgeInfo::Tangent()`
     pub fn tangent(&mut self, P: &crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::Draft_EdgeInfo_tangent(self as *mut Self, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_EdgeInfo_tangent(self as *mut Self, P)
+        })
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:44 - `Draft_EdgeInfo::IsTangent()`
     pub fn is_tangent(&self, P: &mut crate::gp::Pnt) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_is_tangent(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_EdgeInfo_is_tangent(self as *const Self, P)
+        })
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:46 - `Draft_EdgeInfo::NewGeometry()`
     pub fn new_geometry(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_new_geometry(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Draft_EdgeInfo_new_geometry(self as *const Self) })
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:48 - `Draft_EdgeInfo::SetNewGeometry()`
     pub fn set_new_geometry(&mut self, NewGeom: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Draft_EdgeInfo_set_new_geometry(self as *mut Self, NewGeom) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_EdgeInfo_set_new_geometry(self as *mut Self, NewGeom)
+        })
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:50 - `Draft_EdgeInfo::Geometry()`
     pub fn geometry(&self) -> &crate::ffi::HandleGeomCurve {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_geometry(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Draft_EdgeInfo_geometry(self as *const Self))) }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:52 - `Draft_EdgeInfo::FirstFace()`
     pub fn first_face(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_first_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_EdgeInfo_first_face(self as *const Self)))
         }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:54 - `Draft_EdgeInfo::SecondFace()`
     pub fn second_face(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_second_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_EdgeInfo_second_face(self as *const Self)))
         }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:56 - `Draft_EdgeInfo::FirstPC()`
     pub fn first_pc(&self) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_first_pc(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Draft_EdgeInfo_first_pc(self as *const Self))) }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:58 - `Draft_EdgeInfo::SecondPC()`
     pub fn second_pc(&self) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_second_pc(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_EdgeInfo_second_pc(self as *const Self)))
         }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:60 - `Draft_EdgeInfo::ChangeGeometry()`
     pub fn change_geometry(&mut self) -> &mut crate::ffi::HandleGeomCurve {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_change_geometry(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Draft_EdgeInfo_change_geometry(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:62 - `Draft_EdgeInfo::ChangeFirstPC()`
     pub fn change_first_pc(&mut self) -> &mut crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_change_first_pc(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Draft_EdgeInfo_change_first_pc(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:64 - `Draft_EdgeInfo::ChangeSecondPC()`
     pub fn change_second_pc(&mut self) -> &mut crate::ffi::HandleGeom2dCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::Draft_EdgeInfo_change_second_pc(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Draft_EdgeInfo_change_second_pc(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:66 - `Draft_EdgeInfo::RootFace()`
     pub fn root_face(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_root_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_EdgeInfo_root_face(self as *const Self)))
         }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:68 - `Draft_EdgeInfo::Tolerance()`
     pub fn tolerance_real(&mut self, tol: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Draft_EdgeInfo_tolerance_real(self as *mut Self, tol) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_EdgeInfo_tolerance_real(self as *mut Self, tol)
+        })
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:70 - `Draft_EdgeInfo::Tolerance()`
     pub fn tolerance(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Draft_EdgeInfo_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Draft_EdgeInfo_tolerance(self as *const Self) })
     }
 }
 
@@ -308,13 +211,7 @@ unsafe impl crate::CppDeletable for FaceInfo {
 impl FaceInfo {
     /// **Source:** `Draft_FaceInfo.hxx`:34 - `Draft_FaceInfo::Draft_FaceInfo()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Draft_FaceInfo_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Draft_FaceInfo_ctor())) }
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:36 - `Draft_FaceInfo::Draft_FaceInfo()`
@@ -322,131 +219,75 @@ impl FaceInfo {
         S: &crate::ffi::HandleGeomSurface,
         HasNewGeometry: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_FaceInfo_ctor_handlegeomsurface_bool(S, HasNewGeometry)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Draft_FaceInfo_ctor_handlegeomsurface_bool(S, HasNewGeometry),
+            ))
         }
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:39 - `Draft_FaceInfo::RootFace()`
     pub fn root_face_face(&mut self, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe { crate::ffi::Draft_FaceInfo_root_face_face(self as *mut Self, F) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_FaceInfo_root_face_face(self as *mut Self, F)
+        })
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:41 - `Draft_FaceInfo::NewGeometry()`
     pub fn new_geometry(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Draft_FaceInfo_new_geometry(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Draft_FaceInfo_new_geometry(self as *const Self) })
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:43 - `Draft_FaceInfo::Add()`
     pub fn add(&mut self, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe { crate::ffi::Draft_FaceInfo_add(self as *mut Self, F) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Draft_FaceInfo_add(self as *mut Self, F) })
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:45 - `Draft_FaceInfo::FirstFace()`
     pub fn first_face(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::Draft_FaceInfo_first_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_FaceInfo_first_face(self as *const Self)))
         }
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:47 - `Draft_FaceInfo::SecondFace()`
     pub fn second_face(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::Draft_FaceInfo_second_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_FaceInfo_second_face(self as *const Self)))
         }
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:49 - `Draft_FaceInfo::Geometry()`
     pub fn geometry(&self) -> &crate::ffi::HandleGeomSurface {
-        {
-            let __result = unsafe { crate::ffi::Draft_FaceInfo_geometry(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Draft_FaceInfo_geometry(self as *const Self))) }
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:51 - `Draft_FaceInfo::ChangeGeometry()`
     pub fn change_geometry(&mut self) -> &mut crate::ffi::HandleGeomSurface {
-        {
-            let __result = unsafe { crate::ffi::Draft_FaceInfo_change_geometry(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Draft_FaceInfo_change_geometry(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:53 - `Draft_FaceInfo::RootFace()`
     pub fn root_face(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::Draft_FaceInfo_root_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_FaceInfo_root_face(self as *const Self)))
         }
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:55 - `Draft_FaceInfo::ChangeCurve()`
     pub fn change_curve(&mut self) -> &mut crate::ffi::HandleGeomCurve {
-        {
-            let __result = unsafe { crate::ffi::Draft_FaceInfo_change_curve(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Draft_FaceInfo_change_curve(self as *mut Self)))
         }
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:57 - `Draft_FaceInfo::Curve()`
     pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
-        {
-            let __result = unsafe { crate::ffi::Draft_FaceInfo_curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Draft_FaceInfo_curve(self as *const Self))) }
     }
 }
 
@@ -466,35 +307,25 @@ unsafe impl crate::CppDeletable for Modification {
 impl Modification {
     /// **Source:** `Draft_Modification.hxx`:51 - `Draft_Modification::Draft_Modification()`
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Draft_Modification_ctor_shape(S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Draft_Modification_ctor_shape(S),
+            ))
         }
     }
 
     /// **Source:** `Draft_Modification.hxx`:54 - `Draft_Modification::Clear()`
     /// Resets on the same shape.
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Draft_Modification_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Draft_Modification_clear(self as *mut Self) })
     }
 
     /// **Source:** `Draft_Modification.hxx`:57 - `Draft_Modification::Init()`
     /// Changes the basis shape and resets.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::Draft_Modification_init(self as *mut Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_Modification_init(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `Draft_Modification.hxx`:63 - `Draft_Modification::Add()`
@@ -510,23 +341,16 @@ impl Modification {
         NeutralPlane: &crate::gp::Pln,
         Flag: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_add(
-                    self as *mut Self,
-                    F,
-                    Direction,
-                    Angle,
-                    NeutralPlane,
-                    Flag,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_add(
+                self as *mut Self,
+                F,
+                Direction,
+                Angle,
+                NeutralPlane,
+                Flag,
+            )
+        })
     }
 
     /// **Source:** `Draft_Modification.hxx`:73 - `Draft_Modification::Remove()`
@@ -535,12 +359,9 @@ impl Modification {
     /// method if  the  method Add returns Standard_False,
     /// to unset ProblematicFace.
     pub fn remove(&mut self, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe { crate::ffi::Draft_Modification_remove(self as *mut Self, F) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_Modification_remove(self as *mut Self, F)
+        })
     }
 
     /// **Source:** `Draft_Modification.hxx`:81 - `Draft_Modification::Perform()`
@@ -551,12 +372,9 @@ impl Modification {
     /// and the  shape on which  the problem appeared will
     /// be given by ProblematicShape
     pub fn perform(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Draft_Modification_perform(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_Modification_perform(self as *mut Self)
+        })
     }
 
     /// **Source:** `Draft_Modification.hxx`:86 - `Draft_Modification::IsDone()`
@@ -564,40 +382,25 @@ impl Modification {
     /// called. Otherwise more information can be obtained
     /// using the methods Error() and ProblematicShape().
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Draft_Modification_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Draft_Modification_is_done(self as *const Self) })
     }
 
     /// **Source:** `Draft_Modification.hxx`:88 - `Draft_Modification::Error()`
     pub fn error(&self) -> crate::draft::ErrorStatus {
-        {
-            let __result = unsafe { crate::ffi::Draft_Modification_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::draft::ErrorStatus::try_from(__val).unwrap()
-        }
+        crate::draft::ErrorStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Draft_Modification.hxx`:92 - `Draft_Modification::ProblematicShape()`
     /// Returns the shape (Face,  Edge or Vertex) on which
     /// an error occurred.
     pub fn problematic_shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::Draft_Modification_problematic_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_Modification_problematic_shape(
+                self as *const Self,
+            )))
         }
     }
 
@@ -614,14 +417,11 @@ impl Modification {
         &mut self,
         F: &crate::topo_ds::Face,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::Draft_Modification_connected_faces(self as *mut Self, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_Modification_connected_faces(
+                self as *mut Self,
+                F,
+            )))
         }
     }
 
@@ -629,14 +429,10 @@ impl Modification {
     /// Returns all the faces  on which a modification has
     /// been given.
     pub fn modified_faces(&mut self) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::Draft_Modification_modified_faces(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_Modification_modified_faces(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -663,24 +459,17 @@ impl Modification {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_new_surface(
-                    self as *mut Self,
-                    F,
-                    S,
-                    L,
-                    Tol,
-                    RevWires,
-                    RevFace,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_new_surface(
+                self as *mut Self,
+                F,
+                S,
+                L,
+                Tol,
+                RevWires,
+                RevFace,
+            )
+        })
     }
 
     /// **Source:** `Draft_Modification.hxx`:128 - `Draft_Modification::NewCurve()`
@@ -697,16 +486,9 @@ impl Modification {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_new_curve(self as *mut Self, E, C, L, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_new_curve(self as *mut Self, E, C, L, Tol)
+        })
     }
 
     /// **Source:** `Draft_Modification.hxx`:138 - `Draft_Modification::NewPoint()`
@@ -721,15 +503,9 @@ impl Modification {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Draft_Modification_new_point(self as *mut Self, V, P, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_new_point(self as *mut Self, V, P, Tol)
+        })
     }
 
     /// **Source:** `Draft_Modification.hxx`:152 - `Draft_Modification::NewCurve2d()`
@@ -752,24 +528,9 @@ impl Modification {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_new_curve2d(
-                    self as *mut Self,
-                    E,
-                    F,
-                    NewE,
-                    NewF,
-                    C,
-                    Tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_new_curve2d(self as *mut Self, E, F, NewE, NewF, C, Tol)
+        })
     }
 
     /// **Source:** `Draft_Modification.hxx`:164 - `Draft_Modification::NewParameter()`
@@ -785,16 +546,9 @@ impl Modification {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_new_parameter(self as *mut Self, V, E, P, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_new_parameter(self as *mut Self, V, E, P, Tol)
+        })
     }
 
     /// **Source:** `Draft_Modification.hxx`:175 - `Draft_Modification::Continuity()`
@@ -813,114 +567,90 @@ impl Modification {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_continuity(
-                    self as *mut Self,
-                    E,
-                    F1,
-                    F2,
-                    NewE,
-                    NewF1,
-                    NewF2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_continuity(
+                self as *mut Self,
+                E,
+                F1,
+                F2,
+                NewE,
+                NewF1,
+                NewF2,
+            )
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Draft_Modification.hxx`:182 - `Draft_Modification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Draft_Modification_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_Modification_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Draft_Modification.hxx`:182 - `Draft_Modification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Draft_Modification_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Draft_Modification_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Draft_Modification.hxx`:182 - `Draft_Modification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Draft_Modification_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Draft_Modification_get_type_descriptor())) }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        let __result = unsafe {
-            crate::ffi::Draft_Modification_as_BRepTools_Modification(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Draft_Modification_as_BRepTools_Modification(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        let __result = unsafe {
-            crate::ffi::Draft_Modification_as_BRepTools_Modification_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Draft_Modification_as_BRepTools_Modification_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Draft_Modification_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Draft_Modification_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Draft_Modification_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Draft_Modification_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleDraftModification> {
-        let __result = unsafe { crate::ffi::Draft_Modification_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Draft_Modification_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
@@ -929,16 +659,9 @@ impl Modification {
         F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_inherited_NewTriangulation(self as *mut Self, F, T)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_inherited_NewTriangulation(self as *mut Self, F, T)
+        })
     }
 
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
@@ -947,16 +670,9 @@ impl Modification {
         E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_inherited_NewPolygon(self as *mut Self, E, P)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_inherited_NewPolygon(self as *mut Self, E, P)
+        })
     }
 
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
@@ -966,60 +682,36 @@ impl Modification {
         F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_inherited_NewPolygonOnTriangulation(
-                    self as *mut Self,
-                    E,
-                    F,
-                    P,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_inherited_NewPolygonOnTriangulation(
+                self as *mut Self,
+                E,
+                F,
+                P,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Draft_Modification_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Draft_Modification_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1030,53 +722,30 @@ impl Modification {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Draft_Modification_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_Modification_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Draft_Modification_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Draft_Modification_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Draft_Modification_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_Modification_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1091,44 +760,40 @@ unsafe impl crate::CppDeletable for HandleDraftModification {
 impl HandleDraftModification {
     /// Dereference this Handle to access the underlying Draft_Modification
     pub fn get(&self) -> &crate::ffi::Draft_Modification {
-        let __result = unsafe { crate::ffi::HandleDraftModification_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleDraftModification_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Draft_Modification
     pub fn get_mut(&mut self) -> &mut crate::ffi::Draft_Modification {
-        let __result = unsafe { crate::ffi::HandleDraftModification_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleDraftModification_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Draft_Modification> to Handle<BRepTools_Modification>
     pub fn to_handle_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        let __result = unsafe {
-            crate::ffi::HandleDraftModification_to_HandleBRepToolsModification(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleDraftModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Draft_Modification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleDraftModification_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleDraftModification_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1148,104 +813,58 @@ unsafe impl crate::CppDeletable for VertexInfo {
 impl VertexInfo {
     /// **Source:** `Draft_VertexInfo.hxx`:35 - `Draft_VertexInfo::Draft_VertexInfo()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Draft_VertexInfo_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Draft_VertexInfo_ctor()))
         }
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:37 - `Draft_VertexInfo::Add()`
     pub fn add(&mut self, E: &crate::topo_ds::Edge) {
-        {
-            let __exc = unsafe { crate::ffi::Draft_VertexInfo_add(self as *mut Self, E) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Draft_VertexInfo_add(self as *mut Self, E) })
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:39 - `Draft_VertexInfo::Geometry()`
     pub fn geometry(&self) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe { crate::ffi::Draft_VertexInfo_geometry(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Draft_VertexInfo_geometry(self as *const Self)))
         }
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:41 - `Draft_VertexInfo::Parameter()`
     pub fn parameter(&mut self, E: &crate::topo_ds::Edge) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Draft_VertexInfo_parameter(self as *mut Self, E) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Draft_VertexInfo_parameter(self as *mut Self, E) })
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:43 - `Draft_VertexInfo::InitEdgeIterator()`
     pub fn init_edge_iterator(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Draft_VertexInfo_init_edge_iterator(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_VertexInfo_init_edge_iterator(self as *mut Self)
+        })
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:45 - `Draft_VertexInfo::Edge()`
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::Draft_VertexInfo_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Draft_VertexInfo_edge(self as *const Self))) }
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:47 - `Draft_VertexInfo::NextEdge()`
     pub fn next_edge(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Draft_VertexInfo_next_edge(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Draft_VertexInfo_next_edge(self as *mut Self)
+        })
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:49 - `Draft_VertexInfo::MoreEdge()`
     pub fn more_edge(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Draft_VertexInfo_more_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Draft_VertexInfo_more_edge(self as *const Self) })
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:51 - `Draft_VertexInfo::ChangeGeometry()`
     pub fn change_geometry(&mut self) -> &mut crate::gp::Pnt {
-        {
-            let __result =
-                unsafe { crate::ffi::Draft_VertexInfo_change_geometry(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Draft_VertexInfo_change_geometry(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -1257,14 +876,11 @@ impl VertexInfo {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn change_parameter(&mut self, E: &crate::topo_ds::Edge) -> &mut f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Draft_VertexInfo_change_parameter(self as *mut Self, E) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Draft_VertexInfo_change_parameter(
+                self as *mut Self,
+                E,
+            )))
         }
     }
 }

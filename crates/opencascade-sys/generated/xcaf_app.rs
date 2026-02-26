@@ -30,39 +30,29 @@ impl Application {
     /// methods from TDocStd_Application
     /// ================================
     pub fn resources_name(&mut self) -> std::string::String {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFApp_Application_resources_name(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::XCAFApp_Application_resources_name(self as *mut Self),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `XCAFApp_Application.hxx`:38 - `XCAFApp_Application::InitDocument()`
     /// Set XCAFDoc_DocumentTool attribute
     pub fn init_document(&self, aDoc: &crate::ffi::HandleCDMDocument) {
-        {
-            let __exc =
-                unsafe { crate::ffi::XCAFApp_Application_init_document(self as *const Self, aDoc) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_init_document(self as *const Self, aDoc)
+        })
     }
 
     /// **Source:** `XCAFApp_Application.hxx`:51 - `XCAFApp_Application::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFApp_Application_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::XCAFApp_Application_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -73,156 +63,125 @@ impl Application {
     /// object, and it should be called at least once before
     /// any actions with documents in order to init application
     pub fn get_application() -> crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication> {
-        {
-            let __result = unsafe { crate::ffi::XCAFApp_Application_get_application() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::XCAFApp_Application_get_application(),
+            ))
         }
     }
 
     /// **Source:** `XCAFApp_Application.hxx`:51 - `XCAFApp_Application::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::XCAFApp_Application_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::XCAFApp_Application_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `XCAFApp_Application.hxx`:51 - `XCAFApp_Application::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::XCAFApp_Application_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::XCAFApp_Application_get_type_descriptor())) }
     }
 
     /// Upcast to TDocStd_Application
     pub fn as_t_doc_std_application(&self) -> &crate::t_doc_std::Application {
-        let __result =
-            unsafe { crate::ffi::XCAFApp_Application_as_TDocStd_Application(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::XCAFApp_Application_as_TDocStd_Application(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDocStd_Application (mutable)
     pub fn as_t_doc_std_application_mut(&mut self) -> &mut crate::t_doc_std::Application {
-        let __result = unsafe {
-            crate::ffi::XCAFApp_Application_as_TDocStd_Application_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::XCAFApp_Application_as_TDocStd_Application_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to CDF_Application
     pub fn as_cdf_application(&self) -> &crate::cdf::Application {
-        let __result =
-            unsafe { crate::ffi::XCAFApp_Application_as_CDF_Application(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::XCAFApp_Application_as_CDF_Application(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to CDF_Application (mutable)
     pub fn as_cdf_application_mut(&mut self) -> &mut crate::cdf::Application {
-        let __result =
-            unsafe { crate::ffi::XCAFApp_Application_as_CDF_Application_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::XCAFApp_Application_as_CDF_Application_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to CDM_Application
     pub fn as_cdm_application(&self) -> &crate::cdm::Application {
-        let __result =
-            unsafe { crate::ffi::XCAFApp_Application_as_CDM_Application(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::XCAFApp_Application_as_CDM_Application(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to CDM_Application (mutable)
     pub fn as_cdm_application_mut(&mut self) -> &mut crate::cdm::Application {
-        let __result =
-            unsafe { crate::ffi::XCAFApp_Application_as_CDM_Application_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::XCAFApp_Application_as_CDM_Application_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::XCAFApp_Application_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::XCAFApp_Application_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::XCAFApp_Application_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::XCAFApp_Application_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication> {
-        let __result = unsafe { crate::ffi::XCAFApp_Application_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::XCAFApp_Application_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:76 - `TDocStd_Application::IsDriverLoaded()`
     pub fn is_driver_loaded(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_IsDriverLoaded(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_IsDriverLoaded(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:96 - `TDocStd_Application::Resources()`
     pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFApp_Application_inherited_Resources(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::XCAFApp_Application_inherited_Resources(self as *mut Self),
+            ))
         }
     }
 
@@ -235,81 +194,44 @@ impl Application {
         theReader: &crate::ffi::HandlePCDMRetrievalDriver,
         theWriter: &crate::ffi::HandlePCDMStorageDriver,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_DefineFormat(
-                    self as *mut Self,
-                    theFormat,
-                    theDescription,
-                    theExtension,
-                    theReader,
-                    theWriter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_DefineFormat(
+                self as *mut Self,
+                theFormat,
+                theDescription,
+                theExtension,
+                theReader,
+                theWriter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:149 - `TDocStd_Application::ReadingFormats()`
     pub fn reading_formats(&mut self, theFormats: &mut crate::ffi::TColStd_SequenceOfAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_ReadingFormats(
-                    self as *mut Self,
-                    theFormats,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_ReadingFormats(self as *mut Self, theFormats)
+        })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:154 - `TDocStd_Application::WritingFormats()`
     pub fn writing_formats(&mut self, theFormats: &mut crate::ffi::TColStd_SequenceOfAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_WritingFormats(
-                    self as *mut Self,
-                    theFormats,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_WritingFormats(self as *mut Self, theFormats)
+        })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:157 - `TDocStd_Application::NbDocuments()`
     pub fn nb_documents(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_NbDocuments(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_NbDocuments(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument()`
     pub fn get_document(&self, index: i32, aDoc: &mut crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_GetDocument(
-                    self as *const Self,
-                    index,
-                    aDoc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_GetDocument(self as *const Self, index, aDoc)
+        })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:179 - `TDocStd_Application::NewDocument()`
@@ -318,43 +240,23 @@ impl Application {
         format: &crate::t_collection::ExtendedString,
         aDoc: &mut crate::ffi::HandleCDMDocument,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_NewDocument(
-                    self as *mut Self,
-                    format,
-                    aDoc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_NewDocument(self as *mut Self, format, aDoc)
+        })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close()`
     pub fn close(&mut self, aDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc =
-                unsafe { crate::ffi::XCAFApp_Application_inherited_Close(self as *mut Self, aDoc) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_Close(self as *mut Self, aDoc)
+        })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
     pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_IsInSession(self as *const Self, path)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_IsInSession(self as *const Self, path)
+        })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:232 - `TDocStd_Application::Open()`
@@ -365,22 +267,16 @@ impl Application {
         theFilter: &crate::ffi::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::ReaderStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_Open(
-                    self as *mut Self,
-                    thePath,
-                    theDoc,
-                    theFilter,
-                    theRange,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::ReaderStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_Open(
+                self as *mut Self,
+                thePath,
+                theDoc,
+                theFilter,
+                theRange,
+            )
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs()`
@@ -390,21 +286,15 @@ impl Application {
         path: &crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_SaveAs(
-                    self as *mut Self,
-                    theDoc,
-                    path,
-                    theRange,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::StoreStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_SaveAs(
+                self as *mut Self,
+                theDoc,
+                path,
+                theRange,
+            )
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save()`
@@ -413,61 +303,31 @@ impl Application {
         theDoc: &crate::ffi::HandleTDocStdDocument,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_Save(self as *mut Self, theDoc, theRange)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::StoreStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_Save(self as *mut Self, theDoc, theRange)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction()`
     pub fn on_open_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_OnOpenTransaction(
-                    self as *mut Self,
-                    theDoc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_OnOpenTransaction(self as *mut Self, theDoc)
+        })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction()`
     pub fn on_commit_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_OnCommitTransaction(
-                    self as *mut Self,
-                    theDoc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_OnCommitTransaction(self as *mut Self, theDoc)
+        })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction()`
     pub fn on_abort_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_OnAbortTransaction(
-                    self as *mut Self,
-                    theDoc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_OnAbortTransaction(self as *mut Self, theDoc)
+        })
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
@@ -475,16 +335,10 @@ impl Application {
         &mut self,
         aDocument: &crate::ffi::HandleCDMDocument,
     ) -> crate::cdm::CanCloseStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_CanClose(self as *mut Self, aDocument)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::cdm::CanCloseStatus::try_from(__val).unwrap()
-        }
+        crate::cdm::CanCloseStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_CanClose(self as *mut Self, aDocument)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:97 - `CDF_Application::Retrieve()`
@@ -496,8 +350,8 @@ impl Application {
         theFilter: &crate::ffi::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::XCAFApp_Application_inherited_Retrieve(
                     self as *mut Self,
                     aFolder,
@@ -505,13 +359,8 @@ impl Application {
                     UseStorageConfiguration,
                     theFilter,
                     theRange,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -522,35 +371,23 @@ impl Application {
         theName: &crate::t_collection::ExtendedString,
         theAppendMode: bool,
     ) -> crate::pcdm::ReaderStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_CanRetrieve(
-                    self as *mut Self,
-                    theFolder,
-                    theName,
-                    theAppendMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::ReaderStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_CanRetrieve(
+                self as *mut Self,
+                theFolder,
+                theName,
+                theAppendMode,
+            )
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:136 - `CDF_Application::GetRetrieveStatus()`
     pub fn get_retrieve_status(&self) -> crate::pcdm::ReaderStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_GetRetrieveStatus(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::pcdm::ReaderStatus::try_from(__val).unwrap()
-        }
+        crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_GetRetrieveStatus(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:140 - `CDF_Application::Read()`
@@ -561,20 +398,15 @@ impl Application {
         theFilter: &crate::ffi::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_Read(
-                    self as *mut Self,
-                    theIStream,
-                    theDocument,
-                    theFilter,
-                    theRange,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_Read(
+                self as *mut Self,
+                theIStream,
+                theDocument,
+                theFilter,
+                theRange,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:158 - `CDF_Application::ReaderFromFormat()`
@@ -582,18 +414,13 @@ impl Application {
         &mut self,
         aFormat: &crate::t_collection::ExtendedString,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReader> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::XCAFApp_Application_inherited_ReaderFromFormat(
                     self as *mut Self,
                     aFormat,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -602,18 +429,13 @@ impl Application {
         &mut self,
         aFormat: &crate::t_collection::ExtendedString,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMStorageDriver> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::XCAFApp_Application_inherited_WriterFromFormat(
                     self as *mut Self,
                     aFormat,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -623,63 +445,38 @@ impl Application {
         aFileName: &crate::t_collection::ExtendedString,
         theFormat: &mut crate::t_collection::ExtendedString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_Format(
-                    self as *mut Self,
-                    aFileName,
-                    theFormat,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_Format(
+                self as *mut Self,
+                aFileName,
+                theFormat,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:187 - `CDF_Application::MetaDataDriver()`
     pub fn meta_data_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFMetaDataDriver> {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_MetaDataDriver(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::XCAFApp_Application_inherited_MetaDataDriver(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
     pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_MessageDriver(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::XCAFApp_Application_inherited_MessageDriver(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
     pub fn begin_of_update(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_BeginOfUpdate(
-                    self as *mut Self,
-                    aDocument,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_BeginOfUpdate(self as *mut Self, aDocument)
+        })
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
@@ -689,98 +486,63 @@ impl Application {
         theStatus: bool,
         ErrorString: &crate::t_collection::ExtendedString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_EndOfUpdate(
-                    self as *mut Self,
-                    aDocument,
-                    theStatus,
-                    ErrorString,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_EndOfUpdate(
+                self as *mut Self,
+                aDocument,
+                theStatus,
+                ErrorString,
+            )
+        })
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFApp_Application_inherited_Name(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::XCAFApp_Application_inherited_Name(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
     pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFApp_Application_inherited_Version(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::XCAFApp_Application_inherited_Version(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
     pub fn meta_data_look_up_table(&mut self) -> &mut crate::ffi::CDM_MetaDataLookUpTable {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_MetaDataLookUpTable(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::XCAFApp_Application_inherited_MetaDataLookUpTable(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::XCAFApp_Application_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::XCAFApp_Application_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -791,53 +553,30 @@ impl Application {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFApp_Application_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::XCAFApp_Application_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::XCAFApp_Application_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -852,65 +591,59 @@ unsafe impl crate::CppDeletable for HandleXCAFAppApplication {
 impl HandleXCAFAppApplication {
     /// Dereference this Handle to access the underlying XCAFApp_Application
     pub fn get(&self) -> &crate::ffi::XCAFApp_Application {
-        let __result = unsafe { crate::ffi::HandleXCAFAppApplication_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleXCAFAppApplication_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XCAFApp_Application
     pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFApp_Application {
-        let __result = unsafe { crate::ffi::HandleXCAFAppApplication_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleXCAFAppApplication_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XCAFApp_Application> to Handle<TDocStd_Application>
     pub fn to_handle_t_doc_std_application(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdApplication> {
-        let __result = unsafe {
-            crate::ffi::HandleXCAFAppApplication_to_HandleTDocStdApplication(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleXCAFAppApplication_to_HandleTDocStdApplication(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFApp_Application> to Handle<CDF_Application>
     pub fn to_handle_cdf_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFApplication> {
-        let __result = unsafe {
-            crate::ffi::HandleXCAFAppApplication_to_HandleCDFApplication(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleXCAFAppApplication_to_HandleCDFApplication(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFApp_Application> to Handle<CDM_Application>
     pub fn to_handle_cdm_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMApplication> {
-        let __result = unsafe {
-            crate::ffi::HandleXCAFAppApplication_to_HandleCDMApplication(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleXCAFAppApplication_to_HandleCDMApplication(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFApp_Application> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleXCAFAppApplication_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleXCAFAppApplication_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

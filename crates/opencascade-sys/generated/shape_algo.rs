@@ -10,37 +10,22 @@
 /// Provides initerface to the algorithms from Shape Healing.
 /// Creates and initializes default AlgoContainer.
 pub fn init() {
-    {
-        let __exc = unsafe { crate::ffi::ShapeAlgo_init() };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::ShapeAlgo_init() })
 }
 /// **Source:** `ShapeAlgo.hxx`:35 - `ShapeAlgo::SetAlgoContainer`
 /// Sets default AlgoContainer
 pub fn set_algo_container_handleshapealgoalgocontainer(
     aContainer: &crate::ffi::HandleShapeAlgoAlgoContainer,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::ShapeAlgo_set_algo_container_handleshapealgoalgocontainer(aContainer)
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::ShapeAlgo_set_algo_container_handleshapealgoalgocontainer(aContainer)
+    })
 }
 /// **Source:** `ShapeAlgo.hxx`:38 - `ShapeAlgo::AlgoContainer`
 /// Returns default AlgoContainer
 pub fn algo_container() -> crate::OwnedPtr<crate::ffi::HandleShapeAlgoAlgoContainer> {
-    {
-        let __result = unsafe { crate::ffi::ShapeAlgo_algo_container() };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeAlgo_algo_container()))
     }
 }
 
@@ -64,39 +49,28 @@ impl AlgoContainer {
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:49 - `ShapeAlgo_AlgoContainer::ShapeAlgo_AlgoContainer()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::ShapeAlgo_AlgoContainer_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeAlgo_AlgoContainer_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:52 - `ShapeAlgo_AlgoContainer::SetToolContainer()`
     /// Sets ToolContainer
     pub fn set_tool_container(&mut self, TC: &crate::ffi::HandleShapeAlgoToolContainer) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_set_tool_container(self as *mut Self, TC)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_set_tool_container(self as *mut Self, TC)
+        })
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:55 - `ShapeAlgo_AlgoContainer::ToolContainer()`
     /// Returns ToolContainer
     pub fn tool_container(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeAlgoToolContainer> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeAlgo_AlgoContainer_tool_container(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeAlgo_AlgoContainer_tool_container(self as *const Self),
+            ))
         }
     }
 
@@ -120,24 +94,17 @@ impl AlgoContainer {
         revsewd: &mut bool,
         revnextsewd: &mut bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_connect_next_wire(
-                    self as *const Self,
-                    saw,
-                    nextsewd,
-                    maxtol,
-                    distmin,
-                    revsewd,
-                    revnextsewd,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_connect_next_wire(
+                self as *const Self,
+                saw,
+                nextsewd,
+                maxtol,
+                distmin,
+                revsewd,
+                revnextsewd,
+            )
+        })
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:75 - `ShapeAlgo_AlgoContainer::ApproxBSplineCurve()`
@@ -146,14 +113,9 @@ impl AlgoContainer {
         bspline: &crate::ffi::HandleGeomBSplineCurve,
         seq: &mut crate::ffi::TColGeom_SequenceOfCurve,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeombsplinecurve_sequenceofcurve(self as *const Self, bspline, seq)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeombsplinecurve_sequenceofcurve(self as *const Self, bspline, seq)
+        })
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:78 - `ShapeAlgo_AlgoContainer::ApproxBSplineCurve()`
@@ -162,14 +124,9 @@ impl AlgoContainer {
         bspline: &crate::ffi::HandleGeom2dBSplineCurve,
         seq: &mut crate::ffi::TColGeom2d_SequenceOfCurve,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeom2dbsplinecurve_sequenceofcurve(self as *const Self, bspline, seq)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeom2dbsplinecurve_sequenceofcurve(self as *const Self, bspline, seq)
+        })
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:81 - `ShapeAlgo_AlgoContainer::C0BSplineToSequenceOfC1BSplineCurve()`
@@ -178,16 +135,9 @@ impl AlgoContainer {
         BS: &crate::ffi::HandleGeomBSplineCurve,
         seqBS: &mut crate::ffi::HandleTColGeomHSequenceOfBoundedCurve,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve(self as *const Self, BS, seqBS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve(self as *const Self, BS, seqBS)
+        })
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:87 - `ShapeAlgo_AlgoContainer::C0BSplineToSequenceOfC1BSplineCurve()`
@@ -198,16 +148,9 @@ impl AlgoContainer {
         BS: &crate::ffi::HandleGeom2dBSplineCurve,
         seqBS: &mut crate::ffi::HandleTColGeom2dHSequenceOfBoundedCurve,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dhsequenceofboundedcurve(self as *const Self, BS, seqBS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dhsequenceofboundedcurve(self as *const Self, BS, seqBS)
+        })
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:92 - `ShapeAlgo_AlgoContainer::C0ShapeToC1Shape()`
@@ -217,19 +160,14 @@ impl AlgoContainer {
         shape: &crate::topo_ds::Shape,
         tol: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::ShapeAlgo_AlgoContainer_c0_shape_to_c1_shape(
                     self as *const Self,
                     shape,
                     tol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -244,8 +182,8 @@ impl AlgoContainer {
         VF: f64,
         VL: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::ShapeAlgo_AlgoContainer_convert_surface_to_b_spline(
                     self as *const Self,
                     surf,
@@ -253,13 +191,8 @@ impl AlgoContainer {
                     UL,
                     VF,
                     VL,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -275,37 +208,25 @@ impl AlgoContainer {
         wireOut2: &mut crate::topo_ds::Wire,
         byParam: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_homo_wires(
-                    self as *const Self,
-                    wireIn1,
-                    wireIn2,
-                    wireOut1,
-                    wireOut2,
-                    byParam,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_homo_wires(
+                self as *const Self,
+                wireIn1,
+                wireIn2,
+                wireOut1,
+                wireOut2,
+                byParam,
+            )
+        })
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:114 - `ShapeAlgo_AlgoContainer::OuterWire()`
     /// Returns the outer wire on the face <Face>.
     pub fn outer_wire(&self, face: &crate::topo_ds::Face) -> crate::OwnedPtr<crate::topo_ds::Wire> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_outer_wire(self as *const Self, face)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeAlgo_AlgoContainer_outer_wire(self as *const Self, face),
+            ))
         }
     }
 
@@ -316,15 +237,10 @@ impl AlgoContainer {
         &self,
         surf: &crate::ffi::HandleGeomSurface,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_convert_to_periodic(self as *const Self, surf)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeAlgo_AlgoContainer_convert_to_periodic(self as *const Self, surf),
+            ))
         }
     }
 
@@ -338,21 +254,16 @@ impl AlgoContainer {
         Vmin: &mut f64,
         Vmax: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_get_face_uv_bounds(
-                    self as *const Self,
-                    F,
-                    Umin,
-                    Umax,
-                    Vmin,
-                    Vmax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_get_face_uv_bounds(
+                self as *const Self,
+                F,
+                Umin,
+                Umax,
+                Vmin,
+                Vmax,
+            )
+        })
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:129 - `ShapeAlgo_AlgoContainer::ConvertCurveToBSpline()`
@@ -367,8 +278,8 @@ impl AlgoContainer {
         MaxSegments: i32,
         MaxDegree: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::ShapeAlgo_AlgoContainer_convert_curve_to_b_spline(
                     self as *const Self,
                     C3D,
@@ -378,126 +289,87 @@ impl AlgoContainer {
                     Continuity.into(),
                     MaxSegments,
                     MaxDegree,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:138 - `ShapeAlgo_AlgoContainer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeAlgo_AlgoContainer_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::ShapeAlgo_AlgoContainer_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:138 - `ShapeAlgo_AlgoContainer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::ShapeAlgo_AlgoContainer_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::ShapeAlgo_AlgoContainer_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:138 - `ShapeAlgo_AlgoContainer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::ShapeAlgo_AlgoContainer_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::ShapeAlgo_AlgoContainer_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::ShapeAlgo_AlgoContainer_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::ShapeAlgo_AlgoContainer_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::ShapeAlgo_AlgoContainer_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::ShapeAlgo_AlgoContainer_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeAlgoAlgoContainer> {
-        let __result = unsafe { crate::ffi::ShapeAlgo_AlgoContainer_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeAlgo_AlgoContainer_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::ShapeAlgo_AlgoContainer_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::ShapeAlgo_AlgoContainer_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -508,54 +380,30 @@ impl AlgoContainer {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeAlgo_AlgoContainer_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeAlgo_AlgoContainer_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -570,32 +418,29 @@ unsafe impl crate::CppDeletable for HandleShapeAlgoAlgoContainer {
 impl HandleShapeAlgoAlgoContainer {
     /// Dereference this Handle to access the underlying ShapeAlgo_AlgoContainer
     pub fn get(&self) -> &crate::ffi::ShapeAlgo_AlgoContainer {
-        let __result = unsafe { crate::ffi::HandleShapeAlgoAlgoContainer_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleShapeAlgoAlgoContainer_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeAlgo_AlgoContainer
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAlgo_AlgoContainer {
-        let __result =
-            unsafe { crate::ffi::HandleShapeAlgoAlgoContainer_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleShapeAlgoAlgoContainer_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeAlgo_AlgoContainer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleShapeAlgoAlgoContainer_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleShapeAlgoAlgoContainer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -617,153 +462,109 @@ impl ToolContainer {
     /// **Source:** `ShapeAlgo_ToolContainer.hxx`:35 - `ShapeAlgo_ToolContainer::ShapeAlgo_ToolContainer()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::ShapeAlgo_ToolContainer_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeAlgo_ToolContainer_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ShapeAlgo_ToolContainer.hxx`:38 - `ShapeAlgo_ToolContainer::FixShape()`
     /// Returns ShapeFix_Shape
     pub fn fix_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixShape> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeAlgo_ToolContainer_fix_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeAlgo_ToolContainer_fix_shape(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeAlgo_ToolContainer.hxx`:41 - `ShapeAlgo_ToolContainer::EdgeProjAux()`
     /// Returns ShapeFix_EdgeProjAux
     pub fn edge_proj_aux(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixEdgeProjAux> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeAlgo_ToolContainer_edge_proj_aux(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeAlgo_ToolContainer_edge_proj_aux(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeAlgo_ToolContainer.hxx`:43 - `ShapeAlgo_ToolContainer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeAlgo_ToolContainer_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::ShapeAlgo_ToolContainer_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeAlgo_ToolContainer.hxx`:43 - `ShapeAlgo_ToolContainer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::ShapeAlgo_ToolContainer_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::ShapeAlgo_ToolContainer_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `ShapeAlgo_ToolContainer.hxx`:43 - `ShapeAlgo_ToolContainer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::ShapeAlgo_ToolContainer_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::ShapeAlgo_ToolContainer_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::ShapeAlgo_ToolContainer_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::ShapeAlgo_ToolContainer_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::ShapeAlgo_ToolContainer_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::ShapeAlgo_ToolContainer_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeAlgoToolContainer> {
-        let __result = unsafe { crate::ffi::ShapeAlgo_ToolContainer_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeAlgo_ToolContainer_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_ToolContainer_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_ToolContainer_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_ToolContainer_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_ToolContainer_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::ShapeAlgo_ToolContainer_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::ShapeAlgo_ToolContainer_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -774,54 +575,30 @@ impl ToolContainer {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_ToolContainer_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_ToolContainer_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeAlgo_ToolContainer_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeAlgo_ToolContainer_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeAlgo_ToolContainer_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeAlgo_ToolContainer_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeAlgo_ToolContainer_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeAlgo_ToolContainer_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -836,31 +613,28 @@ unsafe impl crate::CppDeletable for HandleShapeAlgoToolContainer {
 impl HandleShapeAlgoToolContainer {
     /// Dereference this Handle to access the underlying ShapeAlgo_ToolContainer
     pub fn get(&self) -> &crate::ffi::ShapeAlgo_ToolContainer {
-        let __result = unsafe { crate::ffi::HandleShapeAlgoToolContainer_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleShapeAlgoToolContainer_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeAlgo_ToolContainer
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAlgo_ToolContainer {
-        let __result =
-            unsafe { crate::ffi::HandleShapeAlgoToolContainer_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleShapeAlgoToolContainer_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeAlgo_ToolContainer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleShapeAlgoToolContainer_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleShapeAlgoToolContainer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

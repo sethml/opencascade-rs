@@ -31,13 +31,10 @@ impl Projection {
         Shape: &crate::topo_ds::Shape,
         D: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepProj_Projection_ctor_shape2_dir(Wire, Shape, D) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepProj_Projection_ctor_shape2_dir(Wire, Shape, D),
+            ))
         }
     }
 
@@ -48,87 +45,54 @@ impl Projection {
         Shape: &crate::topo_ds::Shape,
         P: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepProj_Projection_ctor_shape2_pnt(Wire, Shape, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepProj_Projection_ctor_shape2_pnt(Wire, Shape, P),
+            ))
         }
     }
 
     /// **Source:** `BRepProj_Projection.hxx`:52 - `BRepProj_Projection::IsDone()`
     /// returns False if the section failed
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepProj_Projection_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepProj_Projection_is_done(self as *const Self) })
     }
 
     /// **Source:** `BRepProj_Projection.hxx`:55 - `BRepProj_Projection::Init()`
     /// Resets the iterator by resulting wires.
     pub fn init(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepProj_Projection_init(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::BRepProj_Projection_init(self as *mut Self) })
     }
 
     /// **Source:** `BRepProj_Projection.hxx`:58 - `BRepProj_Projection::More()`
     /// Returns True if there is a current result wire
     pub fn more(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepProj_Projection_more(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepProj_Projection_more(self as *const Self) })
     }
 
     /// **Source:** `BRepProj_Projection.hxx`:61 - `BRepProj_Projection::Next()`
     /// Move to the next result wire.
     pub fn next(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepProj_Projection_next(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::BRepProj_Projection_next(self as *mut Self) })
     }
 
     /// **Source:** `BRepProj_Projection.hxx`:64 - `BRepProj_Projection::Current()`
     /// Returns the current result wire.
     pub fn current(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
-        {
-            let __result = unsafe { crate::ffi::BRepProj_Projection_current(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepProj_Projection_current(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepProj_Projection.hxx`:67 - `BRepProj_Projection::Shape()`
     /// Returns the complete result as compound of wires.
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Compound> {
-        {
-            let __result = unsafe { crate::ffi::BRepProj_Projection_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepProj_Projection_shape(
+                self as *const Self,
+            )))
         }
     }
 }

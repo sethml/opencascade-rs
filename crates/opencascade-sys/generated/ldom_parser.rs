@@ -22,40 +22,24 @@ unsafe impl crate::CppDeletable for LDOMParser {
 impl LDOMParser {
     /// **Source:** `LDOMParser.hxx`:36 - `LDOMParser::LDOMParser()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOMParser_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMParser_ctor())) }
     }
 
     /// **Source:** `LDOMParser.hxx`:47 - `LDOMParser::getDocument()`
     pub fn get_document(&mut self) -> crate::OwnedPtr<crate::ldom::Document> {
-        {
-            let __result = unsafe { crate::ffi::LDOMParser_get_document(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMParser_get_document(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `LDOMParser.hxx`:50 - `LDOMParser::parse()`
     pub fn parse_charptr(&mut self, aFileName: &str) -> bool {
         let c_aFileName = std::ffi::CString::new(aFileName).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::LDOMParser_parse_charptr(self as *mut Self, c_aFileName.as_ptr())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LDOMParser_parse_charptr(self as *mut Self, c_aFileName.as_ptr())
+        })
     }
 
     /// **Source:** `LDOMParser.hxx`:54 - `LDOMParser::parse()`
@@ -65,21 +49,14 @@ impl LDOMParser {
         theTagPerStep: bool,
         theWithoutRoot: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::LDOMParser_parse_istream_bool2(
-                    self as *mut Self,
-                    anInput,
-                    theTagPerStep,
-                    theWithoutRoot,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LDOMParser_parse_istream_bool2(
+                self as *mut Self,
+                anInput,
+                theTagPerStep,
+                theWithoutRoot,
+            )
+        })
     }
 
     /// **Source:** `LDOMParser.hxx`:66 - `LDOMParser::GetError()`
@@ -93,25 +70,17 @@ impl LDOMParser {
         &self,
         aData: &mut crate::t_collection::AsciiString,
     ) -> &crate::t_collection::AsciiString {
-        {
-            let __result = unsafe { crate::ffi::LDOMParser_get_error(self as *const Self, aData) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::LDOMParser_get_error(self as *const Self, aData)))
         }
     }
 
     /// **Source:** `LDOMParser.hxx`:70 - `LDOMParser::GetBOM()`
     pub fn get_bom(&self) -> crate::OwnedPtr<crate::ffi::LDOM_OSStream_BOMType> {
-        {
-            let __result = unsafe { crate::ffi::LDOMParser_get_bom(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMParser_get_bom(
+                self as *const Self,
+            )))
         }
     }
 }

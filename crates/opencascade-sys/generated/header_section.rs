@@ -9,14 +9,7 @@
 /// **Source:** `HeaderSection.hxx`:32 - `HeaderSection::Protocol`
 /// creates a Protocol
 pub fn protocol() -> crate::OwnedPtr<crate::ffi::HandleHeaderSectionProtocol> {
-    {
-        let __result = unsafe { crate::ffi::HeaderSection_protocol() };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
-    }
+    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HeaderSection_protocol())) }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -39,12 +32,10 @@ impl FileDescription {
     /// **Source:** `HeaderSection_FileDescription.hxx`:35 - `HeaderSection_FileDescription::HeaderSection_FileDescription()`
     /// Returns a FileDescription
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_FileDescription_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileDescription_ctor(),
+            ))
         }
     }
 
@@ -54,18 +45,13 @@ impl FileDescription {
         aDescription: &crate::ffi::HandleInterfaceHArray1OfHAsciiString,
         aImplementationLevel: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileDescription_init(
-                    self as *mut Self,
-                    aDescription,
-                    aImplementationLevel,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileDescription_init(
+                self as *mut Self,
+                aDescription,
+                aImplementationLevel,
+            )
+        })
     }
 
     /// **Source:** `HeaderSection_FileDescription.hxx`:40 - `HeaderSection_FileDescription::SetDescription()`
@@ -73,30 +59,20 @@ impl FileDescription {
         &mut self,
         aDescription: &crate::ffi::HandleInterfaceHArray1OfHAsciiString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileDescription_set_description(
-                    self as *mut Self,
-                    aDescription,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileDescription_set_description(
+                self as *mut Self,
+                aDescription,
+            )
+        })
     }
 
     /// **Source:** `HeaderSection_FileDescription.hxx`:42 - `HeaderSection_FileDescription::Description()`
     pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileDescription_description(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileDescription_description(self as *const Self),
+            ))
         }
     }
 
@@ -105,33 +81,21 @@ impl FileDescription {
         &self,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HeaderSection_FileDescription_description_value(
                     self as *const Self,
                     num,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `HeaderSection_FileDescription.hxx`:47 - `HeaderSection_FileDescription::NbDescription()`
     pub fn nb_description(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileDescription_nb_description(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileDescription_nb_description(self as *const Self)
+        })
     }
 
     /// **Source:** `HeaderSection_FileDescription.hxx`:49 - `HeaderSection_FileDescription::SetImplementationLevel()`
@@ -139,152 +103,106 @@ impl FileDescription {
         &mut self,
         aImplementationLevel: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileDescription_set_implementation_level(
-                    self as *mut Self,
-                    aImplementationLevel,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileDescription_set_implementation_level(
+                self as *mut Self,
+                aImplementationLevel,
+            )
+        })
     }
 
     /// **Source:** `HeaderSection_FileDescription.hxx`:52 - `HeaderSection_FileDescription::ImplementationLevel()`
     pub fn implementation_level(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileDescription_implementation_level(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileDescription_implementation_level(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HeaderSection_FileDescription.hxx`:54 - `HeaderSection_FileDescription::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileDescription_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HeaderSection_FileDescription_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HeaderSection_FileDescription.hxx`:54 - `HeaderSection_FileDescription::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_FileDescription_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::HeaderSection_FileDescription_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `HeaderSection_FileDescription.hxx`:54 - `HeaderSection_FileDescription::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_FileDescription_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HeaderSection_FileDescription_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::HeaderSection_FileDescription_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HeaderSection_FileDescription_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::HeaderSection_FileDescription_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::HeaderSection_FileDescription_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHeaderSectionFileDescription> {
-        let __result =
-            unsafe { crate::ffi::HeaderSection_FileDescription_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileDescription_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileDescription_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileDescription_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileDescription_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileDescription_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::HeaderSection_FileDescription_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -295,58 +213,34 @@ impl FileDescription {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileDescription_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileDescription_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileDescription_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileDescription_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileDescription_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileDescription_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileDescription_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileDescription_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -361,35 +255,31 @@ unsafe impl crate::CppDeletable for HandleHeaderSectionFileDescription {
 impl HandleHeaderSectionFileDescription {
     /// Dereference this Handle to access the underlying HeaderSection_FileDescription
     pub fn get(&self) -> &crate::ffi::HeaderSection_FileDescription {
-        let __result =
-            unsafe { crate::ffi::HandleHeaderSectionFileDescription_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleHeaderSectionFileDescription_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HeaderSection_FileDescription
     pub fn get_mut(&mut self) -> &mut crate::ffi::HeaderSection_FileDescription {
-        let __result =
-            unsafe { crate::ffi::HandleHeaderSectionFileDescription_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleHeaderSectionFileDescription_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HeaderSection_FileDescription> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleHeaderSectionFileDescription_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHeaderSectionFileDescription_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -410,12 +300,10 @@ impl FileName {
     /// **Source:** `HeaderSection_FileName.hxx`:35 - `HeaderSection_FileName::HeaderSection_FileName()`
     /// Returns a FileName
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_FileName_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::HeaderSection_FileName_ctor()),
+            )
         }
     }
 
@@ -430,95 +318,65 @@ impl FileName {
         aOriginatingSystem: &crate::ffi::HandleTCollectionHAsciiString,
         aAuthorisation: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileName_init(
-                    self as *mut Self,
-                    aName,
-                    aTimeStamp,
-                    aAuthor,
-                    aOrganization,
-                    aPreprocessorVersion,
-                    aOriginatingSystem,
-                    aAuthorisation,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileName_init(
+                self as *mut Self,
+                aName,
+                aTimeStamp,
+                aAuthor,
+                aOrganization,
+                aPreprocessorVersion,
+                aOriginatingSystem,
+                aAuthorisation,
+            )
+        })
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:45 - `HeaderSection_FileName::SetName()`
     pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HeaderSection_FileName_set_name(self as *mut Self, aName) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileName_set_name(self as *mut Self, aName)
+        })
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:47 - `HeaderSection_FileName::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_FileName_name(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HeaderSection_FileName_name(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:49 - `HeaderSection_FileName::SetTimeStamp()`
     pub fn set_time_stamp(&mut self, aTimeStamp: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileName_set_time_stamp(self as *mut Self, aTimeStamp)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileName_set_time_stamp(self as *mut Self, aTimeStamp)
+        })
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:51 - `HeaderSection_FileName::TimeStamp()`
     pub fn time_stamp(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_FileName_time_stamp(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileName_time_stamp(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:53 - `HeaderSection_FileName::SetAuthor()`
     pub fn set_author(&mut self, aAuthor: &crate::ffi::HandleInterfaceHArray1OfHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileName_set_author(self as *mut Self, aAuthor)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileName_set_author(self as *mut Self, aAuthor)
+        })
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:55 - `HeaderSection_FileName::Author()`
     pub fn author(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_FileName_author(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileName_author(self as *const Self),
+            ))
         }
     }
 
@@ -527,29 +385,18 @@ impl FileName {
         &self,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileName_author_value(self as *const Self, num)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileName_author_value(self as *const Self, num),
+            ))
         }
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:59 - `HeaderSection_FileName::NbAuthor()`
     pub fn nb_author(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_FileName_nb_author(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileName_nb_author(self as *const Self)
+        })
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:61 - `HeaderSection_FileName::SetOrganization()`
@@ -557,31 +404,19 @@ impl FileName {
         &mut self,
         aOrganization: &crate::ffi::HandleInterfaceHArray1OfHAsciiString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileName_set_organization(
-                    self as *mut Self,
-                    aOrganization,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileName_set_organization(self as *mut Self, aOrganization)
+        })
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:64 - `HeaderSection_FileName::Organization()`
     pub fn organization(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_FileName_organization(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileName_organization(self as *const Self),
+            ))
         }
     }
 
@@ -590,29 +425,18 @@ impl FileName {
         &self,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileName_organization_value(self as *const Self, num)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileName_organization_value(self as *const Self, num),
+            ))
         }
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:69 - `HeaderSection_FileName::NbOrganization()`
     pub fn nb_organization(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_FileName_nb_organization(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileName_nb_organization(self as *const Self)
+        })
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:71 - `HeaderSection_FileName::SetPreprocessorVersion()`
@@ -620,32 +444,22 @@ impl FileName {
         &mut self,
         aPreprocessorVersion: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileName_set_preprocessor_version(
-                    self as *mut Self,
-                    aPreprocessorVersion,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileName_set_preprocessor_version(
+                self as *mut Self,
+                aPreprocessorVersion,
+            )
+        })
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:74 - `HeaderSection_FileName::PreprocessorVersion()`
     pub fn preprocessor_version(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileName_preprocessor_version(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileName_preprocessor_version(self as *const Self),
+            ))
         }
     }
 
@@ -654,30 +468,20 @@ impl FileName {
         &mut self,
         aOriginatingSystem: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileName_set_originating_system(
-                    self as *mut Self,
-                    aOriginatingSystem,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileName_set_originating_system(
+                self as *mut Self,
+                aOriginatingSystem,
+            )
+        })
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:79 - `HeaderSection_FileName::OriginatingSystem()`
     pub fn originating_system(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileName_originating_system(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileName_originating_system(self as *const Self),
+            ))
         }
     }
 
@@ -686,142 +490,94 @@ impl FileName {
         &mut self,
         aAuthorisation: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileName_set_authorisation(
-                    self as *mut Self,
-                    aAuthorisation,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileName_set_authorisation(self as *mut Self, aAuthorisation)
+        })
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:83 - `HeaderSection_FileName::Authorisation()`
     pub fn authorisation(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_FileName_authorisation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileName_authorisation(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:85 - `HeaderSection_FileName::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_FileName_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HeaderSection_FileName_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:85 - `HeaderSection_FileName::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_FileName_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::HeaderSection_FileName_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:85 - `HeaderSection_FileName::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_FileName_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HeaderSection_FileName_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::HeaderSection_FileName_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HeaderSection_FileName_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::HeaderSection_FileName_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HeaderSection_FileName_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHeaderSectionFileName> {
-        let __result = unsafe { crate::ffi::HeaderSection_FileName_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileName_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileName_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileName_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileName_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileName_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_FileName_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::HeaderSection_FileName_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -832,53 +588,30 @@ impl FileName {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileName_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileName_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileName_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileName_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileName_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileName_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HeaderSection_FileName_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileName_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -893,32 +626,29 @@ unsafe impl crate::CppDeletable for HandleHeaderSectionFileName {
 impl HandleHeaderSectionFileName {
     /// Dereference this Handle to access the underlying HeaderSection_FileName
     pub fn get(&self) -> &crate::ffi::HeaderSection_FileName {
-        let __result = unsafe { crate::ffi::HandleHeaderSectionFileName_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleHeaderSectionFileName_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HeaderSection_FileName
     pub fn get_mut(&mut self) -> &mut crate::ffi::HeaderSection_FileName {
-        let __result =
-            unsafe { crate::ffi::HandleHeaderSectionFileName_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleHeaderSectionFileName_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HeaderSection_FileName> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleHeaderSectionFileName_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHeaderSectionFileName_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -939,25 +669,18 @@ impl FileSchema {
     /// **Source:** `HeaderSection_FileSchema.hxx`:35 - `HeaderSection_FileSchema::HeaderSection_FileSchema()`
     /// Returns a FileSchema
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_FileSchema_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileSchema_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HeaderSection_FileSchema.hxx`:37 - `HeaderSection_FileSchema::Init()`
     pub fn init(&mut self, aSchemaIdentifiers: &crate::ffi::HandleInterfaceHArray1OfHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileSchema_init(self as *mut Self, aSchemaIdentifiers)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileSchema_init(self as *mut Self, aSchemaIdentifiers)
+        })
     }
 
     /// **Source:** `HeaderSection_FileSchema.hxx`:39 - `HeaderSection_FileSchema::SetSchemaIdentifiers()`
@@ -965,32 +688,22 @@ impl FileSchema {
         &mut self,
         aSchemaIdentifiers: &crate::ffi::HandleInterfaceHArray1OfHAsciiString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileSchema_set_schema_identifiers(
-                    self as *mut Self,
-                    aSchemaIdentifiers,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileSchema_set_schema_identifiers(
+                self as *mut Self,
+                aSchemaIdentifiers,
+            )
+        })
     }
 
     /// **Source:** `HeaderSection_FileSchema.hxx`:42 - `HeaderSection_FileSchema::SchemaIdentifiers()`
     pub fn schema_identifiers(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileSchema_schema_identifiers(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileSchema_schema_identifiers(self as *const Self),
+            ))
         }
     }
 
@@ -999,145 +712,99 @@ impl FileSchema {
         &self,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HeaderSection_FileSchema_schema_identifiers_value(
                     self as *const Self,
                     num,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `HeaderSection_FileSchema.hxx`:47 - `HeaderSection_FileSchema::NbSchemaIdentifiers()`
     pub fn nb_schema_identifiers(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileSchema_nb_schema_identifiers(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileSchema_nb_schema_identifiers(self as *const Self)
+        })
     }
 
     /// **Source:** `HeaderSection_FileSchema.hxx`:49 - `HeaderSection_FileSchema::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_FileSchema_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HeaderSection_FileSchema_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HeaderSection_FileSchema.hxx`:49 - `HeaderSection_FileSchema::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_FileSchema_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::HeaderSection_FileSchema_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `HeaderSection_FileSchema.hxx`:49 - `HeaderSection_FileSchema::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_FileSchema_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HeaderSection_FileSchema_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::HeaderSection_FileSchema_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HeaderSection_FileSchema_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::HeaderSection_FileSchema_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::HeaderSection_FileSchema_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHeaderSectionFileSchema> {
-        let __result = unsafe { crate::ffi::HeaderSection_FileSchema_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_FileSchema_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileSchema_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileSchema_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileSchema_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileSchema_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_FileSchema_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::HeaderSection_FileSchema_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1148,58 +815,30 @@ impl FileSchema {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileSchema_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileSchema_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileSchema_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileSchema_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_FileSchema_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_FileSchema_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_FileSchema_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_FileSchema_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1214,35 +853,31 @@ unsafe impl crate::CppDeletable for HandleHeaderSectionFileSchema {
 impl HandleHeaderSectionFileSchema {
     /// Dereference this Handle to access the underlying HeaderSection_FileSchema
     pub fn get(&self) -> &crate::ffi::HeaderSection_FileSchema {
-        let __result =
-            unsafe { crate::ffi::HandleHeaderSectionFileSchema_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleHeaderSectionFileSchema_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HeaderSection_FileSchema
     pub fn get_mut(&mut self) -> &mut crate::ffi::HeaderSection_FileSchema {
-        let __result =
-            unsafe { crate::ffi::HandleHeaderSectionFileSchema_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleHeaderSectionFileSchema_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HeaderSection_FileSchema> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleHeaderSectionFileSchema_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHeaderSectionFileSchema_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1264,28 +899,19 @@ unsafe impl crate::CppDeletable for Protocol {
 impl Protocol {
     /// **Source:** `HeaderSection_Protocol.hxx`:35 - `HeaderSection_Protocol::HeaderSection_Protocol()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_Protocol_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::HeaderSection_Protocol_ctor()),
+            )
         }
     }
 
     /// **Source:** `HeaderSection_Protocol.hxx`:38 - `HeaderSection_Protocol::TypeNumber()`
     /// Returns a Case Number for each of the HeaderSection Entities
     pub fn type_number(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_type_number(self as *const Self, atype)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_type_number(self as *const Self, atype)
+        })
     }
 
     /// **Source:** `HeaderSection_Protocol.hxx`:41 - `HeaderSection_Protocol::SchemaName()`
@@ -1293,289 +919,187 @@ impl Protocol {
         &self,
         arg0: &crate::ffi::HandleInterfaceInterfaceModel,
     ) -> std::string::String {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_schema_name(self as *const Self, arg0)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::HeaderSection_Protocol_schema_name(self as *const Self, arg0),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `HeaderSection_Protocol.hxx`:44 - `HeaderSection_Protocol::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_Protocol_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::HeaderSection_Protocol_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HeaderSection_Protocol.hxx`:44 - `HeaderSection_Protocol::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_Protocol_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::HeaderSection_Protocol_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `HeaderSection_Protocol.hxx`:44 - `HeaderSection_Protocol::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::HeaderSection_Protocol_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::HeaderSection_Protocol_get_type_descriptor())) }
     }
 
     /// Upcast to StepData_Protocol
     pub fn as_step_data_protocol(&self) -> &crate::step_data::Protocol {
-        let __result =
-            unsafe { crate::ffi::HeaderSection_Protocol_as_StepData_Protocol(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HeaderSection_Protocol_as_StepData_Protocol(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_Protocol (mutable)
     pub fn as_step_data_protocol_mut(&mut self) -> &mut crate::step_data::Protocol {
-        let __result = unsafe {
-            crate::ffi::HeaderSection_Protocol_as_StepData_Protocol_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HeaderSection_Protocol_as_StepData_Protocol_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_Protocol
     pub fn as_interface_protocol(&self) -> &crate::interface::Protocol {
-        let __result = unsafe {
-            crate::ffi::HeaderSection_Protocol_as_Interface_Protocol(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HeaderSection_Protocol_as_Interface_Protocol(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_Protocol (mutable)
     pub fn as_interface_protocol_mut(&mut self) -> &mut crate::interface::Protocol {
-        let __result = unsafe {
-            crate::ffi::HeaderSection_Protocol_as_Interface_Protocol_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HeaderSection_Protocol_as_Interface_Protocol_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::HeaderSection_Protocol_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HeaderSection_Protocol_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::HeaderSection_Protocol_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HeaderSection_Protocol_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHeaderSectionProtocol> {
-        let __result = unsafe { crate::ffi::HeaderSection_Protocol_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_Protocol_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:49 - `StepData_Protocol::NbResources()`
     pub fn nb_resources(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_NbResources(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_NbResources(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:52 - `StepData_Protocol::Resource()`
     pub fn resource(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_Resource(self as *const Self, num)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_Protocol_inherited_Resource(self as *const Self, num),
+            ))
         }
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:58 - `StepData_Protocol::CaseNumber()`
     pub fn case_number(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_CaseNumber(self as *const Self, obj)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_CaseNumber(self as *const Self, obj)
+        })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:74 - `StepData_Protocol::NewModel()`
     pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_NewModel(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_Protocol_inherited_NewModel(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:78 - `StepData_Protocol::IsSuitableModel()`
     pub fn is_suitable_model(&self, model: &crate::ffi::HandleInterfaceInterfaceModel) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_IsSuitableModel(
-                    self as *const Self,
-                    model,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_IsSuitableModel(self as *const Self, model)
+        })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:81 - `StepData_Protocol::UnknownEntity()`
     pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_UnknownEntity(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_Protocol_inherited_UnknownEntity(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:86 - `StepData_Protocol::IsUnknownEntity()`
     pub fn is_unknown_entity(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_IsUnknownEntity(
-                    self as *const Self,
-                    ent,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_IsUnknownEntity(self as *const Self, ent)
+        })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:92 - `StepData_Protocol::DescrNumber()`
     pub fn descr_number(&self, adescr: &crate::ffi::HandleStepDataEDescr) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_DescrNumber(
-                    self as *const Self,
-                    adescr,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_DescrNumber(self as *const Self, adescr)
+        })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:97 - `StepData_Protocol::AddDescr()`
     pub fn add_descr(&mut self, adescr: &crate::ffi::HandleStepDataEDescr, CN: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_AddDescr(self as *mut Self, adescr, CN)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_AddDescr(self as *mut Self, adescr, CN)
+        })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:101 - `StepData_Protocol::HasDescr()`
     pub fn has_descr(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_HasDescr(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_HasDescr(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:104 - `StepData_Protocol::Descr()`
     pub fn descr(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStepDataEDescr> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_Descr(self as *const Self, num)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_Protocol_inherited_Descr(self as *const Self, num),
+            ))
         }
     }
 
@@ -1585,75 +1109,43 @@ impl Protocol {
         names: &crate::ffi::TColStd_SequenceOfAsciiString,
         anylevel: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepDataECDescr> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::HeaderSection_Protocol_inherited_ECDescr(
                     self as *const Self,
                     names,
                     anylevel,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:126 - `StepData_Protocol::AddPDescr()`
     pub fn add_p_descr(&mut self, pdescr: &crate::ffi::HandleStepDataPDescr) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_AddPDescr(self as *mut Self, pdescr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_AddPDescr(self as *mut Self, pdescr)
+        })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:136 - `StepData_Protocol::AddBasicDescr()`
     pub fn add_basic_descr(&mut self, esdescr: &crate::ffi::HandleStepDataESDescr) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_AddBasicDescr(
-                    self as *mut Self,
-                    esdescr,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_AddBasicDescr(self as *mut Self, esdescr)
+        })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:68 - `Interface_Protocol::IsDynamicType()`
     pub fn is_dynamic_type(&self, obj: &crate::ffi::HandleStandardTransient) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_IsDynamicType(self as *const Self, obj)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_IsDynamicType(self as *const Self, obj)
+        })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:75 - `Interface_Protocol::NbTypes()`
     pub fn nb_types(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_NbTypes(self as *const Self, obj)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_NbTypes(self as *const Self, obj)
+        })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:81 - `Interface_Protocol::Type()`
@@ -1662,15 +1154,10 @@ impl Protocol {
         obj: &crate::ffi::HandleStandardTransient,
         nt: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_Type(self as *const Self, obj, nt)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HeaderSection_Protocol_inherited_Type(self as *const Self, obj, nt),
+            ))
         }
     }
 
@@ -1680,62 +1167,31 @@ impl Protocol {
         G: &crate::interface::Graph,
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_GlobalCheck(
-                    self as *const Self,
-                    G,
-                    ach,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_GlobalCheck(self as *const Self, G, ach)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::HeaderSection_Protocol_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::HeaderSection_Protocol_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1746,53 +1202,30 @@ impl Protocol {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::HeaderSection_Protocol_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::HeaderSection_Protocol_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::HeaderSection_Protocol_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1807,57 +1240,54 @@ unsafe impl crate::CppDeletable for HandleHeaderSectionProtocol {
 impl HandleHeaderSectionProtocol {
     /// Dereference this Handle to access the underlying HeaderSection_Protocol
     pub fn get(&self) -> &crate::ffi::HeaderSection_Protocol {
-        let __result = unsafe { crate::ffi::HandleHeaderSectionProtocol_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleHeaderSectionProtocol_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HeaderSection_Protocol
     pub fn get_mut(&mut self) -> &mut crate::ffi::HeaderSection_Protocol {
-        let __result =
-            unsafe { crate::ffi::HandleHeaderSectionProtocol_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleHeaderSectionProtocol_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HeaderSection_Protocol> to Handle<StepData_Protocol>
     pub fn to_handle_step_data_protocol(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepDataProtocol> {
-        let __result = unsafe {
-            crate::ffi::HandleHeaderSectionProtocol_to_HandleStepDataProtocol(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHeaderSectionProtocol_to_HandleStepDataProtocol(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<HeaderSection_Protocol> to Handle<Interface_Protocol>
     pub fn to_handle_interface_protocol(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
-        let __result = unsafe {
-            crate::ffi::HandleHeaderSectionProtocol_to_HandleInterfaceProtocol(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHeaderSectionProtocol_to_HandleInterfaceProtocol(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<HeaderSection_Protocol> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleHeaderSectionProtocol_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleHeaderSectionProtocol_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

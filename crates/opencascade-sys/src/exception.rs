@@ -3,8 +3,9 @@
 //! Non-void C++ wrappers return `OcctResult<T>` — a generic struct containing
 //! the return value and a null-terminated exception string pointer. Void wrappers
 //! return `*const c_char` directly (null = success, non-null = exception).
-//! The Rust wrapper checks `exc` — a null check with no function calls
-//! on the happy path.
+//!
+//! Generated wrappers call `check_result()` or `check_void_result()` which
+//! handle the null check and panic on the error path.
 
 /// Result type returned from non-void C++ FFI wrappers.
 ///
@@ -15,6 +16,25 @@
 pub struct OcctResult<T> {
     pub ret: T,
     pub exc: *const std::ffi::c_char,
+}
+
+/// Check a non-void FFI result; panic if there was an exception.
+#[inline(always)]
+#[track_caller]
+pub fn check_result<T>(result: OcctResult<T>) -> T {
+    if !result.exc.is_null() {
+        wrapper_threw_exception(result.exc);
+    }
+    result.ret
+}
+
+/// Check a void FFI result; panic if there was an exception.
+#[inline(always)]
+#[track_caller]
+pub fn check_void_result(exc: *const std::ffi::c_char) {
+    if !exc.is_null() {
+        wrapper_threw_exception(exc);
+    }
 }
 
 /// Called from C++ to allocate a null-terminated copy of the exception message.

@@ -22,57 +22,39 @@ unsafe impl crate::CppDeletable for LDOMString {
 impl LDOMString {
     /// **Source:** `LDOMString.hxx`:35 - `LDOMString::LDOMString()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOMString_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMString_ctor())) }
     }
 
     /// **Source:** `LDOMString.hxx`:50 - `LDOMString::LDOMString()`
     pub fn new_int(aValue: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOMString_ctor_int(aValue) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMString_ctor_int(aValue)))
         }
     }
 
     /// **Source:** `LDOMString.hxx`:60 - `LDOMString::LDOMString()`
     pub fn new_charptr(aValue: &str) -> crate::OwnedPtr<Self> {
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
-        {
-            let __result = unsafe { crate::ffi::LDOMString_ctor_charptr(c_aValue.as_ptr()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMString_ctor_charptr(
+                c_aValue.as_ptr(),
+            )))
         }
     }
 
     /// **Source:** `LDOMString.hxx`:68 - `LDOMString::getOwnerDocument()`
     pub fn get_owner_document(&self) -> &crate::ldom::MemManager {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOMString_get_owner_document(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::LDOMString_get_owner_document(self as *const Self)))
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        let __result = unsafe { crate::ffi::LDOMString_to_owned(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMString_to_owned(
+                self as *const Self,
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

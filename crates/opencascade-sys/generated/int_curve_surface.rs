@@ -68,12 +68,10 @@ impl HInter {
     /// **Source:** `IntCurveSurface_HInter.hxx`:52 - `IntCurveSurface_HInter::IntCurveSurface_HInter()`
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_HInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::IntCurveSurface_HInter_ctor()),
+            )
         }
     }
 
@@ -85,14 +83,13 @@ impl HInter {
         Curve: &crate::ffi::HandleAdaptor3dCurve,
         Surface: &crate::ffi::HandleAdaptor3dSurface,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_handleadaptor3dsurface(self as *mut Self, Curve, Surface)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_handleadaptor3dsurface(
+                self as *mut Self,
+                Curve,
+                Surface,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_HInter.hxx`:62 - `IntCurveSurface_HInter::Perform()`
@@ -105,14 +102,9 @@ impl HInter {
         Polygon: &ThePolygonOfHInter,
         Surface: &crate::ffi::HandleAdaptor3dSurface,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_thepolygonofhinter_handleadaptor3dsurface(self as *mut Self, Curve, Polygon, Surface)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_thepolygonofhinter_handleadaptor3dsurface(self as *mut Self, Curve, Polygon, Surface)
+        })
     }
 
     /// **Source:** `IntCurveSurface_HInter.hxx`:70 - `IntCurveSurface_HInter::Perform()`
@@ -127,14 +119,9 @@ impl HInter {
         Surface: &crate::ffi::HandleAdaptor3dSurface,
         Polyhedron: &ThePolyhedronOfHInter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_thepolygonofhinter_handleadaptor3dsurface_thepolyhedronofhinter(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_thepolygonofhinter_handleadaptor3dsurface_thepolyhedronofhinter(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron)
+        })
     }
 
     /// **Source:** `IntCurveSurface_HInter.hxx`:79 - `IntCurveSurface_HInter::Perform()`
@@ -150,14 +137,9 @@ impl HInter {
         Polyhedron: &ThePolyhedronOfHInter,
         BndBSB: &mut crate::bnd::BoundSortBox,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_thepolygonofhinter_handleadaptor3dsurface_thepolyhedronofhinter_boundsortbox(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron, BndBSB)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_thepolygonofhinter_handleadaptor3dsurface_thepolyhedronofhinter_boundsortbox(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron, BndBSB)
+        })
     }
 
     /// **Source:** `IntCurveSurface_HInter.hxx`:88 - `IntCurveSurface_HInter::Perform()`
@@ -170,132 +152,86 @@ impl HInter {
         Surface: &crate::ffi::HandleAdaptor3dSurface,
         Polyhedron: &ThePolyhedronOfHInter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_handleadaptor3dsurface_thepolyhedronofhinter(self as *mut Self, Curve, Surface, Polyhedron)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_handleadaptor3dsurface_thepolyhedronofhinter(self as *mut Self, Curve, Surface, Polyhedron)
+        })
     }
 
     /// Upcast to IntCurveSurface_Intersection
     pub fn as_intersection(&self) -> &Intersection {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_HInter_as_IntCurveSurface_Intersection(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::IntCurveSurface_HInter_as_IntCurveSurface_Intersection(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntCurveSurface_Intersection (mutable)
     pub fn as_intersection_mut(&mut self) -> &mut Intersection {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_HInter_as_IntCurveSurface_Intersection_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IntCurveSurface_HInter_as_IntCurveSurface_Intersection_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:36 - `IntCurveSurface_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_HInter_inherited_IsDone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_HInter_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:41 - `IntCurveSurface_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_HInter_inherited_NbPoints(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_HInter_inherited_NbPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:47 - `IntCurveSurface_Intersection::Point()`
     pub fn point(&self, Index: i32) -> &IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_HInter_inherited_Point(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_HInter_inherited_Point(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:53 - `IntCurveSurface_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_HInter_inherited_NbSegments(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_HInter_inherited_NbSegments(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:59 - `IntCurveSurface_Intersection::Segment()`
     pub fn segment(&self, Index: i32) -> &IntersectionSegment {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_HInter_inherited_Segment(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_HInter_inherited_Segment(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:65 - `IntCurveSurface_Intersection::IsParallel()`
     pub fn is_parallel(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_HInter_inherited_IsParallel(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_HInter_inherited_IsParallel(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:68 - `IntCurveSurface_Intersection::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IntCurveSurface_HInter_inherited_Dump(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_HInter_inherited_Dump(self as *const Self)
+        })
     }
 }
 
@@ -310,15 +246,9 @@ impl Intersection {
     /// **Source:** `IntCurveSurface_Intersection.hxx`:36 - `IntCurveSurface_Intersection::IsDone()`
     /// returns the <done> field.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_Intersection_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_Intersection_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_Intersection.hxx`:41 - `IntCurveSurface_Intersection::NbPoints()`
@@ -326,15 +256,9 @@ impl Intersection {
     /// if IsDone returns True.
     /// else NotDone is raised.
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_Intersection_nb_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_Intersection_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_Intersection.hxx`:47 - `IntCurveSurface_Intersection::Point()`
@@ -343,15 +267,11 @@ impl Intersection {
     /// the computation has not been done
     /// raises OutOfRange if Index is not in the range <1..NbPoints>
     pub fn point(&self, Index: i32) -> &IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_Intersection_point(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_Intersection_point(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -360,16 +280,9 @@ impl Intersection {
     /// if IsDone returns True.
     /// else NotDone is raised.
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_Intersection_nb_segments(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_Intersection_nb_segments(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_Intersection.hxx`:59 - `IntCurveSurface_Intersection::Segment()`
@@ -378,15 +291,11 @@ impl Intersection {
     /// the computation has not been done
     /// raises OutOfRange if Index is not in the range <1..NbSegment>
     pub fn segment(&self, Index: i32) -> &IntersectionSegment {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_Intersection_segment(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_Intersection_segment(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -395,28 +304,17 @@ impl Intersection {
     /// This case is recognized only for some pairs
     /// of analytical curves and surfaces (plane - line, ...)
     pub fn is_parallel(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_Intersection_is_parallel(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_Intersection_is_parallel(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_Intersection.hxx`:68 - `IntCurveSurface_Intersection::Dump()`
     /// Dump all the fields.
     pub fn dump(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IntCurveSurface_Intersection_dump(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_Intersection_dump(self as *const Self)
+        })
     }
 }
 
@@ -439,12 +337,10 @@ impl IntersectionPoint {
     /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:35 - `IntCurveSurface_IntersectionPoint::IntCurveSurface_IntersectionPoint()`
     /// Empty Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_IntersectionPoint_ctor(),
+            ))
         }
     }
 
@@ -457,20 +353,16 @@ impl IntersectionPoint {
         UCurv: f64,
         TrCurv: crate::int_curve_surface::TransitionOnCurve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IntCurveSurface_IntersectionPoint_ctor_pnt_real3_transitiononcurve(
                     P,
                     USurf,
                     VSurf,
                     UCurv,
                     TrCurv.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -484,21 +376,16 @@ impl IntersectionPoint {
         UCurv: f64,
         TrCurv: crate::int_curve_surface::TransitionOnCurve,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_IntersectionPoint_set_values(
-                    self as *mut Self,
-                    P,
-                    USurf,
-                    VSurf,
-                    UCurv,
-                    TrCurv.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionPoint_set_values(
+                self as *mut Self,
+                P,
+                USurf,
+                VSurf,
+                UCurv,
+                TrCurv.into(),
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:52 - `IntCurveSurface_IntersectionPoint::Values()`
@@ -512,105 +399,68 @@ impl IntersectionPoint {
         TrCurv: &mut crate::int_curve_surface::TransitionOnCurve,
     ) {
         let mut TrCurv_i32_: i32 = (*TrCurv).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_IntersectionPoint_values(
-                    self as *const Self,
-                    P,
-                    USurf,
-                    VSurf,
-                    UCurv,
-                    &mut TrCurv_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionPoint_values(
+                self as *const Self,
+                P,
+                USurf,
+                VSurf,
+                UCurv,
+                &mut TrCurv_i32_,
+            )
+        });
         *TrCurv = crate::int_curve_surface::TransitionOnCurve::try_from(TrCurv_i32_).unwrap();
     }
 
     /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:59 - `IntCurveSurface_IntersectionPoint::Pnt()`
     /// returns the geometric point.
     pub fn pnt(&self) -> &crate::gp::Pnt {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_pnt(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_IntersectionPoint_pnt(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:62 - `IntCurveSurface_IntersectionPoint::U()`
     /// returns the U parameter on the surface.
     pub fn u(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_u(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionPoint_u(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:65 - `IntCurveSurface_IntersectionPoint::V()`
     /// returns the V parameter on the surface.
     pub fn v(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_v(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionPoint_v(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:68 - `IntCurveSurface_IntersectionPoint::W()`
     /// returns the parameter on the curve.
     pub fn w(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_w(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionPoint_w(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:71 - `IntCurveSurface_IntersectionPoint::Transition()`
     /// returns the Transition of the point.
     pub fn transition(&self) -> crate::int_curve_surface::TransitionOnCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_IntersectionPoint_transition(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::int_curve_surface::TransitionOnCurve::try_from(__val).unwrap()
-        }
+        crate::int_curve_surface::TransitionOnCurve::try_from(crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionPoint_transition(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:74 - `IntCurveSurface_IntersectionPoint::Dump()`
     /// Dump all the fields.
     pub fn dump(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_dump(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionPoint_dump(self as *const Self)
+        })
     }
 }
 
@@ -633,12 +483,10 @@ unsafe impl crate::CppDeletable for IntersectionSegment {
 impl IntersectionSegment {
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:34 - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_IntersectionSegment_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_IntersectionSegment_ctor(),
+            ))
         }
     }
 
@@ -647,113 +495,70 @@ impl IntersectionSegment {
         P1: &IntersectionPoint,
         P2: &IntersectionPoint,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_IntersectionSegment_ctor_intersectionpoint2(P1, P2)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_IntersectionSegment_ctor_intersectionpoint2(P1, P2),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:39 - `IntCurveSurface_IntersectionSegment::SetValues()`
     pub fn set_values(&mut self, P1: &IntersectionPoint, P2: &IntersectionPoint) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_IntersectionSegment_set_values(
-                    self as *mut Self,
-                    P1,
-                    P2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionSegment_set_values(self as *mut Self, P1, P2)
+        })
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:42 - `IntCurveSurface_IntersectionSegment::Values()`
     pub fn values(&self, P1: &mut IntersectionPoint, P2: &mut IntersectionPoint) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_IntersectionSegment_values(self as *const Self, P1, P2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionSegment_values(self as *const Self, P1, P2)
+        })
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:45 - `IntCurveSurface_IntersectionSegment::FirstPoint()`
     pub fn first_point_intersectionpoint(&self, P1: &mut IntersectionPoint) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_IntersectionSegment_first_point_intersectionpoint(
-                    self as *const Self,
-                    P1,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionSegment_first_point_intersectionpoint(
+                self as *const Self,
+                P1,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:47 - `IntCurveSurface_IntersectionSegment::SecondPoint()`
     pub fn second_point_intersectionpoint(&self, P2: &mut IntersectionPoint) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_IntersectionSegment_second_point_intersectionpoint(
-                    self as *const Self,
-                    P2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionSegment_second_point_intersectionpoint(
+                self as *const Self,
+                P2,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:49 - `IntCurveSurface_IntersectionSegment::FirstPoint()`
     pub fn first_point(&self) -> &IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_IntersectionSegment_first_point(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_IntersectionSegment_first_point(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:51 - `IntCurveSurface_IntersectionSegment::SecondPoint()`
     pub fn second_point(&self) -> &IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_IntersectionSegment_second_point(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_IntersectionSegment_second_point(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:53 - `IntCurveSurface_IntersectionSegment::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_IntersectionSegment_dump(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_IntersectionSegment_dump(self as *const Self)
+        })
     }
 }
 
@@ -776,57 +581,30 @@ impl TheCSFunctionOfHInter {
         S: &crate::ffi::HandleAdaptor3dSurface,
         C: &crate::ffi::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_ctor_handleadaptor3dsurface_handleadaptor3dcurve(S, C)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_ctor_handleadaptor3dsurface_handleadaptor3dcurve(S, C)))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:38 - `IntCurveSurface_TheCSFunctionOfHInter::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_nb_variables(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_nb_variables(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:40 - `IntCurveSurface_TheCSFunctionOfHInter::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_nb_equations(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_nb_equations(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:42 - `IntCurveSurface_TheCSFunctionOfHInter::Value()`
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_value(self as *mut Self, X, F)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:44 - `IntCurveSurface_TheCSFunctionOfHInter::Derivatives()`
@@ -835,20 +613,9 @@ impl TheCSFunctionOfHInter {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_derivatives(
-                    self as *mut Self,
-                    X,
-                    D,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_derivatives(self as *mut Self, X, D)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:46 - `IntCurveSurface_TheCSFunctionOfHInter::Values()`
@@ -858,75 +625,46 @@ impl TheCSFunctionOfHInter {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_values(self as *mut Self, X, F, D)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_values(self as *mut Self, X, F, D)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:48 - `IntCurveSurface_TheCSFunctionOfHInter::Point()`
     pub fn point(&self) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_point(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_point(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:50 - `IntCurveSurface_TheCSFunctionOfHInter::Root()`
     pub fn root(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_root(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_root(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:52 - `IntCurveSurface_TheCSFunctionOfHInter::AuxillarSurface()`
     pub fn auxillar_surface(&self) -> &crate::ffi::HandleAdaptor3dSurface {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_auxillar_surface(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:54 - `IntCurveSurface_TheCSFunctionOfHInter::AuxillarCurve()`
     pub fn auxillar_curve(&self) -> &crate::ffi::HandleAdaptor3dCurve {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_auxillar_curve(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
@@ -934,72 +672,49 @@ impl TheCSFunctionOfHInter {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSet(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSet(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSet_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_inherited_GetStateNumber(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_inherited_GetStateNumber(
+                self as *mut Self,
+            )
+        })
     }
 }
 
@@ -1029,8 +744,8 @@ impl TheExactHInter {
         TolTangency: f64,
         MarginCoef: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IntCurveSurface_TheExactHInter_ctor_real3_thecsfunctionofhinter_real2(
                     U,
                     V,
@@ -1038,12 +753,8 @@ impl TheExactHInter {
                     F,
                     TolTangency,
                     MarginCoef,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1053,17 +764,13 @@ impl TheExactHInter {
         F: &TheCSFunctionOfHInter,
         TolTangency: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IntCurveSurface_TheExactHInter_ctor_thecsfunctionofhinter_real(
                     F,
                     TolTangency,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1117,53 +824,36 @@ impl TheExactHInter {
         w0: f64,
         w1: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheExactHInter_perform(
-                    self as *mut Self,
-                    U,
-                    V,
-                    W,
-                    Rsnld,
-                    u0,
-                    v0,
-                    u1,
-                    v1,
-                    w0,
-                    w1,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheExactHInter_perform(
+                self as *mut Self,
+                U,
+                V,
+                W,
+                Rsnld,
+                u0,
+                v0,
+                u1,
+                v1,
+                w0,
+                w1,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheExactHInter.hxx`:81 - `IntCurveSurface_TheExactHInter::IsDone()`
     /// Returns TRUE if the creation completed without failure.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_TheExactHInter_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheExactHInter_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheExactHInter.hxx`:83 - `IntCurveSurface_TheExactHInter::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_TheExactHInter_is_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheExactHInter_is_empty(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheExactHInter.hxx`:88 - `IntCurveSurface_TheExactHInter::Point()`
@@ -1171,59 +861,39 @@ impl TheExactHInter {
     /// The exception NotDone is raised if IsDone is false.
     /// The exception DomainError is raised if IsEmpty is true.
     pub fn point(&self) -> &crate::gp::Pnt {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_TheExactHInter_point(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_TheExactHInter_point(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheExactHInter.hxx`:90 - `IntCurveSurface_TheExactHInter::ParameterOnCurve()`
     pub fn parameter_on_curve(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheExactHInter_parameter_on_curve(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheExactHInter_parameter_on_curve(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheExactHInter.hxx`:92 - `IntCurveSurface_TheExactHInter::ParameterOnSurface()`
     pub fn parameter_on_surface(&self, U: &mut f64, V: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheExactHInter_parameter_on_surface(
-                    self as *const Self,
-                    U,
-                    V,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheExactHInter_parameter_on_surface(
+                self as *const Self,
+                U,
+                V,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheExactHInter.hxx`:96 - `IntCurveSurface_TheExactHInter::Function()`
     /// return the math function which
     /// is used to compute the intersection
     pub fn function(&mut self) -> &mut TheCSFunctionOfHInter {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_TheExactHInter_function(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::IntCurveSurface_TheExactHInter_function(
+                self as *mut Self,
+            )))
         }
     }
 }
@@ -1245,64 +915,38 @@ impl TheHCurveTool {
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx` - `IntCurveSurface_TheHCurveTool::IntCurveSurface_TheHCurveTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_TheHCurveTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:46 - `IntCurveSurface_TheHCurveTool::FirstParameter()`
     pub fn first_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_first_parameter(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_first_parameter(C) })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:51 - `IntCurveSurface_TheHCurveTool::LastParameter()`
     pub fn last_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_last_parameter(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_last_parameter(C) })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:56 - `IntCurveSurface_TheHCurveTool::Continuity()`
     pub fn continuity(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_continuity(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheHCurveTool_continuity(C)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:60 - `IntCurveSurface_TheHCurveTool::NbIntervals()`
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(myclass) >= <S>
     pub fn nb_intervals(C: &crate::ffi::HandleAdaptor3dCurve, S: crate::geom_abs::Shape) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_nb_intervals(C, S.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheHCurveTool_nb_intervals(C, S.into())
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:70 - `IntCurveSurface_TheHCurveTool::Intervals()`
@@ -1316,73 +960,40 @@ impl TheHCurveTool {
         T: &mut crate::ffi::TColStd_Array1OfReal,
         S: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_intervals(C, T, S.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheHCurveTool_intervals(C, T, S.into())
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:77 - `IntCurveSurface_TheHCurveTool::IsClosed()`
     pub fn is_closed(C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_is_closed(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_is_closed(C) })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:79 - `IntCurveSurface_TheHCurveTool::IsPeriodic()`
     pub fn is_periodic(C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_is_periodic(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_is_periodic(C) })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:81 - `IntCurveSurface_TheHCurveTool::Period()`
     pub fn period(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_period(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_period(C) })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:84 - `IntCurveSurface_TheHCurveTool::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(C: &crate::ffi::HandleAdaptor3dCurve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_value(C, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_TheHCurveTool_value(C, U),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:90 - `IntCurveSurface_TheHCurveTool::D0()`
     /// Computes the point of parameter U on the curve.
     pub fn d0(C: &crate::ffi::HandleAdaptor3dCurve, U: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d0(C, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d0(C, U, P) })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:99 - `IntCurveSurface_TheHCurveTool::D1()`
@@ -1396,12 +1007,9 @@ impl TheHCurveTool {
         P: &mut crate::gp::Pnt,
         V: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d1(C, U, P, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheHCurveTool_d1(C, U, P, V)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:108 - `IntCurveSurface_TheHCurveTool::D2()`
@@ -1416,12 +1024,9 @@ impl TheHCurveTool {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d2(C, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheHCurveTool_d2(C, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:121 - `IntCurveSurface_TheHCurveTool::D3()`
@@ -1437,13 +1042,9 @@ impl TheHCurveTool {
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d3(C, U, P, V1, V2, V3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheHCurveTool_d3(C, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:136 - `IntCurveSurface_TheHCurveTool::DN()`
@@ -1457,13 +1058,10 @@ impl TheHCurveTool {
         U: f64,
         N: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_dn(C, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_TheHCurveTool_dn(C, U, N),
+            ))
         }
     }
 
@@ -1471,14 +1069,7 @@ impl TheHCurveTool {
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(C: &crate::ffi::HandleAdaptor3dCurve, R3d: f64) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_resolution(C, R3d) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_resolution(C, R3d) })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:153 - `IntCurveSurface_TheHCurveTool::GetType()`
@@ -1486,73 +1077,54 @@ impl TheHCurveTool {
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::geom_abs::CurveType {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_get_type(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::CurveType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheHCurveTool_get_type(C)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:155 - `IntCurveSurface_TheHCurveTool::Line()`
     pub fn line(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Lin> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_line(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_TheHCurveTool_line(C),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:157 - `IntCurveSurface_TheHCurveTool::Circle()`
     pub fn circle(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Circ> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_circle(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_TheHCurveTool_circle(C),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:159 - `IntCurveSurface_TheHCurveTool::Ellipse()`
     pub fn ellipse(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Elips> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_ellipse(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_TheHCurveTool_ellipse(C),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:161 - `IntCurveSurface_TheHCurveTool::Hyperbola()`
     pub fn hyperbola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Hypr> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_hyperbola(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_TheHCurveTool_hyperbola(C),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:163 - `IntCurveSurface_TheHCurveTool::Parabola()`
     pub fn parabola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Parab> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_parabola(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_TheHCurveTool_parabola(C),
+            ))
         }
     }
 
@@ -1560,13 +1132,10 @@ impl TheHCurveTool {
     pub fn bezier(
         C: &crate::ffi::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_bezier(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_TheHCurveTool_bezier(C),
+            ))
         }
     }
 
@@ -1574,27 +1143,18 @@ impl TheHCurveTool {
     pub fn b_spline(
         C: &crate::ffi::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_b_spline(C) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_TheHCurveTool_b_spline(C),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:172 - `IntCurveSurface_TheHCurveTool::NbSamples()`
     pub fn nb_samples(C: &crate::ffi::HandleAdaptor3dCurve, U0: f64, U1: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_nb_samples(C, U0, U1) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheHCurveTool_nb_samples(C, U0, U1)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:176 - `IntCurveSurface_TheHCurveTool::SamplePars()`
@@ -1606,14 +1166,9 @@ impl TheHCurveTool {
         NbMin: i32,
         Pars: &mut crate::ffi::HandleTColStdHArray1OfReal,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheHCurveTool_sample_pars(C, U0, U1, Defl, NbMin, Pars)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheHCurveTool_sample_pars(C, U0, U1, Defl, NbMin, Pars)
+        })
     }
 }
 
@@ -1635,12 +1190,10 @@ impl TheInterferenceOfHInter {
     /// Constructs  an  empty   interference  between Polygon   and
     /// Polyhedron.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor(),
+            ))
         }
     }
 
@@ -1651,14 +1204,8 @@ impl TheInterferenceOfHInter {
         thePolyg: &ThePolygonOfHInter,
         thePolyh: &ThePolyhedronOfHInter,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_thepolygonofhinter_thepolyhedronofhinter(thePolyg, thePolyh)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_thepolygonofhinter_thepolyhedronofhinter(thePolyg, thePolyh)))
         }
     }
 
@@ -1669,16 +1216,12 @@ impl TheInterferenceOfHInter {
         theLin: &crate::gp::Lin,
         thePolyh: &ThePolyhedronOfHInter,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_lin_thepolyhedronofhinter(
                     theLin, thePolyh,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1689,14 +1232,8 @@ impl TheInterferenceOfHInter {
         theLins: &crate::ffi::Intf_Array1OfLin,
         thePolyh: &ThePolyhedronOfHInter,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_array1oflin_thepolyhedronofhinter(theLins, thePolyh)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_array1oflin_thepolyhedronofhinter(theLins, thePolyh)))
         }
     }
 
@@ -1708,14 +1245,8 @@ impl TheInterferenceOfHInter {
         thePolyh: &ThePolyhedronOfHInter,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(thePolyg, thePolyh, theBoundSB)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(thePolyg, thePolyh, theBoundSB)))
         }
     }
 
@@ -1727,14 +1258,8 @@ impl TheInterferenceOfHInter {
         thePolyh: &ThePolyhedronOfHInter,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_lin_thepolyhedronofhinter_boundsortbox(theLin, thePolyh, theBoundSB)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_lin_thepolyhedronofhinter_boundsortbox(theLin, thePolyh, theBoundSB)))
         }
     }
 
@@ -1746,14 +1271,8 @@ impl TheInterferenceOfHInter {
         thePolyh: &ThePolyhedronOfHInter,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_array1oflin_thepolyhedronofhinter_boundsortbox(theLins, thePolyh, theBoundSB)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_array1oflin_thepolyhedronofhinter_boundsortbox(theLins, thePolyh, theBoundSB)))
         }
     }
 
@@ -1765,14 +1284,9 @@ impl TheInterferenceOfHInter {
         thePolyg: &ThePolygonOfHInter,
         thePolyh: &ThePolyhedronOfHInter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_thepolygonofhinter_thepolyhedronofhinter(self as *mut Self, thePolyg, thePolyh)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_thepolygonofhinter_thepolyhedronofhinter(self as *mut Self, thePolyg, thePolyh)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheInterferenceOfHInter.hxx`:70 - `IntCurveSurface_TheInterferenceOfHInter::Perform()`
@@ -1783,14 +1297,13 @@ impl TheInterferenceOfHInter {
         theLin: &crate::gp::Lin,
         thePolyh: &ThePolyhedronOfHInter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_lin_thepolyhedronofhinter(self as *mut Self, theLin, thePolyh)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_lin_thepolyhedronofhinter(
+                self as *mut Self,
+                theLin,
+                thePolyh,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheInterferenceOfHInter.hxx`:75 - `IntCurveSurface_TheInterferenceOfHInter::Perform()`
@@ -1801,14 +1314,9 @@ impl TheInterferenceOfHInter {
         theLins: &crate::ffi::Intf_Array1OfLin,
         thePolyh: &ThePolyhedronOfHInter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_array1oflin_thepolyhedronofhinter(self as *mut Self, theLins, thePolyh)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_array1oflin_thepolyhedronofhinter(self as *mut Self, theLins, thePolyh)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheInterferenceOfHInter.hxx`:101 - `IntCurveSurface_TheInterferenceOfHInter::Perform()`
@@ -1820,14 +1328,9 @@ impl TheInterferenceOfHInter {
         thePolyh: &ThePolyhedronOfHInter,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheInterferenceOfHInter.hxx`:107 - `IntCurveSurface_TheInterferenceOfHInter::Perform()`
@@ -1839,14 +1342,9 @@ impl TheInterferenceOfHInter {
         thePolyh: &ThePolyhedronOfHInter,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_lin_thepolyhedronofhinter_boundsortbox(self as *mut Self, theLin, thePolyh, theBoundSB)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_lin_thepolyhedronofhinter_boundsortbox(self as *mut Self, theLin, thePolyh, theBoundSB)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheInterferenceOfHInter.hxx`:113 - `IntCurveSurface_TheInterferenceOfHInter::Perform()`
@@ -1858,14 +1356,9 @@ impl TheInterferenceOfHInter {
         thePolyh: &ThePolyhedronOfHInter,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_array1oflin_thepolyhedronofhinter_boundsortbox(self as *mut Self, theLins, thePolyh, theBoundSB)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_array1oflin_thepolyhedronofhinter_boundsortbox(self as *mut Self, theLins, thePolyh, theBoundSB)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheInterferenceOfHInter.hxx`:119 - `IntCurveSurface_TheInterferenceOfHInter::Interference()`
@@ -1877,14 +1370,9 @@ impl TheInterferenceOfHInter {
         thePolyh: &ThePolyhedronOfHInter,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_interference_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_interference_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheInterferenceOfHInter.hxx`:125 - `IntCurveSurface_TheInterferenceOfHInter::Interference()`
@@ -1895,203 +1383,130 @@ impl TheInterferenceOfHInter {
         thePolyg: &ThePolygonOfHInter,
         thePolyh: &ThePolyhedronOfHInter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_interference_thepolygonofhinter_thepolyhedronofhinter(self as *mut Self, thePolyg, thePolyh)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_interference_thepolygonofhinter_thepolyhedronofhinter(self as *mut Self, thePolyg, thePolyh)
+        })
     }
 
     /// Upcast to Intf_Interference
     pub fn as_intf_interference(&self) -> &crate::intf::Interference {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_as_Intf_Interference(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_as_Intf_Interference(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Intf_Interference (mutable)
     pub fn as_intf_interference_mut(&mut self) -> &mut crate::intf::Interference {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_as_Intf_Interference_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_as_Intf_Interference_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
     pub fn nb_section_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_NbSectionPoints(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_NbSectionPoints(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
     pub fn pnt_value(&self, Index: i32) -> &crate::intf::SectionPoint {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_PntValue(
                     self as *const Self,
                     Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:51 - `Intf_Interference::NbSectionLines()`
     pub fn nb_section_lines(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_NbSectionLines(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_NbSectionLines(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
     pub fn line_value(&self, Index: i32) -> &crate::intf::SectionLine {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_LineValue(
                     self as *const Self,
                     Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
     pub fn nb_tangent_zones(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_NbTangentZones(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_NbTangentZones(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
     pub fn zone_value(&self, Index: i32) -> &crate::intf::TangentZone {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_ZoneValue(
                     self as *const Self,
                     Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
     pub fn get_tolerance(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_GetTolerance(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_GetTolerance(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
     pub fn contains(&self, ThePnt: &crate::intf::SectionPoint) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_Contains(
-                    self as *const Self,
-                    ThePnt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_Contains(
+                self as *const Self,
+                ThePnt,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
     pub fn insert(&mut self, TheZone: &crate::intf::TangentZone) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_Insert(
-                    self as *mut Self,
-                    TheZone,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_Insert(
+                self as *mut Self,
+                TheZone,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_Dump(
-                    self as *const Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_Dump(self as *const Self)
+        })
     }
 }
 
@@ -2114,16 +1529,12 @@ impl ThePolygonOfHInter {
         Curve: &crate::ffi::HandleAdaptor3dCurve,
         NbPnt: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IntCurveSurface_ThePolygonOfHInter_ctor_handleadaptor3dcurve_int(
                     Curve, NbPnt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2134,16 +1545,12 @@ impl ThePolygonOfHInter {
         U2: f64,
         NbPnt: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IntCurveSurface_ThePolygonOfHInter_ctor_handleadaptor3dcurve_real2_int(
                     Curve, U1, U2, NbPnt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2152,137 +1559,81 @@ impl ThePolygonOfHInter {
         Curve: &crate::ffi::HandleAdaptor3dCurve,
         Upars: &crate::ffi::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_ctor_handleadaptor3dcurve_array1ofreal(Curve, Upars)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurveSurface_ThePolygonOfHInter_ctor_handleadaptor3dcurve_array1ofreal(Curve, Upars)))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:47 - `IntCurveSurface_ThePolygonOfHInter::Bounding()`
     /// Give the bounding box of the polygon.
     pub fn bounding(&self) -> &crate::bnd::Box {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_bounding(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_ThePolygonOfHInter_bounding(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:49 - `IntCurveSurface_ThePolygonOfHInter::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_deflection_over_estimation(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonOfHInter_deflection_over_estimation(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:51 - `IntCurveSurface_ThePolygonOfHInter::SetDeflectionOverEstimation()`
     pub fn set_deflection_over_estimation(&mut self, x: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_set_deflection_over_estimation(
-                    self as *mut Self,
-                    x,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonOfHInter_set_deflection_over_estimation(
+                self as *mut Self,
+                x,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:57 - `IntCurveSurface_ThePolygonOfHInter::Closed()`
     pub fn closed_bool(&mut self, flag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_closed_bool(self as *mut Self, flag)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonOfHInter_closed_bool(self as *mut Self, flag)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:60 - `IntCurveSurface_ThePolygonOfHInter::Closed()`
     pub fn closed(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_closed(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonOfHInter_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:65 - `IntCurveSurface_ThePolygonOfHInter::NbSegments()`
     /// Give the number of Segments in the polyline.
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_nb_segments(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonOfHInter_nb_segments(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:68 - `IntCurveSurface_ThePolygonOfHInter::BeginOfSeg()`
     /// Give the point of range Index in the Polygon.
     pub fn begin_of_seg(&self, theIndex: i32) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_begin_of_seg(
-                    self as *const Self,
-                    theIndex,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_ThePolygonOfHInter_begin_of_seg(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:71 - `IntCurveSurface_ThePolygonOfHInter::EndOfSeg()`
     /// Give the point of range Index in the Polygon.
     pub fn end_of_seg(&self, theIndex: i32) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_end_of_seg(
-                    self as *const Self,
-                    theIndex,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_ThePolygonOfHInter_end_of_seg(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
@@ -2290,63 +1641,38 @@ impl ThePolygonOfHInter {
     /// Returns the parameter (On the curve)
     /// of the first point of the Polygon
     pub fn inf_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_inf_parameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonOfHInter_inf_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:79 - `IntCurveSurface_ThePolygonOfHInter::SupParameter()`
     /// Returns the parameter (On the curve)
     /// of the last point of the Polygon
     pub fn sup_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_sup_parameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonOfHInter_sup_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:83 - `IntCurveSurface_ThePolygonOfHInter::ApproxParamOnCurve()`
     /// Give an approximation of the parameter on the curve
     /// according to the discretization of the Curve.
     pub fn approx_param_on_curve(&self, Index: i32, ParamOnLine: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonOfHInter_approx_param_on_curve(
-                    self as *const Self,
-                    Index,
-                    ParamOnLine,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonOfHInter_approx_param_on_curve(
+                self as *const Self,
+                Index,
+                ParamOnLine,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:86 - `IntCurveSurface_ThePolygonOfHInter::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IntCurveSurface_ThePolygonOfHInter_dump(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonOfHInter_dump(self as *const Self)
+        })
     }
 }
 
@@ -2367,111 +1693,71 @@ impl ThePolygonToolOfHInter {
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx` - `IntCurveSurface_ThePolygonToolOfHInter::IntCurveSurface_ThePolygonToolOfHInter()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_ctor(),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:35 - `IntCurveSurface_ThePolygonToolOfHInter::Bounding()`
     /// Give the bounding box of the polygon.
     pub fn bounding(thePolygon: &ThePolygonOfHInter) -> &'static crate::bnd::Box {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_bounding(thePolygon) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_bounding(
+                thePolygon,
+            )))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:37 - `IntCurveSurface_ThePolygonToolOfHInter::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(thePolygon: &ThePolygonOfHInter) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_deflection_over_estimation(
-                    thePolygon,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_deflection_over_estimation(
+                thePolygon,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:40 - `IntCurveSurface_ThePolygonToolOfHInter::Closed()`
     pub fn closed(thePolygon: &ThePolygonOfHInter) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_closed(thePolygon) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_closed(thePolygon)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:42 - `IntCurveSurface_ThePolygonToolOfHInter::NbSegments()`
     pub fn nb_segments(thePolygon: &ThePolygonOfHInter) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_nb_segments(thePolygon)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_nb_segments(thePolygon)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:45 - `IntCurveSurface_ThePolygonToolOfHInter::BeginOfSeg()`
     /// Give the point of range Index in the Polygon.
     pub fn begin_of_seg(thePolygon: &ThePolygonOfHInter, Index: i32) -> &'static crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_begin_of_seg(thePolygon, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_begin_of_seg(thePolygon, Index),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:49 - `IntCurveSurface_ThePolygonToolOfHInter::EndOfSeg()`
     /// Give the point of range Index in the Polygon.
     pub fn end_of_seg(thePolygon: &ThePolygonOfHInter, Index: i32) -> &'static crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_end_of_seg(thePolygon, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_end_of_seg(
+                thePolygon, Index,
+            )))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:52 - `IntCurveSurface_ThePolygonToolOfHInter::Dump()`
     pub fn dump(thePolygon: &ThePolygonOfHInter) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_dump(thePolygon) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_dump(thePolygon)
+        })
     }
 }
 
@@ -2499,14 +1785,8 @@ impl ThePolyhedronOfHInter {
         U2: f64,
         V2: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_ctor_handleadaptor3dsurface_int2_real4(Surface, nbdU, nbdV, U1, V1, U2, V2)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_ctor_handleadaptor3dsurface_int2_real4(Surface, nbdU, nbdV, U1, V1, U2, V2)))
         }
     }
 
@@ -2516,42 +1796,26 @@ impl ThePolyhedronOfHInter {
         Upars: &crate::ffi::TColStd_Array1OfReal,
         Vpars: &crate::ffi::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_ctor_handleadaptor3dsurface_array1ofreal2(Surface, Upars, Vpars)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_ctor_handleadaptor3dsurface_array1ofreal2(Surface, Upars, Vpars)))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:44 - `IntCurveSurface_ThePolyhedronOfHInter::Destroy()`
     pub fn destroy(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_destroy(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_destroy(self as *mut Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:48 - `IntCurveSurface_ThePolyhedronOfHInter::DeflectionOverEstimation()`
     pub fn deflection_over_estimation_real(&mut self, flec: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_deflection_over_estimation_real(
-                    self as *mut Self,
-                    flec,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_deflection_over_estimation_real(
+                self as *mut Self,
+                flec,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:50 - `IntCurveSurface_ThePolyhedronOfHInter::DeflectionOnTriangle()`
@@ -2560,132 +1824,84 @@ impl ThePolyhedronOfHInter {
         Surface: &crate::ffi::HandleAdaptor3dSurface,
         Index: i32,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_deflection_on_triangle(
-                    self as *const Self,
-                    Surface,
-                    Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_deflection_on_triangle(
+                self as *const Self,
+                Surface,
+                Index,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:53 - `IntCurveSurface_ThePolyhedronOfHInter::UMinSingularity()`
     pub fn u_min_singularity(&mut self, Sing: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_u_min_singularity(
-                    self as *mut Self,
-                    Sing,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_u_min_singularity(
+                self as *mut Self,
+                Sing,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:55 - `IntCurveSurface_ThePolyhedronOfHInter::UMaxSingularity()`
     pub fn u_max_singularity(&mut self, Sing: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_u_max_singularity(
-                    self as *mut Self,
-                    Sing,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_u_max_singularity(
+                self as *mut Self,
+                Sing,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:57 - `IntCurveSurface_ThePolyhedronOfHInter::VMinSingularity()`
     pub fn v_min_singularity(&mut self, Sing: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_v_min_singularity(
-                    self as *mut Self,
-                    Sing,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_v_min_singularity(
+                self as *mut Self,
+                Sing,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:59 - `IntCurveSurface_ThePolyhedronOfHInter::VMaxSingularity()`
     pub fn v_max_singularity(&mut self, Sing: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_v_max_singularity(
-                    self as *mut Self,
-                    Sing,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_v_max_singularity(
+                self as *mut Self,
+                Sing,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:62 - `IntCurveSurface_ThePolyhedronOfHInter::Size()`
     /// get the size of the discretization.
     pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_size(
-                    self as *const Self,
-                    nbdu,
-                    nbdv,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_size(self as *const Self, nbdu, nbdv)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:65 - `IntCurveSurface_ThePolyhedronOfHInter::NbTriangles()`
     /// Give the number of triangles in this double array of
     pub fn nb_triangles(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_nb_triangles(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_nb_triangles(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:69 - `IntCurveSurface_ThePolyhedronOfHInter::Triangle()`
     /// Give the 3 points of the triangle of address Index in
     /// the double array of triangles.
     pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_triangle(
-                    self as *const Self,
-                    Index,
-                    P1,
-                    P2,
-                    P3,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_triangle(
+                self as *const Self,
+                Index,
+                P1,
+                P2,
+                P3,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:80 - `IntCurveSurface_ThePolyhedronOfHInter::TriConnex()`
@@ -2703,39 +1919,25 @@ impl ThePolyhedronOfHInter {
         TriCon: &mut i32,
         OtherP: &mut i32,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_tri_connex(
-                    self as *const Self,
-                    Triang,
-                    Pivot,
-                    Pedge,
-                    TriCon,
-                    OtherP,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_tri_connex(
+                self as *const Self,
+                Triang,
+                Pivot,
+                Pedge,
+                TriCon,
+                OtherP,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:88 - `IntCurveSurface_ThePolyhedronOfHInter::NbPoints()`
     /// Give the number of point in the double array of
     /// triangles ((nbdu+1)*(nbdv+1)).
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_nb_points(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:92 - `IntCurveSurface_ThePolyhedronOfHInter::Point()`
@@ -2749,21 +1951,16 @@ impl ThePolyhedronOfHInter {
         U: f64,
         V: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_point_pnt_int2_real2(
-                    self as *mut Self,
-                    thePnt,
-                    lig,
-                    col,
-                    U,
-                    V,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_point_pnt_int2_real2(
+                self as *mut Self,
+                thePnt,
+                lig,
+                col,
+                U,
+                V,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:99 - `IntCurveSurface_ThePolyhedronOfHInter::Point()`
@@ -2775,70 +1972,48 @@ impl ThePolyhedronOfHInter {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_point_int_real2(
                     self as *const Self,
                     Index,
                     U,
                     V,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:104 - `IntCurveSurface_ThePolyhedronOfHInter::Point()`
     /// Give the point of index i in the MaTriangle.
     pub fn point_int(&self, Index: i32) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_point_int(
-                    self as *const Self,
-                    Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_point_int(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:107 - `IntCurveSurface_ThePolyhedronOfHInter::Point()`
     /// Give the point of index i in the MaTriangle.
     pub fn point_int_pnt(&self, Index: i32, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_point_int_pnt(
-                    self as *const Self,
-                    Index,
-                    P,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_point_int_pnt(
+                self as *const Self,
+                Index,
+                P,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:110 - `IntCurveSurface_ThePolyhedronOfHInter::Bounding()`
     /// Give the bounding box of the MaTriangle.
     pub fn bounding(&self) -> &crate::bnd::Box {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_bounding(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_bounding(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2846,112 +2021,67 @@ impl ThePolyhedronOfHInter {
     /// Compute the array of boxes. The box <n> corresponding
     /// to the triangle <n>.
     pub fn fill_bounding(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_fill_bounding(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_fill_bounding(self as *mut Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:118 - `IntCurveSurface_ThePolyhedronOfHInter::ComponentsBounding()`
     /// Give the array of boxes. The box <n> corresponding
     /// to the triangle <n>.
     pub fn components_bounding(&self) -> &crate::ffi::HandleBndHArray1OfBox {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_components_bounding(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:120 - `IntCurveSurface_ThePolyhedronOfHInter::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_deflection_over_estimation(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_deflection_over_estimation(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:122 - `IntCurveSurface_ThePolyhedronOfHInter::HasUMinSingularity()`
     pub fn has_u_min_singularity(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_has_u_min_singularity(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_has_u_min_singularity(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:124 - `IntCurveSurface_ThePolyhedronOfHInter::HasUMaxSingularity()`
     pub fn has_u_max_singularity(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_has_u_max_singularity(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_has_u_max_singularity(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:126 - `IntCurveSurface_ThePolyhedronOfHInter::HasVMinSingularity()`
     pub fn has_v_min_singularity(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_has_v_min_singularity(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_has_v_min_singularity(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:128 - `IntCurveSurface_ThePolyhedronOfHInter::HasVMaxSingularity()`
     pub fn has_v_max_singularity(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_has_v_max_singularity(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_has_v_max_singularity(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:131 - `IntCurveSurface_ThePolyhedronOfHInter::PlaneEquation()`
@@ -2962,55 +2092,38 @@ impl ThePolyhedronOfHInter {
         NormalVector: &mut crate::gp::XYZ,
         PolarDistance: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_plane_equation(
-                    self as *const Self,
-                    Triang,
-                    NormalVector,
-                    PolarDistance,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_plane_equation(
+                self as *const Self,
+                Triang,
+                NormalVector,
+                PolarDistance,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:136 - `IntCurveSurface_ThePolyhedronOfHInter::Contain()`
     /// Give the plane equation of the triangle of address Triang.
     pub fn contain(&self, Triang: i32, ThePnt: &crate::gp::Pnt) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_contain(
-                    self as *const Self,
-                    Triang,
-                    ThePnt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_contain(
+                self as *const Self,
+                Triang,
+                ThePnt,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:139 - `IntCurveSurface_ThePolyhedronOfHInter::Parameters()`
     pub fn parameters(&self, Index: i32, U: &mut f64, V: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_parameters(
-                    self as *const Self,
-                    Index,
-                    U,
-                    V,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_parameters(
+                self as *const Self,
+                Index,
+                U,
+                V,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:147 - `IntCurveSurface_ThePolyhedronOfHInter::IsOnBound()`
@@ -3019,49 +2132,30 @@ impl ThePolyhedronOfHInter {
     /// necessary to take into account the boundary deflection for
     /// this edge.
     pub fn is_on_bound(&self, Index1: i32, Index2: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_is_on_bound(
-                    self as *const Self,
-                    Index1,
-                    Index2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_is_on_bound(
+                self as *const Self,
+                Index1,
+                Index2,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:151 - `IntCurveSurface_ThePolyhedronOfHInter::GetBorderDeflection()`
     /// This method returns a border deflection.
     pub fn get_border_deflection(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_get_border_deflection(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_get_border_deflection(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:153 - `IntCurveSurface_ThePolyhedronOfHInter::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_dump(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_dump(self as *const Self)
+        })
     }
 }
 
@@ -3082,26 +2176,20 @@ impl ThePolyhedronToolOfHInter {
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx` - `IntCurveSurface_ThePolyhedronToolOfHInter::IntCurveSurface_ThePolyhedronToolOfHInter()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_ctor(),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:37 - `IntCurveSurface_ThePolyhedronToolOfHInter::Bounding()`
     /// Give the bounding box of the PolyhedronTool.
     pub fn bounding(thePolyh: &ThePolyhedronOfHInter) -> &'static crate::bnd::Box {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_bounding(thePolyh) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_bounding(
+                thePolyh,
+            )))
         }
     }
 
@@ -3111,48 +2199,29 @@ impl ThePolyhedronToolOfHInter {
     pub fn components_bounding(
         thePolyh: &ThePolyhedronOfHInter,
     ) -> &'static crate::ffi::HandleBndHArray1OfBox {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_components_bounding(thePolyh)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_components_bounding(thePolyh),
+            ))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:45 - `IntCurveSurface_ThePolyhedronToolOfHInter::DeflectionOverEstimation()`
     /// Give the tolerance of the polygon.
     pub fn deflection_over_estimation(thePolyh: &ThePolyhedronOfHInter) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_deflection_over_estimation(
-                    thePolyh,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_deflection_over_estimation(
+                thePolyh,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:49 - `IntCurveSurface_ThePolyhedronToolOfHInter::NbTriangles()`
     /// Give the number of triangles in this polyhedral surface.
     pub fn nb_triangles(thePolyh: &ThePolyhedronOfHInter) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_nb_triangles(thePolyh)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_nb_triangles(thePolyh)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:53 - `IntCurveSurface_ThePolyhedronToolOfHInter::Triangle()`
@@ -3165,30 +2234,20 @@ impl ThePolyhedronToolOfHInter {
         P2: &mut i32,
         P3: &mut i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_triangle(
-                    thePolyh, Index, P1, P2, P3,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_triangle(
+                thePolyh, Index, P1, P2, P3,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:60 - `IntCurveSurface_ThePolyhedronToolOfHInter::Point()`
     /// Give the point of index i in the polyhedral surface.
     pub fn point(thePolyh: &ThePolyhedronOfHInter, Index: i32) -> &'static crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_point(thePolyh, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_point(
+                thePolyh, Index,
+            )))
         }
     }
 
@@ -3207,18 +2266,11 @@ impl ThePolyhedronToolOfHInter {
         TriCon: &mut i32,
         OtherP: &mut i32,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_tri_connex(
-                    thePolyh, Triang, Pivot, Pedge, TriCon, OtherP,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_tri_connex(
+                thePolyh, Triang, Pivot, Pedge, TriCon, OtherP,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:80 - `IntCurveSurface_ThePolyhedronToolOfHInter::IsOnBound()`
@@ -3227,46 +2279,26 @@ impl ThePolyhedronToolOfHInter {
     /// necessary to take into account the boundary deflection for
     /// this edge.
     pub fn is_on_bound(thePolyh: &ThePolyhedronOfHInter, Index1: i32, Index2: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_is_on_bound(
-                    thePolyh, Index1, Index2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_is_on_bound(
+                thePolyh, Index1, Index2,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:85 - `IntCurveSurface_ThePolyhedronToolOfHInter::GetBorderDeflection()`
     /// This method returns a border deflection of the polyhedron.
     pub fn get_border_deflection(thePolyh: &ThePolyhedronOfHInter) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_get_border_deflection(
-                    thePolyh,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_get_border_deflection(thePolyh)
+        })
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:87 - `IntCurveSurface_ThePolyhedronToolOfHInter::Dump()`
     pub fn dump(thePolyh: &ThePolyhedronOfHInter) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_dump(thePolyh) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_dump(thePolyh)
+        })
     }
 }
 
@@ -3291,90 +2323,51 @@ impl TheQuadCurvExactHInter {
         S: &crate::ffi::HandleAdaptor3dSurface,
         C: &crate::ffi::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_ctor_handleadaptor3dsurface_handleadaptor3dcurve(S, C)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_ctor_handleadaptor3dsurface_handleadaptor3dcurve(S, C)))
         }
     }
 
     /// **Source:** `IntCurveSurface_TheQuadCurvExactHInter.hxx`:38 - `IntCurveSurface_TheQuadCurvExactHInter::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_is_done(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheQuadCurvExactHInter.hxx`:40 - `IntCurveSurface_TheQuadCurvExactHInter::NbRoots()`
     pub fn nb_roots(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_nb_roots(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_nb_roots(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheQuadCurvExactHInter.hxx`:42 - `IntCurveSurface_TheQuadCurvExactHInter::Root()`
     pub fn root(&self, Index: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_root(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_root(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheQuadCurvExactHInter.hxx`:44 - `IntCurveSurface_TheQuadCurvExactHInter::NbIntervals()`
     pub fn nb_intervals(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_nb_intervals(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_nb_intervals(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheQuadCurvExactHInter.hxx`:48 - `IntCurveSurface_TheQuadCurvExactHInter::Intervals()`
     /// U1 and U2 are the parameters of
     /// a segment on the curve.
     pub fn intervals(&self, Index: i32, U1: &mut f64, U2: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_intervals(
-                    self as *const Self,
-                    Index,
-                    U1,
-                    U2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IntCurveSurface_TheQuadCurvExactHInter_intervals(
+                self as *const Self,
+                Index,
+                U1,
+                U2,
+            )
+        })
     }
 }
 
@@ -3398,14 +2391,8 @@ impl TheQuadCurvFuncOfTheQuadCurvExactHInter {
         Q: &crate::int_surf::Quadric,
         C: &crate::ffi::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_ctor_quadric_handleadaptor3dcurve(Q, C)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_ctor_quadric_handleadaptor3dcurve(Q, C)))
         }
     }
 
@@ -3415,20 +2402,13 @@ impl TheQuadCurvFuncOfTheQuadCurvExactHInter {
     /// Param on the parametrised curve.
     /// Value always returns True.
     pub fn value(&mut self, Param: f64, F: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_value(
-                    self as *mut Self,
-                    Param,
-                    F,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_value(
+                self as *mut Self,
+                Param,
+                F,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter.hxx`:47 - `IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter::Derivative()`
@@ -3436,104 +2416,63 @@ impl TheQuadCurvFuncOfTheQuadCurvExactHInter {
     /// parameter Param.
     /// Derivative always returns True.
     pub fn derivative(&mut self, Param: f64, D: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_derivative(
-                    self as *mut Self,
-                    Param,
-                    D,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_derivative(
+                self as *mut Self,
+                Param,
+                D,
+            )
+        })
     }
 
     /// **Source:** `IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter.hxx`:52 - `IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter::Values()`
     /// Computes the value and the derivative of the function.
     /// returns True.
     pub fn values(&mut self, Param: f64, F: &mut f64, D: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_values(
-                    self as *mut Self,
-                    Param,
-                    F,
-                    D,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_values(
+                self as *mut Self,
+                Param,
+                F,
+                D,
+            )
+        })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_FunctionWithDerivative(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_FunctionWithDerivative(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_FunctionWithDerivative_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_Function(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_Function(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result = unsafe {
-            crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_Function_mut(
-                self as *mut Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_Function_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }

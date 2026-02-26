@@ -10,25 +10,11 @@
 /// Structure to provide all-in-one result of selection of sensitive for "Matches" method of
 /// Select3D_SensitiveEntity.
 pub fn max_owner_priority() -> i32 {
-    {
-        let __result = unsafe { crate::ffi::SelectBasics_max_owner_priority() };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::SelectBasics_max_owner_priority() })
 }
 /// **Source:** `SelectBasics.hxx`:30 - `SelectBasics::MinOwnerPriority`
 pub fn min_owner_priority() -> i32 {
-    {
-        let __result = unsafe { crate::ffi::SelectBasics_min_owner_priority() };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::SelectBasics_min_owner_priority() })
 }
 
 // ========================
@@ -51,12 +37,10 @@ impl PickResult {
     /// **Source:** `SelectBasics_PickResult.hxx`:36 - `SelectBasics_PickResult::SelectBasics_PickResult()`
     /// Empty constructor defining an invalid result.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::SelectBasics_PickResult_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::SelectBasics_PickResult_ctor(),
+            ))
         }
     }
 
@@ -67,87 +51,55 @@ impl PickResult {
         theDistToCenter: f64,
         theObjPickedPnt: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::SelectBasics_PickResult_ctor_real2_pnt(
                     theDepth,
                     theDistToCenter,
                     theObjPickedPnt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:55 - `SelectBasics_PickResult::IsValid()`
     /// Return TRUE if result was been defined.
     pub fn is_valid(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::SelectBasics_PickResult_is_valid(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_PickResult_is_valid(self as *const Self)
+        })
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:58 - `SelectBasics_PickResult::Invalidate()`
     /// Reset depth value.
     pub fn invalidate(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::SelectBasics_PickResult_invalidate(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::SelectBasics_PickResult_invalidate(self as *mut Self)
+        })
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:66 - `SelectBasics_PickResult::Depth()`
     /// Return depth along picking ray.
     pub fn depth(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::SelectBasics_PickResult_depth(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_PickResult_depth(self as *const Self)
+        })
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:69 - `SelectBasics_PickResult::SetDepth()`
     /// Set depth along picking ray.
     pub fn set_depth(&mut self, theDepth: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::SelectBasics_PickResult_set_depth(self as *mut Self, theDepth)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::SelectBasics_PickResult_set_depth(self as *mut Self, theDepth)
+        })
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:72 - `SelectBasics_PickResult::HasPickedPoint()`
     /// Return TRUE if Picked Point lying on detected entity was set.
     pub fn has_picked_point(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_PickResult_has_picked_point(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_PickResult_has_picked_point(self as *const Self)
+        })
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:77 - `SelectBasics_PickResult::PickedPoint()`
@@ -155,62 +107,38 @@ impl PickResult {
     /// WARNING! Point is defined in local coordinate system and should be translated into World
     /// System before usage!
     pub fn picked_point(&self) -> &crate::gp::Pnt {
-        {
-            let __result =
-                unsafe { crate::ffi::SelectBasics_PickResult_picked_point(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::SelectBasics_PickResult_picked_point(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:80 - `SelectBasics_PickResult::SetPickedPoint()`
     /// Set picked point.
     pub fn set_picked_point(&mut self, theObjPickedPnt: &crate::gp::Pnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::SelectBasics_PickResult_set_picked_point(
-                    self as *mut Self,
-                    theObjPickedPnt,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::SelectBasics_PickResult_set_picked_point(self as *mut Self, theObjPickedPnt)
+        })
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:83 - `SelectBasics_PickResult::DistToGeomCenter()`
     /// Return distance to geometry center (auxiliary value for comparing results).
     pub fn dist_to_geom_center(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_PickResult_dist_to_geom_center(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_PickResult_dist_to_geom_center(self as *const Self)
+        })
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:86 - `SelectBasics_PickResult::SetDistToGeomCenter()`
     /// Set distance to geometry center.
     pub fn set_dist_to_geom_center(&mut self, theDistToCenter: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::SelectBasics_PickResult_set_dist_to_geom_center(
-                    self as *mut Self,
-                    theDistToCenter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::SelectBasics_PickResult_set_dist_to_geom_center(
+                self as *mut Self,
+                theDistToCenter,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:91 - `SelectBasics_PickResult::SurfaceNormal()`
@@ -218,60 +146,40 @@ impl PickResult {
     /// WARNING! Normal is defined in local coordinate system and should be translated into World
     /// System before usage!
     pub fn surface_normal(&self) -> &crate::ffi::gp_Vec3f {
-        {
-            let __result =
-                unsafe { crate::ffi::SelectBasics_PickResult_surface_normal(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::SelectBasics_PickResult_surface_normal(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:94 - `SelectBasics_PickResult::SetSurfaceNormal()`
     /// Set surface normal at picked point.
     pub fn set_surface_normal_vec3f(&mut self, theNormal: &crate::ffi::gp_Vec3f) {
-        {
-            let __exc = unsafe {
-                crate::ffi::SelectBasics_PickResult_set_surface_normal_vec3f(
-                    self as *mut Self,
-                    theNormal,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::SelectBasics_PickResult_set_surface_normal_vec3f(
+                self as *mut Self,
+                theNormal,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:97 - `SelectBasics_PickResult::SetSurfaceNormal()`
     /// Set surface normal at picked point.
     pub fn set_surface_normal_vec(&mut self, theNormal: &crate::gp::Vec) {
-        {
-            let __exc = unsafe {
-                crate::ffi::SelectBasics_PickResult_set_surface_normal_vec(
-                    self as *mut Self,
-                    theNormal,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::SelectBasics_PickResult_set_surface_normal_vec(self as *mut Self, theNormal)
+        })
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:28 - `SelectBasics_PickResult::Min()`
     /// Return closest result between two Pick Results according to Depth value.
     pub fn min(thePickResult1: &PickResult, thePickResult2: &PickResult) -> &'static PickResult {
-        {
-            let __result =
-                unsafe { crate::ffi::SelectBasics_PickResult_min(thePickResult1, thePickResult2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::SelectBasics_PickResult_min(
+                thePickResult1,
+                thePickResult2,
+            )))
         }
     }
 }
@@ -297,18 +205,11 @@ impl SelectingVolumeManager {
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:41 - `SelectBasics_SelectingVolumeManager::GetActiveSelectionType()`
     /// Return selection type.
     pub fn get_active_selection_type(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_get_active_selection_type(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_get_active_selection_type(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:45 - `SelectBasics_SelectingVolumeManager::OverlapsBox()`
@@ -319,21 +220,14 @@ impl SelectingVolumeManager {
         theBoxMax: &crate::ffi::Select3D_Vec3,
         thePickResult: &mut PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_box_vec32_pickresult(
-                    self as *const Self,
-                    theBoxMin,
-                    theBoxMax,
-                    thePickResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_box_vec32_pickresult(
+                self as *const Self,
+                theBoxMin,
+                theBoxMax,
+                thePickResult,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:51 - `SelectBasics_SelectingVolumeManager::OverlapsBox()`
@@ -345,21 +239,14 @@ impl SelectingVolumeManager {
         theBoxMax: &crate::ffi::Select3D_Vec3,
         theInside: Option<&mut bool>,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_box_vec32_boolptr(
-                    self as *const Self,
-                    theBoxMin,
-                    theBoxMax,
-                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_box_vec32_boolptr(
+                self as *const Self,
+                theBoxMin,
+                theBoxMax,
+                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:56 - `SelectBasics_SelectingVolumeManager::OverlapsPoint()`
@@ -369,20 +256,13 @@ impl SelectingVolumeManager {
         thePnt: &crate::gp::Pnt,
         thePickResult: &mut PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_point_pnt_pickresult(
-                    self as *const Self,
-                    thePnt,
-                    thePickResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_point_pnt_pickresult(
+                self as *const Self,
+                thePnt,
+                thePickResult,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:62 - `SelectBasics_SelectingVolumeManager::OverlapsPoint()`
@@ -390,19 +270,12 @@ impl SelectingVolumeManager {
     /// Does not perform depth calculation, so this method is defined as
     /// helper function for inclusion test.
     pub fn overlaps_point_pnt(&self, thePnt: &crate::gp::Pnt) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_point_pnt(
-                    self as *const Self,
-                    thePnt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_point_pnt(
+                self as *const Self,
+                thePnt,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:66 - `SelectBasics_SelectingVolumeManager::OverlapsPolygon()`
@@ -414,21 +287,14 @@ impl SelectingVolumeManager {
         theSensType: i32,
         thePickResult: &mut PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_polygon(
-                    self as *const Self,
-                    theArrayOfPts,
-                    theSensType,
-                    thePickResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_polygon(
+                self as *const Self,
+                theArrayOfPts,
+                theSensType,
+                thePickResult,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:72 - `SelectBasics_SelectingVolumeManager::OverlapsSegment()`
@@ -440,21 +306,14 @@ impl SelectingVolumeManager {
         thePt2: &crate::gp::Pnt,
         thePickResult: &mut PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_segment(
-                    self as *const Self,
-                    thePt1,
-                    thePt2,
-                    thePickResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_segment(
+                self as *const Self,
+                thePt1,
+                thePt2,
+                thePickResult,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:78 - `SelectBasics_SelectingVolumeManager::OverlapsTriangle()`
@@ -468,23 +327,16 @@ impl SelectingVolumeManager {
         theSensType: i32,
         thePickResult: &mut PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_triangle(
-                    self as *const Self,
-                    thePt1,
-                    thePt2,
-                    thePt3,
-                    theSensType,
-                    thePickResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_triangle(
+                self as *const Self,
+                thePt1,
+                thePt2,
+                thePt3,
+                theSensType,
+                thePickResult,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:86 - `SelectBasics_SelectingVolumeManager::OverlapsSphere()`
@@ -496,21 +348,14 @@ impl SelectingVolumeManager {
         theRadius: f64,
         thePickResult: &mut PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_sphere_pnt_real_pickresult(
-                    self as *const Self,
-                    theCenter,
-                    theRadius,
-                    thePickResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_sphere_pnt_real_pickresult(
+                self as *const Self,
+                theCenter,
+                theRadius,
+                thePickResult,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:92 - `SelectBasics_SelectingVolumeManager::OverlapsSphere()`
@@ -522,21 +367,14 @@ impl SelectingVolumeManager {
         theRadius: f64,
         theInside: Option<&mut bool>,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_sphere_pnt_real_boolptr(
-                    self as *const Self,
-                    theCenter,
-                    theRadius,
-                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_sphere_pnt_real_boolptr(
+                self as *const Self,
+                theCenter,
+                theRadius,
+                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:99 - `SelectBasics_SelectingVolumeManager::OverlapsCylinder()`
@@ -552,16 +390,9 @@ impl SelectingVolumeManager {
         theIsHollow: bool,
         thePickResult: &mut PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, thePickResult)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, thePickResult)
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:109 - `SelectBasics_SelectingVolumeManager::OverlapsCylinder()`
@@ -577,16 +408,9 @@ impl SelectingVolumeManager {
         theIsHollow: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:120 - `SelectBasics_SelectingVolumeManager::OverlapsCircle()`
@@ -601,16 +425,9 @@ impl SelectingVolumeManager {
         theIsFilled: bool,
         thePickResult: &mut PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_circle_real_trsf_bool_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, thePickResult)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_circle_real_trsf_bool_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, thePickResult)
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:129 - `SelectBasics_SelectingVolumeManager::OverlapsCircle()`
@@ -625,70 +442,48 @@ impl SelectingVolumeManager {
         theIsFilled: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_circle_real_trsf_bool_boolptr(self as *const Self, theRadius, theTrsf, theIsFilled, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_circle_real_trsf_bool_boolptr(
+                self as *const Self,
+                theRadius,
+                theTrsf,
+                theIsFilled,
+                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:137 - `SelectBasics_SelectingVolumeManager::DistToGeometryCenter()`
     /// Calculates distance from 3d projection of user-defined selection point
     /// to the given point theCOG
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_dist_to_geometry_center(
-                    self as *const Self,
-                    theCOG,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_dist_to_geometry_center(
+                self as *const Self,
+                theCOG,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:140 - `SelectBasics_SelectingVolumeManager::DetectedPoint()`
     /// Return 3D point corresponding to specified depth within picking ray.
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::SelectBasics_SelectingVolumeManager_detected_point(
                     self as *const Self,
                     theDepth,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:143 - `SelectBasics_SelectingVolumeManager::IsOverlapAllowed()`
     /// Returns flag indicating if partial overlapping of entities is allowed or should be rejected.
     pub fn is_overlap_allowed(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_is_overlap_allowed(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_is_overlap_allowed(self as *const Self)
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:149 - `SelectBasics_SelectingVolumeManager::GetNearPickedPnt()`
@@ -697,17 +492,12 @@ impl SelectingVolumeManager {
     /// of center of 2d rectangle (for point and rectangular selection
     /// correspondingly) onto near view frustum plane
     pub fn get_near_picked_pnt(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::SelectBasics_SelectingVolumeManager_get_near_picked_pnt(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -717,17 +507,12 @@ impl SelectingVolumeManager {
     /// of center of 2d rectangle (for point and rectangular selection
     /// correspondingly) onto far view frustum plane
     pub fn get_far_picked_pnt(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::SelectBasics_SelectingVolumeManager_get_far_picked_pnt(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -735,35 +520,23 @@ impl SelectingVolumeManager {
     /// Valid only for point and rectangular selection.
     /// Returns view ray direction
     pub fn get_view_ray_direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::SelectBasics_SelectingVolumeManager_get_view_ray_direction(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:162 - `SelectBasics_SelectingVolumeManager::IsScalableActiveVolume()`
     /// Checks if it is possible to scale current active selecting volume
     pub fn is_scalable_active_volume(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_is_scalable_active_volume(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_is_scalable_active_volume(
+                self as *const Self,
+            )
+        })
     }
 
     /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:167 - `SelectBasics_SelectingVolumeManager::GetMousePosition()`
@@ -771,17 +544,12 @@ impl SelectingVolumeManager {
     /// @return infinite point in case of unsupport of mouse position for this active selection
     /// volume.
     pub fn get_mouse_position(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::SelectBasics_SelectingVolumeManager_get_mouse_position(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -792,16 +560,11 @@ impl SelectingVolumeManager {
         &self,
         thePlaneEquations: &mut crate::ffi::NCollection_Vector_NCollection_Vec4_Standard_Real,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::SelectBasics_SelectingVolumeManager_get_planes(
-                    self as *const Self,
-                    thePlaneEquations,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_get_planes(
+                self as *const Self,
+                thePlaneEquations,
+            )
+        })
     }
 }

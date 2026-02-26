@@ -25,74 +25,45 @@ impl Function {
     /// **Source:** `AppCont_Function.hxx`:37 - `AppCont_Function::GetNumberOfPoints()`
     /// Get number of 3d and 2d points returned by "Value" and "D1" functions.
     pub fn get_number_of_points(&self, theNbPnt: &mut i32, theNbPnt2d: &mut i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::AppCont_Function_get_number_of_points(
-                    self as *const Self,
-                    theNbPnt,
-                    theNbPnt2d,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::AppCont_Function_get_number_of_points(
+                self as *const Self,
+                theNbPnt,
+                theNbPnt2d,
+            )
+        })
     }
 
     /// **Source:** `AppCont_Function.hxx`:44 - `AppCont_Function::GetNbOf3dPoints()`
     /// Get number of 3d points returned by "Value" and "D1" functions.
     pub fn get_nb_of3d_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::AppCont_Function_get_nb_of3d_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AppCont_Function_get_nb_of3d_points(self as *const Self)
+        })
     }
 
     /// **Source:** `AppCont_Function.hxx`:47 - `AppCont_Function::GetNbOf2dPoints()`
     /// Get number of 2d points returned by "Value" and "D1" functions.
     pub fn get_nb_of2d_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::AppCont_Function_get_nb_of2d_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AppCont_Function_get_nb_of2d_points(self as *const Self)
+        })
     }
 
     /// **Source:** `AppCont_Function.hxx`:53 - `AppCont_Function::FirstParameter()`
     /// Returns the first parameter of the function.
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::AppCont_Function_first_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AppCont_Function_first_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `AppCont_Function.hxx`:56 - `AppCont_Function::LastParameter()`
     /// Returns the last parameter of the function.
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::AppCont_Function_last_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AppCont_Function_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `AppCont_Function.hxx`:59 - `AppCont_Function::Value()`
@@ -103,16 +74,9 @@ impl Function {
         thePnt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         thePnt: &mut crate::ffi::TColgp_Array1OfPnt,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::AppCont_Function_value(self as *const Self, theU, thePnt2d, thePnt)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AppCont_Function_value(self as *const Self, theU, thePnt2d, thePnt)
+        })
     }
 
     /// **Source:** `AppCont_Function.hxx`:64 - `AppCont_Function::D1()`
@@ -123,16 +87,9 @@ impl Function {
         theVec2d: &mut crate::ffi::TColgp_Array1OfVec2d,
         theVec: &mut crate::ffi::TColgp_Array1OfVec,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::AppCont_Function_d1(self as *const Self, theU, theVec2d, theVec)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AppCont_Function_d1(self as *const Self, theU, theVec2d, theVec)
+        })
     }
 
     /// **Source:** `AppCont_Function.hxx`:71 - `AppCont_Function::PeriodInformation()`
@@ -140,19 +97,14 @@ impl Function {
     /// @param theDimIdx Defines index in output parameters space. 1 <= theDimIdx <= 3 * myNbPnt + 2 *
     /// myNbPnt2d.
     pub fn period_information(&self, arg0: i32, IsPeriodic: &mut bool, thePeriod: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::AppCont_Function_period_information(
-                    self as *const Self,
-                    arg0,
-                    IsPeriodic,
-                    thePeriod,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::AppCont_Function_period_information(
+                self as *const Self,
+                arg0,
+                IsPeriodic,
+                thePeriod,
+            )
+        })
     }
 }
 
@@ -189,8 +141,8 @@ impl LeastSquare {
         Deg: i32,
         NbPoints: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::AppCont_LeastSquare_ctor_function_real2_constraint2_int2(
                     SSP,
                     U0,
@@ -199,48 +151,25 @@ impl LeastSquare {
                     LastCons.into(),
                     Deg,
                     NbPoints,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `AppCont_LeastSquare.hxx`:44 - `AppCont_LeastSquare::Value()`
     pub fn value(&mut self) -> &crate::app_par_curves::MultiCurve {
-        {
-            let __result = unsafe { crate::ffi::AppCont_LeastSquare_value(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::AppCont_LeastSquare_value(self as *mut Self))) }
     }
 
     /// **Source:** `AppCont_LeastSquare.hxx`:46 - `AppCont_LeastSquare::Error()`
     pub fn error(&self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::AppCont_LeastSquare_error(self as *const Self, F, MaxE3d, MaxE2d)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::AppCont_LeastSquare_error(self as *const Self, F, MaxE3d, MaxE2d)
+        })
     }
 
     /// **Source:** `AppCont_LeastSquare.hxx`:48 - `AppCont_LeastSquare::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::AppCont_LeastSquare_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::AppCont_LeastSquare_is_done(self as *const Self) })
     }
 }

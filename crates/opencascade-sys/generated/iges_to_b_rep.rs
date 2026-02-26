@@ -9,37 +9,22 @@
 /// **Source:** `IGESToBRep.hxx`:40 - `IGESToBRep::Init`
 /// Creates and initializes default AlgoContainer.
 pub fn init() {
-    {
-        let __exc = unsafe { crate::ffi::IGESToBRep_init() };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::IGESToBRep_init() })
 }
 /// **Source:** `IGESToBRep.hxx`:43 - `IGESToBRep::SetAlgoContainer`
 /// Sets default AlgoContainer
 pub fn set_algo_container_handleigestobrepalgocontainer(
     aContainer: &crate::ffi::HandleIGESToBRepAlgoContainer,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::IGESToBRep_set_algo_container_handleigestobrepalgocontainer(aContainer)
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::IGESToBRep_set_algo_container_handleigestobrepalgocontainer(aContainer)
+    })
 }
 /// **Source:** `IGESToBRep.hxx`:46 - `IGESToBRep::AlgoContainer`
 /// Returns default AlgoContainer
 pub fn algo_container() -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepAlgoContainer> {
-    {
-        let __result = unsafe { crate::ffi::IGESToBRep_algo_container() };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_algo_container()))
     }
 }
 /// **Source:** `IGESToBRep.hxx`:51 - `IGESToBRep::IsCurveAndSurface`
@@ -47,14 +32,7 @@ pub fn algo_container() -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepAlgoConta
 /// TransferCurveAndSurface.
 /// ex: All IGESEntity from IGESGeom
 pub fn is_curve_and_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    {
-        let __result = unsafe { crate::ffi::IGESToBRep_is_curve_and_surface(start) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_curve_and_surface(start) })
 }
 /// **Source:** `IGESToBRep.hxx`:59 - `IGESToBRep::IsBasicCurve`
 /// Return True if the IGESEntity can be transferred by
@@ -63,14 +41,7 @@ pub fn is_curve_and_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> boo
 /// BSplineCurve, SplineCurve... from IGESGeom :
 /// 104,110,112,126
 pub fn is_basic_curve(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    {
-        let __result = unsafe { crate::ffi::IGESToBRep_is_basic_curve(start) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_basic_curve(start) })
 }
 /// **Source:** `IGESToBRep.hxx`:65 - `IGESToBRep::IsBasicSurface`
 /// Return True if the IGESEntity can be transferred by
@@ -78,14 +49,7 @@ pub fn is_basic_curve(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
 /// ex: BSplineSurface, SplineSurface... from IGESGeom :
 /// 114,128
 pub fn is_basic_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    {
-        let __result = unsafe { crate::ffi::IGESToBRep_is_basic_surface(start) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_basic_surface(start) })
 }
 /// **Source:** `IGESToBRep.hxx`:71 - `IGESToBRep::IsTopoCurve`
 /// Return True if the IGESEntity can be transferred by
@@ -93,14 +57,7 @@ pub fn is_basic_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
 /// ex: all Curves from IGESGeom :
 /// all basic curves,102,130,142,144
 pub fn is_topo_curve(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    {
-        let __result = unsafe { crate::ffi::IGESToBRep_is_topo_curve(start) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_topo_curve(start) })
 }
 /// **Source:** `IGESToBRep.hxx`:77 - `IGESToBRep::IsTopoSurface`
 /// Return True if the IGESEntity can be transferred by
@@ -108,14 +65,7 @@ pub fn is_topo_curve(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
 /// ex: All Surfaces from IGESGeom :
 /// all basic surfaces,108,118,120,122,141,143
 pub fn is_topo_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    {
-        let __result = unsafe { crate::ffi::IGESToBRep_is_topo_surface(start) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_topo_surface(start) })
 }
 /// **Source:** `IGESToBRep.hxx`:84 - `IGESToBRep::IsBRepEntity`
 /// Return True if the IGESEntity can be transferred by
@@ -124,29 +74,16 @@ pub fn is_topo_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
 /// Manifold Solid BRep Object from IGESSolid :
 /// 502, 504, 508, 510, 514, 186.
 pub fn is_b_rep_entity(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    {
-        let __result = unsafe { crate::ffi::IGESToBRep_is_b_rep_entity(start) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_b_rep_entity(start) })
 }
 /// **Source:** `IGESToBRep.hxx`:86 - `IGESToBRep::IGESCurveToSequenceOfIGESCurve`
 pub fn iges_curve_to_sequence_of_iges_curve(
     curve: &crate::ffi::HandleIGESDataIGESEntity,
     sequence: &mut crate::ffi::HandleTColStdHSequenceOfTransient,
 ) -> i32 {
-    {
-        let __result =
-            unsafe { crate::ffi::IGESToBRep_iges_curve_to_sequence_of_iges_curve(curve, sequence) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::IGESToBRep_iges_curve_to_sequence_of_iges_curve(curve, sequence)
+    })
 }
 /// **Source:** `IGESToBRep.hxx`:90 - `IGESToBRep::TransferPCurve`
 pub fn transfer_p_curve(
@@ -154,14 +91,7 @@ pub fn transfer_p_curve(
     toedge: &crate::topo_ds::Edge,
     face: &crate::topo_ds::Face,
 ) -> bool {
-    {
-        let __result = unsafe { crate::ffi::IGESToBRep_transfer_p_curve(fromedge, toedge, face) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::IGESToBRep_transfer_p_curve(fromedge, toedge, face) })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -192,23 +122,16 @@ unsafe impl crate::CppDeletable for Actor {
 impl Actor {
     /// **Source:** `IGESToBRep_Actor.hxx`:44 - `IGESToBRep_Actor::IGESToBRep_Actor()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_Actor_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Actor_ctor()))
         }
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:46 - `IGESToBRep_Actor::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
-        {
-            let __exc = unsafe { crate::ffi::IGESToBRep_Actor_set_model(self as *mut Self, model) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_set_model(self as *mut Self, model)
+        })
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:51 - `IGESToBRep_Actor::SetContinuity()`
@@ -216,41 +139,24 @@ impl Actor {
     /// if continuity = 1 : try C1
     /// if continuity = 2 : try C2
     pub fn set_continuity(&mut self, continuity: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_Actor_set_continuity(self as *mut Self, continuity)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_set_continuity(self as *mut Self, continuity)
+        })
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:54 - `IGESToBRep_Actor::GetContinuity()`
     /// Return "thecontinuity"
     pub fn get_continuity(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Actor_get_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_get_continuity(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:56 - `IGESToBRep_Actor::Recognize()`
     pub fn recognize(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Actor_recognize(self as *mut Self, start) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_recognize(self as *mut Self, start)
+        })
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:59 - `IGESToBRep_Actor::Transfer()`
@@ -260,15 +166,13 @@ impl Actor {
         TP: &crate::ffi::HandleTransferTransientProcess,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_Actor_transfer(self as *mut Self, start, TP, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Actor_transfer(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
+            )))
         }
     }
 
@@ -276,137 +180,111 @@ impl Actor {
     /// Returns the tolerance which was actually used, either from
     /// the file or from statics
     pub fn used_tolerance(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Actor_used_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_used_tolerance(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:68 - `IGESToBRep_Actor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Actor_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESToBRep_Actor_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:68 - `IGESToBRep_Actor::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_Actor_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::IGESToBRep_Actor_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:68 - `IGESToBRep_Actor::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_Actor_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::IGESToBRep_Actor_get_type_descriptor())) }
     }
 
     /// Upcast to Transfer_ActorOfTransientProcess
     pub fn as_transfer_actor_of_transient_process(
         &self,
     ) -> &crate::transfer::ActorOfTransientProcess {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfTransientProcess(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfTransientProcess(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Transfer_ActorOfTransientProcess (mutable)
     pub fn as_transfer_actor_of_transient_process_mut(
         &mut self,
     ) -> &mut crate::transfer::ActorOfTransientProcess {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfTransientProcess_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfTransientProcess_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Transfer_ActorOfProcessForTransient
     pub fn as_transfer_actor_of_process_for_transient(
         &self,
     ) -> &crate::transfer::ActorOfProcessForTransient {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfProcessForTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfProcessForTransient(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Transfer_ActorOfProcessForTransient (mutable)
     pub fn as_transfer_actor_of_process_for_transient_mut(
         &mut self,
     ) -> &mut crate::transfer::ActorOfProcessForTransient {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfProcessForTransient_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfProcessForTransient_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::IGESToBRep_Actor_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESToBRep_Actor_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::IGESToBRep_Actor_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::IGESToBRep_Actor_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepActor> {
-        let __result = unsafe { crate::ffi::IGESToBRep_Actor_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Actor_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:40 - `Transfer_ActorOfTransientProcess::Transferring()`
@@ -416,20 +294,15 @@ impl Actor {
         TP: &crate::ffi::HandleTransferProcessForTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_Actor_inherited_Transferring(
                     self as *mut Self,
                     start,
                     TP,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -440,20 +313,15 @@ impl Actor {
         TP: &crate::ffi::HandleTransferTransientProcess,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_Actor_inherited_TransferTransient(
                     self as *mut Self,
                     start,
                     TP,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -462,59 +330,36 @@ impl Actor {
         &mut self,
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_Actor_inherited_SetShapeFixParameters(
-                    self as *mut Self,
-                    theParameters,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_SetShapeFixParameters(
+                self as *mut Self,
+                theParameters,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:77 - `Transfer_ActorOfTransientProcess::GetShapeFixParameters()`
     pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_Actor_inherited_GetShapeFixParameters(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESToBRep_Actor_inherited_GetShapeFixParameters(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags()`
     pub fn set_processing_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_Actor_inherited_SetProcessingFlags(
-                    self as *mut Self,
-                    theFlags,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_SetProcessingFlags(self as *mut Self, theFlags)
+        })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_Actor_inherited_GetProcessingFlags(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESToBRep_Actor_inherited_GetProcessingFlags(
+                self as *const Self,
+            )))
         }
     }
 
@@ -523,116 +368,72 @@ impl Actor {
         &self,
         res: &crate::ffi::HandleStandardTransient,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_Actor_inherited_TransientResult(self as *const Self, res)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_Actor_inherited_TransientResult(self as *const Self, res),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
     pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Actor_inherited_NullResult(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_Actor_inherited_NullResult(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:79 - `Transfer_ActorOfProcessForTransient::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IGESToBRep_Actor_inherited_SetLast(self as *mut Self, mode) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_SetLast(self as *mut Self, mode)
+        })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:82 - `Transfer_ActorOfProcessForTransient::IsLast()`
     pub fn is_last(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Actor_inherited_IsLast(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_IsLast(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:89 - `Transfer_ActorOfProcessForTransient::SetNext()`
     pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IGESToBRep_Actor_inherited_SetNext(self as *mut Self, next) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_SetNext(self as *mut Self, next)
+        })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:92 - `Transfer_ActorOfProcessForTransient::Next()`
     pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Actor_inherited_Next(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_Actor_inherited_Next(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_Actor_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_Actor_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Actor_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::IGESToBRep_Actor_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -643,52 +444,30 @@ impl Actor {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Actor_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_Actor_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_Actor_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IGESToBRep_Actor_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -703,61 +482,49 @@ unsafe impl crate::CppDeletable for HandleIGESToBRepActor {
 impl HandleIGESToBRepActor {
     /// Dereference this Handle to access the underlying IGESToBRep_Actor
     pub fn get(&self) -> &crate::ffi::IGESToBRep_Actor {
-        let __result = unsafe { crate::ffi::HandleIGESToBRepActor_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleIGESToBRepActor_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESToBRep_Actor
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_Actor {
-        let __result = unsafe { crate::ffi::HandleIGESToBRepActor_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleIGESToBRepActor_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESToBRep_Actor> to Handle<Transfer_ActorOfTransientProcess>
     pub fn to_handle_actor_of_transient_process(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
-        let __result = unsafe {
-            crate::ffi::HandleIGESToBRepActor_to_HandleTransferActorOfTransientProcess(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleIGESToBRepActor_to_HandleTransferActorOfTransientProcess(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESToBRep_Actor> to Handle<Transfer_ActorOfProcessForTransient>
     pub fn to_handle_actor_of_process_for_transient(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleIGESToBRepActor_to_HandleTransferActorOfProcessForTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleIGESToBRepActor_to_HandleTransferActorOfProcessForTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESToBRep_Actor> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleIGESToBRepActor_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleIGESToBRepActor_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -778,152 +545,107 @@ impl AlgoContainer {
     /// **Source:** `IGESToBRep_AlgoContainer.hxx`:33 - `IGESToBRep_AlgoContainer::IGESToBRep_AlgoContainer()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_AlgoContainer_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_AlgoContainer_ctor(),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_AlgoContainer.hxx`:36 - `IGESToBRep_AlgoContainer::SetToolContainer()`
     /// Sets ToolContainer
     pub fn set_tool_container(&mut self, TC: &crate::ffi::HandleIGESToBRepToolContainer) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_AlgoContainer_set_tool_container(self as *mut Self, TC)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_AlgoContainer_set_tool_container(self as *mut Self, TC)
+        })
     }
 
     /// **Source:** `IGESToBRep_AlgoContainer.hxx`:39 - `IGESToBRep_AlgoContainer::ToolContainer()`
     /// Returns ToolContainer
     pub fn tool_container(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepToolContainer> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_AlgoContainer_tool_container(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_AlgoContainer_tool_container(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_AlgoContainer.hxx`:41 - `IGESToBRep_AlgoContainer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_AlgoContainer_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESToBRep_AlgoContainer_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IGESToBRep_AlgoContainer.hxx`:41 - `IGESToBRep_AlgoContainer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_AlgoContainer_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::IGESToBRep_AlgoContainer_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `IGESToBRep_AlgoContainer.hxx`:41 - `IGESToBRep_AlgoContainer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_AlgoContainer_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESToBRep_AlgoContainer_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_AlgoContainer_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESToBRep_AlgoContainer_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_AlgoContainer_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IGESToBRep_AlgoContainer_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepAlgoContainer> {
-        let __result = unsafe { crate::ffi::IGESToBRep_AlgoContainer_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_AlgoContainer_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_AlgoContainer_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_AlgoContainer_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_AlgoContainer_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_AlgoContainer_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_AlgoContainer_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::IGESToBRep_AlgoContainer_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -934,58 +656,30 @@ impl AlgoContainer {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_AlgoContainer_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_AlgoContainer_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_AlgoContainer_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_AlgoContainer_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_AlgoContainer_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_AlgoContainer_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_AlgoContainer_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_AlgoContainer_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1000,35 +694,31 @@ unsafe impl crate::CppDeletable for HandleIGESToBRepAlgoContainer {
 impl HandleIGESToBRepAlgoContainer {
     /// Dereference this Handle to access the underlying IGESToBRep_AlgoContainer
     pub fn get(&self) -> &crate::ffi::IGESToBRep_AlgoContainer {
-        let __result =
-            unsafe { crate::ffi::HandleIGESToBRepAlgoContainer_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleIGESToBRepAlgoContainer_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESToBRep_AlgoContainer
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_AlgoContainer {
-        let __result =
-            unsafe { crate::ffi::HandleIGESToBRepAlgoContainer_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleIGESToBRepAlgoContainer_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESToBRep_AlgoContainer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleIGESToBRepAlgoContainer_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleIGESToBRepAlgoContainer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IGESToBRep_AlgoContainer> to Handle<IGESControl_AlgoContainer>
@@ -1037,18 +727,15 @@ impl HandleIGESToBRepAlgoContainer {
     pub fn downcast_to_algo_container(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlAlgoContainer>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleIGESToBRepAlgoContainer_downcast_to_HandleIGESControlAlgoContainer(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -1076,12 +763,8 @@ impl BRepEntity {
     /// epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
     /// optimization of  the continuity to False.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_BRepEntity_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_BRepEntity_ctor()))
         }
     }
 
@@ -1089,12 +772,10 @@ impl BRepEntity {
     /// Creates a tool BRepEntity ready to run and sets its
     /// fields as CS's.
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_BRepEntity_ctor_curveandsurface(CS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BRepEntity_ctor_curveandsurface(CS),
+            ))
         }
     }
 
@@ -1108,16 +789,12 @@ impl BRepEntity {
         modeapprox: bool,
         optimized: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BRepEntity_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1128,19 +805,14 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BRepEntity_transfer_b_rep_entity(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1151,15 +823,10 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESSolidVertexList,
         index: i32,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_transfer_vertex(self as *mut Self, start, index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BRepEntity_transfer_vertex(self as *mut Self, start, index),
+            ))
         }
     }
 
@@ -1170,15 +837,10 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESSolidEdgeList,
         index: i32,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_transfer_edge(self as *mut Self, start, index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BRepEntity_transfer_edge(self as *mut Self, start, index),
+            ))
         }
     }
 
@@ -1191,21 +853,16 @@ impl BRepEntity {
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BRepEntity_transfer_loop(
                     self as *mut Self,
                     start,
                     Face,
                     trans,
                     uFact,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1215,15 +872,10 @@ impl BRepEntity {
         &mut self,
         start: &crate::ffi::HandleIGESSolidFace,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_transfer_face(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BRepEntity_transfer_face(self as *mut Self, start),
+            ))
         }
     }
 
@@ -1234,19 +886,14 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESSolidShell,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BRepEntity_transfer_shell(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1257,401 +904,229 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESSolidManifoldSolid,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BRepEntity_transfer_manifold_solid(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface
     pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_as_IGESToBRep_CurveAndSurface(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESToBRep_BRepEntity_as_IGESToBRep_CurveAndSurface(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface (mutable)
     pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_as_IGESToBRep_CurveAndSurface_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IGESToBRep_BRepEntity_as_IGESToBRep_CurveAndSurface_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
     pub fn init(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_Init(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_Init(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     pub fn set_epsilon(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsilon(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsilon(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     pub fn get_epsilon(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsilon(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsilon(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     pub fn set_eps_coeff(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsCoeff(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsCoeff(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     pub fn get_eps_coeff(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsCoeff(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsCoeff(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     pub fn set_eps_geom(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsGeom(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsGeom(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     pub fn get_eps_geom(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsGeom(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsGeom(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     pub fn set_min_tol(&mut self, mintol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetMinTol(self as *mut Self, mintol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetMinTol(self as *mut Self, mintol)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxtol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetMaxTol(self as *mut Self, maxtol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetMaxTol(self as *mut Self, maxtol)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
     pub fn update_min_max_tol(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_UpdateMinMaxTol(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_UpdateMinMaxTol(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     pub fn get_min_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetMinTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetMinTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     pub fn get_max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetMaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetMaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     pub fn set_mode_approx(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetModeApprox(self as *mut Self, mode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetModeApprox(self as *mut Self, mode)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     pub fn get_mode_approx(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetModeApprox(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetModeApprox(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     pub fn set_mode_transfer(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetModeTransfer(self as *mut Self, mode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetModeTransfer(self as *mut Self, mode)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     pub fn get_mode_transfer(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetModeTransfer(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetModeTransfer(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     pub fn set_optimized(&mut self, optimized: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetOptimized(
-                    self as *mut Self,
-                    optimized,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetOptimized(self as *mut Self, optimized)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     pub fn get_optimized(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetOptimized(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetOptimized(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     pub fn get_unit_factor(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetUnitFactor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetUnitFactor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     pub fn set_surface_curve(&mut self, ival: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetSurfaceCurve(self as *mut Self, ival)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetSurfaceCurve(self as *mut Self, ival)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetSurfaceCurve(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetSurfaceCurve(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetModel(self as *mut Self, model)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetModel(self as *mut Self, model)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
     pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetModel(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BRepEntity_inherited_GetModel(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     pub fn set_continuity(&mut self, continuity: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetContinuity(
-                    self as *mut Self,
-                    continuity,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetContinuity(self as *mut Self, continuity)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetContinuity(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetContinuity(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
     pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetTransferProcess(
-                    self as *mut Self,
-                    TP,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetTransferProcess(self as *mut Self, TP)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
     pub fn get_transfer_process(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetTransferProcess(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BRepEntity_inherited_GetTransferProcess(self as *const Self),
+            ))
         }
     }
 
@@ -1661,19 +1136,14 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BRepEntity_inherited_TransferCurveAndSurface(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1683,19 +1153,14 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BRepEntity_inherited_TransferGeometry(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1705,14 +1170,9 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SendFail(self as *mut Self, start, amsg)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SendFail(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
@@ -1721,18 +1181,9 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SendWarning(
-                    self as *mut Self,
-                    start,
-                    amsg,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SendWarning(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
@@ -1741,31 +1192,16 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SendMsg(self as *mut Self, start, amsg)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SendMsg(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
     pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_HasShapeResult(
-                    self as *const Self,
-                    start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_HasShapeResult(self as *const Self, start)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
@@ -1773,18 +1209,13 @@ impl BRepEntity {
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BRepEntity_inherited_GetShapeResult(
                     self as *const Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1794,35 +1225,20 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetShapeResult(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
     pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_NbShapeResult(
-                    self as *const Self,
-                    start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_NbShapeResult(self as *const Self, start)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
@@ -1831,60 +1247,36 @@ impl BRepEntity {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_AddShapeResult(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_AddShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
     pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_SetSurface(
-                    self as *mut Self,
-                    theSurface,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetSurface(self as *mut Self, theSurface)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
     pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_Surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BRepEntity_inherited_Surface(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetUVResolution(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_GetUVResolution(self as *mut Self)
+        })
     }
 }
 
@@ -1918,12 +1310,8 @@ impl BasicCurve {
     /// epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
     /// optimization of  the continuity to False.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_BasicCurve_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_BasicCurve_ctor()))
         }
     }
 
@@ -1931,12 +1319,10 @@ impl BasicCurve {
     /// Creates a tool BasicCurve ready to run and sets its
     /// fields as CS's.
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_BasicCurve_ctor_curveandsurface(CS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_ctor_curveandsurface(CS),
+            ))
         }
     }
 
@@ -1950,16 +1336,12 @@ impl BasicCurve {
         modeapprox: bool,
         optimized: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicCurve_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1971,15 +1353,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer_basic_curve(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer_basic_curve(self as *mut Self, start),
+            ))
         }
     }
 
@@ -1993,15 +1370,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_basic_curve(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer2d_basic_curve(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2010,15 +1382,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomBSplineCurve,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer_b_spline_curve(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer_b_spline_curve(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2027,18 +1394,13 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomBSplineCurve,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicCurve_transfer2d_b_spline_curve(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2047,15 +1409,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomCircularArc,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer_circular_arc(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer_circular_arc(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2064,15 +1421,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomCircularArc,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_circular_arc(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer2d_circular_arc(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2081,15 +1433,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomConicArc,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer_conic_arc(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer_conic_arc(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2098,15 +1445,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomConicArc,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_conic_arc(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer2d_conic_arc(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2115,15 +1457,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomCopiousData,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer_copious_data(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer_copious_data(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2132,15 +1469,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomCopiousData,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_copious_data(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer2d_copious_data(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2149,15 +1481,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomLine,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer_line(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer_line(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2166,15 +1493,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomLine,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_line(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer2d_line(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2183,15 +1505,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomSplineCurve,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer_spline_curve(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer_spline_curve(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2200,15 +1517,10 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomSplineCurve,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_spline_curve(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer2d_spline_curve(self as *mut Self, start),
+            ))
         }
     }
 
@@ -2217,397 +1529,225 @@ impl BasicCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomTransformationMatrix,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomTransformation> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_transfer_transformation(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_transfer_transformation(self as *mut Self, start),
+            ))
         }
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface
     pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_as_IGESToBRep_CurveAndSurface(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESToBRep_BasicCurve_as_IGESToBRep_CurveAndSurface(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface (mutable)
     pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_as_IGESToBRep_CurveAndSurface_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_as_IGESToBRep_CurveAndSurface_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
     pub fn init(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_Init(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_Init(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     pub fn set_epsilon(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsilon(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsilon(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     pub fn get_epsilon(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsilon(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsilon(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     pub fn set_eps_coeff(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsCoeff(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsCoeff(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     pub fn get_eps_coeff(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsCoeff(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsCoeff(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     pub fn set_eps_geom(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsGeom(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsGeom(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     pub fn get_eps_geom(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsGeom(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsGeom(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     pub fn set_min_tol(&mut self, mintol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetMinTol(self as *mut Self, mintol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetMinTol(self as *mut Self, mintol)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxtol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetMaxTol(self as *mut Self, maxtol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetMaxTol(self as *mut Self, maxtol)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
     pub fn update_min_max_tol(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_UpdateMinMaxTol(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_UpdateMinMaxTol(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     pub fn get_min_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetMinTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetMinTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     pub fn get_max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetMaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetMaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     pub fn set_mode_approx(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetModeApprox(self as *mut Self, mode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetModeApprox(self as *mut Self, mode)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     pub fn get_mode_approx(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetModeApprox(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetModeApprox(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     pub fn set_mode_transfer(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetModeTransfer(self as *mut Self, mode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetModeTransfer(self as *mut Self, mode)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     pub fn get_mode_transfer(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetModeTransfer(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetModeTransfer(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     pub fn set_optimized(&mut self, optimized: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetOptimized(
-                    self as *mut Self,
-                    optimized,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetOptimized(self as *mut Self, optimized)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     pub fn get_optimized(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetOptimized(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetOptimized(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     pub fn get_unit_factor(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetUnitFactor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetUnitFactor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     pub fn set_surface_curve(&mut self, ival: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetSurfaceCurve(self as *mut Self, ival)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetSurfaceCurve(self as *mut Self, ival)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetSurfaceCurve(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetSurfaceCurve(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetModel(self as *mut Self, model)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetModel(self as *mut Self, model)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
     pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetModel(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_inherited_GetModel(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     pub fn set_continuity(&mut self, continuity: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetContinuity(
-                    self as *mut Self,
-                    continuity,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetContinuity(self as *mut Self, continuity)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetContinuity(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetContinuity(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
     pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetTransferProcess(
-                    self as *mut Self,
-                    TP,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetTransferProcess(self as *mut Self, TP)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
     pub fn get_transfer_process(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetTransferProcess(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_inherited_GetTransferProcess(self as *const Self),
+            ))
         }
     }
 
@@ -2617,19 +1757,14 @@ impl BasicCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicCurve_inherited_TransferCurveAndSurface(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2639,19 +1774,14 @@ impl BasicCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicCurve_inherited_TransferGeometry(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2661,14 +1791,9 @@ impl BasicCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SendFail(self as *mut Self, start, amsg)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SendFail(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
@@ -2677,18 +1802,9 @@ impl BasicCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SendWarning(
-                    self as *mut Self,
-                    start,
-                    amsg,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SendWarning(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
@@ -2697,31 +1813,16 @@ impl BasicCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SendMsg(self as *mut Self, start, amsg)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SendMsg(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
     pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_HasShapeResult(
-                    self as *const Self,
-                    start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_HasShapeResult(self as *const Self, start)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
@@ -2729,18 +1830,13 @@ impl BasicCurve {
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicCurve_inherited_GetShapeResult(
                     self as *const Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2750,35 +1846,20 @@ impl BasicCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetShapeResult(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
     pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_NbShapeResult(
-                    self as *const Self,
-                    start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_NbShapeResult(self as *const Self, start)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
@@ -2787,60 +1868,36 @@ impl BasicCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_AddShapeResult(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_AddShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
     pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_SetSurface(
-                    self as *mut Self,
-                    theSurface,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetSurface(self as *mut Self, theSurface)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
     pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_Surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicCurve_inherited_Surface(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetUVResolution(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_GetUVResolution(self as *mut Self)
+        })
     }
 }
 
@@ -2868,12 +1925,10 @@ impl BasicSurface {
     /// epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
     /// optimization of  the continuity to False.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_BasicSurface_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicSurface_ctor(),
+            ))
         }
     }
 
@@ -2881,12 +1936,10 @@ impl BasicSurface {
     /// Creates a tool BasicSurface ready to run and sets its
     /// fields as CS's.
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_BasicSurface_ctor_curveandsurface(CS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicSurface_ctor_curveandsurface(CS),
+            ))
         }
     }
 
@@ -2900,16 +1953,12 @@ impl BasicSurface {
         modeapprox: bool,
         optimized: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicSurface_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2919,15 +1968,13 @@ impl BasicSurface {
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_transfer_basic_surface(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicSurface_transfer_basic_surface(
+                    self as *mut Self,
+                    start,
+                ),
+            ))
         }
     }
 
@@ -2937,15 +1984,13 @@ impl BasicSurface {
         &mut self,
         start: &crate::ffi::HandleIGESSolidPlaneSurface,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_transfer_plane_surface(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicSurface_transfer_plane_surface(
+                    self as *mut Self,
+                    start,
+                ),
+            ))
         }
     }
 
@@ -2955,18 +2000,13 @@ impl BasicSurface {
         &mut self,
         start: &crate::ffi::HandleIGESSolidCylindricalSurface,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCylindricalSurface> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicSurface_transfer_rigth_cylindrical_surface(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2976,18 +2016,13 @@ impl BasicSurface {
         &mut self,
         start: &crate::ffi::HandleIGESSolidConicalSurface,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomConicalSurface> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicSurface_transfer_rigth_conical_surface(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2997,18 +2032,13 @@ impl BasicSurface {
         &mut self,
         start: &crate::ffi::HandleIGESSolidSphericalSurface,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomSphericalSurface> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicSurface_transfer_spherical_surface(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -3018,18 +2048,13 @@ impl BasicSurface {
         &mut self,
         start: &crate::ffi::HandleIGESSolidToroidalSurface,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomToroidalSurface> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicSurface_transfer_toroidal_surface(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -3039,18 +2064,13 @@ impl BasicSurface {
         &mut self,
         start: &crate::ffi::HandleIGESGeomSplineSurface,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicSurface_transfer_spline_surface(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -3060,408 +2080,235 @@ impl BasicSurface {
         &mut self,
         start: &crate::ffi::HandleIGESGeomBSplineSurface,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicSurface_transfer_b_spline_surface(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface
     pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_as_IGESToBRep_CurveAndSurface(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::IGESToBRep_BasicSurface_as_IGESToBRep_CurveAndSurface(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface (mutable)
     pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_as_IGESToBRep_CurveAndSurface_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IGESToBRep_BasicSurface_as_IGESToBRep_CurveAndSurface_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
     pub fn init(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_Init(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_Init(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     pub fn set_epsilon(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsilon(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsilon(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     pub fn get_epsilon(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsilon(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsilon(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     pub fn set_eps_coeff(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsCoeff(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsCoeff(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     pub fn get_eps_coeff(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsCoeff(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsCoeff(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     pub fn set_eps_geom(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsGeom(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsGeom(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     pub fn get_eps_geom(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsGeom(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsGeom(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     pub fn set_min_tol(&mut self, mintol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetMinTol(self as *mut Self, mintol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetMinTol(self as *mut Self, mintol)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxtol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetMaxTol(self as *mut Self, maxtol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetMaxTol(self as *mut Self, maxtol)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
     pub fn update_min_max_tol(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_UpdateMinMaxTol(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_UpdateMinMaxTol(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     pub fn get_min_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetMinTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetMinTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     pub fn get_max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetMaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetMaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     pub fn set_mode_approx(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetModeApprox(self as *mut Self, mode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetModeApprox(self as *mut Self, mode)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     pub fn get_mode_approx(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetModeApprox(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetModeApprox(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     pub fn set_mode_transfer(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetModeTransfer(
-                    self as *mut Self,
-                    mode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetModeTransfer(self as *mut Self, mode)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     pub fn get_mode_transfer(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetModeTransfer(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetModeTransfer(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     pub fn set_optimized(&mut self, optimized: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetOptimized(
-                    self as *mut Self,
-                    optimized,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetOptimized(self as *mut Self, optimized)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     pub fn get_optimized(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetOptimized(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetOptimized(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     pub fn get_unit_factor(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetUnitFactor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetUnitFactor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     pub fn set_surface_curve(&mut self, ival: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetSurfaceCurve(
-                    self as *mut Self,
-                    ival,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetSurfaceCurve(self as *mut Self, ival)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetSurfaceCurve(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetSurfaceCurve(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetModel(self as *mut Self, model)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetModel(self as *mut Self, model)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
     pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetModel(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicSurface_inherited_GetModel(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     pub fn set_continuity(&mut self, continuity: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetContinuity(
-                    self as *mut Self,
-                    continuity,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetContinuity(
+                self as *mut Self,
+                continuity,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetContinuity(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetContinuity(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
     pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetTransferProcess(
-                    self as *mut Self,
-                    TP,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetTransferProcess(self as *mut Self, TP)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
     pub fn get_transfer_process(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicSurface_inherited_GetTransferProcess(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -3471,19 +2318,14 @@ impl BasicSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicSurface_inherited_TransferCurveAndSurface(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -3493,19 +2335,14 @@ impl BasicSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicSurface_inherited_TransferGeometry(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -3515,18 +2352,9 @@ impl BasicSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SendFail(
-                    self as *mut Self,
-                    start,
-                    amsg,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SendFail(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
@@ -3535,18 +2363,13 @@ impl BasicSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SendWarning(
-                    self as *mut Self,
-                    start,
-                    amsg,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SendWarning(
+                self as *mut Self,
+                start,
+                amsg,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
@@ -3555,35 +2378,16 @@ impl BasicSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SendMsg(
-                    self as *mut Self,
-                    start,
-                    amsg,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SendMsg(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
     pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_HasShapeResult(
-                    self as *const Self,
-                    start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_HasShapeResult(self as *const Self, start)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
@@ -3591,18 +2395,13 @@ impl BasicSurface {
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_BasicSurface_inherited_GetShapeResult(
                     self as *const Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -3612,35 +2411,20 @@ impl BasicSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetShapeResult(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
     pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_NbShapeResult(
-                    self as *const Self,
-                    start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_NbShapeResult(self as *const Self, start)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
@@ -3649,61 +2433,36 @@ impl BasicSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_AddShapeResult(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_AddShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
     pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_SetSurface(
-                    self as *mut Self,
-                    theSurface,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetSurface(self as *mut Self, theSurface)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
     pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_Surface(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_BasicSurface_inherited_Surface(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetUVResolution(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetUVResolution(self as *mut Self)
+        })
     }
 }
 
@@ -3727,12 +2486,10 @@ impl CurveAndSurface {
     /// epsilons  set  to  1.E-04,  myModeTopo  to  True,  the
     /// optimization of  the continuity to False.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_CurveAndSurface_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_CurveAndSurface_ctor(),
+            ))
         }
     }
 
@@ -3746,16 +2503,12 @@ impl CurveAndSurface {
         modeapprox: bool,
         optimized: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_CurveAndSurface_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3763,120 +2516,73 @@ impl CurveAndSurface {
     /// Initializes the field of the tool CurveAndSurface with
     /// default creating values.
     pub fn init(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::IGESToBRep_CurveAndSurface_init(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     /// Changes the value of "myEps"
     pub fn set_epsilon(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_epsilon(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_epsilon(self as *mut Self, eps)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     /// Returns the value of "myEps"
     pub fn get_epsilon(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_epsilon(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_epsilon(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     /// Changes the value of "myEpsCoeff"
     pub fn set_eps_coeff(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_eps_coeff(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_eps_coeff(self as *mut Self, eps)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     /// Returns the value of "myEpsCoeff"
     pub fn get_eps_coeff(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_get_eps_coeff(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_eps_coeff(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     /// Changes the value of "myEpsGeom"
     pub fn set_eps_geom(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_eps_geom(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_eps_geom(self as *mut Self, eps)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     /// Returns the value of "myEpsGeom"
     pub fn get_eps_geom(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_eps_geom(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_eps_geom(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     /// Changes the value of "myMinTol"
     pub fn set_min_tol(&mut self, mintol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_min_tol(self as *mut Self, mintol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_min_tol(self as *mut Self, mintol)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     /// Changes the value of "myMaxTol"
     pub fn set_max_tol(&mut self, maxtol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_max_tol(self as *mut Self, maxtol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_max_tol(self as *mut Self, maxtol)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
@@ -3886,154 +2592,89 @@ impl CurveAndSurface {
     /// Remark: This method is automatically invoked each time the values
     /// of "myEpsGeom" or "myUnitFactor" are changed
     pub fn update_min_max_tol(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_update_min_max_tol(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_update_min_max_tol(self as *mut Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     /// Returns the value of "myMinTol"
     pub fn get_min_tol(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_min_tol(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_min_tol(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     /// Returns the value of "myMaxTol"
     pub fn get_max_tol(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_max_tol(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_max_tol(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     /// Changes the value of "myModeApprox"
     pub fn set_mode_approx(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_mode_approx(self as *mut Self, mode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_mode_approx(self as *mut Self, mode)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     /// Returns the value of "myModeApprox"
     pub fn get_mode_approx(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_get_mode_approx(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_mode_approx(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     /// Changes the value of "myModeIsTopo"
     pub fn set_mode_transfer(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_mode_transfer(self as *mut Self, mode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_mode_transfer(self as *mut Self, mode)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     /// Returns the value of "myModeIsTopo"
     pub fn get_mode_transfer(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_get_mode_transfer(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_mode_transfer(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     /// Changes the value of "myContIsOpti"
     pub fn set_optimized(&mut self, optimized: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_optimized(self as *mut Self, optimized)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_optimized(self as *mut Self, optimized)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     /// Returns the value of "myContIsOpti"
     pub fn get_optimized(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_get_optimized(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_optimized(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     /// Returns the value of " myUnitFactor"
     pub fn get_unit_factor(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_get_unit_factor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_unit_factor(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     /// Changes the value of "mySurfaceCurve"
     pub fn set_surface_curve(&mut self, ival: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_surface_curve(self as *mut Self, ival)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_surface_curve(self as *mut Self, ival)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
@@ -4041,42 +2682,26 @@ impl CurveAndSurface {
     /// file, 2 = keep 2d and compute 3d, 3 = keep 3d and
     /// compute 2d
     pub fn get_surface_curve(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_get_surface_curve(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_surface_curve(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
     /// Set the value of "myModel"
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_model(self as *mut Self, model)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_model(self as *mut Self, model)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
     /// Returns the value of "myModel"
     pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_model(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_CurveAndSurface_get_model(self as *const Self),
+            ))
         }
     }
 
@@ -4086,42 +2711,25 @@ impl CurveAndSurface {
     /// if continuity = 1 try C1
     /// if continuity = 2 try C2
     pub fn set_continuity(&mut self, continuity: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_continuity(self as *mut Self, continuity)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_continuity(self as *mut Self, continuity)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     /// Returns the value of "myContinuity"
     pub fn get_continuity(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_get_continuity(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_continuity(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
     /// Set the value of "myMsgReg"
     pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_transfer_process(self as *mut Self, TP)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_transfer_process(self as *mut Self, TP)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
@@ -4129,15 +2737,10 @@ impl CurveAndSurface {
     pub fn get_transfer_process(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_get_transfer_process(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_CurveAndSurface_get_transfer_process(self as *const Self),
+            ))
         }
     }
 
@@ -4150,19 +2753,14 @@ impl CurveAndSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_CurveAndSurface_transfer_curve_and_surface(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -4175,19 +2773,14 @@ impl CurveAndSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_CurveAndSurface_transfer_geometry(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -4198,14 +2791,9 @@ impl CurveAndSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_send_fail(self as *mut Self, start, amsg)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_send_fail(self as *mut Self, start, amsg)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
@@ -4215,14 +2803,9 @@ impl CurveAndSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_send_warning(self as *mut Self, start, amsg)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_send_warning(self as *mut Self, start, amsg)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
@@ -4233,30 +2816,18 @@ impl CurveAndSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_send_msg(self as *mut Self, start, amsg)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_send_msg(self as *mut Self, start, amsg)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
     /// Returns True if start was already treated and has a result in "myMap"
     /// else returns False.
     pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_has_shape_result(self as *const Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_has_shape_result(self as *const Self, start)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
@@ -4266,18 +2837,13 @@ impl CurveAndSurface {
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity(
                     self as *const Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -4288,34 +2854,22 @@ impl CurveAndSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_shape_result(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_shape_result(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
     /// Returns the number of shapes results contained in "myMap" for the
     /// IGESEntity start ( type VertexList or EdgeList).
     pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_nb_shape_result(self as *const Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_nb_shape_result(self as *const Self, start)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:186 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
@@ -4326,19 +2880,8 @@ impl CurveAndSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         num: i32,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity_int(
-                    self as *const Self,
-                    start,
-                    num,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity_int(self as *const Self, start, num)))
         }
     }
 
@@ -4350,57 +2893,36 @@ impl CurveAndSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_add_shape_result(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_add_shape_result(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
     pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_set_surface(self as *mut Self, theSurface)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_surface(self as *mut Self, theSurface)
+        })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
     pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_CurveAndSurface_surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_CurveAndSurface_surface(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_CurveAndSurface_get_uv_resolution(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_get_uv_resolution(self as *mut Self)
+        })
     }
 }
 
@@ -4426,24 +2948,20 @@ impl IGESBoundary {
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:45 - `IGESToBRep_IGESBoundary::IGESToBRep_IGESBoundary()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_IGESBoundary_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_IGESBoundary_ctor(),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:48 - `IGESToBRep_IGESBoundary::IGESToBRep_IGESBoundary()`
     /// Empty constructor
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_IGESBoundary_ctor_curveandsurface(CS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_IGESBoundary_ctor_curveandsurface(CS),
+            ))
         }
     }
 
@@ -4465,35 +2983,26 @@ impl IGESBoundary {
         uFact: f64,
         filepreference: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_IGESBoundary_init(
-                    self as *mut Self,
-                    CS,
-                    entity,
-                    face,
-                    trans,
-                    uFact,
-                    filepreference,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_init(
+                self as *mut Self,
+                CS,
+                entity,
+                face,
+                trans,
+                uFact,
+                filepreference,
+            )
+        })
     }
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:66 - `IGESToBRep_IGESBoundary::WireData()`
     /// Returns the resulting wire
     pub fn wire_data(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_IGESBoundary_wire_data(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_IGESBoundary_wire_data(self as *const Self),
+            ))
         }
     }
 
@@ -4501,14 +3010,10 @@ impl IGESBoundary {
     /// Returns the wire from 3D curves (edges contain 3D curves
     /// and may contain pcurves)
     pub fn wire_data3d(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_IGESBoundary_wire_data3d(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_IGESBoundary_wire_data3d(self as *const Self),
+            ))
         }
     }
 
@@ -4516,14 +3021,10 @@ impl IGESBoundary {
     /// Returns the wire from 2D curves (edges contain pcurves
     /// only)
     pub fn wire_data2d(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_IGESBoundary_wire_data2d(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_IGESBoundary_wire_data2d(self as *const Self),
+            ))
         }
     }
 
@@ -4551,16 +3052,9 @@ impl IGESBoundary {
         curves2d: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
         number: i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_IGESBoundary_transfer_bool3_handleigesdataigesentity_bool_handleigesdataharray1ofigesentity_int(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, toreverse3d, curves2d, number)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_transfer_bool3_handleigesdataigesentity_bool_handleigesdataharray1ofigesentity_int(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, toreverse3d, curves2d, number)
+        })
     }
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:111 - `IGESToBRep_IGESBoundary::Transfer()`
@@ -4589,16 +3083,9 @@ impl IGESBoundary {
         number: i32,
         lsewd: &mut crate::ffi::HandleShapeExtendWireData,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_IGESBoundary_transfer_bool3_handleshapeextendwiredata_handleigesdataharray1ofigesentity_bool_int_handleshapeextendwiredata(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, curves2d, toreverse2d, number, lsewd)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_transfer_bool3_handleshapeextendwiredata_handleigesdataharray1ofigesentity_bool_int_handleshapeextendwiredata(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, curves2d, toreverse2d, number, lsewd)
+        })
     }
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:128 - `IGESToBRep_IGESBoundary::Check()`
@@ -4611,132 +3098,93 @@ impl IGESBoundary {
     /// otherwise True,
     /// <okCurve3d>, <okCurve2d>: those returned by Transfer.
     pub fn check(&mut self, result: bool, checkclosure: bool, okCurve3d: bool, okCurve2d: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_IGESBoundary_check(
-                    self as *mut Self,
-                    result,
-                    checkclosure,
-                    okCurve3d,
-                    okCurve2d,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_check(
+                self as *mut Self,
+                result,
+                checkclosure,
+                okCurve3d,
+                okCurve2d,
+            )
+        })
     }
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:133 - `IGESToBRep_IGESBoundary::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_IGESBoundary_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESToBRep_IGESBoundary_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:133 - `IGESToBRep_IGESBoundary::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_IGESBoundary_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::IGESToBRep_IGESBoundary_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:133 - `IGESToBRep_IGESBoundary::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_IGESBoundary_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESToBRep_IGESBoundary_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESToBRep_IGESBoundary_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IGESToBRep_IGESBoundary_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
-        let __result = unsafe { crate::ffi::IGESToBRep_IGESBoundary_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_IGESBoundary_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_IGESBoundary_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_IGESBoundary_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_IGESBoundary_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::IGESToBRep_IGESBoundary_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -4747,54 +3195,30 @@ impl IGESBoundary {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_IGESBoundary_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_IGESBoundary_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_IGESBoundary_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_IGESBoundary_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -4809,32 +3233,29 @@ unsafe impl crate::CppDeletable for HandleIGESToBRepIGESBoundary {
 impl HandleIGESToBRepIGESBoundary {
     /// Dereference this Handle to access the underlying IGESToBRep_IGESBoundary
     pub fn get(&self) -> &crate::ffi::IGESToBRep_IGESBoundary {
-        let __result = unsafe { crate::ffi::HandleIGESToBRepIGESBoundary_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleIGESToBRepIGESBoundary_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESToBRep_IGESBoundary
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_IGESBoundary {
-        let __result =
-            unsafe { crate::ffi::HandleIGESToBRepIGESBoundary_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleIGESToBRepIGESBoundary_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESToBRep_IGESBoundary> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleIGESToBRepIGESBoundary_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleIGESToBRepIGESBoundary_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IGESToBRep_IGESBoundary> to Handle<IGESControl_IGESBoundary>
@@ -4843,18 +3264,15 @@ impl HandleIGESToBRepIGESBoundary {
     pub fn downcast_to_iges_boundary(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlIGESBoundary>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleIGESToBRepIGESBoundary_downcast_to_HandleIGESControlIGESBoundary(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -4878,12 +3296,8 @@ impl Reader {
     /// **Source:** `IGESToBRep_Reader.hxx`:45 - `IGESToBRep_Reader::IGESToBRep_Reader()`
     /// Creates a Reader
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_Reader_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Reader_ctor()))
         }
     }
 
@@ -4893,41 +3307,27 @@ impl Reader {
     /// returns -1 if an error occurred while the file was being loaded.
     pub fn load_file(&mut self, filename: &str) -> i32 {
         let c_filename = std::ffi::CString::new(filename).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_Reader_load_file(self as *mut Self, c_filename.as_ptr())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Reader_load_file(self as *mut Self, c_filename.as_ptr())
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:54 - `IGESToBRep_Reader::SetModel()`
     /// Specifies a Model to work on
     /// Also clears the result and Done status, sets TransientProcess
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IGESToBRep_Reader_set_model(self as *mut Self, model) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Reader_set_model(self as *mut Self, model)
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:57 - `IGESToBRep_Reader::Model()`
     /// Returns the Model to be worked on.
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_Reader_model(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Reader_model(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4935,52 +3335,35 @@ impl Reader {
     /// Allows to set an already defined TransientProcess
     /// (to be called after LoadFile or SetModel)
     pub fn set_transient_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_Reader_set_transient_process(self as *mut Self, TP)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Reader_set_transient_process(self as *mut Self, TP)
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:64 - `IGESToBRep_Reader::TransientProcess()`
     /// Returns the TransientProcess
     pub fn transient_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Reader_transient_process(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_Reader_transient_process(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:67 - `IGESToBRep_Reader::Actor()`
     /// Returns "theActor"
     pub fn actor(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepActor> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_Reader_actor(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Reader_actor(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:70 - `IGESToBRep_Reader::Clear()`
     /// Clears the results between two translation operations.
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::IGESToBRep_Reader_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::IGESToBRep_Reader_clear(self as *mut Self) })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:76 - `IGESToBRep_Reader::Check()`
@@ -4989,15 +3372,9 @@ impl Reader {
     /// message file if withprint is true. Returns True if no fail
     /// message was found and False if there was at least one fail message.
     pub fn check(&self, withprint: bool) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Reader_check(self as *const Self, withprint) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Reader_check(self as *const Self, withprint)
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:82 - `IGESToBRep_Reader::TransferRoots()`
@@ -5010,18 +3387,13 @@ impl Reader {
         onlyvisible: bool,
         theProgress: &crate::message::ProgressRange,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_Reader_transfer_roots(
-                    self as *mut Self,
-                    onlyvisible,
-                    theProgress,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Reader_transfer_roots(
+                self as *mut Self,
+                onlyvisible,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:90 - `IGESToBRep_Reader::Transfer()`
@@ -5029,29 +3401,15 @@ impl Reader {
     /// Returns True if it is recognized as Geom-Topol.
     /// (But it can have failed : see IsDone)
     pub fn transfer(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_Reader_transfer(self as *mut Self, num, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Reader_transfer(self as *mut Self, num, theProgress)
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:94 - `IGESToBRep_Reader::IsDone()`
     /// Returns True if the LAST Transfer/TransferRoots was a success
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_Reader_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::IGESToBRep_Reader_is_done(self as *const Self) })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:99 - `IGESToBRep_Reader::UsedTolerance()`
@@ -5059,40 +3417,25 @@ impl Reader {
     /// in millimeters
     /// (either that from File or that from Session, according the mode)
     pub fn used_tolerance(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_Reader_used_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_Reader_used_tolerance(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:102 - `IGESToBRep_Reader::NbShapes()`
     /// Returns the number of shapes produced by the translation.
     pub fn nb_shapes(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_Reader_nb_shapes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::IGESToBRep_Reader_nb_shapes(self as *const Self) })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:105 - `IGESToBRep_Reader::Shape()`
     /// Returns the num the resulting shape in a translation operation.
     pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_Reader_shape(self as *const Self, num) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Reader_shape(
+                self as *const Self,
+                num,
+            )))
         }
     }
 
@@ -5103,13 +3446,10 @@ impl Reader {
     /// - a shape if there is one result,
     /// - a compound containing the resulting shapes if there are several.
     pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_Reader_one_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Reader_one_shape(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5120,17 +3460,12 @@ impl Reader {
         &mut self,
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_Reader_set_shape_fix_parameters_parametermap(
-                    self as *mut Self,
-                    theParameters,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Reader_set_shape_fix_parameters_parametermap(
+                self as *mut Self,
+                theParameters,
+            )
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:130 - `IGESToBRep_Reader::SetShapeFixParameters()`
@@ -5145,29 +3480,23 @@ impl Reader {
         theParameters: &crate::de::ShapeFixParameters,
         theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(
+                self as *mut Self,
+                theParameters,
+                theAdditionalParameters,
+            )
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:136 - `IGESToBRep_Reader::GetShapeFixParameters()`
     /// Returns parameters for shape processing that was set by SetParameters() method.
     /// @return the parameters for shape processing. Empty map if no parameters were set.
     pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_Reader_get_shape_fix_parameters(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESToBRep_Reader_get_shape_fix_parameters(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5175,29 +3504,19 @@ impl Reader {
     /// Sets flags defining operations to be performed on shapes.
     /// @param theFlags The flags defining operations to be performed on shapes.
     pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_Reader_set_shape_process_flags(self as *mut Self, theFlags)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_Reader_set_shape_process_flags(self as *mut Self, theFlags)
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:147 - `IGESToBRep_Reader::GetShapeProcessFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return The flags defining operations to be performed on shapes.
     pub fn get_shape_process_flags(&self) -> &crate::ffi::ShapeProcess_OperationsFlags {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_Reader_get_shape_process_flags(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESToBRep_Reader_get_shape_process_flags(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -5228,139 +3547,99 @@ impl ToolContainer {
     /// **Source:** `IGESToBRep_ToolContainer.hxx`:33 - `IGESToBRep_ToolContainer::IGESToBRep_ToolContainer()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_ToolContainer_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_ToolContainer_ctor(),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_ToolContainer.hxx`:36 - `IGESToBRep_ToolContainer::IGESBoundary()`
     /// Returns IGESToBRep_IGESBoundary
     pub fn iges_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_ToolContainer_iges_boundary(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_ToolContainer_iges_boundary(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_ToolContainer.hxx`:38 - `IGESToBRep_ToolContainer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_ToolContainer_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESToBRep_ToolContainer_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IGESToBRep_ToolContainer.hxx`:38 - `IGESToBRep_ToolContainer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_ToolContainer_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::IGESToBRep_ToolContainer_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `IGESToBRep_ToolContainer.hxx`:38 - `IGESToBRep_ToolContainer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_ToolContainer_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESToBRep_ToolContainer_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_ToolContainer_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESToBRep_ToolContainer_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_ToolContainer_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IGESToBRep_ToolContainer_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepToolContainer> {
-        let __result = unsafe { crate::ffi::IGESToBRep_ToolContainer_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_ToolContainer_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_ToolContainer_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_ToolContainer_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_ToolContainer_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_ToolContainer_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_ToolContainer_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::IGESToBRep_ToolContainer_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -5371,58 +3650,30 @@ impl ToolContainer {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_ToolContainer_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_ToolContainer_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_ToolContainer_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_ToolContainer_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_ToolContainer_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_ToolContainer_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_ToolContainer_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_ToolContainer_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -5437,35 +3688,31 @@ unsafe impl crate::CppDeletable for HandleIGESToBRepToolContainer {
 impl HandleIGESToBRepToolContainer {
     /// Dereference this Handle to access the underlying IGESToBRep_ToolContainer
     pub fn get(&self) -> &crate::ffi::IGESToBRep_ToolContainer {
-        let __result =
-            unsafe { crate::ffi::HandleIGESToBRepToolContainer_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleIGESToBRepToolContainer_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESToBRep_ToolContainer
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_ToolContainer {
-        let __result =
-            unsafe { crate::ffi::HandleIGESToBRepToolContainer_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleIGESToBRepToolContainer_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESToBRep_ToolContainer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleIGESToBRepToolContainer_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleIGESToBRepToolContainer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IGESToBRep_ToolContainer> to Handle<IGESControl_ToolContainer>
@@ -5474,18 +3721,15 @@ impl HandleIGESToBRepToolContainer {
     pub fn downcast_to_tool_container(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlToolContainer>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleIGESToBRepToolContainer_downcast_to_HandleIGESControlToolContainer(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -5511,12 +3755,8 @@ impl TopoCurve {
     /// epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
     /// optimization of  the continuity to False.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_TopoCurve_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_TopoCurve_ctor()))
         }
     }
 
@@ -5524,12 +3764,10 @@ impl TopoCurve {
     /// Creates a tool TopoCurve ready to run and sets its
     /// fields as CS's.
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_TopoCurve_ctor_curveandsurface(CS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_ctor_curveandsurface(CS),
+            ))
         }
     }
 
@@ -5543,16 +3781,12 @@ impl TopoCurve {
         modeapprox: bool,
         optimized: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoCurve_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -5561,15 +3795,10 @@ impl TopoCurve {
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_transfer_topo_curve(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_transfer_topo_curve(self as *mut Self, start),
+            ))
         }
     }
 
@@ -5581,21 +3810,16 @@ impl TopoCurve {
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoCurve_transfer2d_topo_curve(
                     self as *mut Self,
                     start,
                     face,
                     trans,
                     uFact,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -5604,15 +3828,13 @@ impl TopoCurve {
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_transfer_topo_basic_curve(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_transfer_topo_basic_curve(
+                    self as *mut Self,
+                    start,
+                ),
+            ))
         }
     }
 
@@ -5624,21 +3846,16 @@ impl TopoCurve {
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoCurve_transfer2d_topo_basic_curve(
                     self as *mut Self,
                     start,
                     face,
                     trans,
                     uFact,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -5647,15 +3864,10 @@ impl TopoCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomPoint,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_transfer_point(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_transfer_point(self as *mut Self, start),
+            ))
         }
     }
 
@@ -5664,15 +3876,10 @@ impl TopoCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomPoint,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_transfer2d_point(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_transfer2d_point(self as *mut Self, start),
+            ))
         }
     }
 
@@ -5681,15 +3888,10 @@ impl TopoCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomCompositeCurve,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_transfer_composite_curve(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_transfer_composite_curve(self as *mut Self, start),
+            ))
         }
     }
 
@@ -5701,21 +3903,16 @@ impl TopoCurve {
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoCurve_transfer2d_composite_curve(
                     self as *mut Self,
                     start,
                     face,
                     trans,
                     uFact,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -5724,15 +3921,10 @@ impl TopoCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomOffsetCurve,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_transfer_offset_curve(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_transfer_offset_curve(self as *mut Self, start),
+            ))
         }
     }
 
@@ -5744,21 +3936,16 @@ impl TopoCurve {
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoCurve_transfer2d_offset_curve(
                     self as *mut Self,
                     start,
                     face,
                     trans,
                     uFact,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -5767,15 +3954,13 @@ impl TopoCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomCurveOnSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_transfer_curve_on_surface(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_transfer_curve_on_surface(
+                    self as *mut Self,
+                    start,
+                ),
+            ))
         }
     }
 
@@ -5790,8 +3975,8 @@ impl TopoCurve {
         uFact: f64,
         IsCurv: bool,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoCurve_transfer_curve_on_face(
                     self as *mut Self,
                     face,
@@ -5799,13 +3984,8 @@ impl TopoCurve {
                     trans,
                     uFact,
                     IsCurv,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -5814,15 +3994,10 @@ impl TopoCurve {
         &mut self,
         start: &crate::ffi::HandleIGESGeomBoundary,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_transfer_boundary(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_transfer_boundary(self as *mut Self, start),
+            ))
         }
     }
 
@@ -5835,516 +4010,309 @@ impl TopoCurve {
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoCurve_transfer_boundary_on_face(
                     self as *mut Self,
                     face,
                     start,
                     trans,
                     uFact,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:122 - `IGESToBRep_TopoCurve::ApproxBSplineCurve()`
     pub fn approx_b_spline_curve(&mut self, start: &crate::ffi::HandleGeomBSplineCurve) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_approx_b_spline_curve(self as *mut Self, start)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_approx_b_spline_curve(self as *mut Self, start)
+        })
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:125 - `IGESToBRep_TopoCurve::NbCurves()`
     /// Returns the count of Curves in "TheCurves"
     pub fn nb_curves(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_TopoCurve_nb_curves(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_nb_curves(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:129 - `IGESToBRep_TopoCurve::Curve()`
     /// Returns a Curve given its rank, by default the first one
     /// (null Curvee if out of range) in "TheCurves"
     pub fn curve(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_TopoCurve_curve(self as *const Self, num) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_TopoCurve_curve(
+                self as *const Self,
+                num,
+            )))
         }
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:131 - `IGESToBRep_TopoCurve::Approx2dBSplineCurve()`
     pub fn approx2d_b_spline_curve(&mut self, start: &crate::ffi::HandleGeom2dBSplineCurve) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_approx2d_b_spline_curve(self as *mut Self, start)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_approx2d_b_spline_curve(self as *mut Self, start)
+        })
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:134 - `IGESToBRep_TopoCurve::NbCurves2d()`
     /// Returns the count of Curves in "TheCurves2d"
     pub fn nb_curves2d(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_TopoCurve_nb_curves2d(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_nb_curves2d(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:138 - `IGESToBRep_TopoCurve::Curve2d()`
     /// Returns a Curve given its rank, by default the first one
     /// (null Curvee if out of range) in "TheCurves2d"
     pub fn curve2d(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_TopoCurve_curve2d(self as *const Self, num) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_curve2d(self as *const Self, num),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:141 - `IGESToBRep_TopoCurve::SetBadCase()`
     /// Sets TheBadCase flag
     pub fn set_bad_case(&mut self, value: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IGESToBRep_TopoCurve_set_bad_case(self as *mut Self, value) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_set_bad_case(self as *mut Self, value)
+        })
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:144 - `IGESToBRep_TopoCurve::BadCase()`
     /// Returns TheBadCase flag
     pub fn bad_case(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_TopoCurve_bad_case(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_bad_case(self as *const Self)
+        })
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface
     pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface (mutable)
     pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        let __result = unsafe { crate::ffi::IGESToBRep_TopoCurve_to_owned(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_to_owned(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
     pub fn init(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_Init(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_Init(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     pub fn set_epsilon(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsilon(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsilon(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     pub fn get_epsilon(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsilon(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsilon(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     pub fn set_eps_coeff(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsCoeff(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsCoeff(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     pub fn get_eps_coeff(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsCoeff(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsCoeff(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     pub fn set_eps_geom(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsGeom(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsGeom(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     pub fn get_eps_geom(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsGeom(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsGeom(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     pub fn set_min_tol(&mut self, mintol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetMinTol(self as *mut Self, mintol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetMinTol(self as *mut Self, mintol)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxtol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetMaxTol(self as *mut Self, maxtol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetMaxTol(self as *mut Self, maxtol)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
     pub fn update_min_max_tol(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_UpdateMinMaxTol(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_UpdateMinMaxTol(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     pub fn get_min_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetMinTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetMinTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     pub fn get_max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetMaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetMaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     pub fn set_mode_approx(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetModeApprox(self as *mut Self, mode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetModeApprox(self as *mut Self, mode)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     pub fn get_mode_approx(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetModeApprox(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetModeApprox(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     pub fn set_mode_transfer(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetModeTransfer(self as *mut Self, mode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetModeTransfer(self as *mut Self, mode)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     pub fn get_mode_transfer(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetModeTransfer(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetModeTransfer(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     pub fn set_optimized(&mut self, optimized: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetOptimized(
-                    self as *mut Self,
-                    optimized,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetOptimized(self as *mut Self, optimized)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     pub fn get_optimized(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetOptimized(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetOptimized(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     pub fn get_unit_factor(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetUnitFactor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetUnitFactor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     pub fn set_surface_curve(&mut self, ival: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetSurfaceCurve(self as *mut Self, ival)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetSurfaceCurve(self as *mut Self, ival)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetSurfaceCurve(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetSurfaceCurve(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetModel(self as *mut Self, model)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetModel(self as *mut Self, model)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
     pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetModel(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_inherited_GetModel(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     pub fn set_continuity(&mut self, continuity: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetContinuity(
-                    self as *mut Self,
-                    continuity,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetContinuity(self as *mut Self, continuity)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetContinuity(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetContinuity(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
     pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetTransferProcess(self as *mut Self, TP)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetTransferProcess(self as *mut Self, TP)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
     pub fn get_transfer_process(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetTransferProcess(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_inherited_GetTransferProcess(self as *const Self),
+            ))
         }
     }
 
@@ -6354,19 +4322,14 @@ impl TopoCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoCurve_inherited_TransferCurveAndSurface(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -6376,19 +4339,14 @@ impl TopoCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoCurve_inherited_TransferGeometry(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -6398,14 +4356,9 @@ impl TopoCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SendFail(self as *mut Self, start, amsg)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SendFail(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
@@ -6414,18 +4367,9 @@ impl TopoCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SendWarning(
-                    self as *mut Self,
-                    start,
-                    amsg,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SendWarning(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
@@ -6434,31 +4378,16 @@ impl TopoCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SendMsg(self as *mut Self, start, amsg)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SendMsg(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
     pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_HasShapeResult(
-                    self as *const Self,
-                    start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_HasShapeResult(self as *const Self, start)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
@@ -6466,18 +4395,13 @@ impl TopoCurve {
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoCurve_inherited_GetShapeResult(
                     self as *const Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -6487,32 +4411,20 @@ impl TopoCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetShapeResult(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
     pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_NbShapeResult(self as *const Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_NbShapeResult(self as *const Self, start)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
@@ -6521,57 +4433,36 @@ impl TopoCurve {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_AddShapeResult(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_AddShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
     pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_SetSurface(self as *mut Self, theSurface)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetSurface(self as *mut Self, theSurface)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
     pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_Surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoCurve_inherited_Surface(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetUVResolution(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_GetUVResolution(self as *mut Self)
+        })
     }
 }
 
@@ -6596,12 +4487,10 @@ impl TopoSurface {
     /// epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
     /// optimization of  the continuity to False.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_TopoSurface_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::IGESToBRep_TopoSurface_ctor()),
+            )
         }
     }
 
@@ -6609,12 +4498,10 @@ impl TopoSurface {
     /// Creates a tool TopoSurface ready to run and sets its
     /// fields as CS's.
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESToBRep_TopoSurface_ctor_curveandsurface(CS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoSurface_ctor_curveandsurface(CS),
+            ))
         }
     }
 
@@ -6628,16 +4515,12 @@ impl TopoSurface {
         modeapprox: bool,
         optimized: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoSurface_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6646,15 +4529,10 @@ impl TopoSurface {
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_transfer_topo_surface(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoSurface_transfer_topo_surface(self as *mut Self, start),
+            ))
         }
     }
 
@@ -6663,18 +4541,13 @@ impl TopoSurface {
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoSurface_transfer_topo_basic_surface(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -6683,15 +4556,10 @@ impl TopoSurface {
         &mut self,
         start: &crate::ffi::HandleIGESGeomRuledSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_transfer_ruled_surface(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoSurface_transfer_ruled_surface(self as *mut Self, start),
+            ))
         }
     }
 
@@ -6700,18 +4568,13 @@ impl TopoSurface {
         &mut self,
         start: &crate::ffi::HandleIGESGeomSurfaceOfRevolution,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoSurface_transfer_surface_of_revolution(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -6720,18 +4583,13 @@ impl TopoSurface {
         &mut self,
         start: &crate::ffi::HandleIGESGeomTabulatedCylinder,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoSurface_transfer_tabulated_cylinder(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -6740,15 +4598,13 @@ impl TopoSurface {
         &mut self,
         start: &crate::ffi::HandleIGESGeomOffsetSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_transfer_offset_surface(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoSurface_transfer_offset_surface(
+                    self as *mut Self,
+                    start,
+                ),
+            ))
         }
     }
 
@@ -6757,18 +4613,13 @@ impl TopoSurface {
         &mut self,
         start: &crate::ffi::HandleIGESGeomTrimmedSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoSurface_transfer_trimmed_surface(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -6777,18 +4628,13 @@ impl TopoSurface {
         &mut self,
         start: &crate::ffi::HandleIGESGeomBoundedSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoSurface_transfer_bounded_surface(
                     self as *mut Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -6797,15 +4643,10 @@ impl TopoSurface {
         &mut self,
         start: &crate::ffi::HandleIGESGeomPlane,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_transfer_plane(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoSurface_transfer_plane(self as *mut Self, start),
+            ))
         }
     }
 
@@ -6814,15 +4655,10 @@ impl TopoSurface {
         &mut self,
         start: &crate::ffi::HandleIGESSolidPlaneSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_transfer_plane_surface(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoSurface_transfer_plane_surface(self as *mut Self, start),
+            ))
         }
     }
 
@@ -6831,15 +4667,10 @@ impl TopoSurface {
         &mut self,
         start: &crate::ffi::HandleIGESBasicSingleParent,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_transfer_perforate(self as *mut Self, start)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoSurface_transfer_perforate(self as *mut Self, start),
+            ))
         }
     }
 
@@ -6850,408 +4681,235 @@ impl TopoSurface {
         trans: &mut crate::gp::Trsf2d,
         uFact: &mut f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoSurface_param_surface(
                     self as *mut Self,
                     start,
                     trans,
                     uFact,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface
     pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_as_IGESToBRep_CurveAndSurface(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESToBRep_TopoSurface_as_IGESToBRep_CurveAndSurface(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface (mutable)
     pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
-        let __result = unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_as_IGESToBRep_CurveAndSurface_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::IGESToBRep_TopoSurface_as_IGESToBRep_CurveAndSurface_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
     pub fn init(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_Init(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_Init(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     pub fn set_epsilon(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsilon(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsilon(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     pub fn get_epsilon(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsilon(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsilon(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     pub fn set_eps_coeff(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsCoeff(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsCoeff(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     pub fn get_eps_coeff(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsCoeff(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsCoeff(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     pub fn set_eps_geom(&mut self, eps: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsGeom(self as *mut Self, eps)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsGeom(self as *mut Self, eps)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     pub fn get_eps_geom(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsGeom(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsGeom(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     pub fn set_min_tol(&mut self, mintol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetMinTol(self as *mut Self, mintol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetMinTol(self as *mut Self, mintol)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxtol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetMaxTol(self as *mut Self, maxtol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetMaxTol(self as *mut Self, maxtol)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
     pub fn update_min_max_tol(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_UpdateMinMaxTol(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_UpdateMinMaxTol(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     pub fn get_min_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetMinTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetMinTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     pub fn get_max_tol(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetMaxTol(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetMaxTol(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     pub fn set_mode_approx(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetModeApprox(self as *mut Self, mode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetModeApprox(self as *mut Self, mode)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     pub fn get_mode_approx(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetModeApprox(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetModeApprox(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     pub fn set_mode_transfer(&mut self, mode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetModeTransfer(
-                    self as *mut Self,
-                    mode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetModeTransfer(self as *mut Self, mode)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     pub fn get_mode_transfer(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetModeTransfer(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetModeTransfer(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     pub fn set_optimized(&mut self, optimized: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetOptimized(
-                    self as *mut Self,
-                    optimized,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetOptimized(self as *mut Self, optimized)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     pub fn get_optimized(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetOptimized(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetOptimized(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     pub fn get_unit_factor(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetUnitFactor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetUnitFactor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     pub fn set_surface_curve(&mut self, ival: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetSurfaceCurve(
-                    self as *mut Self,
-                    ival,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetSurfaceCurve(self as *mut Self, ival)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetSurfaceCurve(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetSurfaceCurve(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetModel(self as *mut Self, model)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetModel(self as *mut Self, model)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
     pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetModel(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoSurface_inherited_GetModel(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     pub fn set_continuity(&mut self, continuity: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetContinuity(
-                    self as *mut Self,
-                    continuity,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetContinuity(
+                self as *mut Self,
+                continuity,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetContinuity(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetContinuity(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
     pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetTransferProcess(
-                    self as *mut Self,
-                    TP,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetTransferProcess(self as *mut Self, TP)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
     pub fn get_transfer_process(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetTransferProcess(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoSurface_inherited_GetTransferProcess(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7261,19 +4919,14 @@ impl TopoSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoSurface_inherited_TransferCurveAndSurface(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -7283,19 +4936,14 @@ impl TopoSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoSurface_inherited_TransferGeometry(
                     self as *mut Self,
                     start,
                     theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -7305,18 +4953,9 @@ impl TopoSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SendFail(
-                    self as *mut Self,
-                    start,
-                    amsg,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SendFail(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
@@ -7325,18 +4964,9 @@ impl TopoSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SendWarning(
-                    self as *mut Self,
-                    start,
-                    amsg,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SendWarning(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
@@ -7345,31 +4975,16 @@ impl TopoSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SendMsg(self as *mut Self, start, amsg)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SendMsg(self as *mut Self, start, amsg)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
     pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_HasShapeResult(
-                    self as *const Self,
-                    start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_HasShapeResult(self as *const Self, start)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
@@ -7377,18 +4992,13 @@ impl TopoSurface {
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESToBRep_TopoSurface_inherited_GetShapeResult(
                     self as *const Self,
                     start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -7398,35 +5008,20 @@ impl TopoSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetShapeResult(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
     pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_NbShapeResult(
-                    self as *const Self,
-                    start,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_NbShapeResult(self as *const Self, start)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
@@ -7435,60 +5030,35 @@ impl TopoSurface {
         start: &crate::ffi::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_AddShapeResult(
-                    self as *mut Self,
-                    start,
-                    result,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_AddShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
     pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_SetSurface(
-                    self as *mut Self,
-                    theSurface,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetSurface(self as *mut Self, theSurface)
+        })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
     pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_Surface(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESToBRep_TopoSurface_inherited_Surface(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetUVResolution(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_GetUVResolution(self as *mut Self)
+        })
     }
 }

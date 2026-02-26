@@ -26,12 +26,10 @@ impl EdgeFaceTransition {
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:37 - `TopCnx_EdgeFaceTransition::TopCnx_EdgeFaceTransition()`
     /// Creates an empty algorithm.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopCnx_EdgeFaceTransition_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::TopCnx_EdgeFaceTransition_ctor(),
+            ))
         }
     }
 
@@ -39,31 +37,22 @@ impl EdgeFaceTransition {
     /// Initialize  the     algorithm    with the    local
     /// description of the edge.
     pub fn reset_dir2_real(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir, Curv: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopCnx_EdgeFaceTransition_reset_dir2_real(
-                    self as *mut Self,
-                    Tgt,
-                    Norm,
-                    Curv,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopCnx_EdgeFaceTransition_reset_dir2_real(
+                self as *mut Self,
+                Tgt,
+                Norm,
+                Curv,
+            )
+        })
     }
 
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:44 - `TopCnx_EdgeFaceTransition::Reset()`
     /// Initialize the algorithm with a linear Edge.
     pub fn reset_dir(&mut self, Tgt: &crate::gp::Dir) {
-        {
-            let __exc =
-                unsafe { crate::ffi::TopCnx_EdgeFaceTransition_reset_dir(self as *mut Self, Tgt) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopCnx_EdgeFaceTransition_reset_dir(self as *mut Self, Tgt)
+        })
     }
 
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:51 - `TopCnx_EdgeFaceTransition::AddInterference()`
@@ -82,51 +71,35 @@ impl EdgeFaceTransition {
         Tr: crate::top_abs::Orientation,
         BTr: crate::top_abs::Orientation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::TopCnx_EdgeFaceTransition_add_interference(
-                    self as *mut Self,
-                    Tole,
-                    Tang,
-                    Norm,
-                    Curv,
-                    Or.into(),
-                    Tr.into(),
-                    BTr.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::TopCnx_EdgeFaceTransition_add_interference(
+                self as *mut Self,
+                Tole,
+                Tang,
+                Norm,
+                Curv,
+                Or.into(),
+                Tr.into(),
+                BTr.into(),
+            )
+        })
     }
 
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:60 - `TopCnx_EdgeFaceTransition::Transition()`
     /// Returns the current cumulated transition.
     pub fn transition(&self) -> crate::top_abs::Orientation {
-        {
-            let __result =
-                unsafe { crate::ffi::TopCnx_EdgeFaceTransition_transition(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::TopCnx_EdgeFaceTransition_transition(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:63 - `TopCnx_EdgeFaceTransition::BoundaryTransition()`
     /// Returns the current cumulated BoundaryTransition.
     pub fn boundary_transition(&self) -> crate::top_abs::Orientation {
-        {
-            let __result = unsafe {
-                crate::ffi::TopCnx_EdgeFaceTransition_boundary_transition(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::Orientation::try_from(__val).unwrap()
-        }
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
+            crate::ffi::TopCnx_EdgeFaceTransition_boundary_transition(self as *const Self)
+        }))
+        .unwrap()
     }
 }

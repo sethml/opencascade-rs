@@ -40,25 +40,19 @@ impl ConfigurationContext {
     /// **Source:** `DE_ConfigurationContext.hxx`:34 - `DE_ConfigurationContext::DE_ConfigurationContext()`
     /// Creates an empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::DE_ConfigurationContext_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_ConfigurationContext_ctor(),
+            ))
         }
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_ConfigurationContext_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::DE_ConfigurationContext_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -68,16 +62,9 @@ impl ConfigurationContext {
     /// @param[in] theConfiguration path to configuration file or string value
     /// @return true in case of success, false otherwise
     pub fn load(&mut self, theConfiguration: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_load(self as *mut Self, theConfiguration)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_load(self as *mut Self, theConfiguration)
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:46 - `DE_ConfigurationContext::LoadFile()`
@@ -86,16 +73,9 @@ impl ConfigurationContext {
     /// @param[in] theFile path to the resource file
     /// @return true in case of success, false otherwise
     pub fn load_file(&mut self, theFile: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_load_file(self as *mut Self, theFile)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_load_file(self as *mut Self, theFile)
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:52 - `DE_ConfigurationContext::LoadStr()`
@@ -104,16 +84,9 @@ impl ConfigurationContext {
     /// @param[in] theResource string with resource content
     /// @return true in case of success, false otherwise
     pub fn load_str(&mut self, theResource: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_load_str(self as *mut Self, theResource)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_load_str(self as *mut Self, theResource)
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:58 - `DE_ConfigurationContext::IsParamSet()`
@@ -126,20 +99,13 @@ impl ConfigurationContext {
         theParam: &crate::t_collection::AsciiString,
         theScope: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_is_param_set(
-                    self as *const Self,
-                    theParam,
-                    theScope,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_is_param_set(
+                self as *const Self,
+                theParam,
+                theScope,
+            )
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:66 - `DE_ConfigurationContext::GetReal()`
@@ -154,21 +120,14 @@ impl ConfigurationContext {
         theValue: &mut f64,
         theScope: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_get_real(
-                    self as *const Self,
-                    theParam,
-                    theValue,
-                    theScope,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_get_real(
+                self as *const Self,
+                theParam,
+                theValue,
+                theScope,
+            )
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:75 - `DE_ConfigurationContext::GetInteger()`
@@ -183,21 +142,14 @@ impl ConfigurationContext {
         theValue: &mut i32,
         theScope: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_get_integer(
-                    self as *const Self,
-                    theParam,
-                    theValue,
-                    theScope,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_get_integer(
+                self as *const Self,
+                theParam,
+                theValue,
+                theScope,
+            )
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:84 - `DE_ConfigurationContext::GetBoolean()`
@@ -212,21 +164,14 @@ impl ConfigurationContext {
         theValue: &mut bool,
         theScope: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_get_boolean(
-                    self as *const Self,
-                    theParam,
-                    theValue,
-                    theScope,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_get_boolean(
+                self as *const Self,
+                theParam,
+                theValue,
+                theScope,
+            )
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:93 - `DE_ConfigurationContext::GetString()`
@@ -241,21 +186,14 @@ impl ConfigurationContext {
         theValue: &mut crate::t_collection::AsciiString,
         theScope: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_get_string(
-                    self as *const Self,
-                    theParam,
-                    theValue,
-                    theScope,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_get_string(
+                self as *const Self,
+                theParam,
+                theValue,
+                theScope,
+            )
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:102 - `DE_ConfigurationContext::GetStringSeq()`
@@ -270,21 +208,14 @@ impl ConfigurationContext {
         theValue: &mut crate::ffi::TColStd_ListOfAsciiString,
         theScope: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_get_string_seq(
-                    self as *const Self,
-                    theParam,
-                    theValue,
-                    theScope,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_get_string_seq(
+                self as *const Self,
+                theParam,
+                theValue,
+                theScope,
+            )
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:111 - `DE_ConfigurationContext::RealVal()`
@@ -299,21 +230,14 @@ impl ConfigurationContext {
         theDefValue: f64,
         theScope: &crate::t_collection::AsciiString,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_real_val(
-                    self as *const Self,
-                    theParam,
-                    theDefValue,
-                    theScope,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_real_val(
+                self as *const Self,
+                theParam,
+                theDefValue,
+                theScope,
+            )
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:120 - `DE_ConfigurationContext::IntegerVal()`
@@ -328,21 +252,14 @@ impl ConfigurationContext {
         theDefValue: i32,
         theScope: &crate::t_collection::AsciiString,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_integer_val(
-                    self as *const Self,
-                    theParam,
-                    theDefValue,
-                    theScope,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_integer_val(
+                self as *const Self,
+                theParam,
+                theDefValue,
+                theScope,
+            )
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:129 - `DE_ConfigurationContext::BooleanVal()`
@@ -357,21 +274,14 @@ impl ConfigurationContext {
         theDefValue: bool,
         theScope: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_boolean_val(
-                    self as *const Self,
-                    theParam,
-                    theDefValue,
-                    theScope,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_boolean_val(
+                self as *const Self,
+                theParam,
+                theDefValue,
+                theScope,
+            )
+        })
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:139 - `DE_ConfigurationContext::StringVal()`
@@ -386,20 +296,15 @@ impl ConfigurationContext {
         theDefValue: &crate::t_collection::AsciiString,
         theScope: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::DE_ConfigurationContext_string_val(
                     self as *const Self,
                     theParam,
                     theDefValue,
                     theScope,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -407,115 +312,80 @@ impl ConfigurationContext {
     /// Gets internal resource map
     /// @return map with resource value
     pub fn get_internal_map(&self) -> &crate::ffi::DE_ResourceMap {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_get_internal_map(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::DE_ConfigurationContext_get_internal_map(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::DE_ConfigurationContext_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::DE_ConfigurationContext_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::DE_ConfigurationContext_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::DE_ConfigurationContext_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::DE_ConfigurationContext_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::DE_ConfigurationContext_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::DE_ConfigurationContext_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::DE_ConfigurationContext_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationContext> {
-        let __result = unsafe { crate::ffi::DE_ConfigurationContext_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_ConfigurationContext_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::DE_ConfigurationContext_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::DE_ConfigurationContext_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -526,54 +396,30 @@ impl ConfigurationContext {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_ConfigurationContext_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationContext_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_ConfigurationContext_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_ConfigurationContext_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -588,32 +434,29 @@ unsafe impl crate::CppDeletable for HandleDEConfigurationContext {
 impl HandleDEConfigurationContext {
     /// Dereference this Handle to access the underlying DE_ConfigurationContext
     pub fn get(&self) -> &crate::ffi::DE_ConfigurationContext {
-        let __result = unsafe { crate::ffi::HandleDEConfigurationContext_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleDEConfigurationContext_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying DE_ConfigurationContext
     pub fn get_mut(&mut self) -> &mut crate::ffi::DE_ConfigurationContext {
-        let __result =
-            unsafe { crate::ffi::HandleDEConfigurationContext_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleDEConfigurationContext_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<DE_ConfigurationContext> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleDEConfigurationContext_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleDEConfigurationContext_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -659,14 +502,10 @@ unsafe impl crate::CppDeletable for ConfigurationNode {
 impl ConfigurationNode {
     /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_ConfigurationNode_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::DE_ConfigurationNode_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -675,19 +514,9 @@ impl ConfigurationNode {
     /// @param[in] theResourcePath file path to resource
     /// @return True if Load was successful
     pub fn load_asciistring(&mut self, theResourcePath: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_load_asciistring(
-                    self as *mut Self,
-                    theResourcePath,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_load_asciistring(self as *mut Self, theResourcePath)
+        })
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:68 - `DE_ConfigurationNode::Load()`
@@ -698,19 +527,12 @@ impl ConfigurationNode {
         &mut self,
         theResource: &crate::ffi::HandleDEConfigurationContext,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_load_handledeconfigurationcontext(
-                    self as *mut Self,
-                    theResource,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_load_handledeconfigurationcontext(
+                self as *mut Self,
+                theResource,
+            )
+        })
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:73 - `DE_ConfigurationNode::Save()`
@@ -718,32 +540,19 @@ impl ConfigurationNode {
     /// @param[in] theResourcePath file path to resource
     /// @return True if Save was successful
     pub fn save_asciistring(&self, theResourcePath: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_save_asciistring(
-                    self as *const Self,
-                    theResourcePath,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_save_asciistring(self as *const Self, theResourcePath)
+        })
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:77 - `DE_ConfigurationNode::Save()`
     /// Writes configuration to the string
     /// @return result resource string
     pub fn save(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe { crate::ffi::DE_ConfigurationNode_save(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::DE_ConfigurationNode_save(
+                self as *const Self,
+            )))
         }
     }
 
@@ -751,14 +560,10 @@ impl ConfigurationNode {
     /// Creates new provider for the own format
     /// @return new created provider
     pub fn build_provider(&mut self) -> crate::OwnedPtr<crate::ffi::HandleDEProvider> {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_ConfigurationNode_build_provider(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_ConfigurationNode_build_provider(self as *mut Self),
+            ))
         }
     }
 
@@ -766,13 +571,10 @@ impl ConfigurationNode {
     /// Copies values of all fields
     /// @return new object with the same field values
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
-        {
-            let __result = unsafe { crate::ffi::DE_ConfigurationNode_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::DE_ConfigurationNode_copy(
+                self as *const Self,
+            )))
         }
     }
 
@@ -782,66 +584,37 @@ impl ConfigurationNode {
     /// @param[in] theToKeep flag to save update result
     /// @return Standard_True, if node can be used
     pub fn update_load(&mut self, theToImport: bool, theToKeep: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_update_load(
-                    self as *mut Self,
-                    theToImport,
-                    theToKeep,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_update_load(self as *mut Self, theToImport, theToKeep)
+        })
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:97 - `DE_ConfigurationNode::IsImportSupported()`
     /// Checks the import supporting
     /// @return Standard_True if import is support
     pub fn is_import_supported(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_is_import_supported(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_is_import_supported(self as *const Self)
+        })
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:101 - `DE_ConfigurationNode::IsExportSupported()`
     /// Checks the export supporting
     /// @return Standard_True if export is support
     pub fn is_export_supported(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_is_export_supported(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_is_export_supported(self as *const Self)
+        })
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:105 - `DE_ConfigurationNode::GetFormat()`
     /// Gets CAD format name of associated provider
     /// @return provider CAD format
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_ConfigurationNode_get_format(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_ConfigurationNode_get_format(self as *const Self),
+            ))
         }
     }
 
@@ -849,14 +622,10 @@ impl ConfigurationNode {
     /// Gets provider's vendor name of associated provider
     /// @return provider's vendor name
     pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_ConfigurationNode_get_vendor(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_ConfigurationNode_get_vendor(self as *const Self),
+            ))
         }
     }
 
@@ -864,14 +633,10 @@ impl ConfigurationNode {
     /// Gets list of supported file extensions
     /// @return list of extensions
     pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi::TColStd_ListOfAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_ConfigurationNode_get_extensions(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_ConfigurationNode_get_extensions(self as *const Self),
+            ))
         }
     }
 
@@ -880,16 +645,9 @@ impl ConfigurationNode {
     /// @param[in] theExtension input file extension
     /// @return Standard_True if file is supported by a current provider
     pub fn check_extension(&self, theExtension: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_check_extension(self as *const Self, theExtension)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_check_extension(self as *const Self, theExtension)
+        })
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:123 - `DE_ConfigurationNode::CheckContent()`
@@ -897,45 +655,27 @@ impl ConfigurationNode {
     /// @param[in] theBuffer read stream buffer to check content
     /// @return Standard_True if file is supported by a current provider
     pub fn check_content(&self, theBuffer: &crate::ffi::HandleNCollectionBuffer) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_check_content(self as *const Self, theBuffer)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_check_content(self as *const Self, theBuffer)
+        })
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
     /// Gets the provider loading status
     /// @return Standard_True if the load is correct
     pub fn is_enabled(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_ConfigurationNode_is_enabled(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_is_enabled(self as *const Self)
+        })
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
     /// Sets the provider loading status
     /// @param[in] theIsLoaded input load status
     pub fn set_enabled(&mut self, theIsLoaded: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_ConfigurationNode_set_enabled(self as *mut Self, theIsLoaded)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_set_enabled(self as *mut Self, theIsLoaded)
+        })
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
@@ -947,98 +687,65 @@ impl ConfigurationNode {
     /// The main goal - real-time loading plug-in activation.
     /// OpenSource components don't need to have activation process.
     pub fn custom_activation(&mut self, arg0: &crate::ffi::TColStd_ListOfAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_ConfigurationNode_custom_activation(self as *mut Self, arg0)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_custom_activation(self as *mut Self, arg0)
+        })
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::DE_ConfigurationNode_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::DE_ConfigurationNode_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::DE_ConfigurationNode_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::DE_ConfigurationNode_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::DE_ConfigurationNode_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::DE_ConfigurationNode_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::DE_ConfigurationNode_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::DE_ConfigurationNode_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::DE_ConfigurationNode_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::DE_ConfigurationNode_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1049,53 +756,30 @@ impl ConfigurationNode {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_ConfigurationNode_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ConfigurationNode_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::DE_ConfigurationNode_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_ConfigurationNode_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1110,31 +794,29 @@ unsafe impl crate::CppDeletable for HandleDEConfigurationNode {
 impl HandleDEConfigurationNode {
     /// Dereference this Handle to access the underlying DE_ConfigurationNode
     pub fn get(&self) -> &crate::ffi::DE_ConfigurationNode {
-        let __result = unsafe { crate::ffi::HandleDEConfigurationNode_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleDEConfigurationNode_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying DE_ConfigurationNode
     pub fn get_mut(&mut self) -> &mut crate::ffi::DE_ConfigurationNode {
-        let __result = unsafe { crate::ffi::HandleDEConfigurationNode_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleDEConfigurationNode_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<DE_ConfigurationNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleDEConfigurationNode_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleDEConfigurationNode_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<DE_ConfigurationNode> to Handle<DEBREP_ConfigurationNode>
@@ -1143,18 +825,15 @@ impl HandleDEConfigurationNode {
     pub fn downcast_to_debrep_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEBREPConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEBREPConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1164,18 +843,15 @@ impl HandleDEConfigurationNode {
     pub fn downcast_to_degltf_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEGLTFConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEGLTFConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1185,18 +861,15 @@ impl HandleDEConfigurationNode {
     pub fn downcast_to_deiges_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEIGESConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEIGESConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1206,18 +879,15 @@ impl HandleDEConfigurationNode {
     pub fn downcast_to_deobj_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEOBJConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEOBJConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1227,18 +897,15 @@ impl HandleDEConfigurationNode {
     pub fn downcast_to_deply_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEPLYConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEPLYConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1248,18 +915,15 @@ impl HandleDEConfigurationNode {
     pub fn downcast_to_destep_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDESTEPConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDESTEPConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1269,18 +933,15 @@ impl HandleDEConfigurationNode {
     pub fn downcast_to_destl_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDESTLConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDESTLConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1290,18 +951,15 @@ impl HandleDEConfigurationNode {
     pub fn downcast_to_devrml_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEVRMLConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEVRMLConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1311,18 +969,15 @@ impl HandleDEConfigurationNode {
     pub fn downcast_to_dexcaf_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEXCAFConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEXCAFConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1332,18 +987,15 @@ impl HandleDEConfigurationNode {
     pub fn downcast_to_shape_fix_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEShapeFixConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEShapeFixConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -1390,13 +1042,8 @@ unsafe impl crate::CppDeletable for Provider {
 impl Provider {
     /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::DE_Provider_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::DE_Provider_dynamic_type(self as *const Self)))
         }
     }
 
@@ -1414,16 +1061,9 @@ impl Provider {
         theWS: &mut crate::ffi::HandleXSControlWorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        })
     }
 
     /// **Source:** `DE_Provider.hxx`:74 - `DE_Provider::Write()`
@@ -1440,16 +1080,9 @@ impl Provider {
         theWS: &mut crate::ffi::HandleXSControlWorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        })
     }
 
     /// **Source:** `DE_Provider.hxx`:85 - `DE_Provider::Read()`
@@ -1464,21 +1097,14 @@ impl Provider {
         theDocument: &crate::ffi::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Provider_read_asciistring_handletdocstddocument_progressrange(
-                    self as *mut Self,
-                    thePath,
-                    theDocument,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_read_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Provider.hxx`:95 - `DE_Provider::Write()`
@@ -1493,21 +1119,14 @@ impl Provider {
         theDocument: &crate::ffi::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Provider_write_asciistring_handletdocstddocument_progressrange(
-                    self as *mut Self,
-                    thePath,
-                    theDocument,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_write_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Provider.hxx`:106 - `DE_Provider::Read()`
@@ -1524,16 +1143,15 @@ impl Provider {
         theWS: &mut crate::ffi::HandleXSControlWorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Provider_read_asciistring_shape_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theShape, theWS, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_read_asciistring_shape_handlexscontrolworksession_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theWS,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Provider.hxx`:118 - `DE_Provider::Write()`
@@ -1550,16 +1168,15 @@ impl Provider {
         theWS: &mut crate::ffi::HandleXSControlWorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Provider_write_asciistring_shape_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theShape, theWS, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_write_asciistring_shape_handlexscontrolworksession_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theWS,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Provider.hxx`:129 - `DE_Provider::Read()`
@@ -1574,21 +1191,14 @@ impl Provider {
         theShape: &mut crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Provider_read_asciistring_shape_progressrange(
-                    self as *mut Self,
-                    thePath,
-                    theShape,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_read_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Provider.hxx`:139 - `DE_Provider::Write()`
@@ -1603,34 +1213,24 @@ impl Provider {
         theShape: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Provider_write_asciistring_shape_progressrange(
-                    self as *mut Self,
-                    thePath,
-                    theShape,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_write_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Provider.hxx`:147 - `DE_Provider::GetFormat()`
     /// Gets CAD format name of associated provider
     /// @return provider CAD format
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe { crate::ffi::DE_Provider_get_format(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::DE_Provider_get_format(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1638,13 +1238,10 @@ impl Provider {
     /// Gets provider's vendor name of associated provider
     /// @return provider's vendor name
     pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe { crate::ffi::DE_Provider_get_vendor(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::DE_Provider_get_vendor(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1652,13 +1249,10 @@ impl Provider {
     /// Gets internal configuration node
     /// @return configuration node object
     pub fn get_node(&self) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
-        {
-            let __result = unsafe { crate::ffi::DE_Provider_get_node(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::DE_Provider_get_node(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1666,93 +1260,63 @@ impl Provider {
     /// Sets internal configuration node
     /// @param[in] theNode configuration node to set
     pub fn set_node(&mut self, theNode: &crate::ffi::HandleDEConfigurationNode) {
-        {
-            let __exc = unsafe { crate::ffi::DE_Provider_set_node(self as *mut Self, theNode) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_Provider_set_node(self as *mut Self, theNode)
+        })
     }
 
     /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::DE_Provider_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::DE_Provider_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::DE_Provider_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::DE_Provider_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::DE_Provider_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::DE_Provider_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::DE_Provider_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::DE_Provider_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Provider_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_Provider_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::DE_Provider_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::DE_Provider_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1763,49 +1327,30 @@ impl Provider {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_Provider_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::DE_Provider_inherited_IncrementRefCounter(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_Provider_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_Provider_inherited_DecrementRefCounter(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Provider_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::DE_Provider_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_Provider_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1820,30 +1365,23 @@ unsafe impl crate::CppDeletable for HandleDEProvider {
 impl HandleDEProvider {
     /// Dereference this Handle to access the underlying DE_Provider
     pub fn get(&self) -> &crate::ffi::DE_Provider {
-        let __result = unsafe { crate::ffi::HandleDEProvider_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleDEProvider_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying DE_Provider
     pub fn get_mut(&mut self) -> &mut crate::ffi::DE_Provider {
-        let __result = unsafe { crate::ffi::HandleDEProvider_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleDEProvider_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<DE_Provider> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result =
-            unsafe { crate::ffi::HandleDEProvider_to_HandleStandardTransient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleDEProvider_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<DE_Provider> to Handle<DEBREP_Provider>
@@ -1852,16 +1390,13 @@ impl HandleDEProvider {
     pub fn downcast_to_debrep_provider(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEBREPProvider>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEProvider_downcast_to_HandleDEBREPProvider(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1871,16 +1406,13 @@ impl HandleDEProvider {
     pub fn downcast_to_degltf_provider(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEGLTFProvider>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEProvider_downcast_to_HandleDEGLTFProvider(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1890,16 +1422,13 @@ impl HandleDEProvider {
     pub fn downcast_to_deiges_provider(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEIGESProvider>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEProvider_downcast_to_HandleDEIGESProvider(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1909,16 +1438,13 @@ impl HandleDEProvider {
     pub fn downcast_to_deobj_provider(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEOBJProvider>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEProvider_downcast_to_HandleDEOBJProvider(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1928,16 +1454,13 @@ impl HandleDEProvider {
     pub fn downcast_to_deply_provider(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEPLYProvider>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEProvider_downcast_to_HandleDEPLYProvider(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1947,16 +1470,13 @@ impl HandleDEProvider {
     pub fn downcast_to_destep_provider(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDESTEPProvider>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEProvider_downcast_to_HandleDESTEPProvider(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1966,16 +1486,13 @@ impl HandleDEProvider {
     pub fn downcast_to_destl_provider(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDESTLProvider>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEProvider_downcast_to_HandleDESTLProvider(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1985,16 +1502,13 @@ impl HandleDEProvider {
     pub fn downcast_to_devrml_provider(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEVRMLProvider>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEProvider_downcast_to_HandleDEVRMLProvider(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -2004,16 +1518,13 @@ impl HandleDEProvider {
     pub fn downcast_to_dexcaf_provider(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEXCAFProvider>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEProvider_downcast_to_HandleDEXCAFProvider(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -2035,15 +1546,10 @@ unsafe impl crate::CppDeletable for ShapeFixConfigurationNode {
 impl ShapeFixConfigurationNode {
     /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::DE_ShapeFixConfigurationNode_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2052,346 +1558,226 @@ impl ShapeFixConfigurationNode {
     /// @param[in] theResource input resource to use
     /// @return True if Load was successful
     pub fn load(&mut self, theResource: &crate::ffi::HandleDEConfigurationContext) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_load(self as *mut Self, theResource)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_load(self as *mut Self, theResource)
+        })
     }
 
     /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:44 - `DE_ShapeFixConfigurationNode::Save()`
     /// Writes configuration to the string
     /// @return result resource string
     pub fn save(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_ShapeFixConfigurationNode_save(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_ShapeFixConfigurationNode_save(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::DE_ShapeFixConfigurationNode_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::DE_ShapeFixConfigurationNode_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_ShapeFixConfigurationNode_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::DE_ShapeFixConfigurationNode_get_type_descriptor()))
         }
     }
 
     /// Upcast to DE_ConfigurationNode
     pub fn as_configuration_node(&self) -> &ConfigurationNode {
-        let __result = unsafe {
-            crate::ffi::DE_ShapeFixConfigurationNode_as_DE_ConfigurationNode(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::DE_ShapeFixConfigurationNode_as_DE_ConfigurationNode(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to DE_ConfigurationNode (mutable)
     pub fn as_configuration_node_mut(&mut self) -> &mut ConfigurationNode {
-        let __result = unsafe {
-            crate::ffi::DE_ShapeFixConfigurationNode_as_DE_ConfigurationNode_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::DE_ShapeFixConfigurationNode_as_DE_ConfigurationNode_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::DE_ShapeFixConfigurationNode_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::DE_ShapeFixConfigurationNode_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::DE_ShapeFixConfigurationNode_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::DE_ShapeFixConfigurationNode_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:81 - `DE_ConfigurationNode::BuildProvider()`
     pub fn build_provider(&mut self) -> crate::OwnedPtr<crate::ffi::HandleDEProvider> {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_BuildProvider(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_ShapeFixConfigurationNode_inherited_BuildProvider(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:85 - `DE_ConfigurationNode::Copy()`
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_Copy(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_ShapeFixConfigurationNode_inherited_Copy(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn update_load(&mut self, theToImport: bool, theToKeep: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_UpdateLoad(
-                    self as *mut Self,
-                    theToImport,
-                    theToKeep,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_UpdateLoad(
+                self as *mut Self,
+                theToImport,
+                theToKeep,
+            )
+        })
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:97 - `DE_ConfigurationNode::IsImportSupported()`
     pub fn is_import_supported(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsImportSupported(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsImportSupported(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:101 - `DE_ConfigurationNode::IsExportSupported()`
     pub fn is_export_supported(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsExportSupported(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsExportSupported(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:105 - `DE_ConfigurationNode::GetFormat()`
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetFormat(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetFormat(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:109 - `DE_ConfigurationNode::GetVendor()`
     pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetVendor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetVendor(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:113 - `DE_ConfigurationNode::GetExtensions()`
     pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi::TColStd_ListOfAsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetExtensions(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
     pub fn check_extension(&self, theExtension: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_CheckExtension(
-                    self as *const Self,
-                    theExtension,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_CheckExtension(
+                self as *const Self,
+                theExtension,
+            )
+        })
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:123 - `DE_ConfigurationNode::CheckContent()`
     pub fn check_content(&self, theBuffer: &crate::ffi::HandleNCollectionBuffer) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_CheckContent(
-                    self as *const Self,
-                    theBuffer,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_CheckContent(
+                self as *const Self,
+                theBuffer,
+            )
+        })
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
     pub fn is_enabled(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsEnabled(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsEnabled(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
     pub fn set_enabled(&mut self, theIsLoaded: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_SetEnabled(
-                    self as *mut Self,
-                    theIsLoaded,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_SetEnabled(
+                self as *mut Self,
+                theIsLoaded,
+            )
+        })
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
     pub fn custom_activation(&mut self, arg0: &crate::ffi::TColStd_ListOfAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_CustomActivation(
-                    self as *mut Self,
-                    arg0,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_CustomActivation(
+                self as *mut Self,
+                arg0,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::DE_ShapeFixConfigurationNode_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2402,58 +1788,34 @@ impl ShapeFixConfigurationNode {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_ShapeFixConfigurationNode_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2468,50 +1830,44 @@ unsafe impl crate::CppDeletable for HandleDEShapeFixConfigurationNode {
 impl HandleDEShapeFixConfigurationNode {
     /// Dereference this Handle to access the underlying DE_ShapeFixConfigurationNode
     pub fn get(&self) -> &crate::ffi::DE_ShapeFixConfigurationNode {
-        let __result =
-            unsafe { crate::ffi::HandleDEShapeFixConfigurationNode_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleDEShapeFixConfigurationNode_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying DE_ShapeFixConfigurationNode
     pub fn get_mut(&mut self) -> &mut crate::ffi::DE_ShapeFixConfigurationNode {
-        let __result =
-            unsafe { crate::ffi::HandleDEShapeFixConfigurationNode_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleDEShapeFixConfigurationNode_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<DE_ShapeFixConfigurationNode> to Handle<DE_ConfigurationNode>
     pub fn to_handle_configuration_node(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
-        let __result = unsafe {
-            crate::ffi::HandleDEShapeFixConfigurationNode_to_HandleDEConfigurationNode(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleDEShapeFixConfigurationNode_to_HandleDEConfigurationNode(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<DE_ShapeFixConfigurationNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleDEShapeFixConfigurationNode_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleDEShapeFixConfigurationNode_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<DE_ShapeFixConfigurationNode> to Handle<DEIGES_ConfigurationNode>
@@ -2520,18 +1876,15 @@ impl HandleDEShapeFixConfigurationNode {
     pub fn downcast_to_deiges_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEIGESConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEShapeFixConfigurationNode_downcast_to_HandleDEIGESConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -2541,18 +1894,15 @@ impl HandleDEShapeFixConfigurationNode {
     pub fn downcast_to_destep_configuration_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleDESTEPConfigurationNode>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleDEShapeFixConfigurationNode_downcast_to_HandleDESTEPConfigurationNode(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -2575,12 +1925,8 @@ impl ShapeFixParameters {
     /// **Source:** `DE_ShapeFixParameters.hxx` - `DE_ShapeFixParameters::DE_ShapeFixParameters()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::DE_ShapeFixParameters_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::DE_ShapeFixParameters_ctor()))
         }
     }
 }
@@ -2623,38 +1969,23 @@ impl Wrapper {
     /// **Source:** `DE_Wrapper.hxx`:60 - `DE_Wrapper::DE_Wrapper()`
     /// Initializes all field by default
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::DE_Wrapper_ctor())) }
     }
 
     /// **Source:** `DE_Wrapper.hxx`:64 - `DE_Wrapper::DE_Wrapper()`
     /// Copies values of all fields
     /// @param[in] theWrapper object to copy
     pub fn new_handledewrapper(theWrapper: &crate::ffi::HandleDEWrapper) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_ctor_handledewrapper(theWrapper) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::DE_Wrapper_ctor_handledewrapper(theWrapper),
+            ))
         }
     }
 
     /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::DE_Wrapper_dynamic_type(self as *const Self))) }
     }
 
     /// **Source:** `DE_Wrapper.hxx`:85 - `DE_Wrapper::Read()`
@@ -2671,16 +2002,9 @@ impl Wrapper {
         theWS: &mut crate::ffi::HandleXSControlWorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:97 - `DE_Wrapper::Write()`
@@ -2697,16 +2021,9 @@ impl Wrapper {
         theWS: &mut crate::ffi::HandleXSControlWorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:108 - `DE_Wrapper::Read()`
@@ -2721,21 +2038,14 @@ impl Wrapper {
         theDocument: &crate::ffi::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_read_asciistring_handletdocstddocument_progressrange(
-                    self as *mut Self,
-                    thePath,
-                    theDocument,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_read_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:118 - `DE_Wrapper::Write()`
@@ -2750,21 +2060,14 @@ impl Wrapper {
         theDocument: &crate::ffi::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_write_asciistring_handletdocstddocument_progressrange(
-                    self as *mut Self,
-                    thePath,
-                    theDocument,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_write_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:129 - `DE_Wrapper::Read()`
@@ -2781,16 +2084,15 @@ impl Wrapper {
         theWS: &mut crate::ffi::HandleXSControlWorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_read_asciistring_shape_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theShape, theWS, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_read_asciistring_shape_handlexscontrolworksession_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theWS,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:141 - `DE_Wrapper::Write()`
@@ -2807,16 +2109,15 @@ impl Wrapper {
         theWS: &mut crate::ffi::HandleXSControlWorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_write_asciistring_shape_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theShape, theWS, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_write_asciistring_shape_handlexscontrolworksession_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theWS,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:152 - `DE_Wrapper::Read()`
@@ -2831,21 +2132,14 @@ impl Wrapper {
         theShape: &mut crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_read_asciistring_shape_progressrange(
-                    self as *mut Self,
-                    thePath,
-                    theShape,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_read_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:162 - `DE_Wrapper::Write()`
@@ -2860,21 +2154,14 @@ impl Wrapper {
         theShape: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_write_asciistring_shape_progressrange(
-                    self as *mut Self,
-                    thePath,
-                    theShape,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_write_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:171 - `DE_Wrapper::Load()`
@@ -2887,20 +2174,13 @@ impl Wrapper {
         theResource: &crate::t_collection::AsciiString,
         theIsRecursive: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_load_asciistring_bool(
-                    self as *mut Self,
-                    theResource,
-                    theIsRecursive,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_load_asciistring_bool(
+                self as *mut Self,
+                theResource,
+                theIsRecursive,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:178 - `DE_Wrapper::Load()`
@@ -2913,20 +2193,13 @@ impl Wrapper {
         theResource: &crate::ffi::HandleDEConfigurationContext,
         theIsRecursive: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_load_handledeconfigurationcontext_bool(
-                    self as *mut Self,
-                    theResource,
-                    theIsRecursive,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_load_handledeconfigurationcontext_bool(
+                self as *mut Self,
+                theResource,
+                theIsRecursive,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:188 - `DE_Wrapper::Save()`
@@ -2943,22 +2216,15 @@ impl Wrapper {
         theFormats: &crate::ffi::TColStd_ListOfAsciiString,
         theVendors: &crate::ffi::TColStd_ListOfAsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_save_asciistring_bool_listofasciistring2(
-                    self as *mut Self,
-                    theResourcePath,
-                    theIsRecursive,
-                    theFormats,
-                    theVendors,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_save_asciistring_bool_listofasciistring2(
+                self as *mut Self,
+                theResourcePath,
+                theIsRecursive,
+                theFormats,
+                theVendors,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:199 - `DE_Wrapper::Save()`
@@ -2973,20 +2239,15 @@ impl Wrapper {
         theFormats: &crate::ffi::TColStd_ListOfAsciiString,
         theVendors: &crate::ffi::TColStd_ListOfAsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::DE_Wrapper_save_bool_listofasciistring2(
                     self as *mut Self,
                     theIsRecursive,
                     theFormats,
                     theVendors,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2995,14 +2256,7 @@ impl Wrapper {
     /// @param[in] theNode input node to copy
     /// @return Standard_True if binded
     pub fn bind(&mut self, theNode: &crate::ffi::HandleDEConfigurationNode) -> bool {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_bind(self as *mut Self, theNode) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::DE_Wrapper_bind(self as *mut Self, theNode) })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:211 - `DE_Wrapper::UnBind()`
@@ -3010,14 +2264,7 @@ impl Wrapper {
     /// @param[in] theNode input node to remove the same
     /// @return Standard_True if removed
     pub fn un_bind(&mut self, theNode: &crate::ffi::HandleDEConfigurationNode) -> bool {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_un_bind(self as *mut Self, theNode) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::DE_Wrapper_un_bind(self as *mut Self, theNode) })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:218 - `DE_Wrapper::Find()`
@@ -3032,16 +2279,9 @@ impl Wrapper {
         theVendor: &crate::t_collection::AsciiString,
         theNode: &mut crate::ffi::HandleDEConfigurationNode,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_find(self as *const Self, theFormat, theVendor, theNode)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_find(self as *const Self, theFormat, theVendor, theNode)
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:226 - `DE_Wrapper::ChangePriority()`
@@ -3055,19 +2295,14 @@ impl Wrapper {
         theVendorPriority: &crate::ffi::TColStd_ListOfAsciiString,
         theToDisable: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_Wrapper_change_priority_asciistring_listofasciistring_bool(
-                    self as *mut Self,
-                    theFormat,
-                    theVendorPriority,
-                    theToDisable,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_Wrapper_change_priority_asciistring_listofasciistring_bool(
+                self as *mut Self,
+                theFormat,
+                theVendorPriority,
+                theToDisable,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:233 - `DE_Wrapper::ChangePriority()`
@@ -3079,18 +2314,13 @@ impl Wrapper {
         theVendorPriority: &crate::ffi::TColStd_ListOfAsciiString,
         theToDisable: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_Wrapper_change_priority_listofasciistring_bool(
-                    self as *mut Self,
-                    theVendorPriority,
-                    theToDisable,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_Wrapper_change_priority_listofasciistring_bool(
+                self as *mut Self,
+                theVendorPriority,
+                theToDisable,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:242 - `DE_Wrapper::FindProvider()`
@@ -3106,21 +2336,14 @@ impl Wrapper {
         theToImport: bool,
         theProvider: &mut crate::ffi::HandleDEProvider,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_find_provider(
-                    self as *const Self,
-                    thePath,
-                    theToImport,
-                    theProvider,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_find_provider(
+                self as *const Self,
+                thePath,
+                theToImport,
+                theProvider,
+            )
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:249 - `DE_Wrapper::UpdateLoad()`
@@ -3128,92 +2351,55 @@ impl Wrapper {
     /// @param[in] theToForceUpdate flag that turns on/of nodes, according to updated ability to
     /// import/export
     pub fn update_load(&self, theToForceUpdate: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_Wrapper_update_load(self as *const Self, theToForceUpdate)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_Wrapper_update_load(self as *const Self, theToForceUpdate)
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:252 - `DE_Wrapper::KeepUpdates()`
     /// Gets flag that keeps changes on configuration nodes which are being updated, false by default
     pub fn keep_updates(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_keep_updates(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::DE_Wrapper_keep_updates(self as *const Self) })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:255 - `DE_Wrapper::SetKeepUpdates()`
     /// Sets flag that keeps changes on configuration nodes which are being updated, false by default
     pub fn set_keep_updates(&mut self, theToKeepUpdates: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::DE_Wrapper_set_keep_updates(self as *mut Self, theToKeepUpdates)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_Wrapper_set_keep_updates(self as *mut Self, theToKeepUpdates)
+        })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:259 - `DE_Wrapper::Nodes()`
     /// Gets format map, contains vendor map with nodes
     /// @return internal map of formats
     pub fn nodes(&self) -> &crate::ffi::DE_ConfigurationFormatMap {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::DE_Wrapper_nodes(self as *const Self))) }
     }
 
     /// **Source:** `DE_Wrapper.hxx`:263 - `DE_Wrapper::Copy()`
     /// Copies values of all fields
     /// @return new object with the same field values
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleDEWrapper> {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::DE_Wrapper_copy(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::DE_Wrapper_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::DE_Wrapper_get_type_descriptor())) }
     }
 
     /// **Source:** `DE_Wrapper.hxx`:69 - `DE_Wrapper::GlobalWrapper()`
@@ -3221,103 +2407,66 @@ impl Wrapper {
     /// If wrapper is not set, create it by default as base class object.
     /// @return point to global configuration
     pub fn global_wrapper() -> &'static crate::ffi::HandleDEWrapper {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_global_wrapper() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::DE_Wrapper_global_wrapper())) }
     }
 
     /// **Source:** `DE_Wrapper.hxx`:73 - `DE_Wrapper::SetGlobalWrapper()`
     /// Sets global configuration singleton
     /// @param[in] theWrapper object to set as global configuration
     pub fn set_global_wrapper(theWrapper: &crate::ffi::HandleDEWrapper) {
-        {
-            let __exc = unsafe { crate::ffi::DE_Wrapper_set_global_wrapper(theWrapper) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::DE_Wrapper_set_global_wrapper(theWrapper) })
     }
 
     /// **Source:** `DE_Wrapper.hxx`:75 - `DE_Wrapper::GlobalLoadMutex()`
     pub fn global_load_mutex() -> &'static mut crate::standard::Mutex {
-        {
-            let __result = unsafe { crate::ffi::DE_Wrapper_global_load_mutex() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
-        }
+        unsafe { &mut *(crate::check_result(crate::ffi::DE_Wrapper_global_load_mutex())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe { crate::ffi::DE_Wrapper_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::DE_Wrapper_as_Standard_Transient(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::DE_Wrapper_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::DE_Wrapper_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleDEWrapper> {
-        let __result = unsafe { crate::ffi::DE_Wrapper_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::DE_Wrapper_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::DE_Wrapper_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_Wrapper_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::DE_Wrapper_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::DE_Wrapper_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3328,49 +2477,30 @@ impl Wrapper {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_Wrapper_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::DE_Wrapper_inherited_IncrementRefCounter(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_Wrapper_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::DE_Wrapper_inherited_DecrementRefCounter(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::DE_Wrapper_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::DE_Wrapper_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::DE_Wrapper_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3385,30 +2515,21 @@ unsafe impl crate::CppDeletable for HandleDEWrapper {
 impl HandleDEWrapper {
     /// Dereference this Handle to access the underlying DE_Wrapper
     pub fn get(&self) -> &crate::ffi::DE_Wrapper {
-        let __result = unsafe { crate::ffi::HandleDEWrapper_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleDEWrapper_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying DE_Wrapper
     pub fn get_mut(&mut self) -> &mut crate::ffi::DE_Wrapper {
-        let __result = unsafe { crate::ffi::HandleDEWrapper_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &mut *__result.ret }
+        unsafe { &mut *crate::check_result(crate::ffi::HandleDEWrapper_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<DE_Wrapper> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result =
-            unsafe { crate::ffi::HandleDEWrapper_to_HandleStandardTransient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleDEWrapper_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

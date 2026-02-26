@@ -4527,48 +4527,48 @@ pub(super) fn build_reexport_body(ffi_fn_name: &str, args_str: &str, rt: Option<
 
     // Void return: call returns *const c_char (null = success)
     if rt.is_none() || reexport_type.is_none() {
-        return format!("{{ let __exc = unsafe {{ {} }}; if !__exc.is_null() {{ crate::wrapper_threw_exception(__exc); }} }}", call);
+        return format!("crate::check_void_result(unsafe {{ {} }})", call);
     }
 
-    // Non-void: call returns OcctResult<T>
-    let prefix = format!(
-        "let __result = unsafe {{ {} }}; if !__result.exc.is_null() {{ crate::wrapper_threw_exception(__result.exc); }} let __val = __result.ret;",
-        call
-    );
+    // check_result extracts .ret after checking .exc
+    // "bare" form has no unsafe around the FFI call (for use inside an outer unsafe block)
+    // "checked" form wraps the FFI call in unsafe (for standalone use)
+    let checked_bare = format!("crate::check_result({})", call);
+    let checked = format!("crate::check_result(unsafe {{ {} }})", call);
 
+    // Cases that need a let binding (result used in conditional or cast)
     if is_mut_ref_enum_return {
         if let Some(enum_type) = is_enum {
-            return format!("{{ {} unsafe {{ &mut *(__val as *mut {}) }} }}", prefix, enum_type);
+            return format!("{{ let __val = {}; unsafe {{ &mut *(__val as *mut {}) }} }}", checked, enum_type);
         } else {
-            return format!("{{ {} unsafe {{ &mut *(__val) }} }}", prefix);
+            return format!("unsafe {{ &mut *({}) }}", checked_bare);
         }
     }
     if is_class_ptr_return {
-        // null is a valid "None" result (not an exception)
         if let Some(rty) = reexport_type {
             if rty.starts_with("Option<&mut ") {
-                return format!("{{ {} if __val.is_null() {{ None }} else {{ Some(unsafe {{ &mut *__val }}) }} }}", prefix);
+                return format!("{{ let __val = {}; if __val.is_null() {{ None }} else {{ Some(unsafe {{ &mut *__val }}) }} }}", checked);
             }
         }
-        return format!("{{ {} if __val.is_null() {{ None }} else {{ Some(unsafe {{ &*__val }}) }} }}", prefix);
+        return format!("{{ let __val = {}; if __val.is_null() {{ None }} else {{ Some(unsafe {{ &*__val }}) }} }}", checked);
     }
     if let Some(enum_type) = is_enum {
-        return format!("{{ {} {}::try_from(__val).unwrap() }}", prefix, enum_type);
+        return format!("{}::try_from({}).unwrap()", enum_type, checked);
     }
     if needs_owned_ptr {
-        return format!("{{ {} unsafe {{ crate::OwnedPtr::from_raw(__val) }} }}", prefix);
+        return format!("unsafe {{ crate::OwnedPtr::from_raw({}) }}", checked_bare);
     }
     if let Some(rty) = reexport_type {
         if rty == "std::string::String" {
-            return format!("{{ {} unsafe {{ std::ffi::CStr::from_ptr(__val) }}.to_string_lossy().into_owned() }}", prefix);
+            return format!("unsafe {{ std::ffi::CStr::from_ptr({}) }}.to_string_lossy().into_owned()", checked_bare);
         } else if rty.starts_with("&mut ") {
-            return format!("{{ {} unsafe {{ &mut *(__val) }} }}", prefix);
+            return format!("unsafe {{ &mut *({}) }}", checked_bare);
         } else if rty.starts_with('&') {
-            return format!("{{ {} unsafe {{ &*(__val) }} }}", prefix);
+            return format!("unsafe {{ &*({}) }}", checked_bare);
         }
     }
     // Simple passthrough (primitives, bool)
-    format!("{{ {} __val }}", prefix)
+    checked
 }
 pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> String {
     let cn = &bindings.cpp_name;
@@ -4664,7 +4664,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
                 format!("crate::ffi::{}({})", ctor.ffi_fn_name, args_str)
             };
             impl_methods.push(format!(
-                "{}    pub {}fn {}({}) -> crate::OwnedPtr<Self> {{\n{}        {{\n            let __result = unsafe {{ {} }}; if !__result.exc.is_null() {{ crate::wrapper_threw_exception(__result.exc); }} unsafe {{ crate::OwnedPtr::from_raw(__result.ret) }}\n        }}\n    }}\n",
+                "{}    pub {}fn {}({}) -> crate::OwnedPtr<Self> {{\n{}        unsafe {{ crate::OwnedPtr::from_raw(crate::check_result({})) }}\n    }}\n",
                 doc,
                 unsafe_kw,
                 ctor.impl_method_name,
@@ -4863,12 +4863,12 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         };
 
         impl_methods.push(format!(
-            "    /// Upcast to {}\n    pub fn {}(&self) -> &{} {{\n        let __result = unsafe {{ crate::ffi::{}(self as *const Self) }}; if !__result.exc.is_null() {{ crate::wrapper_threw_exception(__result.exc); }} unsafe {{ &*__result.ret }}\n    }}\n",
+            "    /// Upcast to {}\n    pub fn {}(&self) -> &{} {{\n        unsafe {{ &*crate::check_result(crate::ffi::{}(self as *const Self)) }}\n    }}\n",
             up.base_class, up.impl_method_name, ret_type, up.ffi_fn_name
         ));
 
         impl_methods.push(format!(
-            "    /// Upcast to {} (mutable)\n    pub fn {}_mut(&mut self) -> &mut {} {{\n        let __result = unsafe {{ crate::ffi::{}(self as *mut Self) }}; if !__result.exc.is_null() {{ crate::wrapper_threw_exception(__result.exc); }} unsafe {{ &mut *__result.ret }}\n    }}\n",
+            "    /// Upcast to {} (mutable)\n    pub fn {}_mut(&mut self) -> &mut {} {{\n        unsafe {{ &mut *crate::check_result(crate::ffi::{}(self as *mut Self)) }}\n    }}\n",
             up.base_class, up.impl_method_name, ret_type, up.ffi_fn_name_mut
         ));
     }
@@ -4877,7 +4877,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
     if bindings.has_to_owned {
         let ffi_fn_name = format!("{}_to_owned", cn);
         impl_methods.push(format!(
-            "    /// Clone into a new OwnedPtr via copy constructor\n    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {{\n        let __result = unsafe {{ crate::ffi::{}(self as *const Self) }}; if !__result.exc.is_null() {{ crate::wrapper_threw_exception(__result.exc); }} unsafe {{ crate::OwnedPtr::from_raw(__result.ret) }}\n    }}\n",
+            "    /// Clone into a new OwnedPtr via copy constructor\n    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::{}(self as *const Self))) }}\n    }}\n",
             ffi_fn_name
         ));
     }
@@ -4887,7 +4887,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let ffi_fn_name = format!("{}_to_handle", cn);
         let handle_type_name = type_mapping::handle_type_name(cn);
         impl_methods.push(format!(
-            "    /// Wrap in a Handle (reference-counted smart pointer)\n    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::{}> {{\n        let __result = unsafe {{ crate::ffi::{}(obj.into_raw()) }}; if !__result.exc.is_null() {{ crate::wrapper_threw_exception(__result.exc); }} unsafe {{ crate::OwnedPtr::from_raw(__result.ret) }}\n    }}\n",
+            "    /// Wrap in a Handle (reference-counted smart pointer)\n    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::{}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::{}(obj.into_raw()))) }}\n    }}\n",
             handle_type_name, ffi_fn_name
         ));
     }
@@ -4988,12 +4988,12 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         output.push_str(&format!("impl {} {{\n", handle_type_name));
         // get() - dereference handle to &T
         output.push_str(&format!(
-            "    /// Dereference this Handle to access the underlying {}\n    pub fn get(&self) -> &crate::ffi::{} {{\n        let __result = unsafe {{ crate::ffi::{}_get(self as *const Self) }}; if !__result.exc.is_null() {{ crate::wrapper_threw_exception(__result.exc); }} unsafe {{ &*__result.ret }}\n    }}\n",
+            "    /// Dereference this Handle to access the underlying {}\n    pub fn get(&self) -> &crate::ffi::{} {{\n        unsafe {{ &*crate::check_result(crate::ffi::{}_get(self as *const Self)) }}\n    }}\n",
             cn, cn, handle_type_name
         ));
         // get_mut() - dereference handle to &mut T
         output.push_str(&format!(
-            "    /// Dereference this Handle to mutably access the underlying {}\n    pub fn get_mut(&mut self) -> &mut crate::ffi::{} {{\n        let __result = unsafe {{ crate::ffi::{}_get_mut(self as *mut Self) }}; if !__result.exc.is_null() {{ crate::wrapper_threw_exception(__result.exc); }} unsafe {{ &mut *__result.ret }}\n    }}\n",
+            "    /// Dereference this Handle to mutably access the underlying {}\n    pub fn get_mut(&mut self) -> &mut crate::ffi::{} {{\n        unsafe {{ &mut *crate::check_result(crate::ffi::{}_get_mut(self as *mut Self)) }}\n    }}\n",
             cn, cn, handle_type_name
         ));
         // Build upcast method names with robust deduplication.
@@ -5007,7 +5007,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         );
         for (i, hu) in bindings.handle_upcasts.iter().enumerate() {
             output.push_str(&format!(
-                "    /// Upcast Handle<{cn}> to Handle<{base}>\n    pub fn {method}(&self) -> crate::OwnedPtr<crate::ffi::{base_handle}> {{\n        let __result = unsafe {{ crate::ffi::{ffi_fn}(self as *const Self) }}; if !__result.exc.is_null() {{ crate::wrapper_threw_exception(__result.exc); }} unsafe {{ crate::OwnedPtr::from_raw(__result.ret) }}\n    }}\n",
+                "    /// Upcast Handle<{cn}> to Handle<{base}>\n    pub fn {method}(&self) -> crate::OwnedPtr<crate::ffi::{base_handle}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::{ffi_fn}(self as *const Self))) }}\n    }}\n",
                 cn = cn,
                 base = hu.base_class,
                 method = upcast_method_names[i],
@@ -5026,7 +5026,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         );
         for (i, hd) in bindings.handle_downcasts.iter().enumerate() {
             output.push_str(&format!(
-                "    /// Downcast Handle<{cn}> to Handle<{derived}>\n    ///\n    /// Returns `None` if the handle does not point to a `{derived}` (or subclass).\n    pub fn {method}(&self) -> Option<crate::OwnedPtr<crate::ffi::{derived_handle}>> {{\n        let __result = unsafe {{ crate::ffi::{ffi_fn}(self as *const Self) }}; if !__result.exc.is_null() {{ crate::wrapper_threw_exception(__result.exc); }} if __result.ret.is_null() {{ None }} else {{ Some(unsafe {{ crate::OwnedPtr::from_raw(__result.ret) }}) }}\n    }}\n",
+                "    /// Downcast Handle<{cn}> to Handle<{derived}>\n    ///\n    /// Returns `None` if the handle does not point to a `{derived}` (or subclass).\n    pub fn {method}(&self) -> Option<crate::OwnedPtr<crate::ffi::{derived_handle}>> {{\n        let __val = crate::check_result(unsafe {{ crate::ffi::{ffi_fn}(self as *const Self) }}); if __val.is_null() {{ None }} else {{ Some(unsafe {{ crate::OwnedPtr::from_raw(__val) }}) }}\n    }}\n",
                 cn = cn,
                 derived = hd.derived_class,
                 method = downcast_method_names[i],
@@ -5168,7 +5168,7 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
         emit_ffi_doc_4(&mut out, &source, &ctor.doc_comment);
 
         let params_str = format_params(&ctor.params);
-        writeln!(out, "    pub fn {}({}) -> crate::OcctResult<*mut {}>;\n", ctor.ffi_fn_name, params_str, cn).unwrap();
+        writeln!(out, "    pub fn {}({}) -> crate::OcctResult<*mut {}>;", ctor.ffi_fn_name, params_str, cn).unwrap();
     }
 
     // ── Direct methods — with extern "C", these become wrapper functions too ──
@@ -5192,7 +5192,7 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
             format!("{}, {}", self_param, params_str)
         };
         let ret = format_return_type(&dm.return_type);
-        writeln!(out, "    pub fn {}_{}({}){};\n", cn, dm.rust_name, all_params, ret).unwrap();
+        writeln!(out, "    pub fn {}_{}({}){};", cn, dm.rust_name, all_params, ret).unwrap();
     }
 
     // ── Wrapper methods (free functions with self_ parameter) ──────────
@@ -5216,14 +5216,14 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
             } else {
                 format!("{}, {}", self_param, params_str)
             };
-            writeln!(out, "    pub fn {}({}) -> crate::OcctResult<{}>;\n", wm.ffi_fn_name, all_params, rt.rust_ffi_type).unwrap();
+            writeln!(out, "    pub fn {}({}) -> crate::OcctResult<{}>;", wm.ffi_fn_name, all_params, rt.rust_ffi_type).unwrap();
         } else {
             let all_params = if params_str.is_empty() {
                 self_param
             } else {
                 format!("{}, {}", self_param, params_str)
             };
-            writeln!(out, "    pub fn {}({}) -> *const std::ffi::c_char;\n", wm.ffi_fn_name, all_params).unwrap();
+            writeln!(out, "    pub fn {}({}) -> *const std::ffi::c_char;", wm.ffi_fn_name, all_params).unwrap();
         }
     }
 
@@ -5238,54 +5238,54 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
 
         let params_str = format_params(&sm.params);
         if let Some(ref rt) = sm.return_type {
-            writeln!(out, "    pub fn {}({}) -> crate::OcctResult<{}>;\n", sm.ffi_fn_name, params_str, rt.rust_ffi_type).unwrap();
+            writeln!(out, "    pub fn {}({}) -> crate::OcctResult<{}>;", sm.ffi_fn_name, params_str, rt.rust_ffi_type).unwrap();
         } else {
-            writeln!(out, "    pub fn {}({}) -> *const std::ffi::c_char;\n", sm.ffi_fn_name, params_str).unwrap();
+            writeln!(out, "    pub fn {}({}) -> *const std::ffi::c_char;", sm.ffi_fn_name, params_str).unwrap();
         }
     }
 
     // ── Upcasts ─────────────────────────────────────────────────────────────────
     for up in &bindings.upcasts {
         writeln!(out, "    /// Upcast {} to {}", cn, up.base_class).unwrap();
-        writeln!(out, "    pub fn {}(self_: *const {}) -> crate::OcctResult<*const {}>;\n", up.ffi_fn_name, cn, up.base_class).unwrap();
+        writeln!(out, "    pub fn {}(self_: *const {}) -> crate::OcctResult<*const {}>;", up.ffi_fn_name, cn, up.base_class).unwrap();
         writeln!(out, "    /// Upcast {} to {} (mutable)", cn, up.base_class).unwrap();
-        writeln!(out, "    pub fn {}(self_: *mut {}) -> crate::OcctResult<*mut {}>;\n", up.ffi_fn_name_mut, cn, up.base_class).unwrap();
+        writeln!(out, "    pub fn {}(self_: *mut {}) -> crate::OcctResult<*mut {}>;", up.ffi_fn_name_mut, cn, up.base_class).unwrap();
     }
 
     // ── to_owned ────────────────────────────────────────────────────────────────
     if bindings.has_to_owned {
         writeln!(out, "    /// Clone via copy constructor").unwrap();
-        writeln!(out, "    pub fn {}_to_owned(self_: *const {}) -> crate::OcctResult<*mut {}>;\n", cn, cn, cn).unwrap();
+        writeln!(out, "    pub fn {}_to_owned(self_: *const {}) -> crate::OcctResult<*mut {}>;", cn, cn, cn).unwrap();
     }
 
     // ── to_handle ───────────────────────────────────────────────────────────────
     if bindings.has_to_handle {
         let handle_type_name = type_mapping::handle_type_name(cn);
         writeln!(out, "    /// Wrap {} in a Handle", cn).unwrap();
-        writeln!(out, "    pub fn {}_to_handle(obj: *mut {}) -> crate::OcctResult<*mut {}>;\n", cn, cn, handle_type_name).unwrap();
+        writeln!(out, "    pub fn {}_to_handle(obj: *mut {}) -> crate::OcctResult<*mut {}>;", cn, cn, handle_type_name).unwrap();
     }
 
     // ── Handle get (dereference) ───────────────────────────────────────────────
     if bindings.has_handle_get {
         let handle_type_name = type_mapping::handle_type_name(cn);
         writeln!(out, "    /// Destroy Handle<{}>", cn).unwrap();
-        writeln!(out, "    pub fn {}_destructor(self_: *mut {});\n", handle_type_name, handle_type_name).unwrap();
+        writeln!(out, "    pub fn {}_destructor(self_: *mut {});", handle_type_name, handle_type_name).unwrap();
         writeln!(out, "    /// Dereference Handle to get *const {}", cn).unwrap();
-        writeln!(out, "    pub fn {}_get(handle: *const {}) -> crate::OcctResult<*const {}>;\n", handle_type_name, handle_type_name, cn).unwrap();
+        writeln!(out, "    pub fn {}_get(handle: *const {}) -> crate::OcctResult<*const {}>;", handle_type_name, handle_type_name, cn).unwrap();
         writeln!(out, "    /// Dereference Handle to get *mut {}", cn).unwrap();
-        writeln!(out, "    pub fn {}_get_mut(handle: *mut {}) -> crate::OcctResult<*mut {}>;\n", handle_type_name, handle_type_name, cn).unwrap();
+        writeln!(out, "    pub fn {}_get_mut(handle: *mut {}) -> crate::OcctResult<*mut {}>;", handle_type_name, handle_type_name, cn).unwrap();
     }
 
     // ── Handle upcasts ──────────────────────────────────────────────────────────
     for hu in &bindings.handle_upcasts {
         writeln!(out, "    /// Upcast Handle<{}> to Handle<{}>", cn, hu.base_class).unwrap();
-        writeln!(out, "    pub fn {}(self_: *const {}) -> crate::OcctResult<*mut {}>;\n", hu.ffi_fn_name, hu.derived_handle_name, hu.base_handle_name).unwrap();
+        writeln!(out, "    pub fn {}(self_: *const {}) -> crate::OcctResult<*mut {}>;", hu.ffi_fn_name, hu.derived_handle_name, hu.base_handle_name).unwrap();
     }
 
     // ── Handle downcasts ─────────────────────────────────────────────────────────
     for hd in &bindings.handle_downcasts {
         writeln!(out, "    /// Downcast Handle<{}> to Handle<{}> (returns null on failure)", cn, hd.derived_class).unwrap();
-        writeln!(out, "    pub fn {}(self_: *const {}) -> crate::OcctResult<*mut {}>;\n", hd.ffi_fn_name, hd.base_handle_name, hd.derived_handle_name).unwrap();
+        writeln!(out, "    pub fn {}(self_: *const {}) -> crate::OcctResult<*mut {}>;", hd.ffi_fn_name, hd.base_handle_name, hd.derived_handle_name).unwrap();
     }
 
     // ── Inherited methods (free functions with self_ parameter) ─────
@@ -5314,14 +5314,14 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
             } else {
                 format!("{}, {}", self_param, params_str)
             };
-            writeln!(out, "    pub fn {}({}) -> crate::OcctResult<{}>;\n", im.ffi_fn_name, all_params, rt.rust_ffi_type).unwrap();
+            writeln!(out, "    pub fn {}({}) -> crate::OcctResult<{}>;", im.ffi_fn_name, all_params, rt.rust_ffi_type).unwrap();
         } else {
             let all_params = if params_str.is_empty() {
                 self_param
             } else {
                 format!("{}, {}", self_param, params_str)
             };
-            writeln!(out, "    pub fn {}({}) -> *const std::ffi::c_char;\n", im.ffi_fn_name, all_params).unwrap();
+            writeln!(out, "    pub fn {}({}) -> *const std::ffi::c_char;", im.ffi_fn_name, all_params).unwrap();
         }
     }
 

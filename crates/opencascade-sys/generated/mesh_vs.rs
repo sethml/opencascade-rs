@@ -339,12 +339,10 @@ impl Buffer {
     /// **Source:** `MeshVS_Buffer.hxx`:37 - `MeshVS_Buffer::MeshVS_Buffer()`
     /// Constructor of the buffer of the requested size
     pub fn new_size(theSize: usize) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Buffer_ctor_size(theSize) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Buffer_ctor_size(
+                theSize,
+            )))
         }
     }
 }
@@ -371,257 +369,184 @@ impl CommonSensitiveEntity {
         theParentMesh: &crate::ffi::HandleMeshVSMesh,
         theSelMethod: crate::mesh_vs::MeshSelectionMethod,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_ctor_handleselectmgrentityowner_handlemeshvsmesh_meshselectionmethod(theOwner, theParentMesh, theSelMethod.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_CommonSensitiveEntity_ctor_handleselectmgrentityowner_handlemeshvsmesh_meshselectionmethod(theOwner, theParentMesh, theSelMethod.into())))
         }
     }
 
     /// **Source:** `MeshVS_CommonSensitiveEntity.hxx`:27 - `MeshVS_CommonSensitiveEntity::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_CommonSensitiveEntity_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_CommonSensitiveEntity.hxx`:38 - `MeshVS_CommonSensitiveEntity::NbSubElements()`
     /// Number of elements.
     pub fn nb_sub_elements(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_nb_sub_elements(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_nb_sub_elements(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_CommonSensitiveEntity.hxx`:41 - `MeshVS_CommonSensitiveEntity::Size()`
     /// Returns the amount of sub-entities of the complex entity
     pub fn size(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_CommonSensitiveEntity_size(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_size(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_CommonSensitiveEntity.hxx`:44 - `MeshVS_CommonSensitiveEntity::Box()`
     /// Returns bounding box of sub-entity with index theIdx in sub-entity list
     pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_box_(self as *const Self, theIdx)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_CommonSensitiveEntity_box_(self as *const Self, theIdx),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_CommonSensitiveEntity.hxx`:48 - `MeshVS_CommonSensitiveEntity::Center()`
     /// Returns geometry center of sensitive entity index theIdx along the given axis theAxis
     pub fn center(&self, theIdx: i32, theAxis: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_center(
-                    self as *const Self,
-                    theIdx,
-                    theAxis,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_center(self as *const Self, theIdx, theAxis)
+        })
     }
 
     /// **Source:** `MeshVS_CommonSensitiveEntity.hxx`:53 - `MeshVS_CommonSensitiveEntity::Swap()`
     /// Swaps items with indexes theIdx1 and theIdx2
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_swap(self as *mut Self, theIdx1, theIdx2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_swap(self as *mut Self, theIdx1, theIdx2)
+        })
     }
 
     /// **Source:** `MeshVS_CommonSensitiveEntity.hxx`:58 - `MeshVS_CommonSensitiveEntity::BoundingBox()`
     /// Returns bounding box of the triangulation. If location
     /// transformation is set, it will be applied
     pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_CommonSensitiveEntity_bounding_box(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_CommonSensitiveEntity_bounding_box(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_CommonSensitiveEntity.hxx`:61 - `MeshVS_CommonSensitiveEntity::CenterOfGeometry()`
     /// Returns center of a mesh
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_center_of_geometry(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_CommonSensitiveEntity_center_of_geometry(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_CommonSensitiveEntity.hxx`:64 - `MeshVS_CommonSensitiveEntity::GetConnected()`
     /// Create a copy.
     pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_get_connected(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_CommonSensitiveEntity_get_connected(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_CommonSensitiveEntity.hxx`:27 - `MeshVS_CommonSensitiveEntity::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_CommonSensitiveEntity_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_CommonSensitiveEntity_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_CommonSensitiveEntity.hxx`:27 - `MeshVS_CommonSensitiveEntity::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_CommonSensitiveEntity_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_CommonSensitiveEntity_get_type_descriptor()))
         }
     }
 
     /// Upcast to Select3D_SensitiveSet
     pub fn as_select3_d_sensitive_set(&self) -> &crate::select3_d::SensitiveSet {
-        let __result = unsafe {
-            crate::ffi::MeshVS_CommonSensitiveEntity_as_Select3D_SensitiveSet(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::MeshVS_CommonSensitiveEntity_as_Select3D_SensitiveSet(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveSet (mutable)
     pub fn as_select3_d_sensitive_set_mut(&mut self) -> &mut crate::select3_d::SensitiveSet {
-        let __result = unsafe {
-            crate::ffi::MeshVS_CommonSensitiveEntity_as_Select3D_SensitiveSet_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_CommonSensitiveEntity_as_Select3D_SensitiveSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_select3_d_sensitive_entity(&self) -> &crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_CommonSensitiveEntity_as_Select3D_SensitiveEntity(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::MeshVS_CommonSensitiveEntity_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_select3_d_sensitive_entity_mut(&mut self) -> &mut crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_CommonSensitiveEntity_as_Select3D_SensitiveEntity_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_CommonSensitiveEntity_as_Select3D_SensitiveEntity_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_CommonSensitiveEntity_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_CommonSensitiveEntity_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_CommonSensitiveEntity_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_CommonSensitiveEntity_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSCommonSensitiveEntity> {
-        let __result =
-            unsafe { crate::ffi::MeshVS_CommonSensitiveEntity_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_CommonSensitiveEntity_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:62 - `Select3D_SensitiveSet::Matches()`
@@ -630,208 +555,121 @@ impl CommonSensitiveEntity {
         theMgr: &mut crate::select_basics::SelectingVolumeManager,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_Matches(
-                    self as *mut Self,
-                    theMgr,
-                    thePickResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_Matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_BVH(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_BVH(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:75 - `Select3D_SensitiveSet::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_ToBuildBVH(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_ToBuildBVH(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
     pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_SetBuilder(
-                    self as *mut Self,
-                    theBuilder,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_SetBuilder(
+                self as *mut Self,
+                theBuilder,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_MarkDirty(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_MarkDirty(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_Clear(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_Clear(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:99 - `Select3D_SensitiveSet::GetLeafNodeSize()`
     pub fn get_leaf_node_size(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_GetLeafNodeSize(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_GetLeafNodeSize(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
     pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_OwnerId(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_CommonSensitiveEntity_inherited_OwnerId(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_Set(
-                    self as *mut Self,
-                    theOwnerId,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_Set(self as *mut Self, theOwnerId)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_SensitivityFactor(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_SensitivityFactor(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_SetSensitivityFactor(
-                    self as *mut Self,
-                    theNewSens,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_SetSensitivityFactor(
+                self as *mut Self,
+                theNewSens,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_HasInitLocation(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_HasInitLocation(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:94 - `Select3D_SensitiveEntity::InvInitLocation()`
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_CommonSensitiveEntity_inherited_InvInitLocation(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
     pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::MeshVS_CommonSensitiveEntity_inherited_TransformPersistence(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
@@ -840,63 +678,37 @@ impl CommonSensitiveEntity {
         &mut self,
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_SetTransformPersistence(
-                    self as *mut Self,
-                    theTrsfPers,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_SetTransformPersistence(
+                self as *mut Self,
+                theTrsfPers,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::MeshVS_CommonSensitiveEntity_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -907,58 +719,34 @@ impl CommonSensitiveEntity {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_CommonSensitiveEntity_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -973,65 +761,57 @@ unsafe impl crate::CppDeletable for HandleMeshVSCommonSensitiveEntity {
 impl HandleMeshVSCommonSensitiveEntity {
     /// Dereference this Handle to access the underlying MeshVS_CommonSensitiveEntity
     pub fn get(&self) -> &crate::ffi::MeshVS_CommonSensitiveEntity {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSCommonSensitiveEntity_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSCommonSensitiveEntity_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_CommonSensitiveEntity
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_CommonSensitiveEntity {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSCommonSensitiveEntity_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSCommonSensitiveEntity_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_CommonSensitiveEntity> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSCommonSensitiveEntity_to_HandleSelect3DSensitiveSet(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSCommonSensitiveEntity_to_HandleSelect3DSensitiveSet(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_CommonSensitiveEntity> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSCommonSensitiveEntity_to_HandleSelect3DSensitiveEntity(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSCommonSensitiveEntity_to_HandleSelect3DSensitiveEntity(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_CommonSensitiveEntity> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSCommonSensitiveEntity_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSCommonSensitiveEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1079,23 +859,16 @@ impl DataSource {
         Type: &mut crate::mesh_vs::EntityType,
     ) -> bool {
         let mut Type_i32_: i32 = (*Type).into();
-        let result_ = {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_geom(
-                    self as *const Self,
-                    ID,
-                    IsElement,
-                    Coords,
-                    NbNodes,
-                    &mut Type_i32_,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        };
+        let result_ = crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_geom(
+                self as *const Self,
+                ID,
+                IsElement,
+                Coords,
+                NbNodes,
+                &mut Type_i32_,
+            )
+        });
         *Type = crate::mesh_vs::EntityType::try_from(Type_i32_).unwrap();
         result_
     }
@@ -1109,21 +882,14 @@ impl DataSource {
         Type: &mut crate::mesh_vs::EntityType,
     ) -> bool {
         let mut Type_i32_: i32 = (*Type).into();
-        let result_ = {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_geom_type(
-                    self as *const Self,
-                    ID,
-                    IsElement,
-                    &mut Type_i32_,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        };
+        let result_ = crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_geom_type(
+                self as *const Self,
+                ID,
+                IsElement,
+                &mut Type_i32_,
+            )
+        });
         *Type = crate::mesh_vs::EntityType::try_from(Type_i32_).unwrap();
         result_
     }
@@ -1137,16 +903,9 @@ impl DataSource {
         NbNodes: &mut i32,
         Data: &mut crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get3_d_geom(self as *const Self, ID, NbNodes, Data)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get3_d_geom(self as *const Self, ID, NbNodes, Data)
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:85 - `MeshVS_DataSource::GetAddr()`
@@ -1156,16 +915,9 @@ impl DataSource {
     /// identificator of node or element IsElement indicates this ID describe node ( if Standard_False
     /// ) or element ( if Standard_True )
     pub unsafe fn get_addr(&self, ID: i32, IsElement: bool) -> *mut std::ffi::c_void {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_addr(self as *const Self, ID, IsElement)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_addr(self as *const Self, ID, IsElement)
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:94 - `MeshVS_DataSource::GetNodesByElement()`
@@ -1181,48 +933,33 @@ impl DataSource {
         NodeIDs: &mut crate::ffi::TColStd_Array1OfInteger,
         NbNodes: &mut i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_nodes_by_element(
-                    self as *const Self,
-                    ID,
-                    NodeIDs,
-                    NbNodes,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_nodes_by_element(
+                self as *const Self,
+                ID,
+                NodeIDs,
+                NbNodes,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:99 - `MeshVS_DataSource::GetAllNodes()`
     /// This method returns map of all nodes the object consist of.
     pub fn get_all_nodes(&self) -> &crate::t_col_std::PackedMapOfInteger {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DataSource_get_all_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DataSource_get_all_nodes(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:102 - `MeshVS_DataSource::GetAllElements()`
     /// This method returns map of all elements the object consist of.
     pub fn get_all_elements(&self) -> &crate::t_col_std::PackedMapOfInteger {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DataSource_get_all_elements(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DataSource_get_all_elements(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1236,16 +973,9 @@ impl DataSource {
     /// the appearance of element will be more bright than usual. For ordinary brightness you must
     /// return normal with length 1
     pub fn get_normal(&self, Id: i32, Max: i32, nx: &mut f64, ny: &mut f64, nz: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_normal(self as *const Self, Id, Max, nx, ny, nz)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_normal(self as *const Self, Id, Max, nx, ny, nz)
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:121 - `MeshVS_DataSource::GetNodeNormal()`
@@ -1260,23 +990,16 @@ impl DataSource {
         ny: &mut f64,
         nz: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_node_normal(
-                    self as *const Self,
-                    ranknode,
-                    ElementId,
-                    nx,
-                    ny,
-                    nz,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_node_normal(
+                self as *const Self,
+                ranknode,
+                ElementId,
+                nx,
+                ny,
+                nz,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:135 - `MeshVS_DataSource::GetNormalsByElement()`
@@ -1295,34 +1018,23 @@ impl DataSource {
         MaxNodes: i32,
         Normals: &mut crate::ffi::HandleTColStdHArray1OfReal,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_normals_by_element(
-                    self as *const Self,
-                    Id,
-                    IsNodal,
-                    MaxNodes,
-                    Normals,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_normals_by_element(
+                self as *const Self,
+                Id,
+                IsNodal,
+                MaxNodes,
+                Normals,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:142 - `MeshVS_DataSource::GetAllGroups()`
     /// This method returns map of all groups the object contains.
     pub fn get_all_groups(&self, Ids: &mut crate::t_col_std::PackedMapOfInteger) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_DataSource_get_all_groups(self as *const Self, Ids) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_all_groups(self as *const Self, Ids)
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:145 - `MeshVS_DataSource::GetGroup()`
@@ -1334,21 +1046,9 @@ impl DataSource {
         Ids: &mut crate::t_col_std::PackedMapOfInteger,
     ) -> bool {
         let mut Type_i32_: i32 = (*Type).into();
-        let result_ = {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_group(
-                    self as *const Self,
-                    Id,
-                    &mut Type_i32_,
-                    Ids,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        };
+        let result_ = crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_group(self as *const Self, Id, &mut Type_i32_, Ids)
+        });
         *Type = crate::mesh_vs::EntityType::try_from(Type_i32_).unwrap();
         result_
     }
@@ -1359,15 +1059,9 @@ impl DataSource {
     /// by the method Owner(). In the redefined method you can return NULL.
     /// ID is the numerical identificator of group
     pub unsafe fn get_group_addr(&self, ID: i32) -> *mut std::ffi::c_void {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DataSource_get_group_addr(self as *const Self, ID) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_group_addr(self as *const Self, ID)
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:159 - `MeshVS_DataSource::IsAdvancedSelectionEnabled()`
@@ -1376,16 +1070,9 @@ impl DataSource {
     /// It should be redefined to return True for advanced
     /// mesh selection activation.
     pub fn is_advanced_selection_enabled(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_is_advanced_selection_enabled(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_is_advanced_selection_enabled(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:165 - `MeshVS_DataSource::GetBoundingBox()`
@@ -1394,14 +1081,10 @@ impl DataSource {
     /// the sensitive area of the mesh.
     /// It can be redefined to get access to a box computed in advance.
     pub fn get_bounding_box(&self) -> crate::OwnedPtr<crate::bnd::Box> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DataSource_get_bounding_box(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DataSource_get_bounding_box(self as *const Self),
+            ))
         }
     }
 
@@ -1423,16 +1106,9 @@ impl DataSource {
         Elements: &mut crate::ffi::HandleTColStdHPackedMapOfInteger,
         DMin: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_detected_entities_handlemeshvsmesh_real3_handletcolstdhpackedmapofinteger2_real(self as *mut Self, Prs, X, Y, aTol, Nodes, Elements, DMin)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_detected_entities_handlemeshvsmesh_real3_handletcolstdhpackedmapofinteger2_real(self as *mut Self, Prs, X, Y, aTol, Nodes, Elements, DMin)
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:189 - `MeshVS_DataSource::GetDetectedEntities()`
@@ -1453,16 +1129,9 @@ impl DataSource {
         Nodes: &mut crate::ffi::HandleTColStdHPackedMapOfInteger,
         Elements: &mut crate::ffi::HandleTColStdHPackedMapOfInteger,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_detected_entities_handlemeshvsmesh_real5_handletcolstdhpackedmapofinteger2(self as *mut Self, Prs, XMin, YMin, XMax, YMax, aTol, Nodes, Elements)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_detected_entities_handlemeshvsmesh_real5_handletcolstdhpackedmapofinteger2(self as *mut Self, Prs, XMin, YMin, XMax, YMax, aTol, Nodes, Elements)
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:205 - `MeshVS_DataSource::GetDetectedEntities()`
@@ -1481,16 +1150,9 @@ impl DataSource {
         Nodes: &mut crate::ffi::HandleTColStdHPackedMapOfInteger,
         Elements: &mut crate::ffi::HandleTColStdHPackedMapOfInteger,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_detected_entities_handlemeshvsmesh_array1ofpnt2d_box2d_real_handletcolstdhpackedmapofinteger2(self as *mut Self, Prs, Polyline, aBox, aTol, Nodes, Elements)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_detected_entities_handlemeshvsmesh_array1ofpnt2d_box2d_real_handletcolstdhpackedmapofinteger2(self as *mut Self, Prs, Polyline, aBox, aTol, Nodes, Elements)
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:219 - `MeshVS_DataSource::GetDetectedEntities()`
@@ -1506,112 +1168,72 @@ impl DataSource {
         Nodes: &mut crate::ffi::HandleTColStdHPackedMapOfInteger,
         Elements: &mut crate::ffi::HandleTColStdHPackedMapOfInteger,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_get_detected_entities_handlemeshvsmesh_handletcolstdhpackedmapofinteger2(self as *mut Self, Prs, Nodes, Elements)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_get_detected_entities_handlemeshvsmesh_handletcolstdhpackedmapofinteger2(self as *mut Self, Prs, Nodes, Elements)
+        })
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:224 - `MeshVS_DataSource::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DataSource_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DataSource_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:224 - `MeshVS_DataSource::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_DataSource_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_DataSource_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:224 - `MeshVS_DataSource::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_DataSource_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_DataSource_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_DataSource_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_DataSource_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_DataSource_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_DataSource_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DataSource_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_DataSource_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1622,52 +1244,30 @@ impl DataSource {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DataSource_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DataSource_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DataSource_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_DataSource_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DataSource_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1682,31 +1282,25 @@ unsafe impl crate::CppDeletable for HandleMeshVSDataSource {
 impl HandleMeshVSDataSource {
     /// Dereference this Handle to access the underlying MeshVS_DataSource
     pub fn get(&self) -> &crate::ffi::MeshVS_DataSource {
-        let __result = unsafe { crate::ffi::HandleMeshVSDataSource_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSDataSource_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_DataSource
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_DataSource {
-        let __result = unsafe { crate::ffi::HandleMeshVSDataSource_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSDataSource_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_DataSource> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSDataSource_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSDataSource_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<MeshVS_DataSource> to Handle<MeshVS_DataSource3D>
@@ -1715,18 +1309,15 @@ impl HandleMeshVSDataSource {
     pub fn downcast_to_data_source3_d(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource3D>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleMeshVSDataSource_downcast_to_HandleMeshVSDataSource3D(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1736,18 +1327,15 @@ impl HandleMeshVSDataSource {
     pub fn downcast_to_deformed_data_source(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSDeformedDataSource>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleMeshVSDataSource_downcast_to_HandleMeshVSDeformedDataSource(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -1771,15 +1359,10 @@ impl DataSource3D {
         &self,
         BasePoints: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_get_prism_topology(self as *const Self, BasePoints)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DataSource3D_get_prism_topology(self as *const Self, BasePoints),
+            ))
         }
     }
 
@@ -1788,31 +1371,22 @@ impl DataSource3D {
         &self,
         BasePoints: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_DataSource3D_get_pyramid_topology(
                     self as *const Self,
                     BasePoints,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_DataSource3D.hxx`:45 - `MeshVS_DataSource3D::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DataSource3D_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DataSource3D_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1820,14 +1394,10 @@ impl DataSource3D {
     pub fn create_prism_topology(
         BasePoints: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DataSource3D_create_prism_topology(BasePoints) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DataSource3D_create_prism_topology(BasePoints),
+            ))
         }
     }
 
@@ -1835,79 +1405,63 @@ impl DataSource3D {
     pub fn create_pyramid_topology(
         BasePoints: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DataSource3D_create_pyramid_topology(BasePoints) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DataSource3D_create_pyramid_topology(BasePoints),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_DataSource3D.hxx`:45 - `MeshVS_DataSource3D::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_DataSource3D_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_DataSource3D_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_DataSource3D.hxx`:45 - `MeshVS_DataSource3D::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_DataSource3D_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_DataSource3D_get_type_descriptor())) }
     }
 
     /// Upcast to MeshVS_DataSource
     pub fn as_data_source(&self) -> &DataSource {
-        let __result =
-            unsafe { crate::ffi::MeshVS_DataSource3D_as_MeshVS_DataSource(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_DataSource3D_as_MeshVS_DataSource(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to MeshVS_DataSource (mutable)
     pub fn as_data_source_mut(&mut self) -> &mut DataSource {
-        let __result =
-            unsafe { crate::ffi::MeshVS_DataSource3D_as_MeshVS_DataSource_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_DataSource3D_as_MeshVS_DataSource_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_DataSource3D_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_DataSource3D_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_DataSource3D_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_DataSource3D_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:75 - `MeshVS_DataSource::Get3DGeom()`
@@ -1917,21 +1471,14 @@ impl DataSource3D {
         NbNodes: &mut i32,
         Data: &mut crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_Get3DGeom(
-                    self as *const Self,
-                    ID,
-                    NbNodes,
-                    Data,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_Get3DGeom(
+                self as *const Self,
+                ID,
+                NbNodes,
+                Data,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:94 - `MeshVS_DataSource::GetNodesByElement()`
@@ -1941,70 +1488,46 @@ impl DataSource3D {
         NodeIDs: &mut crate::ffi::TColStd_Array1OfInteger,
         NbNodes: &mut i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_GetNodesByElement(
-                    self as *const Self,
-                    ID,
-                    NodeIDs,
-                    NbNodes,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_GetNodesByElement(
+                self as *const Self,
+                ID,
+                NodeIDs,
+                NbNodes,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:99 - `MeshVS_DataSource::GetAllNodes()`
     pub fn get_all_nodes(&self) -> &crate::t_col_std::PackedMapOfInteger {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_GetAllNodes(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DataSource3D_inherited_GetAllNodes(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:102 - `MeshVS_DataSource::GetAllElements()`
     pub fn get_all_elements(&self) -> &crate::t_col_std::PackedMapOfInteger {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_GetAllElements(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DataSource3D_inherited_GetAllElements(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:112 - `MeshVS_DataSource::GetNormal()`
     pub fn get_normal(&self, Id: i32, Max: i32, nx: &mut f64, ny: &mut f64, nz: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_GetNormal(
-                    self as *const Self,
-                    Id,
-                    Max,
-                    nx,
-                    ny,
-                    nz,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_GetNormal(
+                self as *const Self,
+                Id,
+                Max,
+                nx,
+                ny,
+                nz,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:121 - `MeshVS_DataSource::GetNodeNormal()`
@@ -2016,23 +1539,16 @@ impl DataSource3D {
         ny: &mut f64,
         nz: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_GetNodeNormal(
-                    self as *const Self,
-                    ranknode,
-                    ElementId,
-                    nx,
-                    ny,
-                    nz,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_GetNodeNormal(
+                self as *const Self,
+                ranknode,
+                ElementId,
+                nx,
+                ny,
+                nz,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:135 - `MeshVS_DataSource::GetNormalsByElement()`
@@ -2043,63 +1559,39 @@ impl DataSource3D {
         MaxNodes: i32,
         Normals: &mut crate::ffi::HandleTColStdHArray1OfReal,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_GetNormalsByElement(
-                    self as *const Self,
-                    Id,
-                    IsNodal,
-                    MaxNodes,
-                    Normals,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_GetNormalsByElement(
+                self as *const Self,
+                Id,
+                IsNodal,
+                MaxNodes,
+                Normals,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:142 - `MeshVS_DataSource::GetAllGroups()`
     pub fn get_all_groups(&self, Ids: &mut crate::t_col_std::PackedMapOfInteger) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_GetAllGroups(self as *const Self, Ids)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_GetAllGroups(self as *const Self, Ids)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:159 - `MeshVS_DataSource::IsAdvancedSelectionEnabled()`
     pub fn is_advanced_selection_enabled(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_IsAdvancedSelectionEnabled(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_IsAdvancedSelectionEnabled(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:165 - `MeshVS_DataSource::GetBoundingBox()`
     pub fn get_bounding_box(&self) -> crate::OwnedPtr<crate::bnd::Box> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_GetBoundingBox(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DataSource3D_inherited_GetBoundingBox(self as *const Self),
+            ))
         }
     }
 
@@ -2114,64 +1606,40 @@ impl DataSource3D {
         Elements: &mut crate::ffi::HandleTColStdHPackedMapOfInteger,
         DMin: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_GetDetectedEntities(
-                    self as *mut Self,
-                    Prs,
-                    X,
-                    Y,
-                    aTol,
-                    Nodes,
-                    Elements,
-                    DMin,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_GetDetectedEntities(
+                self as *mut Self,
+                Prs,
+                X,
+                Y,
+                aTol,
+                Nodes,
+                Elements,
+                DMin,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DataSource3D_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_DataSource3D_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2182,53 +1650,30 @@ impl DataSource3D {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DataSource3D_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_DataSource3D_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DataSource3D_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2243,42 +1688,38 @@ unsafe impl crate::CppDeletable for HandleMeshVSDataSource3D {
 impl HandleMeshVSDataSource3D {
     /// Dereference this Handle to access the underlying MeshVS_DataSource3D
     pub fn get(&self) -> &crate::ffi::MeshVS_DataSource3D {
-        let __result = unsafe { crate::ffi::HandleMeshVSDataSource3D_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSDataSource3D_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_DataSource3D
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_DataSource3D {
-        let __result = unsafe { crate::ffi::HandleMeshVSDataSource3D_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSDataSource3D_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_DataSource3D> to Handle<MeshVS_DataSource>
     pub fn to_handle_data_source(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSDataSource3D_to_HandleMeshVSDataSource(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSDataSource3D_to_HandleMeshVSDataSource(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_DataSource3D> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSDataSource3D_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSDataSource3D_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2309,17 +1750,13 @@ impl DeformedDataSource {
         theNonDeformDS: &crate::ffi::HandleMeshVSDataSource,
         theMagnify: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_DeformedDataSource_ctor_handlemeshvsdatasource_real(
                     theNonDeformDS,
                     theMagnify,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2333,23 +1770,16 @@ impl DeformedDataSource {
         Type: &mut crate::mesh_vs::EntityType,
     ) -> bool {
         let mut Type_i32_: i32 = (*Type).into();
-        let result_ = {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_get_geom(
-                    self as *const Self,
-                    ID,
-                    IsElement,
-                    Coords,
-                    NbNodes,
-                    &mut Type_i32_,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        };
+        let result_ = crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_get_geom(
+                self as *const Self,
+                ID,
+                IsElement,
+                Coords,
+                NbNodes,
+                &mut Type_i32_,
+            )
+        });
         *Type = crate::mesh_vs::EntityType::try_from(Type_i32_).unwrap();
         result_
     }
@@ -2362,21 +1792,14 @@ impl DeformedDataSource {
         Type: &mut crate::mesh_vs::EntityType,
     ) -> bool {
         let mut Type_i32_: i32 = (*Type).into();
-        let result_ = {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_get_geom_type(
-                    self as *const Self,
-                    ID,
-                    IsElement,
-                    &mut Type_i32_,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        };
+        let result_ = crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_get_geom_type(
+                self as *const Self,
+                ID,
+                IsElement,
+                &mut Type_i32_,
+            )
+        });
         *Type = crate::mesh_vs::EntityType::try_from(Type_i32_).unwrap();
         result_
     }
@@ -2388,35 +1811,21 @@ impl DeformedDataSource {
         NbNodes: &mut i32,
         Data: &mut crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_get3_d_geom(
-                    self as *const Self,
-                    ID,
-                    NbNodes,
-                    Data,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_get3_d_geom(
+                self as *const Self,
+                ID,
+                NbNodes,
+                Data,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:65 - `MeshVS_DeformedDataSource::GetAddr()`
     pub unsafe fn get_addr(&self, ID: i32, IsElement: bool) -> *mut std::ffi::c_void {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_get_addr(self as *const Self, ID, IsElement)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_get_addr(self as *const Self, ID, IsElement)
+        })
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:69 - `MeshVS_DeformedDataSource::GetNodesByElement()`
@@ -2426,118 +1835,76 @@ impl DeformedDataSource {
         NodeIDs: &mut crate::ffi::TColStd_Array1OfInteger,
         NbNodes: &mut i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_get_nodes_by_element(
-                    self as *const Self,
-                    ID,
-                    NodeIDs,
-                    NbNodes,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_get_nodes_by_element(
+                self as *const Self,
+                ID,
+                NodeIDs,
+                NbNodes,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:74 - `MeshVS_DeformedDataSource::GetAllNodes()`
     pub fn get_all_nodes(&self) -> &crate::t_col_std::PackedMapOfInteger {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DeformedDataSource_get_all_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DeformedDataSource_get_all_nodes(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:76 - `MeshVS_DeformedDataSource::GetAllElements()`
     pub fn get_all_elements(&self) -> &crate::t_col_std::PackedMapOfInteger {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_get_all_elements(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DeformedDataSource_get_all_elements(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:80 - `MeshVS_DeformedDataSource::GetVectors()`
     /// This method returns map of nodal displacement vectors
     pub fn get_vectors(&self) -> &crate::ffi::MeshVS_DataMapOfIntegerVector {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DeformedDataSource_get_vectors(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DeformedDataSource_get_vectors(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:83 - `MeshVS_DeformedDataSource::SetVectors()`
     /// This method sets map of nodal displacement vectors (Map).
     pub fn set_vectors(&mut self, Map: &crate::ffi::MeshVS_DataMapOfIntegerVector) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_set_vectors(self as *mut Self, Map)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_set_vectors(self as *mut Self, Map)
+        })
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:86 - `MeshVS_DeformedDataSource::GetVector()`
     /// This method returns vector ( Vect ) assigned to node number ID.
     pub fn get_vector(&self, ID: i32, Vect: &mut crate::gp::Vec) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_get_vector(self as *const Self, ID, Vect)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_get_vector(self as *const Self, ID, Vect)
+        })
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:89 - `MeshVS_DeformedDataSource::SetVector()`
     /// This method sets vector ( Vect ) assigned to node number ID.
     pub fn set_vector(&mut self, ID: i32, Vect: &crate::gp::Vec) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_set_vector(self as *mut Self, ID, Vect)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_set_vector(self as *mut Self, ID, Vect)
+        })
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:91 - `MeshVS_DeformedDataSource::SetNonDeformedDataSource()`
     pub fn set_non_deformed_data_source(&mut self, theDS: &crate::ffi::HandleMeshVSDataSource) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_set_non_deformed_data_source(
-                    self as *mut Self,
-                    theDS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_set_non_deformed_data_source(
+                self as *mut Self,
+                theDS,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:94 - `MeshVS_DeformedDataSource::GetNonDeformedDataSource()`
@@ -2545,157 +1912,116 @@ impl DeformedDataSource {
     pub fn get_non_deformed_data_source(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_DeformedDataSource_get_non_deformed_data_source(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:96 - `MeshVS_DeformedDataSource::SetMagnify()`
     pub fn set_magnify(&mut self, theMagnify: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_set_magnify(self as *mut Self, theMagnify)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_set_magnify(self as *mut Self, theMagnify)
+        })
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:99 - `MeshVS_DeformedDataSource::GetMagnify()`
     /// With this methods you can read and change magnify coefficient of nodal displacements
     pub fn get_magnify(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DeformedDataSource_get_magnify(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_get_magnify(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:101 - `MeshVS_DeformedDataSource::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DeformedDataSource_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DeformedDataSource_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:101 - `MeshVS_DeformedDataSource::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_DeformedDataSource_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_DeformedDataSource_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:101 - `MeshVS_DeformedDataSource::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_DeformedDataSource_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DeformedDataSource_get_type_descriptor()))
         }
     }
 
     /// Upcast to MeshVS_DataSource
     pub fn as_data_source(&self) -> &DataSource {
-        let __result = unsafe {
-            crate::ffi::MeshVS_DeformedDataSource_as_MeshVS_DataSource(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_DeformedDataSource_as_MeshVS_DataSource(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to MeshVS_DataSource (mutable)
     pub fn as_data_source_mut(&mut self) -> &mut DataSource {
-        let __result = unsafe {
-            crate::ffi::MeshVS_DeformedDataSource_as_MeshVS_DataSource_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_DeformedDataSource_as_MeshVS_DataSource_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_DeformedDataSource_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_DeformedDataSource_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_DeformedDataSource_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_DeformedDataSource_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDeformedDataSource> {
-        let __result = unsafe { crate::ffi::MeshVS_DeformedDataSource_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DeformedDataSource_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:112 - `MeshVS_DataSource::GetNormal()`
     pub fn get_normal(&self, Id: i32, Max: i32, nx: &mut f64, ny: &mut f64, nz: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_GetNormal(
-                    self as *const Self,
-                    Id,
-                    Max,
-                    nx,
-                    ny,
-                    nz,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_GetNormal(
+                self as *const Self,
+                Id,
+                Max,
+                nx,
+                ny,
+                nz,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:121 - `MeshVS_DataSource::GetNodeNormal()`
@@ -2707,23 +2033,16 @@ impl DeformedDataSource {
         ny: &mut f64,
         nz: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_GetNodeNormal(
-                    self as *const Self,
-                    ranknode,
-                    ElementId,
-                    nx,
-                    ny,
-                    nz,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_GetNodeNormal(
+                self as *const Self,
+                ranknode,
+                ElementId,
+                nx,
+                ny,
+                nz,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:135 - `MeshVS_DataSource::GetNormalsByElement()`
@@ -2734,66 +2053,39 @@ impl DeformedDataSource {
         MaxNodes: i32,
         Normals: &mut crate::ffi::HandleTColStdHArray1OfReal,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_GetNormalsByElement(
-                    self as *const Self,
-                    Id,
-                    IsNodal,
-                    MaxNodes,
-                    Normals,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_GetNormalsByElement(
+                self as *const Self,
+                Id,
+                IsNodal,
+                MaxNodes,
+                Normals,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:142 - `MeshVS_DataSource::GetAllGroups()`
     pub fn get_all_groups(&self, Ids: &mut crate::t_col_std::PackedMapOfInteger) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_GetAllGroups(
-                    self as *const Self,
-                    Ids,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_GetAllGroups(self as *const Self, Ids)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:159 - `MeshVS_DataSource::IsAdvancedSelectionEnabled()`
     pub fn is_advanced_selection_enabled(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_IsAdvancedSelectionEnabled(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_IsAdvancedSelectionEnabled(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_DataSource.hxx`:165 - `MeshVS_DataSource::GetBoundingBox()`
     pub fn get_bounding_box(&self) -> crate::OwnedPtr<crate::bnd::Box> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_GetBoundingBox(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DeformedDataSource_inherited_GetBoundingBox(self as *const Self),
+            ))
         }
     }
 
@@ -2808,68 +2100,40 @@ impl DeformedDataSource {
         Elements: &mut crate::ffi::HandleTColStdHPackedMapOfInteger,
         DMin: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_GetDetectedEntities(
-                    self as *mut Self,
-                    Prs,
-                    X,
-                    Y,
-                    aTol,
-                    Nodes,
-                    Elements,
-                    DMin,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_GetDetectedEntities(
+                self as *mut Self,
+                Prs,
+                X,
+                Y,
+                aTol,
+                Nodes,
+                Elements,
+                DMin,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::MeshVS_DeformedDataSource_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2880,58 +2144,30 @@ impl DeformedDataSource {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DeformedDataSource_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2946,48 +2182,42 @@ unsafe impl crate::CppDeletable for HandleMeshVSDeformedDataSource {
 impl HandleMeshVSDeformedDataSource {
     /// Dereference this Handle to access the underlying MeshVS_DeformedDataSource
     pub fn get(&self) -> &crate::ffi::MeshVS_DeformedDataSource {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSDeformedDataSource_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSDeformedDataSource_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_DeformedDataSource
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_DeformedDataSource {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSDeformedDataSource_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSDeformedDataSource_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_DeformedDataSource> to Handle<MeshVS_DataSource>
     pub fn to_handle_data_source(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSDeformedDataSource_to_HandleMeshVSDataSource(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSDeformedDataSource_to_HandleMeshVSDataSource(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_DeformedDataSource> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSDeformedDataSource_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSDeformedDataSource_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3012,352 +2242,213 @@ impl Drawer {
     /// **Source:** `MeshVS_Drawer.hxx` - `MeshVS_Drawer::MeshVS_Drawer()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Drawer_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Drawer_ctor())) }
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:45 - `MeshVS_Drawer::Assign()`
     /// This method copies other drawer contents to this.
     pub fn assign(&mut self, aDrawer: &crate::ffi::HandleMeshVSDrawer) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_Drawer_assign(self as *mut Self, aDrawer) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Drawer_assign(self as *mut Self, aDrawer)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:47 - `MeshVS_Drawer::SetInteger()`
     pub fn set_integer(&mut self, Key: i32, Value: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Drawer_set_integer(self as *mut Self, Key, Value) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Drawer_set_integer(self as *mut Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:49 - `MeshVS_Drawer::SetDouble()`
     pub fn set_double(&mut self, Key: i32, Value: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Drawer_set_double(self as *mut Self, Key, Value) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Drawer_set_double(self as *mut Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:51 - `MeshVS_Drawer::SetBoolean()`
     pub fn set_boolean(&mut self, Key: i32, Value: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Drawer_set_boolean(self as *mut Self, Key, Value) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Drawer_set_boolean(self as *mut Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:53 - `MeshVS_Drawer::SetColor()`
     pub fn set_color(&mut self, Key: i32, Value: &crate::quantity::Color) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Drawer_set_color(self as *mut Self, Key, Value) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Drawer_set_color(self as *mut Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:55 - `MeshVS_Drawer::SetMaterial()`
     pub fn set_material(&mut self, Key: i32, Value: &crate::graphic3d::MaterialAspect) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Drawer_set_material(self as *mut Self, Key, Value) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Drawer_set_material(self as *mut Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:58 - `MeshVS_Drawer::SetAsciiString()`
     pub fn set_ascii_string(&mut self, Key: i32, Value: &crate::t_collection::AsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Drawer_set_ascii_string(self as *mut Self, Key, Value)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Drawer_set_ascii_string(self as *mut Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:61 - `MeshVS_Drawer::GetInteger()`
     pub fn get_integer(&self, Key: i32, Value: &mut i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_get_integer(self as *const Self, Key, Value) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_get_integer(self as *const Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:64 - `MeshVS_Drawer::GetDouble()`
     pub fn get_double(&self, Key: i32, Value: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_get_double(self as *const Self, Key, Value) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_get_double(self as *const Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:67 - `MeshVS_Drawer::GetBoolean()`
     pub fn get_boolean(&self, Key: i32, Value: &mut bool) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_get_boolean(self as *const Self, Key, Value) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_get_boolean(self as *const Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:70 - `MeshVS_Drawer::GetColor()`
     pub fn get_color(&self, Key: i32, Value: &mut crate::quantity::Color) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_get_color(self as *const Self, Key, Value) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_get_color(self as *const Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:73 - `MeshVS_Drawer::GetMaterial()`
     pub fn get_material(&self, Key: i32, Value: &mut crate::graphic3d::MaterialAspect) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_get_material(self as *const Self, Key, Value) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_get_material(self as *const Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:76 - `MeshVS_Drawer::GetAsciiString()`
     pub fn get_ascii_string(&self, Key: i32, Value: &mut crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Drawer_get_ascii_string(self as *const Self, Key, Value)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_get_ascii_string(self as *const Self, Key, Value)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:79 - `MeshVS_Drawer::RemoveInteger()`
     pub fn remove_integer(&mut self, Key: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_remove_integer(self as *mut Self, Key) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_remove_integer(self as *mut Self, Key)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:81 - `MeshVS_Drawer::RemoveDouble()`
     pub fn remove_double(&mut self, Key: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_remove_double(self as *mut Self, Key) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_remove_double(self as *mut Self, Key)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:83 - `MeshVS_Drawer::RemoveBoolean()`
     pub fn remove_boolean(&mut self, Key: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_remove_boolean(self as *mut Self, Key) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_remove_boolean(self as *mut Self, Key)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:85 - `MeshVS_Drawer::RemoveColor()`
     pub fn remove_color(&mut self, Key: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_remove_color(self as *mut Self, Key) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_remove_color(self as *mut Self, Key)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:87 - `MeshVS_Drawer::RemoveMaterial()`
     pub fn remove_material(&mut self, Key: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_remove_material(self as *mut Self, Key) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_remove_material(self as *mut Self, Key)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:89 - `MeshVS_Drawer::RemoveAsciiString()`
     pub fn remove_ascii_string(&mut self, Key: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_remove_ascii_string(self as *mut Self, Key) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_remove_ascii_string(self as *mut Self, Key)
+        })
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:91 - `MeshVS_Drawer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Drawer_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Drawer_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:91 - `MeshVS_Drawer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Drawer_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::MeshVS_Drawer_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_Drawer.hxx`:91 - `MeshVS_Drawer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Drawer_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_Drawer_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_Drawer_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_Drawer_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_Drawer_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_Drawer_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDrawer> {
-        let __result = unsafe { crate::ffi::MeshVS_Drawer_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Drawer_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Drawer_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::MeshVS_Drawer_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_Drawer_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3368,51 +2459,30 @@ impl Drawer {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Drawer_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Drawer_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Drawer_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Drawer_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Drawer_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_Drawer_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Drawer_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3427,31 +2497,23 @@ unsafe impl crate::CppDeletable for HandleMeshVSDrawer {
 impl HandleMeshVSDrawer {
     /// Dereference this Handle to access the underlying MeshVS_Drawer
     pub fn get(&self) -> &crate::ffi::MeshVS_Drawer {
-        let __result = unsafe { crate::ffi::HandleMeshVSDrawer_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleMeshVSDrawer_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_Drawer
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_Drawer {
-        let __result = unsafe { crate::ffi::HandleMeshVSDrawer_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSDrawer_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_Drawer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSDrawer_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSDrawer_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3477,14 +2539,10 @@ impl DummySensitiveEntity {
     pub fn new_handleselectmgrentityowner(
         theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_ctor_handleselectmgrentityowner(theOwnerId)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DummySensitiveEntity_ctor_handleselectmgrentityowner(theOwnerId),
+            ))
         }
     }
 
@@ -3494,304 +2552,207 @@ impl DummySensitiveEntity {
         theMgr: &mut crate::select_basics::SelectingVolumeManager,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_matches(
-                    self as *mut Self,
-                    theMgr,
-                    thePickResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_DummySensitiveEntity.hxx`:37 - `MeshVS_DummySensitiveEntity::NbSubElements()`
     pub fn nb_sub_elements(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_nb_sub_elements(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_nb_sub_elements(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_DummySensitiveEntity.hxx`:39 - `MeshVS_DummySensitiveEntity::BoundingBox()`
     pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_DummySensitiveEntity_bounding_box(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DummySensitiveEntity_bounding_box(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_DummySensitiveEntity.hxx`:41 - `MeshVS_DummySensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_DummySensitiveEntity_bvh(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_bvh(self as *mut Self)
+        })
     }
 
     /// **Source:** `MeshVS_DummySensitiveEntity.hxx`:43 - `MeshVS_DummySensitiveEntity::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_to_build_bvh(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_to_build_bvh(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_DummySensitiveEntity.hxx`:45 - `MeshVS_DummySensitiveEntity::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_DummySensitiveEntity_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `MeshVS_DummySensitiveEntity.hxx`:47 - `MeshVS_DummySensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_has_init_location(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_has_init_location(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_DummySensitiveEntity.hxx`:49 - `MeshVS_DummySensitiveEntity::InvInitLocation()`
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inv_init_location(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DummySensitiveEntity_inv_init_location(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_DummySensitiveEntity.hxx`:51 - `MeshVS_DummySensitiveEntity::CenterOfGeometry()`
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_center_of_geometry(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DummySensitiveEntity_center_of_geometry(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_DummySensitiveEntity.hxx`:53 - `MeshVS_DummySensitiveEntity::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DummySensitiveEntity_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_DummySensitiveEntity.hxx`:53 - `MeshVS_DummySensitiveEntity::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_DummySensitiveEntity_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_DummySensitiveEntity_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_DummySensitiveEntity.hxx`:53 - `MeshVS_DummySensitiveEntity::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_DummySensitiveEntity_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DummySensitiveEntity_get_type_descriptor()))
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_select3_d_sensitive_entity(&self) -> &crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_DummySensitiveEntity_as_Select3D_SensitiveEntity(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::MeshVS_DummySensitiveEntity_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_select3_d_sensitive_entity_mut(&mut self) -> &mut crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_DummySensitiveEntity_as_Select3D_SensitiveEntity_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_DummySensitiveEntity_as_Select3D_SensitiveEntity_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_DummySensitiveEntity_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_DummySensitiveEntity_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_DummySensitiveEntity_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_DummySensitiveEntity_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDummySensitiveEntity> {
-        let __result = unsafe { crate::ffi::MeshVS_DummySensitiveEntity_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DummySensitiveEntity_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
     pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_OwnerId(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_DummySensitiveEntity_inherited_OwnerId(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_Set(self as *mut Self, theOwnerId)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_inherited_Set(self as *mut Self, theOwnerId)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_SensitivityFactor(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_inherited_SensitivityFactor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_SetSensitivityFactor(
-                    self as *mut Self,
-                    theNewSens,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_inherited_SetSensitivityFactor(
+                self as *mut Self,
+                theNewSens,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:57 - `Select3D_SensitiveEntity::GetConnected()`
     pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_GetConnected(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_DummySensitiveEntity_inherited_GetConnected(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
     pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::MeshVS_DummySensitiveEntity_inherited_TransformPersistence(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
@@ -3800,63 +2761,37 @@ impl DummySensitiveEntity {
         &mut self,
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_SetTransformPersistence(
-                    self as *mut Self,
-                    theTrsfPers,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_inherited_SetTransformPersistence(
+                self as *mut Self,
+                theTrsfPers,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::MeshVS_DummySensitiveEntity_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3867,58 +2802,30 @@ impl DummySensitiveEntity {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_DummySensitiveEntity_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_DummySensitiveEntity_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3933,50 +2840,44 @@ unsafe impl crate::CppDeletable for HandleMeshVSDummySensitiveEntity {
 impl HandleMeshVSDummySensitiveEntity {
     /// Dereference this Handle to access the underlying MeshVS_DummySensitiveEntity
     pub fn get(&self) -> &crate::ffi::MeshVS_DummySensitiveEntity {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSDummySensitiveEntity_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSDummySensitiveEntity_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_DummySensitiveEntity
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_DummySensitiveEntity {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSDummySensitiveEntity_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSDummySensitiveEntity_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_DummySensitiveEntity> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSDummySensitiveEntity_to_HandleSelect3DSensitiveEntity(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSDummySensitiveEntity_to_HandleSelect3DSensitiveEntity(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_DummySensitiveEntity> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSDummySensitiveEntity_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSDummySensitiveEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4006,14 +2907,8 @@ impl ElementalColorPrsBuilder {
         Id: i32,
         Priority: &i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_ctor_handlemeshvsmesh_int_handlemeshvsdatasource_int2(Parent, Flags, DS, Id, Priority)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_ElementalColorPrsBuilder_ctor_handlemeshvsmesh_int_handlemeshvsdatasource_int2(Parent, Flags, DS, Id, Priority)))
         }
     }
 
@@ -4027,162 +2922,100 @@ impl ElementalColorPrsBuilder {
         IsElement: bool,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_build(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    IsElement,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_build(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                IsElement,
+                DisplayMode,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:56 - `MeshVS_ElementalColorPrsBuilder::GetColors1()`
     /// Returns map of colors same for front and back side of face.
     pub fn get_colors1(&self) -> &crate::ffi::MeshVS_DataMapOfIntegerColor {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_get_colors1(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_ElementalColorPrsBuilder_get_colors1(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:59 - `MeshVS_ElementalColorPrsBuilder::SetColors1()`
     /// Sets map of colors same for front and back side of face.
     pub fn set_colors1(&mut self, Map: &crate::ffi::MeshVS_DataMapOfIntegerColor) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_set_colors1(self as *mut Self, Map)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_set_colors1(self as *mut Self, Map)
+        })
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:62 - `MeshVS_ElementalColorPrsBuilder::HasColors1()`
     /// Returns true, if map of colors isn't empty
     pub fn has_colors1(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_has_colors1(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_has_colors1(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:65 - `MeshVS_ElementalColorPrsBuilder::GetColor1()`
     /// Returns color assigned with element number ID
     pub fn get_color1(&self, ID: i32, theColor: &mut crate::quantity::Color) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_get_color1(
-                    self as *const Self,
-                    ID,
-                    theColor,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_get_color1(
+                self as *const Self,
+                ID,
+                theColor,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:69 - `MeshVS_ElementalColorPrsBuilder::SetColor1()`
     /// Sets color assigned with element number ID
     pub fn set_color1(&mut self, ID: i32, theColor: &crate::quantity::Color) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_set_color1(
-                    self as *mut Self,
-                    ID,
-                    theColor,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_set_color1(self as *mut Self, ID, theColor)
+        })
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:72 - `MeshVS_ElementalColorPrsBuilder::GetColors2()`
     /// Returns map of different colors for front and back side of face
     pub fn get_colors2(&self) -> &crate::ffi::MeshVS_DataMapOfIntegerTwoColors {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_get_colors2(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_ElementalColorPrsBuilder_get_colors2(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:75 - `MeshVS_ElementalColorPrsBuilder::SetColors2()`
     /// Sets map of different colors for front and back side of face
     pub fn set_colors2(&mut self, Map: &crate::ffi::MeshVS_DataMapOfIntegerTwoColors) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_set_colors2(self as *mut Self, Map)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_set_colors2(self as *mut Self, Map)
+        })
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:78 - `MeshVS_ElementalColorPrsBuilder::HasColors2()`
     /// Returns true, if map isn't empty
     pub fn has_colors2(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_has_colors2(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_has_colors2(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:81 - `MeshVS_ElementalColorPrsBuilder::GetColor2()`
     /// Returns colors assigned with element number ID
     pub fn get_color2_int_twocolors(&self, ID: i32, theColor: &mut TwoColors) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_get_color2_int_twocolors(
-                    self as *const Self,
-                    ID,
-                    theColor,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_get_color2_int_twocolors(
+                self as *const Self,
+                ID,
+                theColor,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:87 - `MeshVS_ElementalColorPrsBuilder::GetColor2()`
@@ -4195,38 +3028,26 @@ impl ElementalColorPrsBuilder {
         theColor1: &mut crate::quantity::Color,
         theColor2: &mut crate::quantity::Color,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_get_color2_int_color2(
-                    self as *const Self,
-                    ID,
-                    theColor1,
-                    theColor2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_get_color2_int_color2(
+                self as *const Self,
+                ID,
+                theColor1,
+                theColor2,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:92 - `MeshVS_ElementalColorPrsBuilder::SetColor2()`
     /// Sets colors assigned with element number ID
     pub fn set_color2_int_twocolors(&mut self, ID: i32, theTwoColors: &TwoColors) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_set_color2_int_twocolors(
-                    self as *mut Self,
-                    ID,
-                    theTwoColors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_set_color2_int_twocolors(
+                self as *mut Self,
+                ID,
+                theTwoColors,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:97 - `MeshVS_ElementalColorPrsBuilder::SetColor2()`
@@ -4239,114 +3060,96 @@ impl ElementalColorPrsBuilder {
         theColor1: &crate::quantity::Color,
         theColor2: &crate::quantity::Color,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_set_color2_int_color2(
-                    self as *mut Self,
-                    ID,
-                    theColor1,
-                    theColor2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_set_color2_int_color2(
+                self as *mut Self,
+                ID,
+                theColor1,
+                theColor2,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:101 - `MeshVS_ElementalColorPrsBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_ElementalColorPrsBuilder_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:101 - `MeshVS_ElementalColorPrsBuilder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_ElementalColorPrsBuilder_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_ElementalColorPrsBuilder_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:101 - `MeshVS_ElementalColorPrsBuilder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_ElementalColorPrsBuilder_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::MeshVS_ElementalColorPrsBuilder_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to MeshVS_PrsBuilder
     pub fn as_prs_builder(&self) -> &PrsBuilder {
-        let __result = unsafe {
-            crate::ffi::MeshVS_ElementalColorPrsBuilder_as_MeshVS_PrsBuilder(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_ElementalColorPrsBuilder_as_MeshVS_PrsBuilder(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to MeshVS_PrsBuilder (mutable)
     pub fn as_prs_builder_mut(&mut self) -> &mut PrsBuilder {
-        let __result = unsafe {
-            crate::ffi::MeshVS_ElementalColorPrsBuilder_as_MeshVS_PrsBuilder_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_ElementalColorPrsBuilder_as_MeshVS_PrsBuilder_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_ElementalColorPrsBuilder_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::MeshVS_ElementalColorPrsBuilder_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_ElementalColorPrsBuilder_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_ElementalColorPrsBuilder_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSElementalColorPrsBuilder> {
-        let __result =
-            unsafe { crate::ffi::MeshVS_ElementalColorPrsBuilder_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_ElementalColorPrsBuilder_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:57 - `MeshVS_PrsBuilder::CustomBuild()`
@@ -4357,20 +3160,15 @@ impl ElementalColorPrsBuilder {
         IDsToExclude: &mut crate::t_col_std::PackedMapOfInteger,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_CustomBuild(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_CustomBuild(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                DisplayMode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:63 - `MeshVS_PrsBuilder::CustomSensitiveEntity()`
@@ -4379,172 +3177,105 @@ impl ElementalColorPrsBuilder {
         Owner: &crate::ffi::HandleSelectMgrEntityOwner,
         SelectMode: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_CustomSensitiveEntity(
                     self as *const Self,
                     Owner,
                     SelectMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:68 - `MeshVS_PrsBuilder::GetFlags()`
     pub fn get_flags(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetFlags(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetFlags(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:73 - `MeshVS_PrsBuilder::TestFlags()`
     pub fn test_flags(&self, DisplayMode: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_TestFlags(
-                    self as *const Self,
-                    DisplayMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_TestFlags(
+                self as *const Self,
+                DisplayMode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:76 - `MeshVS_PrsBuilder::GetId()`
     pub fn get_id(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetId(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetId(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:79 - `MeshVS_PrsBuilder::GetPriority()`
     pub fn get_priority(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetPriority(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetPriority(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:82 - `MeshVS_PrsBuilder::GetDataSource()`
     pub fn get_data_source(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetDataSource(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:85 - `MeshVS_PrsBuilder::SetDataSource()`
     pub fn set_data_source(&mut self, newDS: &crate::ffi::HandleMeshVSDataSource) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_SetDataSource(
-                    self as *mut Self,
-                    newDS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_SetDataSource(
+                self as *mut Self,
+                newDS,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:88 - `MeshVS_PrsBuilder::GetDrawer()`
     pub fn get_drawer(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDrawer> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetDrawer(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetDrawer(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:91 - `MeshVS_PrsBuilder::SetDrawer()`
     pub fn set_drawer(&mut self, newDr: &crate::ffi::HandleMeshVSDrawer) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_SetDrawer(
-                    self as *mut Self,
-                    newDr,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_SetDrawer(
+                self as *mut Self,
+                newDr,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:95 - `MeshVS_PrsBuilder::SetExcluding()`
     pub fn set_excluding(&mut self, state: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_SetExcluding(
-                    self as *mut Self,
-                    state,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_SetExcluding(
+                self as *mut Self,
+                state,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:98 - `MeshVS_PrsBuilder::IsExcludingOn()`
     pub fn is_excluding_on(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_IsExcludingOn(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_IsExcludingOn(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:101 - `MeshVS_PrsBuilder::SetPresentationManager()`
@@ -4552,81 +3283,53 @@ impl ElementalColorPrsBuilder {
         &mut self,
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_SetPresentationManager(
-                    self as *mut Self,
-                    thePrsMgr,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_SetPresentationManager(
+                self as *mut Self,
+                thePrsMgr,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:104 - `MeshVS_PrsBuilder::GetPresentationManager()`
     pub fn get_presentation_manager(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentationManager> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetPresentationManager(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -4637,60 +3340,34 @@ impl ElementalColorPrsBuilder {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetRefCount(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_ElementalColorPrsBuilder_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -4705,48 +3382,42 @@ unsafe impl crate::CppDeletable for HandleMeshVSElementalColorPrsBuilder {
 impl HandleMeshVSElementalColorPrsBuilder {
     /// Dereference this Handle to access the underlying MeshVS_ElementalColorPrsBuilder
     pub fn get(&self) -> &crate::ffi::MeshVS_ElementalColorPrsBuilder {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSElementalColorPrsBuilder_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSElementalColorPrsBuilder_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_ElementalColorPrsBuilder
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_ElementalColorPrsBuilder {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSElementalColorPrsBuilder_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSElementalColorPrsBuilder_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_ElementalColorPrsBuilder> to Handle<MeshVS_PrsBuilder>
     pub fn to_handle_prs_builder(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSPrsBuilder> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSElementalColorPrsBuilder_to_HandleMeshVSPrsBuilder(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSElementalColorPrsBuilder_to_HandleMeshVSPrsBuilder(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_ElementalColorPrsBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSElementalColorPrsBuilder_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSElementalColorPrsBuilder_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4766,25 +3437,19 @@ unsafe impl crate::CppDeletable for HArray1OfSequenceOfInteger {
 impl HArray1OfSequenceOfInteger {
     /// **Source:** `MeshVS_HArray1OfSequenceOfInteger.hxx`:22 - `MeshVS_HArray1OfSequenceOfInteger::MeshVS_HArray1OfSequenceOfInteger()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_HArray1OfSequenceOfInteger_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_ctor(),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_HArray1OfSequenceOfInteger.hxx`:22 - `MeshVS_HArray1OfSequenceOfInteger::MeshVS_HArray1OfSequenceOfInteger()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_ctor_int2(theLower, theUpper)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_ctor_int2(theLower, theUpper),
+            ))
         }
     }
 
@@ -4794,16 +3459,12 @@ impl HArray1OfSequenceOfInteger {
         theUpper: i32,
         theValue: &crate::ffi::MeshVS_Array1OfSequenceOfInteger_value_type,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_HArray1OfSequenceOfInteger_ctor_int2_type(
                     theLower, theUpper, theValue,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -4814,16 +3475,12 @@ impl HArray1OfSequenceOfInteger {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_HArray1OfSequenceOfInteger_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -4831,166 +3488,121 @@ impl HArray1OfSequenceOfInteger {
     pub fn new_array1ofsequenceofinteger(
         theOther: &crate::ffi::MeshVS_Array1OfSequenceOfInteger,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_HArray1OfSequenceOfInteger_ctor_array1ofsequenceofinteger(
                     theOther,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_HArray1OfSequenceOfInteger.hxx`:22 - `MeshVS_HArray1OfSequenceOfInteger::Array1()`
     pub fn array1(&self) -> &crate::ffi::MeshVS_Array1OfSequenceOfInteger {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_array1(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_HArray1OfSequenceOfInteger_array1(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_HArray1OfSequenceOfInteger.hxx`:22 - `MeshVS_HArray1OfSequenceOfInteger::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::MeshVS_Array1OfSequenceOfInteger {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_change_array1(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_change_array1(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_HArray1OfSequenceOfInteger.hxx`:22 - `MeshVS_HArray1OfSequenceOfInteger::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_HArray1OfSequenceOfInteger_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_HArray1OfSequenceOfInteger.hxx`:22 - `MeshVS_HArray1OfSequenceOfInteger::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_HArray1OfSequenceOfInteger_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_HArray1OfSequenceOfInteger.hxx`:22 - `MeshVS_HArray1OfSequenceOfInteger::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_HArray1OfSequenceOfInteger_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_HArray1OfSequenceOfInteger_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_HArray1OfSequenceOfInteger_as_Standard_Transient_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger> {
-        let __result =
-            unsafe { crate::ffi::MeshVS_HArray1OfSequenceOfInteger_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -5001,60 +3613,34 @@ impl HArray1OfSequenceOfInteger {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_GetRefCount(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_HArray1OfSequenceOfInteger_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -5069,36 +3655,31 @@ unsafe impl crate::CppDeletable for HandleMeshVSHArray1OfSequenceOfInteger {
 impl HandleMeshVSHArray1OfSequenceOfInteger {
     /// Dereference this Handle to access the underlying MeshVS_HArray1OfSequenceOfInteger
     pub fn get(&self) -> &crate::ffi::MeshVS_HArray1OfSequenceOfInteger {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_HArray1OfSequenceOfInteger
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_HArray1OfSequenceOfInteger {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger_get_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_HArray1OfSequenceOfInteger> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5122,12 +3703,10 @@ impl Mesh {
     /// theIsAllowOverlapped is Standard_True, if it is allowed to draw edges overlapped with beams
     /// Its value is stored in drawer
     pub fn new_bool(theIsAllowOverlapped: bool) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_ctor_bool(theIsAllowOverlapped) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Mesh_ctor_bool(
+                theIsAllowOverlapped,
+            )))
         }
     }
 
@@ -5142,16 +3721,9 @@ impl Mesh {
     /// **Source:** `MeshVS_Mesh.hxx`:44 - `MeshVS_Mesh::AcceptDisplayMode()`
     /// Returns true for supported display modes basing on a list of defined builders.
     pub fn accept_display_mode(&self, theMode: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_accept_display_mode(self as *const Self, theMode)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_accept_display_mode(self as *const Self, theMode)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:49 - `MeshVS_Mesh::Compute()`
@@ -5163,14 +3735,9 @@ impl Mesh {
         thePrs: &crate::ffi::HandleGraphic3dStructure,
         theDispMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_compute(self as *mut Self, thePrsMgr, thePrs, theDispMode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_compute(self as *mut Self, thePrsMgr, thePrs, theDispMode)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:54 - `MeshVS_Mesh::ComputeSelection()`
@@ -5180,14 +3747,9 @@ impl Mesh {
         theSel: &crate::ffi::HandleSelectMgrSelection,
         theSelMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_compute_selection(self as *mut Self, theSel, theSelMode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_compute_selection(self as *mut Self, theSel, theSelMode)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:59 - `MeshVS_Mesh::HilightSelected()`
@@ -5197,14 +3759,9 @@ impl Mesh {
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
         theOwners: &crate::ffi::SelectMgr_SequenceOfOwner,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_hilight_selected(self as *mut Self, thePrsMgr, theOwners)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_hilight_selected(self as *mut Self, thePrsMgr, theOwners)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:64 - `MeshVS_Mesh::HilightOwnerWithColor()`
@@ -5215,57 +3772,40 @@ impl Mesh {
         theColor: &crate::ffi::HandlePrs3dDrawer,
         theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_hilight_owner_with_color(
-                    self as *mut Self,
-                    thePM,
-                    theColor,
-                    theOwner,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_hilight_owner_with_color(
+                self as *mut Self,
+                thePM,
+                theColor,
+                theOwner,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:70 - `MeshVS_Mesh::ClearSelected()`
     /// Clears internal selection presentation
     pub fn clear_selected(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_Mesh_clear_selected(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_clear_selected(self as *mut Self)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:73 - `MeshVS_Mesh::GetBuildersCount()`
     /// How many builders there are in sequence
     pub fn get_builders_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_get_builders_count(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_get_builders_count(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:76 - `MeshVS_Mesh::GetBuilder()`
     /// Returns builder by its index in sequence
     pub fn get_builder(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleMeshVSPrsBuilder> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_get_builder(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Mesh_get_builder(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -5275,14 +3815,10 @@ impl Mesh {
         &self,
         Id: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSPrsBuilder> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_get_builder_by_id(self as *const Self, Id) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_Mesh_get_builder_by_id(self as *const Self, Id),
+            ))
         }
     }
 
@@ -5290,14 +3826,7 @@ impl Mesh {
     /// Returns the smallest positive ID, not occupied by any builder.
     /// This method using when builder is created with ID = -1
     pub fn get_free_id(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_get_free_id(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::MeshVS_Mesh_get_free_id(self as *const Self) })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:93 - `MeshVS_Mesh::AddBuilder()`
@@ -5314,14 +3843,9 @@ impl Mesh {
         Builder: &crate::ffi::HandleMeshVSPrsBuilder,
         TreatAsHilighter: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_add_builder(self as *mut Self, Builder, TreatAsHilighter)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_add_builder(self as *mut Self, Builder, TreatAsHilighter)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:97 - `MeshVS_Mesh::SetHilighter()`
@@ -5330,57 +3854,34 @@ impl Mesh {
         &mut self,
         Builder: &crate::ffi::HandleMeshVSPrsBuilder,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_set_hilighter_handlemeshvsprsbuilder(
-                    self as *mut Self,
-                    Builder,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_set_hilighter_handlemeshvsprsbuilder(self as *mut Self, Builder)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:100 - `MeshVS_Mesh::SetHilighter()`
     /// Sets builder with sequence index "Index" as hilighter
     pub fn set_hilighter_int(&mut self, Index: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_set_hilighter_int(self as *mut Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_set_hilighter_int(self as *mut Self, Index)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:103 - `MeshVS_Mesh::SetHilighterById()`
     /// Sets builder with identificator "Id" as hilighter
     pub fn set_hilighter_by_id(&mut self, Id: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_set_hilighter_by_id(self as *mut Self, Id) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_set_hilighter_by_id(self as *mut Self, Id)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:106 - `MeshVS_Mesh::GetHilighter()`
     /// Returns hilighter
     pub fn get_hilighter(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSPrsBuilder> {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_get_hilighter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Mesh_get_hilighter(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5388,24 +3889,17 @@ impl Mesh {
     /// Removes builder from sequence. If it is hilighter, hilighter will be NULL
     /// ( Don't remember to set it to other after!!! )
     pub fn remove_builder(&mut self, Index: i32) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_Mesh_remove_builder(self as *mut Self, Index) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_remove_builder(self as *mut Self, Index)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:113 - `MeshVS_Mesh::RemoveBuilderById()`
     /// Removes builder with identificator Id
     pub fn remove_builder_by_id(&mut self, Id: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_remove_builder_by_id(self as *mut Self, Id) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_remove_builder_by_id(self as *mut Self, Id)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:122 - `MeshVS_Mesh::FindBuilder()`
@@ -5414,148 +3908,100 @@ impl Mesh {
         &self,
         TypeString: &crate::ffi::HandleStandardType,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSPrsBuilder> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_find_builder(self as *const Self, TypeString) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Mesh_find_builder(
+                self as *const Self,
+                TypeString,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:126 - `MeshVS_Mesh::GetOwnerMaps()`
     /// Returns map of owners.
     pub fn get_owner_maps(&mut self, IsElement: bool) -> &crate::ffi::MeshVS_DataMapOfIntegerOwner {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_get_owner_maps(self as *mut Self, IsElement) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_get_owner_maps(
+                self as *mut Self,
+                IsElement,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:130 - `MeshVS_Mesh::GetDataSource()`
     /// Returns default builders' data source
     pub fn get_data_source(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource> {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_get_data_source(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Mesh_get_data_source(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:133 - `MeshVS_Mesh::SetDataSource()`
     /// Sets default builders' data source
     pub fn set_data_source(&mut self, aDataSource: &crate::ffi::HandleMeshVSDataSource) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_set_data_source(self as *mut Self, aDataSource) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_set_data_source(self as *mut Self, aDataSource)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:136 - `MeshVS_Mesh::GetDrawer()`
     /// Returns default builders' drawer
     pub fn get_drawer(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDrawer> {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_get_drawer(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Mesh_get_drawer(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:139 - `MeshVS_Mesh::SetDrawer()`
     /// Sets default builders' drawer
     pub fn set_drawer(&mut self, aDrawer: &crate::ffi::HandleMeshVSDrawer) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_Mesh_set_drawer(self as *mut Self, aDrawer) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_set_drawer(self as *mut Self, aDrawer)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:143 - `MeshVS_Mesh::IsHiddenElem()`
     /// Returns True if specified element is hidden
     /// By default no elements are hidden
     pub fn is_hidden_elem(&self, ID: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_is_hidden_elem(self as *const Self, ID) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_is_hidden_elem(self as *const Self, ID)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:147 - `MeshVS_Mesh::IsHiddenNode()`
     /// Returns True if specified node is hidden.
     /// By default all nodes are hidden
     pub fn is_hidden_node(&self, ID: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_is_hidden_node(self as *const Self, ID) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_is_hidden_node(self as *const Self, ID)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:150 - `MeshVS_Mesh::IsSelectableElem()`
     /// Returns True if specified element is not hidden
     pub fn is_selectable_elem(&self, ID: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_is_selectable_elem(self as *const Self, ID) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_is_selectable_elem(self as *const Self, ID)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:153 - `MeshVS_Mesh::IsSelectableNode()`
     /// Returns True if specified node is specified as selectable.
     pub fn is_selectable_node(&self, ID: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_is_selectable_node(self as *const Self, ID) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_is_selectable_node(self as *const Self, ID)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:156 - `MeshVS_Mesh::GetHiddenNodes()`
     /// Returns map of hidden nodes (may be null handle)
     pub fn get_hidden_nodes(&self) -> &crate::ffi::HandleTColStdHPackedMapOfInteger {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_get_hidden_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_get_hidden_nodes(self as *const Self)))
         }
     }
 
@@ -5564,62 +4010,43 @@ impl Mesh {
     /// If nodes shared by some elements shall not be drawn,
     /// they should be included into that map
     pub fn set_hidden_nodes(&mut self, Ids: &crate::ffi::HandleTColStdHPackedMapOfInteger) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_Mesh_set_hidden_nodes(self as *mut Self, Ids) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_set_hidden_nodes(self as *mut Self, Ids)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:164 - `MeshVS_Mesh::GetHiddenElems()`
     /// Returns map of hidden elements (may be null handle)
     pub fn get_hidden_elems(&self) -> &crate::ffi::HandleTColStdHPackedMapOfInteger {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_get_hidden_elems(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_get_hidden_elems(self as *const Self)))
         }
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:167 - `MeshVS_Mesh::SetHiddenElems()`
     /// Sets map of hidden elements
     pub fn set_hidden_elems(&mut self, Ids: &crate::ffi::HandleTColStdHPackedMapOfInteger) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_Mesh_set_hidden_elems(self as *mut Self, Ids) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_set_hidden_elems(self as *mut Self, Ids)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:170 - `MeshVS_Mesh::GetSelectableNodes()`
     /// Returns map of selectable elements (may be null handle)
     pub fn get_selectable_nodes(&self) -> &crate::ffi::HandleTColStdHPackedMapOfInteger {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_get_selectable_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_get_selectable_nodes(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:173 - `MeshVS_Mesh::SetSelectableNodes()`
     /// Sets map of selectable nodes.
     pub fn set_selectable_nodes(&mut self, Ids: &crate::ffi::HandleTColStdHPackedMapOfInteger) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_set_selectable_nodes(self as *mut Self, Ids) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_set_selectable_nodes(self as *mut Self, Ids)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:180 - `MeshVS_Mesh::UpdateSelectableNodes()`
@@ -5629,243 +4056,175 @@ impl Mesh {
     /// Thus all nodes that are visible (either individually, or as ends or
     /// corners of elements) are selectable by default.
     pub fn update_selectable_nodes(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_update_selectable_nodes(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_update_selectable_nodes(self as *mut Self)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:183 - `MeshVS_Mesh::GetMeshSelMethod()`
     /// Returns set mesh selection method (see MeshVS.cdl)
     pub fn get_mesh_sel_method(&self) -> crate::mesh_vs::MeshSelectionMethod {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_get_mesh_sel_method(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::mesh_vs::MeshSelectionMethod::try_from(__val).unwrap()
-        }
+        crate::mesh_vs::MeshSelectionMethod::try_from(crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_get_mesh_sel_method(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:186 - `MeshVS_Mesh::SetMeshSelMethod()`
     /// Sets mesh selection method (see MeshVS.cdl)
     pub fn set_mesh_sel_method(&mut self, M: crate::mesh_vs::MeshSelectionMethod) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_set_mesh_sel_method(self as *mut Self, M.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_set_mesh_sel_method(self as *mut Self, M.into())
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:189 - `MeshVS_Mesh::IsWholeMeshOwner()`
     /// Returns True if the given owner represents a whole mesh.
     pub fn is_whole_mesh_owner(&self, theOwner: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_is_whole_mesh_owner(self as *const Self, theOwner)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_is_whole_mesh_owner(self as *const Self, theOwner)
+        })
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:194 - `MeshVS_Mesh::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:194 - `MeshVS_Mesh::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::MeshVS_Mesh_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_Mesh.hxx`:194 - `MeshVS_Mesh::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_Mesh_get_type_descriptor())) }
     }
 
     /// Upcast to AIS_InteractiveObject
     pub fn as_ais_interactive_object(&self) -> &crate::ais::InteractiveObject {
-        let __result =
-            unsafe { crate::ffi::MeshVS_Mesh_as_AIS_InteractiveObject(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_Mesh_as_AIS_InteractiveObject(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to AIS_InteractiveObject (mutable)
     pub fn as_ais_interactive_object_mut(&mut self) -> &mut crate::ais::InteractiveObject {
-        let __result =
-            unsafe { crate::ffi::MeshVS_Mesh_as_AIS_InteractiveObject_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_Mesh_as_AIS_InteractiveObject_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to SelectMgr_SelectableObject
     pub fn as_select_mgr_selectable_object(&self) -> &crate::select_mgr::SelectableObject {
-        let __result =
-            unsafe { crate::ffi::MeshVS_Mesh_as_SelectMgr_SelectableObject(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_Mesh_as_SelectMgr_SelectableObject(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to SelectMgr_SelectableObject (mutable)
     pub fn as_select_mgr_selectable_object_mut(
         &mut self,
     ) -> &mut crate::select_mgr::SelectableObject {
-        let __result =
-            unsafe { crate::ffi::MeshVS_Mesh_as_SelectMgr_SelectableObject_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_Mesh_as_SelectMgr_SelectableObject_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to PrsMgr_PresentableObject
     pub fn as_prs_mgr_presentable_object(&self) -> &crate::prs_mgr::PresentableObject {
-        let __result =
-            unsafe { crate::ffi::MeshVS_Mesh_as_PrsMgr_PresentableObject(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_Mesh_as_PrsMgr_PresentableObject(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to PrsMgr_PresentableObject (mutable)
     pub fn as_prs_mgr_presentable_object_mut(&mut self) -> &mut crate::prs_mgr::PresentableObject {
-        let __result =
-            unsafe { crate::ffi::MeshVS_Mesh_as_PrsMgr_PresentableObject_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_Mesh_as_PrsMgr_PresentableObject_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_Mesh_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_Mesh_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_Mesh_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_Mesh_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMeshVSMesh> {
-        let __result = unsafe { crate::ffi::MeshVS_Mesh_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Mesh_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:51 - `AIS_InteractiveObject::Type()`
     pub fn type_(&self) -> crate::ais::KindOfInteractive {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_inherited_Type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::ais::KindOfInteractive::try_from(__val).unwrap()
-        }
+        crate::ais::KindOfInteractive::try_from(crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_Type(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:63 - `AIS_InteractiveObject::Signature()`
     pub fn signature(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_Signature(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_Signature(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:71 - `AIS_InteractiveObject::Redisplay()`
     pub fn redisplay(&mut self, AllModes: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_Redisplay(self as *mut Self, AllModes) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_Redisplay(self as *mut Self, AllModes)
+        })
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:74 - `AIS_InteractiveObject::HasInteractiveContext()`
     pub fn has_interactive_context(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_HasInteractiveContext(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasInteractiveContext(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:77 - `AIS_InteractiveObject::InteractiveContext()`
     pub fn interactive_context(&self) -> Option<&crate::ais::InteractiveContext> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::MeshVS_Mesh_inherited_InteractiveContext(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -5876,61 +4235,37 @@ impl Mesh {
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:81 - `AIS_InteractiveObject::SetContext()`
     pub fn set_context(&mut self, aCtx: &crate::ffi::HandleAISInteractiveContext) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_SetContext(self as *mut Self, aCtx) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetContext(self as *mut Self, aCtx)
+        })
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:86 - `AIS_InteractiveObject::HasOwner()`
     pub fn has_owner(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_HasOwner(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasOwner(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:97 - `AIS_InteractiveObject::GetOwner()`
     pub fn get_owner(&self) -> &crate::ffi::HandleStandardTransient {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_GetOwner(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_GetOwner(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:103 - `AIS_InteractiveObject::SetOwner()`
     pub fn set_owner(&mut self, theApplicativeEntity: &crate::ffi::HandleStandardTransient) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetOwner(self as *mut Self, theApplicativeEntity)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetOwner(self as *mut Self, theApplicativeEntity)
+        })
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:110 - `AIS_InteractiveObject::ClearOwner()`
     pub fn clear_owner(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_Mesh_inherited_ClearOwner(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_ClearOwner(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:120 - `AIS_InteractiveObject::ProcessDragging()`
@@ -5943,191 +4278,117 @@ impl Mesh {
         theDragTo: &crate::ffi::Graphic3d_Vec2i,
         theAction: crate::ais::DragAction,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_ProcessDragging(
-                    self as *mut Self,
-                    theCtx,
-                    theView,
-                    theOwner,
-                    theDragFrom,
-                    theDragTo,
-                    theAction.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_ProcessDragging(
+                self as *mut Self,
+                theCtx,
+                theView,
+                theOwner,
+                theDragFrom,
+                theDragTo,
+                theAction.into(),
+            )
+        })
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:130 - `AIS_InteractiveObject::GetContext()`
     pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleAISInteractiveContext> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_GetContext(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_Mesh_inherited_GetContext(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:133 - `AIS_InteractiveObject::HasPresentation()`
     pub fn has_presentation(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_HasPresentation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasPresentation(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:136 - `AIS_InteractiveObject::Presentation()`
     pub fn presentation(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_Presentation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_Mesh_inherited_Presentation(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:63 - `SelectMgr_SelectableObject::AcceptShapeDecomposition()`
     pub fn accept_shape_decomposition(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_AcceptShapeDecomposition(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_AcceptShapeDecomposition(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:69 - `SelectMgr_SelectableObject::RecomputePrimitives()`
     pub fn recompute_primitives(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_RecomputePrimitives(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_RecomputePrimitives(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:80 - `SelectMgr_SelectableObject::AddSelection()`
     pub fn add_selection(&mut self, aSelection: &crate::ffi::HandleSelectMgrSelection, aMode: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_AddSelection(self as *mut Self, aSelection, aMode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_AddSelection(self as *mut Self, aSelection, aMode)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:89 - `SelectMgr_SelectableObject::ClearSelections()`
     pub fn clear_selections(&mut self, update: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_ClearSelections(self as *mut Self, update)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_ClearSelections(self as *mut Self, update)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:92 - `SelectMgr_SelectableObject::Selection()`
     pub fn selection(&self, theMode: i32) -> &crate::ffi::HandleSelectMgrSelection {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_Selection(self as *const Self, theMode)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_Selection(
+                self as *const Self,
+                theMode,
+            )))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:97 - `SelectMgr_SelectableObject::HasSelection()`
     pub fn has_selection(&self, theMode: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_HasSelection(self as *const Self, theMode)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasSelection(self as *const Self, theMode)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:103 - `SelectMgr_SelectableObject::Selections()`
     pub fn selections(&self) -> &crate::ffi::SelectMgr_SequenceOfSelection {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_Selections(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_Selections(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:105 - `SelectMgr_SelectableObject::ResetTransformation()`
     pub fn reset_transformation(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_ResetTransformation(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_ResetTransformation(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:108 - `SelectMgr_SelectableObject::UpdateTransformation()`
     pub fn update_transformation(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_UpdateTransformation(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_UpdateTransformation(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:112 - `SelectMgr_SelectableObject::UpdateTransformations()`
     pub fn update_transformations(&mut self, aSelection: &crate::ffi::HandleSelectMgrSelection) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_UpdateTransformations(
-                    self as *mut Self,
-                    aSelection,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_UpdateTransformations(self as *mut Self, aSelection)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:127 - `SelectMgr_SelectableObject::ClearDynamicHighlight()`
@@ -6135,39 +4396,23 @@ impl Mesh {
         &mut self,
         theMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_ClearDynamicHighlight(self as *mut Self, theMgr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_ClearDynamicHighlight(self as *mut Self, theMgr)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:140 - `SelectMgr_SelectableObject::IsAutoHilight()`
     pub fn is_auto_hilight(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_IsAutoHilight(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_IsAutoHilight(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:143 - `SelectMgr_SelectableObject::SetAutoHilight()`
     pub fn set_auto_hilight(&mut self, theAutoHilight: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetAutoHilight(self as *mut Self, theAutoHilight)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetAutoHilight(self as *mut Self, theAutoHilight)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:151 - `SelectMgr_SelectableObject::GetHilightPresentation()`
@@ -6175,18 +4420,13 @@ impl Mesh {
         &mut self,
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_Mesh_inherited_GetHilightPresentation(
                     self as *mut Self,
                     thePrsMgr,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -6195,55 +4435,35 @@ impl Mesh {
         &mut self,
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_Mesh_inherited_GetSelectPresentation(
                     self as *mut Self,
                     thePrsMgr,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:161 - `SelectMgr_SelectableObject::ErasePresentations()`
     pub fn erase_presentations(&mut self, theToRemove: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_ErasePresentations(self as *mut Self, theToRemove)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_ErasePresentations(self as *mut Self, theToRemove)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
     pub fn set_z_layer(&mut self, theLayerId: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetZLayer(self as *mut Self, theLayerId)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetZLayer(self as *mut Self, theLayerId)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_UpdateSelection(self as *mut Self, theMode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_UpdateSelection(self as *mut Self, theMode)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:173 - `SelectMgr_SelectableObject::SetAssemblyOwner()`
@@ -6252,18 +4472,9 @@ impl Mesh {
         theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
         theMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetAssemblyOwner(
-                    self as *mut Self,
-                    theOwner,
-                    theMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetAssemblyOwner(self as *mut Self, theOwner, theMode)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
@@ -6271,442 +4482,265 @@ impl Mesh {
         &mut self,
         theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
     ) -> crate::OwnedPtr<crate::bnd::Box> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_BndBoxOfSelected(self as *mut Self, theOwners)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_Mesh_inherited_BndBoxOfSelected(self as *mut Self, theOwners),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_GlobalSelectionMode(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_GlobalSelectionMode(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:184 - `SelectMgr_SelectableObject::GlobalSelOwner()`
     pub fn global_sel_owner(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_GlobalSelOwner(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_Mesh_inherited_GlobalSelOwner(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:187 - `SelectMgr_SelectableObject::GetAssemblyOwner()`
     pub fn get_assembly_owner(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_GetAssemblyOwner(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_GetAssemblyOwner(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_Presentations(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_Presentations(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
     pub fn z_layer(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_inherited_ZLayer(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_ZLayer(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
     pub fn is_mutable(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_IsMutable(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_IsMutable(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:75 - `PrsMgr_PresentableObject::SetMutable()`
     pub fn set_mutable(&mut self, theIsMutable: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetMutable(self as *mut Self, theIsMutable)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetMutable(self as *mut Self, theIsMutable)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:78 - `PrsMgr_PresentableObject::ViewAffinity()`
     pub fn view_affinity(&self) -> &crate::ffi::HandleGraphic3dViewAffinity {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_ViewAffinity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_ViewAffinity(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:82 - `PrsMgr_PresentableObject::HasDisplayMode()`
     pub fn has_display_mode(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_HasDisplayMode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasDisplayMode(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:88 - `PrsMgr_PresentableObject::DisplayMode()`
     pub fn display_mode(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_DisplayMode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_DisplayMode(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:94 - `PrsMgr_PresentableObject::SetDisplayMode()`
     pub fn set_display_mode(&mut self, theMode: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetDisplayMode(self as *mut Self, theMode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetDisplayMode(self as *mut Self, theMode)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:103 - `PrsMgr_PresentableObject::UnsetDisplayMode()`
     pub fn unset_display_mode(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_UnsetDisplayMode(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_UnsetDisplayMode(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:107 - `PrsMgr_PresentableObject::HasHilightMode()`
     pub fn has_hilight_mode(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_HasHilightMode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasHilightMode(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:116 - `PrsMgr_PresentableObject::HilightMode()`
     pub fn hilight_mode(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_HilightMode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HilightMode(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:125 - `PrsMgr_PresentableObject::SetHilightMode()`
     pub fn set_hilight_mode(&mut self, theMode: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetHilightMode(self as *mut Self, theMode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetHilightMode(self as *mut Self, theMode)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:129 - `PrsMgr_PresentableObject::UnsetHilightMode()`
     pub fn unset_hilight_mode(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_UnsetHilightMode(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_UnsetHilightMode(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:156 - `PrsMgr_PresentableObject::DefaultDisplayMode()`
     pub fn default_display_mode(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_DefaultDisplayMode(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_DefaultDisplayMode(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:161 - `PrsMgr_PresentableObject::ToBeUpdated()`
     pub fn to_be_updated(&self, theToIncludeHidden: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_ToBeUpdated(
-                    self as *const Self,
-                    theToIncludeHidden,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_ToBeUpdated(self as *const Self, theToIncludeHidden)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:165 - `PrsMgr_PresentableObject::SetToUpdate()`
     pub fn set_to_update(&mut self, theMode: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetToUpdate(self as *mut Self, theMode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetToUpdate(self as *mut Self, theMode)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:175 - `PrsMgr_PresentableObject::IsInfinite()`
     pub fn is_infinite(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_IsInfinite(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_IsInfinite(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:178 - `PrsMgr_PresentableObject::SetInfiniteState()`
     pub fn set_infinite_state(&mut self, theFlag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetInfiniteState(self as *mut Self, theFlag)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetInfiniteState(self as *mut Self, theFlag)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:181 - `PrsMgr_PresentableObject::TypeOfPresentation3d()`
     pub fn type_of_presentation3d(&self) -> crate::prs_mgr::TypeOfPresentation3d {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_TypeOfPresentation3d(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::prs_mgr::TypeOfPresentation3d::try_from(__val).unwrap()
-        }
+        crate::prs_mgr::TypeOfPresentation3d::try_from(crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_TypeOfPresentation3d(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:184 - `PrsMgr_PresentableObject::SetTypeOfPresentation()`
     pub fn set_type_of_presentation(&mut self, theType: crate::prs_mgr::TypeOfPresentation3d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetTypeOfPresentation(
-                    self as *mut Self,
-                    theType.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetTypeOfPresentation(
+                self as *mut Self,
+                theType.into(),
+            )
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:187 - `PrsMgr_PresentableObject::DisplayStatus()`
     pub fn display_status(&self) -> crate::prs_mgr::DisplayStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_DisplayStatus(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::prs_mgr::DisplayStatus::try_from(__val).unwrap()
-        }
+        crate::prs_mgr::DisplayStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_DisplayStatus(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:191 - `PrsMgr_PresentableObject::Attributes()`
     pub fn attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_Attributes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_Attributes(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:194 - `PrsMgr_PresentableObject::SetAttributes()`
     pub fn set_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetAttributes(self as *mut Self, theDrawer)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetAttributes(self as *mut Self, theDrawer)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:200 - `PrsMgr_PresentableObject::HilightAttributes()`
     pub fn hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_HilightAttributes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_HilightAttributes(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:203 - `PrsMgr_PresentableObject::SetHilightAttributes()`
     pub fn set_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetHilightAttributes(self as *mut Self, theDrawer)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetHilightAttributes(self as *mut Self, theDrawer)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:212 - `PrsMgr_PresentableObject::DynamicHilightAttributes()`
     pub fn dynamic_hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_DynamicHilightAttributes(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_DynamicHilightAttributes(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:215 - `PrsMgr_PresentableObject::SetDynamicHilightAttributes()`
     pub fn set_dynamic_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetDynamicHilightAttributes(
-                    self as *mut Self,
-                    theDrawer,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetDynamicHilightAttributes(
+                self as *mut Self,
+                theDrawer,
+            )
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:221 - `PrsMgr_PresentableObject::UnsetHilightAttributes()`
     pub fn unset_hilight_attributes(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_UnsetHilightAttributes(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_UnsetHilightAttributes(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:228 - `PrsMgr_PresentableObject::SynchronizeAspects()`
     pub fn synchronize_aspects(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_SynchronizeAspects(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SynchronizeAspects(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:236 - `PrsMgr_PresentableObject::TransformPersistence()`
     pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_TransformPersistence(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_TransformPersistence(
+                self as *const Self,
+            )))
         }
     }
 
@@ -6715,199 +4749,128 @@ impl Mesh {
         &mut self,
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetTransformPersistence(
-                    self as *mut Self,
-                    theTrsfPers,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetTransformPersistence(
+                self as *mut Self,
+                theTrsfPers,
+            )
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:252 - `PrsMgr_PresentableObject::LocalTransformationGeom()`
     pub fn local_transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_LocalTransformationGeom(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_LocalTransformationGeom(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:257 - `PrsMgr_PresentableObject::SetLocalTransformation()`
     pub fn set_local_transformation(&mut self, theTrsf: &crate::gp::Trsf) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetLocalTransformation(self as *mut Self, theTrsf)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetLocalTransformation(self as *mut Self, theTrsf)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:271 - `PrsMgr_PresentableObject::HasTransformation()`
     pub fn has_transformation(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_HasTransformation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasTransformation(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:279 - `PrsMgr_PresentableObject::TransformationGeom()`
     pub fn transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_TransformationGeom(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_TransformationGeom(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:284 - `PrsMgr_PresentableObject::LocalTransformation()`
     pub fn local_transformation(&self) -> &crate::gp::Trsf {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_LocalTransformation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_LocalTransformation(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:292 - `PrsMgr_PresentableObject::Transformation()`
     pub fn transformation(&self) -> &crate::gp::Trsf {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_Transformation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_Transformation(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:298 - `PrsMgr_PresentableObject::InversedTransformation()`
     pub fn inversed_transformation(&self) -> &crate::gp::GTrsf {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_InversedTransformation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_InversedTransformation(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:301 - `PrsMgr_PresentableObject::CombinedParentTransformation()`
     pub fn combined_parent_transformation(&self) -> &crate::ffi::HandleTopLocDatum3D {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_CombinedParentTransformation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_CombinedParentTransformation(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:316 - `PrsMgr_PresentableObject::RecomputeTransformation()`
     pub fn recompute_transformation(&mut self, theProjector: &crate::ffi::HandleGraphic3dCamera) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_RecomputeTransformation(
-                    self as *mut Self,
-                    theProjector,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_RecomputeTransformation(
+                self as *mut Self,
+                theProjector,
+            )
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:324 - `PrsMgr_PresentableObject::ClipPlanes()`
     pub fn clip_planes(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_ClipPlanes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_ClipPlanes(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:333 - `PrsMgr_PresentableObject::SetClipPlanes()`
     pub fn set_clip_planes(&mut self, thePlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetClipPlanes(self as *mut Self, thePlanes)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetClipPlanes(self as *mut Self, thePlanes)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:344 - `PrsMgr_PresentableObject::AddClipPlane()`
     pub fn add_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_AddClipPlane(self as *mut Self, thePlane)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_AddClipPlane(self as *mut Self, thePlane)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:348 - `PrsMgr_PresentableObject::RemoveClipPlane()`
     pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_RemoveClipPlane(self as *mut Self, thePlane)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_RemoveClipPlane(self as *mut Self, thePlane)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:352 - `PrsMgr_PresentableObject::Parent()`
     pub fn parent(&self) -> Option<&crate::prs_mgr::PresentableObject> {
         {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_inherited_Parent(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_Mesh_inherited_Parent(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -6918,26 +4881,16 @@ impl Mesh {
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:355 - `PrsMgr_PresentableObject::Children()`
     pub fn children(&self) -> &crate::ffi::PrsMgr_ListOfPresentableObjects {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_Children(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_Mesh_inherited_Children(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:358 - `PrsMgr_PresentableObject::AddChild()`
     pub fn add_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_AddChild(self as *mut Self, theObject) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_AddChild(self as *mut Self, theObject)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:362 - `PrsMgr_PresentableObject::AddChildWithCurrentTransformation()`
@@ -6945,29 +4898,19 @@ impl Mesh {
         &mut self,
         theObject: &crate::ffi::HandlePrsMgrPresentableObject,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_AddChildWithCurrentTransformation(
-                    self as *mut Self,
-                    theObject,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_AddChildWithCurrentTransformation(
+                self as *mut Self,
+                theObject,
+            )
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:366 - `PrsMgr_PresentableObject::RemoveChild()`
     pub fn remove_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_RemoveChild(self as *mut Self, theObject)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_RemoveChild(self as *mut Self, theObject)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:370 - `PrsMgr_PresentableObject::RemoveChildWithRestoreTransformation()`
@@ -6975,399 +4918,236 @@ impl Mesh {
         &mut self,
         theObject: &crate::ffi::HandlePrsMgrPresentableObject,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_RemoveChildWithRestoreTransformation(
-                    self as *mut Self,
-                    theObject,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_RemoveChildWithRestoreTransformation(
+                self as *mut Self,
+                theObject,
+            )
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:374 - `PrsMgr_PresentableObject::HasOwnPresentations()`
     pub fn has_own_presentations(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_HasOwnPresentations(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasOwnPresentations(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:380 - `PrsMgr_PresentableObject::BoundingBox()`
     pub fn bounding_box(&mut self, theBndBox: &mut crate::bnd::Box) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_BoundingBox(self as *mut Self, theBndBox)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_BoundingBox(self as *mut Self, theBndBox)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:457 - `PrsMgr_PresentableObject::SetIsoOnTriangulation()`
     pub fn set_iso_on_triangulation(&mut self, theIsEnabled: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetIsoOnTriangulation(
-                    self as *mut Self,
-                    theIsEnabled,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetIsoOnTriangulation(self as *mut Self, theIsEnabled)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:463 - `PrsMgr_PresentableObject::CurrentFacingModel()`
     pub fn current_facing_model(&self) -> crate::aspect::TypeOfFacingModel {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_CurrentFacingModel(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::aspect::TypeOfFacingModel::try_from(__val).unwrap()
-        }
+        crate::aspect::TypeOfFacingModel::try_from(crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_CurrentFacingModel(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:468 - `PrsMgr_PresentableObject::SetCurrentFacingModel()`
     pub fn set_current_facing_model(&mut self, theModel: crate::aspect::TypeOfFacingModel) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetCurrentFacingModel(
-                    self as *mut Self,
-                    theModel.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetCurrentFacingModel(
+                self as *mut Self,
+                theModel.into(),
+            )
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:474 - `PrsMgr_PresentableObject::HasColor()`
     pub fn has_color(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_HasColor(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasColor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:477 - `PrsMgr_PresentableObject::Color()`
     pub fn color(&self, theColor: &mut crate::quantity::Color) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_Color(self as *const Self, theColor) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_Color(self as *const Self, theColor)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:483 - `PrsMgr_PresentableObject::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_SetColor(self as *mut Self, theColor) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetColor(self as *mut Self, theColor)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:494 - `PrsMgr_PresentableObject::UnsetColor()`
     pub fn unset_color(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_Mesh_inherited_UnsetColor(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_UnsetColor(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:497 - `PrsMgr_PresentableObject::HasWidth()`
     pub fn has_width(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_HasWidth(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasWidth(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:500 - `PrsMgr_PresentableObject::Width()`
     pub fn width(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_inherited_Width(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::MeshVS_Mesh_inherited_Width(self as *const Self) })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:504 - `PrsMgr_PresentableObject::SetWidth()`
     pub fn set_width(&mut self, theWidth: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_SetWidth(self as *mut Self, theWidth) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetWidth(self as *mut Self, theWidth)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:507 - `PrsMgr_PresentableObject::UnsetWidth()`
     pub fn unset_width(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_Mesh_inherited_UnsetWidth(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_UnsetWidth(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:510 - `PrsMgr_PresentableObject::HasMaterial()`
     pub fn has_material(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_HasMaterial(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasMaterial(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:513 - `PrsMgr_PresentableObject::Material()`
     pub fn material(&self) -> crate::graphic3d::NameOfMaterial {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_Material(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::graphic3d::NameOfMaterial::try_from(__val).unwrap()
-        }
+        crate::graphic3d::NameOfMaterial::try_from(crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_Material(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:519 - `PrsMgr_PresentableObject::SetMaterial()`
     pub fn set_material(&mut self, aName: &crate::graphic3d::MaterialAspect) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_SetMaterial(self as *mut Self, aName) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetMaterial(self as *mut Self, aName)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:522 - `PrsMgr_PresentableObject::UnsetMaterial()`
     pub fn unset_material(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_UnsetMaterial(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_UnsetMaterial(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:525 - `PrsMgr_PresentableObject::IsTransparent()`
     pub fn is_transparent(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_IsTransparent(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_IsTransparent(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:530 - `PrsMgr_PresentableObject::Transparency()`
     pub fn transparency(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_Transparency(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_Transparency(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:539 - `PrsMgr_PresentableObject::SetTransparency()`
     pub fn set_transparency(&mut self, aValue: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetTransparency(self as *mut Self, aValue)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetTransparency(self as *mut Self, aValue)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:542 - `PrsMgr_PresentableObject::UnsetTransparency()`
     pub fn unset_transparency(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_UnsetTransparency(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_UnsetTransparency(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:545 - `PrsMgr_PresentableObject::HasPolygonOffsets()`
     pub fn has_polygon_offsets(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_HasPolygonOffsets(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_HasPolygonOffsets(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:548 - `PrsMgr_PresentableObject::PolygonOffsets()`
     pub fn polygon_offsets(&self, aMode: &mut i32, aFactor: &mut f32, aUnits: &mut f32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_PolygonOffsets(
-                    self as *const Self,
-                    aMode,
-                    aFactor,
-                    aUnits,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_PolygonOffsets(
+                self as *const Self,
+                aMode,
+                aFactor,
+                aUnits,
+            )
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:554 - `PrsMgr_PresentableObject::SetPolygonOffsets()`
     pub fn set_polygon_offsets(&mut self, aMode: i32, aFactor: f32, aUnits: f32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetPolygonOffsets(
-                    self as *mut Self,
-                    aMode,
-                    aFactor,
-                    aUnits,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetPolygonOffsets(
+                self as *mut Self,
+                aMode,
+                aFactor,
+                aUnits,
+            )
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:559 - `PrsMgr_PresentableObject::UnsetAttributes()`
     pub fn unset_attributes(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_UnsetAttributes(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_UnsetAttributes(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:573 - `PrsMgr_PresentableObject::ToPropagateVisualState()`
     pub fn to_propagate_visual_state(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_ToPropagateVisualState(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_ToPropagateVisualState(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:576 - `PrsMgr_PresentableObject::SetPropagateVisualState()`
     pub fn set_propagate_visual_state(&mut self, theFlag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_SetPropagateVisualState(
-                    self as *mut Self,
-                    theFlag,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_SetPropagateVisualState(self as *mut Self, theFlag)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Mesh_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::MeshVS_Mesh_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_Mesh_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -7378,49 +5158,30 @@ impl Mesh {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_IncrementRefCounter(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Mesh_inherited_DecrementRefCounter(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::MeshVS_Mesh_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_Mesh_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -7435,69 +5196,58 @@ unsafe impl crate::CppDeletable for HandleMeshVSMesh {
 impl HandleMeshVSMesh {
     /// Dereference this Handle to access the underlying MeshVS_Mesh
     pub fn get(&self) -> &crate::ffi::MeshVS_Mesh {
-        let __result = unsafe { crate::ffi::HandleMeshVSMesh_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleMeshVSMesh_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_Mesh
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_Mesh {
-        let __result = unsafe { crate::ffi::HandleMeshVSMesh_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSMesh_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_Mesh> to Handle<AIS_InteractiveObject>
     pub fn to_handle_interactive_object(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleAISInteractiveObject> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSMesh_to_HandleAISInteractiveObject(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSMesh_to_HandleAISInteractiveObject(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_Mesh> to Handle<SelectMgr_SelectableObject>
     pub fn to_handle_selectable_object(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectableObject> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSMesh_to_HandleSelectMgrSelectableObject(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSMesh_to_HandleSelectMgrSelectableObject(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_Mesh> to Handle<PrsMgr_PresentableObject>
     pub fn to_handle_presentable_object(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentableObject> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSMesh_to_HandlePrsMgrPresentableObject(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSMesh_to_HandlePrsMgrPresentableObject(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_Mesh> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSMesh_to_HandleStandardTransient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSMesh_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7528,14 +5278,8 @@ impl MeshEntityOwner {
         Priority: i32,
         IsGroup: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_ctor_selectableobjectptr_int_address_entitytype_int_bool(SelObj as *const _, ID, MeshEntity, Type.into(), Priority, IsGroup)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_MeshEntityOwner_ctor_selectableobjectptr_int_address_entitytype_int_bool(SelObj as *const _, ID, MeshEntity, Type.into(), Priority, IsGroup)))
         }
     }
 
@@ -7567,54 +5311,32 @@ impl MeshEntityOwner {
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:43 - `MeshVS_MeshEntityOwner::Owner()`
     /// Returns an address of element or node data structure
     pub unsafe fn owner(&self) -> *mut std::ffi::c_void {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_MeshEntityOwner_owner(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_owner(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:46 - `MeshVS_MeshEntityOwner::Type()`
     /// Returns type of element or node data structure
     pub fn type_(&self) -> crate::mesh_vs::EntityType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_MeshEntityOwner_type_(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::mesh_vs::EntityType::try_from(__val).unwrap()
-        }
+        crate::mesh_vs::EntityType::try_from(crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_type_(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:49 - `MeshVS_MeshEntityOwner::ID()`
     /// Returns ID of element or node data structure
     pub fn id(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_MeshEntityOwner_id(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::MeshVS_MeshEntityOwner_id(self as *const Self) })
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:52 - `MeshVS_MeshEntityOwner::IsGroup()`
     /// Returns true if owner represents group of nodes or elements
     pub fn is_group(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshEntityOwner_is_group(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_is_group(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:55 - `MeshVS_MeshEntityOwner::IsHilighted()`
@@ -7624,16 +5346,9 @@ impl MeshEntityOwner {
         PM: &crate::ffi::HandlePrsMgrPresentationManager,
         Mode: i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_is_hilighted(self as *const Self, PM, Mode)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_is_hilighted(self as *const Self, PM, Mode)
+        })
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:60 - `MeshVS_MeshEntityOwner::HilightWithColor()`
@@ -7644,207 +5359,138 @@ impl MeshEntityOwner {
         theStyle: &crate::ffi::HandlePrs3dDrawer,
         theMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_hilight_with_color(
-                    self as *mut Self,
-                    thePM,
-                    theStyle,
-                    theMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_hilight_with_color(
+                self as *mut Self,
+                thePM,
+                theStyle,
+                theMode,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:65 - `MeshVS_MeshEntityOwner::Unhilight()`
     /// Strip hilight of owner
     pub fn unhilight(&mut self, PM: &crate::ffi::HandlePrsMgrPresentationManager, Mode: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_unhilight(self as *mut Self, PM, Mode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_unhilight(self as *mut Self, PM, Mode)
+        })
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:68 - `MeshVS_MeshEntityOwner::Clear()`
     pub fn clear(&mut self, PM: &crate::ffi::HandlePrsMgrPresentationManager, Mode: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_MeshEntityOwner_clear(self as *mut Self, PM, Mode) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_clear(self as *mut Self, PM, Mode)
+        })
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:71 - `MeshVS_MeshEntityOwner::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshEntityOwner_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_MeshEntityOwner_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:71 - `MeshVS_MeshEntityOwner::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_MeshEntityOwner_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_MeshEntityOwner_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:71 - `MeshVS_MeshEntityOwner::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_MeshEntityOwner_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_MeshEntityOwner_get_type_descriptor())) }
     }
 
     /// Upcast to SelectMgr_EntityOwner
     pub fn as_select_mgr_entity_owner(&self) -> &crate::select_mgr::EntityOwner {
-        let __result = unsafe {
-            crate::ffi::MeshVS_MeshEntityOwner_as_SelectMgr_EntityOwner(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_MeshEntityOwner_as_SelectMgr_EntityOwner(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to SelectMgr_EntityOwner (mutable)
     pub fn as_select_mgr_entity_owner_mut(&mut self) -> &mut crate::select_mgr::EntityOwner {
-        let __result = unsafe {
-            crate::ffi::MeshVS_MeshEntityOwner_as_SelectMgr_EntityOwner_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_MeshEntityOwner_as_SelectMgr_EntityOwner_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_MeshEntityOwner_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_MeshEntityOwner_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_MeshEntityOwner_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_MeshEntityOwner_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSMeshEntityOwner> {
-        let __result = unsafe { crate::ffi::MeshVS_MeshEntityOwner_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_MeshEntityOwner_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:54 - `SelectMgr_EntityOwner::Priority()`
     pub fn priority(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_Priority(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_Priority(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:57 - `SelectMgr_EntityOwner::SetPriority()`
     pub fn set_priority(&mut self, thePriority: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_SetPriority(
-                    self as *mut Self,
-                    thePriority,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_SetPriority(self as *mut Self, thePriority)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:60 - `SelectMgr_EntityOwner::HasSelectable()`
     pub fn has_selectable(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_HasSelectable(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_HasSelectable(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:63 - `SelectMgr_EntityOwner::Selectable()`
     pub fn selectable(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectableObject> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_Selectable(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_MeshEntityOwner_inherited_Selectable(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:66 - `SelectMgr_EntityOwner::SetSelectable()`
     pub fn set_selectable(&mut self, theSelObj: &crate::ffi::HandleSelectMgrSelectableObject) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_SetSelectable(
-                    self as *mut Self,
-                    theSelObj,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_SetSelectable(self as *mut Self, theSelObj)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:78 - `SelectMgr_EntityOwner::HandleMouseClick()`
@@ -7855,167 +5501,94 @@ impl MeshEntityOwner {
         theModifiers: u32,
         theIsDoubleClick: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_HandleMouseClick(
-                    self as *mut Self,
-                    thePoint,
-                    theButton,
-                    theModifiers,
-                    theIsDoubleClick,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_HandleMouseClick(
+                self as *mut Self,
+                thePoint,
+                theButton,
+                theModifiers,
+                theIsDoubleClick,
+            )
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:130 - `SelectMgr_EntityOwner::HasLocation()`
     pub fn has_location(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_HasLocation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_HasLocation(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:136 - `SelectMgr_EntityOwner::Location()`
     pub fn location(&self) -> crate::OwnedPtr<crate::top_loc::Location> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_Location(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_MeshEntityOwner_inherited_Location(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:144 - `SelectMgr_EntityOwner::SetLocation()`
     pub fn set_location(&mut self, theLocation: &crate::top_loc::Location) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_SetLocation(
-                    self as *mut Self,
-                    theLocation,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_SetLocation(self as *mut Self, theLocation)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:147 - `SelectMgr_EntityOwner::IsSelected()`
     pub fn is_selected(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_IsSelected(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_IsSelected(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:151 - `SelectMgr_EntityOwner::SetSelected()`
     pub fn set_selected(&mut self, theIsSelected: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_SetSelected(
-                    self as *mut Self,
-                    theIsSelected,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_SetSelected(
+                self as *mut Self,
+                theIsSelected,
+            )
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:156 - `SelectMgr_EntityOwner::Select()`
     pub fn select(&self, theSelScheme: crate::ais::SelectionScheme, theIsDetected: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_Select(
-                    self as *const Self,
-                    theSelScheme.into(),
-                    theIsDetected,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_Select(
+                self as *const Self,
+                theSelScheme.into(),
+                theIsDetected,
+            )
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:166 - `SelectMgr_EntityOwner::State()`
     pub fn state(&mut self, theStatus: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_State(self as *mut Self, theStatus)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_State(self as *mut Self, theStatus)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:170 - `SelectMgr_EntityOwner::IsAutoHilight()`
     pub fn is_auto_hilight(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_IsAutoHilight(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_IsAutoHilight(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:177 - `SelectMgr_EntityOwner::IsForcedHilight()`
     pub fn is_forced_hilight(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_IsForcedHilight(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_IsForcedHilight(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
     pub fn set_z_layer(&mut self, theLayerId: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_SetZLayer(
-                    self as *mut Self,
-                    theLayerId,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_SetZLayer(self as *mut Self, theLayerId)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`
@@ -8025,19 +5598,14 @@ impl MeshEntityOwner {
         theManager: &crate::ffi::HandlePrsMgrPresentationManager,
         theDispMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_UpdateHighlightTrsf(
-                    self as *mut Self,
-                    theViewer,
-                    theManager,
-                    theDispMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_UpdateHighlightTrsf(
+                self as *mut Self,
+                theViewer,
+                theManager,
+                theDispMode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:195 - `SelectMgr_EntityOwner::IsSameSelectable()`
@@ -8045,92 +5613,51 @@ impl MeshEntityOwner {
         &self,
         theOther: &crate::ffi::HandleSelectMgrSelectableObject,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_IsSameSelectable(
-                    self as *const Self,
-                    theOther,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_IsSameSelectable(
+                self as *const Self,
+                theOther,
+            )
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:201 - `SelectMgr_EntityOwner::ComesFromDecomposition()`
     pub fn comes_from_decomposition(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_ComesFromDecomposition(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_ComesFromDecomposition(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:204 - `SelectMgr_EntityOwner::SetComesFromDecomposition()`
     pub fn set_comes_from_decomposition(&mut self, theIsFromDecomposition: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_SetComesFromDecomposition(
-                    self as *mut Self,
-                    theIsFromDecomposition,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_SetComesFromDecomposition(
+                self as *mut Self,
+                theIsFromDecomposition,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshEntityOwner_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_MeshEntityOwner_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -8141,53 +5668,30 @@ impl MeshEntityOwner {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshEntityOwner_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_MeshEntityOwner_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -8202,47 +5706,42 @@ unsafe impl crate::CppDeletable for HandleMeshVSMeshEntityOwner {
 impl HandleMeshVSMeshEntityOwner {
     /// Dereference this Handle to access the underlying MeshVS_MeshEntityOwner
     pub fn get(&self) -> &crate::ffi::MeshVS_MeshEntityOwner {
-        let __result = unsafe { crate::ffi::HandleMeshVSMeshEntityOwner_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSMeshEntityOwner_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_MeshEntityOwner
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_MeshEntityOwner {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSMeshEntityOwner_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSMeshEntityOwner_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_MeshEntityOwner> to Handle<SelectMgr_EntityOwner>
     pub fn to_handle_entity_owner(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSMeshEntityOwner_to_HandleSelectMgrEntityOwner(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSMeshEntityOwner_to_HandleSelectMgrEntityOwner(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_MeshEntityOwner> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSMeshEntityOwner_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSMeshEntityOwner_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8269,18 +5768,14 @@ impl MeshOwner {
         theDS: &crate::ffi::HandleMeshVSDataSource,
         thePriority: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_MeshOwner_ctor_selectableobjectptr_handlemeshvsdatasource_int(
                     theSelObj as *const _,
                     theDS,
                     thePriority,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -8294,42 +5789,30 @@ impl MeshOwner {
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:40 - `MeshVS_MeshOwner::GetDataSource()`
     pub fn get_data_source(&self) -> &crate::ffi::HandleMeshVSDataSource {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_get_data_source(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_MeshOwner_get_data_source(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:43 - `MeshVS_MeshOwner::GetSelectedNodes()`
     /// Returns ids of selected mesh nodes
     pub fn get_selected_nodes(&self) -> &crate::ffi::HandleTColStdHPackedMapOfInteger {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_get_selected_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_MeshOwner_get_selected_nodes(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:46 - `MeshVS_MeshOwner::GetSelectedElements()`
     /// Returns ids of selected mesh elements
     pub fn get_selected_elements(&self) -> &crate::ffi::HandleTColStdHPackedMapOfInteger {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_get_selected_elements(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_MeshOwner_get_selected_elements(
+                self as *const Self,
+            )))
         }
     }
 
@@ -8340,53 +5823,36 @@ impl MeshOwner {
         Nodes: &crate::ffi::HandleTColStdHPackedMapOfInteger,
         Elems: &crate::ffi::HandleTColStdHPackedMapOfInteger,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_add_selected_entities(self as *mut Self, Nodes, Elems)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_add_selected_entities(self as *mut Self, Nodes, Elems)
+        })
     }
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:54 - `MeshVS_MeshOwner::ClearSelectedEntities()`
     /// Clears ids of selected mesh entities
     pub fn clear_selected_entities(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_MeshOwner_clear_selected_entities(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_clear_selected_entities(self as *mut Self)
+        })
     }
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:57 - `MeshVS_MeshOwner::GetDetectedNodes()`
     /// Returns ids of hilighted mesh nodes
     pub fn get_detected_nodes(&self) -> &crate::ffi::HandleTColStdHPackedMapOfInteger {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_get_detected_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_MeshOwner_get_detected_nodes(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:60 - `MeshVS_MeshOwner::GetDetectedElements()`
     /// Returns ids of hilighted mesh elements
     pub fn get_detected_elements(&self) -> &crate::ffi::HandleTColStdHPackedMapOfInteger {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_get_detected_elements(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_MeshOwner_get_detected_elements(
+                self as *const Self,
+            )))
         }
     }
 
@@ -8397,14 +5863,9 @@ impl MeshOwner {
         Nodes: &crate::ffi::HandleTColStdHPackedMapOfInteger,
         Elems: &crate::ffi::HandleTColStdHPackedMapOfInteger,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_set_detected_entities(self as *mut Self, Nodes, Elems)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_set_detected_entities(self as *mut Self, Nodes, Elems)
+        })
     }
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:66 - `MeshVS_MeshOwner::HilightWithColor()`
@@ -8414,195 +5875,135 @@ impl MeshOwner {
         theColor: &crate::ffi::HandlePrs3dDrawer,
         theMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_hilight_with_color(
-                    self as *mut Self,
-                    thePM,
-                    theColor,
-                    theMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_hilight_with_color(
+                self as *mut Self,
+                thePM,
+                theColor,
+                theMode,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:70 - `MeshVS_MeshOwner::Unhilight()`
     pub fn unhilight(&mut self, PM: &crate::ffi::HandlePrsMgrPresentationManager, Mode: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_MeshOwner_unhilight(self as *mut Self, PM, Mode) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_unhilight(self as *mut Self, PM, Mode)
+        })
     }
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:73 - `MeshVS_MeshOwner::IsForcedHilight()`
     pub fn is_forced_hilight(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_is_forced_hilight(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_is_forced_hilight(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:75 - `MeshVS_MeshOwner::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_MeshOwner_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:75 - `MeshVS_MeshOwner::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_MeshOwner_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_MeshOwner_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_MeshOwner.hxx`:75 - `MeshVS_MeshOwner::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_MeshOwner_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_MeshOwner_get_type_descriptor())) }
     }
 
     /// Upcast to SelectMgr_EntityOwner
     pub fn as_select_mgr_entity_owner(&self) -> &crate::select_mgr::EntityOwner {
-        let __result =
-            unsafe { crate::ffi::MeshVS_MeshOwner_as_SelectMgr_EntityOwner(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_MeshOwner_as_SelectMgr_EntityOwner(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to SelectMgr_EntityOwner (mutable)
     pub fn as_select_mgr_entity_owner_mut(&mut self) -> &mut crate::select_mgr::EntityOwner {
-        let __result =
-            unsafe { crate::ffi::MeshVS_MeshOwner_as_SelectMgr_EntityOwner_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_MeshOwner_as_SelectMgr_EntityOwner_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_MeshOwner_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_MeshOwner_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_MeshOwner_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_MeshOwner_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSMeshOwner> {
-        let __result = unsafe { crate::ffi::MeshVS_MeshOwner_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_MeshOwner_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:54 - `SelectMgr_EntityOwner::Priority()`
     pub fn priority(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_inherited_Priority(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_Priority(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:57 - `SelectMgr_EntityOwner::SetPriority()`
     pub fn set_priority(&mut self, thePriority: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_SetPriority(self as *mut Self, thePriority)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_SetPriority(self as *mut Self, thePriority)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:60 - `SelectMgr_EntityOwner::HasSelectable()`
     pub fn has_selectable(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_HasSelectable(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_HasSelectable(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:63 - `SelectMgr_EntityOwner::Selectable()`
     pub fn selectable(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectableObject> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_inherited_Selectable(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_MeshOwner_inherited_Selectable(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:66 - `SelectMgr_EntityOwner::SetSelectable()`
     pub fn set_selectable(&mut self, theSelObj: &crate::ffi::HandleSelectMgrSelectableObject) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_SetSelectable(self as *mut Self, theSelObj)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_SetSelectable(self as *mut Self, theSelObj)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:78 - `SelectMgr_EntityOwner::HandleMouseClick()`
@@ -8613,22 +6014,15 @@ impl MeshOwner {
         theModifiers: u32,
         theIsDoubleClick: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_HandleMouseClick(
-                    self as *mut Self,
-                    thePoint,
-                    theButton,
-                    theModifiers,
-                    theIsDoubleClick,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_HandleMouseClick(
+                self as *mut Self,
+                thePoint,
+                theButton,
+                theModifiers,
+                theIsDoubleClick,
+            )
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:92 - `SelectMgr_EntityOwner::IsHilighted()`
@@ -8637,151 +6031,89 @@ impl MeshOwner {
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
         theMode: i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_IsHilighted(
-                    self as *const Self,
-                    thePrsMgr,
-                    theMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_IsHilighted(
+                self as *const Self,
+                thePrsMgr,
+                theMode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:122 - `SelectMgr_EntityOwner::Clear()`
     pub fn clear(&mut self, thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager, theMode: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_Clear(self as *mut Self, thePrsMgr, theMode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_Clear(self as *mut Self, thePrsMgr, theMode)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:130 - `SelectMgr_EntityOwner::HasLocation()`
     pub fn has_location(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_inherited_HasLocation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_HasLocation(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:136 - `SelectMgr_EntityOwner::Location()`
     pub fn location(&self) -> crate::OwnedPtr<crate::top_loc::Location> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_inherited_Location(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_MeshOwner_inherited_Location(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:144 - `SelectMgr_EntityOwner::SetLocation()`
     pub fn set_location(&mut self, theLocation: &crate::top_loc::Location) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_SetLocation(self as *mut Self, theLocation)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_SetLocation(self as *mut Self, theLocation)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:147 - `SelectMgr_EntityOwner::IsSelected()`
     pub fn is_selected(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_inherited_IsSelected(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_IsSelected(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:151 - `SelectMgr_EntityOwner::SetSelected()`
     pub fn set_selected(&mut self, theIsSelected: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_SetSelected(self as *mut Self, theIsSelected)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_SetSelected(self as *mut Self, theIsSelected)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:156 - `SelectMgr_EntityOwner::Select()`
     pub fn select(&self, theSelScheme: crate::ais::SelectionScheme, theIsDetected: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_Select(
-                    self as *const Self,
-                    theSelScheme.into(),
-                    theIsDetected,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_Select(
+                self as *const Self,
+                theSelScheme.into(),
+                theIsDetected,
+            )
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:166 - `SelectMgr_EntityOwner::State()`
     pub fn state(&mut self, theStatus: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_State(self as *mut Self, theStatus)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_State(self as *mut Self, theStatus)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:170 - `SelectMgr_EntityOwner::IsAutoHilight()`
     pub fn is_auto_hilight(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_IsAutoHilight(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_IsAutoHilight(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
     pub fn set_z_layer(&mut self, theLayerId: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_SetZLayer(self as *mut Self, theLayerId)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_SetZLayer(self as *mut Self, theLayerId)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`
@@ -8791,19 +6123,14 @@ impl MeshOwner {
         theManager: &crate::ffi::HandlePrsMgrPresentationManager,
         theDispMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_UpdateHighlightTrsf(
-                    self as *mut Self,
-                    theViewer,
-                    theManager,
-                    theDispMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_UpdateHighlightTrsf(
+                self as *mut Self,
+                theViewer,
+                theManager,
+                theDispMode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:195 - `SelectMgr_EntityOwner::IsSameSelectable()`
@@ -8811,87 +6138,48 @@ impl MeshOwner {
         &self,
         theOther: &crate::ffi::HandleSelectMgrSelectableObject,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_IsSameSelectable(
-                    self as *const Self,
-                    theOther,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_IsSameSelectable(self as *const Self, theOther)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:201 - `SelectMgr_EntityOwner::ComesFromDecomposition()`
     pub fn comes_from_decomposition(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_ComesFromDecomposition(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_ComesFromDecomposition(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:204 - `SelectMgr_EntityOwner::SetComesFromDecomposition()`
     pub fn set_comes_from_decomposition(&mut self, theIsFromDecomposition: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_SetComesFromDecomposition(
-                    self as *mut Self,
-                    theIsFromDecomposition,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_SetComesFromDecomposition(
+                self as *mut Self,
+                theIsFromDecomposition,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_MeshOwner_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -8902,52 +6190,30 @@ impl MeshOwner {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshOwner_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshOwner_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_MeshOwner_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshOwner_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -8962,44 +6228,36 @@ unsafe impl crate::CppDeletable for HandleMeshVSMeshOwner {
 impl HandleMeshVSMeshOwner {
     /// Dereference this Handle to access the underlying MeshVS_MeshOwner
     pub fn get(&self) -> &crate::ffi::MeshVS_MeshOwner {
-        let __result = unsafe { crate::ffi::HandleMeshVSMeshOwner_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleMeshVSMeshOwner_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_MeshOwner
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_MeshOwner {
-        let __result = unsafe { crate::ffi::HandleMeshVSMeshOwner_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSMeshOwner_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_MeshOwner> to Handle<SelectMgr_EntityOwner>
     pub fn to_handle_entity_owner(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSMeshOwner_to_HandleSelectMgrEntityOwner(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSMeshOwner_to_HandleSelectMgrEntityOwner(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_MeshOwner> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSMeshOwner_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSMeshOwner_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9027,14 +6285,8 @@ impl MeshPrsBuilder {
         Id: i32,
         Priority: &i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_ctor_handlemeshvsmesh_int_handlemeshvsdatasource_int2(Parent, Flags, DS, Id, Priority)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_MeshPrsBuilder_ctor_handlemeshvsmesh_int_handlemeshvsdatasource_int2(Parent, Flags, DS, Id, Priority)))
         }
     }
 
@@ -9048,21 +6300,16 @@ impl MeshPrsBuilder {
         IsElement: bool,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_build(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    IsElement,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_build(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                IsElement,
+                DisplayMode,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_MeshPrsBuilder.hxx`:56 - `MeshVS_MeshPrsBuilder::BuildNodes()`
@@ -9074,20 +6321,15 @@ impl MeshPrsBuilder {
         IDsToExclude: &mut crate::t_col_std::PackedMapOfInteger,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_build_nodes(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_build_nodes(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                DisplayMode,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_MeshPrsBuilder.hxx`:62 - `MeshVS_MeshPrsBuilder::BuildElements()`
@@ -9099,20 +6341,15 @@ impl MeshPrsBuilder {
         IDsToExclude: &mut crate::t_col_std::PackedMapOfInteger,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_build_elements(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_build_elements(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                DisplayMode,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_MeshPrsBuilder.hxx`:68 - `MeshVS_MeshPrsBuilder::BuildHilightPrs()`
@@ -9123,31 +6360,22 @@ impl MeshPrsBuilder {
         IDs: &crate::t_col_std::PackedMapOfInteger,
         IsElement: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_build_hilight_prs(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IsElement,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_build_hilight_prs(
+                self as *const Self,
+                Prs,
+                IDs,
+                IsElement,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_MeshPrsBuilder.hxx`:91 - `MeshVS_MeshPrsBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshPrsBuilder_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_MeshPrsBuilder_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -9163,23 +6391,18 @@ impl MeshPrsBuilder {
         IsSelect: bool,
         ShrinkCoef: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_add_volume_prs(
-                    Topo,
-                    Nodes,
-                    NbNodes,
-                    Array,
-                    IsReflected,
-                    IsShrinked,
-                    IsSelect,
-                    ShrinkCoef,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_add_volume_prs(
+                Topo,
+                Nodes,
+                NbNodes,
+                Array,
+                IsReflected,
+                IsShrinked,
+                IsSelect,
+                ShrinkCoef,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_MeshPrsBuilder.hxx`:83 - `MeshVS_MeshPrsBuilder::HowManyPrimitives()`
@@ -9192,93 +6415,74 @@ impl MeshPrsBuilder {
         Vertices: &mut i32,
         Bounds: &mut i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_how_many_primitives(
-                    Topo, AsPolygons, IsSelect, NbNodes, Vertices, Bounds,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_how_many_primitives(
+                Topo, AsPolygons, IsSelect, NbNodes, Vertices, Bounds,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_MeshPrsBuilder.hxx`:91 - `MeshVS_MeshPrsBuilder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_MeshPrsBuilder_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_MeshPrsBuilder_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_MeshPrsBuilder.hxx`:91 - `MeshVS_MeshPrsBuilder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_MeshPrsBuilder_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_MeshPrsBuilder_get_type_descriptor())) }
     }
 
     /// Upcast to MeshVS_PrsBuilder
     pub fn as_prs_builder(&self) -> &PrsBuilder {
-        let __result =
-            unsafe { crate::ffi::MeshVS_MeshPrsBuilder_as_MeshVS_PrsBuilder(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_MeshPrsBuilder_as_MeshVS_PrsBuilder(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to MeshVS_PrsBuilder (mutable)
     pub fn as_prs_builder_mut(&mut self) -> &mut PrsBuilder {
-        let __result = unsafe {
-            crate::ffi::MeshVS_MeshPrsBuilder_as_MeshVS_PrsBuilder_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_MeshPrsBuilder_as_MeshVS_PrsBuilder_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_MeshPrsBuilder_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_MeshPrsBuilder_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_MeshPrsBuilder_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_MeshPrsBuilder_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSMeshPrsBuilder> {
-        let __result = unsafe { crate::ffi::MeshVS_MeshPrsBuilder_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_MeshPrsBuilder_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:57 - `MeshVS_PrsBuilder::CustomBuild()`
@@ -9289,20 +6493,15 @@ impl MeshPrsBuilder {
         IDsToExclude: &mut crate::t_col_std::PackedMapOfInteger,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_CustomBuild(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_CustomBuild(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                DisplayMode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:63 - `MeshVS_PrsBuilder::CustomSensitiveEntity()`
@@ -9311,156 +6510,89 @@ impl MeshPrsBuilder {
         Owner: &crate::ffi::HandleSelectMgrEntityOwner,
         SelectMode: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_MeshPrsBuilder_inherited_CustomSensitiveEntity(
                     self as *const Self,
                     Owner,
                     SelectMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:68 - `MeshVS_PrsBuilder::GetFlags()`
     pub fn get_flags(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetFlags(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetFlags(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:73 - `MeshVS_PrsBuilder::TestFlags()`
     pub fn test_flags(&self, DisplayMode: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_TestFlags(
-                    self as *const Self,
-                    DisplayMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_TestFlags(self as *const Self, DisplayMode)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:76 - `MeshVS_PrsBuilder::GetId()`
     pub fn get_id(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetId(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetId(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:79 - `MeshVS_PrsBuilder::GetPriority()`
     pub fn get_priority(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetPriority(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetPriority(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:82 - `MeshVS_PrsBuilder::GetDataSource()`
     pub fn get_data_source(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetDataSource(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetDataSource(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:85 - `MeshVS_PrsBuilder::SetDataSource()`
     pub fn set_data_source(&mut self, newDS: &crate::ffi::HandleMeshVSDataSource) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_SetDataSource(self as *mut Self, newDS)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_SetDataSource(self as *mut Self, newDS)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:88 - `MeshVS_PrsBuilder::GetDrawer()`
     pub fn get_drawer(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDrawer> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetDrawer(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetDrawer(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:91 - `MeshVS_PrsBuilder::SetDrawer()`
     pub fn set_drawer(&mut self, newDr: &crate::ffi::HandleMeshVSDrawer) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_SetDrawer(self as *mut Self, newDr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_SetDrawer(self as *mut Self, newDr)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:95 - `MeshVS_PrsBuilder::SetExcluding()`
     pub fn set_excluding(&mut self, state: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_SetExcluding(self as *mut Self, state)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_SetExcluding(self as *mut Self, state)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:98 - `MeshVS_PrsBuilder::IsExcludingOn()`
     pub fn is_excluding_on(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_IsExcludingOn(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_IsExcludingOn(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:101 - `MeshVS_PrsBuilder::SetPresentationManager()`
@@ -9468,74 +6600,47 @@ impl MeshPrsBuilder {
         &mut self,
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_SetPresentationManager(
-                    self as *mut Self,
-                    thePrsMgr,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_SetPresentationManager(
+                self as *mut Self,
+                thePrsMgr,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:104 - `MeshVS_PrsBuilder::GetPresentationManager()`
     pub fn get_presentation_manager(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentationManager> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetPresentationManager(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_MeshPrsBuilder_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_MeshPrsBuilder_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -9546,53 +6651,30 @@ impl MeshPrsBuilder {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_MeshPrsBuilder_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_MeshPrsBuilder_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_MeshPrsBuilder_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -9607,42 +6689,40 @@ unsafe impl crate::CppDeletable for HandleMeshVSMeshPrsBuilder {
 impl HandleMeshVSMeshPrsBuilder {
     /// Dereference this Handle to access the underlying MeshVS_MeshPrsBuilder
     pub fn get(&self) -> &crate::ffi::MeshVS_MeshPrsBuilder {
-        let __result = unsafe { crate::ffi::HandleMeshVSMeshPrsBuilder_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSMeshPrsBuilder_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_MeshPrsBuilder
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_MeshPrsBuilder {
-        let __result = unsafe { crate::ffi::HandleMeshVSMeshPrsBuilder_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSMeshPrsBuilder_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_MeshPrsBuilder> to Handle<MeshVS_PrsBuilder>
     pub fn to_handle_prs_builder(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSPrsBuilder> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSMeshPrsBuilder_to_HandleMeshVSPrsBuilder(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSMeshPrsBuilder_to_HandleMeshVSPrsBuilder(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_MeshPrsBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSMeshPrsBuilder_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSMeshPrsBuilder_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9681,14 +6761,8 @@ impl NodalColorPrsBuilder {
         Id: i32,
         Priority: &i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_ctor_handlemeshvsmesh_int_handlemeshvsdatasource_int2(Parent, Flags, DS, Id, Priority)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_NodalColorPrsBuilder_ctor_handlemeshvsmesh_int_handlemeshvsdatasource_int2(Parent, Flags, DS, Id, Priority)))
         }
     }
 
@@ -9702,146 +6776,92 @@ impl NodalColorPrsBuilder {
         IsElement: bool,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_build(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    IsElement,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_build(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                IsElement,
+                DisplayMode,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:70 - `MeshVS_NodalColorPrsBuilder::GetColors()`
     /// Returns map of colors assigned to nodes.
     pub fn get_colors(&self) -> &crate::ffi::MeshVS_DataMapOfIntegerColor {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_NodalColorPrsBuilder_get_colors(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_NodalColorPrsBuilder_get_colors(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:73 - `MeshVS_NodalColorPrsBuilder::SetColors()`
     /// Sets map of colors assigned to nodes.
     pub fn set_colors(&mut self, Map: &crate::ffi::MeshVS_DataMapOfIntegerColor) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_set_colors(self as *mut Self, Map)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_set_colors(self as *mut Self, Map)
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:76 - `MeshVS_NodalColorPrsBuilder::HasColors()`
     /// Returns true, if map isn't empty
     pub fn has_colors(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_NodalColorPrsBuilder_has_colors(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_has_colors(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:79 - `MeshVS_NodalColorPrsBuilder::GetColor()`
     /// Returns color assigned to single node
     pub fn get_color(&self, ID: i32, theColor: &mut crate::quantity::Color) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_get_color(self as *const Self, ID, theColor)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_get_color(self as *const Self, ID, theColor)
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:83 - `MeshVS_NodalColorPrsBuilder::SetColor()`
     /// Sets color assigned to single node
     pub fn set_color(&mut self, ID: i32, theColor: &crate::quantity::Color) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_set_color(self as *mut Self, ID, theColor)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_set_color(self as *mut Self, ID, theColor)
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:86 - `MeshVS_NodalColorPrsBuilder::UseTexture()`
     /// Specify whether texture must be used to build presentation
     pub fn use_texture(&mut self, theToUse: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_use_texture(self as *mut Self, theToUse)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_use_texture(self as *mut Self, theToUse)
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:89 - `MeshVS_NodalColorPrsBuilder::IsUseTexture()`
     /// Verify whether texture is used to build presentation
     pub fn is_use_texture(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_is_use_texture(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_is_use_texture(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:93 - `MeshVS_NodalColorPrsBuilder::SetColorMap()`
     /// Set colors to be used for texrture presentation
     /// theColors - colors for valid coordinates (laying in range [0, 1])
     pub fn set_color_map(&mut self, theColors: &crate::ffi::Aspect_SequenceOfColor) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_set_color_map(self as *mut Self, theColors)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_set_color_map(self as *mut Self, theColors)
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:96 - `MeshVS_NodalColorPrsBuilder::GetColorMap()`
     /// Return colors used for texrture presentation
     pub fn get_color_map(&self) -> &crate::ffi::Aspect_SequenceOfColor {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_get_color_map(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_NodalColorPrsBuilder_get_color_map(
+                self as *const Self,
+            )))
         }
     }
 
@@ -9849,96 +6869,61 @@ impl NodalColorPrsBuilder {
     /// Set color representing invalid texture coordinate
     /// (laying outside range [0, 1])
     pub fn set_invalid_color(&mut self, theInvalidColor: &crate::quantity::Color) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_set_invalid_color(
-                    self as *mut Self,
-                    theInvalidColor,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_set_invalid_color(
+                self as *mut Self,
+                theInvalidColor,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:104 - `MeshVS_NodalColorPrsBuilder::GetInvalidColor()`
     /// Return color representing invalid texture coordinate
     /// (laying outside range [0, 1])
     pub fn get_invalid_color(&self) -> crate::OwnedPtr<crate::quantity::Color> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_get_invalid_color(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_NodalColorPrsBuilder_get_invalid_color(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:107 - `MeshVS_NodalColorPrsBuilder::SetTextureCoords()`
     /// Specify correspondence between node IDs and texture coordinates (range [0, 1])
     pub fn set_texture_coords(&mut self, theMap: &crate::ffi::TColStd_DataMapOfIntegerReal) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_set_texture_coords(
-                    self as *mut Self,
-                    theMap,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_set_texture_coords(self as *mut Self, theMap)
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:110 - `MeshVS_NodalColorPrsBuilder::GetTextureCoords()`
     /// Get correspondence between node IDs and texture coordinates (range [0, 1])
     pub fn get_texture_coords(&self) -> &crate::ffi::TColStd_DataMapOfIntegerReal {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_get_texture_coords(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_NodalColorPrsBuilder_get_texture_coords(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:113 - `MeshVS_NodalColorPrsBuilder::SetTextureCoord()`
     /// Specify correspondence between node ID and texture coordinate (range [0, 1])
     pub fn set_texture_coord(&mut self, theID: i32, theCoord: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_set_texture_coord(
-                    self as *mut Self,
-                    theID,
-                    theCoord,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_set_texture_coord(
+                self as *mut Self,
+                theID,
+                theCoord,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:116 - `MeshVS_NodalColorPrsBuilder::GetTextureCoord()`
     /// Return correspondence between node IDs and texture coordinate (range [0, 1])
     pub fn get_texture_coord(&mut self, theID: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_get_texture_coord(self as *mut Self, theID)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_get_texture_coord(self as *mut Self, theID)
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:119 - `MeshVS_NodalColorPrsBuilder::AddVolumePrs()`
@@ -9954,117 +6939,95 @@ impl NodalColorPrsBuilder {
         theNbTexColors: i32,
         theColorRatio: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_add_volume_prs(
-                    self as *const Self,
-                    theTopo,
-                    theNodes,
-                    theCoords,
-                    theArray,
-                    theIsShaded,
-                    theNbColors,
-                    theNbTexColors,
-                    theColorRatio,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_add_volume_prs(
+                self as *const Self,
+                theTopo,
+                theNodes,
+                theCoords,
+                theArray,
+                theIsShaded,
+                theNbColors,
+                theNbTexColors,
+                theColorRatio,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:128 - `MeshVS_NodalColorPrsBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_NodalColorPrsBuilder_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:128 - `MeshVS_NodalColorPrsBuilder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_NodalColorPrsBuilder_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_NodalColorPrsBuilder_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:128 - `MeshVS_NodalColorPrsBuilder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_NodalColorPrsBuilder_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_NodalColorPrsBuilder_get_type_descriptor()))
         }
     }
 
     /// Upcast to MeshVS_PrsBuilder
     pub fn as_prs_builder(&self) -> &PrsBuilder {
-        let __result = unsafe {
-            crate::ffi::MeshVS_NodalColorPrsBuilder_as_MeshVS_PrsBuilder(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_NodalColorPrsBuilder_as_MeshVS_PrsBuilder(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to MeshVS_PrsBuilder (mutable)
     pub fn as_prs_builder_mut(&mut self) -> &mut PrsBuilder {
-        let __result = unsafe {
-            crate::ffi::MeshVS_NodalColorPrsBuilder_as_MeshVS_PrsBuilder_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_NodalColorPrsBuilder_as_MeshVS_PrsBuilder_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_NodalColorPrsBuilder_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_NodalColorPrsBuilder_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_NodalColorPrsBuilder_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_NodalColorPrsBuilder_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSNodalColorPrsBuilder> {
-        let __result = unsafe { crate::ffi::MeshVS_NodalColorPrsBuilder_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_NodalColorPrsBuilder_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:57 - `MeshVS_PrsBuilder::CustomBuild()`
@@ -10075,20 +7038,15 @@ impl NodalColorPrsBuilder {
         IDsToExclude: &mut crate::t_col_std::PackedMapOfInteger,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_CustomBuild(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_CustomBuild(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                DisplayMode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:63 - `MeshVS_PrsBuilder::CustomSensitiveEntity()`
@@ -10097,166 +7055,97 @@ impl NodalColorPrsBuilder {
         Owner: &crate::ffi::HandleSelectMgrEntityOwner,
         SelectMode: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_CustomSensitiveEntity(
                     self as *const Self,
                     Owner,
                     SelectMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:68 - `MeshVS_PrsBuilder::GetFlags()`
     pub fn get_flags(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetFlags(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetFlags(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:73 - `MeshVS_PrsBuilder::TestFlags()`
     pub fn test_flags(&self, DisplayMode: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_TestFlags(
-                    self as *const Self,
-                    DisplayMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_TestFlags(
+                self as *const Self,
+                DisplayMode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:76 - `MeshVS_PrsBuilder::GetId()`
     pub fn get_id(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetId(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetId(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:79 - `MeshVS_PrsBuilder::GetPriority()`
     pub fn get_priority(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetPriority(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetPriority(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:82 - `MeshVS_PrsBuilder::GetDataSource()`
     pub fn get_data_source(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetDataSource(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetDataSource(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:85 - `MeshVS_PrsBuilder::SetDataSource()`
     pub fn set_data_source(&mut self, newDS: &crate::ffi::HandleMeshVSDataSource) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_SetDataSource(
-                    self as *mut Self,
-                    newDS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_SetDataSource(
+                self as *mut Self,
+                newDS,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:88 - `MeshVS_PrsBuilder::GetDrawer()`
     pub fn get_drawer(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDrawer> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetDrawer(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetDrawer(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:91 - `MeshVS_PrsBuilder::SetDrawer()`
     pub fn set_drawer(&mut self, newDr: &crate::ffi::HandleMeshVSDrawer) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_SetDrawer(
-                    self as *mut Self,
-                    newDr,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_SetDrawer(self as *mut Self, newDr)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:95 - `MeshVS_PrsBuilder::SetExcluding()`
     pub fn set_excluding(&mut self, state: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_SetExcluding(
-                    self as *mut Self,
-                    state,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_SetExcluding(self as *mut Self, state)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:98 - `MeshVS_PrsBuilder::IsExcludingOn()`
     pub fn is_excluding_on(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_IsExcludingOn(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_IsExcludingOn(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:101 - `MeshVS_PrsBuilder::SetPresentationManager()`
@@ -10264,81 +7153,50 @@ impl NodalColorPrsBuilder {
         &mut self,
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_SetPresentationManager(
-                    self as *mut Self,
-                    thePrsMgr,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_SetPresentationManager(
+                self as *mut Self,
+                thePrsMgr,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:104 - `MeshVS_PrsBuilder::GetPresentationManager()`
     pub fn get_presentation_manager(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentationManager> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetPresentationManager(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -10349,58 +7207,30 @@ impl NodalColorPrsBuilder {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_NodalColorPrsBuilder_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -10415,48 +7245,42 @@ unsafe impl crate::CppDeletable for HandleMeshVSNodalColorPrsBuilder {
 impl HandleMeshVSNodalColorPrsBuilder {
     /// Dereference this Handle to access the underlying MeshVS_NodalColorPrsBuilder
     pub fn get(&self) -> &crate::ffi::MeshVS_NodalColorPrsBuilder {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSNodalColorPrsBuilder_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSNodalColorPrsBuilder_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_NodalColorPrsBuilder
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_NodalColorPrsBuilder {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSNodalColorPrsBuilder_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSNodalColorPrsBuilder_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_NodalColorPrsBuilder> to Handle<MeshVS_PrsBuilder>
     pub fn to_handle_prs_builder(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSPrsBuilder> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSNodalColorPrsBuilder_to_HandleMeshVSPrsBuilder(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSNodalColorPrsBuilder_to_HandleMeshVSPrsBuilder(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_NodalColorPrsBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSNodalColorPrsBuilder_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSNodalColorPrsBuilder_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10492,21 +7316,16 @@ impl PrsBuilder {
         IsElement: bool,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_PrsBuilder_build(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    IsElement,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_build(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                IsElement,
+                DisplayMode,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:57 - `MeshVS_PrsBuilder::CustomBuild()`
@@ -10522,20 +7341,15 @@ impl PrsBuilder {
         IDsToExclude: &mut crate::t_col_std::PackedMapOfInteger,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_PrsBuilder_custom_build(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_custom_build(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                DisplayMode,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:63 - `MeshVS_PrsBuilder::CustomSensitiveEntity()`
@@ -10545,33 +7359,21 @@ impl PrsBuilder {
         Owner: &crate::ffi::HandleSelectMgrEntityOwner,
         SelectMode: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_PrsBuilder_custom_sensitive_entity(
                     self as *const Self,
                     Owner,
                     SelectMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:68 - `MeshVS_PrsBuilder::GetFlags()`
     /// Returns flags, assigned with builder during creation
     pub fn get_flags(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_PrsBuilder_get_flags(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::MeshVS_PrsBuilder_get_flags(self as *const Self) })
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:73 - `MeshVS_PrsBuilder::TestFlags()`
@@ -10579,121 +7381,76 @@ impl PrsBuilder {
     /// This method has default implementation and can be redefined for advance behavior
     /// Returns Standard_True only if display mode is appropriate for this builder
     pub fn test_flags(&self, DisplayMode: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_PrsBuilder_test_flags(self as *const Self, DisplayMode)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_test_flags(self as *const Self, DisplayMode)
+        })
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:76 - `MeshVS_PrsBuilder::GetId()`
     /// Returns builder ID
     pub fn get_id(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_PrsBuilder_get_id(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::MeshVS_PrsBuilder_get_id(self as *const Self) })
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:79 - `MeshVS_PrsBuilder::GetPriority()`
     /// Returns priority; as priority bigger, as soon builder will be called.
     pub fn get_priority(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_PrsBuilder_get_priority(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_get_priority(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:82 - `MeshVS_PrsBuilder::GetDataSource()`
     /// Returns custom data source or default ( from MeshVS_Mesh ) if custom is NULL
     pub fn get_data_source(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_PrsBuilder_get_data_source(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_PrsBuilder_get_data_source(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:85 - `MeshVS_PrsBuilder::SetDataSource()`
     /// Change custom data source
     pub fn set_data_source(&mut self, newDS: &crate::ffi::HandleMeshVSDataSource) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_PrsBuilder_set_data_source(self as *mut Self, newDS) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_set_data_source(self as *mut Self, newDS)
+        })
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:88 - `MeshVS_PrsBuilder::GetDrawer()`
     /// Returns custom drawer or default ( from MeshVS_Mesh ) if custom is NULL
     pub fn get_drawer(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDrawer> {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_PrsBuilder_get_drawer(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_PrsBuilder_get_drawer(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:91 - `MeshVS_PrsBuilder::SetDrawer()`
     /// Change custom drawer
     pub fn set_drawer(&mut self, newDr: &crate::ffi::HandleMeshVSDrawer) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_PrsBuilder_set_drawer(self as *mut Self, newDr) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_set_drawer(self as *mut Self, newDr)
+        })
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:95 - `MeshVS_PrsBuilder::SetExcluding()`
     /// Set excluding state. If it is Standard_True, the nodes or elements, processed by current
     /// builder will be noted and next builder won't process its.
     pub fn set_excluding(&mut self, state: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_PrsBuilder_set_excluding(self as *mut Self, state) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_set_excluding(self as *mut Self, state)
+        })
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:98 - `MeshVS_PrsBuilder::IsExcludingOn()`
     /// Read excluding state
     pub fn is_excluding_on(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_PrsBuilder_is_excluding_on(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_is_excluding_on(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:101 - `MeshVS_PrsBuilder::SetPresentationManager()`
@@ -10702,14 +7459,9 @@ impl PrsBuilder {
         &mut self,
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_PrsBuilder_set_presentation_manager(self as *mut Self, thePrsMgr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_set_presentation_manager(self as *mut Self, thePrsMgr)
+        })
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:104 - `MeshVS_PrsBuilder::GetPresentationManager()`
@@ -10717,112 +7469,74 @@ impl PrsBuilder {
     pub fn get_presentation_manager(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentationManager> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_PrsBuilder_get_presentation_manager(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_PrsBuilder_get_presentation_manager(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:106 - `MeshVS_PrsBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_PrsBuilder_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_PrsBuilder_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:106 - `MeshVS_PrsBuilder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_PrsBuilder_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_PrsBuilder_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_PrsBuilder.hxx`:106 - `MeshVS_PrsBuilder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_PrsBuilder_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_PrsBuilder_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_PrsBuilder_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_PrsBuilder_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_PrsBuilder_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_PrsBuilder_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_PrsBuilder_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_PrsBuilder_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_PrsBuilder_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_PrsBuilder_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -10833,52 +7547,30 @@ impl PrsBuilder {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_PrsBuilder_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_PrsBuilder_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_PrsBuilder_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_PrsBuilder_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_PrsBuilder_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -10893,31 +7585,25 @@ unsafe impl crate::CppDeletable for HandleMeshVSPrsBuilder {
 impl HandleMeshVSPrsBuilder {
     /// Dereference this Handle to access the underlying MeshVS_PrsBuilder
     pub fn get(&self) -> &crate::ffi::MeshVS_PrsBuilder {
-        let __result = unsafe { crate::ffi::HandleMeshVSPrsBuilder_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSPrsBuilder_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_PrsBuilder
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_PrsBuilder {
-        let __result = unsafe { crate::ffi::HandleMeshVSPrsBuilder_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSPrsBuilder_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_PrsBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSPrsBuilder_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSPrsBuilder_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<MeshVS_PrsBuilder> to Handle<MeshVS_ElementalColorPrsBuilder>
@@ -10926,18 +7612,15 @@ impl HandleMeshVSPrsBuilder {
     pub fn downcast_to_elemental_color_prs_builder(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSElementalColorPrsBuilder>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleMeshVSPrsBuilder_downcast_to_HandleMeshVSElementalColorPrsBuilder(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -10947,18 +7630,15 @@ impl HandleMeshVSPrsBuilder {
     pub fn downcast_to_mesh_prs_builder(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSMeshPrsBuilder>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleMeshVSPrsBuilder_downcast_to_HandleMeshVSMeshPrsBuilder(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -10968,18 +7648,15 @@ impl HandleMeshVSPrsBuilder {
     pub fn downcast_to_nodal_color_prs_builder(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSNodalColorPrsBuilder>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleMeshVSPrsBuilder_downcast_to_HandleMeshVSNodalColorPrsBuilder(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -10989,18 +7666,15 @@ impl HandleMeshVSPrsBuilder {
     pub fn downcast_to_text_prs_builder(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSTextPrsBuilder>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleMeshVSPrsBuilder_downcast_to_HandleMeshVSTextPrsBuilder(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -11010,18 +7684,15 @@ impl HandleMeshVSPrsBuilder {
     pub fn downcast_to_vector_prs_builder(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSVectorPrsBuilder>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleMeshVSPrsBuilder_downcast_to_HandleMeshVSVectorPrsBuilder(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -11047,143 +7718,106 @@ impl SensitiveFace {
         thePoints: &crate::ffi::TColgp_Array1OfPnt,
         theSensType: crate::select3_d::TypeOfSensitivity,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_ctor_handleselectmgrentityowner_array1ofpnt_typeofsensitivity(theOwner, thePoints, theSensType.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_SensitiveFace_ctor_handleselectmgrentityowner_array1ofpnt_typeofsensitivity(theOwner, thePoints, theSensType.into())))
         }
     }
 
     /// **Source:** `MeshVS_SensitiveFace.hxx`:33 - `MeshVS_SensitiveFace::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveFace_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitiveFace_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_SensitiveFace.hxx`:33 - `MeshVS_SensitiveFace::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_SensitiveFace_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_SensitiveFace_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_SensitiveFace.hxx`:33 - `MeshVS_SensitiveFace::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_SensitiveFace_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_SensitiveFace_get_type_descriptor())) }
     }
 
     /// Upcast to Select3D_SensitiveFace
     pub fn as_select3_d_sensitive_face(&self) -> &crate::select3_d::SensitiveFace {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveFace_as_Select3D_SensitiveFace(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_SensitiveFace_as_Select3D_SensitiveFace(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveFace (mutable)
     pub fn as_select3_d_sensitive_face_mut(&mut self) -> &mut crate::select3_d::SensitiveFace {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveFace_as_Select3D_SensitiveFace_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_SensitiveFace_as_Select3D_SensitiveFace_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_select3_d_sensitive_entity(&self) -> &crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveFace_as_Select3D_SensitiveEntity(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_SensitiveFace_as_Select3D_SensitiveEntity(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_select3_d_sensitive_entity_mut(&mut self) -> &mut crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveFace_as_Select3D_SensitiveEntity_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_SensitiveFace_as_Select3D_SensitiveEntity_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_SensitiveFace_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_SensitiveFace_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveFace_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_SensitiveFace_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveFace> {
-        let __result = unsafe { crate::ffi::MeshVS_SensitiveFace_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveFace_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveFace.hxx`:50 - `Select3D_SensitiveFace::GetPoints()`
     pub fn get_points(&mut self, theHArrayOfPnt: &mut crate::ffi::HandleTColgpHArray1OfPnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_GetPoints(
-                    self as *mut Self,
-                    theHArrayOfPnt,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_GetPoints(self as *mut Self, theHArrayOfPnt)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveFace.hxx`:53 - `Select3D_SensitiveFace::Matches()`
@@ -11192,207 +7826,127 @@ impl SensitiveFace {
         theMgr: &mut crate::select_basics::SelectingVolumeManager,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_Matches(
-                    self as *mut Self,
-                    theMgr,
-                    thePickResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_Matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveFace.hxx`:57 - `Select3D_SensitiveFace::GetConnected()`
     pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_GetConnected(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveFace_inherited_GetConnected(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveFace.hxx`:61 - `Select3D_SensitiveFace::BoundingBox()`
     pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_BoundingBox(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveFace_inherited_BoundingBox(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveFace.hxx`:65 - `Select3D_SensitiveFace::CenterOfGeometry()`
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_CenterOfGeometry(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveFace_inherited_CenterOfGeometry(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveFace.hxx`:68 - `Select3D_SensitiveFace::BVH()`
     pub fn bvh(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitiveFace_inherited_BVH(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_BVH(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveFace.hxx`:71 - `Select3D_SensitiveFace::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_ToBuildBVH(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_ToBuildBVH(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveFace.hxx`:77 - `Select3D_SensitiveFace::NbSubElements()`
     pub fn nb_sub_elements(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_NbSubElements(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_NbSubElements(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
     pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveFace_inherited_OwnerId(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitiveFace_inherited_OwnerId(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_Set(self as *mut Self, theOwnerId)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_Set(self as *mut Self, theOwnerId)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_SensitivityFactor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_SensitivityFactor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_SetSensitivityFactor(
-                    self as *mut Self,
-                    theNewSens,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_SetSensitivityFactor(
+                self as *mut Self,
+                theNewSens,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitiveFace_inherited_Clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_Clear(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_HasInitLocation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_HasInitLocation(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:94 - `Select3D_SensitiveEntity::InvInitLocation()`
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_InvInitLocation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveFace_inherited_InvInitLocation(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
     pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_TransformPersistence(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::MeshVS_SensitiveFace_inherited_TransformPersistence(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -11401,56 +7955,34 @@ impl SensitiveFace {
         &mut self,
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_SetTransformPersistence(
-                    self as *mut Self,
-                    theTrsfPers,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_SetTransformPersistence(
+                self as *mut Self,
+                theTrsfPers,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveFace_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_SensitiveFace_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -11461,53 +7993,30 @@ impl SensitiveFace {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveFace_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitiveFace_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveFace_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -11522,61 +8031,55 @@ unsafe impl crate::CppDeletable for HandleMeshVSSensitiveFace {
 impl HandleMeshVSSensitiveFace {
     /// Dereference this Handle to access the underlying MeshVS_SensitiveFace
     pub fn get(&self) -> &crate::ffi::MeshVS_SensitiveFace {
-        let __result = unsafe { crate::ffi::HandleMeshVSSensitiveFace_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSSensitiveFace_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_SensitiveFace
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_SensitiveFace {
-        let __result = unsafe { crate::ffi::HandleMeshVSSensitiveFace_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSSensitiveFace_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_SensitiveFace> to Handle<Select3D_SensitiveFace>
     pub fn to_handle_sensitive_face(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveFace> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitiveFace_to_HandleSelect3DSensitiveFace(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitiveFace_to_HandleSelect3DSensitiveFace(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_SensitiveFace> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitiveFace_to_HandleSelect3DSensitiveEntity(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitiveFace_to_HandleSelect3DSensitiveEntity(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_SensitiveFace> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitiveFace_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitiveFace_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11600,16 +8103,12 @@ impl SensitiveMesh {
         theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
         theMode: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_SensitiveMesh_ctor_handleselectmgrentityowner_int(
                     theOwner, theMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -11622,27 +8121,17 @@ impl SensitiveMesh {
 
     /// **Source:** `MeshVS_SensitiveMesh.hxx`:31 - `MeshVS_SensitiveMesh::GetMode()`
     pub fn get_mode(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveMesh_get_mode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_get_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_SensitiveMesh.hxx`:33 - `MeshVS_SensitiveMesh::GetConnected()`
     pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveMesh_get_connected(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveMesh_get_connected(self as *mut Self),
+            ))
         }
     }
 
@@ -11653,280 +8142,189 @@ impl SensitiveMesh {
         theMgr: &mut crate::select_basics::SelectingVolumeManager,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_matches(self as *mut Self, theMgr, thePickResult)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_matches(self as *mut Self, theMgr, thePickResult)
+        })
     }
 
     /// **Source:** `MeshVS_SensitiveMesh.hxx`:45 - `MeshVS_SensitiveMesh::NbSubElements()`
     /// Returns the amount of mesh nodes
     pub fn nb_sub_elements(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveMesh_nb_sub_elements(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_nb_sub_elements(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_SensitiveMesh.hxx`:48 - `MeshVS_SensitiveMesh::BoundingBox()`
     /// Returns bounding box of mesh
     pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveMesh_bounding_box(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveMesh_bounding_box(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_SensitiveMesh.hxx`:51 - `MeshVS_SensitiveMesh::CenterOfGeometry()`
     /// Returns center of mesh
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveMesh_center_of_geometry(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveMesh_center_of_geometry(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_SensitiveMesh.hxx`:53 - `MeshVS_SensitiveMesh::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveMesh_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitiveMesh_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_SensitiveMesh.hxx`:53 - `MeshVS_SensitiveMesh::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_SensitiveMesh_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_SensitiveMesh_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_SensitiveMesh.hxx`:53 - `MeshVS_SensitiveMesh::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_SensitiveMesh_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_SensitiveMesh_get_type_descriptor())) }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_select3_d_sensitive_entity(&self) -> &crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveMesh_as_Select3D_SensitiveEntity(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_SensitiveMesh_as_Select3D_SensitiveEntity(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_select3_d_sensitive_entity_mut(&mut self) -> &mut crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveMesh_as_Select3D_SensitiveEntity_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_SensitiveMesh_as_Select3D_SensitiveEntity_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_SensitiveMesh_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_SensitiveMesh_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveMesh_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_SensitiveMesh_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveMesh> {
-        let __result = unsafe { crate::ffi::MeshVS_SensitiveMesh_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveMesh_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
     pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveMesh_inherited_OwnerId(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitiveMesh_inherited_OwnerId(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_Set(self as *mut Self, theOwnerId)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_Set(self as *mut Self, theOwnerId)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_SensitivityFactor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_SensitivityFactor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_SetSensitivityFactor(
-                    self as *mut Self,
-                    theNewSens,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_SetSensitivityFactor(
+                self as *mut Self,
+                theNewSens,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitiveMesh_inherited_BVH(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_BVH(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:84 - `Select3D_SensitiveEntity::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_ToBuildBVH(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_ToBuildBVH(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitiveMesh_inherited_Clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_Clear(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_HasInitLocation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_HasInitLocation(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:94 - `Select3D_SensitiveEntity::InvInitLocation()`
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_InvInitLocation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveMesh_inherited_InvInitLocation(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
     pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_TransformPersistence(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::MeshVS_SensitiveMesh_inherited_TransformPersistence(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -11935,56 +8333,34 @@ impl SensitiveMesh {
         &mut self,
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_SetTransformPersistence(
-                    self as *mut Self,
-                    theTrsfPers,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_SetTransformPersistence(
+                self as *mut Self,
+                theTrsfPers,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveMesh_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_SensitiveMesh_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -11995,53 +8371,30 @@ impl SensitiveMesh {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveMesh_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitiveMesh_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveMesh_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -12056,46 +8409,42 @@ unsafe impl crate::CppDeletable for HandleMeshVSSensitiveMesh {
 impl HandleMeshVSSensitiveMesh {
     /// Dereference this Handle to access the underlying MeshVS_SensitiveMesh
     pub fn get(&self) -> &crate::ffi::MeshVS_SensitiveMesh {
-        let __result = unsafe { crate::ffi::HandleMeshVSSensitiveMesh_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSSensitiveMesh_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_SensitiveMesh
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_SensitiveMesh {
-        let __result = unsafe { crate::ffi::HandleMeshVSSensitiveMesh_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSSensitiveMesh_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_SensitiveMesh> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitiveMesh_to_HandleSelect3DSensitiveEntity(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitiveMesh_to_HandleSelect3DSensitiveEntity(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_SensitiveMesh> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitiveMesh_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitiveMesh_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12123,27 +8472,17 @@ impl SensitivePolyhedron {
         theNodes: &crate::ffi::TColgp_Array1OfPnt,
         theTopo: &crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_ctor_handleselectmgrentityowner_array1ofpnt_handlemeshvsharray1ofsequenceofinteger(theOwner, theNodes, theTopo)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_SensitivePolyhedron_ctor_handleselectmgrentityowner_array1ofpnt_handlemeshvsharray1ofsequenceofinteger(theOwner, theNodes, theTopo)))
         }
     }
 
     /// **Source:** `MeshVS_SensitivePolyhedron.hxx`:41 - `MeshVS_SensitivePolyhedron::GetConnected()`
     pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitivePolyhedron_get_connected(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitivePolyhedron_get_connected(self as *mut Self),
+            ))
         }
     }
 
@@ -12153,297 +8492,195 @@ impl SensitivePolyhedron {
         theMgr: &mut crate::select_basics::SelectingVolumeManager,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_matches(
-                    self as *mut Self,
-                    theMgr,
-                    thePickResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_matches(self as *mut Self, theMgr, thePickResult)
+        })
     }
 
     /// **Source:** `MeshVS_SensitivePolyhedron.hxx`:48 - `MeshVS_SensitivePolyhedron::NbSubElements()`
     /// Returns the amount of nodes of polyhedron
     pub fn nb_sub_elements(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_nb_sub_elements(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_nb_sub_elements(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_SensitivePolyhedron.hxx`:50 - `MeshVS_SensitivePolyhedron::BoundingBox()`
     pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitivePolyhedron_bounding_box(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitivePolyhedron_bounding_box(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_SensitivePolyhedron.hxx`:52 - `MeshVS_SensitivePolyhedron::CenterOfGeometry()`
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_center_of_geometry(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitivePolyhedron_center_of_geometry(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_SensitivePolyhedron.hxx`:54 - `MeshVS_SensitivePolyhedron::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitivePolyhedron_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitivePolyhedron_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_SensitivePolyhedron.hxx`:54 - `MeshVS_SensitivePolyhedron::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_SensitivePolyhedron_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_SensitivePolyhedron_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_SensitivePolyhedron.hxx`:54 - `MeshVS_SensitivePolyhedron::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_SensitivePolyhedron_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitivePolyhedron_get_type_descriptor()))
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_select3_d_sensitive_entity(&self) -> &crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitivePolyhedron_as_Select3D_SensitiveEntity(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::MeshVS_SensitivePolyhedron_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_select3_d_sensitive_entity_mut(&mut self) -> &mut crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitivePolyhedron_as_Select3D_SensitiveEntity_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_SensitivePolyhedron_as_Select3D_SensitiveEntity_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitivePolyhedron_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_SensitivePolyhedron_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitivePolyhedron_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_SensitivePolyhedron_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSSensitivePolyhedron> {
-        let __result = unsafe { crate::ffi::MeshVS_SensitivePolyhedron_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitivePolyhedron_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
     pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_OwnerId(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitivePolyhedron_inherited_OwnerId(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_Set(self as *mut Self, theOwnerId)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_Set(self as *mut Self, theOwnerId)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_SensitivityFactor(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_SensitivityFactor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_SetSensitivityFactor(
-                    self as *mut Self,
-                    theNewSens,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_SetSensitivityFactor(
+                self as *mut Self,
+                theNewSens,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitivePolyhedron_inherited_BVH(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_BVH(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:84 - `Select3D_SensitiveEntity::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_ToBuildBVH(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_ToBuildBVH(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_Clear(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_Clear(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_HasInitLocation(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_HasInitLocation(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:94 - `Select3D_SensitiveEntity::InvInitLocation()`
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_SensitivePolyhedron_inherited_InvInitLocation(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
     pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::MeshVS_SensitivePolyhedron_inherited_TransformPersistence(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
@@ -12452,63 +8689,37 @@ impl SensitivePolyhedron {
         &mut self,
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_SetTransformPersistence(
-                    self as *mut Self,
-                    theTrsfPers,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_SetTransformPersistence(
+                self as *mut Self,
+                theTrsfPers,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::MeshVS_SensitivePolyhedron_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -12519,58 +8730,30 @@ impl SensitivePolyhedron {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitivePolyhedron_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitivePolyhedron_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -12585,50 +8768,44 @@ unsafe impl crate::CppDeletable for HandleMeshVSSensitivePolyhedron {
 impl HandleMeshVSSensitivePolyhedron {
     /// Dereference this Handle to access the underlying MeshVS_SensitivePolyhedron
     pub fn get(&self) -> &crate::ffi::MeshVS_SensitivePolyhedron {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSSensitivePolyhedron_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSSensitivePolyhedron_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_SensitivePolyhedron
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_SensitivePolyhedron {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSSensitivePolyhedron_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSSensitivePolyhedron_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_SensitivePolyhedron> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitivePolyhedron_to_HandleSelect3DSensitiveEntity(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitivePolyhedron_to_HandleSelect3DSensitiveEntity(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_SensitivePolyhedron> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitivePolyhedron_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitivePolyhedron_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12654,17 +8831,13 @@ impl SensitiveQuad {
         theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
         theQuadVerts: &crate::ffi::TColgp_Array1OfPnt,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_SensitiveQuad_ctor_handleselectmgrentityowner_array1ofpnt(
                     theOwner,
                     theQuadVerts,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -12677,44 +8850,30 @@ impl SensitiveQuad {
         thePnt3: &crate::gp::Pnt,
         thePnt4: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_SensitiveQuad_ctor_handleselectmgrentityowner_pnt4(
                     theOwner, thePnt1, thePnt2, thePnt3, thePnt4,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_SensitiveQuad.hxx`:40 - `MeshVS_SensitiveQuad::NbSubElements()`
     /// Returns the amount of sub-entities in sensitive
     pub fn nb_sub_elements(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveQuad_nb_sub_elements(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_nb_sub_elements(self as *const Self)
+        })
     }
 
     /// **Source:** `MeshVS_SensitiveQuad.hxx`:43 - `MeshVS_SensitiveQuad::GetConnected()`
     /// Returns a copy of this sensitive quadrangle
     pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveQuad_get_connected(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveQuad_get_connected(self as *mut Self),
+            ))
         }
     }
 
@@ -12725,266 +8884,181 @@ impl SensitiveQuad {
         theMgr: &mut crate::select_basics::SelectingVolumeManager,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_matches(self as *mut Self, theMgr, thePickResult)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_matches(self as *mut Self, theMgr, thePickResult)
+        })
     }
 
     /// **Source:** `MeshVS_SensitiveQuad.hxx`:51 - `MeshVS_SensitiveQuad::CenterOfGeometry()`
     /// Returns center of the box
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveQuad_center_of_geometry(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveQuad_center_of_geometry(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_SensitiveQuad.hxx`:54 - `MeshVS_SensitiveQuad::BoundingBox()`
     /// Returns coordinates of the box
     pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveQuad_bounding_box(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveQuad_bounding_box(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_SensitiveQuad.hxx`:56 - `MeshVS_SensitiveQuad::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveQuad_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitiveQuad_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_SensitiveQuad.hxx`:56 - `MeshVS_SensitiveQuad::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_SensitiveQuad_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_SensitiveQuad_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_SensitiveQuad.hxx`:56 - `MeshVS_SensitiveQuad::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_SensitiveQuad_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_SensitiveQuad_get_type_descriptor())) }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_select3_d_sensitive_entity(&self) -> &crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveQuad_as_Select3D_SensitiveEntity(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_SensitiveQuad_as_Select3D_SensitiveEntity(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_select3_d_sensitive_entity_mut(&mut self) -> &mut crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveQuad_as_Select3D_SensitiveEntity_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_SensitiveQuad_as_Select3D_SensitiveEntity_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_SensitiveQuad_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_SensitiveQuad_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveQuad_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_SensitiveQuad_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveQuad> {
-        let __result = unsafe { crate::ffi::MeshVS_SensitiveQuad_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveQuad_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
     pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveQuad_inherited_OwnerId(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitiveQuad_inherited_OwnerId(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_Set(self as *mut Self, theOwnerId)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_Set(self as *mut Self, theOwnerId)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_SensitivityFactor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_SensitivityFactor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_SetSensitivityFactor(
-                    self as *mut Self,
-                    theNewSens,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_SetSensitivityFactor(
+                self as *mut Self,
+                theNewSens,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitiveQuad_inherited_BVH(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_BVH(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:84 - `Select3D_SensitiveEntity::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_ToBuildBVH(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_ToBuildBVH(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitiveQuad_inherited_Clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_Clear(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_HasInitLocation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_HasInitLocation(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:94 - `Select3D_SensitiveEntity::InvInitLocation()`
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_InvInitLocation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveQuad_inherited_InvInitLocation(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
     pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_TransformPersistence(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::MeshVS_SensitiveQuad_inherited_TransformPersistence(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -12993,56 +9067,34 @@ impl SensitiveQuad {
         &mut self,
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_SetTransformPersistence(
-                    self as *mut Self,
-                    theTrsfPers,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_SetTransformPersistence(
+                self as *mut Self,
+                theTrsfPers,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveQuad_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_SensitiveQuad_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -13053,53 +9105,30 @@ impl SensitiveQuad {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveQuad_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitiveQuad_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveQuad_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -13114,46 +9143,42 @@ unsafe impl crate::CppDeletable for HandleMeshVSSensitiveQuad {
 impl HandleMeshVSSensitiveQuad {
     /// Dereference this Handle to access the underlying MeshVS_SensitiveQuad
     pub fn get(&self) -> &crate::ffi::MeshVS_SensitiveQuad {
-        let __result = unsafe { crate::ffi::HandleMeshVSSensitiveQuad_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSSensitiveQuad_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_SensitiveQuad
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_SensitiveQuad {
-        let __result = unsafe { crate::ffi::HandleMeshVSSensitiveQuad_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSSensitiveQuad_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_SensitiveQuad> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitiveQuad_to_HandleSelect3DSensitiveEntity(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitiveQuad_to_HandleSelect3DSensitiveEntity(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_SensitiveQuad> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitiveQuad_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitiveQuad_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13178,217 +9203,160 @@ impl SensitiveSegment {
         theFirstPnt: &crate::gp::Pnt,
         theLastPnt: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_SensitiveSegment_ctor_handleselectmgrentityowner_pnt2(
                     theOwner,
                     theFirstPnt,
                     theLastPnt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `MeshVS_SensitiveSegment.hxx`:29 - `MeshVS_SensitiveSegment::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveSegment_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitiveSegment_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_SensitiveSegment.hxx`:29 - `MeshVS_SensitiveSegment::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_SensitiveSegment_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_SensitiveSegment_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_SensitiveSegment.hxx`:29 - `MeshVS_SensitiveSegment::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_SensitiveSegment_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitiveSegment_get_type_descriptor()))
         }
     }
 
     /// Upcast to Select3D_SensitiveSegment
     pub fn as_select3_d_sensitive_segment(&self) -> &crate::select3_d::SensitiveSegment {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveSegment_as_Select3D_SensitiveSegment(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_SensitiveSegment_as_Select3D_SensitiveSegment(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveSegment (mutable)
     pub fn as_select3_d_sensitive_segment_mut(
         &mut self,
     ) -> &mut crate::select3_d::SensitiveSegment {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveSegment_as_Select3D_SensitiveSegment_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_SensitiveSegment_as_Select3D_SensitiveSegment_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_select3_d_sensitive_entity(&self) -> &crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveSegment_as_Select3D_SensitiveEntity(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_SensitiveSegment_as_Select3D_SensitiveEntity(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_select3_d_sensitive_entity_mut(&mut self) -> &mut crate::select3_d::SensitiveEntity {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveSegment_as_Select3D_SensitiveEntity_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_SensitiveSegment_as_Select3D_SensitiveEntity_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveSegment_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_SensitiveSegment_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_SensitiveSegment_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_SensitiveSegment_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveSegment> {
-        let __result = unsafe { crate::ffi::MeshVS_SensitiveSegment_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveSegment_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSegment.hxx`:36 - `Select3D_SensitiveSegment::SetStartPoint()`
     pub fn set_start_point(&mut self, thePnt: &crate::gp::Pnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_SetStartPoint(
-                    self as *mut Self,
-                    thePnt,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_SetStartPoint(self as *mut Self, thePnt)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSegment.hxx`:39 - `Select3D_SensitiveSegment::SetEndPoint()`
     pub fn set_end_point(&mut self, thePnt: &crate::gp::Pnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_SetEndPoint(self as *mut Self, thePnt)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_SetEndPoint(self as *mut Self, thePnt)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSegment.hxx`:42 - `Select3D_SensitiveSegment::StartPoint()`
     pub fn start_point(&self) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_StartPoint(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitiveSegment_inherited_StartPoint(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSegment.hxx`:45 - `Select3D_SensitiveSegment::EndPoint()`
     pub fn end_point(&self) -> &crate::gp::Pnt {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_EndPoint(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitiveSegment_inherited_EndPoint(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSegment.hxx`:48 - `Select3D_SensitiveSegment::NbSubElements()`
     pub fn nb_sub_elements(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_NbSubElements(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_NbSubElements(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSegment.hxx`:50 - `Select3D_SensitiveSegment::GetConnected()`
     pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_GetConnected(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveSegment_inherited_GetConnected(self as *mut Self),
+            ))
         }
     }
 
@@ -13398,182 +9366,111 @@ impl SensitiveSegment {
         theMgr: &mut crate::select_basics::SelectingVolumeManager,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_Matches(
-                    self as *mut Self,
-                    theMgr,
-                    thePickResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_Matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSegment.hxx`:59 - `Select3D_SensitiveSegment::CenterOfGeometry()`
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_CenterOfGeometry(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveSegment_inherited_CenterOfGeometry(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSegment.hxx`:63 - `Select3D_SensitiveSegment::BoundingBox()`
     pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_BoundingBox(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveSegment_inherited_BoundingBox(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSegment.hxx`:66 - `Select3D_SensitiveSegment::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_ToBuildBVH(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_ToBuildBVH(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
     pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_OwnerId(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_SensitiveSegment_inherited_OwnerId(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_Set(self as *mut Self, theOwnerId)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_Set(self as *mut Self, theOwnerId)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_SensitivityFactor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_SensitivityFactor(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_SetSensitivityFactor(
-                    self as *mut Self,
-                    theNewSens,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_SetSensitivityFactor(
+                self as *mut Self,
+                theNewSens,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitiveSegment_inherited_BVH(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_BVH(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_SensitiveSegment_inherited_Clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_Clear(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_HasInitLocation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_HasInitLocation(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:94 - `Select3D_SensitiveEntity::InvInitLocation()`
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_InvInitLocation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_SensitiveSegment_inherited_InvInitLocation(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
     pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::MeshVS_SensitiveSegment_inherited_TransformPersistence(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
@@ -13582,59 +9479,34 @@ impl SensitiveSegment {
         &mut self,
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_SetTransformPersistence(
-                    self as *mut Self,
-                    theTrsfPers,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_SetTransformPersistence(
+                self as *mut Self,
+                theTrsfPers,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_SensitiveSegment_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_SensitiveSegment_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -13645,54 +9517,30 @@ impl SensitiveSegment {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_SensitiveSegment_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_SensitiveSegment_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -13707,62 +9555,55 @@ unsafe impl crate::CppDeletable for HandleMeshVSSensitiveSegment {
 impl HandleMeshVSSensitiveSegment {
     /// Dereference this Handle to access the underlying MeshVS_SensitiveSegment
     pub fn get(&self) -> &crate::ffi::MeshVS_SensitiveSegment {
-        let __result = unsafe { crate::ffi::HandleMeshVSSensitiveSegment_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSSensitiveSegment_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_SensitiveSegment
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_SensitiveSegment {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSSensitiveSegment_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSSensitiveSegment_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_SensitiveSegment> to Handle<Select3D_SensitiveSegment>
     pub fn to_handle_sensitive_segment(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSegment> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitiveSegment_to_HandleSelect3DSensitiveSegment(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitiveSegment_to_HandleSelect3DSensitiveSegment(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_SensitiveSegment> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitiveSegment_to_HandleSelect3DSensitiveEntity(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitiveSegment_to_HandleSelect3DSensitiveEntity(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_SensitiveSegment> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSSensitiveSegment_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSSensitiveSegment_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13792,14 +9633,8 @@ impl TextPrsBuilder {
         Id: i32,
         Priority: &i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_ctor_handlemeshvsmesh_real_color_int_handlemeshvsdatasource_int2(Parent, Height, Color, Flags, DS, Id, Priority)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_TextPrsBuilder_ctor_handlemeshvsmesh_real_color_int_handlemeshvsdatasource_int2(Parent, Height, Color, Flags, DS, Id, Priority)))
         }
     }
 
@@ -13813,35 +9648,26 @@ impl TextPrsBuilder {
         IsElement: bool,
         theDisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_build(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    IsElement,
-                    theDisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_build(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                IsElement,
+                theDisplayMode,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_TextPrsBuilder.hxx`:54 - `MeshVS_TextPrsBuilder::GetTexts()`
     /// Returns map of text assigned with nodes ( IsElement = False ) or elements ( IsElement = True )
     pub fn get_texts(&self, IsElement: bool) -> &crate::ffi::MeshVS_DataMapOfIntegerAsciiString {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_get_texts(self as *const Self, IsElement)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_TextPrsBuilder_get_texts(
+                self as *const Self,
+                IsElement,
+            )))
         }
     }
 
@@ -13852,29 +9678,17 @@ impl TextPrsBuilder {
         IsElement: bool,
         Map: &crate::ffi::MeshVS_DataMapOfIntegerAsciiString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_set_texts(self as *mut Self, IsElement, Map)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_set_texts(self as *mut Self, IsElement, Map)
+        })
     }
 
     /// **Source:** `MeshVS_TextPrsBuilder.hxx`:62 - `MeshVS_TextPrsBuilder::HasTexts()`
     /// Returns True if map isn't empty
     pub fn has_texts(&self, IsElement: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_has_texts(self as *const Self, IsElement)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_has_texts(self as *const Self, IsElement)
+        })
     }
 
     /// **Source:** `MeshVS_TextPrsBuilder.hxx`:65 - `MeshVS_TextPrsBuilder::GetText()`
@@ -13885,119 +9699,89 @@ impl TextPrsBuilder {
         ID: i32,
         Text: &mut crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_get_text(self as *const Self, IsElement, ID, Text)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_get_text(self as *const Self, IsElement, ID, Text)
+        })
     }
 
     /// **Source:** `MeshVS_TextPrsBuilder.hxx`:70 - `MeshVS_TextPrsBuilder::SetText()`
     /// Sets text assigned with single node or element
     pub fn set_text(&mut self, IsElement: bool, ID: i32, Text: &crate::t_collection::AsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_set_text(self as *mut Self, IsElement, ID, Text)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_set_text(self as *mut Self, IsElement, ID, Text)
+        })
     }
 
     /// **Source:** `MeshVS_TextPrsBuilder.hxx`:74 - `MeshVS_TextPrsBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_TextPrsBuilder_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_TextPrsBuilder_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MeshVS_TextPrsBuilder.hxx`:74 - `MeshVS_TextPrsBuilder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_TextPrsBuilder_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_TextPrsBuilder_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_TextPrsBuilder.hxx`:74 - `MeshVS_TextPrsBuilder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_TextPrsBuilder_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::MeshVS_TextPrsBuilder_get_type_descriptor())) }
     }
 
     /// Upcast to MeshVS_PrsBuilder
     pub fn as_prs_builder(&self) -> &PrsBuilder {
-        let __result =
-            unsafe { crate::ffi::MeshVS_TextPrsBuilder_as_MeshVS_PrsBuilder(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_TextPrsBuilder_as_MeshVS_PrsBuilder(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to MeshVS_PrsBuilder (mutable)
     pub fn as_prs_builder_mut(&mut self) -> &mut PrsBuilder {
-        let __result = unsafe {
-            crate::ffi::MeshVS_TextPrsBuilder_as_MeshVS_PrsBuilder_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_TextPrsBuilder_as_MeshVS_PrsBuilder_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::MeshVS_TextPrsBuilder_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_TextPrsBuilder_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_TextPrsBuilder_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_TextPrsBuilder_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSTextPrsBuilder> {
-        let __result = unsafe { crate::ffi::MeshVS_TextPrsBuilder_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_TextPrsBuilder_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:57 - `MeshVS_PrsBuilder::CustomBuild()`
@@ -14008,20 +9792,15 @@ impl TextPrsBuilder {
         IDsToExclude: &mut crate::t_col_std::PackedMapOfInteger,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_CustomBuild(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_CustomBuild(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                DisplayMode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:63 - `MeshVS_PrsBuilder::CustomSensitiveEntity()`
@@ -14030,156 +9809,89 @@ impl TextPrsBuilder {
         Owner: &crate::ffi::HandleSelectMgrEntityOwner,
         SelectMode: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_TextPrsBuilder_inherited_CustomSensitiveEntity(
                     self as *const Self,
                     Owner,
                     SelectMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:68 - `MeshVS_PrsBuilder::GetFlags()`
     pub fn get_flags(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_GetFlags(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_GetFlags(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:73 - `MeshVS_PrsBuilder::TestFlags()`
     pub fn test_flags(&self, DisplayMode: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_TestFlags(
-                    self as *const Self,
-                    DisplayMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_TestFlags(self as *const Self, DisplayMode)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:76 - `MeshVS_PrsBuilder::GetId()`
     pub fn get_id(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_TextPrsBuilder_inherited_GetId(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_GetId(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:79 - `MeshVS_PrsBuilder::GetPriority()`
     pub fn get_priority(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_GetPriority(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_GetPriority(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:82 - `MeshVS_PrsBuilder::GetDataSource()`
     pub fn get_data_source(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_GetDataSource(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_TextPrsBuilder_inherited_GetDataSource(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:85 - `MeshVS_PrsBuilder::SetDataSource()`
     pub fn set_data_source(&mut self, newDS: &crate::ffi::HandleMeshVSDataSource) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_SetDataSource(self as *mut Self, newDS)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_SetDataSource(self as *mut Self, newDS)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:88 - `MeshVS_PrsBuilder::GetDrawer()`
     pub fn get_drawer(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDrawer> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_GetDrawer(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_TextPrsBuilder_inherited_GetDrawer(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:91 - `MeshVS_PrsBuilder::SetDrawer()`
     pub fn set_drawer(&mut self, newDr: &crate::ffi::HandleMeshVSDrawer) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_SetDrawer(self as *mut Self, newDr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_SetDrawer(self as *mut Self, newDr)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:95 - `MeshVS_PrsBuilder::SetExcluding()`
     pub fn set_excluding(&mut self, state: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_SetExcluding(self as *mut Self, state)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_SetExcluding(self as *mut Self, state)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:98 - `MeshVS_PrsBuilder::IsExcludingOn()`
     pub fn is_excluding_on(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_IsExcludingOn(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_IsExcludingOn(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:101 - `MeshVS_PrsBuilder::SetPresentationManager()`
@@ -14187,74 +9899,47 @@ impl TextPrsBuilder {
         &mut self,
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_SetPresentationManager(
-                    self as *mut Self,
-                    thePrsMgr,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_SetPresentationManager(
+                self as *mut Self,
+                thePrsMgr,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:104 - `MeshVS_PrsBuilder::GetPresentationManager()`
     pub fn get_presentation_manager(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentationManager> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_TextPrsBuilder_inherited_GetPresentationManager(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_TextPrsBuilder_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_TextPrsBuilder_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -14265,53 +9950,30 @@ impl TextPrsBuilder {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_TextPrsBuilder_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::MeshVS_TextPrsBuilder_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_TextPrsBuilder_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -14326,42 +9988,40 @@ unsafe impl crate::CppDeletable for HandleMeshVSTextPrsBuilder {
 impl HandleMeshVSTextPrsBuilder {
     /// Dereference this Handle to access the underlying MeshVS_TextPrsBuilder
     pub fn get(&self) -> &crate::ffi::MeshVS_TextPrsBuilder {
-        let __result = unsafe { crate::ffi::HandleMeshVSTextPrsBuilder_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSTextPrsBuilder_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_TextPrsBuilder
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_TextPrsBuilder {
-        let __result = unsafe { crate::ffi::HandleMeshVSTextPrsBuilder_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSTextPrsBuilder_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_TextPrsBuilder> to Handle<MeshVS_PrsBuilder>
     pub fn to_handle_prs_builder(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSPrsBuilder> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSTextPrsBuilder_to_HandleMeshVSPrsBuilder(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSTextPrsBuilder_to_HandleMeshVSPrsBuilder(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_TextPrsBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSTextPrsBuilder_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSTextPrsBuilder_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -14383,13 +10043,7 @@ impl Tool {
     /// **Source:** `MeshVS_Tool.hxx` - `MeshVS_Tool::MeshVS_Tool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Tool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Tool_ctor())) }
     }
 
     /// **Source:** `MeshVS_Tool.hxx`:39 - `MeshVS_Tool::CreateAspectFillArea3d()`
@@ -14398,18 +10052,13 @@ impl Tool {
         theDr: &crate::ffi::HandleMeshVSDrawer,
         UseDefaults: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dAspectFillArea3d> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_Tool_create_aspect_fill_area3d_handlemeshvsdrawer_bool(
                     theDr,
                     UseDefaults,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -14421,15 +10070,8 @@ impl Tool {
         Mat: &crate::graphic3d::MaterialAspect,
         UseDefaults: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dAspectFillArea3d> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_Tool_create_aspect_fill_area3d_handlemeshvsdrawer_materialaspect_bool(theDr, Mat, UseDefaults)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_Tool_create_aspect_fill_area3d_handlemeshvsdrawer_materialaspect_bool(theDr, Mat, UseDefaults)))
         }
     }
 
@@ -14439,14 +10081,10 @@ impl Tool {
         theDr: &crate::ffi::HandleMeshVSDrawer,
         UseDefaults: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dAspectLine3d> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Tool_create_aspect_line3d(theDr, UseDefaults) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_Tool_create_aspect_line3d(theDr, UseDefaults),
+            ))
         }
     }
 
@@ -14456,14 +10094,10 @@ impl Tool {
         theDr: &crate::ffi::HandleMeshVSDrawer,
         UseDefaults: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dAspectMarker3d> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Tool_create_aspect_marker3d(theDr, UseDefaults) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_Tool_create_aspect_marker3d(theDr, UseDefaults),
+            ))
         }
     }
 
@@ -14473,14 +10107,10 @@ impl Tool {
         theDr: &crate::ffi::HandleMeshVSDrawer,
         UseDefaults: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dAspectText3d> {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_Tool_create_aspect_text3d(theDr, UseDefaults) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_Tool_create_aspect_text3d(theDr, UseDefaults),
+            ))
         }
     }
 
@@ -14488,14 +10118,7 @@ impl Tool {
     /// Get one of normals to polygon described by these points.
     /// If the polygon isn't planar, function returns false
     pub fn get_normal(Nodes: &crate::ffi::TColStd_Array1OfReal, Norm: &mut crate::gp::Vec) -> bool {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Tool_get_normal(Nodes, Norm) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::MeshVS_Tool_get_normal(Nodes, Norm) })
     }
 
     /// **Source:** `MeshVS_Tool.hxx`:72 - `MeshVS_Tool::GetAverageNormal()`
@@ -14505,14 +10128,7 @@ impl Tool {
         Nodes: &crate::ffi::TColStd_Array1OfReal,
         Norm: &mut crate::gp::Vec,
     ) -> bool {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_Tool_get_average_normal(Nodes, Norm) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::MeshVS_Tool_get_average_normal(Nodes, Norm) })
     }
 }
 
@@ -14572,14 +10188,8 @@ impl VectorPrsBuilder {
         Priority: &i32,
         IsSimplePrs: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_ctor_handlemeshvsmesh_real_color_int_handlemeshvsdatasource_int2_bool(Parent, MaxLength, VectorColor, Flags, DS, Id, Priority, IsSimplePrs)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MeshVS_VectorPrsBuilder_ctor_handlemeshvsmesh_real_color_int_handlemeshvsdatasource_int2_bool(Parent, MaxLength, VectorColor, Flags, DS, Id, Priority, IsSimplePrs)))
         }
     }
 
@@ -14615,21 +10225,16 @@ impl VectorPrsBuilder {
         IsElement: bool,
         theDisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_build(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    IsElement,
-                    theDisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_build(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                IsElement,
+                theDisplayMode,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:59 - `MeshVS_VectorPrsBuilder::DrawVector()`
@@ -14644,37 +10249,28 @@ impl VectorPrsBuilder {
         ArrowLines: &crate::ffi::HandleGraphic3dArrayOfPrimitives,
         Triangles: &crate::ffi::HandleGraphic3dArrayOfPrimitives,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_draw_vector(
-                    self as *const Self,
-                    theTrsf,
-                    Length,
-                    MaxLength,
-                    ArrowPoints,
-                    Lines,
-                    ArrowLines,
-                    Triangles,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_draw_vector(
+                self as *const Self,
+                theTrsf,
+                Length,
+                MaxLength,
+                ArrowPoints,
+                Lines,
+                ArrowLines,
+                Triangles,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:73 - `MeshVS_VectorPrsBuilder::GetVectors()`
     /// Returns map of vectors assigned with nodes or elements
     pub fn get_vectors(&self, IsElement: bool) -> &crate::ffi::MeshVS_DataMapOfIntegerVector {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_get_vectors(self as *const Self, IsElement)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_VectorPrsBuilder_get_vectors(
+                self as *const Self,
+                IsElement,
+            )))
         }
     }
 
@@ -14685,67 +10281,33 @@ impl VectorPrsBuilder {
         IsElement: bool,
         Map: &crate::ffi::MeshVS_DataMapOfIntegerVector,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_set_vectors(self as *mut Self, IsElement, Map)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_set_vectors(self as *mut Self, IsElement, Map)
+        })
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:81 - `MeshVS_VectorPrsBuilder::HasVectors()`
     /// Returns true, if map isn't empty
     pub fn has_vectors(&self, IsElement: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_has_vectors(self as *const Self, IsElement)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_has_vectors(self as *const Self, IsElement)
+        })
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:84 - `MeshVS_VectorPrsBuilder::GetVector()`
     /// Returns vector assigned with certain node or element
     pub fn get_vector(&self, IsElement: bool, ID: i32, Vect: &mut crate::gp::Vec) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_get_vector(
-                    self as *const Self,
-                    IsElement,
-                    ID,
-                    Vect,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_get_vector(self as *const Self, IsElement, ID, Vect)
+        })
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:89 - `MeshVS_VectorPrsBuilder::SetVector()`
     /// Sets vector assigned with certain node or element
     pub fn set_vector(&mut self, IsElement: bool, ID: i32, Vect: &crate::gp::Vec) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_set_vector(
-                    self as *mut Self,
-                    IsElement,
-                    ID,
-                    Vect,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_set_vector(self as *mut Self, IsElement, ID, Vect)
+        })
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:95 - `MeshVS_VectorPrsBuilder::GetMinMaxVectorValue()`
@@ -14757,36 +10319,26 @@ impl VectorPrsBuilder {
         MinValue: &mut f64,
         MaxValue: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_get_min_max_vector_value(
-                    self as *const Self,
-                    IsElement,
-                    MinValue,
-                    MaxValue,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_get_min_max_vector_value(
+                self as *const Self,
+                IsElement,
+                MinValue,
+                MaxValue,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:101 - `MeshVS_VectorPrsBuilder::SetSimplePrsMode()`
     /// Sets flag that indicates is simple vector arrow mode uses or not
     /// default value is False
     pub fn set_simple_prs_mode(&mut self, IsSimpleArrow: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_set_simple_prs_mode(
-                    self as *mut Self,
-                    IsSimpleArrow,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_set_simple_prs_mode(
+                self as *mut Self,
+                IsSimpleArrow,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:111 - `MeshVS_VectorPrsBuilder::SetSimplePrsParams()`
@@ -14804,31 +10356,22 @@ impl VectorPrsBuilder {
         theStartParam: f64,
         theEndParam: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_set_simple_prs_params(
-                    self as *mut Self,
-                    theLineWidthParam,
-                    theStartParam,
-                    theEndParam,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_set_simple_prs_params(
+                self as *mut Self,
+                theLineWidthParam,
+                theStartParam,
+                theEndParam,
+            )
+        })
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:115 - `MeshVS_VectorPrsBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_VectorPrsBuilder_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_VectorPrsBuilder_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -14839,95 +10382,74 @@ impl VectorPrsBuilder {
         Length: f64,
         ArrowPart: f64,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_calculate_arrow(Points, Length, ArrowPart)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_calculate_arrow(Points, Length, ArrowPart)
+        })
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:115 - `MeshVS_VectorPrsBuilder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_VectorPrsBuilder_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::MeshVS_VectorPrsBuilder_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:115 - `MeshVS_VectorPrsBuilder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::MeshVS_VectorPrsBuilder_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::MeshVS_VectorPrsBuilder_get_type_descriptor()))
         }
     }
 
     /// Upcast to MeshVS_PrsBuilder
     pub fn as_prs_builder(&self) -> &PrsBuilder {
-        let __result = unsafe {
-            crate::ffi::MeshVS_VectorPrsBuilder_as_MeshVS_PrsBuilder(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_VectorPrsBuilder_as_MeshVS_PrsBuilder(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to MeshVS_PrsBuilder (mutable)
     pub fn as_prs_builder_mut(&mut self) -> &mut PrsBuilder {
-        let __result = unsafe {
-            crate::ffi::MeshVS_VectorPrsBuilder_as_MeshVS_PrsBuilder_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::MeshVS_VectorPrsBuilder_as_MeshVS_PrsBuilder_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_VectorPrsBuilder_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::MeshVS_VectorPrsBuilder_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::MeshVS_VectorPrsBuilder_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::MeshVS_VectorPrsBuilder_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMeshVSVectorPrsBuilder> {
-        let __result = unsafe { crate::ffi::MeshVS_VectorPrsBuilder_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_VectorPrsBuilder_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:57 - `MeshVS_PrsBuilder::CustomBuild()`
@@ -14938,20 +10460,15 @@ impl VectorPrsBuilder {
         IDsToExclude: &mut crate::t_col_std::PackedMapOfInteger,
         DisplayMode: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_CustomBuild(
-                    self as *const Self,
-                    Prs,
-                    IDs,
-                    IDsToExclude,
-                    DisplayMode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_CustomBuild(
+                self as *const Self,
+                Prs,
+                IDs,
+                IDsToExclude,
+                DisplayMode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:63 - `MeshVS_PrsBuilder::CustomSensitiveEntity()`
@@ -14960,159 +10477,92 @@ impl VectorPrsBuilder {
         Owner: &crate::ffi::HandleSelectMgrEntityOwner,
         SelectMode: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_VectorPrsBuilder_inherited_CustomSensitiveEntity(
                     self as *const Self,
                     Owner,
                     SelectMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:68 - `MeshVS_PrsBuilder::GetFlags()`
     pub fn get_flags(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetFlags(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetFlags(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:73 - `MeshVS_PrsBuilder::TestFlags()`
     pub fn test_flags(&self, DisplayMode: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_TestFlags(
-                    self as *const Self,
-                    DisplayMode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_TestFlags(
+                self as *const Self,
+                DisplayMode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:76 - `MeshVS_PrsBuilder::GetId()`
     pub fn get_id(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetId(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetId(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:79 - `MeshVS_PrsBuilder::GetPriority()`
     pub fn get_priority(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetPriority(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetPriority(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:82 - `MeshVS_PrsBuilder::GetDataSource()`
     pub fn get_data_source(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetDataSource(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetDataSource(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:85 - `MeshVS_PrsBuilder::SetDataSource()`
     pub fn set_data_source(&mut self, newDS: &crate::ffi::HandleMeshVSDataSource) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_SetDataSource(
-                    self as *mut Self,
-                    newDS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_SetDataSource(self as *mut Self, newDS)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:88 - `MeshVS_PrsBuilder::GetDrawer()`
     pub fn get_drawer(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSDrawer> {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetDrawer(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetDrawer(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:91 - `MeshVS_PrsBuilder::SetDrawer()`
     pub fn set_drawer(&mut self, newDr: &crate::ffi::HandleMeshVSDrawer) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_SetDrawer(self as *mut Self, newDr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_SetDrawer(self as *mut Self, newDr)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:95 - `MeshVS_PrsBuilder::SetExcluding()`
     pub fn set_excluding(&mut self, state: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_SetExcluding(self as *mut Self, state)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_SetExcluding(self as *mut Self, state)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:98 - `MeshVS_PrsBuilder::IsExcludingOn()`
     pub fn is_excluding_on(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_IsExcludingOn(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_IsExcludingOn(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:101 - `MeshVS_PrsBuilder::SetPresentationManager()`
@@ -15120,77 +10570,47 @@ impl VectorPrsBuilder {
         &mut self,
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_SetPresentationManager(
-                    self as *mut Self,
-                    thePrsMgr,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_SetPresentationManager(
+                self as *mut Self,
+                thePrsMgr,
+            )
+        })
     }
 
     /// Inherited: **Source:** `MeshVS_PrsBuilder.hxx`:104 - `MeshVS_PrsBuilder::GetPresentationManager()`
     pub fn get_presentation_manager(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentationManager> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetPresentationManager(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::MeshVS_VectorPrsBuilder_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::MeshVS_VectorPrsBuilder_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -15201,54 +10621,30 @@ impl VectorPrsBuilder {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::MeshVS_VectorPrsBuilder_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::MeshVS_VectorPrsBuilder_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -15263,43 +10659,40 @@ unsafe impl crate::CppDeletable for HandleMeshVSVectorPrsBuilder {
 impl HandleMeshVSVectorPrsBuilder {
     /// Dereference this Handle to access the underlying MeshVS_VectorPrsBuilder
     pub fn get(&self) -> &crate::ffi::MeshVS_VectorPrsBuilder {
-        let __result = unsafe { crate::ffi::HandleMeshVSVectorPrsBuilder_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMeshVSVectorPrsBuilder_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MeshVS_VectorPrsBuilder
     pub fn get_mut(&mut self) -> &mut crate::ffi::MeshVS_VectorPrsBuilder {
-        let __result =
-            unsafe { crate::ffi::HandleMeshVSVectorPrsBuilder_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMeshVSVectorPrsBuilder_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MeshVS_VectorPrsBuilder> to Handle<MeshVS_PrsBuilder>
     pub fn to_handle_prs_builder(&self) -> crate::OwnedPtr<crate::ffi::HandleMeshVSPrsBuilder> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSVectorPrsBuilder_to_HandleMeshVSPrsBuilder(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSVectorPrsBuilder_to_HandleMeshVSPrsBuilder(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MeshVS_VectorPrsBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMeshVSVectorPrsBuilder_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMeshVSVectorPrsBuilder_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

@@ -400,197 +400,114 @@ impl CafReader {
     /// **Source:** `RWGltf_CafReader.hxx`:30 - `RWGltf_CafReader::RWGltf_CafReader()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_CafReader_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWGltf_CafReader_ctor()))
         }
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:27 - `RWGltf_CafReader::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_CafReader_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:33 - `RWGltf_CafReader::ToParallel()`
     /// Return TRUE if multithreaded optimizations are allowed; FALSE by default.
     pub fn to_parallel(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_CafReader_to_parallel(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_to_parallel(self as *const Self)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:36 - `RWGltf_CafReader::SetParallel()`
     /// Setup multithreaded execution.
     pub fn set_parallel(&mut self, theToParallel: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_set_parallel(self as *mut Self, theToParallel)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_set_parallel(self as *mut Self, theToParallel)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:39 - `RWGltf_CafReader::ToSkipEmptyNodes()`
     /// Return TRUE if Nodes without Geometry should be ignored, TRUE by default.
     pub fn to_skip_empty_nodes(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_to_skip_empty_nodes(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_to_skip_empty_nodes(self as *mut Self)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:42 - `RWGltf_CafReader::SetSkipEmptyNodes()`
     /// Set flag to ignore nodes without Geometry.
     pub fn set_skip_empty_nodes(&mut self, theToSkip: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_set_skip_empty_nodes(self as *mut Self, theToSkip)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_set_skip_empty_nodes(self as *mut Self, theToSkip)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:46 - `RWGltf_CafReader::ToLoadAllScenes()`
     /// Return TRUE if all scenes in the document should be loaded, FALSE by default which means only
     /// main (default) scene will be loaded.
     pub fn to_load_all_scenes(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_to_load_all_scenes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_to_load_all_scenes(self as *const Self)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:50 - `RWGltf_CafReader::SetLoadAllScenes()`
     /// Set flag to flag to load all scenes in the document, FALSE by default which means only main
     /// (default) scene will be loaded.
     pub fn set_load_all_scenes(&mut self, theToLoadAll: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_set_load_all_scenes(self as *mut Self, theToLoadAll)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_set_load_all_scenes(self as *mut Self, theToLoadAll)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:53 - `RWGltf_CafReader::ToUseMeshNameAsFallback()`
     /// Set flag to use Mesh name in case if Node name is empty, TRUE by default.
     pub fn to_use_mesh_name_as_fallback(&mut self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_to_use_mesh_name_as_fallback(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_to_use_mesh_name_as_fallback(self as *mut Self)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:56 - `RWGltf_CafReader::SetMeshNameAsFallback()`
     /// Set flag to use Mesh name in case if Node name is empty.
     pub fn set_mesh_name_as_fallback(&mut self, theToFallback: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_set_mesh_name_as_fallback(
-                    self as *mut Self,
-                    theToFallback,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_set_mesh_name_as_fallback(self as *mut Self, theToFallback)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:59 - `RWGltf_CafReader::IsDoublePrecision()`
     /// Return flag to fill in triangulation using double or single precision; FALSE by default.
     pub fn is_double_precision(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_is_double_precision(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_is_double_precision(self as *const Self)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:62 - `RWGltf_CafReader::SetDoublePrecision()`
     /// Set flag to fill in triangulation using double or single precision.
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_set_double_precision(self as *mut Self, theIsDouble)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_set_double_precision(self as *mut Self, theIsDouble)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:65 - `RWGltf_CafReader::ToSkipLateDataLoading()`
     /// Returns TRUE if data loading should be skipped and can be performed later; FALSE by default.
     pub fn to_skip_late_data_loading(&mut self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_to_skip_late_data_loading(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_to_skip_late_data_loading(self as *mut Self)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:68 - `RWGltf_CafReader::SetToSkipLateDataLoading()`
     /// Sets flag to skip data loading.
     pub fn set_to_skip_late_data_loading(&mut self, theToSkip: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_set_to_skip_late_data_loading(
-                    self as *mut Self,
-                    theToSkip,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_set_to_skip_late_data_loading(self as *mut Self, theToSkip)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:73 - `RWGltf_CafReader::ToKeepLateData()`
@@ -598,260 +515,169 @@ impl CafReader {
     /// It allows to keep information about deferred storage to load/unload this data later.
     /// TRUE by default.
     pub fn to_keep_late_data(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_to_keep_late_data(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_to_keep_late_data(self as *mut Self)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:76 - `RWGltf_CafReader::SetToKeepLateData()`
     /// Sets flag to keep information about deferred storage to load/unload data later.
     pub fn set_to_keep_late_data(&mut self, theToKeep: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_set_to_keep_late_data(self as *mut Self, theToKeep)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_set_to_keep_late_data(self as *mut Self, theToKeep)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:79 - `RWGltf_CafReader::ToPrintDebugMessages()`
     /// Returns TRUE if additional debug information should be print; FALSE by default.
     pub fn to_print_debug_messages(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_to_print_debug_messages(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_to_print_debug_messages(self as *const Self)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:82 - `RWGltf_CafReader::SetToPrintDebugMessages()`
     /// Sets flag to print debug information.
     pub fn set_to_print_debug_messages(&mut self, theToPrint: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_set_to_print_debug_messages(
-                    self as *mut Self,
-                    theToPrint,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_set_to_print_debug_messages(self as *mut Self, theToPrint)
+        })
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:27 - `RWGltf_CafReader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_CafReader_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::RWGltf_CafReader_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:27 - `RWGltf_CafReader::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_CafReader_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::RWGltf_CafReader_get_type_descriptor())) }
     }
 
     /// Upcast to RWMesh_CafReader
     pub fn as_rw_mesh_caf_reader(&self) -> &crate::rw_mesh::CafReader {
-        let __result =
-            unsafe { crate::ffi::RWGltf_CafReader_as_RWMesh_CafReader(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWGltf_CafReader_as_RWMesh_CafReader(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to RWMesh_CafReader (mutable)
     pub fn as_rw_mesh_caf_reader_mut(&mut self) -> &mut crate::rw_mesh::CafReader {
-        let __result =
-            unsafe { crate::ffi::RWGltf_CafReader_as_RWMesh_CafReader_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWGltf_CafReader_as_RWMesh_CafReader_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWGltf_CafReader_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWGltf_CafReader_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWGltf_CafReader_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWGltf_CafReader_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfCafReader> {
-        let __result = unsafe { crate::ffi::RWGltf_CafReader_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWGltf_CafReader_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
     pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_inherited_Document(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_CafReader_inherited_Document(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
     pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_SetDocument(self as *mut Self, theDoc)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetDocument(self as *mut Self, theDoc)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_inherited_RootPrefix(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_CafReader_inherited_RootPrefix(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
     pub fn set_root_prefix(&mut self, theRootPrefix: &crate::t_collection::AsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_SetRootPrefix(
-                    self as *mut Self,
-                    theRootPrefix,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetRootPrefix(self as *mut Self, theRootPrefix)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
     pub fn to_fill_incomplete_document(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_ToFillIncompleteDocument(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_ToFillIncompleteDocument(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
     pub fn set_fill_incomplete_document(&mut self, theToFillIncomplete: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_SetFillIncompleteDocument(
-                    self as *mut Self,
-                    theToFillIncomplete,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetFillIncompleteDocument(
+                self as *mut Self,
+                theToFillIncomplete,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
     pub fn memory_limit_mi_b(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_MemoryLimitMiB(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_MemoryLimitMiB(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
     pub fn set_memory_limit_mi_b(&mut self, theLimitMiB: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_SetMemoryLimitMiB(
-                    self as *mut Self,
-                    theLimitMiB,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetMemoryLimitMiB(self as *mut Self, theLimitMiB)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
     pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::RWGltf_CafReader_inherited_CoordinateSystemConverter(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
@@ -860,163 +686,89 @@ impl CafReader {
         &mut self,
         theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_SetCoordinateSystemConverter(
-                    self as *mut Self,
-                    theConverter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetCoordinateSystemConverter(
+                self as *mut Self,
+                theConverter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:124 - `RWMesh_CafReader::SystemLengthUnit()`
     pub fn system_length_unit(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_SystemLengthUnit(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SystemLengthUnit(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
     pub fn set_system_length_unit(&mut self, theUnits: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_SetSystemLengthUnit(
-                    self as *mut Self,
-                    theUnits,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetSystemLengthUnit(self as *mut Self, theUnits)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
     pub fn has_system_coordinate_system(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_HasSystemCoordinateSystem(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_HasSystemCoordinateSystem(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
     pub fn system_coordinate_system(&self) -> &crate::gp::Ax3 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_SystemCoordinateSystem(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_CafReader_inherited_SystemCoordinateSystem(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     pub fn set_system_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_SetSystemCoordinateSystem(
-                    self as *mut Self,
-                    theCS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetSystemCoordinateSystem(
+                self as *mut Self,
+                theCS,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::FileLengthUnit()`
     pub fn file_length_unit(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_FileLengthUnit(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_FileLengthUnit(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
     pub fn set_file_length_unit(&mut self, theUnits: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_SetFileLengthUnit(
-                    self as *mut Self,
-                    theUnits,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetFileLengthUnit(self as *mut Self, theUnits)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
     pub fn has_file_coordinate_system(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_HasFileCoordinateSystem(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_HasFileCoordinateSystem(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
     pub fn file_coordinate_system(&self) -> &crate::gp::Ax3 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_FileCoordinateSystem(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_CafReader_inherited_FileCoordinateSystem(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     pub fn set_file_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_SetFileCoordinateSystem(
-                    self as *mut Self,
-                    theCS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetFileCoordinateSystem(self as *mut Self, theCS)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
@@ -1025,72 +777,42 @@ impl CafReader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_Perform(
-                    self as *mut Self,
-                    theFile,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_Perform(self as *mut Self, theFile, theProgress)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
     pub fn extra_status(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_inherited_ExtraStatus(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_ExtraStatus(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
     pub fn single_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_inherited_SingleShape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_CafReader_inherited_SingleShape(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
     pub fn external_files(&self) -> &crate::ffi::Interface_IndexedMapOfAsciiString {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_ExternalFiles(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_CafReader_inherited_ExternalFiles(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
     pub fn metadata(&self) -> &crate::ffi::TColStd_IndexedDataMapOfStringString {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_inherited_Metadata(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_CafReader_inherited_Metadata(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1100,59 +822,35 @@ impl CafReader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_ProbeHeader(
-                    self as *mut Self,
-                    theFile,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_ProbeHeader(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::RWGltf_CafReader_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1163,52 +861,30 @@ impl CafReader {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_CafReader_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_CafReader_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::RWGltf_CafReader_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1223,42 +899,32 @@ unsafe impl crate::CppDeletable for HandleRWGltfCafReader {
 impl HandleRWGltfCafReader {
     /// Dereference this Handle to access the underlying RWGltf_CafReader
     pub fn get(&self) -> &crate::ffi::RWGltf_CafReader {
-        let __result = unsafe { crate::ffi::HandleRWGltfCafReader_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleRWGltfCafReader_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying RWGltf_CafReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWGltf_CafReader {
-        let __result = unsafe { crate::ffi::HandleRWGltfCafReader_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWGltfCafReader_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWGltf_CafReader> to Handle<RWMesh_CafReader>
     pub fn to_handle_caf_reader(&self) -> crate::OwnedPtr<crate::ffi::HandleRWMeshCafReader> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfCafReader_to_HandleRWMeshCafReader(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfCafReader_to_HandleRWMeshCafReader(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWGltf_CafReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfCafReader_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfCafReader_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1293,12 +959,8 @@ unsafe impl crate::CppDeletable for GltfBufferView {
 impl GltfBufferView {
     /// **Source:** `RWGltf_GltfBufferView.hxx`:33 - `RWGltf_GltfBufferView::RWGltf_GltfBufferView()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_GltfBufferView_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWGltf_GltfBufferView_ctor()))
         }
     }
 }
@@ -1320,96 +982,69 @@ unsafe impl crate::CppDeletable for GltfFace {
 impl GltfFace {
     /// **Source:** `RWGltf_GltfFace.hxx`:38 - `RWGltf_GltfFace::RWGltf_GltfFace()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_GltfFace_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWGltf_GltfFace_ctor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWGltf_GltfFace_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWGltf_GltfFace_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWGltf_GltfFace_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWGltf_GltfFace_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfGltfFace> {
-        let __result = unsafe { crate::ffi::RWGltf_GltfFace_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWGltf_GltfFace_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfFace_inherited_DynamicType(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfFace_inherited_DynamicType(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfFace_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfFace_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfFace_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfFace_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfFace_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::RWGltf_GltfFace_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1420,52 +1055,30 @@ impl GltfFace {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfFace_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfFace_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfFace_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfFace_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfFace_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfFace_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::RWGltf_GltfFace_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfFace_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1480,31 +1093,23 @@ unsafe impl crate::CppDeletable for HandleRWGltfGltfFace {
 impl HandleRWGltfGltfFace {
     /// Dereference this Handle to access the underlying RWGltf_GltfFace
     pub fn get(&self) -> &crate::ffi::RWGltf_GltfFace {
-        let __result = unsafe { crate::ffi::HandleRWGltfGltfFace_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleRWGltfGltfFace_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying RWGltf_GltfFace
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWGltf_GltfFace {
-        let __result = unsafe { crate::ffi::HandleRWGltfGltfFace_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWGltfGltfFace_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWGltf_GltfFace> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfGltfFace_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfGltfFace_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1529,205 +1134,131 @@ impl GltfLatePrimitiveArray {
         theId: &crate::t_collection::AsciiString,
         theName: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_ctor_asciistring2(theId, theName)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_ctor_asciistring2(theId, theName),
+            ))
         }
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:32 - `RWGltf_GltfLatePrimitiveArray::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:42 - `RWGltf_GltfLatePrimitiveArray::Id()`
     /// Entity id.
     pub fn id(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfLatePrimitiveArray_id(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_id(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:45 - `RWGltf_GltfLatePrimitiveArray::Name()`
     /// Entity name.
     pub fn name(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfLatePrimitiveArray_name(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_name(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:48 - `RWGltf_GltfLatePrimitiveArray::SetName()`
     /// Assign entity name.
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_set_name(self as *mut Self, theName)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_set_name(self as *mut Self, theName)
+        })
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:51 - `RWGltf_GltfLatePrimitiveArray::PrimitiveMode()`
     /// Return type of primitive array.
     pub fn primitive_mode(&self) -> crate::rw_gltf::GltfPrimitiveMode {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_primitive_mode(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::rw_gltf::GltfPrimitiveMode::try_from(__val).unwrap()
-        }
+        crate::rw_gltf::GltfPrimitiveMode::try_from(crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_primitive_mode(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:54 - `RWGltf_GltfLatePrimitiveArray::SetPrimitiveMode()`
     /// Set type of primitive array.
     pub fn set_primitive_mode(&mut self, theMode: crate::rw_gltf::GltfPrimitiveMode) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_set_primitive_mode(
-                    self as *mut Self,
-                    theMode.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_set_primitive_mode(
+                self as *mut Self,
+                theMode.into(),
+            )
+        })
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:57 - `RWGltf_GltfLatePrimitiveArray::HasStyle()`
     /// Return true if primitive array has assigned material
     pub fn has_style(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfLatePrimitiveArray_has_style(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_has_style(self as *const Self)
+        })
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:60 - `RWGltf_GltfLatePrimitiveArray::BaseColor()`
     /// Return base color.
     pub fn base_color(&self) -> crate::OwnedPtr<crate::quantity::ColorRGBA> {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_base_color(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_base_color(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:63 - `RWGltf_GltfLatePrimitiveArray::MaterialPbr()`
     /// Return PBR material definition.
     pub fn material_pbr(&self) -> &crate::ffi::HandleRWGltfMaterialMetallicRoughness {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_material_pbr(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_material_pbr(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:66 - `RWGltf_GltfLatePrimitiveArray::SetMaterialPbr()`
     /// Set PBR material definition.
     pub fn set_material_pbr(&mut self, theMat: &crate::ffi::HandleRWGltfMaterialMetallicRoughness) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_set_material_pbr(
-                    self as *mut Self,
-                    theMat,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_set_material_pbr(self as *mut Self, theMat)
+        })
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:72 - `RWGltf_GltfLatePrimitiveArray::MaterialCommon()`
     /// Return common (obsolete) material definition.
     pub fn material_common(&self) -> &crate::ffi::HandleRWGltfMaterialCommon {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_material_common(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_material_common(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:75 - `RWGltf_GltfLatePrimitiveArray::SetMaterialCommon()`
     /// Set common (obsolete) material definition.
     pub fn set_material_common(&mut self, theMat: &crate::ffi::HandleRWGltfMaterialCommon) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_set_material_common(
-                    self as *mut Self,
-                    theMat,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_set_material_common(self as *mut Self, theMat)
+        })
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:78 - `RWGltf_GltfLatePrimitiveArray::Data()`
     /// Return primitive array data elements.
     pub fn data(&self) -> &crate::ffi::NCollection_Sequence_RWGltf_GltfPrimArrayData {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfLatePrimitiveArray_data(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_data(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1737,18 +1268,13 @@ impl GltfLatePrimitiveArray {
         &mut self,
         theType: crate::rw_gltf::GltfArrayType,
     ) -> &mut GltfPrimArrayData {
-        {
-            let __result = unsafe {
+        unsafe {
+            &mut *(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_add_prim_array_data(
                     self as *mut Self,
                     theType.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+                ),
+            ))
         }
     }
 
@@ -1756,686 +1282,445 @@ impl GltfLatePrimitiveArray {
     /// Return TRUE if there is deferred storage and some triangulation data
     /// that can be loaded using LoadDeferredData().
     pub fn has_deferred_data(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_has_deferred_data(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_has_deferred_data(self as *const Self)
+        })
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:91 - `RWGltf_GltfLatePrimitiveArray::LoadStreamData()`
     /// Load primitive array saved as stream buffer to new triangulation object.
     pub fn load_stream_data(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_load_stream_data(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_load_stream_data(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:32 - `RWGltf_GltfLatePrimitiveArray::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_GltfLatePrimitiveArray_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:32 - `RWGltf_GltfLatePrimitiveArray::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfLatePrimitiveArray_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_get_type_descriptor()))
         }
     }
 
     /// Upcast to RWMesh_TriangulationSource
     pub fn as_rw_mesh_triangulation_source(&self) -> &crate::rw_mesh::TriangulationSource {
-        let __result = unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_as_RWMesh_TriangulationSource(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_as_RWMesh_TriangulationSource(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to RWMesh_TriangulationSource (mutable)
     pub fn as_rw_mesh_triangulation_source_mut(
         &mut self,
     ) -> &mut crate::rw_mesh::TriangulationSource {
-        let __result = unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_as_RWMesh_TriangulationSource_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_as_RWMesh_TriangulationSource_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Poly_Triangulation
     pub fn as_poly_triangulation(&self) -> &crate::poly::Triangulation {
-        let __result = unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Poly_Triangulation(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Poly_Triangulation(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Poly_Triangulation (mutable)
     pub fn as_poly_triangulation_mut(&mut self) -> &mut crate::poly::Triangulation {
-        let __result = unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Poly_Triangulation_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Poly_Triangulation_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfGltfLatePrimitiveArray> {
-        let __result =
-            unsafe { crate::ffi::RWGltf_GltfLatePrimitiveArray_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:36 - `RWMesh_TriangulationSource::Reader()`
     pub fn reader(&self) -> &crate::ffi::HandleRWMeshTriangulationReader {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Reader(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Reader(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:39 - `RWMesh_TriangulationSource::SetReader()`
     pub fn set_reader(&mut self, theReader: &crate::ffi::HandleRWMeshTriangulationReader) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetReader(
-                    self as *mut Self,
-                    theReader,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetReader(
+                self as *mut Self,
+                theReader,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:43 - `RWMesh_TriangulationSource::DegeneratedTriNb()`
     pub fn degenerated_tri_nb(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_DegeneratedTriNb(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_DegeneratedTriNb(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:46 - `RWMesh_TriangulationSource::ChangeDegeneratedTriNb()`
     pub fn change_degenerated_tri_nb(&mut self) -> &mut i32 {
-        {
-            let __result = unsafe {
+        unsafe {
+            &mut *(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ChangeDegeneratedTriNb(
                     self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:49 - `RWMesh_TriangulationSource::HasGeometry()`
     pub fn has_geometry(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_HasGeometry(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_HasGeometry(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:55 - `RWMesh_TriangulationSource::NbEdges()`
     pub fn nb_edges(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbEdges(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbEdges(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:60 - `RWMesh_TriangulationSource::Edge()`
     pub fn edge(&self, theIndex: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Edge(
-                    self as *const Self,
-                    theIndex,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Edge(self as *const Self, theIndex)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:65 - `RWMesh_TriangulationSource::SetEdge()`
     pub fn set_edge(&mut self, theIndex: i32, theEdge: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetEdge(
-                    self as *mut Self,
-                    theIndex,
-                    theEdge,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetEdge(
+                self as *mut Self,
+                theIndex,
+                theEdge,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:75 - `RWMesh_TriangulationSource::NbDeferredNodes()`
     pub fn nb_deferred_nodes(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbDeferredNodes(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbDeferredNodes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:78 - `RWMesh_TriangulationSource::SetNbDeferredNodes()`
     pub fn set_nb_deferred_nodes(&mut self, theNbNodes: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNbDeferredNodes(
-                    self as *mut Self,
-                    theNbNodes,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNbDeferredNodes(
+                self as *mut Self,
+                theNbNodes,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:84 - `RWMesh_TriangulationSource::NbDeferredTriangles()`
     pub fn nb_deferred_triangles(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbDeferredTriangles(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbDeferredTriangles(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:90 - `RWMesh_TriangulationSource::SetNbDeferredTriangles()`
     pub fn set_nb_deferred_triangles(&mut self, theNbTris: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNbDeferredTriangles(
-                    self as *mut Self,
-                    theNbTris,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNbDeferredTriangles(
+                self as *mut Self,
+                theNbTris,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:94 - `RWMesh_TriangulationSource::InternalEdges()`
     pub fn internal_edges(&mut self) -> &mut crate::ffi::TColStd_Array1OfInteger {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalEdges(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalEdges(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:99 - `RWMesh_TriangulationSource::ResizeEdges()`
     pub fn resize_edges(&mut self, theNbEdges: i32, theToCopyOld: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ResizeEdges(
-                    self as *mut Self,
-                    theNbEdges,
-                    theToCopyOld,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ResizeEdges(
+                self as *mut Self,
+                theNbEdges,
+                theToCopyOld,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:100 - `Poly_Triangulation::Copy()`
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Copy(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Copy(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:106 - `Poly_Triangulation::Deflection()`
     pub fn deflection(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Deflection(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Deflection(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:113 - `Poly_Triangulation::Parameters()`
     pub fn parameters(&self) -> &crate::ffi::HandlePolyTriangulationParameters {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Parameters(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Parameters(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:119 - `Poly_Triangulation::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Clear(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Clear(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:128 - `Poly_Triangulation::NbNodes()`
     pub fn nb_nodes(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbNodes(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbNodes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:131 - `Poly_Triangulation::NbTriangles()`
     pub fn nb_triangles(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbTriangles(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbTriangles(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:134 - `Poly_Triangulation::HasUVNodes()`
     pub fn has_uv_nodes(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_HasUVNodes(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_HasUVNodes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:137 - `Poly_Triangulation::HasNormals()`
     pub fn has_normals(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_HasNormals(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_HasNormals(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:142 - `Poly_Triangulation::Node()`
     pub fn node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Node(
                     self as *const Self,
                     theIndex,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:147 - `Poly_Triangulation::SetNode()`
     pub fn set_node(&mut self, theIndex: i32, thePnt: &crate::gp::Pnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNode(
-                    self as *mut Self,
-                    theIndex,
-                    thePnt,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNode(
+                self as *mut Self,
+                theIndex,
+                thePnt,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:155 - `Poly_Triangulation::UVNode()`
     pub fn uv_node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_UVNode(
                     self as *const Self,
                     theIndex,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:160 - `Poly_Triangulation::SetUVNode()`
     pub fn set_uv_node(&mut self, theIndex: i32, thePnt: &crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetUVNode(
-                    self as *mut Self,
-                    theIndex,
-                    thePnt,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetUVNode(
+                self as *mut Self,
+                theIndex,
+                thePnt,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:168 - `Poly_Triangulation::Triangle()`
     pub fn triangle(&self, theIndex: i32) -> &crate::poly::Triangle {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Triangle(
-                    self as *const Self,
-                    theIndex,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Triangle(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:177 - `Poly_Triangulation::SetTriangle()`
     pub fn set_triangle(&mut self, theIndex: i32, theTriangle: &crate::poly::Triangle) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetTriangle(
-                    self as *mut Self,
-                    theIndex,
-                    theTriangle,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetTriangle(
+                self as *mut Self,
+                theIndex,
+                theTriangle,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:185 - `Poly_Triangulation::Normal()`
     pub fn normal(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Dir> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Normal(
                     self as *const Self,
                     theIndex,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:202 - `Poly_Triangulation::SetNormal()`
     pub fn set_normal(&mut self, theIndex: i32, theNormal: &crate::ffi::gp_Vec3f) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNormal(
-                    self as *mut Self,
-                    theIndex,
-                    theNormal,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNormal(
+                self as *mut Self,
+                theIndex,
+                theNormal,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:216 - `Poly_Triangulation::MeshPurpose()`
     pub fn mesh_purpose(&self) -> u32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_MeshPurpose(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_MeshPurpose(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:219 - `Poly_Triangulation::SetMeshPurpose()`
     pub fn set_mesh_purpose(&mut self, thePurpose: u32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetMeshPurpose(
-                    self as *mut Self,
-                    thePurpose,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetMeshPurpose(
+                self as *mut Self,
+                thePurpose,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
     pub fn cached_min_max(&self) -> &crate::bnd::Box {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_CachedMinMax(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:229 - `Poly_Triangulation::SetCachedMinMax()`
     pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetCachedMinMax(
-                    self as *mut Self,
-                    theBox,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetCachedMinMax(
+                self as *mut Self,
+                theBox,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:232 - `Poly_Triangulation::HasCachedMinMax()`
     pub fn has_cached_min_max(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_HasCachedMinMax(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_HasCachedMinMax(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:235 - `Poly_Triangulation::UpdateCachedMinMax()`
     pub fn update_cached_min_max(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_UpdateCachedMinMax(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_UpdateCachedMinMax(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:254 - `Poly_Triangulation::MinMax()`
@@ -2445,289 +1730,188 @@ impl GltfLatePrimitiveArray {
         theTrsf: &crate::gp::Trsf,
         theIsAccurate: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_MinMax(
-                    self as *const Self,
-                    theBox,
-                    theTrsf,
-                    theIsAccurate,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_MinMax(
+                self as *const Self,
+                theBox,
+                theTrsf,
+                theIsAccurate,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:264 - `Poly_Triangulation::IsDoublePrecision()`
     pub fn is_double_precision(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_IsDoublePrecision(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_IsDoublePrecision(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:268 - `Poly_Triangulation::SetDoublePrecision()`
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetDoublePrecision(
-                    self as *mut Self,
-                    theIsDouble,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetDoublePrecision(
+                self as *mut Self,
+                theIsDouble,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:273 - `Poly_Triangulation::ResizeNodes()`
     pub fn resize_nodes(&mut self, theNbNodes: i32, theToCopyOld: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ResizeNodes(
-                    self as *mut Self,
-                    theNbNodes,
-                    theToCopyOld,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ResizeNodes(
+                self as *mut Self,
+                theNbNodes,
+                theToCopyOld,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:278 - `Poly_Triangulation::ResizeTriangles()`
     pub fn resize_triangles(&mut self, theNbTriangles: i32, theToCopyOld: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ResizeTriangles(
-                    self as *mut Self,
-                    theNbTriangles,
-                    theToCopyOld,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ResizeTriangles(
+                self as *mut Self,
+                theNbTriangles,
+                theToCopyOld,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:282 - `Poly_Triangulation::AddUVNodes()`
     pub fn add_uv_nodes(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_AddUVNodes(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_AddUVNodes(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:285 - `Poly_Triangulation::RemoveUVNodes()`
     pub fn remove_uv_nodes(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_RemoveUVNodes(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_RemoveUVNodes(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:288 - `Poly_Triangulation::AddNormals()`
     pub fn add_normals(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_AddNormals(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_AddNormals(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:291 - `Poly_Triangulation::RemoveNormals()`
     pub fn remove_normals(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_RemoveNormals(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_RemoveNormals(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:294 - `Poly_Triangulation::ComputeNormals()`
     pub fn compute_normals(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ComputeNormals(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ComputeNormals(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:300 - `Poly_Triangulation::MapNodeArray()`
     pub fn map_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_MapNodeArray(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:305 - `Poly_Triangulation::MapTriangleArray()`
     pub fn map_triangle_array(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyHArray1OfTriangle> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_MapTriangleArray(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:310 - `Poly_Triangulation::MapUVNodeArray()`
     pub fn map_uv_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt2d> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_MapUVNodeArray(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:315 - `Poly_Triangulation::MapNormalArray()`
     pub fn map_normal_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTShortHArray1OfShortReal> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_MapNormalArray(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:320 - `Poly_Triangulation::InternalTriangles()`
     pub fn internal_triangles(&mut self) -> &mut crate::ffi::Poly_Array1OfTriangle {
-        {
-            let __result = unsafe {
+        unsafe {
+            &mut *(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalTriangles(
                     self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:324 - `Poly_Triangulation::InternalNodes()`
     pub fn internal_nodes(&mut self) -> &mut crate::poly::ArrayOfNodes {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalNodes(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalNodes(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:328 - `Poly_Triangulation::InternalUVNodes()`
     pub fn internal_uv_nodes(&mut self) -> &mut crate::poly::ArrayOfUVNodes {
-        {
-            let __result = unsafe {
+        unsafe {
+            &mut *(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalUVNodes(
                     self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:332 - `Poly_Triangulation::InternalNormals()`
     pub fn internal_normals(&mut self) -> &mut crate::ffi::NCollection_Array1_gp_Vec3f {
-        {
-            let __result = unsafe {
+        unsafe {
+            &mut *(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalNormals(
                     self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:368 - `Poly_Triangulation::LoadDeferredData()`
     pub fn load_deferred_data(&mut self, theFileSystem: &crate::ffi::HandleOSDFileSystem) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_LoadDeferredData(
-                    self as *mut Self,
-                    theFileSystem,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_LoadDeferredData(
+                self as *mut Self,
+                theFileSystem,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:373 - `Poly_Triangulation::DetachedLoadDeferredData()`
@@ -2735,81 +1919,48 @@ impl GltfLatePrimitiveArray {
         &self,
         theFileSystem: &crate::ffi::HandleOSDFileSystem,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_DetachedLoadDeferredData(
                     self as *const Self,
                     theFileSystem,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:377 - `Poly_Triangulation::UnloadDeferredData()`
     pub fn unload_deferred_data(&mut self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_UnloadDeferredData(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_UnloadDeferredData(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2820,58 +1971,34 @@ impl GltfLatePrimitiveArray {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2886,63 +2013,55 @@ unsafe impl crate::CppDeletable for HandleRWGltfGltfLatePrimitiveArray {
 impl HandleRWGltfGltfLatePrimitiveArray {
     /// Dereference this Handle to access the underlying RWGltf_GltfLatePrimitiveArray
     pub fn get(&self) -> &crate::ffi::RWGltf_GltfLatePrimitiveArray {
-        let __result =
-            unsafe { crate::ffi::HandleRWGltfGltfLatePrimitiveArray_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleRWGltfGltfLatePrimitiveArray_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying RWGltf_GltfLatePrimitiveArray
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWGltf_GltfLatePrimitiveArray {
-        let __result =
-            unsafe { crate::ffi::HandleRWGltfGltfLatePrimitiveArray_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWGltfGltfLatePrimitiveArray_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWGltf_GltfLatePrimitiveArray> to Handle<RWMesh_TriangulationSource>
     pub fn to_handle_triangulation_source(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWMeshTriangulationSource> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfGltfLatePrimitiveArray_to_HandleRWMeshTriangulationSource(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfGltfLatePrimitiveArray_to_HandleRWMeshTriangulationSource(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWGltf_GltfLatePrimitiveArray> to Handle<Poly_Triangulation>
     pub fn to_handle_triangulation(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfGltfLatePrimitiveArray_to_HandlePolyTriangulation(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfGltfLatePrimitiveArray_to_HandlePolyTriangulation(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWGltf_GltfLatePrimitiveArray> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfGltfLatePrimitiveArray_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfGltfLatePrimitiveArray_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2967,27 +2086,19 @@ impl GltfMaterialMap {
         theFile: &crate::t_collection::AsciiString,
         theDefSamplerId: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_ctor_asciistring_int(theFile, theDefSamplerId)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_GltfMaterialMap_ctor_asciistring_int(theFile, theDefSamplerId),
+            ))
         }
     }
 
     /// **Source:** `RWGltf_GltfMaterialMap.hxx`:25 - `RWGltf_GltfMaterialMap::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfMaterialMap_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfMaterialMap_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3000,70 +2111,45 @@ impl GltfMaterialMap {
         theBinFile: &mut crate::ffi::Standard_OStream,
         theStyle: &crate::xcaf_prs::Style,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_add_glb_images(
-                    self as *mut Self,
-                    theBinFile,
-                    theStyle,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_add_glb_images(
+                self as *mut Self,
+                theBinFile,
+                theStyle,
+            )
+        })
     }
 
     /// **Source:** `RWGltf_GltfMaterialMap.hxx`:66 - `RWGltf_GltfMaterialMap::NbImages()`
     /// Return extent of images map.
     pub fn nb_images(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfMaterialMap_nb_images(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_nb_images(self as *const Self)
+        })
     }
 
     /// **Source:** `RWGltf_GltfMaterialMap.hxx`:69 - `RWGltf_GltfMaterialMap::NbTextures()`
     /// Return extent of textures map.
     pub fn nb_textures(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfMaterialMap_nb_textures(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_nb_textures(self as *const Self)
+        })
     }
 
     /// **Source:** `RWGltf_GltfMaterialMap.hxx`:25 - `RWGltf_GltfMaterialMap::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_GltfMaterialMap_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::RWGltf_GltfMaterialMap_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `RWGltf_GltfMaterialMap.hxx`:25 - `RWGltf_GltfMaterialMap::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_GltfMaterialMap_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::RWGltf_GltfMaterialMap_get_type_descriptor())) }
     }
 
     /// **Source:** `RWGltf_GltfMaterialMap.hxx`:73 - `RWGltf_GltfMaterialMap::baseColorTexture()`
@@ -3071,98 +2157,75 @@ impl GltfMaterialMap {
     pub fn base_color_texture(
         theMat: &crate::ffi::HandleXCAFDocVisMaterial,
     ) -> &'static crate::ffi::HandleImageTexture {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_GltfMaterialMap_base_color_texture(theMat) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfMaterialMap_base_color_texture(theMat)))
         }
     }
 
     /// Upcast to RWMesh_MaterialMap
     pub fn as_rw_mesh_material_map(&self) -> &crate::rw_mesh::MaterialMap {
-        let __result = unsafe {
-            crate::ffi::RWGltf_GltfMaterialMap_as_RWMesh_MaterialMap(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWGltf_GltfMaterialMap_as_RWMesh_MaterialMap(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to RWMesh_MaterialMap (mutable)
     pub fn as_rw_mesh_material_map_mut(&mut self) -> &mut crate::rw_mesh::MaterialMap {
-        let __result = unsafe {
-            crate::ffi::RWGltf_GltfMaterialMap_as_RWMesh_MaterialMap_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWGltf_GltfMaterialMap_as_RWMesh_MaterialMap_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWGltf_GltfMaterialMap_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWGltf_GltfMaterialMap_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWGltf_GltfMaterialMap_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWGltf_GltfMaterialMap_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfGltfMaterialMap> {
-        let __result = unsafe { crate::ffi::RWGltf_GltfMaterialMap_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_GltfMaterialMap_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
     pub fn default_style(&self) -> &crate::xcaf_prs::Style {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_inherited_DefaultStyle(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_GltfMaterialMap_inherited_DefaultStyle(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:38 - `RWMesh_MaterialMap::SetDefaultStyle()`
     pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_inherited_SetDefaultStyle(
-                    self as *mut Self,
-                    theStyle,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_SetDefaultStyle(
+                self as *mut Self,
+                theStyle,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:41 - `RWMesh_MaterialMap::FindMaterial()`
@@ -3170,33 +2233,21 @@ impl GltfMaterialMap {
         &self,
         theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWGltf_GltfMaterialMap_inherited_FindMaterial(
                     self as *const Self,
                     theStyle,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:57 - `RWMesh_MaterialMap::CreateTextureFolder()`
     pub fn create_texture_folder(&mut self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_inherited_CreateTextureFolder(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_CreateTextureFolder(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture()`
@@ -3206,77 +2257,43 @@ impl GltfMaterialMap {
         theTexture: &crate::ffi::HandleImageTexture,
         theKey: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_inherited_CopyTexture(
-                    self as *mut Self,
-                    theResTexture,
-                    theTexture,
-                    theKey,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_CopyTexture(
+                self as *mut Self,
+                theResTexture,
+                theTexture,
+                theKey,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:73 - `RWMesh_MaterialMap::IsFailed()`
     pub fn is_failed(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_inherited_IsFailed(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_IsFailed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfMaterialMap_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::RWGltf_GltfMaterialMap_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3287,53 +2304,30 @@ impl GltfMaterialMap {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfMaterialMap_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::RWGltf_GltfMaterialMap_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3348,43 +2342,40 @@ unsafe impl crate::CppDeletable for HandleRWGltfGltfMaterialMap {
 impl HandleRWGltfGltfMaterialMap {
     /// Dereference this Handle to access the underlying RWGltf_GltfMaterialMap
     pub fn get(&self) -> &crate::ffi::RWGltf_GltfMaterialMap {
-        let __result = unsafe { crate::ffi::HandleRWGltfGltfMaterialMap_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleRWGltfGltfMaterialMap_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying RWGltf_GltfMaterialMap
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWGltf_GltfMaterialMap {
-        let __result =
-            unsafe { crate::ffi::HandleRWGltfGltfMaterialMap_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWGltfGltfMaterialMap_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWGltf_GltfMaterialMap> to Handle<RWMesh_MaterialMap>
     pub fn to_handle_material_map(&self) -> crate::OwnedPtr<crate::ffi::HandleRWMeshMaterialMap> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfGltfMaterialMap_to_HandleRWMeshMaterialMap(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfGltfMaterialMap_to_HandleRWMeshMaterialMap(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWGltf_GltfMaterialMap> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfGltfMaterialMap_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfGltfMaterialMap_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3434,24 +2425,19 @@ unsafe impl crate::CppDeletable for GltfPrimArrayData {
 impl GltfPrimArrayData {
     /// **Source:** `RWGltf_GltfPrimArrayData.hxx`:35 - `RWGltf_GltfPrimArrayData::RWGltf_GltfPrimArrayData()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_GltfPrimArrayData_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_GltfPrimArrayData_ctor(),
+            ))
         }
     }
 
     /// **Source:** `RWGltf_GltfPrimArrayData.hxx`:42 - `RWGltf_GltfPrimArrayData::RWGltf_GltfPrimArrayData()`
     pub fn new_gltfarraytype(theType: crate::rw_gltf::GltfArrayType) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_GltfPrimArrayData_ctor_gltfarraytype(theType.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_GltfPrimArrayData_ctor_gltfarraytype(theType.into()),
+            ))
         }
     }
 }
@@ -3474,28 +2460,19 @@ impl GltfSceneNodeMap {
     /// **Source:** `RWGltf_GltfSceneNodeMap.hxx`:25 - `RWGltf_GltfSceneNodeMap::RWGltf_GltfSceneNodeMap()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_GltfSceneNodeMap_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_GltfSceneNodeMap_ctor(),
+            ))
         }
     }
 
     /// **Source:** `RWGltf_GltfSceneNodeMap.hxx`:28 - `RWGltf_GltfSceneNodeMap::FindIndex()`
     /// Find index from document node string identifier.
     pub fn find_index(&self, theNodeId: &crate::t_collection::AsciiString) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_GltfSceneNodeMap_find_index(self as *const Self, theNodeId)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_GltfSceneNodeMap_find_index(self as *const Self, theNodeId)
+        })
     }
 }
 
@@ -3516,98 +2493,69 @@ unsafe impl crate::CppDeletable for MaterialCommon {
 impl MaterialCommon {
     /// **Source:** `RWGltf_MaterialCommon.hxx`:37 - `RWGltf_MaterialCommon::RWGltf_MaterialCommon()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_MaterialCommon_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWGltf_MaterialCommon_ctor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWGltf_MaterialCommon_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWGltf_MaterialCommon_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWGltf_MaterialCommon_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWGltf_MaterialCommon_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfMaterialCommon> {
-        let __result = unsafe { crate::ffi::RWGltf_MaterialCommon_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_MaterialCommon_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_MaterialCommon_inherited_DynamicType(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_MaterialCommon_inherited_DynamicType(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_MaterialCommon_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_MaterialCommon_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_MaterialCommon_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_MaterialCommon_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::RWGltf_MaterialCommon_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::RWGltf_MaterialCommon_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3618,53 +2566,30 @@ impl MaterialCommon {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_MaterialCommon_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_MaterialCommon_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_MaterialCommon_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_MaterialCommon_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_MaterialCommon_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_MaterialCommon_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::RWGltf_MaterialCommon_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_MaterialCommon_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3679,31 +2604,29 @@ unsafe impl crate::CppDeletable for HandleRWGltfMaterialCommon {
 impl HandleRWGltfMaterialCommon {
     /// Dereference this Handle to access the underlying RWGltf_MaterialCommon
     pub fn get(&self) -> &crate::ffi::RWGltf_MaterialCommon {
-        let __result = unsafe { crate::ffi::HandleRWGltfMaterialCommon_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleRWGltfMaterialCommon_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying RWGltf_MaterialCommon
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWGltf_MaterialCommon {
-        let __result = unsafe { crate::ffi::HandleRWGltfMaterialCommon_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWGltfMaterialCommon_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWGltf_MaterialCommon> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfMaterialCommon_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfMaterialCommon_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3724,111 +2647,83 @@ unsafe impl crate::CppDeletable for MaterialMetallicRoughness {
 impl MaterialMetallicRoughness {
     /// **Source:** `RWGltf_MaterialMetallicRoughness.hxx`:47 - `RWGltf_MaterialMetallicRoughness::RWGltf_MaterialMetallicRoughness()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_MaterialMetallicRoughness_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_MaterialMetallicRoughness_ctor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWGltf_MaterialMetallicRoughness_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::RWGltf_MaterialMetallicRoughness_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWGltf_MaterialMetallicRoughness_as_Standard_Transient_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWGltf_MaterialMetallicRoughness_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfMaterialMetallicRoughness> {
-        let __result =
-            unsafe { crate::ffi::RWGltf_MaterialMetallicRoughness_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_MaterialMetallicRoughness_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_DynamicType(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3839,60 +2734,34 @@ impl MaterialMetallicRoughness {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_GetRefCount(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_MaterialMetallicRoughness_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3907,35 +2776,31 @@ unsafe impl crate::CppDeletable for HandleRWGltfMaterialMetallicRoughness {
 impl HandleRWGltfMaterialMetallicRoughness {
     /// Dereference this Handle to access the underlying RWGltf_MaterialMetallicRoughness
     pub fn get(&self) -> &crate::ffi::RWGltf_MaterialMetallicRoughness {
-        let __result =
-            unsafe { crate::ffi::HandleRWGltfMaterialMetallicRoughness_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleRWGltfMaterialMetallicRoughness_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying RWGltf_MaterialMetallicRoughness
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWGltf_MaterialMetallicRoughness {
-        let __result =
-            unsafe { crate::ffi::HandleRWGltfMaterialMetallicRoughness_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWGltfMaterialMetallicRoughness_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWGltf_MaterialMetallicRoughness> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfMaterialMetallicRoughness_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfMaterialMetallicRoughness_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3957,25 +2822,19 @@ impl TriangulationReader {
     /// **Source:** `RWGltf_TriangulationReader.hxx`:31 - `RWGltf_TriangulationReader::RWGltf_TriangulationReader()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_TriangulationReader_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_TriangulationReader_ctor(),
+            ))
         }
     }
 
     /// **Source:** `RWGltf_TriangulationReader.hxx`:28 - `RWGltf_TriangulationReader::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::RWGltf_TriangulationReader_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_TriangulationReader_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3988,149 +2847,113 @@ impl TriangulationReader {
         theSourceMesh: &crate::ffi::HandleRWMeshTriangulationSource,
         theDestMesh: &crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_load_stream_data(
-                    self as *const Self,
-                    theSourceMesh,
-                    theDestMesh,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_load_stream_data(
+                self as *const Self,
+                theSourceMesh,
+                theDestMesh,
+            )
+        })
     }
 
     /// **Source:** `RWGltf_TriangulationReader.hxx`:28 - `RWGltf_TriangulationReader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_TriangulationReader_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::RWGltf_TriangulationReader_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `RWGltf_TriangulationReader.hxx`:28 - `RWGltf_TriangulationReader::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::RWGltf_TriangulationReader_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_TriangulationReader_get_type_descriptor()))
         }
     }
 
     /// Upcast to RWMesh_TriangulationReader
     pub fn as_rw_mesh_triangulation_reader(&self) -> &crate::rw_mesh::TriangulationReader {
-        let __result = unsafe {
-            crate::ffi::RWGltf_TriangulationReader_as_RWMesh_TriangulationReader(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::RWGltf_TriangulationReader_as_RWMesh_TriangulationReader(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to RWMesh_TriangulationReader (mutable)
     pub fn as_rw_mesh_triangulation_reader_mut(
         &mut self,
     ) -> &mut crate::rw_mesh::TriangulationReader {
-        let __result = unsafe {
-            crate::ffi::RWGltf_TriangulationReader_as_RWMesh_TriangulationReader_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWGltf_TriangulationReader_as_RWMesh_TriangulationReader_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWGltf_TriangulationReader_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWGltf_TriangulationReader_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWGltf_TriangulationReader_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWGltf_TriangulationReader_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfTriangulationReader> {
-        let __result = unsafe { crate::ffi::RWGltf_TriangulationReader_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWGltf_TriangulationReader_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:65 - `RWMesh_TriangulationReader::FileName()`
     pub fn file_name(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_FileName(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWGltf_TriangulationReader_inherited_FileName(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:68 - `RWMesh_TriangulationReader::SetFileName()`
     pub fn set_file_name(&mut self, theFileName: &crate::t_collection::AsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_SetFileName(
-                    self as *mut Self,
-                    theFileName,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_SetFileName(
+                self as *mut Self,
+                theFileName,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:71 - `RWMesh_TriangulationReader::CoordinateSystemConverter()`
     pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::RWGltf_TriangulationReader_inherited_CoordinateSystemConverter(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
@@ -4139,146 +2962,86 @@ impl TriangulationReader {
         &mut self,
         theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_SetCoordinateSystemConverter(
-                    self as *mut Self,
-                    theConverter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_SetCoordinateSystemConverter(
+                self as *mut Self,
+                theConverter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:83 - `RWMesh_TriangulationReader::IsDoublePrecision()`
     pub fn is_double_precision(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_IsDoublePrecision(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_IsDoublePrecision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:86 - `RWMesh_TriangulationReader::SetDoublePrecision()`
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_SetDoublePrecision(
-                    self as *mut Self,
-                    theIsDouble,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_SetDoublePrecision(
+                self as *mut Self,
+                theIsDouble,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:90 - `RWMesh_TriangulationReader::ToSkipDegenerates()`
     pub fn to_skip_degenerates(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_ToSkipDegenerates(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_ToSkipDegenerates(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:93 - `RWMesh_TriangulationReader::SetToSkipDegenerates()`
     pub fn set_to_skip_degenerates(&mut self, theToSkip: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_SetToSkipDegenerates(
-                    self as *mut Self,
-                    theToSkip,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_SetToSkipDegenerates(
+                self as *mut Self,
+                theToSkip,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:99 - `RWMesh_TriangulationReader::ToPrintDebugMessages()`
     pub fn to_print_debug_messages(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_ToPrintDebugMessages(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_ToPrintDebugMessages(
+                self as *const Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:102 - `RWMesh_TriangulationReader::SetToPrintDebugMessages()`
     pub fn set_to_print_debug_messages(&mut self, theToPrint: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_SetToPrintDebugMessages(
-                    self as *mut Self,
-                    theToPrint,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_SetToPrintDebugMessages(
+                self as *mut Self,
+                theToPrint,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:109 - `RWMesh_TriangulationReader::StartStatistic()`
     pub fn start_statistic(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_StartStatistic(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_StartStatistic(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:123 - `RWMesh_TriangulationReader::StopStatistic()`
     pub fn stop_statistic(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_StopStatistic(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_StopStatistic(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:135 - `RWMesh_TriangulationReader::PrintStatistic()`
     pub fn print_statistic(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_PrintStatistic(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_PrintStatistic(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:145 - `RWMesh_TriangulationReader::Load()`
@@ -4288,67 +3051,39 @@ impl TriangulationReader {
         theDestMesh: &crate::ffi::HandlePolyTriangulation,
         theFileSystem: &crate::ffi::HandleOSDFileSystem,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_Load(
-                    self as *const Self,
-                    theSourceMesh,
-                    theDestMesh,
-                    theFileSystem,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_Load(
+                self as *const Self,
+                theSourceMesh,
+                theDestMesh,
+                theFileSystem,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::RWGltf_TriangulationReader_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -4359,58 +3094,30 @@ impl TriangulationReader {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWGltf_TriangulationReader_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -4425,50 +3132,44 @@ unsafe impl crate::CppDeletable for HandleRWGltfTriangulationReader {
 impl HandleRWGltfTriangulationReader {
     /// Dereference this Handle to access the underlying RWGltf_TriangulationReader
     pub fn get(&self) -> &crate::ffi::RWGltf_TriangulationReader {
-        let __result =
-            unsafe { crate::ffi::HandleRWGltfTriangulationReader_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleRWGltfTriangulationReader_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying RWGltf_TriangulationReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWGltf_TriangulationReader {
-        let __result =
-            unsafe { crate::ffi::HandleRWGltfTriangulationReader_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWGltfTriangulationReader_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWGltf_TriangulationReader> to Handle<RWMesh_TriangulationReader>
     pub fn to_handle_triangulation_reader(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWMeshTriangulationReader> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfTriangulationReader_to_HandleRWMeshTriangulationReader(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfTriangulationReader_to_HandleRWMeshTriangulationReader(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWGltf_TriangulationReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWGltfTriangulationReader_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWGltfTriangulationReader_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

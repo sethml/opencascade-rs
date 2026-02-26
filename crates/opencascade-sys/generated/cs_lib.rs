@@ -17,13 +17,10 @@ pub fn dnnuv_int2_array2ofvec(
     Nv: i32,
     DerSurf: &crate::ffi::TColgp_Array2OfVec,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    {
-        let __result = unsafe { crate::ffi::CSLib_dnnuv_int2_array2ofvec(Nu, Nv, DerSurf) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CSLib_dnnuv_int2_array2ofvec(
+            Nu, Nv, DerSurf,
+        )))
     }
 }
 /// **Source:** `CSLib.hxx`:135 - `CSLib::DNNUV`
@@ -37,14 +34,10 @@ pub fn dnnuv_int2_array2ofvec2(
     DerSurf1: &crate::ffi::TColgp_Array2OfVec,
     DerSurf2: &crate::ffi::TColgp_Array2OfVec,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    {
-        let __result =
-            unsafe { crate::ffi::CSLib_dnnuv_int2_array2ofvec2(Nu, Nv, DerSurf1, DerSurf2) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CSLib_dnnuv_int2_array2ofvec2(
+            Nu, Nv, DerSurf1, DerSurf2,
+        )))
     }
 }
 /// **Source:** `CSLib.hxx`:148 - `CSLib::DNNormal`
@@ -63,13 +56,10 @@ pub fn dn_normal(
     Iduref: i32,
     Idvref: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    {
-        let __result = unsafe { crate::ffi::CSLib_dn_normal(Nu, Nv, DerNUV, Iduref, Idvref) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CSLib_dn_normal(
+            Nu, Nv, DerNUV, Iduref, Idvref,
+        )))
     }
 }
 
@@ -219,16 +209,12 @@ impl Class2d {
         theUMax: f64,
         theVMax: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::CSLib_Class2d_ctor_array1ofpnt2d_real6(
                     thePnts2d, theTolU, theTolV, theUMin, theVMin, theUMax, theVMax,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -250,69 +236,39 @@ impl Class2d {
         theUMax: f64,
         theVMax: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::CSLib_Class2d_ctor_sequenceofpnt2d_real6(
                     thePnts2d, theTolU, theTolV, theUMin, theVMin, theUMax, theVMax,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `CSLib_Class2d.hxx`:70 - `CSLib_Class2d::SiDans()`
     pub fn si_dans(&self, P: &crate::gp::Pnt2d) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::CSLib_Class2d_si_dans(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::CSLib_Class2d_si_dans(self as *const Self, P) })
     }
 
     /// **Source:** `CSLib_Class2d.hxx`:72 - `CSLib_Class2d::SiDans_OnMode()`
     pub fn si_dans_on_mode(&self, P: &crate::gp::Pnt2d, Tol: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::CSLib_Class2d_si_dans_on_mode(self as *const Self, P, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::CSLib_Class2d_si_dans_on_mode(self as *const Self, P, Tol)
+        })
     }
 
     /// **Source:** `CSLib_Class2d.hxx`:74 - `CSLib_Class2d::InternalSiDans()`
     pub fn internal_si_dans(&self, X: f64, Y: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::CSLib_Class2d_internal_si_dans(self as *const Self, X, Y) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::CSLib_Class2d_internal_si_dans(self as *const Self, X, Y)
+        })
     }
 
     /// **Source:** `CSLib_Class2d.hxx`:77 - `CSLib_Class2d::InternalSiDansOuOn()`
     pub fn internal_si_dans_ou_on(&self, X: f64, Y: f64) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::CSLib_Class2d_internal_si_dans_ou_on(self as *const Self, X, Y)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::CSLib_Class2d_internal_si_dans_ou_on(self as *const Self, X, Y)
+        })
     }
 }
 
@@ -335,12 +291,10 @@ impl NormalPolyDef {
         k0: i32,
         li: &crate::ffi::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::CSLib_NormalPolyDef_ctor_int_array1ofreal(k0, li) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::CSLib_NormalPolyDef_ctor_int_array1ofreal(k0, li),
+            ))
         }
     }
 
@@ -349,15 +303,9 @@ impl NormalPolyDef {
     /// Returns True if the calculation were successfully done,
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::CSLib_NormalPolyDef_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::CSLib_NormalPolyDef_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `CSLib_NormalPolyDef.hxx`:44 - `CSLib_NormalPolyDef::Derivative()`
@@ -366,15 +314,9 @@ impl NormalPolyDef {
     /// Returns True if the calculation were successfully done,
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::CSLib_NormalPolyDef_derivative(self as *mut Self, X, D) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::CSLib_NormalPolyDef_derivative(self as *mut Self, X, D)
+        })
     }
 
     /// **Source:** `CSLib_NormalPolyDef.hxx`:50 - `CSLib_NormalPolyDef::Values()`
@@ -383,72 +325,55 @@ impl NormalPolyDef {
     /// Returns True if the calculation were successfully done,
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::CSLib_NormalPolyDef_values(self as *mut Self, X, F, D) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::CSLib_NormalPolyDef_values(self as *mut Self, X, F, D)
+        })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::CSLib_NormalPolyDef_as_math_FunctionWithDerivative(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::CSLib_NormalPolyDef_as_math_FunctionWithDerivative(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::CSLib_NormalPolyDef_as_math_FunctionWithDerivative_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::CSLib_NormalPolyDef_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::CSLib_NormalPolyDef_as_math_Function(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::CSLib_NormalPolyDef_as_math_Function(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::CSLib_NormalPolyDef_as_math_Function_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::CSLib_NormalPolyDef_as_math_Function_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::CSLib_NormalPolyDef_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::CSLib_NormalPolyDef_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }

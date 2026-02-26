@@ -10,27 +10,15 @@
 /// Provides a tool for writing IGES file
 /// Converts IGES color index to CASCADE color
 pub fn decode_color(col: i32) -> crate::OwnedPtr<crate::quantity::Color> {
-    {
-        let __result = unsafe { crate::ffi::IGESCAFControl_decode_color(col) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESCAFControl_decode_color(col)))
     }
 }
 /// **Source:** `IGESCAFControl.hxx`:38 - `IGESCAFControl::EncodeColor`
 /// Tries to Convert CASCADE color to IGES color index
 /// If no corresponding color defined in IGES, returns 0
 pub fn encode_color(col: &crate::quantity::Color) -> i32 {
-    {
-        let __result = unsafe { crate::ffi::IGESCAFControl_encode_color(col) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::IGESCAFControl_encode_color(col) })
 }
 
 // ========================
@@ -69,12 +57,8 @@ impl Reader {
     /// Creates a reader with an empty
     /// IGES model and sets ColorMode, LayerMode and NameMode to Standard_True.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESCAFControl_Reader_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESCAFControl_Reader_ctor()))
         }
     }
 
@@ -85,17 +69,13 @@ impl Reader {
         theWS: &crate::ffi::HandleXSControlWorkSession,
         FromScratch: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESCAFControl_Reader_ctor_handlexscontrolworksession_bool(
                     theWS,
                     FromScratch,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -116,16 +96,9 @@ impl Reader {
         theDoc: &crate::ffi::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_transfer(self as *mut Self, theDoc, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_transfer(self as *mut Self, theDoc, theProgress)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Reader.hxx`:77 - `IGESCAFControl_Reader::Perform()`
@@ -135,16 +108,9 @@ impl Reader {
         theDoc: &crate::ffi::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_perform_asciistring_handletdocstddocument_progressrange(self as *mut Self, theFileName, theDoc, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_perform_asciistring_handletdocstddocument_progressrange(self as *mut Self, theFileName, theDoc, theProgress)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Reader.hxx`:87 - `IGESCAFControl_Reader::Perform()`
@@ -157,192 +123,125 @@ impl Reader {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_perform_charptr_handletdocstddocument_progressrange(self as *mut Self, c_theFileName.as_ptr(), theDoc, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_perform_charptr_handletdocstddocument_progressrange(
+                self as *mut Self,
+                c_theFileName.as_ptr(),
+                theDoc,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `IGESCAFControl_Reader.hxx`:92 - `IGESCAFControl_Reader::SetColorMode()`
     /// Set ColorMode for indicate read Colors or not.
     pub fn set_color_mode(&mut self, theMode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_set_color_mode(self as *mut Self, theMode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_set_color_mode(self as *mut Self, theMode)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Reader.hxx`:94 - `IGESCAFControl_Reader::GetColorMode()`
     pub fn get_color_mode(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESCAFControl_Reader_get_color_mode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_get_color_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Reader.hxx`:97 - `IGESCAFControl_Reader::SetNameMode()`
     /// Set NameMode for indicate read Name or not.
     pub fn set_name_mode(&mut self, theMode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_set_name_mode(self as *mut Self, theMode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_set_name_mode(self as *mut Self, theMode)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Reader.hxx`:99 - `IGESCAFControl_Reader::GetNameMode()`
     pub fn get_name_mode(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESCAFControl_Reader_get_name_mode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_get_name_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Reader.hxx`:102 - `IGESCAFControl_Reader::SetLayerMode()`
     /// Set LayerMode for indicate read Layers or not.
     pub fn set_layer_mode(&mut self, theMode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_set_layer_mode(self as *mut Self, theMode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_set_layer_mode(self as *mut Self, theMode)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Reader.hxx`:104 - `IGESCAFControl_Reader::GetLayerMode()`
     pub fn get_layer_mode(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESCAFControl_Reader_get_layer_mode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_get_layer_mode(self as *const Self)
+        })
     }
 
     /// Upcast to IGESControl_Reader
     pub fn as_iges_control_reader(&self) -> &crate::iges_control::Reader {
-        let __result =
-            unsafe { crate::ffi::IGESCAFControl_Reader_as_IGESControl_Reader(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESCAFControl_Reader_as_IGESControl_Reader(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESControl_Reader (mutable)
     pub fn as_iges_control_reader_mut(&mut self) -> &mut crate::iges_control::Reader {
-        let __result = unsafe {
-            crate::ffi::IGESCAFControl_Reader_as_IGESControl_Reader_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::IGESCAFControl_Reader_as_IGESControl_Reader_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to XSControl_Reader
     pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
-        let __result =
-            unsafe { crate::ffi::IGESCAFControl_Reader_as_XSControl_Reader(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESCAFControl_Reader_as_XSControl_Reader(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to XSControl_Reader (mutable)
     pub fn as_xs_control_reader_mut(&mut self) -> &mut crate::xs_control::Reader {
-        let __result =
-            unsafe { crate::ffi::IGESCAFControl_Reader_as_XSControl_Reader_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::IGESCAFControl_Reader_as_XSControl_Reader_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IGESControl_Reader.hxx`:79 - `IGESControl_Reader::SetReadVisible()`
     pub fn set_read_visible(&mut self, ReadRoot: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_SetReadVisible(
-                    self as *mut Self,
-                    ReadRoot,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_SetReadVisible(self as *mut Self, ReadRoot)
+        })
     }
 
     /// Inherited: **Source:** `IGESControl_Reader.hxx`:81 - `IGESControl_Reader::GetReadVisible()`
     pub fn get_read_visible(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_GetReadVisible(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_GetReadVisible(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESControl_Reader.hxx`:85 - `IGESControl_Reader::IGESModel()`
     pub fn iges_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_IGESModel(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESCAFControl_Reader_inherited_IGESModel(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESControl_Reader.hxx`:90 - `IGESControl_Reader::NbRootsForTransfer()`
     pub fn nb_roots_for_transfer(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_NbRootsForTransfer(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_NbRootsForTransfer(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESControl_Reader.hxx`:93 - `IGESControl_Reader::PrintTransferInfo()`
@@ -351,55 +250,37 @@ impl Reader {
         failwarn: crate::if_select::PrintFail,
         mode: crate::if_select::PrintCount,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_PrintTransferInfo(
-                    self as *const Self,
-                    failwarn.into(),
-                    mode.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_PrintTransferInfo(
+                self as *const Self,
+                failwarn.into(),
+                mode.into(),
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:99 - `XSControl_Reader::SetWS()`
     pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_SetWS(self as *mut Self, WS, scratch)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_SetWS(self as *mut Self, WS, scratch)
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:103 - `XSControl_Reader::WS()`
     pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESCAFControl_Reader_inherited_WS(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESCAFControl_Reader_inherited_WS(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:114 - `XSControl_Reader::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESCAFControl_Reader_inherited_Model(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESCAFControl_Reader_inherited_Model(self as *const Self),
+            ))
         }
     }
 
@@ -408,15 +289,10 @@ impl Reader {
         &mut self,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_RootForTransfer(self as *mut Self, num)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESCAFControl_Reader_inherited_RootForTransfer(self as *mut Self, num),
+            ))
         }
     }
 
@@ -426,38 +302,24 @@ impl Reader {
         num: i32,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_TransferOneRoot(
-                    self as *mut Self,
-                    num,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_TransferOneRoot(
+                self as *mut Self,
+                num,
+                theProgress,
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:175 - `XSControl_Reader::TransferOne()`
     pub fn transfer_one(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_TransferOne(
-                    self as *mut Self,
-                    num,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_TransferOne(
+                self as *mut Self,
+                num,
+                theProgress,
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:182 - `XSControl_Reader::TransferEntity()`
@@ -466,20 +328,13 @@ impl Reader {
         start: &crate::ffi::HandleStandardTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_TransferEntity(
-                    self as *mut Self,
-                    start,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_TransferEntity(
+                self as *mut Self,
+                start,
+                theProgress,
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:190 - `XSControl_Reader::TransferList()`
@@ -488,139 +343,88 @@ impl Reader {
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_TransferList(
-                    self as *mut Self,
-                    list,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_TransferList(
+                self as *mut Self,
+                list,
+                theProgress,
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:197 - `XSControl_Reader::TransferRoots()`
     pub fn transfer_roots(&mut self, theProgress: &crate::message::ProgressRange) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_TransferRoots(
-                    self as *mut Self,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_TransferRoots(
+                self as *mut Self,
+                theProgress,
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:201 - `XSControl_Reader::ClearShapes()`
     pub fn clear_shapes(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_ClearShapes(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_ClearShapes(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:204 - `XSControl_Reader::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_NbShapes(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_NbShapes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:210 - `XSControl_Reader::Shape()`
     pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_Shape(self as *const Self, num)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESCAFControl_Reader_inherited_Shape(self as *const Self, num),
+            ))
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:217 - `XSControl_Reader::OneShape()`
     pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_OneShape(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESCAFControl_Reader_inherited_OneShape(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:225 - `XSControl_Reader::PrintCheckLoad()`
     pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_PrintCheckLoad(
-                    self as *const Self,
-                    failsonly,
-                    mode.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_PrintCheckLoad(
+                self as *const Self,
+                failsonly,
+                mode.into(),
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:239 - `XSControl_Reader::PrintCheckTransfer()`
     pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_PrintCheckTransfer(
-                    self as *const Self,
-                    failsonly,
-                    mode.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_PrintCheckTransfer(
+                self as *const Self,
+                failsonly,
+                mode.into(),
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:275 - `XSControl_Reader::PrintStatsTransfer()`
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_PrintStatsTransfer(
-                    self as *const Self,
-                    what,
-                    mode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_PrintStatsTransfer(
+                self as *const Self,
+                what,
+                mode,
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
@@ -631,20 +435,15 @@ impl Reader {
         nbWithResult: &mut i32,
         nbWithFail: &mut i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_GetStatsTransfer(
-                    self as *const Self,
-                    list,
-                    nbMapped,
-                    nbWithResult,
-                    nbWithFail,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_GetStatsTransfer(
+                self as *const Self,
+                list,
+                nbMapped,
+                nbWithResult,
+                nbWithFail,
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:291 - `XSControl_Reader::SetShapeFixParameters()`
@@ -652,63 +451,43 @@ impl Reader {
         &mut self,
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_SetShapeFixParameters(
-                    self as *mut Self,
-                    theParameters,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_SetShapeFixParameters(
+                self as *mut Self,
+                theParameters,
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:311 - `XSControl_Reader::GetShapeFixParameters()`
     pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::IGESCAFControl_Reader_inherited_GetShapeFixParameters(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:315 - `XSControl_Reader::SetShapeProcessFlags()`
     pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Reader_inherited_SetShapeProcessFlags(
-                    self as *mut Self,
-                    theFlags,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_SetShapeProcessFlags(
+                self as *mut Self,
+                theFlags,
+            )
+        })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::IGESCAFControl_Reader_inherited_GetShapeProcessFlags(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 }
@@ -750,12 +529,8 @@ impl Writer {
     /// Creates a writer with an empty
     /// IGES model and sets ColorMode, LayerMode and NameMode to Standard_True.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IGESCAFControl_Writer_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESCAFControl_Writer_ctor()))
         }
     }
 
@@ -766,14 +541,10 @@ impl Writer {
         WS: &crate::ffi::HandleXSControlWorkSession,
         scratch: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Writer_ctor_handlexscontrolworksession_bool(WS, scratch)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::IGESCAFControl_Writer_ctor_handlexscontrolworksession_bool(WS, scratch),
+            ))
         }
     }
 
@@ -786,17 +557,13 @@ impl Writer {
         theUnit: &str,
     ) -> crate::OwnedPtr<Self> {
         let c_theUnit = std::ffi::CString::new(theUnit).unwrap();
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::IGESCAFControl_Writer_ctor_handlexscontrolworksession_charptr(
                     theWS,
                     c_theUnit.as_ptr(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -817,20 +584,13 @@ impl Writer {
         doc: &crate::ffi::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Writer_transfer_handletdocstddocument_progressrange(
-                    self as *mut Self,
-                    doc,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_transfer_handletdocstddocument_progressrange(
+                self as *mut Self,
+                doc,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:84 - `IGESCAFControl_Writer::Transfer()`
@@ -841,20 +601,13 @@ impl Writer {
         labels: &crate::ffi::TDF_LabelSequence,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Writer_transfer_labelsequence_progressrange(
-                    self as *mut Self,
-                    labels,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_transfer_labelsequence_progressrange(
+                self as *mut Self,
+                labels,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:90 - `IGESCAFControl_Writer::Transfer()`
@@ -865,20 +618,13 @@ impl Writer {
         label: &crate::tdf::Label,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Writer_transfer_label_progressrange(
-                    self as *mut Self,
-                    label,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_transfer_label_progressrange(
+                self as *mut Self,
+                label,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:94 - `IGESCAFControl_Writer::Perform()`
@@ -888,16 +634,9 @@ impl Writer {
         filename: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Writer_perform_handletdocstddocument_asciistring_progressrange(self as *mut Self, doc, filename, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_perform_handletdocstddocument_asciistring_progressrange(self as *mut Self, doc, filename, theProgress)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:101 - `IGESCAFControl_Writer::Perform()`
@@ -910,157 +649,102 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_filename = std::ffi::CString::new(filename).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Writer_perform_handletdocstddocument_charptr_progressrange(self as *mut Self, doc, c_filename.as_ptr(), theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_perform_handletdocstddocument_charptr_progressrange(
+                self as *mut Self,
+                doc,
+                c_filename.as_ptr(),
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:106 - `IGESCAFControl_Writer::SetColorMode()`
     /// Set ColorMode for indicate write Colors or not.
     pub fn set_color_mode(&mut self, colormode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Writer_set_color_mode(self as *mut Self, colormode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_set_color_mode(self as *mut Self, colormode)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:108 - `IGESCAFControl_Writer::GetColorMode()`
     pub fn get_color_mode(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESCAFControl_Writer_get_color_mode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_get_color_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:111 - `IGESCAFControl_Writer::SetNameMode()`
     /// Set NameMode for indicate write Name or not.
     pub fn set_name_mode(&mut self, namemode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Writer_set_name_mode(self as *mut Self, namemode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_set_name_mode(self as *mut Self, namemode)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:113 - `IGESCAFControl_Writer::GetNameMode()`
     pub fn get_name_mode(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESCAFControl_Writer_get_name_mode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_get_name_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:116 - `IGESCAFControl_Writer::SetLayerMode()`
     /// Set LayerMode for indicate write Layers or not.
     pub fn set_layer_mode(&mut self, layermode: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Writer_set_layer_mode(self as *mut Self, layermode)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_set_layer_mode(self as *mut Self, layermode)
+        })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:118 - `IGESCAFControl_Writer::GetLayerMode()`
     pub fn get_layer_mode(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESCAFControl_Writer_get_layer_mode(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_get_layer_mode(self as *const Self)
+        })
     }
 
     /// Upcast to IGESControl_Writer
     pub fn as_iges_control_writer(&self) -> &crate::iges_control::Writer {
-        let __result =
-            unsafe { crate::ffi::IGESCAFControl_Writer_as_IGESControl_Writer(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::IGESCAFControl_Writer_as_IGESControl_Writer(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESControl_Writer (mutable)
     pub fn as_iges_control_writer_mut(&mut self) -> &mut crate::iges_control::Writer {
-        let __result = unsafe {
-            crate::ffi::IGESCAFControl_Writer_as_IGESControl_Writer_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::IGESCAFControl_Writer_as_IGESControl_Writer_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:79 - `IGESControl_Writer::Model()`
     pub fn model(&self) -> &crate::ffi::HandleIGESDataIGESModel {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESCAFControl_Writer_inherited_Model(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESCAFControl_Writer_inherited_Model(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:81 - `IGESControl_Writer::TransferProcess()`
     pub fn transfer_process(&self) -> &crate::ffi::HandleTransferFinderProcess {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Writer_inherited_TransferProcess(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::IGESCAFControl_Writer_inherited_TransferProcess(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:85 - `IGESControl_Writer::SetTransferProcess()`
     pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Writer_inherited_SetTransferProcess(
-                    self as *mut Self,
-                    TP,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_inherited_SetTransferProcess(self as *mut Self, TP)
+        })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:90 - `IGESControl_Writer::AddShape()`
@@ -1069,74 +753,37 @@ impl Writer {
         sh: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Writer_inherited_AddShape(
-                    self as *mut Self,
-                    sh,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_inherited_AddShape(self as *mut Self, sh, theProgress)
+        })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:97 - `IGESControl_Writer::AddGeom()`
     pub fn add_geom(&mut self, geom: &crate::ffi::HandleStandardTransient) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Writer_inherited_AddGeom(self as *mut Self, geom)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_inherited_AddGeom(self as *mut Self, geom)
+        })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:100 - `IGESControl_Writer::AddEntity()`
     pub fn add_entity(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Writer_inherited_AddEntity(self as *mut Self, ent)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_inherited_AddEntity(self as *mut Self, ent)
+        })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:105 - `IGESControl_Writer::ComputeModel()`
     pub fn compute_model(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Writer_inherited_ComputeModel(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_inherited_ComputeModel(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:109 - `IGESControl_Writer::Write()`
     pub fn write(&mut self, S: &mut crate::ffi::Standard_OStream, fnes: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESCAFControl_Writer_inherited_Write(self as *mut Self, S, fnes)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_inherited_Write(self as *mut Self, S, fnes)
+        })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:122 - `IGESControl_Writer::SetShapeFixParameters()`
@@ -1144,63 +791,43 @@ impl Writer {
         &mut self,
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Writer_inherited_SetShapeFixParameters(
-                    self as *mut Self,
-                    theParameters,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_inherited_SetShapeFixParameters(
+                self as *mut Self,
+                theParameters,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:142 - `IGESControl_Writer::GetShapeFixParameters()`
     pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::IGESCAFControl_Writer_inherited_GetShapeFixParameters(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:149 - `IGESControl_Writer::SetShapeProcessFlags()`
     pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
-        {
-            let __exc = unsafe {
-                crate::ffi::IGESCAFControl_Writer_inherited_SetShapeProcessFlags(
-                    self as *mut Self,
-                    theFlags,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::IGESCAFControl_Writer_inherited_SetShapeProcessFlags(
+                self as *mut Self,
+                theFlags,
+            )
+        })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:153 - `IGESControl_Writer::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::ShapeProcess_OperationsFlags {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::IGESCAFControl_Writer_inherited_GetShapeProcessFlags(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 }

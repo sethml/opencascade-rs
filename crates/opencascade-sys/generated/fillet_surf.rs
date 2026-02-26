@@ -134,16 +134,12 @@ impl Builder {
         Tapp3d: f64,
         Tapp2d: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::FilletSurf_Builder_ctor_shape_listofshape_real4(
                     S, E, R, Ta, Tapp3d, Tapp2d,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -201,22 +197,16 @@ impl Builder {
     /// **Source:** `FilletSurf_Builder.hxx`:66 - `FilletSurf_Builder::Perform()`
     /// ---Purpose computation  of the fillet (list of NUBS)
     pub fn perform(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::FilletSurf_Builder_perform(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_Builder_perform(self as *mut Self)
+        })
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:68 - `FilletSurf_Builder::Simulate()`
     pub fn simulate(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::FilletSurf_Builder_simulate(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_Builder_simulate(self as *mut Self)
+        })
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:75 - `FilletSurf_Builder::IsDone()`
@@ -226,14 +216,10 @@ impl Builder {
     /// IsNotOk: no result is produced
     /// IsPartial: the result is partial
     pub fn is_done(&self) -> crate::fillet_surf::StatusDone {
-        {
-            let __result = unsafe { crate::ffi::FilletSurf_Builder_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::fillet_surf::StatusDone::try_from(__val).unwrap()
-        }
+        crate::fillet_surf::StatusDone::try_from(crate::check_result(unsafe {
+            crate::ffi::FilletSurf_Builder_is_done(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:86 - `FilletSurf_Builder::StatusError()`
@@ -247,43 +233,28 @@ impl Builder {
     /// NotSharpEdge: the  edge is not sharp
     /// PbFilletCompute: problem during the computation of the fillet
     pub fn status_error(&self) -> crate::fillet_surf::ErrorTypeStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_Builder_status_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::fillet_surf::ErrorTypeStatus::try_from(__val).unwrap()
-        }
+        crate::fillet_surf::ErrorTypeStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::FilletSurf_Builder_status_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:89 - `FilletSurf_Builder::NbSurface()`
     /// gives the number of NUBS surfaces  of the Fillet.
     pub fn nb_surface(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_Builder_nb_surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_Builder_nb_surface(self as *const Self)
+        })
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:92 - `FilletSurf_Builder::SurfaceFillet()`
     /// gives the NUBS surface of index Index.
     pub fn surface_fillet(&self, Index: i32) -> &crate::ffi::HandleGeomSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_Builder_surface_fillet(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_Builder_surface_fillet(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -291,201 +262,136 @@ impl Builder {
     /// gives  the  3d  tolerance reached during approximation
     /// of surface of index Index
     pub fn tol_app3d(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_Builder_tol_app3d(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_Builder_tol_app3d(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:99 - `FilletSurf_Builder::SupportFace1()`
     /// gives the first support  face relative to SurfaceFillet(Index);
     pub fn support_face1(&self, Index: i32) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_Builder_support_face1(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_Builder_support_face1(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:102 - `FilletSurf_Builder::SupportFace2()`
     /// gives the second support  face relative to SurfaceFillet(Index);
     pub fn support_face2(&self, Index: i32) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_Builder_support_face2(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_Builder_support_face2(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:105 - `FilletSurf_Builder::CurveOnFace1()`
     /// gives  the 3d curve  of SurfaceFillet(Index)  on SupportFace1(Index)
     pub fn curve_on_face1(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_Builder_curve_on_face1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_Builder_curve_on_face1(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:108 - `FilletSurf_Builder::CurveOnFace2()`
     /// gives the     3d  curve of  SurfaceFillet(Index) on SupportFace2(Index)
     pub fn curve_on_face2(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_Builder_curve_on_face2(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_Builder_curve_on_face2(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:111 - `FilletSurf_Builder::PCurveOnFace1()`
     /// gives the  PCurve associated to CurvOnSup1(Index)  on the support face
     pub fn p_curve_on_face1(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_Builder_p_curve_on_face1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_Builder_p_curve_on_face1(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:114 - `FilletSurf_Builder::PCurve1OnFillet()`
     /// gives the PCurve associated to CurveOnFace1(Index) on the Fillet
     pub fn p_curve1_on_fillet(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_Builder_p_curve1_on_fillet(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_Builder_p_curve1_on_fillet(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:117 - `FilletSurf_Builder::PCurveOnFace2()`
     /// gives the PCurve  associated to CurveOnSup2(Index) on  the  support face
     pub fn p_curve_on_face2(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_Builder_p_curve_on_face2(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_Builder_p_curve_on_face2(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:120 - `FilletSurf_Builder::PCurve2OnFillet()`
     /// gives the PCurve  associated to CurveOnSup2(Index) on  the  fillet
     pub fn p_curve2_on_fillet(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_Builder_p_curve2_on_fillet(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_Builder_p_curve2_on_fillet(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:123 - `FilletSurf_Builder::FirstParameter()`
     /// gives the parameter of the fillet  on the first edge.
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_Builder_first_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_Builder_first_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:126 - `FilletSurf_Builder::LastParameter()`
     /// gives the  parameter of the fillet  on the last edge
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_Builder_last_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_Builder_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:128 - `FilletSurf_Builder::StartSectionStatus()`
     pub fn start_section_status(&self) -> crate::fillet_surf::StatusType {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_Builder_start_section_status(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::fillet_surf::StatusType::try_from(__val).unwrap()
-        }
+        crate::fillet_surf::StatusType::try_from(crate::check_result(unsafe {
+            crate::ffi::FilletSurf_Builder_start_section_status(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:130 - `FilletSurf_Builder::EndSectionStatus()`
     pub fn end_section_status(&self) -> crate::fillet_surf::StatusType {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_Builder_end_section_status(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::fillet_surf::StatusType::try_from(__val).unwrap()
-        }
+        crate::fillet_surf::StatusType::try_from(crate::check_result(unsafe {
+            crate::ffi::FilletSurf_Builder_end_section_status(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:132 - `FilletSurf_Builder::NbSection()`
     pub fn nb_section(&self, IndexSurf: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_Builder_nb_section(self as *const Self, IndexSurf)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_Builder_nb_section(self as *const Self, IndexSurf)
+        })
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:134 - `FilletSurf_Builder::Section()`
@@ -495,19 +401,9 @@ impl Builder {
         IndexSec: i32,
         Circ: &mut crate::ffi::HandleGeomTrimmedCurve,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_Builder_section(
-                    self as *const Self,
-                    IndexSurf,
-                    IndexSec,
-                    Circ,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_Builder_section(self as *const Self, IndexSurf, IndexSec, Circ)
+        })
     }
 }
 
@@ -535,20 +431,16 @@ impl InternalBuilder {
         Tapp3d: f64,
         Tapp2d: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::FilletSurf_InternalBuilder_ctor_shape_filletshape_real3(
                     S,
                     FShape.into(),
                     Ta,
                     Tapp3d,
                     Tapp2d,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -588,67 +480,41 @@ impl InternalBuilder {
     /// 4 : the  edge   is  not on  shape
     /// 5 :  NotSharpEdge: the  edge is not sharp
     pub fn add(&mut self, E: &crate::ffi::TopTools_ListOfShape, R: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_InternalBuilder_add(self as *mut Self, E, R) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_add(self as *mut Self, E, R)
+        })
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:60 - `FilletSurf_InternalBuilder::Perform()`
     pub fn perform(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::FilletSurf_InternalBuilder_perform(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_perform(self as *mut Self)
+        })
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:62 - `FilletSurf_InternalBuilder::Done()`
     pub fn done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_InternalBuilder_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_done(self as *const Self)
+        })
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:65 - `FilletSurf_InternalBuilder::NbSurface()`
     /// gives the number of NUBS surfaces  of the Fillet.
     pub fn nb_surface(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::FilletSurf_InternalBuilder_nb_surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_nb_surface(self as *const Self)
+        })
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:68 - `FilletSurf_InternalBuilder::SurfaceFillet()`
     /// gives the NUBS surface of index Index.
     pub fn surface_fillet(&self, Index: i32) -> &crate::ffi::HandleGeomSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_surface_fillet(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_InternalBuilder_surface_fillet(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -656,225 +522,143 @@ impl InternalBuilder {
     /// gives  the  3d  tolerance reached during approximation
     /// of the surface of index Index
     pub fn tol_app3d(&self, Index: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_tol_app3d(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_tol_app3d(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:75 - `FilletSurf_InternalBuilder::SupportFace1()`
     /// gives the first support  face relative to SurfaceFillet(Index);
     pub fn support_face1(&self, Index: i32) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_support_face1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_InternalBuilder_support_face1(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:78 - `FilletSurf_InternalBuilder::SupportFace2()`
     /// gives the second support  face relative to SurfaceFillet(Index);
     pub fn support_face2(&self, Index: i32) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_support_face2(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_InternalBuilder_support_face2(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:81 - `FilletSurf_InternalBuilder::CurveOnFace1()`
     /// gives  the 3d curve  of SurfaceFillet(Index)  on SupportFace1(Index)
     pub fn curve_on_face1(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_curve_on_face1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_InternalBuilder_curve_on_face1(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:84 - `FilletSurf_InternalBuilder::CurveOnFace2()`
     /// gives the     3d  curve of  SurfaceFillet(Index) on SupportFace2(Index)
     pub fn curve_on_face2(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_curve_on_face2(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_InternalBuilder_curve_on_face2(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:87 - `FilletSurf_InternalBuilder::PCurveOnFace1()`
     /// gives the  PCurve associated to CurvOnSup1(Index)  on the support face
     pub fn p_curve_on_face1(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_p_curve_on_face1(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_InternalBuilder_p_curve_on_face1(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:90 - `FilletSurf_InternalBuilder::PCurve1OnFillet()`
     /// gives the PCurve associated to CurveOnFace1(Index) on the Fillet
     pub fn p_curve1_on_fillet(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_p_curve1_on_fillet(
-                    self as *const Self,
-                    Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_InternalBuilder_p_curve1_on_fillet(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:93 - `FilletSurf_InternalBuilder::PCurveOnFace2()`
     /// gives the PCurve  associated to CurveOnSup2(Index) on  the  support face
     pub fn p_curve_on_face2(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_p_curve_on_face2(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_InternalBuilder_p_curve_on_face2(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:96 - `FilletSurf_InternalBuilder::PCurve2OnFillet()`
     /// gives the PCurve  associated to CurveOnSup2(Index) on  the  fillet
     pub fn p_curve2_on_fillet(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_p_curve2_on_fillet(
-                    self as *const Self,
-                    Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::FilletSurf_InternalBuilder_p_curve2_on_fillet(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:99 - `FilletSurf_InternalBuilder::FirstParameter()`
     /// gives the parameter of the fillet  on the first edge.
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_first_parameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_first_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:102 - `FilletSurf_InternalBuilder::LastParameter()`
     /// gives the  parameter of the fillet  on the last edge
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_last_parameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:104 - `FilletSurf_InternalBuilder::StartSectionStatus()`
     pub fn start_section_status(&self) -> crate::fillet_surf::StatusType {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_start_section_status(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::fillet_surf::StatusType::try_from(__val).unwrap()
-        }
+        crate::fillet_surf::StatusType::try_from(crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_start_section_status(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:106 - `FilletSurf_InternalBuilder::EndSectionStatus()`
     pub fn end_section_status(&self) -> crate::fillet_surf::StatusType {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_end_section_status(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::fillet_surf::StatusType::try_from(__val).unwrap()
-        }
+        crate::fillet_surf::StatusType::try_from(crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_end_section_status(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:108 - `FilletSurf_InternalBuilder::Simulate()`
     pub fn simulate(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::FilletSurf_InternalBuilder_simulate(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_simulate(self as *mut Self)
+        })
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:110 - `FilletSurf_InternalBuilder::NbSection()`
     pub fn nb_section(&self, IndexSurf: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_nb_section(self as *const Self, IndexSurf)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_nb_section(self as *const Self, IndexSurf)
+        })
     }
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:112 - `FilletSurf_InternalBuilder::Section()`
@@ -884,161 +668,108 @@ impl InternalBuilder {
         IndexSec: i32,
         Circ: &mut crate::ffi::HandleGeomTrimmedCurve,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_section(
-                    self as *const Self,
-                    IndexSurf,
-                    IndexSec,
-                    Circ,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_section(
+                self as *const Self,
+                IndexSurf,
+                IndexSec,
+                Circ,
+            )
+        })
     }
 
     /// Upcast to ChFi3d_FilBuilder
     pub fn as_ch_fi3d_fil_builder(&self) -> &crate::ch_fi3d::FilBuilder {
-        let __result = unsafe {
-            crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_FilBuilder(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_FilBuilder(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to ChFi3d_FilBuilder (mutable)
     pub fn as_ch_fi3d_fil_builder_mut(&mut self) -> &mut crate::ch_fi3d::FilBuilder {
-        let __result = unsafe {
-            crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_FilBuilder_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_FilBuilder_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to ChFi3d_Builder
     pub fn as_ch_fi3d_builder(&self) -> &crate::ch_fi3d::Builder {
-        let __result = unsafe {
-            crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_Builder(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_Builder(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to ChFi3d_Builder (mutable)
     pub fn as_ch_fi3d_builder_mut(&mut self) -> &mut crate::ch_fi3d::Builder {
-        let __result = unsafe {
-            crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_Builder_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_Builder_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:54 - `ChFi3d_FilBuilder::SetFilletShape()`
     pub fn set_fillet_shape(&mut self, FShape: crate::ch_fi3d::FilletShape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_SetFilletShape(
-                    self as *mut Self,
-                    FShape.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_SetFilletShape(
+                self as *mut Self,
+                FShape.into(),
+            )
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:57 - `ChFi3d_FilBuilder::GetFilletShape()`
     pub fn get_fillet_shape(&self) -> crate::ch_fi3d::FilletShape {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_GetFilletShape(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::ch_fi3d::FilletShape::try_from(__val).unwrap()
-        }
+        crate::ch_fi3d::FilletShape::try_from(crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_GetFilletShape(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:68 - `ChFi3d_FilBuilder::SetRadius()`
     pub fn set_radius(&mut self, C: &crate::ffi::HandleLawFunction, IC: i32, IinC: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_SetRadius(
-                    self as *mut Self,
-                    C,
-                    IC,
-                    IinC,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_SetRadius(
+                self as *mut Self,
+                C,
+                IC,
+                IinC,
+            )
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:73 - `ChFi3d_FilBuilder::IsConstant()`
     pub fn is_constant(&mut self, IC: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_IsConstant(self as *mut Self, IC)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_IsConstant(self as *mut Self, IC)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:77 - `ChFi3d_FilBuilder::Radius()`
     pub fn radius(&mut self, IC: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Radius(self as *mut Self, IC)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_Radius(self as *mut Self, IC)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:80 - `ChFi3d_FilBuilder::ResetContour()`
     pub fn reset_contour(&mut self, IC: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_ResetContour(self as *mut Self, IC)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_ResetContour(self as *mut Self, IC)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:89 - `ChFi3d_FilBuilder::UnSet()`
     pub fn un_set(&mut self, IC: i32, E: &crate::topo_ds::Edge) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_UnSet(self as *mut Self, IC, E)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_UnSet(self as *mut Self, IC, E)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:114 - `ChFi3d_FilBuilder::GetBounds()`
@@ -1049,22 +780,15 @@ impl InternalBuilder {
         First: &mut f64,
         Last: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_GetBounds(
-                    self as *mut Self,
-                    IC,
-                    E,
-                    First,
-                    Last,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_GetBounds(
+                self as *mut Self,
+                IC,
+                E,
+                First,
+                Last,
+            )
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:122 - `ChFi3d_FilBuilder::GetLaw()`
@@ -1073,15 +797,10 @@ impl InternalBuilder {
         IC: i32,
         E: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_GetLaw(self as *mut Self, IC, E)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::FilletSurf_InternalBuilder_inherited_GetLaw(self as *mut Self, IC, E),
+            ))
         }
     }
 
@@ -1092,41 +811,24 @@ impl InternalBuilder {
         E: &crate::topo_ds::Edge,
         L: &crate::ffi::HandleLawFunction,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_SetLaw(self as *mut Self, IC, E, L)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_SetLaw(self as *mut Self, IC, E, L)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
     pub fn nb_surf(&self, IC: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_NbSurf(self as *const Self, IC)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_NbSurf(self as *const Self, IC)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:134 - `ChFi3d_FilBuilder::Sect()`
     pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Sect(self as *const Self, IC, IS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::FilletSurf_InternalBuilder_inherited_Sect(self as *const Self, IC, IS),
+            ))
         }
     }
 
@@ -1140,22 +842,17 @@ impl InternalBuilder {
         TolApp2d: f64,
         Fleche: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_SetParams(
-                    self as *mut Self,
-                    Tang,
-                    Tesp,
-                    T2d,
-                    TApp3d,
-                    TolApp2d,
-                    Fleche,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_SetParams(
+                self as *mut Self,
+                Tang,
+                Tesp,
+                T2d,
+                TApp3d,
+                TolApp2d,
+                Fleche,
+            )
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
@@ -1164,274 +861,156 @@ impl InternalBuilder {
         InternalContinuity: crate::geom_abs::Shape,
         AngularTolerance: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_SetContinuity(
-                    self as *mut Self,
-                    InternalContinuity.into(),
-                    AngularTolerance,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_SetContinuity(
+                self as *mut Self,
+                InternalContinuity.into(),
+                AngularTolerance,
+            )
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
     pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Remove(self as *mut Self, E)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_Remove(self as *mut Self, E)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
     pub fn contains(&self, E: &crate::topo_ds::Edge) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Contains(self as *const Self, E)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_Contains(self as *const Self, E)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
     pub fn nb_elements(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_NbElements(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_NbElements(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
     pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Value(self as *const Self, I)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::FilletSurf_InternalBuilder_inherited_Value(self as *const Self, I),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
     pub fn length(&self, IC: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Length(self as *const Self, IC)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_Length(self as *const Self, IC)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
     pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::FilletSurf_InternalBuilder_inherited_FirstVertex(
                     self as *const Self,
                     IC,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
     pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_LastVertex(self as *const Self, IC)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::FilletSurf_InternalBuilder_inherited_LastVertex(
+                    self as *const Self,
+                    IC,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
     pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Abscissa(
-                    self as *const Self,
-                    IC,
-                    V,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_Abscissa(self as *const Self, IC, V)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
     pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_RelativeAbscissa(
-                    self as *const Self,
-                    IC,
-                    V,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_RelativeAbscissa(
+                self as *const Self,
+                IC,
+                V,
+            )
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:124 - `ChFi3d_Builder::ClosedAndTangent()`
     pub fn closed_and_tangent(&self, IC: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_ClosedAndTangent(
-                    self as *const Self,
-                    IC,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_ClosedAndTangent(
+                self as *const Self,
+                IC,
+            )
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:127 - `ChFi3d_Builder::Closed()`
     pub fn closed(&self, IC: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Closed(self as *const Self, IC)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_Closed(self as *const Self, IC)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:131 - `ChFi3d_Builder::Compute()`
     pub fn compute(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Compute(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_Compute(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:134 - `ChFi3d_Builder::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_IsDone(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:138 - `ChFi3d_Builder::Shape()`
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Shape(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::FilletSurf_InternalBuilder_inherited_Shape(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`
     pub fn nb_faulty_contours(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_NbFaultyContours(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_NbFaultyContours(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:149 - `ChFi3d_Builder::FaultyContour()`
     pub fn faulty_contour(&self, I: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_FaultyContour(
-                    self as *const Self,
-                    I,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_FaultyContour(self as *const Self, I)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:152 - `ChFi3d_Builder::NbComputedSurfaces()`
     pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_NbComputedSurfaces(
-                    self as *const Self,
-                    IC,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_NbComputedSurfaces(
+                self as *const Self,
+                IC,
+            )
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:155 - `ChFi3d_Builder::ComputedSurface()`
@@ -1440,123 +1019,73 @@ impl InternalBuilder {
         IC: i32,
         IS: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::FilletSurf_InternalBuilder_inherited_ComputedSurface(
                     self as *const Self,
                     IC,
                     IS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
     pub fn nb_faulty_vertices(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_NbFaultyVertices(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_NbFaultyVertices(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
     pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::FilletSurf_InternalBuilder_inherited_FaultyVertex(
                     self as *const Self,
                     IV,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
     pub fn has_result(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_HasResult(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_HasResult(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
     pub fn bad_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_BadShape(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::FilletSurf_InternalBuilder_inherited_BadShape(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
     pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_StripeStatus(
-                    self as *const Self,
-                    IC,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::ch_fi_ds::ErrorStatus::try_from(__val).unwrap()
-        }
+        crate::ch_fi_ds::ErrorStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_StripeStatus(self as *const Self, IC)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Reset(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_Reset(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
     pub fn builder(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildHBuilder> {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_Builder(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::FilletSurf_InternalBuilder_inherited_Builder(self as *const Self),
+            ))
         }
     }
 
@@ -1574,44 +1103,30 @@ impl InternalBuilder {
         Intf: &mut bool,
         Intl: &mut bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_SplitKPart(
-                    self as *mut Self,
-                    Data,
-                    SetData,
-                    Spine,
-                    Iedge,
-                    S1,
-                    I1,
-                    S2,
-                    I2,
-                    Intf,
-                    Intl,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_SplitKPart(
+                self as *mut Self,
+                Data,
+                SetData,
+                Spine,
+                Iedge,
+                S1,
+                I1,
+                S2,
+                I2,
+                Intf,
+                Intl,
+            )
+        })
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::FilletSurf_InternalBuilder_inherited_PerformTwoCornerbyInter(
-                    self as *mut Self,
-                    Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_PerformTwoCornerbyInter(
+                self as *mut Self,
+                Index,
+            )
+        })
     }
 }

@@ -17,13 +17,9 @@ pub fn write_handlepolytriangulation_ostream_bool(
     OS: &mut crate::ffi::Standard_OStream,
     Compact: bool,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::Poly_write_handlepolytriangulation_ostream_bool(T, OS, Compact) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::Poly_write_handlepolytriangulation_ostream_bool(T, OS, Compact)
+    })
 }
 /// **Source:** `Poly.hxx`:76 - `Poly::Write`
 /// Writes  the  content  of the 3D polygon <P> on the
@@ -36,13 +32,9 @@ pub fn write_handlepolypolygon3d_ostream_bool(
     OS: &mut crate::ffi::Standard_OStream,
     Compact: bool,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::Poly_write_handlepolypolygon3d_ostream_bool(P, OS, Compact) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::Poly_write_handlepolypolygon3d_ostream_bool(P, OS, Compact)
+    })
 }
 /// **Source:** `Poly.hxx`:85 - `Poly::Write`
 /// Writes the  content  of the 2D polygon  <P> on the
@@ -55,13 +47,9 @@ pub fn write_handlepolypolygon2d_ostream_bool(
     OS: &mut crate::ffi::Standard_OStream,
     Compact: bool,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::Poly_write_handlepolypolygon2d_ostream_bool(P, OS, Compact) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::Poly_write_handlepolypolygon2d_ostream_bool(P, OS, Compact)
+    })
 }
 /// **Source:** `Poly.hxx`:91 - `Poly::Dump`
 /// Dumps  the triangulation.  This   is a call to  the
@@ -70,12 +58,9 @@ pub fn dump_handlepolytriangulation_ostream(
     T: &crate::ffi::HandlePolyTriangulation,
     OS: &mut crate::ffi::Standard_OStream,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::Poly_dump_handlepolytriangulation_ostream(T, OS) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::Poly_dump_handlepolytriangulation_ostream(T, OS)
+    })
 }
 /// **Source:** `Poly.hxx`:95 - `Poly::Dump`
 /// Dumps  the  3D  polygon.  This   is a call to  the
@@ -84,12 +69,7 @@ pub fn dump_handlepolypolygon3d_ostream(
     P: &crate::ffi::HandlePolyPolygon3D,
     OS: &mut crate::ffi::Standard_OStream,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::Poly_dump_handlepolypolygon3d_ostream(P, OS) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::Poly_dump_handlepolypolygon3d_ostream(P, OS) })
 }
 /// **Source:** `Poly.hxx`:99 - `Poly::Dump`
 /// Dumps  the  2D  polygon.  This   is a call to  the
@@ -98,25 +78,15 @@ pub fn dump_handlepolypolygon2d_ostream(
     P: &crate::ffi::HandlePolyPolygon2D,
     OS: &mut crate::ffi::Standard_OStream,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::Poly_dump_handlepolypolygon2d_ostream(P, OS) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::Poly_dump_handlepolypolygon2d_ostream(P, OS) })
 }
 /// **Source:** `Poly.hxx`:102 - `Poly::ReadTriangulation`
 /// Reads a triangulation from the stream <IS>.
 pub fn read_triangulation(
     IS: &mut crate::ffi::Standard_IStream,
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-    {
-        let __result = unsafe { crate::ffi::Poly_read_triangulation(IS) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_read_triangulation(IS)))
     }
 }
 /// **Source:** `Poly.hxx`:105 - `Poly::ReadPolygon3D`
@@ -124,39 +94,20 @@ pub fn read_triangulation(
 pub fn read_polygon3_d(
     IS: &mut crate::ffi::Standard_IStream,
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygon3D> {
-    {
-        let __result = unsafe { crate::ffi::Poly_read_polygon3_d(IS) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
-    }
+    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_read_polygon3_d(IS))) }
 }
 /// **Source:** `Poly.hxx`:108 - `Poly::ReadPolygon2D`
 /// Reads a 2D polygon from the stream <IS>.
 pub fn read_polygon2_d(
     IS: &mut crate::ffi::Standard_IStream,
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygon2D> {
-    {
-        let __result = unsafe { crate::ffi::Poly_read_polygon2_d(IS) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
-    }
+    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_read_polygon2_d(IS))) }
 }
 /// **Source:** `Poly.hxx`:112 - `Poly::ComputeNormals`
 /// Compute node normals for face triangulation
 /// as mean normal of surrounding triangles
 pub fn compute_normals(Tri: &crate::ffi::HandlePolyTriangulation) {
-    {
-        let __exc = unsafe { crate::ffi::Poly_compute_normals(Tri) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::Poly_compute_normals(Tri) })
 }
 /// **Source:** `Poly.hxx`:124 - `Poly::PointOnTriangle`
 /// Computes parameters of the point P on triangle
@@ -176,14 +127,7 @@ pub fn point_on_triangle(
     P: &crate::gp::XY,
     UV: &mut crate::gp::XY,
 ) -> f64 {
-    {
-        let __result = unsafe { crate::ffi::Poly_point_on_triangle(P1, P2, P3, P, UV) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::Poly_point_on_triangle(P1, P2, P3, P, UV) })
 }
 /// **Source:** `Poly.hxx`:138 - `Poly::Intersect`
 /// Computes the intersection between axis and triangulation.
@@ -201,16 +145,9 @@ pub fn intersect(
     theTriangle: &mut Triangle,
     theDistance: &mut f64,
 ) -> bool {
-    {
-        let __result = unsafe {
-            crate::ffi::Poly_intersect(theTri, theAxis, theIsClosest, theTriangle, theDistance)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::Poly_intersect(theTri, theAxis, theIsClosest, theTriangle, theDistance)
+    })
 }
 /// **Source:** `Poly.hxx`:152 - `Poly::IntersectTriLine`
 /// Computes the intersection between a triangle defined by three vertexes and a line.
@@ -229,16 +166,9 @@ pub fn intersect_tri_line(
     theV2: &crate::gp::XYZ,
     theParam: &mut f64,
 ) -> i32 {
-    {
-        let __result = unsafe {
-            crate::ffi::Poly_intersect_tri_line(theStart, theDir, theV0, theV1, theV2, theParam)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::Poly_intersect_tri_line(theStart, theDir, theV0, theV1, theV2, theParam)
+    })
 }
 
 /// C++ enum: `Poly_MeshPurpose`
@@ -306,79 +236,56 @@ impl ArrayOfNodes {
     /// **Source:** `Poly_ArrayOfNodes.hxx`:27 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
     /// Empty constructor of double-precision array.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_ArrayOfNodes_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_ArrayOfNodes_ctor()))
         }
     }
 
     /// **Source:** `Poly_ArrayOfNodes.hxx`:34 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
     /// Constructor of double-precision array.
     pub fn new_int(theLength: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_ArrayOfNodes_ctor_int(theLength) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_ArrayOfNodes_ctor_int(
+                theLength,
+            )))
         }
     }
 
     /// **Source:** `Poly_ArrayOfNodes.hxx`:44 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
     /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_pnt_int(theBegin: &crate::gp::Pnt, theLength: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfNodes_ctor_pnt_int(theBegin, theLength) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_ArrayOfNodes_ctor_pnt_int(theBegin, theLength),
+            ))
         }
     }
 
     /// **Source:** `Poly_ArrayOfNodes.hxx`:51 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
     /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_vec3f_int(theBegin: &crate::ffi::gp_Vec3f, theLength: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfNodes_ctor_vec3f_int(theBegin, theLength) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_ArrayOfNodes_ctor_vec3f_int(theBegin, theLength),
+            ))
         }
     }
 
     /// **Source:** `Poly_ArrayOfNodes.hxx`:61 - `Poly_ArrayOfNodes::IsDoublePrecision()`
     /// Returns TRUE if array defines nodes with double precision.
     pub fn is_double_precision(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfNodes_is_double_precision(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_ArrayOfNodes_is_double_precision(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_ArrayOfNodes.hxx`:65 - `Poly_ArrayOfNodes::SetDoublePrecision()`
     /// Sets if array should define nodes with double or single precision.
     /// Raises exception if array was already allocated.
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_ArrayOfNodes_set_double_precision(self as *mut Self, theIsDouble)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_ArrayOfNodes_set_double_precision(self as *mut Self, theIsDouble)
+        })
     }
 
     /// **Source:** `Poly_ArrayOfNodes.hxx`:79 - `Poly_ArrayOfNodes::Assign()`
@@ -393,14 +300,11 @@ impl ArrayOfNodes {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(&mut self, theOther: &ArrayOfNodes) -> &mut ArrayOfNodes {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfNodes_assign(self as *mut Self, theOther) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_ArrayOfNodes_assign(
+                self as *mut Self,
+                theOther,
+            )))
         }
     }
 
@@ -413,51 +317,40 @@ impl ArrayOfNodes {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn move_(&mut self, theOther: &mut ArrayOfNodes) -> &mut ArrayOfNodes {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfNodes_move_(self as *mut Self, theOther) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_ArrayOfNodes_move_(
+                self as *mut Self,
+                theOther,
+            )))
         }
     }
 
     /// **Source:** `Poly_ArrayOfNodes.hxx`:106 - `Poly_ArrayOfNodes::Value()`
     /// A generalized accessor to point.
     pub fn value(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfNodes_value(self as *const Self, theIndex) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_ArrayOfNodes_value(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
     /// **Source:** `Poly_ArrayOfNodes.hxx`:109 - `Poly_ArrayOfNodes::SetValue()`
     /// A generalized setter for point.
     pub fn set_value(&mut self, theIndex: i32, theValue: &crate::gp::Pnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_ArrayOfNodes_set_value(self as *mut Self, theIndex, theValue)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_ArrayOfNodes_set_value(self as *mut Self, theIndex, theValue)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        let __result = unsafe { crate::ffi::Poly_ArrayOfNodes_to_owned(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_ArrayOfNodes_to_owned(
+                self as *const Self,
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -479,79 +372,56 @@ impl ArrayOfUVNodes {
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:27 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
     /// Empty constructor of double-precision array.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_ArrayOfUVNodes_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_ArrayOfUVNodes_ctor()))
         }
     }
 
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:34 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
     /// Constructor of double-precision array.
     pub fn new_int(theLength: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_ArrayOfUVNodes_ctor_int(theLength) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_ArrayOfUVNodes_ctor_int(theLength),
+            ))
         }
     }
 
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:44 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
     /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_pnt2d_int(theBegin: &crate::gp::Pnt2d, theLength: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfUVNodes_ctor_pnt2d_int(theBegin, theLength) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_ArrayOfUVNodes_ctor_pnt2d_int(theBegin, theLength),
+            ))
         }
     }
 
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:51 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
     /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_vec2f_int(theBegin: &crate::ffi::gp_Vec2f, theLength: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfUVNodes_ctor_vec2f_int(theBegin, theLength) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_ArrayOfUVNodes_ctor_vec2f_int(theBegin, theLength),
+            ))
         }
     }
 
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:61 - `Poly_ArrayOfUVNodes::IsDoublePrecision()`
     /// Returns TRUE if array defines nodes with double precision.
     pub fn is_double_precision(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfUVNodes_is_double_precision(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_ArrayOfUVNodes_is_double_precision(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:65 - `Poly_ArrayOfUVNodes::SetDoublePrecision()`
     /// Sets if array should define nodes with double or single precision.
     /// Raises exception if array was already allocated.
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_ArrayOfUVNodes_set_double_precision(self as *mut Self, theIsDouble)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_ArrayOfUVNodes_set_double_precision(self as *mut Self, theIsDouble)
+        })
     }
 
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:79 - `Poly_ArrayOfUVNodes::Assign()`
@@ -566,14 +436,11 @@ impl ArrayOfUVNodes {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(&mut self, theOther: &ArrayOfUVNodes) -> &mut ArrayOfUVNodes {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfUVNodes_assign(self as *mut Self, theOther) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_ArrayOfUVNodes_assign(
+                self as *mut Self,
+                theOther,
+            )))
         }
     }
 
@@ -586,51 +453,40 @@ impl ArrayOfUVNodes {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn move_(&mut self, theOther: &mut ArrayOfUVNodes) -> &mut ArrayOfUVNodes {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfUVNodes_move_(self as *mut Self, theOther) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_ArrayOfUVNodes_move_(
+                self as *mut Self,
+                theOther,
+            )))
         }
     }
 
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:106 - `Poly_ArrayOfUVNodes::Value()`
     /// A generalized accessor to point.
     pub fn value(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_ArrayOfUVNodes_value(self as *const Self, theIndex) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_ArrayOfUVNodes_value(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:109 - `Poly_ArrayOfUVNodes::SetValue()`
     /// A generalized setter for point.
     pub fn set_value(&mut self, theIndex: i32, theValue: &crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_ArrayOfUVNodes_set_value(self as *mut Self, theIndex, theValue)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_ArrayOfUVNodes_set_value(self as *mut Self, theIndex, theValue)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        let __result = unsafe { crate::ffi::Poly_ArrayOfUVNodes_to_owned(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_ArrayOfUVNodes_to_owned(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -661,12 +517,8 @@ impl CoherentLink {
     ///
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentLink_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_CoherentLink_ctor()))
         }
     }
 
@@ -676,12 +528,10 @@ impl CoherentLink {
     /// This constructor is useful to create temporary object that is not
     /// inserted into any existing triangulation.
     pub fn new_int2(iNode0: i32, iNode1: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentLink_ctor_int2(iNode0, iNode1) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_CoherentLink_ctor_int2(
+                iNode0, iNode1,
+            )))
         }
     }
 
@@ -699,13 +549,10 @@ impl CoherentLink {
         theTri: &CoherentTriangle,
         iSide: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentLink_ctor_coherenttriangle_int(theTri, iSide) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentLink_ctor_coherenttriangle_int(theTri, iSide),
+            ))
         }
     }
 
@@ -716,14 +563,7 @@ impl CoherentLink {
     /// 0 or 1 making distinction of the two nodes that constitute the Link.
     /// Node(0) always returns a smaller number than Node(1).
     pub fn node(&self, ind: i32) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentLink_node(self as *const Self, ind) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_CoherentLink_node(self as *const Self, ind) })
     }
 
     /// **Source:** `Poly_CoherentLink.hxx`:85 - `Poly_CoherentLink::OppositeNode()`
@@ -734,43 +574,27 @@ impl CoherentLink {
     /// 0 or 1 making distinction of the two involved triangles: 0 on the left,
     /// 1 on the right side of the Link.
     pub fn opposite_node(&self, ind: i32) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentLink_opposite_node(self as *const Self, ind) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentLink_opposite_node(self as *const Self, ind)
+        })
     }
 
     /// **Source:** `Poly_CoherentLink.hxx`:93 - `Poly_CoherentLink::GetAttribute()`
     ///
     /// Query the attribute of the Link.
     pub unsafe fn get_attribute(&self) -> *mut std::ffi::c_void {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentLink_get_attribute(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentLink_get_attribute(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentLink.hxx`:98 - `Poly_CoherentLink::SetAttribute()`
     ///
     /// Set the attribute of the Link.
     pub unsafe fn set_attribute(&mut self, theAtt: *mut std::ffi::c_void) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentLink_set_attribute(self as *mut Self, theAtt) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentLink_set_attribute(self as *mut Self, theAtt)
+        })
     }
 
     /// **Source:** `Poly_CoherentLink.hxx`:104 - `Poly_CoherentLink::IsEmpty()`
@@ -778,26 +602,16 @@ impl CoherentLink {
     /// Query the status of the link - if it is an invalid one.
     /// An invalid link has Node members equal to -1.
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentLink_is_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_CoherentLink_is_empty(self as *const Self) })
     }
 
     /// **Source:** `Poly_CoherentLink.hxx`:109 - `Poly_CoherentLink::Nullify()`
     ///
     /// Invalidate this Link.
     pub fn nullify(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_CoherentLink_nullify(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentLink_nullify(self as *mut Self)
+        })
     }
 }
 
@@ -828,12 +642,8 @@ impl CoherentNode {
     ///
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentNode_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_CoherentNode_ctor()))
         }
     }
 
@@ -841,12 +651,10 @@ impl CoherentNode {
     ///
     /// Constructor.
     pub fn new_xyz(thePnt: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentNode_ctor_xyz(thePnt) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_CoherentNode_ctor_xyz(
+                thePnt,
+            )))
         }
     }
 
@@ -854,81 +662,51 @@ impl CoherentNode {
     ///
     /// Set the UV coordinates of the Node.
     pub fn set_uv(&mut self, theU: f64, theV: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentNode_set_uv(self as *mut Self, theU, theV) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_set_uv(self as *mut Self, theU, theV)
+        })
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:80 - `Poly_CoherentNode::GetU()`
     ///
     /// Get U coordinate of the Node.
     pub fn get_u(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentNode_get_u(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_CoherentNode_get_u(self as *const Self) })
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:85 - `Poly_CoherentNode::GetV()`
     ///
     /// Get V coordinate of the Node.
     pub fn get_v(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentNode_get_v(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_CoherentNode_get_v(self as *const Self) })
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:90 - `Poly_CoherentNode::SetNormal()`
     ///
     /// Define the normal vector in the Node.
     pub fn set_normal(&mut self, theVector: &crate::gp::XYZ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentNode_set_normal(self as *mut Self, theVector) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_set_normal(self as *mut Self, theVector)
+        })
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:95 - `Poly_CoherentNode::HasNormal()`
     ///
     /// Query if the Node contains a normal vector.
     pub fn has_normal(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentNode_has_normal(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_has_normal(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:104 - `Poly_CoherentNode::GetNormal()`
     ///
     /// Get the stored normal in the node.
     pub fn get_normal(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentNode_get_normal(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentNode_get_normal(self as *const Self),
+            ))
         }
     }
 
@@ -936,27 +714,16 @@ impl CoherentNode {
     ///
     /// Set the value of node Index.
     pub fn set_index(&mut self, theIndex: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentNode_set_index(self as *mut Self, theIndex) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_set_index(self as *mut Self, theIndex)
+        })
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:114 - `Poly_CoherentNode::GetIndex()`
     ///
     /// Get the value of node Index.
     pub fn get_index(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentNode_get_index(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_CoherentNode_get_index(self as *const Self) })
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:120 - `Poly_CoherentNode::IsFreeNode()`
@@ -964,27 +731,18 @@ impl CoherentNode {
     /// Check if this is a free node, i.e., a node without a single
     /// incident triangle.
     pub fn is_free_node(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentNode_is_free_node(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_is_free_node(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:125 - `Poly_CoherentNode::Clear()`
     ///
     /// Reset the Node to void.
     pub fn clear(&mut self, arg0: &crate::ffi::HandleNCollectionBaseAllocator) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_CoherentNode_clear(self as *mut Self, arg0) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_clear(self as *mut Self, arg0)
+        })
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:130 - `Poly_CoherentNode::AddTriangle()`
@@ -995,14 +753,9 @@ impl CoherentNode {
         theTri: &CoherentTriangle,
         theA: &crate::ffi::HandleNCollectionBaseAllocator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentNode_add_triangle(self as *mut Self, theTri, theA)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_add_triangle(self as *mut Self, theTri, theA)
+        })
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:136 - `Poly_CoherentNode::RemoveTriangle()`
@@ -1013,323 +766,194 @@ impl CoherentNode {
         theTri: &CoherentTriangle,
         theA: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_remove_triangle(self as *mut Self, theTri, theA)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_remove_triangle(self as *mut Self, theTri, theA)
+        })
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:142 - `Poly_CoherentNode::TriangleIterator()`
     ///
     /// Create an iterator of incident triangles.
     pub fn triangle_iterator(&self) -> crate::OwnedPtr<CoherentTriPtr_Iterator> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentNode_triangle_iterator(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentNode_triangle_iterator(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Poly_CoherentNode.hxx`:144 - `Poly_CoherentNode::Dump()`
     pub fn dump(&self, theStream: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentNode_dump(self as *const Self, theStream) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_dump(self as *const Self, theStream)
+        })
     }
 
     /// Upcast to gp_XYZ
     pub fn as_gp_xyz(&self) -> &crate::gp::XYZ {
-        let __result = unsafe { crate::ffi::Poly_CoherentNode_as_gp_XYZ(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_CoherentNode_as_gp_XYZ(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to gp_XYZ (mutable)
     pub fn as_gp_xyz_mut(&mut self) -> &mut crate::gp::XYZ {
-        let __result = unsafe { crate::ffi::Poly_CoherentNode_as_gp_XYZ_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Poly_CoherentNode_as_gp_XYZ_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:54 - `gp_XYZ::SetCoord()`
     pub fn set_coord(&mut self, theX: f64, theY: f64, theZ: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_SetCoord(
-                    self as *mut Self,
-                    theX,
-                    theY,
-                    theZ,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_SetCoord(self as *mut Self, theX, theY, theZ)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:73 - `gp_XYZ::SetX()`
     pub fn set_x(&mut self, theX: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_SetX(self as *mut Self, theX) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_SetX(self as *mut Self, theX)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:76 - `gp_XYZ::SetY()`
     pub fn set_y(&mut self, theY: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_SetY(self as *mut Self, theY) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_SetY(self as *mut Self, theY)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:79 - `gp_XYZ::SetZ()`
     pub fn set_z(&mut self, theZ: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_SetZ(self as *mut Self, theZ) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_SetZ(self as *mut Self, theZ)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:87 - `gp_XYZ::Coord()`
     pub fn coord(&self, theIndex: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_Coord(self as *const Self, theIndex)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Coord(self as *const Self, theIndex)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:93 - `gp_XYZ::ChangeCoord()`
     pub fn change_coord(&mut self, theIndex: i32) -> &mut f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_ChangeCoord(self as *mut Self, theIndex)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_CoherentNode_inherited_ChangeCoord(
+                self as *mut Self,
+                theIndex,
+            )))
         }
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:117 - `gp_XYZ::X()`
     pub fn x(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_X(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_X(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:120 - `gp_XYZ::Y()`
     pub fn y(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_Y(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Y(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:123 - `gp_XYZ::Z()`
     pub fn z(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_Z(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Z(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:126 - `gp_XYZ::Modulus()`
     pub fn modulus(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_Modulus(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Modulus(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:129 - `gp_XYZ::SquareModulus()`
     pub fn square_modulus(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_SquareModulus(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_SquareModulus(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:137 - `gp_XYZ::IsEqual()`
     pub fn is_equal(&self, theOther: &crate::gp::XYZ, theTolerance: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_IsEqual(
-                    self as *const Self,
-                    theOther,
-                    theTolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_IsEqual(
+                self as *const Self,
+                theOther,
+                theTolerance,
+            )
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:145 - `gp_XYZ::Add()`
     pub fn add(&mut self, theOther: &crate::gp::XYZ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_Add(self as *mut Self, theOther) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Add(self as *mut Self, theOther)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:159 - `gp_XYZ::Added()`
     pub fn added(&self, theOther: &crate::gp::XYZ) -> crate::OwnedPtr<crate::gp::XYZ> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_Added(self as *const Self, theOther)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentNode_inherited_Added(self as *const Self, theOther),
+            ))
         }
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:171 - `gp_XYZ::Cross()`
     pub fn cross(&mut self, theOther: &crate::gp::XYZ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_Cross(self as *mut Self, theOther)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Cross(self as *mut Self, theOther)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:180 - `gp_XYZ::Crossed()`
     pub fn crossed(&self, theOther: &crate::gp::XYZ) -> crate::OwnedPtr<crate::gp::XYZ> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_Crossed(self as *const Self, theOther)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentNode_inherited_Crossed(self as *const Self, theOther),
+            ))
         }
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:191 - `gp_XYZ::CrossMagnitude()`
     pub fn cross_magnitude(&self, theRight: &crate::gp::XYZ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_CrossMagnitude(
-                    self as *const Self,
-                    theRight,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_CrossMagnitude(self as *const Self, theRight)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:195 - `gp_XYZ::CrossSquareMagnitude()`
     pub fn cross_square_magnitude(&self, theRight: &crate::gp::XYZ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_CrossSquareMagnitude(
-                    self as *const Self,
-                    theRight,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_CrossSquareMagnitude(
+                self as *const Self,
+                theRight,
+            )
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:199 - `gp_XYZ::CrossCross()`
     pub fn cross_cross(&mut self, theCoord1: &crate::gp::XYZ, theCoord2: &crate::gp::XYZ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_CrossCross(
-                    self as *mut Self,
-                    theCoord1,
-                    theCoord2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_CrossCross(
+                self as *mut Self,
+                theCoord1,
+                theCoord2,
+            )
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:203 - `gp_XYZ::CrossCrossed()`
@@ -1338,177 +962,112 @@ impl CoherentNode {
         theCoord1: &crate::gp::XYZ,
         theCoord2: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<crate::gp::XYZ> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_CoherentNode_inherited_CrossCrossed(
                     self as *const Self,
                     theCoord1,
                     theCoord2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:211 - `gp_XYZ::Divide()`
     pub fn divide(&mut self, theScalar: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_Divide(self as *mut Self, theScalar)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Divide(self as *mut Self, theScalar)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:221 - `gp_XYZ::Divided()`
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<crate::gp::XYZ> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_Divided(self as *const Self, theScalar)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentNode_inherited_Divided(self as *const Self, theScalar),
+            ))
         }
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:232 - `gp_XYZ::Dot()`
     pub fn dot(&self, theOther: &crate::gp::XYZ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_Dot(self as *const Self, theOther)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Dot(self as *const Self, theOther)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:240 - `gp_XYZ::DotCross()`
     pub fn dot_cross(&self, theCoord1: &crate::gp::XYZ, theCoord2: &crate::gp::XYZ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_DotCross(
-                    self as *const Self,
-                    theCoord1,
-                    theCoord2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_DotCross(
+                self as *const Self,
+                theCoord1,
+                theCoord2,
+            )
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:247 - `gp_XYZ::Multiply()`
     pub fn multiply(&mut self, theScalar: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_Multiply(self as *mut Self, theScalar)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Multiply(self as *mut Self, theScalar)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:280 - `gp_XYZ::Multiplied()`
     pub fn multiplied(&self, theScalar: f64) -> crate::OwnedPtr<crate::gp::XYZ> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_Multiplied(self as *const Self, theScalar)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentNode_inherited_Multiplied(self as *const Self, theScalar),
+            ))
         }
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:320 - `gp_XYZ::Normalize()`
     pub fn normalize(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_Normalize(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Normalize(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:328 - `gp_XYZ::Normalized()`
     pub fn normalized(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_Normalized(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentNode_inherited_Normalized(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:341 - `gp_XYZ::Reverse()`
     pub fn reverse(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_Reverse(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Reverse(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:353 - `gp_XYZ::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentNode_inherited_Reversed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentNode_inherited_Reversed(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:360 - `gp_XYZ::Subtract()`
     pub fn subtract(&mut self, theOther: &crate::gp::XYZ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_Subtract(self as *mut Self, theOther)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_Subtract(self as *mut Self, theOther)
+        })
     }
 
     /// Inherited: **Source:** `gp_XYZ.hxx`:374 - `gp_XYZ::Subtracted()`
     pub fn subtracted(&self, theOther: &crate::gp::XYZ) -> crate::OwnedPtr<crate::gp::XYZ> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_Subtracted(self as *const Self, theOther)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentNode_inherited_Subtracted(self as *const Self, theOther),
+            ))
         }
     }
 
@@ -1523,23 +1082,18 @@ impl CoherentNode {
         theXYZ3: &crate::gp::XYZ,
         theXYZ4: &crate::gp::XYZ,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentNode_inherited_SetLinearForm(
-                    self as *mut Self,
-                    theA1,
-                    theXYZ1,
-                    theA2,
-                    theXYZ2,
-                    theA3,
-                    theXYZ3,
-                    theXYZ4,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentNode_inherited_SetLinearForm(
+                self as *mut Self,
+                theA1,
+                theXYZ1,
+                theA2,
+                theXYZ2,
+                theA3,
+                theXYZ3,
+                theXYZ4,
+            )
+        })
     }
 }
 
@@ -1558,14 +1112,10 @@ impl CoherentTriPtr {
     ///
     /// Query the stored pointer to Triangle.
     pub fn get_triangle(&self) -> &CoherentTriangle {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriPtr_get_triangle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_CoherentTriPtr_get_triangle(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1573,27 +1123,17 @@ impl CoherentTriPtr {
     ///
     /// Initialize this instance with a pointer to triangle.
     pub fn set_triangle(&mut self, pTri: &CoherentTriangle) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentTriPtr_set_triangle(self as *mut Self, pTri as *const _)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriPtr_set_triangle(self as *mut Self, pTri as *const _)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriPtr.hxx`:118 - `Poly_CoherentTriPtr::Next()`
     ///
     /// Query the next pointer in the list.
     pub fn next(&mut self) -> &mut CoherentTriPtr {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentTriPtr_next(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_CoherentTriPtr_next(self as *mut Self)))
         }
     }
 
@@ -1601,13 +1141,8 @@ impl CoherentTriPtr {
     ///
     /// Query the previous pointer in the list.
     pub fn previous(&mut self) -> &mut CoherentTriPtr {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentTriPtr_previous(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_CoherentTriPtr_previous(self as *mut Self)))
         }
     }
 
@@ -1623,14 +1158,9 @@ impl CoherentTriPtr {
         pTri: &CoherentTriangle,
         theA: &crate::ffi::HandleNCollectionBaseAllocator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentTriPtr_append(self as *mut Self, pTri as *const _, theA)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriPtr_append(self as *mut Self, pTri as *const _, theA)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriPtr.hxx`:142 - `Poly_CoherentTriPtr::Prepend()`
@@ -1645,14 +1175,9 @@ impl CoherentTriPtr {
         pTri: &CoherentTriangle,
         theA: &crate::ffi::HandleNCollectionBaseAllocator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentTriPtr_prepend(self as *mut Self, pTri as *const _, theA)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriPtr_prepend(self as *mut Self, pTri as *const _, theA)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriPtr.hxx`:152 - `Poly_CoherentTriPtr::Remove()`
@@ -1663,12 +1188,9 @@ impl CoherentTriPtr {
     /// @param theA
     /// Allocator where the current pointer instance was created.
     pub fn remove(thePtr: &mut CoherentTriPtr, theA: &crate::ffi::HandleNCollectionBaseAllocator) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_CoherentTriPtr_remove(thePtr as *mut _, theA) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriPtr_remove(thePtr as *mut _, theA)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriPtr.hxx`:158 - `Poly_CoherentTriPtr::RemoveList()`
@@ -1678,13 +1200,9 @@ impl CoherentTriPtr {
         thePtr: &mut CoherentTriPtr,
         arg1: &crate::ffi::HandleNCollectionBaseAllocator,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentTriPtr_remove_list(thePtr as *mut _, arg1) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriPtr_remove_list(thePtr as *mut _, arg1)
+        })
     }
 }
 
@@ -1712,25 +1230,20 @@ impl CoherentTriPtr_Iterator {
     /// **Source:** `Poly_CoherentTriPtr.hxx`:46 - `Poly_CoherentTriPtr_Iterator::Poly_CoherentTriPtr_Iterator()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentTriPtr_Iterator_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentTriPtr_Iterator_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Poly_CoherentTriPtr.hxx`:53 - `Poly_CoherentTriPtr_Iterator::Poly_CoherentTriPtr_Iterator()`
     /// Constructor
     pub fn new_coherenttriptr(thePtr: &CoherentTriPtr) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriPtr_Iterator_ctor_coherenttriptr(thePtr) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentTriPtr_Iterator_ctor_coherenttriptr(thePtr),
+            ))
         }
     }
 
@@ -1738,12 +1251,9 @@ impl CoherentTriPtr_Iterator {
     /// Query the triangle that started the current iteration.
     pub fn first(&self) -> Option<&CoherentTriangle> {
         {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriPtr_Iterator_first(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Poly_CoherentTriPtr_Iterator_first(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1755,67 +1265,46 @@ impl CoherentTriPtr_Iterator {
     /// **Source:** `Poly_CoherentTriPtr.hxx`:66 - `Poly_CoherentTriPtr_Iterator::More()`
     /// Query if there is available triangle pointer on this iteration
     pub fn more(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriPtr_Iterator_more(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriPtr_Iterator_more(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriPtr.hxx`:69 - `Poly_CoherentTriPtr_Iterator::Next()`
     /// Go to the next iteration.
     pub fn next(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_CoherentTriPtr_Iterator_next(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriPtr_Iterator_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriPtr.hxx`:72 - `Poly_CoherentTriPtr_Iterator::Value()`
     /// Get the current iterated triangle
     pub fn value(&self) -> &CoherentTriangle {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriPtr_Iterator_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_CoherentTriPtr_Iterator_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_CoherentTriPtr.hxx`:75 - `Poly_CoherentTriPtr_Iterator::ChangeValue()`
     /// Get the current iterated triangle (mutable)
     pub fn change_value(&mut self) -> &mut CoherentTriangle {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriPtr_Iterator_change_value(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_CoherentTriPtr_Iterator_change_value(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_CoherentTriPtr.hxx`:81 - `Poly_CoherentTriPtr_Iterator::PtrValue()`
     /// Get the current iterated pointer to triangle
     pub fn ptr_value(&self) -> &CoherentTriPtr {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriPtr_Iterator_ptr_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_CoherentTriPtr_Iterator_ptr_value(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1841,12 +1330,8 @@ impl CoherentTriangle {
     ///
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentTriangle_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_CoherentTriangle_ctor()))
         }
     }
 
@@ -1854,13 +1339,10 @@ impl CoherentTriangle {
     ///
     /// Constructor.
     pub fn new_int3(iNode0: i32, iNode1: i32, iNode2: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangle_ctor_int3(iNode0, iNode1, iNode2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentTriangle_ctor_int3(iNode0, iNode1, iNode2),
+            ))
         }
     }
 
@@ -1868,30 +1350,18 @@ impl CoherentTriangle {
     ///
     /// Query the node index in the position given by the parameter 'ind'
     pub fn node(&self, ind: i32) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangle_node(self as *const Self, ind) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangle_node(self as *const Self, ind)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangle.hxx`:60 - `Poly_CoherentTriangle::IsEmpty()`
     ///
     /// Query if this is a valid triangle.
     pub fn is_empty(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangle_is_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangle_is_empty(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangle.hxx`:78 - `Poly_CoherentTriangle::SetConnection()`
@@ -1912,20 +1382,13 @@ impl CoherentTriangle {
         iConn: i32,
         theTr: &mut CoherentTriangle,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangle_set_connection_int_coherenttriangle(
-                    self as *mut Self,
-                    iConn,
-                    theTr,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangle_set_connection_int_coherenttriangle(
+                self as *mut Self,
+                iConn,
+                theTr,
+            )
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangle.hxx`:92 - `Poly_CoherentTriangle::SetConnection()`
@@ -1940,19 +1403,12 @@ impl CoherentTriangle {
     /// True if successful, False if the connection is rejected
     /// due to improper topology.
     pub fn set_connection_coherenttriangle(&mut self, theTri: &mut CoherentTriangle) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangle_set_connection_coherenttriangle(
-                    self as *mut Self,
-                    theTri,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangle_set_connection_coherenttriangle(
+                self as *mut Self,
+                theTri,
+            )
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangle.hxx`:100 - `Poly_CoherentTriangle::RemoveConnection()`
@@ -1962,14 +1418,9 @@ impl CoherentTriangle {
     /// Can be 0, 1 or 2 - index of the node that is opposite to the connection
     /// (shared link).
     pub fn remove_connection_int(&mut self, iConn: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentTriangle_remove_connection_int(self as *mut Self, iConn)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriangle_remove_connection_int(self as *mut Self, iConn)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangle.hxx`:107 - `Poly_CoherentTriangle::RemoveConnection()`
@@ -1978,34 +1429,21 @@ impl CoherentTriangle {
     /// @return
     /// True if successfuol or False if the connection has not been found.
     pub fn remove_connection_coherenttriangle(&mut self, theTri: &mut CoherentTriangle) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangle_remove_connection_coherenttriangle(
-                    self as *mut Self,
-                    theTri,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangle_remove_connection_coherenttriangle(
+                self as *mut Self,
+                theTri,
+            )
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangle.hxx`:112 - `Poly_CoherentTriangle::NConnections()`
     ///
     /// Query the number of connected triangles.
     pub fn n_connections(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangle_n_connections(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangle_n_connections(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangle.hxx`:118 - `Poly_CoherentTriangle::GetConnectedNode()`
@@ -2013,16 +1451,9 @@ impl CoherentTriangle {
     /// Query the connected node on the given side.
     /// Returns -1 if there is no connection on the specified side.
     pub fn get_connected_node(&self, iConn: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangle_get_connected_node(self as *const Self, iConn)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangle_get_connected_node(self as *const Self, iConn)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangle.hxx`:127 - `Poly_CoherentTriangle::GetConnectedTri()`
@@ -2031,13 +1462,9 @@ impl CoherentTriangle {
     /// Returns NULL if there is no connection on the specified side.
     pub fn get_connected_tri(&self, iConn: i32) -> Option<&CoherentTriangle> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::Poly_CoherentTriangle_get_connected_tri(self as *const Self, iConn)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2052,12 +1479,9 @@ impl CoherentTriangle {
     /// May return NULL if there are no links in the triangulation.
     pub fn get_link(&self, iLink: i32) -> Option<&CoherentLink> {
         {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangle_get_link(self as *const Self, iLink) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Poly_CoherentTriangle_get_link(self as *const Self, iLink)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2070,16 +1494,9 @@ impl CoherentTriangle {
     ///
     /// Returns the index of the connection with the given triangle, or -1 if not found.
     pub fn find_connection(&self, arg0: &CoherentTriangle) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangle_find_connection(self as *const Self, arg0)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangle_find_connection(self as *const Self, arg0)
+        })
     }
 }
 
@@ -2170,14 +1587,12 @@ impl CoherentTriangulation {
     pub fn new_handlencollectionbaseallocator(
         theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_ctor_handlencollectionbaseallocator(theAlloc)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentTriangulation_ctor_handlencollectionbaseallocator(
+                    theAlloc,
+                ),
+            ))
         }
     }
 
@@ -2189,14 +1604,8 @@ impl CoherentTriangulation {
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
         theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_ctor_handlepolytriangulation_handlencollectionbaseallocator(theTriangulation, theAlloc)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_CoherentTriangulation_ctor_handlepolytriangulation_handlencollectionbaseallocator(theTriangulation, theAlloc)))
         }
     }
 
@@ -2204,15 +1613,10 @@ impl CoherentTriangulation {
     ///
     /// Create an instance of Poly_Triangulation from this object.
     pub fn get_triangulation(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_get_triangulation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentTriangulation_get_triangulation(self as *const Self),
+            ))
         }
     }
 
@@ -2225,75 +1629,45 @@ impl CoherentTriangulation {
     /// @param lstNodes
     /// <tt>[out]</tt> List that receives the indices of free nodes.
     pub fn get_free_nodes(&self, lstNodes: &mut crate::ffi::TColStd_ListOfInteger) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_get_free_nodes(self as *const Self, lstNodes)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_get_free_nodes(self as *const Self, lstNodes)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:214 - `Poly_CoherentTriangulation::MaxNode()`
     ///
     /// Query the index of the last node in the triangulation
     pub fn max_node(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_max_node(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_max_node(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:219 - `Poly_CoherentTriangulation::MaxTriangle()`
     ///
     /// Query the index of the last triangle in the triangulation
     pub fn max_triangle(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_max_triangle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_max_triangle(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:224 - `Poly_CoherentTriangulation::SetDeflection()`
     ///
     /// Set the Deflection value as the parameter of the given triangulation.
     pub fn set_deflection(&mut self, theDefl: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_set_deflection(self as *mut Self, theDefl)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_set_deflection(self as *mut Self, theDefl)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:229 - `Poly_CoherentTriangulation::Deflection()`
     ///
     /// Query the Deflection parameter (default value 0. -- if never initialized)
     pub fn deflection(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_deflection(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_deflection(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:241 - `Poly_CoherentTriangulation::SetNode()`
@@ -2307,30 +1681,20 @@ impl CoherentTriangulation {
     /// @return
     /// Index of the added node.
     pub fn set_node(&mut self, thePnt: &crate::gp::XYZ, iN: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_set_node(self as *mut Self, thePnt, iN)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_set_node(self as *mut Self, thePnt, iN)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:246 - `Poly_CoherentTriangulation::Node()`
     ///
     /// Get the node at the given index 'i'.
     pub fn node(&self, i: i32) -> &CoherentNode {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_node(self as *const Self, i) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_CoherentTriangulation_node(
+                self as *const Self,
+                i,
+            )))
         }
     }
 
@@ -2338,14 +1702,11 @@ impl CoherentTriangulation {
     ///
     /// Get the node at the given index 'i'.
     pub fn change_node(&mut self, i: i32) -> &mut CoherentNode {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_change_node(self as *mut Self, i) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_CoherentTriangulation_change_node(
+                self as *mut Self,
+                i,
+            )))
         }
     }
 
@@ -2354,29 +1715,20 @@ impl CoherentTriangulation {
     /// Query the total number of active nodes (i.e. nodes used by 1 or more
     /// triangles)
     pub fn n_nodes(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_n_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_n_nodes(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:262 - `Poly_CoherentTriangulation::Triangle()`
     ///
     /// Get the triangle at the given index 'i'.
     pub fn triangle(&self, i: i32) -> &CoherentTriangle {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_triangle(self as *const Self, i) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_CoherentTriangulation_triangle(
+                self as *const Self,
+                i,
+            )))
         }
     }
 
@@ -2385,60 +1737,36 @@ impl CoherentTriangulation {
     /// Query the total number of active triangles (i.e. triangles that refer
     /// nodes, non-empty ones)
     pub fn n_triangles(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_n_triangles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_n_triangles(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:276 - `Poly_CoherentTriangulation::NLinks()`
     ///
     /// Query the total number of active Links.
     pub fn n_links(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_n_links(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_n_links(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:281 - `Poly_CoherentTriangulation::RemoveTriangle()`
     ///
     /// Removal of a single triangle from the triangulation.
     pub fn remove_triangle(&mut self, theTr: &mut CoherentTriangle) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_remove_triangle(self as *mut Self, theTr)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_remove_triangle(self as *mut Self, theTr)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:286 - `Poly_CoherentTriangulation::RemoveLink()`
     ///
     /// Removal of a single link from the triangulation.
     pub fn remove_link(&mut self, theLink: &mut CoherentLink) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_remove_link(self as *mut Self, theLink)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_remove_link(self as *mut Self, theLink)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:293 - `Poly_CoherentTriangulation::AddTriangle()`
@@ -2453,18 +1781,14 @@ impl CoherentTriangulation {
         iNode2: i32,
     ) -> Option<&mut CoherentTriangle> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::Poly_CoherentTriangulation_add_triangle(
                     self as *mut Self,
                     iNode0,
                     iNode1,
                     iNode2,
                 )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2485,22 +1809,15 @@ impl CoherentTriangulation {
         iNode1: i32,
         iNode2: i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_replace_nodes(
-                    self as *mut Self,
-                    theTriangle,
-                    iNode0,
-                    iNode1,
-                    iNode2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_replace_nodes(
+                self as *mut Self,
+                theTriangle,
+                iNode0,
+                iNode1,
+                iNode2,
+            )
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:315 - `Poly_CoherentTriangulation::AddLink()`
@@ -2517,13 +1834,9 @@ impl CoherentTriangulation {
         theConn: i32,
     ) -> Option<&mut CoherentLink> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::Poly_CoherentTriangulation_add_link(self as *mut Self, theTri, theConn)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2549,48 +1862,31 @@ impl CoherentTriangulation {
         theLink: &CoherentLink,
         pTri: &mut [*const CoherentTriangle; 2],
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_find_triangle(
-                    self as *const Self,
-                    theLink,
-                    pTri.as_mut_ptr(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_find_triangle(
+                self as *const Self,
+                theLink,
+                pTri.as_mut_ptr(),
+            )
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:336 - `Poly_CoherentTriangulation::ComputeLinks()`
     ///
     /// (Re)Calculate all links in this Triangulation.
     pub fn compute_links(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_compute_links(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_compute_links(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:341 - `Poly_CoherentTriangulation::ClearLinks()`
     ///
     /// Clear all Links data from the Triangulation data.
     pub fn clear_links(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_clear_links(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_clear_links(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:347 - `Poly_CoherentTriangulation::Allocator()`
@@ -2598,14 +1894,10 @@ impl CoherentTriangulation {
     /// Query the allocator of elements, this allocator can be used for other
     /// objects
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_allocator(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_CoherentTriangulation_allocator(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2616,15 +1908,10 @@ impl CoherentTriangulation {
         &self,
         theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyCoherentTriangulation> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_clone(self as *const Self, theAlloc)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentTriangulation_clone(self as *const Self, theAlloc),
+            ))
         }
     }
 
@@ -2632,129 +1919,90 @@ impl CoherentTriangulation {
     ///
     /// Debugging output.
     pub fn dump(&self, arg0: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_dump(self as *const Self, arg0) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_dump(self as *const Self, arg0)
+        })
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:374 - `Poly_CoherentTriangulation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_CoherentTriangulation_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_CoherentTriangulation_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:374 - `Poly_CoherentTriangulation::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentTriangulation_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Poly_CoherentTriangulation_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:374 - `Poly_CoherentTriangulation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Poly_CoherentTriangulation_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_CoherentTriangulation_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Poly_CoherentTriangulation_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_CoherentTriangulation_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Poly_CoherentTriangulation_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Poly_CoherentTriangulation_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyCoherentTriangulation> {
-        let __result = unsafe { crate::ffi::Poly_CoherentTriangulation_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_CoherentTriangulation_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::Poly_CoherentTriangulation_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2765,58 +2013,30 @@ impl CoherentTriangulation {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2831,35 +2051,31 @@ unsafe impl crate::CppDeletable for HandlePolyCoherentTriangulation {
 impl HandlePolyCoherentTriangulation {
     /// Dereference this Handle to access the underlying Poly_CoherentTriangulation
     pub fn get(&self) -> &crate::ffi::Poly_CoherentTriangulation {
-        let __result =
-            unsafe { crate::ffi::HandlePolyCoherentTriangulation_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandlePolyCoherentTriangulation_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Poly_CoherentTriangulation
     pub fn get_mut(&mut self) -> &mut crate::ffi::Poly_CoherentTriangulation {
-        let __result =
-            unsafe { crate::ffi::HandlePolyCoherentTriangulation_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandlePolyCoherentTriangulation_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Poly_CoherentTriangulation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandlePolyCoherentTriangulation_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandlePolyCoherentTriangulation_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2889,28 +2105,17 @@ impl CoherentTriangulation_IteratorOfTriangle {
     pub fn new_handlepolycoherenttriangulation(
         theTri: &crate::ffi::HandlePolyCoherentTriangulation,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_IteratorOfTriangle_ctor_handlepolycoherenttriangulation(theTri)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_CoherentTriangulation_IteratorOfTriangle_ctor_handlepolycoherenttriangulation(theTri)))
         }
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:118 - `Poly_CoherentTriangulation_IteratorOfTriangle::Next()`
     /// Make step
     pub fn next(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_IteratorOfTriangle_next(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_IteratorOfTriangle_next(self as *mut Self)
+        })
     }
 }
 
@@ -2931,28 +2136,17 @@ impl CoherentTriangulation_IteratorOfNode {
     pub fn new_handlepolycoherenttriangulation(
         theTri: &crate::ffi::HandlePolyCoherentTriangulation,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_IteratorOfNode_ctor_handlepolycoherenttriangulation(theTri)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_CoherentTriangulation_IteratorOfNode_ctor_handlepolycoherenttriangulation(theTri)))
         }
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:130 - `Poly_CoherentTriangulation_IteratorOfNode::Next()`
     /// Make step
     pub fn next(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_IteratorOfNode_next(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_IteratorOfNode_next(self as *mut Self)
+        })
     }
 }
 
@@ -2973,28 +2167,17 @@ impl CoherentTriangulation_IteratorOfLink {
     pub fn new_handlepolycoherenttriangulation(
         theTri: &crate::ffi::HandlePolyCoherentTriangulation,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_IteratorOfLink_ctor_handlepolycoherenttriangulation(theTri)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_CoherentTriangulation_IteratorOfLink_ctor_handlepolycoherenttriangulation(theTri)))
         }
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:142 - `Poly_CoherentTriangulation_IteratorOfLink::Next()`
     /// Make step
     pub fn next(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_CoherentTriangulation_IteratorOfLink_next(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_CoherentTriangulation_IteratorOfLink_next(self as *mut Self)
+        })
     }
 }
 
@@ -3058,13 +2241,7 @@ impl Connect {
     /// **Source:** `Poly_Connect.hxx`:69 - `Poly_Connect::Poly_Connect()`
     /// Constructs an uninitialized algorithm.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_Connect_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_Connect_ctor())) }
     }
 
     /// **Source:** `Poly_Connect.hxx`:73 - `Poly_Connect::Poly_Connect()`
@@ -3073,13 +2250,10 @@ impl Connect {
     pub fn new_handlepolytriangulation(
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Connect_ctor_handlepolytriangulation(theTriangulation) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Connect_ctor_handlepolytriangulation(theTriangulation),
+            ))
         }
     }
 
@@ -3087,25 +2261,16 @@ impl Connect {
     /// Initialize the algorithm to explore the adjacency data of
     /// nodes or triangles for the triangulation theTriangulation.
     pub fn load(&mut self, theTriangulation: &crate::ffi::HandlePolyTriangulation) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_Connect_load(self as *mut Self, theTriangulation) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Connect_load(self as *mut Self, theTriangulation)
+        })
     }
 
     /// **Source:** `Poly_Connect.hxx`:80 - `Poly_Connect::Triangulation()`
     /// Returns the triangulation analyzed by this tool.
     pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
-        {
-            let __result = unsafe { crate::ffi::Poly_Connect_triangulation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_Connect_triangulation(self as *const Self)))
         }
     }
 
@@ -3113,14 +2278,7 @@ impl Connect {
     /// Returns the index of a triangle containing the node at
     /// index N in the nodes table specific to the triangulation analyzed by this tool
     pub fn triangle(&self, N: i32) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Poly_Connect_triangle(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_Connect_triangle(self as *const Self, N) })
     }
 
     /// **Source:** `Poly_Connect.hxx`:92 - `Poly_Connect::Triangles()`
@@ -3131,13 +2289,9 @@ impl Connect {
     /// Null indices are returned when there are fewer than 3
     /// adjacent triangles.
     pub fn triangles(&self, T: i32, t1: &mut i32, t2: &mut i32, t3: &mut i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_Connect_triangles(self as *const Self, T, t1, t2, t3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Connect_triangles(self as *const Self, T, t1, t2, t3)
+        })
     }
 
     /// **Source:** `Poly_Connect.hxx`:108 - `Poly_Connect::Nodes()`
@@ -3147,13 +2301,9 @@ impl Connect {
     /// Warning
     /// Null indices are returned when there are fewer than 3 adjacent nodes.
     pub fn nodes(&self, T: i32, n1: &mut i32, n2: &mut i32, n3: &mut i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_Connect_nodes(self as *const Self, T, n1, n2, n3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Connect_nodes(self as *const Self, T, n1, n2, n3)
+        })
     }
 
     /// **Source:** `Poly_Connect.hxx`:137 - `Poly_Connect::Initialize()`
@@ -3175,12 +2325,9 @@ impl Connect {
     /// t = C.Value();
     /// }
     pub fn initialize(&mut self, N: i32) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_Connect_initialize(self as *mut Self, N) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Connect_initialize(self as *mut Self, N)
+        })
     }
 
     /// **Source:** `Poly_Connect.hxx`:142 - `Poly_Connect::More()`
@@ -3188,14 +2335,7 @@ impl Connect {
     /// defined with the function Initialize (i.e. if there is another
     /// triangle containing the given node).
     pub fn more(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Poly_Connect_more(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_Connect_more(self as *const Self) })
     }
 
     /// **Source:** `Poly_Connect.hxx`:148 - `Poly_Connect::Next()`
@@ -3204,12 +2344,7 @@ impl Connect {
     /// Note: There is no action if the iterator is empty (i.e. if the
     /// function More returns false).-
     pub fn next(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_Connect_next(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Poly_Connect_next(self as *mut Self) })
     }
 
     /// **Source:** `Poly_Connect.hxx`:154 - `Poly_Connect::Value()`
@@ -3218,14 +2353,7 @@ impl Connect {
     /// an index in the triangles table specific to the triangulation
     /// analyzed by this tool
     pub fn value(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Poly_Connect_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_Connect_value(self as *const Self) })
     }
 }
 
@@ -3245,24 +2373,19 @@ unsafe impl crate::CppDeletable for HArray1OfTriangle {
 impl HArray1OfTriangle {
     /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_HArray1OfTriangle_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::Poly_HArray1OfTriangle_ctor()),
+            )
         }
     }
 
     /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_HArray1OfTriangle_ctor_int2(theLower, theUpper) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_HArray1OfTriangle_ctor_int2(theLower, theUpper),
+            ))
         }
     }
 
@@ -3272,14 +2395,10 @@ impl HArray1OfTriangle {
         theUpper: i32,
         theValue: &Triangle,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_HArray1OfTriangle_ctor_int2_triangle(theLower, theUpper, theValue)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_HArray1OfTriangle_ctor_int2_triangle(theLower, theUpper, theValue),
+            ))
         }
     }
 
@@ -3290,16 +2409,12 @@ impl HArray1OfTriangle {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_HArray1OfTriangle_ctor_triangle_int2_bool(
                     theBegin, theLower, theUpper, arg3,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3307,152 +2422,103 @@ impl HArray1OfTriangle {
     pub fn new_array1oftriangle(
         theOther: &crate::ffi::Poly_Array1OfTriangle,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_HArray1OfTriangle_ctor_array1oftriangle(theOther) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_HArray1OfTriangle_ctor_array1oftriangle(theOther),
+            ))
         }
     }
 
     /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Array1()`
     pub fn array1(&self) -> &crate::ffi::Poly_Array1OfTriangle {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_HArray1OfTriangle_array1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_HArray1OfTriangle_array1(self as *const Self)))
         }
     }
 
     /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::Poly_Array1OfTriangle {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_HArray1OfTriangle_change_array1(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_HArray1OfTriangle_change_array1(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_HArray1OfTriangle_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_HArray1OfTriangle_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Poly_HArray1OfTriangle_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Poly_HArray1OfTriangle_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Poly_HArray1OfTriangle_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Poly_HArray1OfTriangle_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Poly_HArray1OfTriangle_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_HArray1OfTriangle_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Poly_HArray1OfTriangle_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Poly_HArray1OfTriangle_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyHArray1OfTriangle> {
-        let __result = unsafe { crate::ffi::Poly_HArray1OfTriangle_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_HArray1OfTriangle_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_HArray1OfTriangle_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_HArray1OfTriangle_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_HArray1OfTriangle_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_HArray1OfTriangle_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Poly_HArray1OfTriangle_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Poly_HArray1OfTriangle_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3463,53 +2529,30 @@ impl HArray1OfTriangle {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_HArray1OfTriangle_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_HArray1OfTriangle_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_HArray1OfTriangle_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_HArray1OfTriangle_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_HArray1OfTriangle_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_HArray1OfTriangle_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_HArray1OfTriangle_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_HArray1OfTriangle_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3524,32 +2567,29 @@ unsafe impl crate::CppDeletable for HandlePolyHArray1OfTriangle {
 impl HandlePolyHArray1OfTriangle {
     /// Dereference this Handle to access the underlying Poly_HArray1OfTriangle
     pub fn get(&self) -> &crate::ffi::Poly_HArray1OfTriangle {
-        let __result = unsafe { crate::ffi::HandlePolyHArray1OfTriangle_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandlePolyHArray1OfTriangle_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Poly_HArray1OfTriangle
     pub fn get_mut(&mut self) -> &mut crate::ffi::Poly_HArray1OfTriangle {
-        let __result =
-            unsafe { crate::ffi::HandlePolyHArray1OfTriangle_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandlePolyHArray1OfTriangle_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Poly_HArray1OfTriangle> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandlePolyHArray1OfTriangle_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandlePolyHArray1OfTriangle_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3577,39 +2617,26 @@ impl MakeLoops {
         theHelper: &MakeLoops_Helper,
         theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops_reset(self as *mut Self, theHelper as *const _, theAlloc)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops_reset(self as *mut Self, theHelper as *const _, theAlloc)
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:190 - `Poly_MakeLoops::AddLink()`
     /// Adds a link to the set. theOrient defines which orientations of the link
     /// are allowed.
     pub fn add_link(&mut self, theLink: &MakeLoops_Link) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_MakeLoops_add_link(self as *mut Self, theLink) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops_add_link(self as *mut Self, theLink)
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:193 - `Poly_MakeLoops::ReplaceLink()`
     /// Replace one link with another (e.g. to change order of nodes)
     pub fn replace_link(&mut self, theLink: &MakeLoops_Link, theNewLink: &MakeLoops_Link) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops_replace_link(self as *mut Self, theLink, theNewLink)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops_replace_link(self as *mut Self, theLink, theNewLink)
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:198 - `Poly_MakeLoops::SetLinkOrientation()`
@@ -3621,101 +2648,65 @@ impl MakeLoops {
         theLink: &MakeLoops_Link,
         theOrient: &crate::ffi::Poly_MakeLoops_LinkFlag,
     ) -> crate::OwnedPtr<crate::ffi::Poly_MakeLoops_LinkFlag> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_MakeLoops_set_link_orientation(
                     self as *mut Self,
                     theLink,
                     theOrient,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:201 - `Poly_MakeLoops::FindLink()`
     /// Find the link stored in algo by value
     pub fn find_link(&self, theLink: &MakeLoops_Link) -> crate::OwnedPtr<MakeLoops_Link> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops_find_link(self as *const Self, theLink) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_MakeLoops_find_link(
+                self as *const Self,
+                theLink,
+            )))
         }
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:211 - `Poly_MakeLoops::Perform()`
     /// Does the work. Returns the collection of result codes
     pub fn perform(&mut self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Poly_MakeLoops_perform(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_MakeLoops_perform(self as *mut Self) })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:214 - `Poly_MakeLoops::GetNbLoops()`
     /// Returns the number of loops in the result
     pub fn get_nb_loops(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Poly_MakeLoops_get_nb_loops(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_MakeLoops_get_nb_loops(self as *const Self) })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:217 - `Poly_MakeLoops::GetLoop()`
     /// Returns the loop of the given index
     pub fn get_loop(&self, theIndex: i32) -> &crate::ffi::Poly_MakeLoops_Loop {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops_get_loop(self as *const Self, theIndex) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_MakeLoops_get_loop(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:220 - `Poly_MakeLoops::GetNbHanging()`
     /// Returns the number of detected hanging chains
     pub fn get_nb_hanging(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops_get_nb_hanging(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops_get_nb_hanging(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:223 - `Poly_MakeLoops::GetHangingLinks()`
     /// Fills in the list of hanging links
     pub fn get_hanging_links(&self, theLinks: &mut crate::ffi::Poly_MakeLoops_ListOfLink) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops_get_hanging_links(self as *const Self, theLinks)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops_get_hanging_links(self as *const Self, theLinks)
+        })
     }
 }
 
@@ -3743,29 +2734,20 @@ impl MakeLoops_Helper {
     /// **Source:** `Poly_MakeLoops.hxx`:108 - `Poly_MakeLoops_Helper::GetAdjacentLinks()`
     /// returns the links adjacent to the given node
     pub fn get_adjacent_links(&self, theNode: i32) -> &crate::ffi::Poly_MakeLoops_ListOfLink {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops_Helper_get_adjacent_links(self as *const Self, theNode)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_MakeLoops_Helper_get_adjacent_links(
+                self as *const Self,
+                theNode,
+            )))
         }
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:111 - `Poly_MakeLoops_Helper::OnAddLink()`
     /// hook function called from AddLink in _DEBUG mode
     pub fn on_add_link(&self, arg0: i32, arg1: &MakeLoops_Link) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops_Helper_on_add_link(self as *const Self, arg0, arg1)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops_Helper_on_add_link(self as *const Self, arg0, arg1)
+        })
     }
 }
 
@@ -3784,13 +2766,10 @@ unsafe impl crate::CppDeletable for MakeLoops_HeapOfInteger {
 impl MakeLoops_HeapOfInteger {
     /// **Source:** `Poly_MakeLoops.hxx`:120 - `Poly_MakeLoops_HeapOfInteger::Poly_MakeLoops_HeapOfInteger()`
     pub fn new_int(theNbPreAllocated: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops_HeapOfInteger_ctor_int(theNbPreAllocated) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_MakeLoops_HeapOfInteger_ctor_int(theNbPreAllocated),
+            ))
         }
     }
 
@@ -3801,77 +2780,44 @@ impl MakeLoops_HeapOfInteger {
 
     /// **Source:** `Poly_MakeLoops.hxx`:126 - `Poly_MakeLoops_HeapOfInteger::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_MakeLoops_HeapOfInteger_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops_HeapOfInteger_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:132 - `Poly_MakeLoops_HeapOfInteger::Add()`
     pub fn add(&mut self, theValue: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops_HeapOfInteger_add(self as *mut Self, theValue)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops_HeapOfInteger_add(self as *mut Self, theValue)
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:138 - `Poly_MakeLoops_HeapOfInteger::Top()`
     pub fn top(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops_HeapOfInteger_top(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops_HeapOfInteger_top(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:148 - `Poly_MakeLoops_HeapOfInteger::Contains()`
     pub fn contains(&self, theValue: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops_HeapOfInteger_contains(self as *const Self, theValue)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops_HeapOfInteger_contains(self as *const Self, theValue)
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:153 - `Poly_MakeLoops_HeapOfInteger::Remove()`
     pub fn remove(&mut self, theValue: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops_HeapOfInteger_remove(self as *mut Self, theValue)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops_HeapOfInteger_remove(self as *mut Self, theValue)
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:160 - `Poly_MakeLoops_HeapOfInteger::IsEmpty()`
     pub fn is_empty(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops_HeapOfInteger_is_empty(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops_HeapOfInteger_is_empty(self as *mut Self)
+        })
     }
 }
 
@@ -3892,38 +2838,32 @@ impl MakeLoops3D {
         theHelper: &MakeLoops3D_Helper,
         theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_MakeLoops3D_ctor_helperptr_handlencollectionbaseallocator(
                     theHelper as *const _,
                     theAlloc,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// Upcast to Poly_MakeLoops
     pub fn as_make_loops(&self) -> &MakeLoops {
-        let __result =
-            unsafe { crate::ffi::Poly_MakeLoops3D_as_Poly_MakeLoops(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_MakeLoops3D_as_Poly_MakeLoops(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Poly_MakeLoops (mutable)
     pub fn as_make_loops_mut(&mut self) -> &mut MakeLoops {
-        let __result =
-            unsafe { crate::ffi::Poly_MakeLoops3D_as_Poly_MakeLoops_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Poly_MakeLoops3D_as_Poly_MakeLoops_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:185 - `Poly_MakeLoops::Reset()`
@@ -3932,46 +2872,31 @@ impl MakeLoops3D {
         theHelper: &MakeLoops_Helper,
         theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops3D_inherited_Reset(
-                    self as *mut Self,
-                    theHelper as *const _,
-                    theAlloc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops3D_inherited_Reset(
+                self as *mut Self,
+                theHelper as *const _,
+                theAlloc,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:190 - `Poly_MakeLoops::AddLink()`
     pub fn add_link(&mut self, theLink: &MakeLoops_Link) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops3D_inherited_AddLink(self as *mut Self, theLink)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops3D_inherited_AddLink(self as *mut Self, theLink)
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:193 - `Poly_MakeLoops::ReplaceLink()`
     pub fn replace_link(&mut self, theLink: &MakeLoops_Link, theNewLink: &MakeLoops_Link) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops3D_inherited_ReplaceLink(
-                    self as *mut Self,
-                    theLink,
-                    theNewLink,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops3D_inherited_ReplaceLink(
+                self as *mut Self,
+                theLink,
+                theNewLink,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:198 - `Poly_MakeLoops::SetLinkOrientation()`
@@ -3980,102 +2905,62 @@ impl MakeLoops3D {
         theLink: &MakeLoops_Link,
         theOrient: &crate::ffi::Poly_MakeLoops_LinkFlag,
     ) -> crate::OwnedPtr<crate::ffi::Poly_MakeLoops_LinkFlag> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_MakeLoops3D_inherited_SetLinkOrientation(
                     self as *mut Self,
                     theLink,
                     theOrient,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:201 - `Poly_MakeLoops::FindLink()`
     pub fn find_link(&self, theLink: &MakeLoops_Link) -> crate::OwnedPtr<MakeLoops_Link> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops3D_inherited_FindLink(self as *const Self, theLink)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_MakeLoops3D_inherited_FindLink(self as *const Self, theLink),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:211 - `Poly_MakeLoops::Perform()`
     pub fn perform(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops3D_inherited_Perform(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops3D_inherited_Perform(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:214 - `Poly_MakeLoops::GetNbLoops()`
     pub fn get_nb_loops(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops3D_inherited_GetNbLoops(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops3D_inherited_GetNbLoops(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:217 - `Poly_MakeLoops::GetLoop()`
     pub fn get_loop(&self, theIndex: i32) -> &crate::ffi::Poly_MakeLoops_Loop {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops3D_inherited_GetLoop(self as *const Self, theIndex)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_MakeLoops3D_inherited_GetLoop(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:220 - `Poly_MakeLoops::GetNbHanging()`
     pub fn get_nb_hanging(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops3D_inherited_GetNbHanging(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops3D_inherited_GetNbHanging(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:223 - `Poly_MakeLoops::GetHangingLinks()`
     pub fn get_hanging_links(&self, theLinks: &mut crate::ffi::Poly_MakeLoops_ListOfLink) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops3D_inherited_GetHangingLinks(
-                    self as *const Self,
-                    theLinks,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops3D_inherited_GetHangingLinks(self as *const Self, theLinks)
+        })
     }
 }
 
@@ -4093,109 +2978,68 @@ impl MakeLoops3D_Helper {
     /// **Source:** `Poly_MakeLoops.hxx`:281 - `Poly_MakeLoops3D_Helper::GetFirstTangent()`
     /// returns the tangent vector at the first node of a link
     pub fn get_first_tangent(&self, theLink: &MakeLoops_Link, theDir: &mut crate::gp::Dir) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops3D_Helper_get_first_tangent(
-                    self as *const Self,
-                    theLink,
-                    theDir,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops3D_Helper_get_first_tangent(
+                self as *const Self,
+                theLink,
+                theDir,
+            )
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:284 - `Poly_MakeLoops3D_Helper::GetLastTangent()`
     /// returns the tangent vector at the last node of a link
     pub fn get_last_tangent(&self, theLink: &MakeLoops_Link, theDir: &mut crate::gp::Dir) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops3D_Helper_get_last_tangent(
-                    self as *const Self,
-                    theLink,
-                    theDir,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops3D_Helper_get_last_tangent(
+                self as *const Self,
+                theLink,
+                theDir,
+            )
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:287 - `Poly_MakeLoops3D_Helper::GetNormal()`
     /// returns the normal to the surface at a given node
     pub fn get_normal(&self, theNode: i32, theDir: &mut crate::gp::Dir) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops3D_Helper_get_normal(self as *const Self, theNode, theDir)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops3D_Helper_get_normal(self as *const Self, theNode, theDir)
+        })
     }
 
     /// Upcast to Poly_MakeLoops_Helper
     pub fn as_make_loops_helper(&self) -> &MakeLoops_Helper {
-        let __result = unsafe {
-            crate::ffi::Poly_MakeLoops3D_Helper_as_Poly_MakeLoops_Helper(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_MakeLoops3D_Helper_as_Poly_MakeLoops_Helper(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Poly_MakeLoops_Helper (mutable)
     pub fn as_make_loops_helper_mut(&mut self) -> &mut MakeLoops_Helper {
-        let __result = unsafe {
-            crate::ffi::Poly_MakeLoops3D_Helper_as_Poly_MakeLoops_Helper_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Poly_MakeLoops3D_Helper_as_Poly_MakeLoops_Helper_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:108 - `Poly_MakeLoops::Helper::GetAdjacentLinks()`
     pub fn get_adjacent_links(&self, theNode: i32) -> &crate::ffi::Poly_MakeLoops_ListOfLink {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops3D_Helper_inherited_GetAdjacentLinks(
-                    self as *const Self,
-                    theNode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_MakeLoops3D_Helper_inherited_GetAdjacentLinks(
+                self as *const Self,
+                theNode,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:111 - `Poly_MakeLoops::Helper::OnAddLink()`
     pub fn on_add_link(&self, arg0: i32, arg1: &MakeLoops_Link) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops3D_Helper_inherited_OnAddLink(
-                    self as *const Self,
-                    arg0,
-                    arg1,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops3D_Helper_inherited_OnAddLink(self as *const Self, arg0, arg1)
+        })
     }
 }
 
@@ -4217,39 +3061,33 @@ impl MakeLoops2D {
         theHelper: &MakeLoops2D_Helper,
         theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_MakeLoops2D_ctor_bool_helperptr_handlencollectionbaseallocator(
                     theLeftWay,
                     theHelper as *const _,
                     theAlloc,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// Upcast to Poly_MakeLoops
     pub fn as_make_loops(&self) -> &MakeLoops {
-        let __result =
-            unsafe { crate::ffi::Poly_MakeLoops2D_as_Poly_MakeLoops(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_MakeLoops2D_as_Poly_MakeLoops(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Poly_MakeLoops (mutable)
     pub fn as_make_loops_mut(&mut self) -> &mut MakeLoops {
-        let __result =
-            unsafe { crate::ffi::Poly_MakeLoops2D_as_Poly_MakeLoops_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Poly_MakeLoops2D_as_Poly_MakeLoops_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:185 - `Poly_MakeLoops::Reset()`
@@ -4258,46 +3096,31 @@ impl MakeLoops2D {
         theHelper: &MakeLoops_Helper,
         theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops2D_inherited_Reset(
-                    self as *mut Self,
-                    theHelper as *const _,
-                    theAlloc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops2D_inherited_Reset(
+                self as *mut Self,
+                theHelper as *const _,
+                theAlloc,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:190 - `Poly_MakeLoops::AddLink()`
     pub fn add_link(&mut self, theLink: &MakeLoops_Link) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops2D_inherited_AddLink(self as *mut Self, theLink)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops2D_inherited_AddLink(self as *mut Self, theLink)
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:193 - `Poly_MakeLoops::ReplaceLink()`
     pub fn replace_link(&mut self, theLink: &MakeLoops_Link, theNewLink: &MakeLoops_Link) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops2D_inherited_ReplaceLink(
-                    self as *mut Self,
-                    theLink,
-                    theNewLink,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops2D_inherited_ReplaceLink(
+                self as *mut Self,
+                theLink,
+                theNewLink,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:198 - `Poly_MakeLoops::SetLinkOrientation()`
@@ -4306,102 +3129,62 @@ impl MakeLoops2D {
         theLink: &MakeLoops_Link,
         theOrient: &crate::ffi::Poly_MakeLoops_LinkFlag,
     ) -> crate::OwnedPtr<crate::ffi::Poly_MakeLoops_LinkFlag> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_MakeLoops2D_inherited_SetLinkOrientation(
                     self as *mut Self,
                     theLink,
                     theOrient,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:201 - `Poly_MakeLoops::FindLink()`
     pub fn find_link(&self, theLink: &MakeLoops_Link) -> crate::OwnedPtr<MakeLoops_Link> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops2D_inherited_FindLink(self as *const Self, theLink)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_MakeLoops2D_inherited_FindLink(self as *const Self, theLink),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:211 - `Poly_MakeLoops::Perform()`
     pub fn perform(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops2D_inherited_Perform(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops2D_inherited_Perform(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:214 - `Poly_MakeLoops::GetNbLoops()`
     pub fn get_nb_loops(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops2D_inherited_GetNbLoops(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops2D_inherited_GetNbLoops(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:217 - `Poly_MakeLoops::GetLoop()`
     pub fn get_loop(&self, theIndex: i32) -> &crate::ffi::Poly_MakeLoops_Loop {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops2D_inherited_GetLoop(self as *const Self, theIndex)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_MakeLoops2D_inherited_GetLoop(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:220 - `Poly_MakeLoops::GetNbHanging()`
     pub fn get_nb_hanging(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MakeLoops2D_inherited_GetNbHanging(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops2D_inherited_GetNbHanging(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:223 - `Poly_MakeLoops::GetHangingLinks()`
     pub fn get_hanging_links(&self, theLinks: &mut crate::ffi::Poly_MakeLoops_ListOfLink) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops2D_inherited_GetHangingLinks(
-                    self as *const Self,
-                    theLinks,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops2D_inherited_GetHangingLinks(self as *const Self, theLinks)
+        })
     }
 }
 
@@ -4423,20 +3206,13 @@ impl MakeLoops2D_Helper {
         theLink: &MakeLoops_Link,
         theDir: &mut crate::gp::Dir2d,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops2D_Helper_get_first_tangent(
-                    self as *const Self,
-                    theLink,
-                    theDir,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops2D_Helper_get_first_tangent(
+                self as *const Self,
+                theLink,
+                theDir,
+            )
+        })
     }
 
     /// **Source:** `Poly_MakeLoops.hxx`:326 - `Poly_MakeLoops2D_Helper::GetLastTangent()`
@@ -4446,75 +3222,48 @@ impl MakeLoops2D_Helper {
         theLink: &MakeLoops_Link,
         theDir: &mut crate::gp::Dir2d,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops2D_Helper_get_last_tangent(
-                    self as *const Self,
-                    theLink,
-                    theDir,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MakeLoops2D_Helper_get_last_tangent(
+                self as *const Self,
+                theLink,
+                theDir,
+            )
+        })
     }
 
     /// Upcast to Poly_MakeLoops_Helper
     pub fn as_make_loops_helper(&self) -> &MakeLoops_Helper {
-        let __result = unsafe {
-            crate::ffi::Poly_MakeLoops2D_Helper_as_Poly_MakeLoops_Helper(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_MakeLoops2D_Helper_as_Poly_MakeLoops_Helper(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Poly_MakeLoops_Helper (mutable)
     pub fn as_make_loops_helper_mut(&mut self) -> &mut MakeLoops_Helper {
-        let __result = unsafe {
-            crate::ffi::Poly_MakeLoops2D_Helper_as_Poly_MakeLoops_Helper_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Poly_MakeLoops2D_Helper_as_Poly_MakeLoops_Helper_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:108 - `Poly_MakeLoops::Helper::GetAdjacentLinks()`
     pub fn get_adjacent_links(&self, theNode: i32) -> &crate::ffi::Poly_MakeLoops_ListOfLink {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MakeLoops2D_Helper_inherited_GetAdjacentLinks(
-                    self as *const Self,
-                    theNode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_MakeLoops2D_Helper_inherited_GetAdjacentLinks(
+                self as *const Self,
+                theNode,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:111 - `Poly_MakeLoops::Helper::OnAddLink()`
     pub fn on_add_link(&self, arg0: i32, arg1: &MakeLoops_Link) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MakeLoops2D_Helper_inherited_OnAddLink(
-                    self as *const Self,
-                    arg0,
-                    arg1,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MakeLoops2D_Helper_inherited_OnAddLink(self as *const Self, arg0, arg1)
+        })
     }
 }
 
@@ -4545,18 +3294,14 @@ impl MergeNodesTool {
         theMergeTolerance: f64,
         theNbFacets: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_MergeNodesTool_ctor_real2_int(
                     theSmoothAngle,
                     theMergeTolerance,
                     theNbFacets,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -4580,14 +3325,10 @@ impl MergeNodesTool {
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:26 - `Poly_MergeNodesTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MergeNodesTool_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_MergeNodesTool_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4595,164 +3336,99 @@ impl MergeNodesTool {
     /// Return merge tolerance; 0.0 by default (only 3D points with exactly matching coordinates are
     /// merged).
     pub fn merge_tolerance(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MergeNodesTool_merge_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_merge_tolerance(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:59 - `Poly_MergeNodesTool::SetMergeTolerance()`
     /// Set merge tolerance.
     pub fn set_merge_tolerance(&mut self, theTolerance: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_set_merge_tolerance(self as *mut Self, theTolerance)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_set_merge_tolerance(self as *mut Self, theTolerance)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:63 - `Poly_MergeNodesTool::MergeAngle()`
     /// Return merge angle in radians; 0.0 by default (normals with non-exact directions are not
     /// merged).
     pub fn merge_angle(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MergeNodesTool_merge_angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_merge_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:66 - `Poly_MergeNodesTool::SetMergeAngle()`
     /// Set merge angle.
     pub fn set_merge_angle(&mut self, theAngleRad: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_set_merge_angle(self as *mut Self, theAngleRad)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_set_merge_angle(self as *mut Self, theAngleRad)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:69 - `Poly_MergeNodesTool::ToMergeOpposite()`
     /// Return TRUE if nodes with opposite normals should be merged; FALSE by default.
     pub fn to_merge_opposite(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MergeNodesTool_to_merge_opposite(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_to_merge_opposite(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:72 - `Poly_MergeNodesTool::SetMergeOpposite()`
     /// Set if nodes with opposite normals should be merged.
     pub fn set_merge_opposite(&mut self, theToMerge: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_set_merge_opposite(self as *mut Self, theToMerge)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_set_merge_opposite(self as *mut Self, theToMerge)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:75 - `Poly_MergeNodesTool::SetUnitFactor()`
     /// Setup unit factor.
     pub fn set_unit_factor(&mut self, theUnitFactor: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_set_unit_factor(self as *mut Self, theUnitFactor)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_set_unit_factor(self as *mut Self, theUnitFactor)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:78 - `Poly_MergeNodesTool::ToDropDegenerative()`
     /// Return TRUE if degenerate elements should be discarded; TRUE by default.
     pub fn to_drop_degenerative(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MergeNodesTool_to_drop_degenerative(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_to_drop_degenerative(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:81 - `Poly_MergeNodesTool::SetDropDegenerative()`
     /// Set if degenerate elements should be discarded.
     pub fn set_drop_degenerative(&mut self, theToDrop: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_set_drop_degenerative(self as *mut Self, theToDrop)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_set_drop_degenerative(self as *mut Self, theToDrop)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:84 - `Poly_MergeNodesTool::ToMergeElems()`
     /// Return TRUE if equal elements should be filtered; FALSE by default.
     pub fn to_merge_elems(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MergeNodesTool_to_merge_elems(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_to_merge_elems(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:87 - `Poly_MergeNodesTool::SetMergeElems()`
     /// Set if equal elements should be filtered.
     pub fn set_merge_elems(&mut self, theToMerge: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_set_merge_elems(self as *mut Self, theToMerge)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_set_merge_elems(self as *mut Self, theToMerge)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:90 - `Poly_MergeNodesTool::computeTriNormal()`
     /// Compute normal for the mesh element.
     pub fn compute_tri_normal(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MergeNodesTool_compute_tri_normal(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_MergeNodesTool_compute_tri_normal(self as *const Self),
+            ))
         }
     }
 
@@ -4767,31 +3443,23 @@ impl MergeNodesTool {
         theTrsf: &crate::gp::Trsf,
         theToReverse: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_add_triangulation(
-                    self as *mut Self,
-                    theTris,
-                    theTrsf,
-                    theToReverse,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_add_triangulation(
+                self as *mut Self,
+                theTris,
+                theTrsf,
+                theToReverse,
+            )
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:109 - `Poly_MergeNodesTool::Result()`
     /// Prepare and return result triangulation (temporary data will be truncated to result size).
     pub fn result(&mut self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        {
-            let __result = unsafe { crate::ffi::Poly_MergeNodesTool_result(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_MergeNodesTool_result(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -4799,34 +3467,21 @@ impl MergeNodesTool {
     /// Add new triangle.
     /// @param[in] theElemNodes 3 element nodes
     pub fn add_triangle(&mut self, theElemNodes: &mut [crate::gp::XYZ; 3]) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_add_triangle(
-                    self as *mut Self,
-                    theElemNodes.as_mut_ptr(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_add_triangle(
+                self as *mut Self,
+                theElemNodes.as_mut_ptr(),
+            )
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:118 - `Poly_MergeNodesTool::AddQuad()`
     /// Add new quad.
     /// @param[in] theElemNodes 4 element nodes
     pub fn add_quad(&mut self, theElemNodes: &mut [crate::gp::XYZ; 4]) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_add_quad(
-                    self as *mut Self,
-                    theElemNodes.as_mut_ptr(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_add_quad(self as *mut Self, theElemNodes.as_mut_ptr())
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:123 - `Poly_MergeNodesTool::AddElement()`
@@ -4834,142 +3489,89 @@ impl MergeNodesTool {
     /// @param[in] theElemNodes element nodes
     /// @param[in] theNbNodes number of element nodes, should be 3 or 4
     pub fn add_element(&mut self, theElemNodes: &crate::gp::XYZ, theNbNodes: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_add_element(
-                    self as *mut Self,
-                    theElemNodes as *const _,
-                    theNbNodes,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_add_element(
+                self as *mut Self,
+                theElemNodes as *const _,
+                theNbNodes,
+            )
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:127 - `Poly_MergeNodesTool::ChangeElementNode()`
     /// Change node coordinates of element to be pushed.
     /// @param[in] theIndex node index within current element, in 0..3 range
     pub fn change_element_node(&mut self, theIndex: i32) -> &mut crate::gp::XYZ {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MergeNodesTool_change_element_node(self as *mut Self, theIndex)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_MergeNodesTool_change_element_node(
+                self as *mut Self,
+                theIndex,
+            )))
         }
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:130 - `Poly_MergeNodesTool::PushLastElement()`
     /// Add new triangle or quad with nodes specified by ChangeElementNode().
     pub fn push_last_element(&mut self, theNbNodes: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_push_last_element(self as *mut Self, theNbNodes)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_push_last_element(self as *mut Self, theNbNodes)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:133 - `Poly_MergeNodesTool::PushLastTriangle()`
     /// Add new triangle with nodes specified by ChangeElementNode().
     pub fn push_last_triangle(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_MergeNodesTool_push_last_triangle(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_push_last_triangle(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:136 - `Poly_MergeNodesTool::PushLastQuad()`
     /// Add new quad with nodes specified by ChangeElementNode().
     pub fn push_last_quad(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_MergeNodesTool_push_last_quad(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_push_last_quad(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:139 - `Poly_MergeNodesTool::ElementNodeIndex()`
     /// Return current element node index defined by PushLastElement().
     pub fn element_node_index(&self, theIndex: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MergeNodesTool_element_node_index(self as *const Self, theIndex)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_element_node_index(self as *const Self, theIndex)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:142 - `Poly_MergeNodesTool::NbNodes()`
     /// Return number of nodes.
     pub fn nb_nodes(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Poly_MergeNodesTool_nb_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_nb_nodes(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:145 - `Poly_MergeNodesTool::NbElements()`
     /// Return number of elements.
     pub fn nb_elements(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MergeNodesTool_nb_elements(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_nb_elements(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:148 - `Poly_MergeNodesTool::NbDegenerativeElems()`
     /// Return number of discarded degenerate elements.
     pub fn nb_degenerative_elems(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MergeNodesTool_nb_degenerative_elems(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_nb_degenerative_elems(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:151 - `Poly_MergeNodesTool::NbMergedElems()`
     /// Return number of merged equal elements.
     pub fn nb_merged_elems(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MergeNodesTool_nb_merged_elems(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_nb_merged_elems(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:156 - `Poly_MergeNodesTool::ChangeOutput()`
@@ -4977,39 +3579,27 @@ impl MergeNodesTool {
     /// When set to NULL, the tool could be used as a merge map for filling in external mesh
     /// structure.
     pub fn change_output(&mut self) -> &mut crate::ffi::HandlePolyTriangulation {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_MergeNodesTool_change_output(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_MergeNodesTool_change_output(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:26 - `Poly_MergeNodesTool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Poly_MergeNodesTool_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Poly_MergeNodesTool_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:26 - `Poly_MergeNodesTool::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Poly_MergeNodesTool_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Poly_MergeNodesTool_get_type_descriptor())) }
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:37 - `Poly_MergeNodesTool::MergeNodes()`
@@ -5030,8 +3620,8 @@ impl MergeNodesTool {
         theMergeTolerance: f64,
         theToForce: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_MergeNodesTool_merge_nodes(
                     theTris,
                     theTrsf,
@@ -5039,84 +3629,60 @@ impl MergeNodesTool {
                     theSmoothAngle,
                     theMergeTolerance,
                     theToForce,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Poly_MergeNodesTool_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_MergeNodesTool_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Poly_MergeNodesTool_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Poly_MergeNodesTool_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyMergeNodesTool> {
-        let __result = unsafe { crate::ffi::Poly_MergeNodesTool_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_MergeNodesTool_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MergeNodesTool_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MergeNodesTool_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Poly_MergeNodesTool_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Poly_MergeNodesTool_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -5127,53 +3693,30 @@ impl MergeNodesTool {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MergeNodesTool_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_MergeNodesTool_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_MergeNodesTool_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_MergeNodesTool_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_MergeNodesTool_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -5188,31 +3731,29 @@ unsafe impl crate::CppDeletable for HandlePolyMergeNodesTool {
 impl HandlePolyMergeNodesTool {
     /// Dereference this Handle to access the underlying Poly_MergeNodesTool
     pub fn get(&self) -> &crate::ffi::Poly_MergeNodesTool {
-        let __result = unsafe { crate::ffi::HandlePolyMergeNodesTool_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandlePolyMergeNodesTool_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Poly_MergeNodesTool
     pub fn get_mut(&mut self) -> &mut crate::ffi::Poly_MergeNodesTool {
-        let __result = unsafe { crate::ffi::HandlePolyMergeNodesTool_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandlePolyMergeNodesTool_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Poly_MergeNodesTool> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandlePolyMergeNodesTool_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandlePolyMergeNodesTool_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5239,24 +3780,20 @@ impl Polygon2D {
     /// **Source:** `Poly_Polygon2D.hxx`:35 - `Poly_Polygon2D::Poly_Polygon2D()`
     /// Constructs a 2D polygon with specified number of nodes.
     pub fn new_int(theNbNodes: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon2D_ctor_int(theNbNodes) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_Polygon2D_ctor_int(
+                theNbNodes,
+            )))
         }
     }
 
     /// **Source:** `Poly_Polygon2D.hxx`:38 - `Poly_Polygon2D::Poly_Polygon2D()`
     /// Constructs a 2D polygon defined by the table of points, <Nodes>.
     pub fn new_array1ofpnt2d(Nodes: &crate::ffi::TColgp_Array1OfPnt2d) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon2D_ctor_array1ofpnt2d(Nodes) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Polygon2D_ctor_array1ofpnt2d(Nodes),
+            ))
         }
     }
 
@@ -5281,26 +3818,15 @@ impl Polygon2D {
     /// function is used to set a value on each polygon, and
     /// later to fetch the value.
     pub fn deflection(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon2D_deflection(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_Polygon2D_deflection(self as *const Self) })
     }
 
     /// **Source:** `Poly_Polygon2D.hxx`:62 - `Poly_Polygon2D::Deflection()`
     /// Sets the deflection of this polygon.
     pub fn deflection_real(&mut self, theDefl: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_Polygon2D_deflection_real(self as *mut Self, theDefl) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Polygon2D_deflection_real(self as *mut Self, theDefl)
+        })
     }
 
     /// **Source:** `Poly_Polygon2D.hxx`:68 - `Poly_Polygon2D::NbNodes()`
@@ -5309,146 +3835,95 @@ impl Polygon2D {
     /// repeated at the end of its table of nodes. Thus, on a closed
     /// triangle, the function NbNodes returns 4.
     pub fn nb_nodes(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon2D_nb_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_Polygon2D_nb_nodes(self as *const Self) })
     }
 
     /// **Source:** `Poly_Polygon2D.hxx`:71 - `Poly_Polygon2D::Nodes()`
     /// Returns the table of nodes for this polygon.
     pub fn nodes(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon2D_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Poly_Polygon2D_nodes(self as *const Self))) }
     }
 
     /// **Source:** `Poly_Polygon2D.hxx`:74 - `Poly_Polygon2D::ChangeNodes()`
     /// Returns the table of nodes for this polygon.
     pub fn change_nodes(&mut self) -> &mut crate::ffi::TColgp_Array1OfPnt2d {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon2D_change_nodes(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_Polygon2D_change_nodes(self as *mut Self)))
         }
     }
 
     /// **Source:** `Poly_Polygon2D.hxx`:80 - `Poly_Polygon2D::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon2D_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_Polygon2D_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Poly_Polygon2D.hxx`:80 - `Poly_Polygon2D::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon2D_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::check_result(crate::ffi::Poly_Polygon2D_get_type_name()),
+            )
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Poly_Polygon2D.hxx`:80 - `Poly_Polygon2D::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon2D_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Poly_Polygon2D_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Poly_Polygon2D_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_Polygon2D_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Poly_Polygon2D_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Poly_Polygon2D_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygon2D> {
-        let __result = unsafe { crate::ffi::Poly_Polygon2D_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_Polygon2D_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Polygon2D_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Polygon2D_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Polygon2D_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Polygon2D_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Poly_Polygon2D_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Poly_Polygon2D_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -5459,51 +3934,30 @@ impl Polygon2D {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Polygon2D_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Polygon2D_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Polygon2D_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Polygon2D_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Polygon2D_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Polygon2D_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_Polygon2D_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Polygon2D_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -5518,31 +3972,23 @@ unsafe impl crate::CppDeletable for HandlePolyPolygon2D {
 impl HandlePolyPolygon2D {
     /// Dereference this Handle to access the underlying Poly_Polygon2D
     pub fn get(&self) -> &crate::ffi::Poly_Polygon2D {
-        let __result = unsafe { crate::ffi::HandlePolyPolygon2D_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandlePolyPolygon2D_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Poly_Polygon2D
     pub fn get_mut(&mut self) -> &mut crate::ffi::Poly_Polygon2D {
-        let __result = unsafe { crate::ffi::HandlePolyPolygon2D_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandlePolyPolygon2D_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Poly_Polygon2D> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandlePolyPolygon2D_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandlePolyPolygon2D_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5568,25 +4014,20 @@ impl Polygon3D {
     /// **Source:** `Poly_Polygon3D.hxx`:35 - `Poly_Polygon3D::Poly_Polygon3D()`
     /// Constructs a 3D polygon with specific number of nodes.
     pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Polygon3D_ctor_int_bool(theNbNodes, theHasParams) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Polygon3D_ctor_int_bool(theNbNodes, theHasParams),
+            ))
         }
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:39 - `Poly_Polygon3D::Poly_Polygon3D()`
     /// Constructs a 3D polygon defined by the table of points, Nodes.
     pub fn new_array1ofpnt(Nodes: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon3D_ctor_array1ofpnt(Nodes) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Polygon3D_ctor_array1ofpnt(Nodes),
+            ))
         }
     }
 
@@ -5603,53 +4044,35 @@ impl Polygon3D {
         Nodes: &crate::ffi::TColgp_Array1OfPnt,
         Parameters: &crate::ffi::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Polygon3D_ctor_array1ofpnt_array1ofreal(Nodes, Parameters)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Polygon3D_ctor_array1ofpnt_array1ofreal(Nodes, Parameters),
+            ))
         }
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:53 - `Poly_Polygon3D::Copy()`
     /// Creates a copy of current polygon
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygon3D> {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon3D_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_Polygon3D_copy(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:56 - `Poly_Polygon3D::Deflection()`
     /// Returns the deflection of this polygon
     pub fn deflection(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon3D_deflection(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_Polygon3D_deflection(self as *const Self) })
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:59 - `Poly_Polygon3D::Deflection()`
     /// Sets the deflection of this polygon. See more on deflection in Poly_Polygon2D
     pub fn deflection_real(&mut self, theDefl: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_Polygon3D_deflection_real(self as *mut Self, theDefl) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Polygon3D_deflection_real(self as *mut Self, theDefl)
+        })
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:65 - `Poly_Polygon3D::NbNodes()`
@@ -5658,39 +4081,20 @@ impl Polygon3D {
     /// repeated at the end of its table of nodes. Thus, on a closed
     /// triangle the function NbNodes returns 4.
     pub fn nb_nodes(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon3D_nb_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_Polygon3D_nb_nodes(self as *const Self) })
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:68 - `Poly_Polygon3D::Nodes()`
     /// Returns the table of nodes for this polygon.
     pub fn nodes(&self) -> &crate::ffi::TColgp_Array1OfPnt {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon3D_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Poly_Polygon3D_nodes(self as *const Self))) }
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:71 - `Poly_Polygon3D::ChangeNodes()`
     /// Returns the table of nodes for this polygon.
     pub fn change_nodes(&mut self) -> &mut crate::ffi::TColgp_Array1OfPnt {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon3D_change_nodes(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_Polygon3D_change_nodes(self as *mut Self)))
         }
     }
 
@@ -5698,28 +4102,17 @@ impl Polygon3D {
     /// Returns the table of the parameters associated with each node in this polygon.
     /// HasParameters function checks if   parameters are associated with the nodes of this polygon.
     pub fn has_parameters(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Polygon3D_has_parameters(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Polygon3D_has_parameters(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:79 - `Poly_Polygon3D::Parameters()`
     /// Returns true if parameters are associated with the nodes
     /// in this polygon.
     pub fn parameters(&self) -> &crate::ffi::TColStd_Array1OfReal {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon3D_parameters(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_Polygon3D_parameters(self as *const Self)))
         }
     }
 
@@ -5729,121 +4122,85 @@ impl Polygon3D {
     /// Therefore if the table is selected by reference you can, by simply modifying it,
     /// directly modify the data structure of this polygon.
     pub fn change_parameters(&mut self) -> &mut crate::ffi::TColStd_Array1OfReal {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Polygon3D_change_parameters(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_Polygon3D_change_parameters(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:91 - `Poly_Polygon3D::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon3D_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_Polygon3D_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:91 - `Poly_Polygon3D::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon3D_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::check_result(crate::ffi::Poly_Polygon3D_get_type_name()),
+            )
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:91 - `Poly_Polygon3D::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Poly_Polygon3D_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Poly_Polygon3D_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Poly_Polygon3D_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_Polygon3D_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Poly_Polygon3D_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Poly_Polygon3D_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygon3D> {
-        let __result = unsafe { crate::ffi::Poly_Polygon3D_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_Polygon3D_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Polygon3D_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Polygon3D_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Polygon3D_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Polygon3D_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Poly_Polygon3D_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Poly_Polygon3D_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -5854,51 +4211,30 @@ impl Polygon3D {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Polygon3D_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Polygon3D_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Polygon3D_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Polygon3D_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Polygon3D_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Polygon3D_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_Polygon3D_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Polygon3D_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -5913,31 +4249,23 @@ unsafe impl crate::CppDeletable for HandlePolyPolygon3D {
 impl HandlePolyPolygon3D {
     /// Dereference this Handle to access the underlying Poly_Polygon3D
     pub fn get(&self) -> &crate::ffi::Poly_Polygon3D {
-        let __result = unsafe { crate::ffi::HandlePolyPolygon3D_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandlePolyPolygon3D_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Poly_Polygon3D
     pub fn get_mut(&mut self) -> &mut crate::ffi::Poly_Polygon3D {
-        let __result = unsafe { crate::ffi::HandlePolyPolygon3D_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandlePolyPolygon3D_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Poly_Polygon3D> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandlePolyPolygon3D_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandlePolyPolygon3D_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5970,14 +4298,10 @@ impl PolygonOnTriangulation {
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:45 - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
     /// Constructs a 3D polygon on the triangulation of a shape with specified size of nodes.
     pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_ctor_int_bool(theNbNodes, theHasParams)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_PolygonOnTriangulation_ctor_int_bool(theNbNodes, theHasParams),
+            ))
         }
     }
 
@@ -5987,13 +4311,10 @@ impl PolygonOnTriangulation {
     pub fn new_array1ofinteger(
         Nodes: &crate::ffi::TColStd_Array1OfInteger,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_PolygonOnTriangulation_ctor_array1ofinteger(Nodes) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_PolygonOnTriangulation_ctor_array1ofinteger(Nodes),
+            ))
         }
     }
 
@@ -6013,73 +4334,49 @@ impl PolygonOnTriangulation {
         Nodes: &crate::ffi::TColStd_Array1OfInteger,
         Parameters: &crate::ffi::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_PolygonOnTriangulation_ctor_array1ofinteger_array1ofreal(
                     Nodes, Parameters,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:42 - `Poly_PolygonOnTriangulation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_PolygonOnTriangulation_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:67 - `Poly_PolygonOnTriangulation::Copy()`
     /// Creates a copy of current polygon
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygonOnTriangulation> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_PolygonOnTriangulation_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_PolygonOnTriangulation_copy(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:70 - `Poly_PolygonOnTriangulation::Deflection()`
     /// Returns the deflection of this polygon
     pub fn deflection(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_PolygonOnTriangulation_deflection(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_deflection(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:74 - `Poly_PolygonOnTriangulation::Deflection()`
     /// Sets the deflection of this polygon.
     /// See more on deflection in Poly_Polygones2D.
     pub fn deflection_real(&mut self, theDefl: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_deflection_real(self as *mut Self, theDefl)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_deflection_real(self as *mut Self, theDefl)
+        })
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:80 - `Poly_PolygonOnTriangulation::NbNodes()`
@@ -6088,111 +4385,62 @@ impl PolygonOnTriangulation {
     /// repeated at the end of its table of nodes. Thus, on a closed
     /// triangle, the function NbNodes returns 4.
     pub fn nb_nodes(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_PolygonOnTriangulation_nb_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_nb_nodes(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:83 - `Poly_PolygonOnTriangulation::Node()`
     /// Returns node at the given index.
     pub fn node(&self, theIndex: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_node(self as *const Self, theIndex)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_node(self as *const Self, theIndex)
+        })
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:86 - `Poly_PolygonOnTriangulation::SetNode()`
     /// Sets node at the given index.
     pub fn set_node(&mut self, theIndex: i32, theNode: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_set_node(
-                    self as *mut Self,
-                    theIndex,
-                    theNode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_set_node(self as *mut Self, theIndex, theNode)
+        })
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:92 - `Poly_PolygonOnTriangulation::HasParameters()`
     /// Returns true if parameters are associated with the nodes in this polygon.
     pub fn has_parameters(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_has_parameters(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_has_parameters(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:95 - `Poly_PolygonOnTriangulation::Parameter()`
     /// Returns parameter at the given index.
     pub fn parameter(&self, theIndex: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_parameter(self as *const Self, theIndex)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_parameter(self as *const Self, theIndex)
+        })
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:103 - `Poly_PolygonOnTriangulation::SetParameter()`
     /// Sets parameter at the given index.
     pub fn set_parameter(&mut self, theIndex: i32, theValue: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_set_parameter(
-                    self as *mut Self,
-                    theIndex,
-                    theValue,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_set_parameter(
+                self as *mut Self,
+                theIndex,
+                theValue,
+            )
+        })
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:112 - `Poly_PolygonOnTriangulation::SetParameters()`
     /// Sets the table of the parameters associated with each node in this polygon.
     /// Raises exception if array size doesn't much number of polygon nodes.
     pub fn set_parameters(&mut self, theParameters: &crate::ffi::HandleTColStdHArray1OfReal) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_set_parameters(
-                    self as *mut Self,
-                    theParameters,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_set_parameters(self as *mut Self, theParameters)
+        })
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:122 - `Poly_PolygonOnTriangulation::Nodes()`
@@ -6200,14 +4448,10 @@ impl PolygonOnTriangulation {
     /// A node value is an index in the table of nodes specific to an existing triangulation of a
     /// shape.
     pub fn nodes(&self) -> &crate::ffi::TColStd_Array1OfInteger {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_PolygonOnTriangulation_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_PolygonOnTriangulation_nodes(
+                self as *const Self,
+            )))
         }
     }
 
@@ -6216,118 +4460,85 @@ impl PolygonOnTriangulation {
     /// Warning! Use the function HasParameters to check if parameters are associated with the nodes
     /// in this polygon.
     pub fn parameters(&self) -> &crate::ffi::HandleTColStdHArray1OfReal {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_PolygonOnTriangulation_parameters(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_PolygonOnTriangulation_parameters(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:42 - `Poly_PolygonOnTriangulation::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Poly_PolygonOnTriangulation_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Poly_PolygonOnTriangulation_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:42 - `Poly_PolygonOnTriangulation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Poly_PolygonOnTriangulation_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_PolygonOnTriangulation_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Poly_PolygonOnTriangulation_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_PolygonOnTriangulation_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Poly_PolygonOnTriangulation_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Poly_PolygonOnTriangulation_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygonOnTriangulation> {
-        let __result = unsafe { crate::ffi::Poly_PolygonOnTriangulation_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_PolygonOnTriangulation_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::Poly_PolygonOnTriangulation_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -6338,58 +4549,30 @@ impl PolygonOnTriangulation {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_PolygonOnTriangulation_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_PolygonOnTriangulation_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -6404,35 +4587,31 @@ unsafe impl crate::CppDeletable for HandlePolyPolygonOnTriangulation {
 impl HandlePolyPolygonOnTriangulation {
     /// Dereference this Handle to access the underlying Poly_PolygonOnTriangulation
     pub fn get(&self) -> &crate::ffi::Poly_PolygonOnTriangulation {
-        let __result =
-            unsafe { crate::ffi::HandlePolyPolygonOnTriangulation_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandlePolyPolygonOnTriangulation_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Poly_PolygonOnTriangulation
     pub fn get_mut(&mut self) -> &mut crate::ffi::Poly_PolygonOnTriangulation {
-        let __result =
-            unsafe { crate::ffi::HandlePolyPolygonOnTriangulation_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandlePolyPolygonOnTriangulation_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Poly_PolygonOnTriangulation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandlePolyPolygonOnTriangulation_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandlePolyPolygonOnTriangulation_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6457,13 +4636,7 @@ impl Triangle {
     /// **Source:** `Poly_Triangle.hxx`:36 - `Poly_Triangle::Poly_Triangle()`
     /// Constructs a triangle and sets all indices to zero.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_Triangle_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_Triangle_ctor())) }
     }
 
     /// **Source:** `Poly_Triangle.hxx`:41 - `Poly_Triangle::Poly_Triangle()`
@@ -6471,80 +4644,56 @@ impl Triangle {
     /// where these node values are indices in the table of nodes specific to an existing
     /// triangulation of a shape.
     pub fn new_int3(theN1: i32, theN2: i32, theN3: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_Triangle_ctor_int3(theN1, theN2, theN3) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_Triangle_ctor_int3(
+                theN1, theN2, theN3,
+            )))
         }
     }
 
     /// **Source:** `Poly_Triangle.hxx`:51 - `Poly_Triangle::Set()`
     /// Sets the value of the three nodes of this triangle.
     pub fn set_int3(&mut self, theN1: i32, theN2: i32, theN3: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangle_set_int3(self as *mut Self, theN1, theN2, theN3)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangle_set_int3(self as *mut Self, theN1, theN2, theN3)
+        })
     }
 
     /// **Source:** `Poly_Triangle.hxx`:60 - `Poly_Triangle::Set()`
     /// Sets the value of node with specified index of this triangle.
     /// Raises Standard_OutOfRange if index is not in 1,2,3
     pub fn set_int2(&mut self, theIndex: i32, theNode: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_Triangle_set_int2(self as *mut Self, theIndex, theNode) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangle_set_int2(self as *mut Self, theIndex, theNode)
+        })
     }
 
     /// **Source:** `Poly_Triangle.hxx`:68 - `Poly_Triangle::Get()`
     /// Returns the node indices of this triangle.
     pub fn get(&self, theN1: &mut i32, theN2: &mut i32, theN3: &mut i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_Triangle_get(self as *const Self, theN1, theN2, theN3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangle_get(self as *const Self, theN1, theN2, theN3)
+        })
     }
 
     /// **Source:** `Poly_Triangle.hxx`:77 - `Poly_Triangle::Value()`
     /// Get the node of given Index.
     /// Raises OutOfRange from Standard if Index is not in 1,2,3
     pub fn value(&self, theIndex: i32) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangle_value(self as *const Self, theIndex) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangle_value(self as *const Self, theIndex)
+        })
     }
 
     /// **Source:** `Poly_Triangle.hxx`:88 - `Poly_Triangle::ChangeValue()`
     /// Get the node of given Index.
     /// Raises OutOfRange if Index is not in 1,2,3
     pub fn change_value(&mut self, theIndex: i32) -> &mut i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangle_change_value(self as *mut Self, theIndex) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_Triangle_change_value(
+                self as *mut Self,
+                theIndex,
+            )))
         }
     }
 }
@@ -6590,12 +4739,8 @@ impl Triangulation {
     /// **Source:** `Poly_Triangulation.hxx`:64 - `Poly_Triangulation::Poly_Triangulation()`
     /// Constructs an empty triangulation.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Poly_Triangulation_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_Triangulation_ctor()))
         }
     }
 
@@ -6614,19 +4759,15 @@ impl Triangulation {
         theHasUVNodes: bool,
         theHasNormals: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_Triangulation_ctor_int2_bool2(
                     theNbNodes,
                     theNbTriangles,
                     theHasUVNodes,
                     theHasNormals,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6638,14 +4779,10 @@ impl Triangulation {
         Nodes: &crate::ffi::TColgp_Array1OfPnt,
         Triangles: &crate::ffi::Poly_Array1OfTriangle,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Triangulation_ctor_array1ofpnt_array1oftriangle(Nodes, Triangles)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Triangulation_ctor_array1ofpnt_array1oftriangle(Nodes, Triangles),
+            ))
         }
     }
 
@@ -6662,16 +4799,12 @@ impl Triangulation {
         UVNodes: &crate::ffi::TColgp_Array1OfPnt2d,
         Triangles: &crate::ffi::Poly_Array1OfTriangle,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_Triangulation_ctor_array1ofpnt_array1ofpnt2d_array1oftriangle(
                     Nodes, UVNodes, Triangles,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6680,14 +4813,10 @@ impl Triangulation {
     pub fn new_handlepolytriangulation(
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Triangulation_ctor_handlepolytriangulation(theTriangulation)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Triangulation_ctor_handlepolytriangulation(theTriangulation),
+            ))
         }
     }
 
@@ -6710,69 +4839,45 @@ impl Triangulation {
 
     /// **Source:** `Poly_Triangulation.hxx`:61 - `Poly_Triangulation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_Triangulation_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:100 - `Poly_Triangulation::Copy()`
     /// Creates full copy of current triangulation
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        {
-            let __result = unsafe { crate::ffi::Poly_Triangulation_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_Triangulation_copy(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:106 - `Poly_Triangulation::Deflection()`
     /// Returns the deflection of this triangulation.
     pub fn deflection(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_deflection(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_deflection(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:110 - `Poly_Triangulation::Deflection()`
     /// Sets the deflection of this triangulation to theDeflection.
     /// See more on deflection in Polygon2D
     pub fn deflection_real(&mut self, theDeflection: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_deflection_real(self as *mut Self, theDeflection)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_deflection_real(self as *mut Self, theDeflection)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:113 - `Poly_Triangulation::Parameters()`
     /// Returns initial set of parameters used to generate this triangulation.
     pub fn parameters(&self) -> &crate::ffi::HandlePolyTriangulationParameters {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_parameters(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_Triangulation_parameters(self as *const Self)))
         }
     }
 
@@ -6782,97 +4887,56 @@ impl Triangulation {
         &mut self,
         theParams: &crate::ffi::HandlePolyTriangulationParameters,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_parameters_handlepolytriangulationparameters(
-                    self as *mut Self,
-                    theParams,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_parameters_handlepolytriangulationparameters(
+                self as *mut Self,
+                theParams,
+            )
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:119 - `Poly_Triangulation::Clear()`
     /// Clears internal arrays of nodes and all attributes.
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_Triangulation_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Poly_Triangulation_clear(self as *mut Self) })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:122 - `Poly_Triangulation::HasGeometry()`
     /// Returns TRUE if triangulation has some geometry.
     pub fn has_geometry(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_has_geometry(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_has_geometry(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:128 - `Poly_Triangulation::NbNodes()`
     /// Returns the number of nodes for this triangulation.
     pub fn nb_nodes(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Poly_Triangulation_nb_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Poly_Triangulation_nb_nodes(self as *const Self) })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:131 - `Poly_Triangulation::NbTriangles()`
     /// Returns the number of triangles for this triangulation.
     pub fn nb_triangles(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_nb_triangles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_nb_triangles(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:134 - `Poly_Triangulation::HasUVNodes()`
     /// Returns Standard_True if 2D nodes are associated with 3D nodes for this triangulation.
     pub fn has_uv_nodes(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_has_uv_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_has_uv_nodes(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:137 - `Poly_Triangulation::HasNormals()`
     /// Returns Standard_True if nodal normals are defined.
     pub fn has_normals(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_has_normals(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_has_normals(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:142 - `Poly_Triangulation::Node()`
@@ -6880,14 +4944,11 @@ impl Triangulation {
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @return 3D point coordinates
     pub fn node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_node(self as *const Self, theIndex) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_Triangulation_node(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
@@ -6896,14 +4957,9 @@ impl Triangulation {
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @param[in] thePnt   3D point coordinates
     pub fn set_node(&mut self, theIndex: i32, thePnt: &crate::gp::Pnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_set_node(self as *mut Self, theIndex, thePnt)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_set_node(self as *mut Self, theIndex, thePnt)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:155 - `Poly_Triangulation::UVNode()`
@@ -6911,14 +4967,11 @@ impl Triangulation {
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @return 2D point defining UV coordinates
     pub fn uv_node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_uv_node(self as *const Self, theIndex) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Poly_Triangulation_uv_node(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
@@ -6927,14 +4980,9 @@ impl Triangulation {
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @param[in] thePnt   UV coordinates
     pub fn set_uv_node(&mut self, theIndex: i32, thePnt: &crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_set_uv_node(self as *mut Self, theIndex, thePnt)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_set_uv_node(self as *mut Self, theIndex, thePnt)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:168 - `Poly_Triangulation::Triangle()`
@@ -6942,14 +4990,11 @@ impl Triangulation {
     /// @param[in] theIndex triangle index within [1, NbTriangles()] range
     /// @return triangle node indices, with each node defined within [1, NbNodes()] range
     pub fn triangle(&self, theIndex: i32) -> &Triangle {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_triangle(self as *const Self, theIndex) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_Triangulation_triangle(
+                self as *const Self,
+                theIndex,
+            )))
         }
     }
 
@@ -6959,18 +5004,9 @@ impl Triangulation {
     /// @param[in] theTriangle triangle node indices, with each node defined within [1, NbNodes()]
     /// range
     pub fn set_triangle(&mut self, theIndex: i32, theTriangle: &Triangle) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_set_triangle(
-                    self as *mut Self,
-                    theIndex,
-                    theTriangle,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_set_triangle(self as *mut Self, theIndex, theTriangle)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:185 - `Poly_Triangulation::Normal()`
@@ -6978,14 +5014,10 @@ impl Triangulation {
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @return normalized 3D vector defining a surface normal
     pub fn normal_int(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Dir> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_normal_int(self as *const Self, theIndex) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Triangulation_normal_int(self as *const Self, theIndex),
+            ))
         }
     }
 
@@ -6994,18 +5026,9 @@ impl Triangulation {
     /// @param[in]  theIndex node index within [1, NbNodes()] range
     /// @param[out] theVec3  3D vector defining a surface normal
     pub fn normal_int_vec3f(&self, theIndex: i32, theVec3: &mut crate::ffi::gp_Vec3f) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_normal_int_vec3f(
-                    self as *const Self,
-                    theIndex,
-                    theVec3,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_normal_int_vec3f(self as *const Self, theIndex, theVec3)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:202 - `Poly_Triangulation::SetNormal()`
@@ -7013,18 +5036,13 @@ impl Triangulation {
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @param[in] theVec3  normalized 3D vector defining a surface normal
     pub fn set_normal_int_vec3f(&mut self, theIndex: i32, theNormal: &crate::ffi::gp_Vec3f) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_set_normal_int_vec3f(
-                    self as *mut Self,
-                    theIndex,
-                    theNormal,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_set_normal_int_vec3f(
+                self as *mut Self,
+                theIndex,
+                theNormal,
+            )
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:210 - `Poly_Triangulation::SetNormal()`
@@ -7032,59 +5050,39 @@ impl Triangulation {
     /// @param[in] theIndex  node index within [1, NbNodes()] range
     /// @param[in] theNormal normalized 3D vector defining a surface normal
     pub fn set_normal_int_dir(&mut self, theIndex: i32, theNormal: &crate::gp::Dir) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_set_normal_int_dir(
-                    self as *mut Self,
-                    theIndex,
-                    theNormal,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_set_normal_int_dir(
+                self as *mut Self,
+                theIndex,
+                theNormal,
+            )
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:216 - `Poly_Triangulation::MeshPurpose()`
     /// Returns mesh purpose bits.
     pub fn mesh_purpose(&self) -> u32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_mesh_purpose(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_mesh_purpose(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:219 - `Poly_Triangulation::SetMeshPurpose()`
     /// Sets mesh purpose bits.
     pub fn set_mesh_purpose(&mut self, thePurpose: u32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_set_mesh_purpose(self as *mut Self, thePurpose)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_set_mesh_purpose(self as *mut Self, thePurpose)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
     /// Returns cached min - max range of triangulation data,
     /// which is VOID by default (e.g, no cached information).
     pub fn cached_min_max(&self) -> &crate::bnd::Box {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_cached_min_max(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_Triangulation_cached_min_max(
+                self as *const Self,
+            )))
         }
     }
 
@@ -7094,40 +5092,25 @@ impl Triangulation {
     /// without a gap or transformation, or otherwise undefined behavior will be observed.
     /// Passing a VOID range invalidates the cache.
     pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_set_cached_min_max(self as *mut Self, theBox)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_set_cached_min_max(self as *mut Self, theBox)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:232 - `Poly_Triangulation::HasCachedMinMax()`
     /// Returns TRUE if there is some cached min - max range of this triangulation.
     pub fn has_cached_min_max(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_has_cached_min_max(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_has_cached_min_max(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:235 - `Poly_Triangulation::UpdateCachedMinMax()`
     /// Updates cached min - max range of this triangulation with bounding box of nodal data.
     pub fn update_cached_min_max(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_Triangulation_update_cached_min_max(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_update_cached_min_max(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:254 - `Poly_Triangulation::MinMax()`
@@ -7149,49 +5132,31 @@ impl Triangulation {
         theTrsf: &crate::gp::Trsf,
         theIsAccurate: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Triangulation_min_max(
-                    self as *const Self,
-                    theBox,
-                    theTrsf,
-                    theIsAccurate,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_min_max(
+                self as *const Self,
+                theBox,
+                theTrsf,
+                theIsAccurate,
+            )
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:264 - `Poly_Triangulation::IsDoublePrecision()`
     /// Returns TRUE if node positions are defined with double precision; TRUE by default.
     pub fn is_double_precision(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_is_double_precision(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_is_double_precision(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:268 - `Poly_Triangulation::SetDoublePrecision()`
     /// Set if node positions should be defined with double or single precision for 3D and UV nodes.
     /// Raises exception if data was already allocated.
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_set_double_precision(self as *mut Self, theIsDouble)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_set_double_precision(self as *mut Self, theIsDouble)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:273 - `Poly_Triangulation::ResizeNodes()`
@@ -7199,18 +5164,9 @@ impl Triangulation {
     /// @param[in] theNbNodes    new number of nodes
     /// @param[in] theToCopyOld  copy old nodes into the new array
     pub fn resize_nodes(&mut self, theNbNodes: i32, theToCopyOld: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_resize_nodes(
-                    self as *mut Self,
-                    theNbNodes,
-                    theToCopyOld,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_resize_nodes(self as *mut Self, theNbNodes, theToCopyOld)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:278 - `Poly_Triangulation::ResizeTriangles()`
@@ -7218,75 +5174,53 @@ impl Triangulation {
     /// @param[in] theNbTriangles  new number of triangles
     /// @param[in] theToCopyOld    copy old triangles into the new array
     pub fn resize_triangles(&mut self, theNbTriangles: i32, theToCopyOld: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_resize_triangles(
-                    self as *mut Self,
-                    theNbTriangles,
-                    theToCopyOld,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_resize_triangles(
+                self as *mut Self,
+                theNbTriangles,
+                theToCopyOld,
+            )
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:282 - `Poly_Triangulation::AddUVNodes()`
     /// If an array for UV coordinates is not allocated yet, do it now.
     pub fn add_uv_nodes(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_Triangulation_add_uv_nodes(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_add_uv_nodes(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:285 - `Poly_Triangulation::RemoveUVNodes()`
     /// Deallocates the UV nodes array.
     pub fn remove_uv_nodes(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_Triangulation_remove_uv_nodes(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_remove_uv_nodes(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:288 - `Poly_Triangulation::AddNormals()`
     /// If an array for normals is not allocated yet, do it now.
     pub fn add_normals(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_Triangulation_add_normals(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_add_normals(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:291 - `Poly_Triangulation::RemoveNormals()`
     /// Deallocates the normals array.
     pub fn remove_normals(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Poly_Triangulation_remove_normals(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_remove_normals(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:294 - `Poly_Triangulation::ComputeNormals()`
     /// Compute smooth normals by averaging triangle normals.
     pub fn compute_normals(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_Triangulation_compute_normals(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_compute_normals(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:300 - `Poly_Triangulation::MapNodeArray()`
@@ -7294,14 +5228,10 @@ impl Triangulation {
     /// Poly_Triangulation::Node() should be used instead when possible.
     /// Returned object should not be used after Poly_Triangulation destruction.
     pub fn map_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_map_node_array(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Triangulation_map_node_array(self as *const Self),
+            ))
         }
     }
 
@@ -7310,14 +5240,10 @@ impl Triangulation {
     /// Poly_Triangulation::Triangle() should be used instead when possible.
     /// Returned object should not be used after Poly_Triangulation destruction.
     pub fn map_triangle_array(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyHArray1OfTriangle> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_map_triangle_array(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Triangulation_map_triangle_array(self as *const Self),
+            ))
         }
     }
 
@@ -7326,14 +5252,10 @@ impl Triangulation {
     /// Poly_Triangulation::UVNode() should be used instead when possible.
     /// Returned object should not be used after Poly_Triangulation destruction.
     pub fn map_uv_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_map_uv_node_array(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Triangulation_map_uv_node_array(self as *const Self),
+            ))
         }
     }
 
@@ -7342,14 +5264,10 @@ impl Triangulation {
     /// undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object
     /// should not be used after Poly_Triangulation destruction.
     pub fn map_normal_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTShortHArray1OfShortReal> {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_map_normal_array(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Triangulation_map_normal_array(self as *const Self),
+            ))
         }
     }
 
@@ -7357,14 +5275,10 @@ impl Triangulation {
     /// Returns an internal array of triangles.
     /// Triangle()/SetTriangle() should be used instead in portable code.
     pub fn internal_triangles(&mut self) -> &mut crate::ffi::Poly_Array1OfTriangle {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_internal_triangles(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_Triangulation_internal_triangles(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -7372,14 +5286,10 @@ impl Triangulation {
     /// Returns an internal array of nodes.
     /// Node()/SetNode() should be used instead in portable code.
     pub fn internal_nodes(&mut self) -> &mut ArrayOfNodes {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_internal_nodes(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_Triangulation_internal_nodes(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -7387,14 +5297,10 @@ impl Triangulation {
     /// Returns an internal array of UV nodes.
     /// UBNode()/SetUVNode() should be used instead in portable code.
     pub fn internal_uv_nodes(&mut self) -> &mut ArrayOfUVNodes {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_internal_uv_nodes(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_Triangulation_internal_uv_nodes(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -7402,14 +5308,10 @@ impl Triangulation {
     /// Return an internal array of normals.
     /// Normal()/SetNormal() should be used instead in portable code.
     pub fn internal_normals(&mut self) -> &mut crate::ffi::NCollection_Array1_gp_Vec3f {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_internal_normals(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Poly_Triangulation_internal_normals(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -7419,15 +5321,9 @@ impl Triangulation {
     /// Note: this is estimated values, which might be different from actually loaded values.
     /// Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
     pub fn nb_deferred_nodes(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_nb_deferred_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_nb_deferred_nodes(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:361 - `Poly_Triangulation::NbDeferredTriangles()`
@@ -7435,46 +5331,26 @@ impl Triangulation {
     /// Note: this is estimated values, which might be different from actually loaded values
     /// Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
     pub fn nb_deferred_triangles(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Triangulation_nb_deferred_triangles(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_nb_deferred_triangles(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:364 - `Poly_Triangulation::HasDeferredData()`
     /// Returns TRUE if there is some triangulation data that can be loaded using LoadDeferredData().
     pub fn has_deferred_data(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_has_deferred_data(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_has_deferred_data(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:368 - `Poly_Triangulation::LoadDeferredData()`
     /// Loads triangulation data into itself
     /// from some deferred storage using specified shared input file system.
     pub fn load_deferred_data(&mut self, theFileSystem: &crate::ffi::HandleOSDFileSystem) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Triangulation_load_deferred_data(self as *mut Self, theFileSystem)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_load_deferred_data(self as *mut Self, theFileSystem)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:373 - `Poly_Triangulation::DetachedLoadDeferredData()`
@@ -7484,127 +5360,89 @@ impl Triangulation {
         &self,
         theFileSystem: &crate::ffi::HandleOSDFileSystem,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_Triangulation_detached_load_deferred_data(
                     self as *const Self,
                     theFileSystem,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:377 - `Poly_Triangulation::UnloadDeferredData()`
     /// Releases triangulation data if it has connected deferred storage.
     pub fn unload_deferred_data(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_unload_deferred_data(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_unload_deferred_data(self as *mut Self)
+        })
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:61 - `Poly_Triangulation::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Poly_Triangulation_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Poly_Triangulation_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:61 - `Poly_Triangulation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Poly_Triangulation_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Poly_Triangulation_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Poly_Triangulation_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_Triangulation_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Poly_Triangulation_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Poly_Triangulation_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        let __result = unsafe { crate::ffi::Poly_Triangulation_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_Triangulation_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Triangulation_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Triangulation_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Poly_Triangulation_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Poly_Triangulation_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -7615,53 +5453,30 @@ impl Triangulation {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Triangulation_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_Triangulation_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_Triangulation_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_Triangulation_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Poly_Triangulation_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_Triangulation_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -7676,31 +5491,27 @@ unsafe impl crate::CppDeletable for HandlePolyTriangulation {
 impl HandlePolyTriangulation {
     /// Dereference this Handle to access the underlying Poly_Triangulation
     pub fn get(&self) -> &crate::ffi::Poly_Triangulation {
-        let __result = unsafe { crate::ffi::HandlePolyTriangulation_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandlePolyTriangulation_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Poly_Triangulation
     pub fn get_mut(&mut self) -> &mut crate::ffi::Poly_Triangulation {
-        let __result = unsafe { crate::ffi::HandlePolyTriangulation_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandlePolyTriangulation_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Poly_Triangulation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandlePolyTriangulation_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandlePolyTriangulation_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Poly_Triangulation> to Handle<RWGltf_GltfLatePrimitiveArray>
@@ -7709,18 +5520,15 @@ impl HandlePolyTriangulation {
     pub fn downcast_to_gltf_late_primitive_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWGltfGltfLatePrimitiveArray>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandlePolyTriangulation_downcast_to_HandleRWGltfGltfLatePrimitiveArray(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -7730,18 +5538,15 @@ impl HandlePolyTriangulation {
     pub fn downcast_to_triangulation_source(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWMeshTriangulationSource>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandlePolyTriangulation_downcast_to_HandleRWMeshTriangulationSource(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -7768,18 +5573,14 @@ impl TriangulationParameters {
     /// @param theAngle angular deflection
     /// @param theMinSize minimum size
     pub fn new_real3(theDeflection: f64, theAngle: f64, theMinSize: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Poly_TriangulationParameters_ctor_real3(
                     theDeflection,
                     theAngle,
                     theMinSize,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -7816,206 +5617,132 @@ impl TriangulationParameters {
     /// **Source:** `Poly_TriangulationParameters.hxx`:44 - `Poly_TriangulationParameters::HasDeflection()`
     /// Returns true if linear deflection is defined.
     pub fn has_deflection(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_TriangulationParameters_has_deflection(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_has_deflection(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_TriangulationParameters.hxx`:47 - `Poly_TriangulationParameters::HasAngle()`
     /// Returns true if angular deflection is defined.
     pub fn has_angle(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_TriangulationParameters_has_angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_has_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_TriangulationParameters.hxx`:50 - `Poly_TriangulationParameters::HasMinSize()`
     /// Returns true if minimum size is defined.
     pub fn has_min_size(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_TriangulationParameters_has_min_size(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_has_min_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_TriangulationParameters.hxx`:53 - `Poly_TriangulationParameters::Deflection()`
     /// Returns linear deflection or -1 if undefined.
     pub fn deflection(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_TriangulationParameters_deflection(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_deflection(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_TriangulationParameters.hxx`:56 - `Poly_TriangulationParameters::Angle()`
     /// Returns angular deflection or -1 if undefined.
     pub fn angle(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_TriangulationParameters_angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_TriangulationParameters.hxx`:59 - `Poly_TriangulationParameters::MinSize()`
     /// Returns minimum size or -1 if undefined.
     pub fn min_size(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_TriangulationParameters_min_size(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_min_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Poly_TriangulationParameters.hxx`:61 - `Poly_TriangulationParameters::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_TriangulationParameters_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_TriangulationParameters_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Poly_TriangulationParameters.hxx`:61 - `Poly_TriangulationParameters::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Poly_TriangulationParameters_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Poly_TriangulationParameters_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Poly_TriangulationParameters.hxx`:61 - `Poly_TriangulationParameters::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Poly_TriangulationParameters_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Poly_TriangulationParameters_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Poly_TriangulationParameters_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Poly_TriangulationParameters_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Poly_TriangulationParameters_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Poly_TriangulationParameters_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulationParameters> {
-        let __result =
-            unsafe { crate::ffi::Poly_TriangulationParameters_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Poly_TriangulationParameters_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_TriangulationParameters_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_TriangulationParameters_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::Poly_TriangulationParameters_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -8026,58 +5753,34 @@ impl TriangulationParameters {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_TriangulationParameters_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_TriangulationParameters_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Poly_TriangulationParameters_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Poly_TriangulationParameters_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Poly_TriangulationParameters_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -8092,35 +5795,31 @@ unsafe impl crate::CppDeletable for HandlePolyTriangulationParameters {
 impl HandlePolyTriangulationParameters {
     /// Dereference this Handle to access the underlying Poly_TriangulationParameters
     pub fn get(&self) -> &crate::ffi::Poly_TriangulationParameters {
-        let __result =
-            unsafe { crate::ffi::HandlePolyTriangulationParameters_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandlePolyTriangulationParameters_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Poly_TriangulationParameters
     pub fn get_mut(&mut self) -> &mut crate::ffi::Poly_TriangulationParameters {
-        let __result =
-            unsafe { crate::ffi::HandlePolyTriangulationParameters_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandlePolyTriangulationParameters_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Poly_TriangulationParameters> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandlePolyTriangulationParameters_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandlePolyTriangulationParameters_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

@@ -25,13 +25,7 @@ unsafe impl crate::CppDeletable for Edge {
 impl Edge {
     /// **Source:** `BRepClass_Edge.hxx`:36 - `BRepClass_Edge::BRepClass_Edge()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_Edge_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepClass_Edge_ctor())) }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:38 - `BRepClass_Edge::BRepClass_Edge()`
@@ -39,75 +33,44 @@ impl Edge {
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_Edge_ctor_edge_face(E, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepClass_Edge_ctor_edge_face(E, F),
+            ))
         }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:41 - `BRepClass_Edge::Edge()`
     /// Returns the current Edge
     pub fn edge_mut(&mut self) -> &mut crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_Edge_edge_mut(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepClass_Edge_edge_mut(self as *mut Self)))
         }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:42 - `BRepClass_Edge::Edge()`
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_Edge_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepClass_Edge_edge(self as *const Self))) }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:45 - `BRepClass_Edge::Face()`
     /// Returns the Face for the current Edge
     pub fn face_mut(&mut self) -> &mut crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_Edge_face_mut(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepClass_Edge_face_mut(self as *mut Self)))
         }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:46 - `BRepClass_Edge::Face()`
     pub fn face(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_Edge_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepClass_Edge_face(self as *const Self))) }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:49 - `BRepClass_Edge::NextEdge()`
     /// Returns the next Edge
     pub fn next_edge(&self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_Edge_next_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepClass_Edge_next_edge(self as *const Self)))
         }
     }
 
@@ -117,67 +80,42 @@ impl Edge {
         &mut self,
         theMapVE: &crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepClass_Edge_set_next_edge(self as *mut Self, theMapVE) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_Edge_set_next_edge(self as *mut Self, theMapVE)
+        })
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:55 - `BRepClass_Edge::MaxTolerance()`
     /// Returns the maximum tolerance
     pub fn max_tolerance(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_Edge_max_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_Edge_max_tolerance(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:59 - `BRepClass_Edge::SetMaxTolerance()`
     /// Sets the maximum tolerance at
     /// which to start checking in the intersector
     pub fn set_max_tolerance(&mut self, theValue: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_Edge_set_max_tolerance(self as *mut Self, theValue)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_Edge_set_max_tolerance(self as *mut Self, theValue)
+        })
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:63 - `BRepClass_Edge::UseBndBox()`
     /// Returns true if we are using boxes
     /// in the intersector
     pub fn use_bnd_box(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_Edge_use_bnd_box(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepClass_Edge_use_bnd_box(self as *const Self) })
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:67 - `BRepClass_Edge::SetUseBndBox()`
     /// Sets the status of whether we are
     /// using boxes or not
     pub fn set_use_bnd_box(&mut self, theValue: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepClass_Edge_set_use_bnd_box(self as *mut Self, theValue) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_Edge_set_use_bnd_box(self as *mut Self, theValue)
+        })
     }
 }
 
@@ -198,12 +136,10 @@ impl FClass2dOfFClassifier {
     /// **Source:** `BRepClass_FClass2dOfFClassifier.hxx`:39 - `BRepClass_FClass2dOfFClassifier::BRepClass_FClass2dOfFClassifier()`
     /// Creates an undefined classifier.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_FClass2dOfFClassifier_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepClass_FClass2dOfFClassifier_ctor(),
+            ))
         }
     }
 
@@ -214,57 +150,35 @@ impl FClass2dOfFClassifier {
     /// compute  intersections.   <Tol> is the   tolerance
     /// attached to the line segment in intersections.
     pub fn reset(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_FClass2dOfFClassifier_reset(self as *mut Self, L, P, Tol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FClass2dOfFClassifier_reset(self as *mut Self, L, P, Tol)
+        })
     }
 
     /// **Source:** `BRepClass_FClass2dOfFClassifier.hxx`:50 - `BRepClass_FClass2dOfFClassifier::Compare()`
     /// Updates  the classification process with  the edge
     /// <E> from the boundary.
     pub fn compare(&mut self, E: &Edge, Or: crate::top_abs::Orientation) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_FClass2dOfFClassifier_compare(self as *mut Self, E, Or.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FClass2dOfFClassifier_compare(self as *mut Self, E, Or.into())
+        })
     }
 
     /// **Source:** `BRepClass_FClass2dOfFClassifier.hxx`:53 - `BRepClass_FClass2dOfFClassifier::Parameter()`
     /// Returns the current value of the parameter.
     pub fn parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FClass2dOfFClassifier_parameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FClass2dOfFClassifier_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_FClass2dOfFClassifier.hxx`:56 - `BRepClass_FClass2dOfFClassifier::Intersector()`
     /// Returns the intersecting algorithm.
     pub fn intersector(&mut self) -> &mut Intersector {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FClass2dOfFClassifier_intersector(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepClass_FClass2dOfFClassifier_intersector(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -274,32 +188,18 @@ impl FClass2dOfFClassifier {
     /// this   intersection  in the    last   intersection
     /// algorithm.
     pub fn closest_intersection(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FClass2dOfFClassifier_closest_intersection(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FClass2dOfFClassifier_closest_intersection(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_FClass2dOfFClassifier.hxx`:65 - `BRepClass_FClass2dOfFClassifier::State()`
     /// Returns the current state of the point.
     pub fn state(&self) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FClass2dOfFClassifier_state(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepClass_FClass2dOfFClassifier_state(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepClass_FClass2dOfFClassifier.hxx`:70 - `BRepClass_FClass2dOfFClassifier::IsHeadOrEnd()`
@@ -307,16 +207,9 @@ impl FClass2dOfFClassifier {
     /// represents head or end of the edge. Returns Standard_False
     /// otherwise.
     pub fn is_head_or_end(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FClass2dOfFClassifier_is_head_or_end(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FClass2dOfFClassifier_is_head_or_end(self as *const Self)
+        })
     }
 }
 
@@ -337,12 +230,8 @@ impl FClassifier {
     /// **Source:** `BRepClass_FClassifier.hxx`:40 - `BRepClass_FClassifier::BRepClass_FClassifier()`
     /// Empty constructor, undefined algorithm.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_FClassifier_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepClass_FClassifier_ctor()))
         }
     }
 
@@ -354,14 +243,10 @@ impl FClassifier {
         P: &crate::gp::Pnt2d,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FClassifier_ctor_faceexplorer_pnt2d_real(F, P, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepClass_FClassifier_ctor_faceexplorer_pnt2d_real(F, P, Tol),
+            ))
         }
     }
 
@@ -369,56 +254,36 @@ impl FClassifier {
     /// Classify  the Point  P  with  Tolerance <T> on the
     /// face described by <F>.
     pub fn perform(&mut self, F: &mut FaceExplorer, P: &crate::gp::Pnt2d, Tol: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepClass_FClassifier_perform(self as *mut Self, F, P, Tol) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FClassifier_perform(self as *mut Self, F, P, Tol)
+        })
     }
 
     /// **Source:** `BRepClass_FClassifier.hxx`:55 - `BRepClass_FClassifier::State()`
     /// Returns the result of the classification.
     pub fn state(&self) -> crate::top_abs::State {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_FClassifier_state(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepClass_FClassifier_state(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepClass_FClassifier.hxx`:59 - `BRepClass_FClassifier::Rejected()`
     /// Returns  True when  the   state was computed by  a
     /// rejection. The state is OUT.
     pub fn rejected(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FClassifier_rejected(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FClassifier_rejected(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_FClassifier.hxx`:63 - `BRepClass_FClassifier::NoWires()`
     /// Returns True if  the face  contains  no wire.  The
     /// state is IN.
     pub fn no_wires(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FClassifier_no_wires(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FClassifier_no_wires(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_FClassifier.hxx`:68 - `BRepClass_FClassifier::Edge()`
@@ -426,13 +291,8 @@ impl FClassifier {
     /// classification. When the State is ON  this  is the
     /// Edge containing the point.
     pub fn edge(&self) -> &Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_FClassifier_edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepClass_FClassifier_edge(self as *const Self)))
         }
     }
 
@@ -440,30 +300,19 @@ impl FClassifier {
     /// Returns the parameter on Edge() used to determine  the
     /// classification.
     pub fn edge_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FClassifier_edge_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FClassifier_edge_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_FClassifier.hxx`:76 - `BRepClass_FClassifier::Position()`
     /// Returns the  position of  the   point on the  edge
     /// returned by Edge.
     pub fn position(&self) -> crate::int_res2d::Position {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FClassifier_position(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::int_res2d::Position::try_from(__val).unwrap()
-        }
+        crate::int_res2d::Position::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepClass_FClassifier_position(self as *const Self)
+        }))
+        .unwrap()
     }
 }
 
@@ -485,12 +334,10 @@ impl FaceClassifier {
     /// **Source:** `BRepClass_FaceClassifier.hxx`:37 - `BRepClass_FaceClassifier::BRepClass_FaceClassifier()`
     /// Empty constructor, undefined algorithm.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_FaceClassifier_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepClass_FaceClassifier_ctor(),
+            ))
         }
     }
 
@@ -502,14 +349,10 @@ impl FaceClassifier {
         P: &crate::gp::Pnt2d,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceClassifier_ctor_faceexplorer_pnt2d_real(F, P, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepClass_FaceClassifier_ctor_faceexplorer_pnt2d_real(F, P, Tol),
+            ))
         }
     }
 
@@ -525,20 +368,16 @@ impl FaceClassifier {
         theUseBndBox: bool,
         theGapCheckTol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepClass_FaceClassifier_ctor_face_pnt2d_real_bool_real(
                     theF,
                     theP,
                     theTol,
                     theUseBndBox,
                     theGapCheckTol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -554,20 +393,16 @@ impl FaceClassifier {
         theUseBndBox: bool,
         theGapCheckTol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepClass_FaceClassifier_ctor_face_pnt_real_bool_real(
                     theF,
                     theP,
                     theTol,
                     theUseBndBox,
                     theGapCheckTol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -638,21 +473,16 @@ impl FaceClassifier {
         theUseBndBox: bool,
         theGapCheckTol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_FaceClassifier_perform_face_pnt2d_real_bool_real(
-                    self as *mut Self,
-                    theF,
-                    theP,
-                    theTol,
-                    theUseBndBox,
-                    theGapCheckTol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FaceClassifier_perform_face_pnt2d_real_bool_real(
+                self as *mut Self,
+                theF,
+                theP,
+                theTol,
+                theUseBndBox,
+                theGapCheckTol,
+            )
+        })
     }
 
     /// **Source:** `BRepClass_FaceClassifier.hxx`:79 - `BRepClass_FaceClassifier::Perform()`
@@ -668,126 +498,82 @@ impl FaceClassifier {
         theUseBndBox: bool,
         theGapCheckTol: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_FaceClassifier_perform_face_pnt_real_bool_real(
-                    self as *mut Self,
-                    theF,
-                    theP,
-                    theTol,
-                    theUseBndBox,
-                    theGapCheckTol,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FaceClassifier_perform_face_pnt_real_bool_real(
+                self as *mut Self,
+                theF,
+                theP,
+                theTol,
+                theUseBndBox,
+                theGapCheckTol,
+            )
+        })
     }
 
     /// Upcast to BRepClass_FClassifier
     pub fn as_f_classifier(&self) -> &FClassifier {
-        let __result = unsafe {
-            crate::ffi::BRepClass_FaceClassifier_as_BRepClass_FClassifier(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepClass_FaceClassifier_as_BRepClass_FClassifier(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepClass_FClassifier (mutable)
     pub fn as_f_classifier_mut(&mut self) -> &mut FClassifier {
-        let __result = unsafe {
-            crate::ffi::BRepClass_FaceClassifier_as_BRepClass_FClassifier_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepClass_FaceClassifier_as_BRepClass_FClassifier_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:55 - `BRepClass_FClassifier::State()`
     pub fn state(&self) -> crate::top_abs::State {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceClassifier_inherited_State(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceClassifier_inherited_State(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:59 - `BRepClass_FClassifier::Rejected()`
     pub fn rejected(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceClassifier_inherited_Rejected(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceClassifier_inherited_Rejected(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:63 - `BRepClass_FClassifier::NoWires()`
     pub fn no_wires(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceClassifier_inherited_NoWires(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceClassifier_inherited_NoWires(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:68 - `BRepClass_FClassifier::Edge()`
     pub fn edge(&self) -> &Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FaceClassifier_inherited_Edge(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepClass_FaceClassifier_inherited_Edge(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:72 - `BRepClass_FClassifier::EdgeParameter()`
     pub fn edge_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceClassifier_inherited_EdgeParameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceClassifier_inherited_EdgeParameter(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:76 - `BRepClass_FClassifier::Position()`
     pub fn position(&self) -> crate::int_res2d::Position {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceClassifier_inherited_Position(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::int_res2d::Position::try_from(__val).unwrap()
-        }
+        crate::int_res2d::Position::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceClassifier_inherited_Position(self as *const Self)
+        }))
+        .unwrap()
     }
 }
 
@@ -809,12 +595,10 @@ unsafe impl crate::CppDeletable for FaceExplorer {
 impl FaceExplorer {
     /// **Source:** `BRepClass_FaceExplorer.hxx`:39 - `BRepClass_FaceExplorer::BRepClass_FaceExplorer()`
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_FaceExplorer_ctor_face(F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepClass_FaceExplorer_ctor_face(F),
+            ))
         }
     }
 
@@ -824,31 +608,18 @@ impl FaceExplorer {
     /// will be on the line between the point and the center of the
     /// bounding box. Returns True if point was not changed.
     pub fn check_point(&mut self, thePoint: &mut crate::gp::Pnt2d) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceExplorer_check_point(self as *mut Self, thePoint)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_check_point(self as *mut Self, thePoint)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:49 - `BRepClass_FaceExplorer::Reject()`
     /// Should  return  True  if the  point  is  outside a
     /// bounding volume of the face.
     pub fn reject(&self, P: &crate::gp::Pnt2d) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FaceExplorer_reject(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_reject(self as *const Self, P)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:54 - `BRepClass_FaceExplorer::Segment()`
@@ -861,15 +632,9 @@ impl FaceExplorer {
         L: &mut crate::gp::Lin2d,
         Par: &mut f64,
     ) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FaceExplorer_segment(self as *mut Self, P, L, Par) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_segment(self as *mut Self, P, L, Par)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:59 - `BRepClass_FaceExplorer::OtherSegment()`
@@ -882,197 +647,121 @@ impl FaceExplorer {
         L: &mut crate::gp::Lin2d,
         Par: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceExplorer_other_segment(self as *mut Self, P, L, Par)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_other_segment(self as *mut Self, P, L, Par)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:62 - `BRepClass_FaceExplorer::InitWires()`
     /// Starts an exploration of the wires.
     pub fn init_wires(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepClass_FaceExplorer_init_wires(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_init_wires(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:65 - `BRepClass_FaceExplorer::MoreWires()`
     /// Returns True if there is  a current wire.
     pub fn more_wires(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FaceExplorer_more_wires(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_more_wires(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:68 - `BRepClass_FaceExplorer::NextWire()`
     /// Sets the explorer  to the  next  wire.
     pub fn next_wire(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepClass_FaceExplorer_next_wire(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_next_wire(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:72 - `BRepClass_FaceExplorer::RejectWire()`
     /// Returns True  if the wire  bounding volume does not
     /// intersect the segment.
     pub fn reject_wire(&self, L: &crate::gp::Lin2d, Par: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceExplorer_reject_wire(self as *const Self, L, Par)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_reject_wire(self as *const Self, L, Par)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:76 - `BRepClass_FaceExplorer::InitEdges()`
     /// Starts an exploration of the  edges of the current
     /// wire.
     pub fn init_edges(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepClass_FaceExplorer_init_edges(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_init_edges(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:79 - `BRepClass_FaceExplorer::MoreEdges()`
     /// Returns True if there is a current edge.
     pub fn more_edges(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FaceExplorer_more_edges(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_more_edges(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:82 - `BRepClass_FaceExplorer::NextEdge()`
     /// Sets the explorer  to the  next  edge.
     pub fn next_edge(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepClass_FaceExplorer_next_edge(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_next_edge(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:86 - `BRepClass_FaceExplorer::RejectEdge()`
     /// Returns True  if the edge  bounding volume does not
     /// intersect the segment.
     pub fn reject_edge(&self, L: &crate::gp::Lin2d, Par: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceExplorer_reject_edge(self as *const Self, L, Par)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_reject_edge(self as *const Self, L, Par)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:89 - `BRepClass_FaceExplorer::CurrentEdge()`
     /// Current edge in current wire and its orientation.
     pub fn current_edge(&self, E: &mut Edge, Or: &mut crate::top_abs::Orientation) {
         let mut Or_i32_: i32 = (*Or).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_FaceExplorer_current_edge(
-                    self as *const Self,
-                    E,
-                    &mut Or_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_current_edge(self as *const Self, E, &mut Or_i32_)
+        });
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:92 - `BRepClass_FaceExplorer::MaxTolerance()`
     /// Returns the maximum tolerance
     pub fn max_tolerance(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FaceExplorer_max_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_max_tolerance(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:96 - `BRepClass_FaceExplorer::SetMaxTolerance()`
     /// Sets the maximum tolerance at
     /// which to start checking in the intersector
     pub fn set_max_tolerance(&mut self, theValue: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_FaceExplorer_set_max_tolerance(self as *mut Self, theValue)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_set_max_tolerance(self as *mut Self, theValue)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:100 - `BRepClass_FaceExplorer::UseBndBox()`
     /// Returns true if we are using boxes
     /// in the intersector
     pub fn use_bnd_box(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FaceExplorer_use_bnd_box(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_use_bnd_box(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:104 - `BRepClass_FaceExplorer::SetUseBndBox()`
     /// Sets the status of whether we are
     /// using boxes or not
     pub fn set_use_bnd_box(&mut self, theValue: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_FaceExplorer_set_use_bnd_box(self as *mut Self, theValue)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FaceExplorer_set_use_bnd_box(self as *mut Self, theValue)
+        })
     }
 }
 
@@ -1093,12 +782,10 @@ impl FacePassiveClassifier {
     /// **Source:** `BRepClass_FacePassiveClassifier.hxx`:40 - `BRepClass_FacePassiveClassifier::BRepClass_FacePassiveClassifier()`
     /// Creates an undefined classifier.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_FacePassiveClassifier_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepClass_FacePassiveClassifier_ctor(),
+            ))
         }
     }
 
@@ -1109,57 +796,35 @@ impl FacePassiveClassifier {
     /// compute  intersections.   <Tol> is the   tolerance
     /// attached to the line segment in intersections.
     pub fn reset(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_FacePassiveClassifier_reset(self as *mut Self, L, P, Tol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FacePassiveClassifier_reset(self as *mut Self, L, P, Tol)
+        })
     }
 
     /// **Source:** `BRepClass_FacePassiveClassifier.hxx`:51 - `BRepClass_FacePassiveClassifier::Compare()`
     /// Updates  the classification process with  the edge
     /// <E> from the boundary.
     pub fn compare(&mut self, E: &Edge, Or: crate::top_abs::Orientation) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_FacePassiveClassifier_compare(self as *mut Self, E, Or.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_FacePassiveClassifier_compare(self as *mut Self, E, Or.into())
+        })
     }
 
     /// **Source:** `BRepClass_FacePassiveClassifier.hxx`:54 - `BRepClass_FacePassiveClassifier::Parameter()`
     /// Returns the current value of the parameter.
     pub fn parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FacePassiveClassifier_parameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FacePassiveClassifier_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_FacePassiveClassifier.hxx`:57 - `BRepClass_FacePassiveClassifier::Intersector()`
     /// Returns the intersecting algorithm.
     pub fn intersector(&mut self) -> &mut Intersector {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FacePassiveClassifier_intersector(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepClass_FacePassiveClassifier_intersector(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -1169,32 +834,18 @@ impl FacePassiveClassifier {
     /// this   intersection  in the    last   intersection
     /// algorithm.
     pub fn closest_intersection(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FacePassiveClassifier_closest_intersection(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FacePassiveClassifier_closest_intersection(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_FacePassiveClassifier.hxx`:66 - `BRepClass_FacePassiveClassifier::State()`
     /// Returns the current state of the point.
     pub fn state(&self) -> crate::top_abs::State {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_FacePassiveClassifier_state(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::top_abs::State::try_from(__val).unwrap()
-        }
+        crate::top_abs::State::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepClass_FacePassiveClassifier_state(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepClass_FacePassiveClassifier.hxx`:71 - `BRepClass_FacePassiveClassifier::IsHeadOrEnd()`
@@ -1202,16 +853,9 @@ impl FacePassiveClassifier {
     /// represents head or end of the edge. Returns Standard_False
     /// otherwise.
     pub fn is_head_or_end(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FacePassiveClassifier_is_head_or_end(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_FacePassiveClassifier_is_head_or_end(self as *const Self)
+        })
     }
 }
 
@@ -1233,26 +877,17 @@ unsafe impl crate::CppDeletable for Intersector {
 impl Intersector {
     /// **Source:** `BRepClass_Intersector.hxx`:35 - `BRepClass_Intersector::BRepClass_Intersector()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepClass_Intersector_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepClass_Intersector_ctor()))
         }
     }
 
     /// **Source:** `BRepClass_Intersector.hxx`:38 - `BRepClass_Intersector::Perform()`
     /// Intersect the line segment and the edge.
     pub fn perform(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64, E: &Edge) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_Intersector_perform(self as *mut Self, L, P, Tol, E)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_Intersector_perform(self as *mut Self, L, P, Tol, E)
+        })
     }
 
     /// **Source:** `BRepClass_Intersector.hxx`:46 - `BRepClass_Intersector::LocalGeometry()`
@@ -1267,162 +902,110 @@ impl Intersector {
         N: &mut crate::gp::Dir2d,
         C: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_Intersector_local_geometry(self as *const Self, E, U, T, N, C)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_Intersector_local_geometry(self as *const Self, E, U, T, N, C)
+        })
     }
 
     /// Upcast to Geom2dInt_IntConicCurveOfGInter
     pub fn as_geom2d_int_int_conic_curve_of_g_inter(
         &self,
     ) -> &crate::geom2d_int::IntConicCurveOfGInter {
-        let __result = unsafe {
-            crate::ffi::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2dInt_IntConicCurveOfGInter (mutable)
     pub fn as_geom2d_int_int_conic_curve_of_g_inter_mut(
         &mut self,
     ) -> &mut crate::geom2d_int::IntConicCurveOfGInter {
-        let __result = unsafe {
-            crate::ffi::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        let __result = unsafe {
-            crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        let __result = unsafe {
-            crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_Intersector_inherited_IsDone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_Intersector_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepClass_Intersector_inherited_IsEmpty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_Intersector_inherited_IsEmpty(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_Intersector_inherited_NbPoints(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_Intersector_inherited_NbPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_Intersector_inherited_Point(self as *const Self, N)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepClass_Intersector_inherited_Point(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_Intersector_inherited_NbSegments(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepClass_Intersector_inherited_NbSegments(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_Intersector_inherited_Segment(self as *const Self, N)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepClass_Intersector_inherited_Segment(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepClass_Intersector_inherited_SetReversedParameters(
-                    self as *mut Self,
-                    Reverseflag,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepClass_Intersector_inherited_SetReversedParameters(
+                self as *mut Self,
+                Reverseflag,
+            )
+        })
     }
 }

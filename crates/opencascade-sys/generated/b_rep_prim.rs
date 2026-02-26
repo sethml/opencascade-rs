@@ -59,113 +59,77 @@ impl Builder {
     /// Creates an empty, useless  Builder. Necesseray for
     /// compilation.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Builder_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_Builder_ctor()))
         }
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:47 - `BRepPrim_Builder::BRepPrim_Builder()`
     /// Creates from a Builder.
     pub fn new_builder(B: &crate::b_rep::Builder) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Builder_ctor_builder(B) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Builder_ctor_builder(B),
+            ))
         }
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:49 - `BRepPrim_Builder::Builder()`
     pub fn builder(&self) -> &crate::b_rep::Builder {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Builder_builder(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Builder_builder(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:52 - `BRepPrim_Builder::MakeShell()`
     /// Make a empty Shell.
     pub fn make_shell(&self, S: &mut crate::topo_ds::Shell) {
-        {
-            let __exc = unsafe { crate::ffi::BRepPrim_Builder_make_shell(self as *const Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_make_shell(self as *const Self, S)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:56 - `BRepPrim_Builder::MakeFace()`
     /// Returns in   <F> a  Face  built  with   the  plane
     /// equation <P>. Used by all primitives.
     pub fn make_face(&self, F: &mut crate::topo_ds::Face, P: &crate::gp::Pln) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPrim_Builder_make_face(self as *const Self, F, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_make_face(self as *const Self, F, P)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:59 - `BRepPrim_Builder::MakeWire()`
     /// Returns in <W> an empty Wire.
     pub fn make_wire(&self, W: &mut crate::topo_ds::Wire) {
-        {
-            let __exc = unsafe { crate::ffi::BRepPrim_Builder_make_wire(self as *const Self, W) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_make_wire(self as *const Self, W)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:62 - `BRepPrim_Builder::MakeDegeneratedEdge()`
     /// Returns in <E> a degenerated edge.
     pub fn make_degenerated_edge(&self, E: &mut crate::topo_ds::Edge) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Builder_make_degenerated_edge(self as *const Self, E)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_make_degenerated_edge(self as *const Self, E)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:66 - `BRepPrim_Builder::MakeEdge()`
     /// Returns   in <E>  an  Edge  built  with  the  line
     /// equation  <L>.
     pub fn make_edge_edge_lin(&self, E: &mut crate::topo_ds::Edge, L: &crate::gp::Lin) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Builder_make_edge_edge_lin(self as *const Self, E, L)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_make_edge_edge_lin(self as *const Self, E, L)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:70 - `BRepPrim_Builder::MakeEdge()`
     /// Returns  in <E>   an  Edge  built  with the circle
     /// equation  <C>.
     pub fn make_edge_edge_circ(&self, E: &mut crate::topo_ds::Edge, C: &crate::gp::Circ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Builder_make_edge_edge_circ(self as *const Self, E, C)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_make_edge_edge_circ(self as *const Self, E, C)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:75 - `BRepPrim_Builder::SetPCurve()`
@@ -178,19 +142,9 @@ impl Builder {
         F: &crate::topo_ds::Face,
         L: &crate::gp::Lin2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Builder_set_p_curve_edge_face_lin2d(
-                    self as *const Self,
-                    E,
-                    F,
-                    L,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_set_p_curve_edge_face_lin2d(self as *const Self, E, F, L)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:80 - `BRepPrim_Builder::SetPCurve()`
@@ -204,20 +158,15 @@ impl Builder {
         L1: &crate::gp::Lin2d,
         L2: &crate::gp::Lin2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Builder_set_p_curve_edge_face_lin2d2(
-                    self as *const Self,
-                    E,
-                    F,
-                    L1,
-                    L2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_set_p_curve_edge_face_lin2d2(
+                self as *const Self,
+                E,
+                F,
+                L1,
+                L2,
+            )
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:88 - `BRepPrim_Builder::SetPCurve()`
@@ -230,43 +179,25 @@ impl Builder {
         F: &crate::topo_ds::Face,
         C: &crate::gp::Circ2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Builder_set_p_curve_edge_face_circ2d(
-                    self as *const Self,
-                    E,
-                    F,
-                    C,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_set_p_curve_edge_face_circ2d(self as *const Self, E, F, C)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:91 - `BRepPrim_Builder::MakeVertex()`
     /// Returns in <V> a Vertex built with the point <P>.
     pub fn make_vertex(&self, V: &mut crate::topo_ds::Vertex, P: &crate::gp::Pnt) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPrim_Builder_make_vertex(self as *const Self, V, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_make_vertex(self as *const Self, V, P)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:94 - `BRepPrim_Builder::ReverseFace()`
     /// Reverses the Face <F>.
     pub fn reverse_face(&self, F: &mut crate::topo_ds::Face) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPrim_Builder_reverse_face(self as *const Self, F) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_reverse_face(self as *const Self, F)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:99 - `BRepPrim_Builder::AddEdgeVertex()`
@@ -280,20 +211,15 @@ impl Builder {
         P: f64,
         direct: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Builder_add_edge_vertex_edge_vertex_real_bool(
-                    self as *const Self,
-                    E,
-                    V,
-                    P,
-                    direct,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_add_edge_vertex_edge_vertex_real_bool(
+                self as *const Self,
+                E,
+                V,
+                P,
+                direct,
+            )
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:107 - `BRepPrim_Builder::AddEdgeVertex()`
@@ -307,20 +233,15 @@ impl Builder {
         P1: f64,
         P2: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Builder_add_edge_vertex_edge_vertex_real2(
-                    self as *const Self,
-                    E,
-                    V,
-                    P1,
-                    P2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_add_edge_vertex_edge_vertex_real2(
+                self as *const Self,
+                E,
+                V,
+                P1,
+                P2,
+            )
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:114 - `BRepPrim_Builder::SetParameters()`
@@ -333,14 +254,9 @@ impl Builder {
         P1: f64,
         P2: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Builder_set_parameters(self as *const Self, E, V, P1, P2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_set_parameters(self as *const Self, E, V, P1, P2)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:121 - `BRepPrim_Builder::AddWireEdge()`
@@ -352,90 +268,61 @@ impl Builder {
         E: &crate::topo_ds::Edge,
         direct: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Builder_add_wire_edge(self as *const Self, W, E, direct)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_add_wire_edge(self as *const Self, W, E, direct)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:126 - `BRepPrim_Builder::AddFaceWire()`
     /// Adds the Wire <W> in  the Face <F>.
     pub fn add_face_wire(&self, F: &mut crate::topo_ds::Face, W: &crate::topo_ds::Wire) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPrim_Builder_add_face_wire(self as *const Self, F, W) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_add_face_wire(self as *const Self, F, W)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:129 - `BRepPrim_Builder::AddShellFace()`
     /// Adds the Face <F>  in the Shell <Sh>.
     pub fn add_shell_face(&self, Sh: &mut crate::topo_ds::Shell, F: &crate::topo_ds::Face) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPrim_Builder_add_shell_face(self as *const Self, Sh, F) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_add_shell_face(self as *const Self, Sh, F)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:133 - `BRepPrim_Builder::CompleteEdge()`
     /// This is called once an edge is completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_edge(&self, E: &mut crate::topo_ds::Edge) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPrim_Builder_complete_edge(self as *const Self, E) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_complete_edge(self as *const Self, E)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:137 - `BRepPrim_Builder::CompleteWire()`
     /// This is called once a wire is  completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_wire(&self, W: &mut crate::topo_ds::Wire) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPrim_Builder_complete_wire(self as *const Self, W) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_complete_wire(self as *const Self, W)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:141 - `BRepPrim_Builder::CompleteFace()`
     /// This is called once a face is  completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_face(&self, F: &mut crate::topo_ds::Face) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPrim_Builder_complete_face(self as *const Self, F) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_complete_face(self as *const Self, F)
+        })
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:145 - `BRepPrim_Builder::CompleteShell()`
     /// This is called once a shell is  completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_shell(&self, S: &mut crate::topo_ds::Shell) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPrim_Builder_complete_shell(self as *const Self, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Builder_complete_shell(self as *const Self, S)
+        })
     }
 }
 
@@ -472,50 +359,40 @@ impl Cone {
         Height: f64,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cone_ctor_real_ax2_real2(Angle, Position, Height, Radius)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cone_ctor_real_ax2_real2(Angle, Position, Height, Radius),
+            ))
         }
     }
 
     /// **Source:** `BRepPrim_Cone.hxx`:52 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// infinite cone at origin on Z negative
     pub fn new_real(Angle: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_real(Angle) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_Cone_ctor_real(
+                Angle,
+            )))
         }
     }
 
     /// **Source:** `BRepPrim_Cone.hxx`:55 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// infinite cone at Apex on Z negative
     pub fn new_real_pnt(Angle: f64, Apex: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_real_pnt(Angle, Apex) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_Cone_ctor_real_pnt(
+                Angle, Apex,
+            )))
         }
     }
 
     /// **Source:** `BRepPrim_Cone.hxx`:58 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// infinite cone with Axes
     pub fn new_real_ax2(Angle: f64, Axes: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_real_ax2(Angle, Axes) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_Cone_ctor_real_ax2(
+                Angle, Axes,
+            )))
         }
     }
 
@@ -531,12 +408,10 @@ impl Cone {
     /// H < Resolution
     /// H negative
     pub fn new_real3(R1: f64, R2: f64, H: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_real3(R1, R2, H) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_Cone_ctor_real3(
+                R1, R2, H,
+            )))
         }
     }
 
@@ -548,24 +423,20 @@ impl Cone {
         R2: f64,
         H: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_pnt_real3(Center, R1, R2, H) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cone_ctor_pnt_real3(Center, R1, R2, H),
+            ))
         }
     }
 
     /// **Source:** `BRepPrim_Cone.hxx`:81 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// same as above with given axes system.
     pub fn new_ax2_real3(Axes: &crate::gp::Ax2, R1: f64, R2: f64, H: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_ax2_real3(Axes, R1, R2, H) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cone_ctor_ax2_real3(Axes, R1, R2, H),
+            ))
         }
     }
 
@@ -593,639 +464,409 @@ impl Cone {
     /// The surface normal should be directed  towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_make_empty_lateral_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cone_make_empty_lateral_face(self as *const Self),
+            ))
         }
     }
 
     /// Upcast to BRepPrim_Revolution
     pub fn as_revolution(&self) -> &Revolution {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_Revolution (mutable)
     pub fn as_revolution_mut(&mut self) -> &mut Revolution {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_OneAxis(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPrim_Cone_as_BRepPrim_OneAxis(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis (mutable)
     pub fn as_one_axis_mut(&mut self) -> &mut OneAxis {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_OneAxis_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepPrim_Cone_as_BRepPrim_OneAxis_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
     pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cone_inherited_MakeEmptyMeridianEdge(self as *const Self, Ang)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cone_inherited_MakeEmptyMeridianEdge(self as *const Self, Ang),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:60 - `BRepPrim_Revolution::MeridianValue()`
     pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cone_inherited_MeridianValue(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cone_inherited_MeridianValue(self as *const Self, V),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Cone_inherited_SetMeridianPCurve(self as *const Self, E, F)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_SetMeridianPCurve(self as *const Self, E, F)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Cone_inherited_SetMeridianOffset(
-                    self as *mut Self,
-                    MeridianOffset,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_SetMeridianOffset(self as *mut Self, MeridianOffset)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
     pub fn axes(&self) -> &crate::gp::Ax2 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cone_inherited_Axes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_Axes(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_Angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_Angle(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cone_inherited_VMin(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_VMin(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cone_inherited_VMax(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_VMax(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn meridian_on_axis(&self, V: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cone_inherited_MeridianOnAxis(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_MeridianOnAxis(self as *const Self, V)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn meridian_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_MeridianClosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_MeridianClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn v_max_infinite(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_VMaxInfinite(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_VMaxInfinite(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn v_min_infinite(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_VMinInfinite(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_VMinInfinite(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
     pub fn has_top(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_HasTop(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_HasTop(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
     pub fn has_bottom(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_HasBottom(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_HasBottom(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
     pub fn has_sides(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_HasSides(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cone_inherited_HasSides(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cone_inherited_Shell(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_Shell(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_LateralFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_LateralFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_TopFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_TopFace(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_BottomFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_BottomFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_StartFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_StartFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_EndFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_EndFace(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_LateralWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_LateralWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_LateralStartWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_LateralStartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_LateralEndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_LateralEndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_TopWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_TopWire(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_BottomWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_BottomWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_StartWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_StartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_AxisStartWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_AxisStartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_EndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_EndWire(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_AxisEndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_AxisEndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_AxisEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_AxisEdge(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_StartEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_StartEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_EndEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_EndEdge(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_StartTopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_StartTopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_StartBottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_StartBottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_EndTopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_EndTopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_EndBottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_EndBottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_TopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_TopEdge(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_BottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_BottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_AxisTopVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_AxisTopVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_AxisBottomVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_AxisBottomVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_TopStartVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_TopStartVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_TopEndVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_TopEndVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_BottomStartVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_BottomStartVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_inherited_BottomEndVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cone_inherited_BottomEndVertex(
+                self as *mut Self,
+            )))
         }
     }
 }
@@ -1259,49 +900,40 @@ impl Cylinder {
         Radius: f64,
         Height: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_ctor_ax2_real2(Position, Radius, Height) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cylinder_ctor_ax2_real2(Position, Radius, Height),
+            ))
         }
     }
 
     /// **Source:** `BRepPrim_Cylinder.hxx`:48 - `BRepPrim_Cylinder::BRepPrim_Cylinder()`
     /// infinite Cylinder at origin on Z negative
     pub fn new_real(Radius: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cylinder_ctor_real(Radius) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_Cylinder_ctor_real(
+                Radius,
+            )))
         }
     }
 
     /// **Source:** `BRepPrim_Cylinder.hxx`:51 - `BRepPrim_Cylinder::BRepPrim_Cylinder()`
     /// infinite Cylinder at Center on Z negative
     pub fn new_pnt_real(Center: &crate::gp::Pnt, Radius: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cylinder_ctor_pnt_real(Center, Radius) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cylinder_ctor_pnt_real(Center, Radius),
+            ))
         }
     }
 
     /// **Source:** `BRepPrim_Cylinder.hxx`:54 - `BRepPrim_Cylinder::BRepPrim_Cylinder()`
     /// infinite Cylinder at Axes on Z negative
     pub fn new_ax2_real(Axes: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cylinder_ctor_ax2_real(Axes, Radius) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cylinder_ctor_ax2_real(Axes, Radius),
+            ))
         }
     }
 
@@ -1312,24 +944,20 @@ impl Cylinder {
     /// H < Resolution
     /// H negative
     pub fn new_real2(R: f64, H: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cylinder_ctor_real2(R, H) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cylinder_ctor_real2(R, H),
+            ))
         }
     }
 
     /// **Source:** `BRepPrim_Cylinder.hxx`:64 - `BRepPrim_Cylinder::BRepPrim_Cylinder()`
     /// same as above but at a given point
     pub fn new_pnt_real2(Center: &crate::gp::Pnt, R: f64, H: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Cylinder_ctor_pnt_real2(Center, R, H) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cylinder_ctor_pnt_real2(Center, R, H),
+            ))
         }
     }
 
@@ -1337,657 +965,433 @@ impl Cylinder {
     /// The surface normal should be directed  towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_make_empty_lateral_face(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cylinder_make_empty_lateral_face(self as *const Self),
+            ))
         }
     }
 
     /// Upcast to BRepPrim_Revolution
     pub fn as_revolution(&self) -> &Revolution {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_Revolution (mutable)
     pub fn as_revolution_mut(&mut self) -> &mut Revolution {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Cylinder_as_BRepPrim_OneAxis(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPrim_Cylinder_as_BRepPrim_OneAxis(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis (mutable)
     pub fn as_one_axis_mut(&mut self) -> &mut OneAxis {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Cylinder_as_BRepPrim_OneAxis_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepPrim_Cylinder_as_BRepPrim_OneAxis_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
     pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepPrim_Cylinder_inherited_MakeEmptyMeridianEdge(
                     self as *const Self,
                     Ang,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:60 - `BRepPrim_Revolution::MeridianValue()`
     pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_MeridianValue(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Cylinder_inherited_MeridianValue(self as *const Self, V),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_SetMeridianPCurve(self as *const Self, E, F)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_SetMeridianPCurve(self as *const Self, E, F)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_SetMeridianOffset(
-                    self as *mut Self,
-                    MeridianOffset,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_SetMeridianOffset(
+                self as *mut Self,
+                MeridianOffset,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
     pub fn axes(&self) -> &crate::gp::Ax2 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_Axes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_Axes(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_Angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_Angle(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_VMin(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_VMin(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_VMax(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_VMax(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn meridian_on_axis(&self, V: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_MeridianOnAxis(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_MeridianOnAxis(self as *const Self, V)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn meridian_closed(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_MeridianClosed(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_MeridianClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn v_max_infinite(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_VMaxInfinite(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_VMaxInfinite(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn v_min_infinite(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_VMinInfinite(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_VMinInfinite(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
     pub fn has_top(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_HasTop(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_HasTop(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
     pub fn has_bottom(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_HasBottom(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_HasBottom(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
     pub fn has_sides(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_HasSides(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_HasSides(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_Shell(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_Shell(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_LateralFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_LateralFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_TopFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_TopFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_BottomFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_BottomFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_StartFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_StartFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_EndFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_EndFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_LateralWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_LateralWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_LateralStartWire(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_LateralStartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_LateralEndWire(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_LateralEndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_TopWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_TopWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_BottomWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_BottomWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_StartWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_StartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_AxisStartWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_AxisStartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_EndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_EndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_AxisEndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_AxisEndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_AxisEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_AxisEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_StartEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_StartEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_EndEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_EndEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_StartTopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_StartTopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_StartBottomEdge(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_StartBottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_EndTopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_EndTopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_EndBottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_EndBottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_TopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_TopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_BottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_BottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_AxisTopVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_AxisTopVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_AxisBottomVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_AxisBottomVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_TopStartVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_TopStartVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_inherited_TopEndVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_TopEndVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_BottomStartVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_BottomStartVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_inherited_BottomEndVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Cylinder_inherited_BottomEndVertex(
+                self as *mut Self,
+            )))
         }
     }
 }
@@ -2013,12 +1417,8 @@ unsafe impl crate::CppDeletable for FaceBuilder {
 impl FaceBuilder {
     /// **Source:** `BRepPrim_FaceBuilder.hxx`:41 - `BRepPrim_FaceBuilder::BRepPrim_FaceBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_FaceBuilder_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_FaceBuilder_ctor()))
         }
     }
 
@@ -2027,13 +1427,10 @@ impl FaceBuilder {
         B: &crate::b_rep::Builder,
         S: &crate::ffi::HandleGeomSurface,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_FaceBuilder_ctor_builder_handlegeomsurface(B, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_FaceBuilder_ctor_builder_handlegeomsurface(B, S),
+            ))
         }
     }
 
@@ -2046,16 +1443,12 @@ impl FaceBuilder {
         VMin: f64,
         VMax: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepPrim_FaceBuilder_ctor_builder_handlegeomsurface_real4(
                     B, S, UMin, UMax, VMin, VMax,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2065,18 +1458,9 @@ impl FaceBuilder {
         B: &crate::b_rep::Builder,
         S: &crate::ffi::HandleGeomSurface,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_FaceBuilder_init_builder_handlegeomsurface(
-                    self as *mut Self,
-                    B,
-                    S,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_FaceBuilder_init_builder_handlegeomsurface(self as *mut Self, B, S)
+        })
     }
 
     /// **Source:** `BRepPrim_FaceBuilder.hxx`:54 - `BRepPrim_FaceBuilder::Init()`
@@ -2089,33 +1473,23 @@ impl FaceBuilder {
         VMin: f64,
         VMax: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_FaceBuilder_init_builder_handlegeomsurface_real4(
-                    self as *mut Self,
-                    B,
-                    S,
-                    UMin,
-                    UMax,
-                    VMin,
-                    VMax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_FaceBuilder_init_builder_handlegeomsurface_real4(
+                self as *mut Self,
+                B,
+                S,
+                UMin,
+                UMax,
+                VMin,
+                VMax,
+            )
+        })
     }
 
     /// **Source:** `BRepPrim_FaceBuilder.hxx`:61 - `BRepPrim_FaceBuilder::Face()`
     pub fn face(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_FaceBuilder_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_FaceBuilder_face(self as *const Self)))
         }
     }
 
@@ -2126,13 +1500,8 @@ impl FaceBuilder {
     /// 3 - Edge VMax
     /// 4 - Edge UMin
     pub fn edge(&self, I: i32) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_FaceBuilder_edge(self as *const Self, I) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_FaceBuilder_edge(self as *const Self, I)))
         }
     }
 
@@ -2143,14 +1512,8 @@ impl FaceBuilder {
     /// 3 - Vertex UMax,VMax
     /// 4 - Vertex UMin,VMax
     pub fn vertex(&self, I: i32) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_FaceBuilder_vertex(self as *const Self, I) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_FaceBuilder_vertex(self as *const Self, I)))
         }
     }
 }
@@ -2191,12 +1554,8 @@ impl GWedge {
     /// **Source:** `BRepPrim_GWedge.hxx`:62 - `BRepPrim_GWedge::BRepPrim_GWedge()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_GWedge_ctor()))
         }
     }
 
@@ -2219,13 +1578,10 @@ impl GWedge {
         dy: f64,
         dz: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_GWedge_ctor_builder_ax2_real3(B, Axes, dx, dy, dz) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_GWedge_ctor_builder_ax2_real3(B, Axes, dx, dy, dz),
+            ))
         }
     }
 
@@ -2250,14 +1606,10 @@ impl GWedge {
         dz: f64,
         ltx: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_GWedge_ctor_builder_ax2_real4(B, Axes, dx, dy, dz, ltx)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_GWedge_ctor_builder_ax2_real4(B, Axes, dx, dy, dz, ltx),
+            ))
         }
     }
 
@@ -2282,238 +1634,130 @@ impl GWedge {
         z2max: f64,
         x2max: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepPrim_GWedge_ctor_builder_ax2_real10(
                     B, Axes, xmin, ymin, zmin, z2min, x2min, xmax, ymax, zmax, z2max, x2max,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:120 - `BRepPrim_GWedge::Axes()`
     /// Returns the coordinates system from <me>.
     pub fn axes(&self) -> crate::OwnedPtr<crate::gp::Ax2> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_axes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_GWedge_axes(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:123 - `BRepPrim_GWedge::GetXMin()`
     /// Returns Xmin value from <me>.
     pub fn get_x_min(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_x_min(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_GWedge_get_x_min(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:126 - `BRepPrim_GWedge::GetYMin()`
     /// Returns YMin value from <me>.
     pub fn get_y_min(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_y_min(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_GWedge_get_y_min(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:129 - `BRepPrim_GWedge::GetZMin()`
     /// Returns ZMin value from <me>.
     pub fn get_z_min(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_z_min(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_GWedge_get_z_min(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:132 - `BRepPrim_GWedge::GetZ2Min()`
     /// Returns Z2Min value from <me>.
     pub fn get_z2_min(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_z2_min(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_GWedge_get_z2_min(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:135 - `BRepPrim_GWedge::GetX2Min()`
     /// Returns X2Min value from <me>.
     pub fn get_x2_min(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_x2_min(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_GWedge_get_x2_min(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:138 - `BRepPrim_GWedge::GetXMax()`
     /// Returns XMax value from <me>.
     pub fn get_x_max(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_x_max(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_GWedge_get_x_max(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:141 - `BRepPrim_GWedge::GetYMax()`
     /// Returns YMax value from <me>.
     pub fn get_y_max(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_y_max(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_GWedge_get_y_max(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:144 - `BRepPrim_GWedge::GetZMax()`
     /// Returns ZMax value from <me>.
     pub fn get_z_max(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_z_max(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_GWedge_get_z_max(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:147 - `BRepPrim_GWedge::GetZ2Max()`
     /// Returns Z2Max value from <me>.
     pub fn get_z2_max(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_z2_max(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_GWedge_get_z2_max(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:150 - `BRepPrim_GWedge::GetX2Max()`
     /// Returns X2Max value from <me>.
     pub fn get_x2_max(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_x2_max(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_GWedge_get_x2_max(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:154 - `BRepPrim_GWedge::Open()`
     /// Opens <me> in <d1> direction. A face and its edges
     /// or vertices are said nonexistent.
     pub fn open(&mut self, d1: crate::b_rep_prim::Direction) {
-        {
-            let __exc = unsafe { crate::ffi::BRepPrim_GWedge_open(self as *mut Self, d1.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_GWedge_open(self as *mut Self, d1.into())
+        })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:158 - `BRepPrim_GWedge::Close()`
     /// Closes <me> in <d1> direction. A face and its
     /// edges or vertices are said existent.
     pub fn close(&mut self, d1: crate::b_rep_prim::Direction) {
-        {
-            let __exc = unsafe { crate::ffi::BRepPrim_GWedge_close(self as *mut Self, d1.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_GWedge_close(self as *mut Self, d1.into())
+        })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:161 - `BRepPrim_GWedge::IsInfinite()`
     /// Returns True if <me> is open in <d1> direction.
     pub fn is_infinite(&self, d1: crate::b_rep_prim::Direction) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_GWedge_is_infinite(self as *const Self, d1.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_GWedge_is_infinite(self as *const Self, d1.into())
+        })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:164 - `BRepPrim_GWedge::Shell()`
     /// Returns the Shell containing the Faces of <me>.
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_GWedge_shell(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepPrim_GWedge_shell(self as *mut Self))) }
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:167 - `BRepPrim_GWedge::HasFace()`
     /// Returns True if <me> has a Face in <d1> direction.
     pub fn has_face(&self, d1: crate::b_rep_prim::Direction) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_GWedge_has_face(self as *const Self, d1.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_GWedge_has_face(self as *const Self, d1.into())
+        })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:170 - `BRepPrim_GWedge::Face()`
     /// Returns the Face of <me> located in <d1> direction.
     pub fn face(&mut self, d1: crate::b_rep_prim::Direction) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_GWedge_face(self as *mut Self, d1.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_GWedge_face(self as *mut Self, d1.into())))
         }
     }
 
@@ -2521,42 +1765,27 @@ impl GWedge {
     /// Returns the plane of the Face of <me> located in
     /// <d1> direction.
     pub fn plane(&mut self, d1: crate::b_rep_prim::Direction) -> crate::OwnedPtr<crate::gp::Pln> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_GWedge_plane(self as *mut Self, d1.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_GWedge_plane(
+                self as *mut Self,
+                d1.into(),
+            )))
         }
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:177 - `BRepPrim_GWedge::HasWire()`
     /// Returns True if <me> has a Wire in <d1> direction.
     pub fn has_wire(&self, d1: crate::b_rep_prim::Direction) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_GWedge_has_wire(self as *const Self, d1.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_GWedge_has_wire(self as *const Self, d1.into())
+        })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:180 - `BRepPrim_GWedge::Wire()`
     /// Returns the Wire of <me> located in <d1> direction.
     pub fn wire(&mut self, d1: crate::b_rep_prim::Direction) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_GWedge_wire(self as *mut Self, d1.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_GWedge_wire(self as *mut Self, d1.into())))
         }
     }
 
@@ -2567,16 +1796,9 @@ impl GWedge {
         d1: crate::b_rep_prim::Direction,
         d2: crate::b_rep_prim::Direction,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_GWedge_has_edge(self as *const Self, d1.into(), d2.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_GWedge_has_edge(self as *const Self, d1.into(), d2.into())
+        })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:187 - `BRepPrim_GWedge::Edge()`
@@ -2586,15 +1808,12 @@ impl GWedge {
         d1: crate::b_rep_prim::Direction,
         d2: crate::b_rep_prim::Direction,
     ) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_GWedge_edge(self as *mut Self, d1.into(), d2.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_GWedge_edge(
+                self as *mut Self,
+                d1.into(),
+                d2.into(),
+            )))
         }
     }
 
@@ -2606,15 +1825,12 @@ impl GWedge {
         d1: crate::b_rep_prim::Direction,
         d2: crate::b_rep_prim::Direction,
     ) -> crate::OwnedPtr<crate::gp::Lin> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_GWedge_line(self as *mut Self, d1.into(), d2.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_GWedge_line(
+                self as *mut Self,
+                d1.into(),
+                d2.into(),
+            )))
         }
     }
 
@@ -2627,21 +1843,14 @@ impl GWedge {
         d2: crate::b_rep_prim::Direction,
         d3: crate::b_rep_prim::Direction,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_GWedge_has_vertex(
-                    self as *const Self,
-                    d1.into(),
-                    d2.into(),
-                    d3.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_GWedge_has_vertex(
+                self as *const Self,
+                d1.into(),
+                d2.into(),
+                d3.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepPrim_GWedge.hxx`:201 - `BRepPrim_GWedge::Vertex()`
@@ -2653,20 +1862,13 @@ impl GWedge {
         d2: crate::b_rep_prim::Direction,
         d3: crate::b_rep_prim::Direction,
     ) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_GWedge_vertex(
-                    self as *mut Self,
-                    d1.into(),
-                    d2.into(),
-                    d3.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_GWedge_vertex(
+                self as *mut Self,
+                d1.into(),
+                d2.into(),
+                d3.into(),
+            )))
         }
     }
 
@@ -2679,20 +1881,13 @@ impl GWedge {
         d2: crate::b_rep_prim::Direction,
         d3: crate::b_rep_prim::Direction,
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_GWedge_point(
-                    self as *mut Self,
-                    d1.into(),
-                    d2.into(),
-                    d3.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_GWedge_point(
+                self as *mut Self,
+                d1.into(),
+                d2.into(),
+                d3.into(),
+            )))
         }
     }
 
@@ -2700,15 +1895,9 @@ impl GWedge {
     /// Checks a shape on degeneracy
     /// @return TRUE if a shape is degenerated
     pub fn is_degenerated_shape(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_GWedge_is_degenerated_shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_GWedge_is_degenerated_shape(self as *mut Self)
+        })
     }
 }
 
@@ -2764,103 +1953,58 @@ impl OneAxis {
     /// to give a range on the meridian  edge which is not
     /// VMin, VMax.
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_OneAxis_set_meridian_offset(self as *mut Self, MeridianOffset)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_OneAxis_set_meridian_offset(self as *mut Self, MeridianOffset)
+        })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
     /// Returns the Ax2 from <me>.
     pub fn axes(&self) -> &crate::gp::Ax2 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_axes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_axes(self as *const Self))) }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Axes()`
     pub fn axes_ax2(&mut self, A: &crate::gp::Ax2) {
-        {
-            let __exc = unsafe { crate::ffi::BRepPrim_OneAxis_axes_ax2(self as *mut Self, A) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_OneAxis_axes_ax2(self as *mut Self, A)
+        })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_OneAxis_angle(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::Angle()`
     pub fn angle_real(&mut self, A: f64) {
-        {
-            let __exc = unsafe { crate::ffi::BRepPrim_OneAxis_angle_real(self as *mut Self, A) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_OneAxis_angle_real(self as *mut Self, A)
+        })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_v_min(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_OneAxis_v_min(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min_real(&mut self, V: f64) {
-        {
-            let __exc = unsafe { crate::ffi::BRepPrim_OneAxis_v_min_real(self as *mut Self, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_OneAxis_v_min_real(self as *mut Self, V)
+        })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_v_max(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_OneAxis_v_max(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:90 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max_real(&mut self, V: f64) {
-        {
-            let __exc = unsafe { crate::ffi::BRepPrim_OneAxis_v_max_real(self as *mut Self, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_OneAxis_v_max_real(self as *mut Self, V)
+        })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:97 - `BRepPrim_OneAxis::MakeEmptyLateralFace()`
@@ -2870,15 +2014,10 @@ impl OneAxis {
     /// axis. The  V parameter is   the  parameter of  the
     /// meridian.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_OneAxis_make_empty_lateral_face(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_OneAxis_make_empty_lateral_face(self as *const Self),
+            ))
         }
     }
 
@@ -2887,15 +2026,10 @@ impl OneAxis {
     /// meridian  in the XZ  plane rotated by <Ang> around
     /// the Z-axis. Ang may be 0 or myAngle.
     pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_OneAxis_make_empty_meridian_edge(self as *const Self, Ang)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_OneAxis_make_empty_meridian_edge(self as *const Self, Ang),
+            ))
         }
     }
 
@@ -2904,28 +2038,19 @@ impl OneAxis {
     /// face  <F> to be  the   2d representation  of   the
     /// meridian.
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_OneAxis_set_meridian_p_curve(self as *const Self, E, F)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_OneAxis_set_meridian_p_curve(self as *const Self, E, F)
+        })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:111 - `BRepPrim_OneAxis::MeridianValue()`
     /// Returns the meridian point at parameter <V> in the
     /// plane XZ.
     pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_meridian_value(self as *const Self, V) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_OneAxis_meridian_value(self as *const Self, V),
+            ))
         }
     }
 
@@ -2934,15 +2059,9 @@ impl OneAxis {
     /// meridian is on the Axis. Default implementation is
     /// Abs(MeridianValue(V).X()) < Precision::Confusion()
     pub fn meridian_on_axis(&self, V: f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_meridian_on_axis(self as *const Self, V) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_OneAxis_meridian_on_axis(self as *const Self, V)
+        })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
@@ -2951,45 +2070,27 @@ impl OneAxis {
     /// MeridianValue(VMin).IsEqual(MeridianValue(VMax),
     /// Precision::Confusion())
     pub fn meridian_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_meridian_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_OneAxis_meridian_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
     /// Returns  True   if  VMax    is  infinite.  Default
     /// Precision::IsPositiveInfinite(VMax);
     pub fn v_max_infinite(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_v_max_infinite(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_OneAxis_v_max_infinite(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
     /// Returns  True   if  VMin    is  infinite.  Default
     /// Precision::IsNegativeInfinite(VMax);
     pub fn v_min_infinite(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_v_min_infinite(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_OneAxis_v_min_infinite(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
@@ -2999,14 +2100,7 @@ impl OneAxis {
     /// MeridianClosed()
     /// MeridianOnAxis(VMax)
     pub fn has_top(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_has_top(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_OneAxis_has_top(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
@@ -3016,14 +2110,7 @@ impl OneAxis {
     /// MeridianClosed()
     /// MeridianOnAxis(VMin)
     pub fn has_bottom(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_has_bottom(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_OneAxis_has_bottom(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
@@ -3031,41 +2118,22 @@ impl OneAxis {
     ///
     /// That is : 2*PI  - Angle > Precision::Angular()
     pub fn has_sides(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_has_sides(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepPrim_OneAxis_has_sides(self as *const Self) })
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
     /// Returns the Shell containing all the  Faces of the
     /// primitive.
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_shell(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_shell(self as *mut Self))) }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
     /// Returns  the lateral Face.   It is oriented toward
     /// the outside of the primitive.
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_lateral_face(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_lateral_face(self as *mut Self)))
         }
     }
 
@@ -3073,27 +2141,15 @@ impl OneAxis {
     /// Returns the   top planar  Face.    It  is Oriented
     /// toward the +Z axis (outside).
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_top_face(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_top_face(self as *mut Self))) }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
     /// Returns  the Bottom planar Face.   It is  Oriented
     /// toward the -Z axis (outside).
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_bottom_face(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_bottom_face(self as *mut Self)))
         }
     }
 
@@ -3101,13 +2157,8 @@ impl OneAxis {
     /// Returns  the  Face   starting   the slice, it   is
     /// oriented toward the exterior of the primitive.
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_start_face(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_start_face(self as *mut Self)))
         }
     }
 
@@ -3115,26 +2166,14 @@ impl OneAxis {
     /// Returns the Face ending the slice, it  is oriented
     /// toward the exterior of the primitive.
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_end_face(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_end_face(self as *mut Self))) }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
     /// Returns  the wire in the lateral face.
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_lateral_wire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_lateral_wire(self as *mut Self)))
         }
     }
 
@@ -3142,14 +2181,10 @@ impl OneAxis {
     /// Returns the   wire in the   lateral  face with the
     /// start edge.
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_lateral_start_wire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_lateral_start_wire(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -3157,53 +2192,32 @@ impl OneAxis {
     /// Returns the wire with in lateral face with the end
     /// edge.
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_lateral_end_wire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_lateral_end_wire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
     /// Returns the wire in the top face.
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_top_wire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_top_wire(self as *mut Self))) }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
     /// Returns the wire in the bottom face.
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_bottom_wire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_bottom_wire(self as *mut Self)))
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
     /// Returns the wire  in the  start face.
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_start_wire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_start_wire(self as *mut Self)))
         }
     }
 
@@ -3211,41 +2225,23 @@ impl OneAxis {
     /// Returns  the wire   in the  start   face  with the
     /// AxisEdge.
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_axis_start_wire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_axis_start_wire(self as *mut Self)))
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
     /// Returns the Wire in   the end face.
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_end_wire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_end_wire(self as *mut Self))) }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
     /// Returns  the Wire  in  the   end   face  with  the
     /// AxisEdge.
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_axis_end_wire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_axis_end_wire(self as *mut Self)))
         }
     }
 
@@ -3253,26 +2249,16 @@ impl OneAxis {
     /// Returns the Edge built along the Axis and oriented
     /// on +Z of the Axis.
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_axis_edge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_axis_edge(self as *mut Self)))
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
     /// Returns the   Edge at angle 0.
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_start_edge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_start_edge(self as *mut Self)))
         }
     }
 
@@ -3280,28 +2266,15 @@ impl OneAxis {
     /// Returns the  Edge at  angle Angle.  If !HasSides()
     /// the StartEdge and the EndEdge are the same edge.
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_end_edge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_end_edge(self as *mut Self))) }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
     /// Returns the linear Edge between start Face and top
     /// Face.
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_start_top_edge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_start_top_edge(self as *mut Self)))
         }
     }
 
@@ -3309,14 +2282,10 @@ impl OneAxis {
     /// Returns the linear  Edge between  start  Face  and
     /// bottom Face.
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_start_bottom_edge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_start_bottom_edge(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -3324,13 +2293,8 @@ impl OneAxis {
     /// Returns the linear Edge  between end Face and  top
     /// Face.
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_end_top_edge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_end_top_edge(self as *mut Self)))
         }
     }
 
@@ -3338,14 +2302,8 @@ impl OneAxis {
     /// Returns  the  linear  Edge  between end  Face  and
     /// bottom Face.
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_end_bottom_edge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_end_bottom_edge(self as *mut Self)))
         }
     }
 
@@ -3353,41 +2311,23 @@ impl OneAxis {
     /// Returns the edge at VMax. If  MeridianClosed() the
     /// TopEdge and the BottomEdge are the same edge.
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_top_edge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_top_edge(self as *mut Self))) }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
     /// Returns the edge  at VMin. If MeridianClosed() the
     /// TopEdge and the BottomEdge are the same edge.
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_OneAxis_bottom_edge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_bottom_edge(self as *mut Self)))
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
     /// Returns the Vertex at the Top altitude on the axis.
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_axis_top_vertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_axis_top_vertex(self as *mut Self)))
         }
     }
 
@@ -3395,70 +2335,48 @@ impl OneAxis {
     /// Returns the Vertex  at the Bottom  altitude on the
     /// axis.
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_axis_bottom_vertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_axis_bottom_vertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
     /// Returns the vertex (0,VMax)
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_top_start_vertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_top_start_vertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
     /// Returns the vertex (angle,VMax)
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_top_end_vertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_top_end_vertex(self as *mut Self)))
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
     /// Returns the vertex (0,VMin)
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_bottom_start_vertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_bottom_start_vertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
     /// Returns the vertex (angle,VMax)
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_OneAxis_bottom_end_vertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_OneAxis_bottom_end_vertex(
+                self as *mut Self,
+            )))
         }
     }
 }
@@ -3490,16 +2408,12 @@ impl Revolution {
         M: &crate::ffi::HandleGeomCurve,
         PM: &crate::ffi::HandleGeom2dCurve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepPrim_Revolution_ctor_ax2_real2_handlegeomcurve_handlegeom2dcurve(
                     A, VMin, VMax, M, PM,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3507,15 +2421,10 @@ impl Revolution {
     /// The surface normal should be directed  towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_make_empty_lateral_face(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Revolution_make_empty_lateral_face(self as *const Self),
+            ))
         }
     }
 
@@ -3524,15 +2433,10 @@ impl Revolution {
     /// meridian  in the XZ  plane rotated by <Ang> around
     /// the Z-axis. Ang may be 0 or myAngle.
     pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_make_empty_meridian_edge(self as *const Self, Ang)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Revolution_make_empty_meridian_edge(self as *const Self, Ang),
+            ))
         }
     }
 
@@ -3540,14 +2444,10 @@ impl Revolution {
     /// Returns the meridian point at parameter <V> in the
     /// plane XZ.
     pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_meridian_value(self as *const Self, V) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Revolution_meridian_value(self as *const Self, V),
+            ))
         }
     }
 
@@ -3556,597 +2456,385 @@ impl Revolution {
     /// face <F>   to be  the  2d  representation  of  the
     /// meridian.
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Revolution_set_meridian_p_curve(self as *const Self, E, F)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_set_meridian_p_curve(self as *const Self, E, F)
+        })
     }
 
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Revolution_as_BRepPrim_OneAxis(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPrim_Revolution_as_BRepPrim_OneAxis(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis (mutable)
     pub fn as_one_axis_mut(&mut self) -> &mut OneAxis {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Revolution_as_BRepPrim_OneAxis_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepPrim_Revolution_as_BRepPrim_OneAxis_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_SetMeridianOffset(
-                    self as *mut Self,
-                    MeridianOffset,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_inherited_SetMeridianOffset(
+                self as *mut Self,
+                MeridianOffset,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
     pub fn axes(&self) -> &crate::gp::Ax2 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_Axes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_Axes(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_Angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_inherited_Angle(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_VMin(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_inherited_VMin(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_VMax(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_inherited_VMax(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn meridian_on_axis(&self, V: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_MeridianOnAxis(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_inherited_MeridianOnAxis(self as *const Self, V)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn meridian_closed(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_MeridianClosed(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_inherited_MeridianClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn v_max_infinite(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_VMaxInfinite(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_inherited_VMaxInfinite(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn v_min_infinite(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_VMinInfinite(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_inherited_VMinInfinite(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
     pub fn has_top(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_HasTop(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_inherited_HasTop(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
     pub fn has_bottom(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_HasBottom(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_inherited_HasBottom(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
     pub fn has_sides(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_HasSides(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Revolution_inherited_HasSides(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_Shell(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_Shell(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_LateralFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_LateralFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_TopFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_TopFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_BottomFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_BottomFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_StartFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_StartFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_EndFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_EndFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_LateralWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_LateralWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_LateralStartWire(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_LateralStartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_LateralEndWire(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_LateralEndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_TopWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_TopWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_BottomWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_BottomWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_StartWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_StartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_AxisStartWire(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_AxisStartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_EndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_EndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_AxisEndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_AxisEndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_AxisEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_AxisEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_StartEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_StartEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_EndEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_EndEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_StartTopEdge(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_StartTopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_StartBottomEdge(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_StartBottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_EndTopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_EndTopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_EndBottomEdge(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_EndBottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_TopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_TopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_inherited_BottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_BottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_AxisTopVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_AxisTopVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_AxisBottomVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_AxisBottomVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_TopStartVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_TopStartVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_TopEndVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_TopEndVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_BottomStartVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_BottomStartVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_inherited_BottomEndVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Revolution_inherited_BottomEndVertex(
+                self as *mut Self,
+            )))
         }
     }
 }
@@ -4171,12 +2859,10 @@ impl Sphere {
     /// of the sphere are the  reference axes. An error is
     /// raised if the radius is < Resolution.
     pub fn new_real(Radius: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Sphere_ctor_real(Radius) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_Sphere_ctor_real(
+                Radius,
+            )))
         }
     }
 
@@ -4185,24 +2871,20 @@ impl Sphere {
     /// Axes are the reference axes.
     /// This is the STEP constructor.
     pub fn new_pnt_real(Center: &crate::gp::Pnt, Radius: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Sphere_ctor_pnt_real(Center, Radius) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Sphere_ctor_pnt_real(Center, Radius),
+            ))
         }
     }
 
     /// **Source:** `BRepPrim_Sphere.hxx`:46 - `BRepPrim_Sphere::BRepPrim_Sphere()`
     /// Creates a sphere with given axes system.
     pub fn new_ax2_real(Axes: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Sphere_ctor_ax2_real(Axes, Radius) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Sphere_ctor_ax2_real(Axes, Radius),
+            ))
         }
     }
 
@@ -4210,650 +2892,429 @@ impl Sphere {
     /// The surface normal should be directed  towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_make_empty_lateral_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Sphere_make_empty_lateral_face(self as *const Self),
+            ))
         }
     }
 
     /// Upcast to BRepPrim_Revolution
     pub fn as_revolution(&self) -> &Revolution {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_Revolution (mutable)
     pub fn as_revolution_mut(&mut self) -> &mut Revolution {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Sphere_as_BRepPrim_OneAxis(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPrim_Sphere_as_BRepPrim_OneAxis(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis (mutable)
     pub fn as_one_axis_mut(&mut self) -> &mut OneAxis {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Sphere_as_BRepPrim_OneAxis_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepPrim_Sphere_as_BRepPrim_OneAxis_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
     pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepPrim_Sphere_inherited_MakeEmptyMeridianEdge(
                     self as *const Self,
                     Ang,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:60 - `BRepPrim_Revolution::MeridianValue()`
     pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Sphere_inherited_MeridianValue(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Sphere_inherited_MeridianValue(self as *const Self, V),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Sphere_inherited_SetMeridianPCurve(self as *const Self, E, F)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_SetMeridianPCurve(self as *const Self, E, F)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Sphere_inherited_SetMeridianOffset(
-                    self as *mut Self,
-                    MeridianOffset,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_SetMeridianOffset(
+                self as *mut Self,
+                MeridianOffset,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
     pub fn axes(&self) -> &crate::gp::Ax2 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_Axes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_Axes(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_Angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_Angle(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_VMin(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_VMin(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_VMax(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_VMax(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn meridian_on_axis(&self, V: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Sphere_inherited_MeridianOnAxis(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_MeridianOnAxis(self as *const Self, V)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn meridian_closed(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Sphere_inherited_MeridianClosed(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_MeridianClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn v_max_infinite(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_VMaxInfinite(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_VMaxInfinite(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn v_min_infinite(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_VMinInfinite(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_VMinInfinite(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
     pub fn has_top(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_HasTop(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_HasTop(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
     pub fn has_bottom(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_HasBottom(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_HasBottom(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
     pub fn has_sides(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_HasSides(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_HasSides(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_Shell(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_Shell(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_LateralFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_LateralFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_TopFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_TopFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_BottomFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_BottomFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_StartFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_StartFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_EndFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_EndFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_LateralWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_LateralWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Sphere_inherited_LateralStartWire(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_LateralStartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_LateralEndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_LateralEndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_TopWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_TopWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_BottomWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_BottomWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_StartWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_StartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_AxisStartWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_AxisStartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_EndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_EndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_AxisEndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_AxisEndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_AxisEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_AxisEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_StartEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_StartEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_EndEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_EndEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_StartTopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_StartTopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_StartBottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_StartBottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_EndTopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_EndTopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_EndBottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_EndBottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_TopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_TopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_BottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_BottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_AxisTopVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_AxisTopVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Sphere_inherited_AxisBottomVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_AxisBottomVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_TopStartVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_TopStartVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_TopEndVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_TopEndVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Sphere_inherited_BottomStartVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_BottomStartVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_inherited_BottomEndVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Sphere_inherited_BottomEndVertex(
+                self as *mut Self,
+            )))
         }
     }
 }
@@ -4885,38 +3346,30 @@ impl Torus {
         Major: f64,
         Minor: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_ctor_ax2_real2(Position, Major, Minor) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Torus_ctor_ax2_real2(Position, Major, Minor),
+            ))
         }
     }
 
     /// **Source:** `BRepPrim_Torus.hxx`:46 - `BRepPrim_Torus::BRepPrim_Torus()`
     /// Torus centered at origin
     pub fn new_real2(Major: f64, Minor: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Torus_ctor_real2(Major, Minor) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_Torus_ctor_real2(
+                Major, Minor,
+            )))
         }
     }
 
     /// **Source:** `BRepPrim_Torus.hxx`:49 - `BRepPrim_Torus::BRepPrim_Torus()`
     /// Torus at Center
     pub fn new_pnt_real2(Center: &crate::gp::Pnt, Major: f64, Minor: f64) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_ctor_pnt_real2(Center, Major, Minor) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Torus_ctor_pnt_real2(Center, Major, Minor),
+            ))
         }
     }
 
@@ -4924,643 +3377,417 @@ impl Torus {
     /// The surface normal should be directed  towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_make_empty_lateral_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Torus_make_empty_lateral_face(self as *const Self),
+            ))
         }
     }
 
     /// Upcast to BRepPrim_Revolution
     pub fn as_revolution(&self) -> &Revolution {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_Revolution (mutable)
     pub fn as_revolution_mut(&mut self) -> &mut Revolution {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_OneAxis(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPrim_Torus_as_BRepPrim_OneAxis(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis (mutable)
     pub fn as_one_axis_mut(&mut self) -> &mut OneAxis {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_OneAxis_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepPrim_Torus_as_BRepPrim_OneAxis_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
     pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Torus_inherited_MakeEmptyMeridianEdge(self as *const Self, Ang)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Torus_inherited_MakeEmptyMeridianEdge(
+                    self as *const Self,
+                    Ang,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:60 - `BRepPrim_Revolution::MeridianValue()`
     pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Torus_inherited_MeridianValue(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Torus_inherited_MeridianValue(self as *const Self, V),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Torus_inherited_SetMeridianPCurve(self as *const Self, E, F)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_SetMeridianPCurve(self as *const Self, E, F)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepPrim_Torus_inherited_SetMeridianOffset(
-                    self as *mut Self,
-                    MeridianOffset,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_SetMeridianOffset(
+                self as *mut Self,
+                MeridianOffset,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
     pub fn axes(&self) -> &crate::gp::Ax2 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_Axes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_Axes(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_Angle(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_Angle(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_VMin(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_VMin(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_VMax(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_VMax(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn meridian_on_axis(&self, V: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Torus_inherited_MeridianOnAxis(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_MeridianOnAxis(self as *const Self, V)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn meridian_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_MeridianClosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_MeridianClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn v_max_infinite(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_VMaxInfinite(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_VMaxInfinite(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn v_min_infinite(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_VMinInfinite(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_VMinInfinite(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
     pub fn has_top(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_HasTop(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_HasTop(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
     pub fn has_bottom(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_HasBottom(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_HasBottom(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
     pub fn has_sides(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_HasSides(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Torus_inherited_HasSides(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Torus_inherited_Shell(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_Shell(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_LateralFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_LateralFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_TopFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_TopFace(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_BottomFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_BottomFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_StartFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_StartFace(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_EndFace(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_EndFace(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_LateralWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_LateralWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_LateralStartWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_LateralStartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_LateralEndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_LateralEndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_TopWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_TopWire(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_BottomWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_BottomWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_StartWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_StartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_AxisStartWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_AxisStartWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_EndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_EndWire(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_AxisEndWire(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_AxisEndWire(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_AxisEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_AxisEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_StartEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_StartEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_EndEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_EndEdge(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_StartTopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_StartTopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_StartBottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_StartBottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_EndTopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_EndTopEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_EndBottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_EndBottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_TopEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_TopEdge(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_BottomEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_BottomEdge(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_AxisTopVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_AxisTopVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_AxisBottomVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_AxisBottomVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_TopStartVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_TopStartVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_TopEndVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_TopEndVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Torus_inherited_BottomStartVertex(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_BottomStartVertex(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_inherited_BottomEndVertex(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Torus_inherited_BottomEndVertex(
+                self as *mut Self,
+            )))
         }
     }
 }
@@ -5583,13 +3810,7 @@ impl Wedge {
     /// **Source:** `BRepPrim_Wedge.hxx`:34 - `BRepPrim_Wedge::BRepPrim_Wedge()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Wedge_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrim_Wedge_ctor())) }
     }
 
     /// **Source:** `BRepPrim_Wedge.hxx`:47 - `BRepPrim_Wedge::BRepPrim_Wedge()`
@@ -5610,12 +3831,10 @@ impl Wedge {
         dy: f64,
         dz: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Wedge_ctor_ax2_real3(Axes, dx, dy, dz) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Wedge_ctor_ax2_real3(Axes, dx, dy, dz),
+            ))
         }
     }
 
@@ -5639,13 +3858,10 @@ impl Wedge {
         dz: f64,
         ltx: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_ctor_ax2_real4(Axes, dx, dy, dz, ltx) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Wedge_ctor_ax2_real4(Axes, dx, dy, dz, ltx),
+            ))
         }
     }
 
@@ -5669,294 +3885,180 @@ impl Wedge {
         z2max: f64,
         x2max: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepPrim_Wedge_ctor_ax2_real10(
                     Axes, xmin, ymin, zmin, z2min, x2min, xmax, ymax, zmax, z2max, x2max,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// Upcast to BRepPrim_GWedge
     pub fn as_g_wedge(&self) -> &GWedge {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Wedge_as_BRepPrim_GWedge(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepPrim_Wedge_as_BRepPrim_GWedge(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_GWedge (mutable)
     pub fn as_g_wedge_mut(&mut self) -> &mut GWedge {
-        let __result =
-            unsafe { crate::ffi::BRepPrim_Wedge_as_BRepPrim_GWedge_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepPrim_Wedge_as_BRepPrim_GWedge_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:120 - `BRepPrim_GWedge::Axes()`
     pub fn axes(&self) -> crate::OwnedPtr<crate::gp::Ax2> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_Axes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Wedge_inherited_Axes(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:123 - `BRepPrim_GWedge::GetXMin()`
     pub fn get_x_min(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetXMin(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_GetXMin(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:126 - `BRepPrim_GWedge::GetYMin()`
     pub fn get_y_min(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetYMin(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_GetYMin(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:129 - `BRepPrim_GWedge::GetZMin()`
     pub fn get_z_min(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetZMin(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_GetZMin(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:132 - `BRepPrim_GWedge::GetZ2Min()`
     pub fn get_z2_min(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetZ2Min(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_GetZ2Min(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:135 - `BRepPrim_GWedge::GetX2Min()`
     pub fn get_x2_min(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetX2Min(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_GetX2Min(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:138 - `BRepPrim_GWedge::GetXMax()`
     pub fn get_x_max(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetXMax(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_GetXMax(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:141 - `BRepPrim_GWedge::GetYMax()`
     pub fn get_y_max(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetYMax(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_GetYMax(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:144 - `BRepPrim_GWedge::GetZMax()`
     pub fn get_z_max(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetZMax(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_GetZMax(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:147 - `BRepPrim_GWedge::GetZ2Max()`
     pub fn get_z2_max(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetZ2Max(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_GetZ2Max(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:150 - `BRepPrim_GWedge::GetX2Max()`
     pub fn get_x2_max(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetX2Max(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_GetX2Max(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:154 - `BRepPrim_GWedge::Open()`
     pub fn open(&mut self, d1: crate::b_rep_prim::Direction) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_Open(self as *mut Self, d1.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_Open(self as *mut Self, d1.into())
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:158 - `BRepPrim_GWedge::Close()`
     pub fn close(&mut self, d1: crate::b_rep_prim::Direction) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_Close(self as *mut Self, d1.into()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_Close(self as *mut Self, d1.into())
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:161 - `BRepPrim_GWedge::IsInfinite()`
     pub fn is_infinite(&self, d1: crate::b_rep_prim::Direction) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Wedge_inherited_IsInfinite(self as *const Self, d1.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_IsInfinite(self as *const Self, d1.into())
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:164 - `BRepPrim_GWedge::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
-        {
-            let __result = unsafe { crate::ffi::BRepPrim_Wedge_inherited_Shell(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Wedge_inherited_Shell(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:167 - `BRepPrim_GWedge::HasFace()`
     pub fn has_face(&self, d1: crate::b_rep_prim::Direction) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Wedge_inherited_HasFace(self as *const Self, d1.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_HasFace(self as *const Self, d1.into())
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:170 - `BRepPrim_GWedge::Face()`
     pub fn face(&mut self, d1: crate::b_rep_prim::Direction) -> &crate::topo_ds::Face {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_Face(self as *mut Self, d1.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Wedge_inherited_Face(
+                self as *mut Self,
+                d1.into(),
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:174 - `BRepPrim_GWedge::Plane()`
     pub fn plane(&mut self, d1: crate::b_rep_prim::Direction) -> crate::OwnedPtr<crate::gp::Pln> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_Plane(self as *mut Self, d1.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Wedge_inherited_Plane(self as *mut Self, d1.into()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:177 - `BRepPrim_GWedge::HasWire()`
     pub fn has_wire(&self, d1: crate::b_rep_prim::Direction) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Wedge_inherited_HasWire(self as *const Self, d1.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_HasWire(self as *const Self, d1.into())
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:180 - `BRepPrim_GWedge::Wire()`
     pub fn wire(&mut self, d1: crate::b_rep_prim::Direction) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_inherited_Wire(self as *mut Self, d1.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Wedge_inherited_Wire(
+                self as *mut Self,
+                d1.into(),
+            )))
         }
     }
 
@@ -5966,20 +4068,9 @@ impl Wedge {
         d1: crate::b_rep_prim::Direction,
         d2: crate::b_rep_prim::Direction,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Wedge_inherited_HasEdge(
-                    self as *const Self,
-                    d1.into(),
-                    d2.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_HasEdge(self as *const Self, d1.into(), d2.into())
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:187 - `BRepPrim_GWedge::Edge()`
@@ -5988,15 +4079,12 @@ impl Wedge {
         d1: crate::b_rep_prim::Direction,
         d2: crate::b_rep_prim::Direction,
     ) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Wedge_inherited_Edge(self as *mut Self, d1.into(), d2.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Wedge_inherited_Edge(
+                self as *mut Self,
+                d1.into(),
+                d2.into(),
+            )))
         }
     }
 
@@ -6006,15 +4094,10 @@ impl Wedge {
         d1: crate::b_rep_prim::Direction,
         d2: crate::b_rep_prim::Direction,
     ) -> crate::OwnedPtr<crate::gp::Lin> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Wedge_inherited_Line(self as *mut Self, d1.into(), d2.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepPrim_Wedge_inherited_Line(self as *mut Self, d1.into(), d2.into()),
+            ))
         }
     }
 
@@ -6025,21 +4108,14 @@ impl Wedge {
         d2: crate::b_rep_prim::Direction,
         d3: crate::b_rep_prim::Direction,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Wedge_inherited_HasVertex(
-                    self as *const Self,
-                    d1.into(),
-                    d2.into(),
-                    d3.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_HasVertex(
+                self as *const Self,
+                d1.into(),
+                d2.into(),
+                d3.into(),
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:201 - `BRepPrim_GWedge::Vertex()`
@@ -6049,20 +4125,13 @@ impl Wedge {
         d2: crate::b_rep_prim::Direction,
         d3: crate::b_rep_prim::Direction,
     ) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Wedge_inherited_Vertex(
-                    self as *mut Self,
-                    d1.into(),
-                    d2.into(),
-                    d3.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepPrim_Wedge_inherited_Vertex(
+                self as *mut Self,
+                d1.into(),
+                d2.into(),
+                d3.into(),
+            )))
         }
     }
 
@@ -6073,34 +4142,22 @@ impl Wedge {
         d2: crate::b_rep_prim::Direction,
         d3: crate::b_rep_prim::Direction,
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepPrim_Wedge_inherited_Point(
                     self as *mut Self,
                     d1.into(),
                     d2.into(),
                     d3.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:213 - `BRepPrim_GWedge::IsDegeneratedShape()`
     pub fn is_degenerated_shape(&mut self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Wedge_inherited_IsDegeneratedShape(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepPrim_Wedge_inherited_IsDegeneratedShape(self as *mut Self)
+        })
     }
 }

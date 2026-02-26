@@ -9,12 +9,7 @@
 /// **Source:** `RWHeaderSection.hxx`:30 - `RWHeaderSection::Init`
 /// enforced the initialisation of the  libraries
 pub fn init() {
-    {
-        let __exc = unsafe { crate::ffi::RWHeaderSection_init() };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::RWHeaderSection_init() })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -43,12 +38,10 @@ impl GeneralModule {
     /// **Source:** `RWHeaderSection_GeneralModule.hxx`:42 - `RWHeaderSection_GeneralModule::RWHeaderSection_GeneralModule()`
     /// Creates a GeneralModule
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWHeaderSection_GeneralModule_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWHeaderSection_GeneralModule_ctor(),
+            ))
         }
     }
 
@@ -62,19 +55,14 @@ impl GeneralModule {
         ent: &crate::ffi::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_fill_shared_case(
-                    self as *const Self,
-                    CN,
-                    ent,
-                    iter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_fill_shared_case(
+                self as *const Self,
+                CN,
+                ent,
+                iter,
+            )
+        })
     }
 
     /// **Source:** `RWHeaderSection_GeneralModule.hxx`:52 - `RWHeaderSection_GeneralModule::CheckCase()`
@@ -86,20 +74,15 @@ impl GeneralModule {
         shares: &crate::interface::ShareTool,
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_check_case(
-                    self as *const Self,
-                    CN,
-                    ent,
-                    shares,
-                    ach,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_check_case(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+                ach,
+            )
+        })
     }
 
     /// **Source:** `RWHeaderSection_GeneralModule.hxx`:60 - `RWHeaderSection_GeneralModule::CopyCase()`
@@ -113,157 +96,124 @@ impl GeneralModule {
         entto: &crate::ffi::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_copy_case(
-                    self as *const Self,
-                    CN,
-                    entfrom,
-                    entto,
-                    TC,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_copy_case(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        })
     }
 
     /// **Source:** `RWHeaderSection_GeneralModule.hxx`:65 - `RWHeaderSection_GeneralModule::NewVoid()`
     pub fn new_void(&self, CN: i32, ent: &mut crate::ffi::HandleStandardTransient) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_new_void(self as *const Self, CN, ent)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_new_void(self as *const Self, CN, ent)
+        })
     }
 
     /// **Source:** `RWHeaderSection_GeneralModule.hxx`:68 - `RWHeaderSection_GeneralModule::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWHeaderSection_GeneralModule_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `RWHeaderSection_GeneralModule.hxx`:68 - `RWHeaderSection_GeneralModule::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::RWHeaderSection_GeneralModule_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::RWHeaderSection_GeneralModule_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `RWHeaderSection_GeneralModule.hxx`:68 - `RWHeaderSection_GeneralModule::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::RWHeaderSection_GeneralModule_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWHeaderSection_GeneralModule_get_type_descriptor()))
         }
     }
 
     /// Upcast to StepData_GeneralModule
     pub fn as_step_data_general_module(&self) -> &crate::step_data::GeneralModule {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_GeneralModule_as_StepData_GeneralModule(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::RWHeaderSection_GeneralModule_as_StepData_GeneralModule(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_GeneralModule (mutable)
     pub fn as_step_data_general_module_mut(&mut self) -> &mut crate::step_data::GeneralModule {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_GeneralModule_as_StepData_GeneralModule_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWHeaderSection_GeneralModule_as_StepData_GeneralModule_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_GeneralModule
     pub fn as_interface_general_module(&self) -> &crate::interface::GeneralModule {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_GeneralModule_as_Interface_GeneralModule(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::RWHeaderSection_GeneralModule_as_Interface_GeneralModule(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_GeneralModule (mutable)
     pub fn as_interface_general_module_mut(&mut self) -> &mut crate::interface::GeneralModule {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_GeneralModule_as_Interface_GeneralModule_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWHeaderSection_GeneralModule_as_Interface_GeneralModule_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_GeneralModule_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWHeaderSection_GeneralModule_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_GeneralModule_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWHeaderSection_GeneralModule_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWHeaderSectionGeneralModule> {
-        let __result =
-            unsafe { crate::ffi::RWHeaderSection_GeneralModule_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWHeaderSection_GeneralModule_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:52 - `Interface_GeneralModule::FillShared()`
@@ -274,20 +224,15 @@ impl GeneralModule {
         ent: &crate::ffi::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_FillShared(
-                    self as *const Self,
-                    model,
-                    CN,
-                    ent,
-                    iter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_FillShared(
+                self as *const Self,
+                model,
+                CN,
+                ent,
+                iter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:65 - `Interface_GeneralModule::Share()`
@@ -296,18 +241,13 @@ impl GeneralModule {
         iter: &mut crate::interface::EntityIterator,
         shared: &crate::ffi::HandleStandardTransient,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_Share(
-                    self as *const Self,
-                    iter,
-                    shared,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_Share(
+                self as *const Self,
+                iter,
+                shared,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:76 - `Interface_GeneralModule::ListImplied()`
@@ -318,20 +258,15 @@ impl GeneralModule {
         ent: &crate::ffi::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_ListImplied(
-                    self as *const Self,
-                    model,
-                    CN,
-                    ent,
-                    iter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_ListImplied(
+                self as *const Self,
+                model,
+                CN,
+                ent,
+                iter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:89 - `Interface_GeneralModule::ListImpliedCase()`
@@ -341,37 +276,25 @@ impl GeneralModule {
         ent: &crate::ffi::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_ListImpliedCase(
-                    self as *const Self,
-                    CN,
-                    ent,
-                    iter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_ListImpliedCase(
+                self as *const Self,
+                CN,
+                ent,
+                iter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:104 - `Interface_GeneralModule::CanCopy()`
     pub fn can_copy(&self, CN: i32, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_CanCopy(
-                    self as *const Self,
-                    CN,
-                    ent,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_CanCopy(
+                self as *const Self,
+                CN,
+                ent,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:126 - `Interface_GeneralModule::Dispatch()`
@@ -382,22 +305,15 @@ impl GeneralModule {
         entto: &mut crate::ffi::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_Dispatch(
-                    self as *const Self,
-                    CN,
-                    entfrom,
-                    entto,
-                    TC,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_Dispatch(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:152 - `Interface_GeneralModule::NewCopiedCase()`
@@ -408,22 +324,15 @@ impl GeneralModule {
         entto: &mut crate::ffi::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_NewCopiedCase(
-                    self as *const Self,
-                    CN,
-                    entfrom,
-                    entto,
-                    TC,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_NewCopiedCase(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:161 - `Interface_GeneralModule::RenewImpliedCase()`
@@ -434,20 +343,15 @@ impl GeneralModule {
         entto: &crate::ffi::HandleStandardTransient,
         TC: &crate::interface::CopyTool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_RenewImpliedCase(
-                    self as *const Self,
-                    CN,
-                    entfrom,
-                    entto,
-                    TC,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_RenewImpliedCase(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:190 - `Interface_GeneralModule::WhenDeleteCase()`
@@ -457,19 +361,14 @@ impl GeneralModule {
         ent: &crate::ffi::HandleStandardTransient,
         dispatched: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_WhenDeleteCase(
-                    self as *const Self,
-                    CN,
-                    ent,
-                    dispatched,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_WhenDeleteCase(
+                self as *const Self,
+                CN,
+                ent,
+                dispatched,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:198 - `Interface_GeneralModule::CategoryNumber()`
@@ -479,21 +378,14 @@ impl GeneralModule {
         ent: &crate::ffi::HandleStandardTransient,
         shares: &crate::interface::ShareTool,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_CategoryNumber(
-                    self as *const Self,
-                    CN,
-                    ent,
-                    shares,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_CategoryNumber(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:209 - `Interface_GeneralModule::Name()`
@@ -503,67 +395,41 @@ impl GeneralModule {
         ent: &crate::ffi::HandleStandardTransient,
         shares: &crate::interface::ShareTool,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWHeaderSection_GeneralModule_inherited_Name(
                     self as *const Self,
                     CN,
                     ent,
                     shares,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::RWHeaderSection_GeneralModule_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -574,58 +440,34 @@ impl GeneralModule {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_GeneralModule_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_GeneralModule_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -640,65 +482,57 @@ unsafe impl crate::CppDeletable for HandleRWHeaderSectionGeneralModule {
 impl HandleRWHeaderSectionGeneralModule {
     /// Dereference this Handle to access the underlying RWHeaderSection_GeneralModule
     pub fn get(&self) -> &crate::ffi::RWHeaderSection_GeneralModule {
-        let __result =
-            unsafe { crate::ffi::HandleRWHeaderSectionGeneralModule_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleRWHeaderSectionGeneralModule_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying RWHeaderSection_GeneralModule
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWHeaderSection_GeneralModule {
-        let __result =
-            unsafe { crate::ffi::HandleRWHeaderSectionGeneralModule_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWHeaderSectionGeneralModule_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWHeaderSection_GeneralModule> to Handle<StepData_GeneralModule>
     pub fn to_handle_step_data_general_module(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepDataGeneralModule> {
-        let __result = unsafe {
-            crate::ffi::HandleRWHeaderSectionGeneralModule_to_HandleStepDataGeneralModule(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWHeaderSectionGeneralModule_to_HandleStepDataGeneralModule(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWHeaderSection_GeneralModule> to Handle<Interface_GeneralModule>
     pub fn to_handle_interface_general_module(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceGeneralModule> {
-        let __result = unsafe {
-            crate::ffi::HandleRWHeaderSectionGeneralModule_to_HandleInterfaceGeneralModule(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWHeaderSectionGeneralModule_to_HandleInterfaceGeneralModule(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWHeaderSection_GeneralModule> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWHeaderSectionGeneralModule_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWHeaderSectionGeneralModule_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -719,12 +553,10 @@ unsafe impl crate::CppDeletable for RWFileDescription {
 impl RWFileDescription {
     /// **Source:** `RWHeaderSection_RWFileDescription.hxx`:36 - `RWHeaderSection_RWFileDescription::RWHeaderSection_RWFileDescription()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWHeaderSection_RWFileDescription_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWHeaderSection_RWFileDescription_ctor(),
+            ))
         }
     }
 
@@ -736,20 +568,15 @@ impl RWFileDescription {
         ach: &mut crate::ffi::HandleInterfaceCheck,
         ent: &crate::ffi::HandleHeaderSectionFileDescription,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_RWFileDescription_read_step(
-                    self as *const Self,
-                    data,
-                    num,
-                    ach,
-                    ent,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_RWFileDescription_read_step(
+                self as *const Self,
+                data,
+                num,
+                ach,
+                ent,
+            )
+        })
     }
 
     /// **Source:** `RWHeaderSection_RWFileDescription.hxx`:43 - `RWHeaderSection_RWFileDescription::WriteStep()`
@@ -758,18 +585,9 @@ impl RWFileDescription {
         SW: &mut crate::step_data::StepWriter,
         ent: &crate::ffi::HandleHeaderSectionFileDescription,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_RWFileDescription_write_step(
-                    self as *const Self,
-                    SW,
-                    ent,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_RWFileDescription_write_step(self as *const Self, SW, ent)
+        })
     }
 }
 
@@ -790,12 +608,10 @@ unsafe impl crate::CppDeletable for RWFileName {
 impl RWFileName {
     /// **Source:** `RWHeaderSection_RWFileName.hxx`:36 - `RWHeaderSection_RWFileName::RWHeaderSection_RWFileName()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWHeaderSection_RWFileName_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWHeaderSection_RWFileName_ctor(),
+            ))
         }
     }
 
@@ -807,20 +623,15 @@ impl RWFileName {
         ach: &mut crate::ffi::HandleInterfaceCheck,
         ent: &crate::ffi::HandleHeaderSectionFileName,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_RWFileName_read_step(
-                    self as *const Self,
-                    data,
-                    num,
-                    ach,
-                    ent,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_RWFileName_read_step(
+                self as *const Self,
+                data,
+                num,
+                ach,
+                ent,
+            )
+        })
     }
 
     /// **Source:** `RWHeaderSection_RWFileName.hxx`:43 - `RWHeaderSection_RWFileName::WriteStep()`
@@ -829,14 +640,9 @@ impl RWFileName {
         SW: &mut crate::step_data::StepWriter,
         ent: &crate::ffi::HandleHeaderSectionFileName,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_RWFileName_write_step(self as *const Self, SW, ent)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_RWFileName_write_step(self as *const Self, SW, ent)
+        })
     }
 }
 
@@ -857,12 +663,10 @@ unsafe impl crate::CppDeletable for RWFileSchema {
 impl RWFileSchema {
     /// **Source:** `RWHeaderSection_RWFileSchema.hxx`:36 - `RWHeaderSection_RWFileSchema::RWHeaderSection_RWFileSchema()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWHeaderSection_RWFileSchema_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWHeaderSection_RWFileSchema_ctor(),
+            ))
         }
     }
 
@@ -874,20 +678,15 @@ impl RWFileSchema {
         ach: &mut crate::ffi::HandleInterfaceCheck,
         ent: &crate::ffi::HandleHeaderSectionFileSchema,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_RWFileSchema_read_step(
-                    self as *const Self,
-                    data,
-                    num,
-                    ach,
-                    ent,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_RWFileSchema_read_step(
+                self as *const Self,
+                data,
+                num,
+                ach,
+                ent,
+            )
+        })
     }
 
     /// **Source:** `RWHeaderSection_RWFileSchema.hxx`:43 - `RWHeaderSection_RWFileSchema::WriteStep()`
@@ -896,14 +695,9 @@ impl RWFileSchema {
         SW: &mut crate::step_data::StepWriter,
         ent: &crate::ffi::HandleHeaderSectionFileSchema,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_RWFileSchema_write_step(self as *const Self, SW, ent)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_RWFileSchema_write_step(self as *const Self, SW, ent)
+        })
     }
 }
 
@@ -924,12 +718,10 @@ unsafe impl crate::CppDeletable for ReadWriteModule {
 impl ReadWriteModule {
     /// **Source:** `RWHeaderSection_ReadWriteModule.hxx`:40 - `RWHeaderSection_ReadWriteModule::RWHeaderSection_ReadWriteModule()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWHeaderSection_ReadWriteModule_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWHeaderSection_ReadWriteModule_ctor(),
+            ))
         }
     }
 
@@ -937,19 +729,12 @@ impl ReadWriteModule {
     /// associates a positive Case Number to each type of HeaderSection entity,
     /// given as a String defined in the EXPRESS form
     pub fn case_step_asciistring(&self, atype: &crate::t_collection::AsciiString) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_case_step_asciistring(
-                    self as *const Self,
-                    atype,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_case_step_asciistring(
+                self as *const Self,
+                atype,
+            )
+        })
     }
 
     /// **Source:** `RWHeaderSection_ReadWriteModule.hxx`:49 - `RWHeaderSection_ReadWriteModule::CaseStep()`
@@ -959,49 +744,31 @@ impl ReadWriteModule {
         &self,
         types: &crate::ffi::TColStd_SequenceOfAsciiString,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_case_step_sequenceofasciistring(
-                    self as *const Self,
-                    types,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_case_step_sequenceofasciistring(
+                self as *const Self,
+                types,
+            )
+        })
     }
 
     /// **Source:** `RWHeaderSection_ReadWriteModule.hxx`:53 - `RWHeaderSection_ReadWriteModule::IsComplex()`
     /// returns True if the Case Number corresponds to a Complex Type
     pub fn is_complex(&self, CN: i32) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_is_complex(self as *const Self, CN)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_is_complex(self as *const Self, CN)
+        })
     }
 
     /// **Source:** `RWHeaderSection_ReadWriteModule.hxx`:58 - `RWHeaderSection_ReadWriteModule::StepType()`
     /// returns a StepType (defined in EXPRESS form which belongs to a
     /// Type of Entity, identified by its CaseNumber determined by Protocol
     pub fn step_type(&self, CN: i32) -> &crate::t_collection::AsciiString {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_step_type(self as *const Self, CN)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWHeaderSection_ReadWriteModule_step_type(
+                self as *const Self,
+                CN,
+            )))
         }
     }
 
@@ -1014,21 +781,16 @@ impl ReadWriteModule {
         ach: &mut crate::ffi::HandleInterfaceCheck,
         ent: &crate::ffi::HandleStandardTransient,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_read_step(
-                    self as *const Self,
-                    CN,
-                    data,
-                    num,
-                    ach,
-                    ent,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_read_step(
+                self as *const Self,
+                CN,
+                data,
+                num,
+                ach,
+                ent,
+            )
+        })
     }
 
     /// **Source:** `RWHeaderSection_ReadWriteModule.hxx`:67 - `RWHeaderSection_ReadWriteModule::WriteStep()`
@@ -1038,178 +800,137 @@ impl ReadWriteModule {
         SW: &mut crate::step_data::StepWriter,
         ent: &crate::ffi::HandleStandardTransient,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_write_step(
-                    self as *const Self,
-                    CN,
-                    SW,
-                    ent,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_write_step(self as *const Self, CN, SW, ent)
+        })
     }
 
     /// **Source:** `RWHeaderSection_ReadWriteModule.hxx`:71 - `RWHeaderSection_ReadWriteModule::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_dynamic_type(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWHeaderSection_ReadWriteModule_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `RWHeaderSection_ReadWriteModule.hxx`:71 - `RWHeaderSection_ReadWriteModule::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::RWHeaderSection_ReadWriteModule_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::RWHeaderSection_ReadWriteModule_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `RWHeaderSection_ReadWriteModule.hxx`:71 - `RWHeaderSection_ReadWriteModule::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::RWHeaderSection_ReadWriteModule_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::RWHeaderSection_ReadWriteModule_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to StepData_ReadWriteModule
     pub fn as_step_data_read_write_module(&self) -> &crate::step_data::ReadWriteModule {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_ReadWriteModule_as_StepData_ReadWriteModule(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::RWHeaderSection_ReadWriteModule_as_StepData_ReadWriteModule(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_ReadWriteModule (mutable)
     pub fn as_step_data_read_write_module_mut(&mut self) -> &mut crate::step_data::ReadWriteModule {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_ReadWriteModule_as_StepData_ReadWriteModule_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWHeaderSection_ReadWriteModule_as_StepData_ReadWriteModule_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_ReaderModule
     pub fn as_interface_reader_module(&self) -> &crate::interface::ReaderModule {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_ReadWriteModule_as_Interface_ReaderModule(
-                self as *const Self,
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::RWHeaderSection_ReadWriteModule_as_Interface_ReaderModule(
+                    self as *const Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_ReaderModule (mutable)
     pub fn as_interface_reader_module_mut(&mut self) -> &mut crate::interface::ReaderModule {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_ReadWriteModule_as_Interface_ReaderModule_mut(
-                self as *mut Self,
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWHeaderSection_ReadWriteModule_as_Interface_ReaderModule_mut(
+                    self as *mut Self,
+                ),
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_ReadWriteModule_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::RWHeaderSection_ReadWriteModule_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWHeaderSection_ReadWriteModule_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWHeaderSection_ReadWriteModule_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWHeaderSectionReadWriteModule> {
-        let __result =
-            unsafe { crate::ffi::RWHeaderSection_ReadWriteModule_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWHeaderSection_ReadWriteModule_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepData_ReadWriteModule.hxx`:52 - `StepData_ReadWriteModule::CaseNum()`
     pub fn case_num(&self, data: &crate::ffi::HandleInterfaceFileReaderData, num: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_inherited_CaseNum(
-                    self as *const Self,
-                    data,
-                    num,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_inherited_CaseNum(
+                self as *const Self,
+                data,
+                num,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepData_ReadWriteModule.hxx`:88 - `StepData_ReadWriteModule::ShortType()`
     pub fn short_type(&self, CN: i32) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWHeaderSection_ReadWriteModule_inherited_ShortType(
                     self as *const Self,
                     CN,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1219,20 +940,13 @@ impl ReadWriteModule {
         CN: i32,
         types: &mut crate::ffi::TColStd_SequenceOfAsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_inherited_ComplexType(
-                    self as *const Self,
-                    CN,
-                    types,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_inherited_ComplexType(
+                self as *const Self,
+                CN,
+                types,
+            )
+        })
     }
 
     /// Inherited: **Source:** `StepData_ReadWriteModule.hxx`:99 - `StepData_ReadWriteModule::Read()`
@@ -1244,21 +958,16 @@ impl ReadWriteModule {
         ach: &mut crate::ffi::HandleInterfaceCheck,
         ent: &crate::ffi::HandleStandardTransient,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_inherited_Read(
-                    self as *const Self,
-                    CN,
-                    data,
-                    num,
-                    ach,
-                    ent,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_inherited_Read(
+                self as *const Self,
+                CN,
+                data,
+                num,
+                ach,
+                ent,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Interface_ReaderModule.hxx`:69 - `Interface_ReaderModule::NewRead()`
@@ -1270,69 +979,44 @@ impl ReadWriteModule {
         ach: &mut crate::ffi::HandleInterfaceCheck,
         ent: &mut crate::ffi::HandleStandardTransient,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_inherited_NewRead(
-                    self as *const Self,
-                    casenum,
-                    data,
-                    num,
-                    ach,
-                    ent,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_inherited_NewRead(
+                self as *const Self,
+                casenum,
+                data,
+                num,
+                ach,
+                ent,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_inherited_IsKind(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::RWHeaderSection_ReadWriteModule_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1343,60 +1027,34 @@ impl ReadWriteModule {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_inherited_GetRefCount(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWHeaderSection_ReadWriteModule_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWHeaderSection_ReadWriteModule_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1411,64 +1069,56 @@ unsafe impl crate::CppDeletable for HandleRWHeaderSectionReadWriteModule {
 impl HandleRWHeaderSectionReadWriteModule {
     /// Dereference this Handle to access the underlying RWHeaderSection_ReadWriteModule
     pub fn get(&self) -> &crate::ffi::RWHeaderSection_ReadWriteModule {
-        let __result =
-            unsafe { crate::ffi::HandleRWHeaderSectionReadWriteModule_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleRWHeaderSectionReadWriteModule_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying RWHeaderSection_ReadWriteModule
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWHeaderSection_ReadWriteModule {
-        let __result =
-            unsafe { crate::ffi::HandleRWHeaderSectionReadWriteModule_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWHeaderSectionReadWriteModule_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWHeaderSection_ReadWriteModule> to Handle<StepData_ReadWriteModule>
     pub fn to_handle_read_write_module(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepDataReadWriteModule> {
-        let __result = unsafe {
-            crate::ffi::HandleRWHeaderSectionReadWriteModule_to_HandleStepDataReadWriteModule(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWHeaderSectionReadWriteModule_to_HandleStepDataReadWriteModule(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWHeaderSection_ReadWriteModule> to Handle<Interface_ReaderModule>
     pub fn to_handle_reader_module(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceReaderModule> {
-        let __result = unsafe {
-            crate::ffi::HandleRWHeaderSectionReadWriteModule_to_HandleInterfaceReaderModule(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWHeaderSectionReadWriteModule_to_HandleInterfaceReaderModule(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWHeaderSection_ReadWriteModule> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWHeaderSectionReadWriteModule_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWHeaderSectionReadWriteModule_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

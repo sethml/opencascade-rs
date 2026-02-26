@@ -14,15 +14,10 @@ pub fn read_file_charptr_progressrange(
     aProgress: &crate::message::ProgressRange,
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
-    {
-        let __result = unsafe {
-            crate::ffi::RWObj_read_file_charptr_progressrange(c_theFile.as_ptr(), aProgress)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::RWObj_read_file_charptr_progressrange(c_theFile.as_ptr(), aProgress),
+        ))
     }
 }
 
@@ -83,254 +78,171 @@ impl CafReader {
     /// **Source:** `RWObj_CafReader.hxx`:26 - `RWObj_CafReader::RWObj_CafReader()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWObj_CafReader_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWObj_CafReader_ctor()))
         }
     }
 
     /// **Source:** `RWObj_CafReader.hxx`:23 - `RWObj_CafReader::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::RWObj_CafReader_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_CafReader_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `RWObj_CafReader.hxx`:29 - `RWObj_CafReader::IsSinglePrecision()`
     /// Return single precision flag for reading vertex data (coordinates); FALSE by default.
     pub fn is_single_precision(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafReader_is_single_precision(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_is_single_precision(self as *const Self)
+        })
     }
 
     /// **Source:** `RWObj_CafReader.hxx`:32 - `RWObj_CafReader::SetSinglePrecision()`
     /// Setup single/double precision flag for reading vertex data (coordinates).
     pub fn set_single_precision(&mut self, theIsSinglePrecision: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafReader_set_single_precision(
-                    self as *mut Self,
-                    theIsSinglePrecision,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_set_single_precision(
+                self as *mut Self,
+                theIsSinglePrecision,
+            )
+        })
     }
 
     /// **Source:** `RWObj_CafReader.hxx`:23 - `RWObj_CafReader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::RWObj_CafReader_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::RWObj_CafReader_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `RWObj_CafReader.hxx`:23 - `RWObj_CafReader::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::RWObj_CafReader_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::RWObj_CafReader_get_type_descriptor())) }
     }
 
     /// Upcast to RWMesh_CafReader
     pub fn as_rw_mesh_caf_reader(&self) -> &crate::rw_mesh::CafReader {
-        let __result =
-            unsafe { crate::ffi::RWObj_CafReader_as_RWMesh_CafReader(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWObj_CafReader_as_RWMesh_CafReader(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to RWMesh_CafReader (mutable)
     pub fn as_rw_mesh_caf_reader_mut(&mut self) -> &mut crate::rw_mesh::CafReader {
-        let __result =
-            unsafe { crate::ffi::RWObj_CafReader_as_RWMesh_CafReader_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWObj_CafReader_as_RWMesh_CafReader_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWObj_CafReader_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWObj_CafReader_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWObj_CafReader_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWObj_CafReader_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWObjCafReader> {
-        let __result = unsafe { crate::ffi::RWObj_CafReader_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWObj_CafReader_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
     pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafReader_inherited_Document(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_CafReader_inherited_Document(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
     pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_SetDocument(self as *mut Self, theDoc)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetDocument(self as *mut Self, theDoc)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafReader_inherited_RootPrefix(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_CafReader_inherited_RootPrefix(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
     pub fn set_root_prefix(&mut self, theRootPrefix: &crate::t_collection::AsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_SetRootPrefix(
-                    self as *mut Self,
-                    theRootPrefix,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetRootPrefix(self as *mut Self, theRootPrefix)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
     pub fn to_fill_incomplete_document(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_ToFillIncompleteDocument(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_ToFillIncompleteDocument(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
     pub fn set_fill_incomplete_document(&mut self, theToFillIncomplete: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_SetFillIncompleteDocument(
-                    self as *mut Self,
-                    theToFillIncomplete,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetFillIncompleteDocument(
+                self as *mut Self,
+                theToFillIncomplete,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
     pub fn memory_limit_mi_b(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_MemoryLimitMiB(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_MemoryLimitMiB(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
     pub fn set_memory_limit_mi_b(&mut self, theLimitMiB: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_SetMemoryLimitMiB(
-                    self as *mut Self,
-                    theLimitMiB,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetMemoryLimitMiB(self as *mut Self, theLimitMiB)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
     pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_CoordinateSystemConverter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::RWObj_CafReader_inherited_CoordinateSystemConverter(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -339,158 +251,89 @@ impl CafReader {
         &mut self,
         theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_SetCoordinateSystemConverter(
-                    self as *mut Self,
-                    theConverter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetCoordinateSystemConverter(
+                self as *mut Self,
+                theConverter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:124 - `RWMesh_CafReader::SystemLengthUnit()`
     pub fn system_length_unit(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_SystemLengthUnit(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SystemLengthUnit(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
     pub fn set_system_length_unit(&mut self, theUnits: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_SetSystemLengthUnit(
-                    self as *mut Self,
-                    theUnits,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetSystemLengthUnit(self as *mut Self, theUnits)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
     pub fn has_system_coordinate_system(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_HasSystemCoordinateSystem(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_HasSystemCoordinateSystem(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
     pub fn system_coordinate_system(&self) -> &crate::gp::Ax3 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_SystemCoordinateSystem(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_CafReader_inherited_SystemCoordinateSystem(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     pub fn set_system_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_SetSystemCoordinateSystem(
-                    self as *mut Self,
-                    theCS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetSystemCoordinateSystem(
+                self as *mut Self,
+                theCS,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::FileLengthUnit()`
     pub fn file_length_unit(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_FileLengthUnit(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_FileLengthUnit(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
     pub fn set_file_length_unit(&mut self, theUnits: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_SetFileLengthUnit(self as *mut Self, theUnits)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetFileLengthUnit(self as *mut Self, theUnits)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
     pub fn has_file_coordinate_system(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_HasFileCoordinateSystem(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_HasFileCoordinateSystem(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
     pub fn file_coordinate_system(&self) -> &crate::gp::Ax3 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_FileCoordinateSystem(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_CafReader_inherited_FileCoordinateSystem(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     pub fn set_file_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_SetFileCoordinateSystem(
-                    self as *mut Self,
-                    theCS,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetFileCoordinateSystem(self as *mut Self, theCS)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
@@ -499,71 +342,42 @@ impl CafReader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_Perform(
-                    self as *mut Self,
-                    theFile,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_Perform(self as *mut Self, theFile, theProgress)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
     pub fn extra_status(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafReader_inherited_ExtraStatus(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_ExtraStatus(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
     pub fn single_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafReader_inherited_SingleShape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWObj_CafReader_inherited_SingleShape(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
     pub fn external_files(&self) -> &crate::ffi::Interface_IndexedMapOfAsciiString {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafReader_inherited_ExternalFiles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_CafReader_inherited_ExternalFiles(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
     pub fn metadata(&self) -> &crate::ffi::TColStd_IndexedDataMapOfStringString {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafReader_inherited_Metadata(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_CafReader_inherited_Metadata(
+                self as *const Self,
+            )))
         }
     }
 
@@ -573,59 +387,35 @@ impl CafReader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_ProbeHeader(
-                    self as *mut Self,
-                    theFile,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_ProbeHeader(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafReader_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::RWObj_CafReader_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -636,52 +426,30 @@ impl CafReader {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafReader_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafReader_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::RWObj_CafReader_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafReader_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -696,42 +464,32 @@ unsafe impl crate::CppDeletable for HandleRWObjCafReader {
 impl HandleRWObjCafReader {
     /// Dereference this Handle to access the underlying RWObj_CafReader
     pub fn get(&self) -> &crate::ffi::RWObj_CafReader {
-        let __result = unsafe { crate::ffi::HandleRWObjCafReader_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleRWObjCafReader_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying RWObj_CafReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_CafReader {
-        let __result = unsafe { crate::ffi::HandleRWObjCafReader_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWObjCafReader_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWObj_CafReader> to Handle<RWMesh_CafReader>
     pub fn to_handle_caf_reader(&self) -> crate::OwnedPtr<crate::ffi::HandleRWMeshCafReader> {
-        let __result = unsafe {
-            crate::ffi::HandleRWObjCafReader_to_HandleRWMeshCafReader(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWObjCafReader_to_HandleRWMeshCafReader(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWObj_CafReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWObjCafReader_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWObjCafReader_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -754,39 +512,27 @@ impl CafWriter {
     /// Main constructor.
     /// @param[in] theFile  path to output OBJ file
     pub fn new_asciistring(theFile: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWObj_CafWriter_ctor_asciistring(theFile) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWObj_CafWriter_ctor_asciistring(theFile),
+            ))
         }
     }
 
     /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::RWObj_CafWriter_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_CafWriter_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `RWObj_CafWriter.hxx`:47 - `RWObj_CafWriter::CoordinateSystemConverter()`
     /// Return transformation from OCCT to OBJ coordinate system.
     pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafWriter_coordinate_system_converter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_CafWriter_coordinate_system_converter(
+                self as *const Self,
+            )))
         }
     }
 
@@ -795,15 +541,10 @@ impl CafWriter {
     pub fn change_coordinate_system_converter(
         &mut self,
     ) -> &mut crate::rw_mesh::CoordinateSystemConverter {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafWriter_change_coordinate_system_converter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::RWObj_CafWriter_change_coordinate_system_converter(self as *mut Self),
+            ))
         }
     }
 
@@ -813,44 +554,28 @@ impl CafWriter {
         &mut self,
         theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafWriter_set_coordinate_system_converter(
-                    self as *mut Self,
-                    theConverter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafWriter_set_coordinate_system_converter(
+                self as *mut Self,
+                theConverter,
+            )
+        })
     }
 
     /// **Source:** `RWObj_CafWriter.hxx`:59 - `RWObj_CafWriter::DefaultStyle()`
     /// Return default material definition to be used for nodes with only color defined.
     pub fn default_style(&self) -> &crate::xcaf_prs::Style {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafWriter_default_style(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_CafWriter_default_style(self as *const Self)))
         }
     }
 
     /// **Source:** `RWObj_CafWriter.hxx`:62 - `RWObj_CafWriter::SetDefaultStyle()`
     /// Set default material definition to be used for nodes with only color defined.
     pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafWriter_set_default_style(self as *mut Self, theStyle)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafWriter_set_default_style(self as *mut Self, theStyle)
+        })
     }
 
     /// **Source:** `RWObj_CafWriter.hxx`:76 - `RWObj_CafWriter::Perform()`
@@ -874,16 +599,9 @@ impl CafWriter {
         theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theRootLabels, theLabelFilter as *const _, theFileInfo, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theRootLabels, theLabelFilter as *const _, theFileInfo, theProgress)
+        })
     }
 
     /// **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform()`
@@ -899,110 +617,76 @@ impl CafWriter {
         theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theFileInfo, theProgress)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theFileInfo, theProgress)
+        })
     }
 
     /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::RWObj_CafWriter_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::RWObj_CafWriter_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::RWObj_CafWriter_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::RWObj_CafWriter_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWObj_CafWriter_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWObj_CafWriter_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWObj_CafWriter_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWObj_CafWriter_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWObjCafWriter> {
-        let __result = unsafe { crate::ffi::RWObj_CafWriter_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWObj_CafWriter_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafWriter_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafWriter_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafWriter_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafWriter_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafWriter_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::RWObj_CafWriter_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1013,52 +697,30 @@ impl CafWriter {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_CafWriter_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafWriter_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_CafWriter_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafWriter_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_CafWriter_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_CafWriter_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::RWObj_CafWriter_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_CafWriter_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1073,31 +735,23 @@ unsafe impl crate::CppDeletable for HandleRWObjCafWriter {
 impl HandleRWObjCafWriter {
     /// Dereference this Handle to access the underlying RWObj_CafWriter
     pub fn get(&self) -> &crate::ffi::RWObj_CafWriter {
-        let __result = unsafe { crate::ffi::HandleRWObjCafWriter_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleRWObjCafWriter_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying RWObj_CafWriter
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_CafWriter {
-        let __result = unsafe { crate::ffi::HandleRWObjCafWriter_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWObjCafWriter_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWObj_CafWriter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWObjCafWriter_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWObjCafWriter_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1118,13 +772,7 @@ unsafe impl crate::CppDeletable for Material {
 impl Material {
     /// **Source:** `RWObj_Material.hxx`:36 - `RWObj_Material::RWObj_Material()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWObj_Material_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWObj_Material_ctor())) }
     }
 }
 
@@ -1148,16 +796,12 @@ impl MtlReader {
     pub fn new_datamap_tcollection_asciistring_rwobj_material(
         theMaterials: &mut crate::ffi::NCollection_DataMap_TCollection_AsciiString_RWObj_Material,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWObj_MtlReader_ctor_datamap_tcollection_asciistring_rwobj_material(
                     theMaterials,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1168,15 +812,9 @@ impl MtlReader {
         theFolder: &crate::t_collection::AsciiString,
         theFile: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_MtlReader_read(self as *mut Self, theFolder, theFile) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_MtlReader_read(self as *mut Self, theFolder, theFile)
+        })
     }
 }
 
@@ -1198,25 +836,19 @@ impl ObjMaterialMap {
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:26 - `RWObj_ObjMaterialMap::RWObj_ObjMaterialMap()`
     /// Main constructor.
     pub fn new_asciistring(theFile: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWObj_ObjMaterialMap_ctor_asciistring(theFile) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWObj_ObjMaterialMap_ctor_asciistring(theFile),
+            ))
         }
     }
 
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:23 - `RWObj_ObjMaterialMap::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_ObjMaterialMap_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_ObjMaterialMap_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1226,15 +858,10 @@ impl ObjMaterialMap {
         &mut self,
         theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjMaterialMap_add_material(self as *mut Self, theStyle)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWObj_ObjMaterialMap_add_material(self as *mut Self, theStyle),
+            ))
         }
     }
 
@@ -1246,125 +873,93 @@ impl ObjMaterialMap {
         theKey: &crate::t_collection::AsciiString,
         theName: &crate::t_collection::AsciiString,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_ObjMaterialMap_define_material(
-                    self as *mut Self,
-                    theStyle,
-                    theKey,
-                    theName,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_define_material(
+                self as *mut Self,
+                theStyle,
+                theKey,
+                theName,
+            )
+        })
     }
 
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:23 - `RWObj_ObjMaterialMap::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::RWObj_ObjMaterialMap_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::RWObj_ObjMaterialMap_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:23 - `RWObj_ObjMaterialMap::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::RWObj_ObjMaterialMap_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::RWObj_ObjMaterialMap_get_type_descriptor())) }
     }
 
     /// Upcast to RWMesh_MaterialMap
     pub fn as_rw_mesh_material_map(&self) -> &crate::rw_mesh::MaterialMap {
-        let __result =
-            unsafe { crate::ffi::RWObj_ObjMaterialMap_as_RWMesh_MaterialMap(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWObj_ObjMaterialMap_as_RWMesh_MaterialMap(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to RWMesh_MaterialMap (mutable)
     pub fn as_rw_mesh_material_map_mut(&mut self) -> &mut crate::rw_mesh::MaterialMap {
-        let __result = unsafe {
-            crate::ffi::RWObj_ObjMaterialMap_as_RWMesh_MaterialMap_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWObj_ObjMaterialMap_as_RWMesh_MaterialMap_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWObj_ObjMaterialMap_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWObj_ObjMaterialMap_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWObj_ObjMaterialMap_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWObj_ObjMaterialMap_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWObjObjMaterialMap> {
-        let __result = unsafe { crate::ffi::RWObj_ObjMaterialMap_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWObj_ObjMaterialMap_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
     pub fn default_style(&self) -> &crate::xcaf_prs::Style {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjMaterialMap_inherited_DefaultStyle(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_ObjMaterialMap_inherited_DefaultStyle(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:38 - `RWMesh_MaterialMap::SetDefaultStyle()`
     pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_ObjMaterialMap_inherited_SetDefaultStyle(
-                    self as *mut Self,
-                    theStyle,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_SetDefaultStyle(self as *mut Self, theStyle)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:41 - `RWMesh_MaterialMap::FindMaterial()`
@@ -1372,33 +967,21 @@ impl ObjMaterialMap {
         &self,
         theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::RWObj_ObjMaterialMap_inherited_FindMaterial(
                     self as *const Self,
                     theStyle,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:57 - `RWMesh_MaterialMap::CreateTextureFolder()`
     pub fn create_texture_folder(&mut self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjMaterialMap_inherited_CreateTextureFolder(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_CreateTextureFolder(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture()`
@@ -1408,73 +991,43 @@ impl ObjMaterialMap {
         theTexture: &crate::ffi::HandleImageTexture,
         theKey: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjMaterialMap_inherited_CopyTexture(
-                    self as *mut Self,
-                    theResTexture,
-                    theTexture,
-                    theKey,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_CopyTexture(
+                self as *mut Self,
+                theResTexture,
+                theTexture,
+                theKey,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:73 - `RWMesh_MaterialMap::IsFailed()`
     pub fn is_failed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_IsFailed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_IsFailed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjMaterialMap_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjMaterialMap_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::RWObj_ObjMaterialMap_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1485,53 +1038,30 @@ impl ObjMaterialMap {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjMaterialMap_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_ObjMaterialMap_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjMaterialMap_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1546,42 +1076,40 @@ unsafe impl crate::CppDeletable for HandleRWObjObjMaterialMap {
 impl HandleRWObjObjMaterialMap {
     /// Dereference this Handle to access the underlying RWObj_ObjMaterialMap
     pub fn get(&self) -> &crate::ffi::RWObj_ObjMaterialMap {
-        let __result = unsafe { crate::ffi::HandleRWObjObjMaterialMap_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleRWObjObjMaterialMap_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying RWObj_ObjMaterialMap
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_ObjMaterialMap {
-        let __result = unsafe { crate::ffi::HandleRWObjObjMaterialMap_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWObjObjMaterialMap_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWObj_ObjMaterialMap> to Handle<RWMesh_MaterialMap>
     pub fn to_handle_material_map(&self) -> crate::OwnedPtr<crate::ffi::HandleRWMeshMaterialMap> {
-        let __result = unsafe {
-            crate::ffi::HandleRWObjObjMaterialMap_to_HandleRWMeshMaterialMap(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWObjObjMaterialMap_to_HandleRWMeshMaterialMap(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWObj_ObjMaterialMap> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWObjObjMaterialMap_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWObjObjMaterialMap_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1603,97 +1131,57 @@ impl ObjWriterContext {
     /// **Source:** `RWObj_ObjWriterContext.hxx`:26 - `RWObj_ObjWriterContext::RWObj_ObjWriterContext()`
     /// Main constructor.
     pub fn new_asciistring(theName: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWObj_ObjWriterContext_ctor_asciistring(theName) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWObj_ObjWriterContext_ctor_asciistring(theName),
+            ))
         }
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:32 - `RWObj_ObjWriterContext::IsOpened()`
     /// Return true if file has been opened.
     pub fn is_opened(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_ObjWriterContext_is_opened(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_is_opened(self as *const Self)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:35 - `RWObj_ObjWriterContext::Close()`
     /// Correctly close the file.
     pub fn close(&mut self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::RWObj_ObjWriterContext_close(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::RWObj_ObjWriterContext_close(self as *mut Self) })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:38 - `RWObj_ObjWriterContext::HasNormals()`
     /// Return true if normals are defined.
     pub fn has_normals(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_ObjWriterContext_has_normals(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_has_normals(self as *const Self)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:41 - `RWObj_ObjWriterContext::SetNormals()`
     /// Set if normals are defined.
     pub fn set_normals(&mut self, theHasNormals: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_ObjWriterContext_set_normals(self as *mut Self, theHasNormals)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_set_normals(self as *mut Self, theHasNormals)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:44 - `RWObj_ObjWriterContext::HasTexCoords()`
     /// Return true if normals are defined.
     pub fn has_tex_coords(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_ObjWriterContext_has_tex_coords(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_has_tex_coords(self as *const Self)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:47 - `RWObj_ObjWriterContext::SetTexCoords()`
     /// Set if normals are defined.
     pub fn set_tex_coords(&mut self, theHasTexCoords: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_ObjWriterContext_set_tex_coords(
-                    self as *mut Self,
-                    theHasTexCoords,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_set_tex_coords(self as *mut Self, theHasTexCoords)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:50 - `RWObj_ObjWriterContext::WriteHeader()`
@@ -1705,35 +1193,24 @@ impl ObjWriterContext {
         theMatLib: &crate::t_collection::AsciiString,
         theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjWriterContext_write_header(
-                    self as *mut Self,
-                    theNbNodes,
-                    theNbElems,
-                    theMatLib,
-                    theFileInfo,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_write_header(
+                self as *mut Self,
+                theNbNodes,
+                theNbElems,
+                theMatLib,
+                theFileInfo,
+            )
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:56 - `RWObj_ObjWriterContext::ActiveMaterial()`
     /// Return active material or empty string if not set.
     pub fn active_material(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_ObjWriterContext_active_material(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_ObjWriterContext_active_material(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1743,122 +1220,65 @@ impl ObjWriterContext {
         &mut self,
         theMaterial: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjWriterContext_write_active_material(
-                    self as *mut Self,
-                    theMaterial,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_write_active_material(self as *mut Self, theMaterial)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:62 - `RWObj_ObjWriterContext::WriteTriangle()`
     /// Writing a triangle
     pub fn write_triangle(&mut self, theTri: &crate::ffi::Graphic3d_Vec3i) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjWriterContext_write_triangle(self as *mut Self, theTri)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_write_triangle(self as *mut Self, theTri)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:65 - `RWObj_ObjWriterContext::WriteQuad()`
     /// Writing a quad
     pub fn write_quad(&mut self, theQuad: &crate::ffi::Graphic3d_Vec4i) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjWriterContext_write_quad(self as *mut Self, theQuad)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_write_quad(self as *mut Self, theQuad)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:68 - `RWObj_ObjWriterContext::WriteVertex()`
     /// Writing a vector
     pub fn write_vertex(&mut self, theValue: &crate::ffi::Graphic3d_Vec3) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjWriterContext_write_vertex(self as *mut Self, theValue)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_write_vertex(self as *mut Self, theValue)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:71 - `RWObj_ObjWriterContext::WriteNormal()`
     /// Writing a vector
     pub fn write_normal(&mut self, theValue: &crate::ffi::Graphic3d_Vec3) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjWriterContext_write_normal(self as *mut Self, theValue)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_write_normal(self as *mut Self, theValue)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:74 - `RWObj_ObjWriterContext::WriteTexCoord()`
     /// Writing a vector
     pub fn write_tex_coord(&mut self, theValue: &crate::ffi::Graphic3d_Vec2) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjWriterContext_write_tex_coord(self as *mut Self, theValue)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_write_tex_coord(self as *mut Self, theValue)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:77 - `RWObj_ObjWriterContext::WriteGroup()`
     /// Writing a group name
     pub fn write_group(&mut self, theValue: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_ObjWriterContext_write_group(self as *mut Self, theValue)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_write_group(self as *mut Self, theValue)
+        })
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:80 - `RWObj_ObjWriterContext::FlushFace()`
     /// Increment indices shift.
     pub fn flush_face(&mut self, theNbNodes: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_ObjWriterContext_flush_face(self as *mut Self, theNbNodes)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_ObjWriterContext_flush_face(self as *mut Self, theNbNodes)
+        })
     }
 }
 
@@ -1885,13 +1305,8 @@ unsafe impl crate::CppDeletable for Reader {
 impl Reader {
     /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::RWObj_Reader_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_Reader_dynamic_type(self as *const Self)))
         }
     }
 
@@ -1903,20 +1318,13 @@ impl Reader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_Reader_read_asciistring_progressrange(
-                    self as *mut Self,
-                    theFile,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_Reader_read_asciistring_progressrange(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `RWObj_Reader.hxx`:63 - `RWObj_Reader::Read()`
@@ -1929,21 +1337,14 @@ impl Reader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_Reader_read_istream_asciistring_progressrange(
-                    self as *mut Self,
-                    theStream,
-                    theFile,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_Reader_read_istream_asciistring_progressrange(
+                self as *mut Self,
+                theStream,
+                theFile,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `RWObj_Reader.hxx`:75 - `RWObj_Reader::Probe()`
@@ -1957,20 +1358,13 @@ impl Reader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_Reader_probe_asciistring_progressrange(
-                    self as *mut Self,
-                    theFile,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_Reader_probe_asciistring_progressrange(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `RWObj_Reader.hxx`:91 - `RWObj_Reader::Probe()`
@@ -1988,111 +1382,63 @@ impl Reader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_Reader_probe_istream_asciistring_progressrange(
-                    self as *mut Self,
-                    theStream,
-                    theFile,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_Reader_probe_istream_asciistring_progressrange(
+                self as *mut Self,
+                theStream,
+                theFile,
+                theProgress,
+            )
+        })
     }
 
     /// **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::FileComments()`
     /// Returns file comments (lines starting with # at the beginning of file).
     pub fn file_comments(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result = unsafe { crate::ffi::RWObj_Reader_file_comments(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_Reader_file_comments(self as *const Self)))
         }
     }
 
     /// **Source:** `RWObj_Reader.hxx`:102 - `RWObj_Reader::ExternalFiles()`
     /// Return the list of external file references.
     pub fn external_files(&self) -> &crate::ffi::Interface_IndexedMapOfAsciiString {
-        {
-            let __result = unsafe { crate::ffi::RWObj_Reader_external_files(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_Reader_external_files(self as *const Self)))
         }
     }
 
     /// **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeNodes()`
     /// Number of probed nodes.
     pub fn nb_probe_nodes(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::RWObj_Reader_nb_probe_nodes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::RWObj_Reader_nb_probe_nodes(self as *const Self) })
     }
 
     /// **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::NbProbeElems()`
     pub fn nb_probe_elems(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::RWObj_Reader_nb_probe_elems(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::RWObj_Reader_nb_probe_elems(self as *const Self) })
     }
 
     /// **Source:** `RWObj_Reader.hxx`:114 - `RWObj_Reader::MemoryLimit()`
     /// Returns memory limit in bytes; -1 (no limit) by default.
     pub fn memory_limit(&self) -> usize {
-        {
-            let __result = unsafe { crate::ffi::RWObj_Reader_memory_limit(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::RWObj_Reader_memory_limit(self as *const Self) })
     }
 
     /// **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::SetMemoryLimit()`
     /// Specify memory limit in bytes, so that import will be aborted
     /// by specified limit before memory allocation error occurs.
     pub fn set_memory_limit(&mut self, theMemLimit: usize) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_Reader_set_memory_limit(self as *mut Self, theMemLimit)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_Reader_set_memory_limit(self as *mut Self, theMemLimit)
+        })
     }
 
     /// **Source:** `RWObj_Reader.hxx`:121 - `RWObj_Reader::Transformation()`
     /// Return transformation from one coordinate system to another; no transformation by default.
     pub fn transformation(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
-        {
-            let __result = unsafe { crate::ffi::RWObj_Reader_transformation(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_Reader_transformation(self as *const Self)))
         }
     }
 
@@ -2104,125 +1450,79 @@ impl Reader {
         &mut self,
         theCSConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_Reader_set_transformation(self as *mut Self, theCSConverter)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_Reader_set_transformation(self as *mut Self, theCSConverter)
+        })
     }
 
     /// **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::IsSinglePrecision()`
     /// Return single precision flag for reading vertex data (coordinates); FALSE by default.
     pub fn is_single_precision(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_Reader_is_single_precision(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_Reader_is_single_precision(self as *const Self)
+        })
     }
 
     /// **Source:** `RWObj_Reader.hxx`:135 - `RWObj_Reader::SetSinglePrecision()`
     /// Setup single/double precision flag for reading vertex data (coordinates).
     pub fn set_single_precision(&mut self, theIsSinglePrecision: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_Reader_set_single_precision(
-                    self as *mut Self,
-                    theIsSinglePrecision,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_Reader_set_single_precision(self as *mut Self, theIsSinglePrecision)
+        })
     }
 
     /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::RWObj_Reader_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::RWObj_Reader_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::RWObj_Reader_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::RWObj_Reader_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWObj_Reader_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWObj_Reader_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::RWObj_Reader_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWObj_Reader_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_Reader_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_Reader_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_Reader_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_Reader_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::RWObj_Reader_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::RWObj_Reader_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2233,51 +1533,30 @@ impl Reader {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_Reader_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_Reader_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_Reader_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_Reader_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_Reader_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_Reader_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::RWObj_Reader_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_Reader_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2292,31 +1571,23 @@ unsafe impl crate::CppDeletable for HandleRWObjReader {
 impl HandleRWObjReader {
     /// Dereference this Handle to access the underlying RWObj_Reader
     pub fn get(&self) -> &crate::ffi::RWObj_Reader {
-        let __result = unsafe { crate::ffi::HandleRWObjReader_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleRWObjReader_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying RWObj_Reader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_Reader {
-        let __result = unsafe { crate::ffi::HandleRWObjReader_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWObjReader_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWObj_Reader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWObjReader_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWObjReader_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<RWObj_Reader> to Handle<RWObj_TriangulationReader>
@@ -2325,18 +1596,15 @@ impl HandleRWObjReader {
     pub fn downcast_to_triangulation_reader(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWObjTriangulationReader>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleRWObjReader_downcast_to_HandleRWObjTriangulationReader(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -2359,13 +1627,7 @@ impl SubMesh {
     /// **Source:** `RWObj_SubMesh.hxx` - `RWObj_SubMesh::RWObj_SubMesh()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWObj_SubMesh_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWObj_SubMesh_ctor())) }
     }
 }
 
@@ -2396,20 +1658,15 @@ impl IShapeReceiver {
         theMaterial: &Material,
         theIsRootShape: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_IShapeReceiver_bind_named_shape(
-                    self as *mut Self,
-                    theShape,
-                    theName,
-                    theMaterial as *const _,
-                    theIsRootShape,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_IShapeReceiver_bind_named_shape(
+                self as *mut Self,
+                theShape,
+                theName,
+                theMaterial as *const _,
+                theIsRootShape,
+            )
+        })
     }
 }
 
@@ -2427,164 +1684,127 @@ impl TriangulationReader {
     /// **Source:** `RWObj_TriangulationReader.hxx`:43 - `RWObj_TriangulationReader::RWObj_TriangulationReader()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::RWObj_TriangulationReader_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWObj_TriangulationReader_ctor(),
+            ))
         }
     }
 
     /// **Source:** `RWObj_TriangulationReader.hxx`:40 - `RWObj_TriangulationReader::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_TriangulationReader_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_TriangulationReader_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `RWObj_TriangulationReader.hxx`:50 - `RWObj_TriangulationReader::SetCreateShapes()`
     /// Set flag to create shapes.
     pub fn set_create_shapes(&mut self, theToCreateShapes: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_TriangulationReader_set_create_shapes(
-                    self as *mut Self,
-                    theToCreateShapes,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_set_create_shapes(
+                self as *mut Self,
+                theToCreateShapes,
+            )
+        })
     }
 
     /// **Source:** `RWObj_TriangulationReader.hxx`:53 - `RWObj_TriangulationReader::SetShapeReceiver()`
     /// Set shape receiver callback.
     pub fn set_shape_receiver(&mut self, theReceiver: &mut IShapeReceiver) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_TriangulationReader_set_shape_receiver(
-                    self as *mut Self,
-                    theReceiver as *mut _,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_set_shape_receiver(
+                self as *mut Self,
+                theReceiver as *mut _,
+            )
+        })
     }
 
     /// **Source:** `RWObj_TriangulationReader.hxx`:56 - `RWObj_TriangulationReader::GetTriangulation()`
     /// Create Poly_Triangulation from collected data
     pub fn get_triangulation(&mut self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_get_triangulation(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWObj_TriangulationReader_get_triangulation(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `RWObj_TriangulationReader.hxx`:59 - `RWObj_TriangulationReader::ResultShape()`
     /// Return result shape.
     pub fn result_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::RWObj_TriangulationReader_result_shape(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWObj_TriangulationReader_result_shape(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `RWObj_TriangulationReader.hxx`:40 - `RWObj_TriangulationReader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::RWObj_TriangulationReader_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::RWObj_TriangulationReader_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `RWObj_TriangulationReader.hxx`:40 - `RWObj_TriangulationReader::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::RWObj_TriangulationReader_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_TriangulationReader_get_type_descriptor()))
         }
     }
 
     /// Upcast to RWObj_Reader
     pub fn as_reader(&self) -> &Reader {
-        let __result =
-            unsafe { crate::ffi::RWObj_TriangulationReader_as_RWObj_Reader(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWObj_TriangulationReader_as_RWObj_Reader(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to RWObj_Reader (mutable)
     pub fn as_reader_mut(&mut self) -> &mut Reader {
-        let __result =
-            unsafe { crate::ffi::RWObj_TriangulationReader_as_RWObj_Reader_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::RWObj_TriangulationReader_as_RWObj_Reader_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWObj_TriangulationReader_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::RWObj_TriangulationReader_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::RWObj_TriangulationReader_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::RWObj_TriangulationReader_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWObjTriangulationReader> {
-        let __result = unsafe { crate::ffi::RWObj_TriangulationReader_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::RWObj_TriangulationReader_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:52 - `RWObj_Reader::Read()`
@@ -2593,20 +1813,13 @@ impl TriangulationReader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_Read(
-                    self as *mut Self,
-                    theFile,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_Read(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:75 - `RWObj_Reader::Probe()`
@@ -2615,118 +1828,70 @@ impl TriangulationReader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_Probe(
-                    self as *mut Self,
-                    theFile,
-                    theProgress,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_Probe(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::FileComments()`
     pub fn file_comments(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_FileComments(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_TriangulationReader_inherited_FileComments(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:102 - `RWObj_Reader::ExternalFiles()`
     pub fn external_files(&self) -> &crate::ffi::Interface_IndexedMapOfAsciiString {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_ExternalFiles(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_TriangulationReader_inherited_ExternalFiles(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeNodes()`
     pub fn nb_probe_nodes(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_NbProbeNodes(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_NbProbeNodes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::NbProbeElems()`
     pub fn nb_probe_elems(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_NbProbeElems(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_NbProbeElems(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:114 - `RWObj_Reader::MemoryLimit()`
     pub fn memory_limit(&self) -> usize {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_MemoryLimit(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_MemoryLimit(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::SetMemoryLimit()`
     pub fn set_memory_limit(&mut self, theMemLimit: usize) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_SetMemoryLimit(
-                    self as *mut Self,
-                    theMemLimit,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_SetMemoryLimit(
+                self as *mut Self,
+                theMemLimit,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:121 - `RWObj_Reader::Transformation()`
     pub fn transformation(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_Transformation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::RWObj_TriangulationReader_inherited_Transformation(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2735,91 +1900,51 @@ impl TriangulationReader {
         &mut self,
         theCSConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_SetTransformation(
-                    self as *mut Self,
-                    theCSConverter,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_SetTransformation(
+                self as *mut Self,
+                theCSConverter,
+            )
+        })
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::IsSinglePrecision()`
     pub fn is_single_precision(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_IsSinglePrecision(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_IsSinglePrecision(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:135 - `RWObj_Reader::SetSinglePrecision()`
     pub fn set_single_precision(&mut self, theIsSinglePrecision: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_SetSinglePrecision(
-                    self as *mut Self,
-                    theIsSinglePrecision,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_SetSinglePrecision(
+                self as *mut Self,
+                theIsSinglePrecision,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe {
+            let __val = crate::check_result(unsafe {
                 crate::ffi::RWObj_TriangulationReader_inherited_This(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2830,58 +1955,30 @@ impl TriangulationReader {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::RWObj_TriangulationReader_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2896,45 +1993,41 @@ unsafe impl crate::CppDeletable for HandleRWObjTriangulationReader {
 impl HandleRWObjTriangulationReader {
     /// Dereference this Handle to access the underlying RWObj_TriangulationReader
     pub fn get(&self) -> &crate::ffi::RWObj_TriangulationReader {
-        let __result =
-            unsafe { crate::ffi::HandleRWObjTriangulationReader_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleRWObjTriangulationReader_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying RWObj_TriangulationReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_TriangulationReader {
-        let __result =
-            unsafe { crate::ffi::HandleRWObjTriangulationReader_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleRWObjTriangulationReader_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWObj_TriangulationReader> to Handle<RWObj_Reader>
     pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi::HandleRWObjReader> {
-        let __result = unsafe {
-            crate::ffi::HandleRWObjTriangulationReader_to_HandleRWObjReader(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWObjTriangulationReader_to_HandleRWObjReader(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<RWObj_TriangulationReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleRWObjTriangulationReader_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleRWObjTriangulationReader_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

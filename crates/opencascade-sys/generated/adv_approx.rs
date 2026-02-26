@@ -55,14 +55,8 @@ impl ApproxAFunction {
         MaxSeg: i32,
         Func: &EvaluatorFunction,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_ApproxAFunction_ctor_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, First, Last, Continuity.into(), MaxDeg, MaxSeg, Func)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApprox_ApproxAFunction_ctor_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, First, Last, Continuity.into(), MaxDeg, MaxSeg, Func)))
         }
     }
 
@@ -83,214 +77,135 @@ impl ApproxAFunction {
         Func: &EvaluatorFunction,
         CutTool: &Cutting,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_ApproxAFunction_ctor_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction_cutting(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, First, Last, Continuity.into(), MaxDeg, MaxSeg, Func, CutTool)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApprox_ApproxAFunction_ctor_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction_cutting(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, First, Last, Continuity.into(), MaxDeg, MaxSeg, Func, CutTool)))
         }
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:114 - `AdvApprox_ApproxAFunction::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_ApproxAFunction_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:116 - `AdvApprox_ApproxAFunction::HasResult()`
     pub fn has_result(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_ApproxAFunction_has_result(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_has_result(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:119 - `AdvApprox_ApproxAFunction::Poles1d()`
     /// returns the poles from the algorithms as is
     pub fn poles1d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_ApproxAFunction_poles1d(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_ApproxAFunction_poles1d(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:122 - `AdvApprox_ApproxAFunction::Poles2d()`
     /// returns the poles from the algorithms as is
     pub fn poles2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfPnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_ApproxAFunction_poles2d(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_ApproxAFunction_poles2d(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:125 - `AdvApprox_ApproxAFunction::Poles()`
     /// -- returns the poles from the algorithms as is
     pub fn poles(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfPnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_ApproxAFunction_poles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_ApproxAFunction_poles(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:128 - `AdvApprox_ApproxAFunction::NbPoles()`
     /// as the name says
     pub fn nb_poles(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_ApproxAFunction_nb_poles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_nb_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:131 - `AdvApprox_ApproxAFunction::Poles1d()`
     /// returns the poles at Index from the 1d subspace
     pub fn poles1d_int_array1ofreal(&self, Index: i32, P: &mut crate::ffi::TColStd_Array1OfReal) {
-        {
-            let __exc = unsafe {
-                crate::ffi::AdvApprox_ApproxAFunction_poles1d_int_array1ofreal(
-                    self as *const Self,
-                    Index,
-                    P,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_poles1d_int_array1ofreal(
+                self as *const Self,
+                Index,
+                P,
+            )
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:134 - `AdvApprox_ApproxAFunction::Poles2d()`
     /// returns the poles at Index from the 2d subspace
     pub fn poles2d_int_array1ofpnt2d(&self, Index: i32, P: &mut crate::ffi::TColgp_Array1OfPnt2d) {
-        {
-            let __exc = unsafe {
-                crate::ffi::AdvApprox_ApproxAFunction_poles2d_int_array1ofpnt2d(
-                    self as *const Self,
-                    Index,
-                    P,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_poles2d_int_array1ofpnt2d(
+                self as *const Self,
+                Index,
+                P,
+            )
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:137 - `AdvApprox_ApproxAFunction::Poles()`
     /// returns the poles at Index from the 3d subspace
     pub fn poles_int_array1ofpnt(&self, Index: i32, P: &mut crate::ffi::TColgp_Array1OfPnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::AdvApprox_ApproxAFunction_poles_int_array1ofpnt(
-                    self as *const Self,
-                    Index,
-                    P,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_poles_int_array1ofpnt(
+                self as *const Self,
+                Index,
+                P,
+            )
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:139 - `AdvApprox_ApproxAFunction::Degree()`
     pub fn degree(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_ApproxAFunction_degree(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:141 - `AdvApprox_ApproxAFunction::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_ApproxAFunction_nb_knots(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_nb_knots(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:143 - `AdvApprox_ApproxAFunction::NumSubSpaces()`
     pub fn num_sub_spaces(&self, Dimension: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_ApproxAFunction_num_sub_spaces(self as *const Self, Dimension)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_num_sub_spaces(self as *const Self, Dimension)
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:145 - `AdvApprox_ApproxAFunction::Knots()`
     pub fn knots(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_ApproxAFunction_knots(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_ApproxAFunction_knots(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:147 - `AdvApprox_ApproxAFunction::Multiplicities()`
     pub fn multiplicities(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfInteger> {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_ApproxAFunction_multiplicities(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_ApproxAFunction_multiplicities(self as *const Self),
+            ))
         }
     }
 
@@ -300,15 +215,10 @@ impl ApproxAFunction {
         &self,
         Dimension: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_ApproxAFunction_max_error_int(self as *const Self, Dimension)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_ApproxAFunction_max_error_int(self as *const Self, Dimension),
+            ))
         }
     }
 
@@ -318,67 +228,44 @@ impl ApproxAFunction {
         &self,
         Dimension: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::AdvApprox_ApproxAFunction_average_error_int(
                     self as *const Self,
                     Dimension,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:156 - `AdvApprox_ApproxAFunction::MaxError()`
     pub fn max_error_int2(&self, Dimension: i32, Index: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_ApproxAFunction_max_error_int2(
-                    self as *const Self,
-                    Dimension,
-                    Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_max_error_int2(
+                self as *const Self,
+                Dimension,
+                Index,
+            )
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:159 - `AdvApprox_ApproxAFunction::AverageError()`
     pub fn average_error_int2(&self, Dimension: i32, Index: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_ApproxAFunction_average_error_int2(
-                    self as *const Self,
-                    Dimension,
-                    Index,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_average_error_int2(
+                self as *const Self,
+                Dimension,
+                Index,
+            )
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:163 - `AdvApprox_ApproxAFunction::Dump()`
     /// display information on approximation.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc =
-                unsafe { crate::ffi::AdvApprox_ApproxAFunction_dump(self as *const Self, o) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_dump(self as *const Self, o)
+        })
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:94 - `AdvApprox_ApproxAFunction::Approximation()`
@@ -403,34 +290,29 @@ impl ApproxAFunction {
         AverageErrorArray: &mut crate::ffi::TColStd_Array1OfReal,
         ErrorCode: &mut i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::AdvApprox_ApproxAFunction_approximation(
-                    TotalDimension,
-                    TotalNumSS,
-                    LocalDimension,
-                    First,
-                    Last,
-                    Evaluator,
-                    CutTool,
-                    ContinuityOrder,
-                    NumMaxCoeffs,
-                    MaxSegments,
-                    TolerancesArray,
-                    code_precis,
-                    NumCurves,
-                    NumCoeffPerCurveArray,
-                    LocalCoefficientArray,
-                    IntervalsArray,
-                    ErrorMaxArray,
-                    AverageErrorArray,
-                    ErrorCode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_approximation(
+                TotalDimension,
+                TotalNumSS,
+                LocalDimension,
+                First,
+                Last,
+                Evaluator,
+                CutTool,
+                ContinuityOrder,
+                NumMaxCoeffs,
+                MaxSegments,
+                TolerancesArray,
+                code_precis,
+                NumCurves,
+                NumCoeffPerCurveArray,
+                LocalCoefficientArray,
+                IntervalsArray,
+                ErrorMaxArray,
+                AverageErrorArray,
+                ErrorCode,
+            )
+        })
     }
 }
 
@@ -451,16 +333,9 @@ unsafe impl crate::CppDeletable for Cutting {
 impl Cutting {
     /// **Source:** `AdvApprox_Cutting.hxx`:35 - `AdvApprox_Cutting::Value()`
     pub fn value(&self, a: f64, b: f64, cuttingvalue: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_Cutting_value(self as *const Self, a, b, cuttingvalue)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_Cutting_value(self as *const Self, a, b, cuttingvalue)
+        })
     }
 }
 
@@ -481,48 +356,36 @@ unsafe impl crate::CppDeletable for DichoCutting {
 impl DichoCutting {
     /// **Source:** `AdvApprox_DichoCutting.hxx`:34 - `AdvApprox_DichoCutting::AdvApprox_DichoCutting()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::AdvApprox_DichoCutting_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::AdvApprox_DichoCutting_ctor()),
+            )
         }
     }
 
     /// **Source:** `AdvApprox_DichoCutting.hxx`:36 - `AdvApprox_DichoCutting::Value()`
     pub fn value(&self, a: f64, b: f64, cuttingvalue: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_DichoCutting_value(self as *const Self, a, b, cuttingvalue)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_DichoCutting_value(self as *const Self, a, b, cuttingvalue)
+        })
     }
 
     /// Upcast to AdvApprox_Cutting
     pub fn as_cutting(&self) -> &Cutting {
-        let __result =
-            unsafe { crate::ffi::AdvApprox_DichoCutting_as_AdvApprox_Cutting(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::AdvApprox_DichoCutting_as_AdvApprox_Cutting(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to AdvApprox_Cutting (mutable)
     pub fn as_cutting_mut(&mut self) -> &mut Cutting {
-        let __result = unsafe {
-            crate::ffi::AdvApprox_DichoCutting_as_AdvApprox_Cutting_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::AdvApprox_DichoCutting_as_AdvApprox_Cutting_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 }
 
@@ -553,22 +416,17 @@ impl EvaluatorFunction {
         Result: *mut f64,
         ErrorCode: *mut i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::AdvApprox_EvaluatorFunction_evaluate(
-                    self as *mut Self,
-                    Dimension,
-                    StartEnd.as_mut_ptr(),
-                    Parameter,
-                    DerivativeRequest,
-                    Result,
-                    ErrorCode,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::AdvApprox_EvaluatorFunction_evaluate(
+                self as *mut Self,
+                Dimension,
+                StartEnd.as_mut_ptr(),
+                Parameter,
+                DerivativeRequest,
+                Result,
+                ErrorCode,
+            )
+        })
     }
 }
 
@@ -595,18 +453,14 @@ impl PrefAndRec {
         PrefferedCut: &crate::ffi::TColStd_Array1OfReal,
         Weight: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::AdvApprox_PrefAndRec_ctor_array1ofreal2_real(
                     RecomendedCut,
                     PrefferedCut,
                     Weight,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -626,36 +480,27 @@ impl PrefAndRec {
     /// if pi is in ](r*a+b)/(r+1) , (a+r*b)/(r+1)[ where r = Weight
     /// -  or (a+b)/2 else.
     pub fn value(&self, a: f64, b: f64, cuttingvalue: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_PrefAndRec_value(self as *const Self, a, b, cuttingvalue)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_PrefAndRec_value(self as *const Self, a, b, cuttingvalue)
+        })
     }
 
     /// Upcast to AdvApprox_Cutting
     pub fn as_cutting(&self) -> &Cutting {
-        let __result =
-            unsafe { crate::ffi::AdvApprox_PrefAndRec_as_AdvApprox_Cutting(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::AdvApprox_PrefAndRec_as_AdvApprox_Cutting(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to AdvApprox_Cutting (mutable)
     pub fn as_cutting_mut(&mut self) -> &mut Cutting {
-        let __result =
-            unsafe { crate::ffi::AdvApprox_PrefAndRec_as_AdvApprox_Cutting_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::AdvApprox_PrefAndRec_as_AdvApprox_Cutting_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 }
 
@@ -677,48 +522,36 @@ unsafe impl crate::CppDeletable for PrefCutting {
 impl PrefCutting {
     /// **Source:** `AdvApprox_PrefCutting.hxx`:35 - `AdvApprox_PrefCutting::AdvApprox_PrefCutting()`
     pub fn new_array1ofreal(CutPnts: &crate::ffi::TColStd_Array1OfReal) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::AdvApprox_PrefCutting_ctor_array1ofreal(CutPnts) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_PrefCutting_ctor_array1ofreal(CutPnts),
+            ))
         }
     }
 
     /// **Source:** `AdvApprox_PrefCutting.hxx`:37 - `AdvApprox_PrefCutting::Value()`
     pub fn value(&self, a: f64, b: f64, cuttingvalue: &mut f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_PrefCutting_value(self as *const Self, a, b, cuttingvalue)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_PrefCutting_value(self as *const Self, a, b, cuttingvalue)
+        })
     }
 
     /// Upcast to AdvApprox_Cutting
     pub fn as_cutting(&self) -> &Cutting {
-        let __result =
-            unsafe { crate::ffi::AdvApprox_PrefCutting_as_AdvApprox_Cutting(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::AdvApprox_PrefCutting_as_AdvApprox_Cutting(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to AdvApprox_Cutting (mutable)
     pub fn as_cutting_mut(&mut self) -> &mut Cutting {
-        let __result = unsafe {
-            crate::ffi::AdvApprox_PrefCutting_as_AdvApprox_Cutting_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::AdvApprox_PrefCutting_as_AdvApprox_Cutting_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 }
 
@@ -751,14 +584,8 @@ impl SimpleApprox {
         JacobiBase: &crate::ffi::HandlePLibJacobiPolynomial,
         Func: &EvaluatorFunction,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_SimpleApprox_ctor_int2_shape_int2_handleplibjacobipolynomial_evaluatorfunction(TotalDimension, TotalNumSS, Continuity.into(), WorkDegree, NbGaussPoints, JacobiBase, Func)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApprox_SimpleApprox_ctor_int2_shape_int2_handleplibjacobipolynomial_evaluatorfunction(TotalDimension, TotalNumSS, Continuity.into(), WorkDegree, NbGaussPoints, JacobiBase, Func)))
         }
     }
 
@@ -777,152 +604,99 @@ impl SimpleApprox {
         Last: f64,
         MaxDegree: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::AdvApprox_SimpleApprox_perform(
-                    self as *mut Self,
-                    LocalDimension,
-                    LocalTolerancesArray,
-                    First,
-                    Last,
-                    MaxDegree,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::AdvApprox_SimpleApprox_perform(
+                self as *mut Self,
+                LocalDimension,
+                LocalTolerancesArray,
+                First,
+                Last,
+                MaxDegree,
+            )
+        })
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:64 - `AdvApprox_SimpleApprox::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_SimpleApprox_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_SimpleApprox_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:66 - `AdvApprox_SimpleApprox::Degree()`
     pub fn degree(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_SimpleApprox_degree(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_SimpleApprox_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:69 - `AdvApprox_SimpleApprox::Coefficients()`
     /// returns the coefficients in the Jacobi Base
     pub fn coefficients(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_SimpleApprox_coefficients(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_SimpleApprox_coefficients(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:72 - `AdvApprox_SimpleApprox::FirstConstr()`
     /// returns the constraints at First
     pub fn first_constr(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_SimpleApprox_first_constr(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_SimpleApprox_first_constr(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:75 - `AdvApprox_SimpleApprox::LastConstr()`
     /// returns the constraints at Last
     pub fn last_constr(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_SimpleApprox_last_constr(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_SimpleApprox_last_constr(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:77 - `AdvApprox_SimpleApprox::SomTab()`
     pub fn som_tab(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_SimpleApprox_som_tab(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_SimpleApprox_som_tab(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:79 - `AdvApprox_SimpleApprox::DifTab()`
     pub fn dif_tab(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_SimpleApprox_dif_tab(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::AdvApprox_SimpleApprox_dif_tab(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:81 - `AdvApprox_SimpleApprox::MaxError()`
     pub fn max_error(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApprox_SimpleApprox_max_error(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_SimpleApprox_max_error(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:83 - `AdvApprox_SimpleApprox::AverageError()`
     pub fn average_error(&self, Index: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApprox_SimpleApprox_average_error(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::AdvApprox_SimpleApprox_average_error(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:86 - `AdvApprox_SimpleApprox::Dump()`
     /// display information on approximation
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc = unsafe { crate::ffi::AdvApprox_SimpleApprox_dump(self as *const Self, o) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::AdvApprox_SimpleApprox_dump(self as *const Self, o)
+        })
     }
 }

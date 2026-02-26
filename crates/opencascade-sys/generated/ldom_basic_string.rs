@@ -22,35 +22,27 @@ unsafe impl crate::CppDeletable for LDOMBasicString {
 impl LDOMBasicString {
     /// **Source:** `LDOMBasicString.hxx`:89 - `LDOMBasicString::LDOMBasicString()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOMBasicString_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMBasicString_ctor()))
         }
     }
 
     /// **Source:** `LDOMBasicString.hxx`:101 - `LDOMBasicString::LDOMBasicString()`
     pub fn new_int(aValue: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOMBasicString_ctor_int(aValue) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMBasicString_ctor_int(
+                aValue,
+            )))
         }
     }
 
     /// **Source:** `LDOMBasicString.hxx`:107 - `LDOMBasicString::LDOMBasicString()`
     pub fn new_charptr(aValue: &str) -> crate::OwnedPtr<Self> {
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
-        {
-            let __result = unsafe { crate::ffi::LDOMBasicString_ctor_charptr(c_aValue.as_ptr()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::LDOMBasicString_ctor_charptr(c_aValue.as_ptr()),
+            ))
         }
     }
 
@@ -60,17 +52,13 @@ impl LDOMBasicString {
         aDoc: &crate::ffi::HandleLDOMMemManager,
     ) -> crate::OwnedPtr<Self> {
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::LDOMBasicString_ctor_charptr_handleldommemmanager(
                     c_aValue.as_ptr(),
                     aDoc,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -81,77 +69,57 @@ impl LDOMBasicString {
         aDoc: &crate::ffi::HandleLDOMMemManager,
     ) -> crate::OwnedPtr<Self> {
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::LDOMBasicString_ctor_charptr_int_handleldommemmanager(
                     c_aValue.as_ptr(),
                     aLen,
                     aDoc,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `LDOMBasicString.hxx`:50 - `LDOMBasicString::Type()`
     pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::LDOMBasicString_StringType> {
-        {
-            let __result = unsafe { crate::ffi::LDOMBasicString_type_(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMBasicString_type_(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LDOMBasicString.hxx`:52 - `LDOMBasicString::GetInteger()`
     pub fn get_integer(&self, aResult: &mut i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOMBasicString_get_integer(self as *const Self, aResult) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LDOMBasicString_get_integer(self as *const Self, aResult)
+        })
     }
 
     /// **Source:** `LDOMBasicString.hxx`:56 - `LDOMBasicString::GetString()`
     pub fn get_string(&self) -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::LDOMBasicString_get_string(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::LDOMBasicString_get_string(
+                self as *const Self,
+            )))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `LDOMBasicString.hxx`:63 - `LDOMBasicString::equals()`
     pub fn equals(&self, anOther: &LDOMBasicString) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOMBasicString_equals(self as *const Self, anOther) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::LDOMBasicString_equals(self as *const Self, anOther)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        let __result = unsafe { crate::ffi::LDOMBasicString_to_owned(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMBasicString_to_owned(
+                self as *const Self,
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

@@ -8,14 +8,7 @@
 
 /// **Source:** `Bisector.hxx`:35 - `Bisector::IsConvex`
 pub fn is_convex(Cu: &crate::ffi::HandleGeom2dCurve, Sign: f64) -> bool {
-    {
-        let __result = unsafe { crate::ffi::Bisector_is_convex(Cu, Sign) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::Bisector_is_convex(Cu, Sign) })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -57,13 +50,7 @@ unsafe impl crate::CppDeletable for Bisec {
 impl Bisec {
     /// **Source:** `Bisector_Bisec.hxx`:56 - `Bisector_Bisec::Bisector_Bisec()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_Bisec_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_Bisec_ctor())) }
     }
 
     /// **Source:** `Bisector_Bisec.hxx`:62 - `Bisector_Bisec::Perform()`
@@ -83,14 +70,9 @@ impl Bisec {
         Tolerance: f64,
         oncurve: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_Bisec_perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(self as *mut Self, Cu1, Cu2, P, V1, V2, Sense, ajointype.into(), Tolerance, oncurve)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Bisec_perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(self as *mut Self, Cu1, Cu2, P, V1, V2, Sense, ajointype.into(), Tolerance, oncurve)
+        })
     }
 
     /// **Source:** `Bisector_Bisec.hxx`:75 - `Bisector_Bisec::Perform()`
@@ -108,14 +90,9 @@ impl Bisec {
         Tolerance: f64,
         oncurve: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_Bisec_perform_handlegeom2dcurve_handlegeom2dpoint_pnt2d_vec2d2_real2_bool(self as *mut Self, Cu, Pnt, P, V1, V2, Sense, Tolerance, oncurve)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Bisec_perform_handlegeom2dcurve_handlegeom2dpoint_pnt2d_vec2d2_real2_bool(self as *mut Self, Cu, Pnt, P, V1, V2, Sense, Tolerance, oncurve)
+        })
     }
 
     /// **Source:** `Bisector_Bisec.hxx`:87 - `Bisector_Bisec::Perform()`
@@ -133,14 +110,9 @@ impl Bisec {
         Tolerance: f64,
         oncurve: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_Bisec_perform_handlegeom2dpoint_handlegeom2dcurve_pnt2d_vec2d2_real2_bool(self as *mut Self, Pnt, Cu, P, V1, V2, Sense, Tolerance, oncurve)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Bisec_perform_handlegeom2dpoint_handlegeom2dcurve_pnt2d_vec2d2_real2_bool(self as *mut Self, Pnt, Cu, P, V1, V2, Sense, Tolerance, oncurve)
+        })
     }
 
     /// **Source:** `Bisector_Bisec.hxx`:98 - `Bisector_Bisec::Perform()`
@@ -157,49 +129,32 @@ impl Bisec {
         Tolerance: f64,
         oncurve: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_Bisec_perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(
-                    self as *mut Self,
-                    Pnt1,
-                    Pnt2,
-                    P,
-                    V1,
-                    V2,
-                    Sense,
-                    Tolerance,
-                    oncurve,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Bisec_perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(
+                self as *mut Self,
+                Pnt1,
+                Pnt2,
+                P,
+                V1,
+                V2,
+                Sense,
+                Tolerance,
+                oncurve,
+            )
+        })
     }
 
     /// **Source:** `Bisector_Bisec.hxx`:108 - `Bisector_Bisec::Value()`
     /// Returns the Curve of <me>.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dTrimmedCurve {
-        {
-            let __result = unsafe { crate::ffi::Bisector_Bisec_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Bisector_Bisec_value(self as *const Self))) }
     }
 
     /// **Source:** `Bisector_Bisec.hxx`:111 - `Bisector_Bisec::ChangeValue()`
     /// Returns the Curve of <me>.
     pub fn change_value(&mut self) -> &crate::ffi::HandleGeom2dTrimmedCurve {
-        {
-            let __result = unsafe { crate::ffi::Bisector_Bisec_change_value(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Bisector_Bisec_change_value(self as *mut Self)))
         }
     }
 }
@@ -223,12 +178,8 @@ unsafe impl crate::CppDeletable for BisecAna {
 impl BisecAna {
     /// **Source:** `Bisector_BisecAna.hxx`:47 - `Bisector_BisecAna::Bisector_BisecAna()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecAna_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecAna_ctor()))
         }
     }
 
@@ -249,14 +200,9 @@ impl BisecAna {
         Tolerance: f64,
         oncurve: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_BisecAna_perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(self as *mut Self, Cu1, Cu2, P, V1, V2, Sense, jointype.into(), Tolerance, oncurve)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(self as *mut Self, Cu1, Cu2, P, V1, V2, Sense, jointype.into(), Tolerance, oncurve)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:66 - `Bisector_BisecAna::Perform()`
@@ -274,14 +220,9 @@ impl BisecAna {
         Tolerance: f64,
         oncurve: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_BisecAna_perform_handlegeom2dcurve_handlegeom2dpoint_pnt2d_vec2d2_real2_bool(self as *mut Self, Cu, Pnt, P, V1, V2, Sense, Tolerance, oncurve)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_perform_handlegeom2dcurve_handlegeom2dpoint_pnt2d_vec2d2_real2_bool(self as *mut Self, Cu, Pnt, P, V1, V2, Sense, Tolerance, oncurve)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:78 - `Bisector_BisecAna::Perform()`
@@ -299,14 +240,9 @@ impl BisecAna {
         Tolerance: f64,
         oncurve: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_BisecAna_perform_handlegeom2dpoint_handlegeom2dcurve_pnt2d_vec2d2_real2_bool(self as *mut Self, Pnt, Cu, P, V1, V2, Sense, Tolerance, oncurve)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_perform_handlegeom2dpoint_handlegeom2dcurve_pnt2d_vec2d2_real2_bool(self as *mut Self, Pnt, Cu, P, V1, V2, Sense, Tolerance, oncurve)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:89 - `Bisector_BisecAna::Perform()`
@@ -323,60 +259,40 @@ impl BisecAna {
         Tolerance: f64,
         oncurve: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_BisecAna_perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(
-                    self as *mut Self,
-                    Pnt1,
-                    Pnt2,
-                    P,
-                    V1,
-                    V2,
-                    Sense,
-                    Tolerance,
-                    oncurve,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(
+                self as *mut Self,
+                Pnt1,
+                Pnt2,
+                P,
+                V1,
+                V2,
+                Sense,
+                Tolerance,
+                oncurve,
+            )
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:98 - `Bisector_BisecAna::Init()`
     pub fn init(&mut self, bisector: &crate::ffi::HandleGeom2dTrimmedCurve) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecAna_init(self as *mut Self, bisector) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_init(self as *mut Self, bisector)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:100 - `Bisector_BisecAna::IsExtendAtStart()`
     pub fn is_extend_at_start(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_is_extend_at_start(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_is_extend_at_start(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:102 - `Bisector_BisecAna::IsExtendAtEnd()`
     pub fn is_extend_at_end(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_is_extend_at_end(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_is_extend_at_end(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:107 - `Bisector_BisecAna::SetTrim()`
@@ -384,168 +300,102 @@ impl BisecAna {
     /// This domain is the set of the points which are
     /// nearest from <Cu> than the extremitis of <Cu>.
     pub fn set_trim_handlegeom2dcurve(&mut self, Cu: &crate::ffi::HandleGeom2dCurve) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_BisecAna_set_trim_handlegeom2dcurve(self as *mut Self, Cu)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_set_trim_handlegeom2dcurve(self as *mut Self, Cu)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:110 - `Bisector_BisecAna::SetTrim()`
     /// Trim <me> by a domain defined by uf  and  ul
     pub fn set_trim_real2(&mut self, uf: f64, ul: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecAna_set_trim_real2(self as *mut Self, uf, ul) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_set_trim_real2(self as *mut Self, uf, ul)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:112 - `Bisector_BisecAna::Reverse()`
     pub fn reverse(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecAna_reverse(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_reverse(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:114 - `Bisector_BisecAna::ReversedParameter()`
     pub fn reversed_parameter(&self, U: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_reversed_parameter(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_reversed_parameter(self as *const Self, U)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:118 - `Bisector_BisecAna::IsCN()`
     /// Returns the order of continuity of the curve.
     /// Raised if N < 0.
     pub fn is_cn(&self, N: i32) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecAna_is_cn(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_BisecAna_is_cn(self as *const Self, N) })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:120 - `Bisector_BisecAna::Copy()`
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecAna_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecAna_copy(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:122 - `Bisector_BisecAna::Transform()`
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecAna_transform(self as *mut Self, T) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_transform(self as *mut Self, T)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:124 - `Bisector_BisecAna::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_first_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_first_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:126 - `Bisector_BisecAna::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_last_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:128 - `Bisector_BisecAna::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecAna_is_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_BisecAna_is_closed(self as *const Self) })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:130 - `Bisector_BisecAna::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_is_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:132 - `Bisector_BisecAna::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecAna_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:134 - `Bisector_BisecAna::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecAna_d0(self as *const Self, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_d0(self as *const Self, U, P)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:136 - `Bisector_BisecAna::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecAna_d1(self as *const Self, U, P, V1) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_d1(self as *const Self, U, P, V1)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:138 - `Bisector_BisecAna::D2()`
@@ -556,13 +406,9 @@ impl BisecAna {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecAna_d2(self as *const Self, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_d2(self as *const Self, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:143 - `Bisector_BisecAna::D3()`
@@ -574,79 +420,50 @@ impl BisecAna {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecAna_d3(self as *const Self, U, P, V1, V2, V3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_d3(self as *const Self, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:149 - `Bisector_BisecAna::DN()`
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecAna_dn(self as *const Self, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecAna_dn(
+                self as *const Self,
+                U,
+                N,
+            )))
         }
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:152 - `Bisector_BisecAna::Geom2dCurve()`
     pub fn geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_geom2d_curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecAna_geom2d_curve(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:154 - `Bisector_BisecAna::Parameter()`
     pub fn parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_parameter(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_parameter(self as *const Self, P)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:156 - `Bisector_BisecAna::ParameterOfStartPoint()`
     pub fn parameter_of_start_point(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecAna_parameter_of_start_point(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_parameter_of_start_point(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:158 - `Bisector_BisecAna::ParameterOfEndPoint()`
     pub fn parameter_of_end_point(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecAna_parameter_of_end_point(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_parameter_of_end_point(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:163 - `Bisector_BisecAna::NbIntervals()`
@@ -654,303 +471,207 @@ impl BisecAna {
     /// continuity  <C1>.    And  returns   the number   of
     /// intervals.
     pub fn nb_intervals(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_nb_intervals(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_nb_intervals(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:167 - `Bisector_BisecAna::IntervalFirst()`
     /// Returns  the  first  parameter    of  the  current
     /// interval.
     pub fn interval_first(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_interval_first(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_interval_first(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:171 - `Bisector_BisecAna::IntervalLast()`
     /// Returns  the  last  parameter    of  the  current
     /// interval.
     pub fn interval_last(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_interval_last(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_interval_last(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:173 - `Bisector_BisecAna::Dump()`
     pub fn dump(&self, Deep: i32, Offset: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecAna_dump(self as *const Self, Deep, Offset) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_dump(self as *const Self, Deep, Offset)
+        })
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:176 - `Bisector_BisecAna::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Bisector_BisecAna_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:176 - `Bisector_BisecAna::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecAna_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Bisector_BisecAna_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:176 - `Bisector_BisecAna::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecAna_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Bisector_BisecAna_get_type_descriptor())) }
     }
 
     /// Upcast to Bisector_Curve
     pub fn as_curve(&self) -> &Curve {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecAna_as_Bisector_Curve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecAna_as_Bisector_Curve(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Bisector_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecAna_as_Bisector_Curve_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecAna_as_Bisector_Curve_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_geom2d_curve(&self) -> &crate::geom2d::Curve {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecAna_as_Geom2d_Curve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecAna_as_Geom2d_Curve(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_geom2d_curve_mut(&mut self) -> &mut crate::geom2d::Curve {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecAna_as_Geom2d_Curve_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecAna_as_Geom2d_Curve_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geom2d_geometry(&self) -> &crate::geom2d::Geometry {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecAna_as_Geom2d_Geometry(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecAna_as_Geom2d_Geometry(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geom2d_geometry_mut(&mut self) -> &mut crate::geom2d::Geometry {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecAna_as_Geom2d_Geometry_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecAna_as_Geom2d_Geometry_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecAna_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecAna_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecAna_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecAna_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBisectorBisecAna> {
-        let __result = unsafe { crate::ffi::Bisector_BisecAna_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecAna_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
     pub fn transformed_parameter(&self, U: f64, T: &crate::gp::Trsf2d) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecAna_inherited_TransformedParameter(
-                    self as *const Self,
-                    U,
-                    T,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_TransformedParameter(self as *const Self, U, T)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
     pub fn parametric_transformation(&self, T: &crate::gp::Trsf2d) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecAna_inherited_ParametricTransformation(
-                    self as *const Self,
-                    T,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_ParametricTransformation(self as *const Self, T)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_inherited_Reversed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecAna_inherited_Reversed(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
     pub fn period(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_inherited_Period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_Period(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_inherited_Value(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecAna_inherited_Value(self as *const Self, U),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecAna_inherited_Mirror(self as *mut Self, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_Mirror(self as *mut Self, P)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_BisecAna_inherited_Rotate(self as *mut Self, P, Ang)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_Rotate(self as *mut Self, P, Ang)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecAna_inherited_Scale(self as *mut Self, P, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_Scale(self as *mut Self, P, S)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecAna_inherited_Translate(self as *mut Self, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_Translate(self as *mut Self, V)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
@@ -958,14 +679,10 @@ impl BisecAna {
         &self,
         P: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_inherited_Mirrored(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecAna_inherited_Mirrored(self as *const Self, P),
+            ))
         }
     }
 
@@ -975,15 +692,10 @@ impl BisecAna {
         P: &crate::gp::Pnt2d,
         Ang: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecAna_inherited_Rotated(self as *const Self, P, Ang)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecAna_inherited_Rotated(self as *const Self, P, Ang),
+            ))
         }
     }
 
@@ -993,15 +705,10 @@ impl BisecAna {
         P: &crate::gp::Pnt2d,
         S: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecAna_inherited_Scaled(self as *const Self, P, S)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecAna_inherited_Scaled(self as *const Self, P, S),
+            ))
         }
     }
 
@@ -1010,15 +717,10 @@ impl BisecAna {
         &self,
         T: &crate::gp::Trsf2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecAna_inherited_Transformed(self as *const Self, T)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecAna_inherited_Transformed(self as *const Self, T),
+            ))
         }
     }
 
@@ -1027,55 +729,33 @@ impl BisecAna {
         &self,
         V: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecAna_inherited_Translated(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecAna_inherited_Translated(self as *const Self, V),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecAna_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecAna_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Bisector_BisecAna_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1086,52 +766,30 @@ impl BisecAna {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecAna_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_BisecAna_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecAna_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecAna_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecAna_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1146,63 +804,52 @@ unsafe impl crate::CppDeletable for HandleBisectorBisecAna {
 impl HandleBisectorBisecAna {
     /// Dereference this Handle to access the underlying Bisector_BisecAna
     pub fn get(&self) -> &crate::ffi::Bisector_BisecAna {
-        let __result = unsafe { crate::ffi::HandleBisectorBisecAna_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBisectorBisecAna_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Bisector_BisecAna
     pub fn get_mut(&mut self) -> &mut crate::ffi::Bisector_BisecAna {
-        let __result = unsafe { crate::ffi::HandleBisectorBisecAna_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBisectorBisecAna_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Bisector_BisecAna> to Handle<Bisector_Curve>
     pub fn to_handle_bisector_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleBisectorCurve> {
-        let __result = unsafe {
-            crate::ffi::HandleBisectorBisecAna_to_HandleBisectorCurve(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecAna_to_HandleBisectorCurve(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Bisector_BisecAna> to Handle<Geom2d_Curve>
     pub fn to_handle_geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        let __result =
-            unsafe { crate::ffi::HandleBisectorBisecAna_to_HandleGeom2dCurve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecAna_to_HandleGeom2dCurve(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Bisector_BisecAna> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        let __result = unsafe {
-            crate::ffi::HandleBisectorBisecAna_to_HandleGeom2dGeometry(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecAna_to_HandleGeom2dGeometry(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Bisector_BisecAna> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBisectorBisecAna_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecAna_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1224,12 +871,8 @@ unsafe impl crate::CppDeletable for BisecCC {
 impl BisecCC {
     /// **Source:** `Bisector_BisecCC.hxx`:42 - `Bisector_BisecCC::Bisector_BisecCC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecCC_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecCC_ctor()))
         }
     }
 
@@ -1253,16 +896,12 @@ impl BisecCC {
         Origin: &crate::gp::Pnt2d,
         DistMax: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Bisector_BisecCC_ctor_handlegeom2dcurve2_real2_pnt2d_real(
                     Cu1, Cu2, Side1, Side2, Origin, DistMax,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1310,85 +949,50 @@ impl BisecCC {
         Origin: &crate::gp::Pnt2d,
         DistMax: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_BisecCC_perform(
-                    self as *mut Self,
-                    Cu1,
-                    Cu2,
-                    Side1,
-                    Side2,
-                    Origin,
-                    DistMax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_perform(
+                self as *mut Self,
+                Cu1,
+                Cu2,
+                Side1,
+                Side2,
+                Origin,
+                DistMax,
+            )
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:81 - `Bisector_BisecCC::IsExtendAtStart()`
     pub fn is_extend_at_start(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_is_extend_at_start(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_is_extend_at_start(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:83 - `Bisector_BisecCC::IsExtendAtEnd()`
     pub fn is_extend_at_end(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_is_extend_at_end(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_is_extend_at_end(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:85 - `Bisector_BisecCC::Reverse()`
     pub fn reverse(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecCC_reverse(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Bisector_BisecCC_reverse(self as *mut Self) })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:87 - `Bisector_BisecCC::ReversedParameter()`
     pub fn reversed_parameter(&self, U: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_reversed_parameter(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_reversed_parameter(self as *const Self, U)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:91 - `Bisector_BisecCC::IsCN()`
     /// Returns the order of continuity of the curve.
     /// Raised if N < 0.
     pub fn is_cn(&self, N: i32) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecCC_is_cn(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_BisecCC_is_cn(self as *const Self, N) })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:96 - `Bisector_BisecCC::ChangeGuide()`
@@ -1396,26 +1000,19 @@ impl BisecCC {
     /// on the first curve. This method creates the same bisector
     /// where the curves are inversed.
     pub fn change_guide(&self) -> crate::OwnedPtr<crate::ffi::HandleBisectorBisecCC> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_change_guide(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecCC_change_guide(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:98 - `Bisector_BisecCC::Copy()`
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecCC_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecCC_copy(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1425,50 +1022,31 @@ impl BisecCC {
     /// or a complex transformation obtained by combination of
     /// the previous elementaries transformations.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecCC_transform(self as *mut Self, T) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_transform(self as *mut Self, T)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:106 - `Bisector_BisecCC::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_first_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_first_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:108 - `Bisector_BisecCC::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_last_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:110 - `Bisector_BisecCC::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecCC_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:115 - `Bisector_BisecCC::NbIntervals()`
@@ -1476,82 +1054,47 @@ impl BisecCC {
     /// continuity  <C1>.    And  returns   the number   of
     /// intervals.
     pub fn nb_intervals(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_nb_intervals(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_nb_intervals(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:119 - `Bisector_BisecCC::IntervalFirst()`
     /// Returns  the  first  parameter    of  the  current
     /// interval.
     pub fn interval_first(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_interval_first(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_interval_first(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:123 - `Bisector_BisecCC::IntervalLast()`
     /// Returns  the  last  parameter    of  the  current
     /// interval.
     pub fn interval_last(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_interval_last(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_interval_last(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:125 - `Bisector_BisecCC::IntervalContinuity()`
     pub fn interval_continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_interval_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_interval_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:127 - `Bisector_BisecCC::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecCC_is_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_BisecCC_is_closed(self as *const Self) })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:129 - `Bisector_BisecCC::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecCC_is_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:136 - `Bisector_BisecCC::ValueAndDist()`
@@ -1567,21 +1110,16 @@ impl BisecCC {
         U2: &mut f64,
         Distance: &mut f64,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Bisector_BisecCC_value_and_dist(
                     self as *const Self,
                     U,
                     U1,
                     U2,
                     Distance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1598,36 +1136,25 @@ impl BisecCC {
         U2: &mut f64,
         Distance: &mut f64,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecCC_value_by_int(self as *const Self, U, U1, U2, Distance)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecCC_value_by_int(self as *const Self, U, U1, U2, Distance),
+            ))
         }
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:151 - `Bisector_BisecCC::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecCC_d0(self as *const Self, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_d0(self as *const Self, U, P)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:153 - `Bisector_BisecCC::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecCC_d1(self as *const Self, U, P, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_d1(self as *const Self, U, P, V)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:155 - `Bisector_BisecCC::D2()`
@@ -1638,13 +1165,9 @@ impl BisecCC {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecCC_d2(self as *const Self, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_d2(self as *const Self, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:160 - `Bisector_BisecCC::D3()`
@@ -1656,360 +1179,244 @@ impl BisecCC {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecCC_d3(self as *const Self, U, P, V1, V2, V3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_d3(self as *const Self, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:166 - `Bisector_BisecCC::DN()`
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecCC_dn(self as *const Self, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecCC_dn(
+                self as *const Self,
+                U,
+                N,
+            )))
         }
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:169 - `Bisector_BisecCC::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecCC_is_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_BisecCC_is_empty(self as *const Self) })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:173 - `Bisector_BisecCC::LinkBisCurve()`
     /// Returns the parameter on the curve1 of the projection
     /// of the point of parameter U on <me>.
     pub fn link_bis_curve(&self, U: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_link_bis_curve(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_link_bis_curve(self as *const Self, U)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:176 - `Bisector_BisecCC::LinkCurveBis()`
     /// Returns the reciproque of LinkBisCurve.
     pub fn link_curve_bis(&self, U: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_link_curve_bis(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_link_curve_bis(self as *const Self, U)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:178 - `Bisector_BisecCC::Parameter()`
     pub fn parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_parameter(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_parameter(self as *const Self, P)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:180 - `Bisector_BisecCC::Curve()`
     pub fn curve(&self, IndCurve: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_curve(self as *const Self, IndCurve) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecCC_curve(
+                self as *const Self,
+                IndCurve,
+            )))
         }
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:182 - `Bisector_BisecCC::Polygon()`
     pub fn polygon(&self) -> &PolyBis {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecCC_polygon(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Bisector_BisecCC_polygon(self as *const Self)))
         }
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:184 - `Bisector_BisecCC::Dump()`
     pub fn dump(&self, Deep: i32, Offset: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecCC_dump(self as *const Self, Deep, Offset) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_dump(self as *const Self, Deep, Offset)
+        })
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:187 - `Bisector_BisecCC::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Bisector_BisecCC_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:187 - `Bisector_BisecCC::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecCC_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Bisector_BisecCC_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:187 - `Bisector_BisecCC::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecCC_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Bisector_BisecCC_get_type_descriptor())) }
     }
 
     /// Upcast to Bisector_Curve
     pub fn as_curve(&self) -> &Curve {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecCC_as_Bisector_Curve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecCC_as_Bisector_Curve(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Bisector_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecCC_as_Bisector_Curve_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecCC_as_Bisector_Curve_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_geom2d_curve(&self) -> &crate::geom2d::Curve {
-        let __result = unsafe { crate::ffi::Bisector_BisecCC_as_Geom2d_Curve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecCC_as_Geom2d_Curve(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_geom2d_curve_mut(&mut self) -> &mut crate::geom2d::Curve {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecCC_as_Geom2d_Curve_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecCC_as_Geom2d_Curve_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geom2d_geometry(&self) -> &crate::geom2d::Geometry {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecCC_as_Geom2d_Geometry(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecCC_as_Geom2d_Geometry(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geom2d_geometry_mut(&mut self) -> &mut crate::geom2d::Geometry {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecCC_as_Geom2d_Geometry_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecCC_as_Geom2d_Geometry_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecCC_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecCC_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecCC_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecCC_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBisectorBisecCC> {
-        let __result = unsafe { crate::ffi::Bisector_BisecCC_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecCC_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
     pub fn transformed_parameter(&self, U: f64, T: &crate::gp::Trsf2d) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecCC_inherited_TransformedParameter(
-                    self as *const Self,
-                    U,
-                    T,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_TransformedParameter(self as *const Self, U, T)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
     pub fn parametric_transformation(&self, T: &crate::gp::Trsf2d) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecCC_inherited_ParametricTransformation(
-                    self as *const Self,
-                    T,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_ParametricTransformation(self as *const Self, T)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_Reversed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecCC_inherited_Reversed(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
     pub fn period(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_Period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_Period(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_Value(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecCC_inherited_Value(self as *const Self, U),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_Mirror(self as *mut Self, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_Mirror(self as *mut Self, P)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_Rotate(self as *mut Self, P, Ang) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_Rotate(self as *mut Self, P, Ang)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_Scale(self as *mut Self, P, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_Scale(self as *mut Self, P, S)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_Translate(self as *mut Self, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_Translate(self as *mut Self, V)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
@@ -2017,14 +1424,10 @@ impl BisecCC {
         &self,
         P: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_Mirrored(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecCC_inherited_Mirrored(self as *const Self, P),
+            ))
         }
     }
 
@@ -2034,15 +1437,10 @@ impl BisecCC {
         P: &crate::gp::Pnt2d,
         Ang: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecCC_inherited_Rotated(self as *const Self, P, Ang)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecCC_inherited_Rotated(self as *const Self, P, Ang),
+            ))
         }
     }
 
@@ -2052,14 +1450,10 @@ impl BisecCC {
         P: &crate::gp::Pnt2d,
         S: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_Scaled(self as *const Self, P, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecCC_inherited_Scaled(self as *const Self, P, S),
+            ))
         }
     }
 
@@ -2068,15 +1462,10 @@ impl BisecCC {
         &self,
         T: &crate::gp::Trsf2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecCC_inherited_Transformed(self as *const Self, T)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecCC_inherited_Transformed(self as *const Self, T),
+            ))
         }
     }
 
@@ -2085,55 +1474,33 @@ impl BisecCC {
         &self,
         V: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecCC_inherited_Translated(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecCC_inherited_Translated(self as *const Self, V),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecCC_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecCC_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Bisector_BisecCC_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2144,52 +1511,30 @@ impl BisecCC {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_BisecCC_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecCC_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecCC_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecCC_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2204,63 +1549,50 @@ unsafe impl crate::CppDeletable for HandleBisectorBisecCC {
 impl HandleBisectorBisecCC {
     /// Dereference this Handle to access the underlying Bisector_BisecCC
     pub fn get(&self) -> &crate::ffi::Bisector_BisecCC {
-        let __result = unsafe { crate::ffi::HandleBisectorBisecCC_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleBisectorBisecCC_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Bisector_BisecCC
     pub fn get_mut(&mut self) -> &mut crate::ffi::Bisector_BisecCC {
-        let __result = unsafe { crate::ffi::HandleBisectorBisecCC_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBisectorBisecCC_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Bisector_BisecCC> to Handle<Bisector_Curve>
     pub fn to_handle_bisector_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleBisectorCurve> {
-        let __result = unsafe {
-            crate::ffi::HandleBisectorBisecCC_to_HandleBisectorCurve(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecCC_to_HandleBisectorCurve(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Bisector_BisecCC> to Handle<Geom2d_Curve>
     pub fn to_handle_geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        let __result =
-            unsafe { crate::ffi::HandleBisectorBisecCC_to_HandleGeom2dCurve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecCC_to_HandleGeom2dCurve(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Bisector_BisecCC> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        let __result = unsafe {
-            crate::ffi::HandleBisectorBisecCC_to_HandleGeom2dGeometry(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecCC_to_HandleGeom2dGeometry(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Bisector_BisecCC> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBisectorBisecCC_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecCC_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2283,12 +1615,8 @@ unsafe impl crate::CppDeletable for BisecPC {
 impl BisecPC {
     /// **Source:** `Bisector_BisecPC.hxx`:42 - `Bisector_BisecPC::Bisector_BisecPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecPC_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecPC_ctor()))
         }
     }
 
@@ -2306,16 +1634,12 @@ impl BisecPC {
         Side: f64,
         DistMax: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Bisector_BisecPC_ctor_handlegeom2dcurve_pnt2d_real2(
                     Cu, P, Side, DistMax,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2333,16 +1657,12 @@ impl BisecPC {
         UMin: f64,
         UMax: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Bisector_BisecPC_ctor_handlegeom2dcurve_pnt2d_real3(
                     Cu, P, Side, UMin, UMax,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2377,42 +1697,25 @@ impl BisecPC {
         Side: f64,
         DistMax: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_BisecPC_perform(self as *mut Self, Cu, P, Side, DistMax)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_perform(self as *mut Self, Cu, P, Side, DistMax)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:81 - `Bisector_BisecPC::IsExtendAtStart()`
     /// Returns True if the bisector is extended at start.
     pub fn is_extend_at_start(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_is_extend_at_start(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_is_extend_at_start(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:84 - `Bisector_BisecPC::IsExtendAtEnd()`
     /// Returns True if the bisector is extended at end.
     pub fn is_extend_at_end(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_is_extend_at_end(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_is_extend_at_end(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:91 - `Bisector_BisecPC::Reverse()`
@@ -2422,38 +1725,24 @@ impl BisecPC {
     /// EndPoint of the reversed curve  and the EndPoint of the initial
     /// curve becomes the StartPoint of the reversed curve.
     pub fn reverse(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecPC_reverse(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Bisector_BisecPC_reverse(self as *mut Self) })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:95 - `Bisector_BisecPC::ReversedParameter()`
     /// Returns the  parameter on the  reversed  curve for
     /// the point of parameter U on <me>.
     pub fn reversed_parameter(&self, U: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_reversed_parameter(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_reversed_parameter(self as *const Self, U)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:97 - `Bisector_BisecPC::Copy()`
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecPC_copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecPC_copy(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2463,66 +1752,40 @@ impl BisecPC {
     /// or a complex transformation obtained by combination of
     /// the previous elementaries transformations.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecPC_transform(self as *mut Self, T) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_transform(self as *mut Self, T)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:107 - `Bisector_BisecPC::IsCN()`
     /// Returns the order of continuity of the curve.
     /// Raised if N < 0.
     pub fn is_cn(&self, N: i32) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecPC_is_cn(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_BisecPC_is_cn(self as *const Self, N) })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:110 - `Bisector_BisecPC::FirstParameter()`
     /// Value of the first parameter.
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_first_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_first_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:113 - `Bisector_BisecPC::LastParameter()`
     /// Value of the last parameter.
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_last_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:115 - `Bisector_BisecPC::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecPC_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:120 - `Bisector_BisecPC::NbIntervals()`
@@ -2530,116 +1793,70 @@ impl BisecPC {
     /// continuity  <C1>.    And  returns   the number   of
     /// intervals.
     pub fn nb_intervals(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_nb_intervals(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_nb_intervals(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:124 - `Bisector_BisecPC::IntervalFirst()`
     /// Returns  the  first  parameter    of  the  current
     /// interval.
     pub fn interval_first(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_interval_first(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_interval_first(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:128 - `Bisector_BisecPC::IntervalLast()`
     /// Returns  the  last  parameter    of  the  current
     /// interval.
     pub fn interval_last(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_interval_last(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_interval_last(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:130 - `Bisector_BisecPC::IntervalContinuity()`
     pub fn interval_continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_interval_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_interval_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:132 - `Bisector_BisecPC::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecPC_is_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_BisecPC_is_closed(self as *const Self) })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:134 - `Bisector_BisecPC::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecPC_is_periodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:138 - `Bisector_BisecPC::Distance()`
     /// Returns   the   distance   between  the  point  of
     /// parameter U on <me> and my point or my curve.
     pub fn distance(&self, U: f64) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecPC_distance(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_distance(self as *const Self, U)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:140 - `Bisector_BisecPC::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecPC_d0(self as *const Self, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_d0(self as *const Self, U, P)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:142 - `Bisector_BisecPC::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_BisecPC_d1(self as *const Self, U, P, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_d1(self as *const Self, U, P, V)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:144 - `Bisector_BisecPC::D2()`
@@ -2650,13 +1867,9 @@ impl BisecPC {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecPC_d2(self as *const Self, U, P, V1, V2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_d2(self as *const Self, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:149 - `Bisector_BisecPC::D3()`
@@ -2668,337 +1881,229 @@ impl BisecPC {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecPC_d3(self as *const Self, U, P, V1, V2, V3) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_d3(self as *const Self, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:155 - `Bisector_BisecPC::DN()`
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecPC_dn(self as *const Self, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecPC_dn(
+                self as *const Self,
+                U,
+                N,
+            )))
         }
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:158 - `Bisector_BisecPC::Dump()`
     pub fn dump(&self, Deep: i32, Offset: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecPC_dump(self as *const Self, Deep, Offset) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_dump(self as *const Self, Deep, Offset)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:163 - `Bisector_BisecPC::LinkBisCurve()`
     /// Returns the parameter on the curve1 of the projection
     /// of the point of parameter U on <me>.
     pub fn link_bis_curve(&self, U: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_link_bis_curve(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_link_bis_curve(self as *const Self, U)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:166 - `Bisector_BisecPC::LinkCurveBis()`
     /// Returns the reciproque of LinkBisCurve.
     pub fn link_curve_bis(&self, U: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_link_curve_bis(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_link_curve_bis(self as *const Self, U)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:169 - `Bisector_BisecPC::Parameter()`
     /// Returns the parameter on <me> corresponding to <P>.
     pub fn parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_parameter(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_parameter(self as *const Self, P)
+        })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:172 - `Bisector_BisecPC::IsEmpty()`
     /// Returns <True> if the bisector is empty.
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecPC_is_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_BisecPC_is_empty(self as *const Self) })
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:174 - `Bisector_BisecPC::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Bisector_BisecPC_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:174 - `Bisector_BisecPC::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecPC_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Bisector_BisecPC_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:174 - `Bisector_BisecPC::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Bisector_BisecPC_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Bisector_BisecPC_get_type_descriptor())) }
     }
 
     /// Upcast to Bisector_Curve
     pub fn as_curve(&self) -> &Curve {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecPC_as_Bisector_Curve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecPC_as_Bisector_Curve(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Bisector_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecPC_as_Bisector_Curve_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecPC_as_Bisector_Curve_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_geom2d_curve(&self) -> &crate::geom2d::Curve {
-        let __result = unsafe { crate::ffi::Bisector_BisecPC_as_Geom2d_Curve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecPC_as_Geom2d_Curve(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_geom2d_curve_mut(&mut self) -> &mut crate::geom2d::Curve {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecPC_as_Geom2d_Curve_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecPC_as_Geom2d_Curve_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geom2d_geometry(&self) -> &crate::geom2d::Geometry {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecPC_as_Geom2d_Geometry(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecPC_as_Geom2d_Geometry(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geom2d_geometry_mut(&mut self) -> &mut crate::geom2d::Geometry {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecPC_as_Geom2d_Geometry_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecPC_as_Geom2d_Geometry_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecPC_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_BisecPC_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Bisector_BisecPC_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_BisecPC_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBisectorBisecPC> {
-        let __result = unsafe { crate::ffi::Bisector_BisecPC_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_BisecPC_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
     pub fn transformed_parameter(&self, U: f64, T: &crate::gp::Trsf2d) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecPC_inherited_TransformedParameter(
-                    self as *const Self,
-                    U,
-                    T,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_TransformedParameter(self as *const Self, U, T)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
     pub fn parametric_transformation(&self, T: &crate::gp::Trsf2d) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecPC_inherited_ParametricTransformation(
-                    self as *const Self,
-                    T,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_ParametricTransformation(self as *const Self, T)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_Reversed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecPC_inherited_Reversed(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
     pub fn period(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_Period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_Period(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_Value(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecPC_inherited_Value(self as *const Self, U),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_Mirror(self as *mut Self, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_Mirror(self as *mut Self, P)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_Rotate(self as *mut Self, P, Ang) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_Rotate(self as *mut Self, P, Ang)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_Scale(self as *mut Self, P, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_Scale(self as *mut Self, P, S)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_Translate(self as *mut Self, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_Translate(self as *mut Self, V)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
@@ -3006,14 +2111,10 @@ impl BisecPC {
         &self,
         P: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_Mirrored(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecPC_inherited_Mirrored(self as *const Self, P),
+            ))
         }
     }
 
@@ -3023,15 +2124,10 @@ impl BisecPC {
         P: &crate::gp::Pnt2d,
         Ang: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecPC_inherited_Rotated(self as *const Self, P, Ang)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecPC_inherited_Rotated(self as *const Self, P, Ang),
+            ))
         }
     }
 
@@ -3041,14 +2137,10 @@ impl BisecPC {
         P: &crate::gp::Pnt2d,
         S: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_Scaled(self as *const Self, P, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecPC_inherited_Scaled(self as *const Self, P, S),
+            ))
         }
     }
 
@@ -3057,15 +2149,10 @@ impl BisecPC {
         &self,
         T: &crate::gp::Trsf2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecPC_inherited_Transformed(self as *const Self, T)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecPC_inherited_Transformed(self as *const Self, T),
+            ))
         }
     }
 
@@ -3074,55 +2161,33 @@ impl BisecPC {
         &self,
         V: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecPC_inherited_Translated(self as *const Self, V)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_BisecPC_inherited_Translated(self as *const Self, V),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecPC_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecPC_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Bisector_BisecPC_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3133,52 +2198,30 @@ impl BisecPC {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_BisecPC_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_BisecPC_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_BisecPC_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_BisecPC_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3193,63 +2236,50 @@ unsafe impl crate::CppDeletable for HandleBisectorBisecPC {
 impl HandleBisectorBisecPC {
     /// Dereference this Handle to access the underlying Bisector_BisecPC
     pub fn get(&self) -> &crate::ffi::Bisector_BisecPC {
-        let __result = unsafe { crate::ffi::HandleBisectorBisecPC_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleBisectorBisecPC_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Bisector_BisecPC
     pub fn get_mut(&mut self) -> &mut crate::ffi::Bisector_BisecPC {
-        let __result = unsafe { crate::ffi::HandleBisectorBisecPC_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBisectorBisecPC_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Bisector_BisecPC> to Handle<Bisector_Curve>
     pub fn to_handle_bisector_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleBisectorCurve> {
-        let __result = unsafe {
-            crate::ffi::HandleBisectorBisecPC_to_HandleBisectorCurve(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecPC_to_HandleBisectorCurve(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Bisector_BisecPC> to Handle<Geom2d_Curve>
     pub fn to_handle_geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        let __result =
-            unsafe { crate::ffi::HandleBisectorBisecPC_to_HandleGeom2dCurve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecPC_to_HandleGeom2dCurve(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Bisector_BisecPC> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        let __result = unsafe {
-            crate::ffi::HandleBisectorBisecPC_to_HandleGeom2dGeometry(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecPC_to_HandleGeom2dGeometry(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Bisector_BisecPC> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBisectorBisecPC_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorBisecPC_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3269,40 +2299,21 @@ unsafe impl crate::CppDeletable for Curve {
 impl Curve {
     /// **Source:** `Bisector_Curve.hxx`:35 - `Bisector_Curve::Parameter()`
     pub fn parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Bisector_Curve_parameter(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_Curve_parameter(self as *const Self, P) })
     }
 
     /// **Source:** `Bisector_Curve.hxx`:37 - `Bisector_Curve::IsExtendAtStart()`
     pub fn is_extend_at_start(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_is_extend_at_start(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_is_extend_at_start(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_Curve.hxx`:39 - `Bisector_Curve::IsExtendAtEnd()`
     pub fn is_extend_at_end(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_is_extend_at_end(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_is_extend_at_end(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_Curve.hxx`:44 - `Bisector_Curve::NbIntervals()`
@@ -3310,319 +2321,201 @@ impl Curve {
     /// continuity  <C1>.    And  returns   the number   of
     /// intervals.
     pub fn nb_intervals(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Bisector_Curve_nb_intervals(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_Curve_nb_intervals(self as *const Self) })
     }
 
     /// **Source:** `Bisector_Curve.hxx`:48 - `Bisector_Curve::IntervalFirst()`
     /// Returns  the  first  parameter    of  the  current
     /// interval.
     pub fn interval_first(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_interval_first(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_interval_first(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Bisector_Curve.hxx`:52 - `Bisector_Curve::IntervalLast()`
     /// Returns  the  last  parameter    of  the  current
     /// interval.
     pub fn interval_last(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_interval_last(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_interval_last(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `Bisector_Curve.hxx`:54 - `Bisector_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Bisector_Curve_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Bisector_Curve_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Bisector_Curve.hxx`:54 - `Bisector_Curve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Bisector_Curve_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::check_result(crate::ffi::Bisector_Curve_get_type_name()),
+            )
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Bisector_Curve.hxx`:54 - `Bisector_Curve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Bisector_Curve_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Bisector_Curve_get_type_descriptor())) }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_geom2d_curve(&self) -> &crate::geom2d::Curve {
-        let __result = unsafe { crate::ffi::Bisector_Curve_as_Geom2d_Curve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_Curve_as_Geom2d_Curve(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_geom2d_curve_mut(&mut self) -> &mut crate::geom2d::Curve {
-        let __result = unsafe { crate::ffi::Bisector_Curve_as_Geom2d_Curve_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_Curve_as_Geom2d_Curve_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geom2d_geometry(&self) -> &crate::geom2d::Geometry {
-        let __result =
-            unsafe { crate::ffi::Bisector_Curve_as_Geom2d_Geometry(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_Curve_as_Geom2d_Geometry(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geom2d_geometry_mut(&mut self) -> &mut crate::geom2d::Geometry {
-        let __result =
-            unsafe { crate::ffi::Bisector_Curve_as_Geom2d_Geometry_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_Curve_as_Geom2d_Geometry_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Bisector_Curve_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_Curve_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Bisector_Curve_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_Curve_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:70 - `Geom2d_Curve::Reverse()`
     pub fn reverse(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_Curve_inherited_Reverse(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_Reverse(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:77 - `Geom2d_Curve::ReversedParameter()`
     pub fn reversed_parameter(&self, U: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_Curve_inherited_ReversedParameter(self as *const Self, U)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_ReversedParameter(self as *const Self, U)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
     pub fn transformed_parameter(&self, U: f64, T: &crate::gp::Trsf2d) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_Curve_inherited_TransformedParameter(self as *const Self, U, T)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_TransformedParameter(self as *const Self, U, T)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
     pub fn parametric_transformation(&self, T: &crate::gp::Trsf2d) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_Curve_inherited_ParametricTransformation(
-                    self as *const Self,
-                    T,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_ParametricTransformation(self as *const Self, T)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Reversed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_Curve_inherited_Reversed(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:111 - `Geom2d_Curve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_FirstParameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_FirstParameter(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:117 - `Geom2d_Curve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_LastParameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_LastParameter(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:128 - `Geom2d_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_IsClosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_IsClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:145 - `Geom2d_Curve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_IsPeriodic(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_IsPeriodic(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
     pub fn period(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Period(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_Period(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:159 - `Geom2d_Curve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_Continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:163 - `Geom2d_Curve::IsCN()`
     pub fn is_cn(&self, N: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_IsCN(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_IsCN(self as *const Self, N)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:174 - `Geom2d_Curve::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_Curve_inherited_D0(self as *const Self, U, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_D0(self as *const Self, U, P)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:178 - `Geom2d_Curve::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_Curve_inherited_D1(self as *const Self, U, P, V1) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_D1(self as *const Self, U, P, V1)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:183 - `Geom2d_Curve::D2()`
@@ -3633,14 +2526,9 @@ impl Curve {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_Curve_inherited_D2(self as *const Self, U, P, V1, V2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_D2(self as *const Self, U, P, V1, V2)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:191 - `Geom2d_Curve::D3()`
@@ -3652,95 +2540,64 @@ impl Curve {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_Curve_inherited_D3(self as *const Self, U, P, V1, V2, V3)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_D3(self as *const Self, U, P, V1, V2, V3)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:206 - `Geom2d_Curve::DN()`
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_DN(self as *const Self, U, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_Curve_inherited_DN(
+                self as *const Self,
+                U,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Value(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_Curve_inherited_Value(self as *const Self, U),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Mirror(self as *mut Self, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_Mirror(self as *mut Self, P)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Rotate(self as *mut Self, P, Ang) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_Rotate(self as *mut Self, P, Ang)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Scale(self as *mut Self, P, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_Scale(self as *mut Self, P, S)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Translate(self as *mut Self, V) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_Translate(self as *mut Self, V)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:90 - `Geom2d_Geometry::Transform()`
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Transform(self as *mut Self, T) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_Transform(self as *mut Self, T)
+        })
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
@@ -3748,14 +2605,10 @@ impl Curve {
         &self,
         P: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Mirrored(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_Curve_inherited_Mirrored(self as *const Self, P),
+            ))
         }
     }
 
@@ -3765,15 +2618,10 @@ impl Curve {
         P: &crate::gp::Pnt2d,
         Ang: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_Curve_inherited_Rotated(self as *const Self, P, Ang)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_Curve_inherited_Rotated(self as *const Self, P, Ang),
+            ))
         }
     }
 
@@ -3783,14 +2631,10 @@ impl Curve {
         P: &crate::gp::Pnt2d,
         S: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Scaled(self as *const Self, P, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_Curve_inherited_Scaled(self as *const Self, P, S),
+            ))
         }
     }
 
@@ -3799,14 +2643,10 @@ impl Curve {
         &self,
         T: &crate::gp::Trsf2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Transformed(self as *const Self, T) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_Curve_inherited_Transformed(self as *const Self, T),
+            ))
         }
     }
 
@@ -3815,67 +2655,42 @@ impl Curve {
         &self,
         V: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Translated(self as *const Self, V) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_Curve_inherited_Translated(self as *const Self, V),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:109 - `Geom2d_Geometry::Copy()`
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_Copy(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_Curve_inherited_Copy(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_Curve_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_Curve_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Bisector_Curve_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3886,51 +2701,30 @@ impl Curve {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Curve_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_Curve_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_Curve_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_Curve_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Curve_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3945,51 +2739,41 @@ unsafe impl crate::CppDeletable for HandleBisectorCurve {
 impl HandleBisectorCurve {
     /// Dereference this Handle to access the underlying Bisector_Curve
     pub fn get(&self) -> &crate::ffi::Bisector_Curve {
-        let __result = unsafe { crate::ffi::HandleBisectorCurve_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleBisectorCurve_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Bisector_Curve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Bisector_Curve {
-        let __result = unsafe { crate::ffi::HandleBisectorCurve_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBisectorCurve_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Bisector_Curve> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        let __result =
-            unsafe { crate::ffi::HandleBisectorCurve_to_HandleGeom2dCurve(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorCurve_to_HandleGeom2dCurve(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Bisector_Curve> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        let __result =
-            unsafe { crate::ffi::HandleBisectorCurve_to_HandleGeom2dGeometry(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorCurve_to_HandleGeom2dGeometry(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Bisector_Curve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBisectorCurve_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBisectorCurve_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Bisector_Curve> to Handle<Bisector_BisecAna>
@@ -3998,16 +2782,13 @@ impl HandleBisectorCurve {
     pub fn downcast_to_bisec_ana(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecAna>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBisectorCurve_downcast_to_HandleBisectorBisecAna(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -4017,16 +2798,13 @@ impl HandleBisectorCurve {
     pub fn downcast_to_bisec_cc(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecCC>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBisectorCurve_downcast_to_HandleBisectorBisecCC(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -4036,16 +2814,13 @@ impl HandleBisectorCurve {
     pub fn downcast_to_bisec_pc(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecPC>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBisectorCurve_downcast_to_HandleBisectorBisecPC(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -4073,114 +2848,82 @@ impl FunctionH {
         P1: &crate::gp::Pnt2d,
         T1: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_FunctionH_ctor_handlegeom2dcurve_pnt2d_vec2d(C2, P1, T1)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Bisector_FunctionH_ctor_handlegeom2dcurve_pnt2d_vec2d(C2, P1, T1),
+            ))
         }
     }
 
     /// **Source:** `Bisector_FunctionH.hxx`:44 - `Bisector_FunctionH::Value()`
     /// Computes the values of the Functions for the variable <X>.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_FunctionH_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_FunctionH_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `Bisector_FunctionH.hxx`:46 - `Bisector_FunctionH::Derivative()`
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_FunctionH_derivative(self as *mut Self, X, D) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_FunctionH_derivative(self as *mut Self, X, D)
+        })
     }
 
     /// **Source:** `Bisector_FunctionH.hxx`:50 - `Bisector_FunctionH::Values()`
     /// Returns the values of the functions and the derivatives
     /// for the variable <X>.
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_FunctionH_values(self as *mut Self, X, F, D) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_FunctionH_values(self as *mut Self, X, F, D)
+        })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::Bisector_FunctionH_as_math_FunctionWithDerivative(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_FunctionH_as_math_FunctionWithDerivative(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::Bisector_FunctionH_as_math_FunctionWithDerivative_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Bisector_FunctionH_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::Bisector_FunctionH_as_math_Function(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_FunctionH_as_math_Function(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::Bisector_FunctionH_as_math_Function_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_FunctionH_as_math_Function_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_FunctionH_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_FunctionH_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -4202,12 +2945,10 @@ unsafe impl crate::CppDeletable for FunctionInter {
 impl FunctionInter {
     /// **Source:** `Bisector_FunctionInter.hxx`:35 - `Bisector_FunctionInter::Bisector_FunctionInter()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_FunctionInter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::Bisector_FunctionInter_ctor()),
+            )
         }
     }
 
@@ -4217,16 +2958,12 @@ impl FunctionInter {
         Bis1: &crate::ffi::HandleBisectorCurve,
         Bis2: &crate::ffi::HandleBisectorCurve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Bisector_FunctionInter_ctor_handlegeom2dcurve_handlebisectorcurve2(
                     C, Bis1, Bis2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -4237,114 +2974,82 @@ impl FunctionInter {
         Bis1: &crate::ffi::HandleBisectorCurve,
         Bis2: &crate::ffi::HandleBisectorCurve,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_FunctionInter_perform(self as *mut Self, C, Bis1, Bis2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_FunctionInter_perform(self as *mut Self, C, Bis1, Bis2)
+        })
     }
 
     /// **Source:** `Bisector_FunctionInter.hxx`:46 - `Bisector_FunctionInter::Value()`
     /// Computes the values of the Functions for the variable <X>.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_FunctionInter_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_FunctionInter_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `Bisector_FunctionInter.hxx`:48 - `Bisector_FunctionInter::Derivative()`
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_FunctionInter_derivative(self as *mut Self, X, D) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_FunctionInter_derivative(self as *mut Self, X, D)
+        })
     }
 
     /// **Source:** `Bisector_FunctionInter.hxx`:52 - `Bisector_FunctionInter::Values()`
     /// Returns the values of the functions and the derivatives
     /// for the variable <X>.
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_FunctionInter_values(self as *mut Self, X, F, D) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_FunctionInter_values(self as *mut Self, X, F, D)
+        })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::Bisector_FunctionInter_as_math_FunctionWithDerivative(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::Bisector_FunctionInter_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::Bisector_FunctionInter_as_math_FunctionWithDerivative_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::Bisector_FunctionInter_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::Bisector_FunctionInter_as_math_Function(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_FunctionInter_as_math_Function(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::Bisector_FunctionInter_as_math_Function_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_FunctionInter_as_math_Function_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Bisector_FunctionInter_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_FunctionInter_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -4365,13 +3070,7 @@ unsafe impl crate::CppDeletable for Inter {
 impl Inter {
     /// **Source:** `Bisector_Inter.hxx`:37 - `Bisector_Inter::Bisector_Inter()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_Inter_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_Inter_ctor())) }
     }
 
     /// **Source:** `Bisector_Inter.hxx`:45 - `Bisector_Inter::Bisector_Inter()`
@@ -4390,8 +3089,8 @@ impl Inter {
         Tol: f64,
         ComunElement: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Bisector_Inter_ctor_bisec_domain_bisec_domain_real2_bool(
                     C1,
                     D1,
@@ -4400,12 +3099,8 @@ impl Inter {
                     TolConf,
                     Tol,
                     ComunElement,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -4426,136 +3121,94 @@ impl Inter {
         Tol: f64,
         ComunElement: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_Inter_perform(
-                    self as *mut Self,
-                    C1,
-                    D1,
-                    C2,
-                    D2,
-                    TolConf,
-                    Tol,
-                    ComunElement,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Inter_perform(
+                self as *mut Self,
+                C1,
+                D1,
+                C2,
+                D2,
+                TolConf,
+                Tol,
+                ComunElement,
+            )
+        })
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        let __result =
-            unsafe { crate::ffi::Bisector_Inter_as_IntRes2d_Intersection(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Bisector_Inter_as_IntRes2d_Intersection(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        let __result =
-            unsafe { crate::ffi::Bisector_Inter_as_IntRes2d_Intersection_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Bisector_Inter_as_IntRes2d_Intersection_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Inter_inherited_IsDone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Inter_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Inter_inherited_IsEmpty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Inter_inherited_IsEmpty(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Inter_inherited_NbPoints(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Inter_inherited_NbPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Inter_inherited_Point(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Bisector_Inter_inherited_Point(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Inter_inherited_NbSegments(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_Inter_inherited_NbSegments(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_Inter_inherited_Segment(self as *const Self, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Bisector_Inter_inherited_Segment(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_Inter_inherited_SetReversedParameters(
-                    self as *mut Self,
-                    Reverseflag,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_Inter_inherited_SetReversedParameters(
+                self as *mut Self,
+                Reverseflag,
+            )
+        })
     }
 }
 
@@ -4575,12 +3228,8 @@ unsafe impl crate::CppDeletable for PointOnBis {
 impl PointOnBis {
     /// **Source:** `Bisector_PointOnBis.hxx`:32 - `Bisector_PointOnBis::Bisector_PointOnBis()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_PointOnBis_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_PointOnBis_ctor()))
         }
     }
 
@@ -4592,174 +3241,106 @@ impl PointOnBis {
         Distance: f64,
         Point: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Bisector_PointOnBis_ctor_real4_pnt2d(
                     Param1, Param2, ParamBis, Distance, Point,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:40 - `Bisector_PointOnBis::ParamOnC1()`
     pub fn param_on_c1_real(&mut self, Param: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_PointOnBis_param_on_c1_real(self as *mut Self, Param)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_param_on_c1_real(self as *mut Self, Param)
+        })
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:42 - `Bisector_PointOnBis::ParamOnC2()`
     pub fn param_on_c2_real(&mut self, Param: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_PointOnBis_param_on_c2_real(self as *mut Self, Param)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_param_on_c2_real(self as *mut Self, Param)
+        })
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:44 - `Bisector_PointOnBis::ParamOnBis()`
     pub fn param_on_bis_real(&mut self, Param: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_PointOnBis_param_on_bis_real(self as *mut Self, Param)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_param_on_bis_real(self as *mut Self, Param)
+        })
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:46 - `Bisector_PointOnBis::Distance()`
     pub fn distance_real(&mut self, Distance: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_PointOnBis_distance_real(self as *mut Self, Distance)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_distance_real(self as *mut Self, Distance)
+        })
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:48 - `Bisector_PointOnBis::IsInfinite()`
     pub fn is_infinite_bool(&mut self, Infinite: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Bisector_PointOnBis_is_infinite_bool(self as *mut Self, Infinite)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_is_infinite_bool(self as *mut Self, Infinite)
+        })
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:50 - `Bisector_PointOnBis::Point()`
     pub fn point_pnt2d(&mut self, P: &crate::gp::Pnt2d) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Bisector_PointOnBis_point_pnt2d(self as *mut Self, P) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_point_pnt2d(self as *mut Self, P)
+        })
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:52 - `Bisector_PointOnBis::ParamOnC1()`
     pub fn param_on_c1(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_PointOnBis_param_on_c1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_param_on_c1(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:54 - `Bisector_PointOnBis::ParamOnC2()`
     pub fn param_on_c2(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_PointOnBis_param_on_c2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_param_on_c2(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:56 - `Bisector_PointOnBis::ParamOnBis()`
     pub fn param_on_bis(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_PointOnBis_param_on_bis(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_param_on_bis(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:58 - `Bisector_PointOnBis::Distance()`
     pub fn distance(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Bisector_PointOnBis_distance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_distance(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:60 - `Bisector_PointOnBis::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_PointOnBis_point(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_PointOnBis_point(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:62 - `Bisector_PointOnBis::IsInfinite()`
     pub fn is_infinite(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_PointOnBis_is_infinite(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_is_infinite(self as *const Self)
+        })
     }
 
     /// **Source:** `Bisector_PointOnBis.hxx`:64 - `Bisector_PointOnBis::Dump()`
     pub fn dump(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_PointOnBis_dump(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_PointOnBis_dump(self as *const Self)
+        })
     }
 }
 
@@ -4780,105 +3361,56 @@ unsafe impl crate::CppDeletable for PolyBis {
 impl PolyBis {
     /// **Source:** `Bisector_PolyBis.hxx`:34 - `Bisector_PolyBis::Bisector_PolyBis()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bisector_PolyBis_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bisector_PolyBis_ctor()))
         }
     }
 
     /// **Source:** `Bisector_PolyBis.hxx`:36 - `Bisector_PolyBis::Append()`
     pub fn append(&mut self, Point: &PointOnBis) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_PolyBis_append(self as *mut Self, Point) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_PolyBis_append(self as *mut Self, Point)
+        })
     }
 
     /// **Source:** `Bisector_PolyBis.hxx`:38 - `Bisector_PolyBis::Length()`
     pub fn length(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Bisector_PolyBis_length(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_PolyBis_length(self as *const Self) })
     }
 
     /// **Source:** `Bisector_PolyBis.hxx`:40 - `Bisector_PolyBis::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Bisector_PolyBis_is_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Bisector_PolyBis_is_empty(self as *const Self) })
     }
 
     /// **Source:** `Bisector_PolyBis.hxx`:42 - `Bisector_PolyBis::Value()`
     pub fn value(&self, Index: i32) -> &PointOnBis {
-        {
-            let __result =
-                unsafe { crate::ffi::Bisector_PolyBis_value(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Bisector_PolyBis_value(self as *const Self, Index)))
         }
     }
 
     /// **Source:** `Bisector_PolyBis.hxx`:44 - `Bisector_PolyBis::First()`
     pub fn first(&self) -> &PointOnBis {
-        {
-            let __result = unsafe { crate::ffi::Bisector_PolyBis_first(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Bisector_PolyBis_first(self as *const Self))) }
     }
 
     /// **Source:** `Bisector_PolyBis.hxx`:46 - `Bisector_PolyBis::Last()`
     pub fn last(&self) -> &PointOnBis {
-        {
-            let __result = unsafe { crate::ffi::Bisector_PolyBis_last(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Bisector_PolyBis_last(self as *const Self))) }
     }
 
     /// **Source:** `Bisector_PolyBis.hxx`:48 - `Bisector_PolyBis::Interval()`
     pub fn interval(&self, U: f64) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Bisector_PolyBis_interval(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Bisector_PolyBis_interval(self as *const Self, U)
+        })
     }
 
     /// **Source:** `Bisector_PolyBis.hxx`:50 - `Bisector_PolyBis::Transform()`
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
-        {
-            let __exc = unsafe { crate::ffi::Bisector_PolyBis_transform(self as *mut Self, T) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Bisector_PolyBis_transform(self as *mut Self, T)
+        })
     }
 }

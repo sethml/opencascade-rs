@@ -27,158 +27,105 @@ impl BufferPool {
     /// **Source:** `Media_BufferPool.hxx`:30 - `Media_BufferPool::Media_BufferPool()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Media_BufferPool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_BufferPool_ctor()))
         }
     }
 
     /// **Source:** `Media_BufferPool.hxx`:27 - `Media_BufferPool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_BufferPool_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Media_BufferPool_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Media_BufferPool.hxx`:36 - `Media_BufferPool::Release()`
     /// Release the pool (reference-counted buffer will be released when needed).
     pub fn release(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_BufferPool_release(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Media_BufferPool_release(self as *mut Self) })
     }
 
     /// **Source:** `Media_BufferPool.hxx`:39 - `Media_BufferPool::Init()`
     /// (Re-)initialize the pool.
     pub fn init(&mut self, theBufferSize: i32) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_BufferPool_init(self as *mut Self, theBufferSize) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_BufferPool_init(self as *mut Self, theBufferSize)
+        })
     }
 
     /// **Source:** `Media_BufferPool.hxx`:42 - `Media_BufferPool::BufferSize()`
     /// Return buffer size within the pool.
     pub fn buffer_size(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Media_BufferPool_buffer_size(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_BufferPool_buffer_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_BufferPool.hxx`:27 - `Media_BufferPool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Media_BufferPool_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Media_BufferPool_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Media_BufferPool.hxx`:27 - `Media_BufferPool::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_BufferPool_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Media_BufferPool_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_BufferPool_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Media_BufferPool_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_BufferPool_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Media_BufferPool_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMediaBufferPool> {
-        let __result = unsafe { crate::ffi::Media_BufferPool_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_BufferPool_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_BufferPool_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_BufferPool_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_BufferPool_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_BufferPool_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Media_BufferPool_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Media_BufferPool_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -189,52 +136,30 @@ impl BufferPool {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_BufferPool_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_BufferPool_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_BufferPool_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_BufferPool_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_BufferPool_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_BufferPool_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Media_BufferPool_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_BufferPool_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -249,31 +174,23 @@ unsafe impl crate::CppDeletable for HandleMediaBufferPool {
 impl HandleMediaBufferPool {
     /// Dereference this Handle to access the underlying Media_BufferPool
     pub fn get(&self) -> &crate::ffi::Media_BufferPool {
-        let __result = unsafe { crate::ffi::HandleMediaBufferPool_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleMediaBufferPool_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_BufferPool
     pub fn get_mut(&mut self) -> &mut crate::ffi::Media_BufferPool {
-        let __result = unsafe { crate::ffi::HandleMediaBufferPool_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMediaBufferPool_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Media_BufferPool> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMediaBufferPool_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMediaBufferPool_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -302,226 +219,141 @@ impl CodecContext {
     /// **Source:** `Media_CodecContext.hxx`:31 - `Media_CodecContext::Media_CodecContext()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Media_CodecContext_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_CodecContext_ctor()))
         }
     }
 
     /// **Source:** `Media_CodecContext.hxx`:28 - `Media_CodecContext::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_CodecContext_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Media_CodecContext_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Media_CodecContext.hxx`:66 - `Media_CodecContext::Close()`
     /// Close input.
     pub fn close(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_CodecContext_close(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Media_CodecContext_close(self as *mut Self) })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:69 - `Media_CodecContext::SizeX()`
     /// @return source frame width
     pub fn size_x(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Media_CodecContext_size_x(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_CodecContext_size_x(self as *const Self) })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:72 - `Media_CodecContext::SizeY()`
     /// @return source frame height
     pub fn size_y(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Media_CodecContext_size_y(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_CodecContext_size_y(self as *const Self) })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:75 - `Media_CodecContext::StreamIndex()`
     /// Return stream index.
     pub fn stream_index(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_CodecContext_stream_index(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_CodecContext_stream_index(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:78 - `Media_CodecContext::Flush()`
     /// avcodec_flush_buffers() wrapper.
     pub fn flush(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_CodecContext_flush(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Media_CodecContext_flush(self as *mut Self) })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:81 - `Media_CodecContext::CanProcessPacket()`
     /// Return true if packet belongs to this stream.
     pub fn can_process_packet(&self, thePacket: &crate::ffi::HandleMediaPacket) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_CodecContext_can_process_packet(self as *const Self, thePacket)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_CodecContext_can_process_packet(self as *const Self, thePacket)
+        })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:84 - `Media_CodecContext::SendPacket()`
     /// avcodec_send_packet() wrapper.
     pub fn send_packet(&mut self, thePacket: &crate::ffi::HandleMediaPacket) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_CodecContext_send_packet(self as *mut Self, thePacket) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_CodecContext_send_packet(self as *mut Self, thePacket)
+        })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:87 - `Media_CodecContext::ReceiveFrame()`
     /// avcodec_receive_frame() wrapper.
     pub fn receive_frame(&mut self, theFrame: &crate::ffi::HandleMediaFrame) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_CodecContext_receive_frame(self as *mut Self, theFrame)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_CodecContext_receive_frame(self as *mut Self, theFrame)
+        })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:28 - `Media_CodecContext::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Media_CodecContext_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Media_CodecContext_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Media_CodecContext.hxx`:28 - `Media_CodecContext::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_CodecContext_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Media_CodecContext_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_CodecContext_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Media_CodecContext_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_CodecContext_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Media_CodecContext_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMediaCodecContext> {
-        let __result = unsafe { crate::ffi::Media_CodecContext_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Media_CodecContext_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_CodecContext_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_CodecContext_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_CodecContext_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_CodecContext_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Media_CodecContext_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Media_CodecContext_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -532,53 +364,30 @@ impl CodecContext {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_CodecContext_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_CodecContext_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_CodecContext_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_CodecContext_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_CodecContext_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_CodecContext_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Media_CodecContext_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_CodecContext_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -593,31 +402,27 @@ unsafe impl crate::CppDeletable for HandleMediaCodecContext {
 impl HandleMediaCodecContext {
     /// Dereference this Handle to access the underlying Media_CodecContext
     pub fn get(&self) -> &crate::ffi::Media_CodecContext {
-        let __result = unsafe { crate::ffi::HandleMediaCodecContext_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMediaCodecContext_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_CodecContext
     pub fn get_mut(&mut self) -> &mut crate::ffi::Media_CodecContext {
-        let __result = unsafe { crate::ffi::HandleMediaCodecContext_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMediaCodecContext_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Media_CodecContext> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMediaCodecContext_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMediaCodecContext_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -660,166 +465,103 @@ impl FormatContext {
     /// **Source:** `Media_FormatContext.hxx`:81 - `Media_FormatContext::Media_FormatContext()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Media_FormatContext_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_FormatContext_ctor()))
         }
     }
 
     /// **Source:** `Media_FormatContext.hxx`:30 - `Media_FormatContext::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_FormatContext_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Media_FormatContext_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Media_FormatContext.hxx`:90 - `Media_FormatContext::OpenInput()`
     /// Open input.
     pub fn open_input(&mut self, theInput: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_FormatContext_open_input(self as *mut Self, theInput) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_open_input(self as *mut Self, theInput)
+        })
     }
 
     /// **Source:** `Media_FormatContext.hxx`:93 - `Media_FormatContext::Close()`
     /// Close input.
     pub fn close(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_FormatContext_close(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_FormatContext_close(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_FormatContext.hxx`:96 - `Media_FormatContext::NbSteams()`
     /// Return amount of streams.
     pub fn nb_steams(&self) -> u32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_FormatContext_nb_steams(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_nb_steams(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_FormatContext.hxx`:106 - `Media_FormatContext::PtsStartBase()`
     /// Return PTS start base in seconds.
     pub fn pts_start_base(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_FormatContext_pts_start_base(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_pts_start_base(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_FormatContext.hxx`:109 - `Media_FormatContext::Duration()`
     /// Return duration in seconds.
     pub fn duration(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Media_FormatContext_duration(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_duration(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_FormatContext.hxx`:112 - `Media_FormatContext::ReadPacket()`
     /// av_read_frame() wrapper.
     pub fn read_packet(&mut self, thePacket: &crate::ffi::HandleMediaPacket) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_FormatContext_read_packet(self as *mut Self, thePacket)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_read_packet(self as *mut Self, thePacket)
+        })
     }
 
     /// **Source:** `Media_FormatContext.hxx`:115 - `Media_FormatContext::SeekStream()`
     /// Seek stream to specified position.
     pub fn seek_stream(&mut self, theStreamId: u32, theSeekPts: f64, toSeekBack: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_FormatContext_seek_stream(
-                    self as *mut Self,
-                    theStreamId,
-                    theSeekPts,
-                    toSeekBack,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_seek_stream(
+                self as *mut Self,
+                theStreamId,
+                theSeekPts,
+                toSeekBack,
+            )
+        })
     }
 
     /// **Source:** `Media_FormatContext.hxx`:118 - `Media_FormatContext::Seek()`
     /// Seek context to specified position.
     pub fn seek(&mut self, theSeekPts: f64, toSeekBack: bool) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_FormatContext_seek(self as *mut Self, theSeekPts, toSeekBack)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_seek(self as *mut Self, theSeekPts, toSeekBack)
+        })
     }
 
     /// **Source:** `Media_FormatContext.hxx`:30 - `Media_FormatContext::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Media_FormatContext_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Media_FormatContext_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Media_FormatContext.hxx`:30 - `Media_FormatContext::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_FormatContext_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Media_FormatContext_get_type_descriptor())) }
     }
 
     /// **Source:** `Media_FormatContext.hxx`:33 - `Media_FormatContext::FormatAVErrorDescription()`
@@ -827,15 +569,10 @@ impl FormatContext {
     pub fn format_av_error_description(
         theErrCodeAV: i32,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_FormatContext_format_av_error_description(theErrCodeAV)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Media_FormatContext_format_av_error_description(theErrCodeAV),
+            ))
         }
     }
 
@@ -844,15 +581,9 @@ impl FormatContext {
     /// @param theTimeUnits value to convert
     /// @return converted time units in seconds
     pub fn format_units_to_seconds(theTimeUnits: i64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_FormatContext_format_units_to_seconds(theTimeUnits) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_format_units_to_seconds(theTimeUnits)
+        })
     }
 
     /// **Source:** `Media_FormatContext.hxx`:56 - `Media_FormatContext::SecondsToUnits()`
@@ -860,27 +591,18 @@ impl FormatContext {
     /// @param theTimeSeconds value to convert
     /// @return time units
     pub fn seconds_to_units(theTimeSeconds: f64) -> i64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_FormatContext_seconds_to_units(theTimeSeconds) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_seconds_to_units(theTimeSeconds)
+        })
     }
 
     /// **Source:** `Media_FormatContext.hxx`:73 - `Media_FormatContext::FormatTime()`
     /// Time formatter.
     pub fn format_time(theSeconds: f64) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe { crate::ffi::Media_FormatContext_format_time(theSeconds) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Media_FormatContext_format_time(theSeconds),
+            ))
         }
     }
 
@@ -890,86 +612,62 @@ impl FormatContext {
         theProgress: f64,
         theDuration: f64,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_FormatContext_format_time_progress(theProgress, theDuration)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Media_FormatContext_format_time_progress(theProgress, theDuration),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_FormatContext_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Media_FormatContext_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_FormatContext_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Media_FormatContext_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMediaFormatContext> {
-        let __result = unsafe { crate::ffi::Media_FormatContext_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Media_FormatContext_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_FormatContext_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_FormatContext_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Media_FormatContext_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Media_FormatContext_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -980,53 +678,30 @@ impl FormatContext {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_FormatContext_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_FormatContext_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_FormatContext_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_FormatContext_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_FormatContext_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Media_FormatContext_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_FormatContext_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1041,31 +716,29 @@ unsafe impl crate::CppDeletable for HandleMediaFormatContext {
 impl HandleMediaFormatContext {
     /// Dereference this Handle to access the underlying Media_FormatContext
     pub fn get(&self) -> &crate::ffi::Media_FormatContext {
-        let __result = unsafe { crate::ffi::HandleMediaFormatContext_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMediaFormatContext_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_FormatContext
     pub fn get_mut(&mut self) -> &mut crate::ffi::Media_FormatContext {
-        let __result = unsafe { crate::ffi::HandleMediaFormatContext_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMediaFormatContext_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Media_FormatContext> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMediaFormatContext_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMediaFormatContext_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1132,298 +805,170 @@ impl Frame {
     /// **Source:** `Media_Frame.hxx`:43 - `Media_Frame::Media_Frame()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Frame_ctor())) }
     }
 
     /// **Source:** `Media_Frame.hxx`:28 - `Media_Frame::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Media_Frame_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Media_Frame.hxx`:49 - `Media_Frame::IsEmpty()`
     /// Return true if frame does not contain any data.
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_is_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Frame_is_empty(self as *const Self) })
     }
 
     /// **Source:** `Media_Frame.hxx`:52 - `Media_Frame::Unref()`
     /// av_frame_unref() wrapper.
     pub fn unref(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Frame_unref(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Media_Frame_unref(self as *mut Self) })
     }
 
     /// **Source:** `Media_Frame.hxx`:55 - `Media_Frame::Size()`
     /// Return image dimensions.
     pub fn size(&self) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec2i> {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_size(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Frame_size(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Media_Frame.hxx`:58 - `Media_Frame::SizeX()`
     /// Return image width.
     pub fn size_x(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_size_x(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Frame_size_x(self as *const Self) })
     }
 
     /// **Source:** `Media_Frame.hxx`:61 - `Media_Frame::SizeY()`
     /// Return image height.
     pub fn size_y(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_size_y(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Frame_size_y(self as *const Self) })
     }
 
     /// **Source:** `Media_Frame.hxx`:64 - `Media_Frame::Format()`
     /// Return pixel format (AVPixelFormat).
     pub fn format(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_format(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Frame_format(self as *const Self) })
     }
 
     /// **Source:** `Media_Frame.hxx`:67 - `Media_Frame::IsFullRangeYUV()`
     /// Return TRUE if YUV range is full.
     pub fn is_full_range_yuv(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Frame_is_full_range_yuv(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Frame_is_full_range_yuv(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:70 - `Media_Frame::Plane()`
     /// Access data plane for specified Id.
     pub unsafe fn plane(&self, thePlaneId: i32) -> *mut u8 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Frame_plane(self as *const Self, thePlaneId) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Frame_plane(self as *const Self, thePlaneId)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:73 - `Media_Frame::LineSize()`
     /// @return linesize in bytes for specified data plane
     pub fn line_size(&self, thePlaneId: i32) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Frame_line_size(self as *const Self, thePlaneId) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Frame_line_size(self as *const Self, thePlaneId)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:76 - `Media_Frame::BestEffortTimestamp()`
     /// @return frame timestamp estimated using various heuristics, in stream time base
     pub fn best_effort_timestamp(&self) -> i64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Frame_best_effort_timestamp(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Frame_best_effort_timestamp(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:85 - `Media_Frame::Pts()`
     /// Return presentation timestamp (PTS).
     pub fn pts(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_pts(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Frame_pts(self as *const Self) })
     }
 
     /// **Source:** `Media_Frame.hxx`:88 - `Media_Frame::SetPts()`
     /// Set presentation timestamp (PTS).
     pub fn set_pts(&mut self, thePts: f64) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Frame_set_pts(self as *mut Self, thePts) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Frame_set_pts(self as *mut Self, thePts)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:91 - `Media_Frame::PixelAspectRatio()`
     /// Return PAR.
     pub fn pixel_aspect_ratio(&self) -> f32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Frame_pixel_aspect_ratio(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Frame_pixel_aspect_ratio(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:94 - `Media_Frame::SetPixelAspectRatio()`
     /// Set PAR.
     pub fn set_pixel_aspect_ratio(&mut self, theRatio: f32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_Frame_set_pixel_aspect_ratio(self as *mut Self, theRatio)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Frame_set_pixel_aspect_ratio(self as *mut Self, theRatio)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:97 - `Media_Frame::IsLocked()`
     /// Return locked state.
     pub fn is_locked(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_is_locked(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Frame_is_locked(self as *const Self) })
     }
 
     /// **Source:** `Media_Frame.hxx`:100 - `Media_Frame::SetLocked()`
     /// Lock/free frame for edition.
     pub fn set_locked(&mut self, theToLock: bool) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Frame_set_locked(self as *mut Self, theToLock) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Frame_set_locked(self as *mut Self, theToLock)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:104 - `Media_Frame::InitWrapper()`
     /// Wrap allocated image pixmap.
     pub fn init_wrapper(&mut self, thePixMap: &crate::ffi::HandleImagePixMap) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Frame_init_wrapper(self as *mut Self, thePixMap) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Frame_init_wrapper(self as *mut Self, thePixMap)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:28 - `Media_Frame::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Media_Frame_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Media_Frame.hxx`:28 - `Media_Frame::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Media_Frame_get_type_descriptor())) }
     }
 
     /// **Source:** `Media_Frame.hxx`:31 - `Media_Frame::FormatFFmpeg2Occt()`
     /// Convert pixel format from FFmpeg (AVPixelFormat) to OCCT.
     pub fn format_f_fmpeg2_occt(theFormat: i32) -> crate::image::Format {
-        {
-            let __result = unsafe { crate::ffi::Media_Frame_format_f_fmpeg2_occt(theFormat) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::image::Format::try_from(__val).unwrap()
-        }
+        crate::image::Format::try_from(crate::check_result(unsafe {
+            crate::ffi::Media_Frame_format_f_fmpeg2_occt(theFormat)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Media_Frame.hxx`:35 - `Media_Frame::FormatOcct2FFmpeg()`
     /// Convert pixel format from OCCT to FFmpeg (AVPixelFormat).
     /// Returns -1 (AV_PIX_FMT_NONE) if undefined.
     pub fn format_occt2_f_fmpeg(theFormat: crate::image::Format) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Frame_format_occt2_f_fmpeg(theFormat.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Frame_format_occt2_f_fmpeg(theFormat.into())
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:38 - `Media_Frame::Swap()`
@@ -1432,78 +977,56 @@ impl Frame {
         theFrame1: &crate::ffi::HandleMediaFrame,
         theFrame2: &crate::ffi::HandleMediaFrame,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Frame_swap(theFrame1, theFrame2) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Media_Frame_swap(theFrame1, theFrame2) })
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_Frame_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Media_Frame_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_Frame_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Media_Frame_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMediaFrame> {
-        let __result = unsafe { crate::ffi::Media_Frame_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Frame_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_Frame_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Frame_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Frame_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Frame_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::Media_Frame_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Media_Frame_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1514,49 +1037,30 @@ impl Frame {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Frame_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Frame_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Media_Frame_inherited_IncrementRefCounter(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Frame_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Frame_inherited_DecrementRefCounter(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Frame_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Frame_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Frame_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1571,30 +1075,23 @@ unsafe impl crate::CppDeletable for HandleMediaFrame {
 impl HandleMediaFrame {
     /// Dereference this Handle to access the underlying Media_Frame
     pub fn get(&self) -> &crate::ffi::Media_Frame {
-        let __result = unsafe { crate::ffi::HandleMediaFrame_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleMediaFrame_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_Frame
     pub fn get_mut(&mut self) -> &mut crate::ffi::Media_Frame {
-        let __result = unsafe { crate::ffi::HandleMediaFrame_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMediaFrame_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Media_Frame> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result =
-            unsafe { crate::ffi::HandleMediaFrame_to_HandleStandardTransient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMediaFrame_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1629,26 +1126,19 @@ impl IFrameQueue {
     /// Lock the frame, e.g. take ownership on a single (not currently displayed) frame from the queue
     /// to perform decoding into.
     pub fn lock_frame(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMediaFrame> {
-        {
-            let __result = unsafe { crate::ffi::Media_IFrameQueue_lock_frame(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Media_IFrameQueue_lock_frame(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `Media_IFrameQueue.hxx`:29 - `Media_IFrameQueue::ReleaseFrame()`
     /// Release previously locked frame, e.g. it can be displayed on the screen.
     pub fn release_frame(&mut self, theFrame: &crate::ffi::HandleMediaFrame) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Media_IFrameQueue_release_frame(self as *mut Self, theFrame) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_IFrameQueue_release_frame(self as *mut Self, theFrame)
+        })
     }
 }
 
@@ -1670,268 +1160,155 @@ impl Packet {
     /// **Source:** `Media_Packet.hxx`:29 - `Media_Packet::Media_Packet()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Packet_ctor())) }
     }
 
     /// **Source:** `Media_Packet.hxx`:26 - `Media_Packet::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Media_Packet_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Media_Packet.hxx`:35 - `Media_Packet::Unref()`
     /// av_packet_unref() wrapper.
     pub fn unref(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Packet_unref(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Media_Packet_unref(self as *mut Self) })
     }
 
     /// **Source:** `Media_Packet.hxx`:44 - `Media_Packet::Data()`
     /// Return data.
     pub unsafe fn data(&self) -> *const u8 {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_data(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Packet_data(self as *const Self) })
     }
 
     /// **Source:** `Media_Packet.hxx`:47 - `Media_Packet::ChangeData()`
     /// Return data.
     pub unsafe fn change_data(&mut self) -> *mut u8 {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_change_data(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Packet_change_data(self as *mut Self) })
     }
 
     /// **Source:** `Media_Packet.hxx`:50 - `Media_Packet::Size()`
     /// Return data size.
     pub fn size(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_size(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Packet_size(self as *const Self) })
     }
 
     /// **Source:** `Media_Packet.hxx`:53 - `Media_Packet::Pts()`
     /// Return presentation timestamp (PTS).
     pub fn pts(&self) -> i64 {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_pts(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Packet_pts(self as *const Self) })
     }
 
     /// **Source:** `Media_Packet.hxx`:56 - `Media_Packet::Dts()`
     /// Return decoding timestamp (DTS).
     pub fn dts(&self) -> i64 {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_dts(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Packet_dts(self as *const Self) })
     }
 
     /// **Source:** `Media_Packet.hxx`:59 - `Media_Packet::Duration()`
     /// Return Duration.
     pub fn duration(&self) -> i64 {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_duration(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Packet_duration(self as *const Self) })
     }
 
     /// **Source:** `Media_Packet.hxx`:62 - `Media_Packet::DurationSeconds()`
     /// Return Duration in seconds.
     pub fn duration_seconds(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Packet_duration_seconds(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Packet_duration_seconds(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:65 - `Media_Packet::SetDurationSeconds()`
     /// Set Duration in seconds.
     pub fn set_duration_seconds(&mut self, theDurationSec: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_Packet_set_duration_seconds(self as *mut Self, theDurationSec)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Packet_set_duration_seconds(self as *mut Self, theDurationSec)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:68 - `Media_Packet::StreamIndex()`
     /// Return stream index.
     pub fn stream_index(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_stream_index(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Packet_stream_index(self as *const Self) })
     }
 
     /// **Source:** `Media_Packet.hxx`:71 - `Media_Packet::IsKeyFrame()`
     /// Return TRUE for a key frame.
     pub fn is_key_frame(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_is_key_frame(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Packet_is_key_frame(self as *const Self) })
     }
 
     /// **Source:** `Media_Packet.hxx`:74 - `Media_Packet::SetKeyFrame()`
     /// Mark as key frame.
     pub fn set_key_frame(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Packet_set_key_frame(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Packet_set_key_frame(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:26 - `Media_Packet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Media_Packet_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Media_Packet.hxx`:26 - `Media_Packet::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_Packet_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Media_Packet_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_Packet_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Media_Packet_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_Packet_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Media_Packet_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMediaPacket> {
-        let __result = unsafe { crate::ffi::Media_Packet_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Packet_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_Packet_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Packet_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Packet_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Packet_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::Media_Packet_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Media_Packet_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1942,51 +1319,30 @@ impl Packet {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Packet_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Packet_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_Packet_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Packet_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_Packet_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Packet_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Packet_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Packet_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2001,31 +1357,23 @@ unsafe impl crate::CppDeletable for HandleMediaPacket {
 impl HandleMediaPacket {
     /// Dereference this Handle to access the underlying Media_Packet
     pub fn get(&self) -> &crate::ffi::Media_Packet {
-        let __result = unsafe { crate::ffi::HandleMediaPacket_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleMediaPacket_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_Packet
     pub fn get_mut(&mut self) -> &mut crate::ffi::Media_Packet {
-        let __result = unsafe { crate::ffi::HandleMediaPacket_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMediaPacket_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Media_Packet> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMediaPacket_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMediaPacket_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2061,45 +1409,28 @@ impl PlayerContext {
     /// Note that Frame Queue is stored as pointer,
     /// and it is expected that this context is stored as a class field of Frame Queue.
     pub fn new_iframequeueptr(theFrameQueue: &mut IFrameQueue) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_PlayerContext_ctor_iframequeueptr(theFrameQueue as *mut _)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Media_PlayerContext_ctor_iframequeueptr(theFrameQueue as *mut _),
+            ))
         }
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:35 - `Media_PlayerContext::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_PlayerContext_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Media_PlayerContext_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:65 - `Media_PlayerContext::SetInput()`
     /// Set new input for playback.
     pub fn set_input(&mut self, theInputPath: &crate::t_collection::AsciiString, theToWait: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_PlayerContext_set_input(
-                    self as *mut Self,
-                    theInputPath,
-                    theToWait,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_PlayerContext_set_input(self as *mut Self, theInputPath, theToWait)
+        })
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:69 - `Media_PlayerContext::PlaybackState()`
@@ -2110,19 +1441,14 @@ impl PlayerContext {
         theProgress: &mut f64,
         theDuration: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_PlayerContext_playback_state(
-                    self as *mut Self,
-                    theIsPaused,
-                    theProgress,
-                    theDuration,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_PlayerContext_playback_state(
+                self as *mut Self,
+                theIsPaused,
+                theProgress,
+                theDuration,
+            )
+        })
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:74 - `Media_PlayerContext::PlayPause()`
@@ -2133,105 +1459,71 @@ impl PlayerContext {
         theProgress: &mut f64,
         theDuration: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_PlayerContext_play_pause(
-                    self as *mut Self,
-                    theIsPaused,
-                    theProgress,
-                    theDuration,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_PlayerContext_play_pause(
+                self as *mut Self,
+                theIsPaused,
+                theProgress,
+                theDuration,
+            )
+        })
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:79 - `Media_PlayerContext::Seek()`
     /// Seek to specified position.
     pub fn seek(&mut self, thePosSec: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Media_PlayerContext_seek(self as *mut Self, thePosSec) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_PlayerContext_seek(self as *mut Self, thePosSec)
+        })
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:82 - `Media_PlayerContext::Pause()`
     /// Pause playback.
     pub fn pause(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_PlayerContext_pause(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_PlayerContext_pause(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:85 - `Media_PlayerContext::Resume()`
     /// Resume playback.
     pub fn resume(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_PlayerContext_resume(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_PlayerContext_resume(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:89 - `Media_PlayerContext::ToForceRgb()`
     /// Return TRUE if queue requires RGB pixel format or can handle also YUV pixel format; TRUE by
     /// default.
     pub fn to_force_rgb(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_PlayerContext_to_force_rgb(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_PlayerContext_to_force_rgb(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:92 - `Media_PlayerContext::SetForceRgb()`
     /// Set if queue requires RGB pixel format or can handle also YUV pixel format.
     pub fn set_force_rgb(&mut self, theToForce: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_PlayerContext_set_force_rgb(self as *mut Self, theToForce)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_PlayerContext_set_force_rgb(self as *mut Self, theToForce)
+        })
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:35 - `Media_PlayerContext::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Media_PlayerContext_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Media_PlayerContext_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:35 - `Media_PlayerContext::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_PlayerContext_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Media_PlayerContext_get_type_descriptor())) }
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:40 - `Media_PlayerContext::DumpFirstFrame()`
@@ -2242,18 +1534,13 @@ impl PlayerContext {
         theSrcVideo: &crate::t_collection::AsciiString,
         theMediaInfo: &mut crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::ffi::HandleMediaFrame> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Media_PlayerContext_dump_first_frame_asciistring2(
                     theSrcVideo,
                     theMediaInfo,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2269,91 +1556,65 @@ impl PlayerContext {
         theMediaInfo: &mut crate::t_collection::AsciiString,
         theMaxSize: i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_PlayerContext_dump_first_frame_asciistring3_int(
-                    theSrcVideo,
-                    theOutImage,
-                    theMediaInfo,
-                    theMaxSize,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_PlayerContext_dump_first_frame_asciistring3_int(
+                theSrcVideo,
+                theOutImage,
+                theMediaInfo,
+                theMaxSize,
+            )
+        })
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_PlayerContext_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Media_PlayerContext_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_PlayerContext_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Media_PlayerContext_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMediaPlayerContext> {
-        let __result = unsafe { crate::ffi::Media_PlayerContext_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Media_PlayerContext_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_PlayerContext_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_PlayerContext_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_PlayerContext_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_PlayerContext_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Media_PlayerContext_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Media_PlayerContext_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2364,53 +1625,30 @@ impl PlayerContext {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_PlayerContext_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_PlayerContext_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_PlayerContext_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_PlayerContext_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_PlayerContext_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_PlayerContext_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Media_PlayerContext_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_PlayerContext_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2425,31 +1663,29 @@ unsafe impl crate::CppDeletable for HandleMediaPlayerContext {
 impl HandleMediaPlayerContext {
     /// Dereference this Handle to access the underlying Media_PlayerContext
     pub fn get(&self) -> &crate::ffi::Media_PlayerContext {
-        let __result = unsafe { crate::ffi::HandleMediaPlayerContext_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleMediaPlayerContext_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_PlayerContext
     pub fn get_mut(&mut self) -> &mut crate::ffi::Media_PlayerContext {
-        let __result = unsafe { crate::ffi::HandleMediaPlayerContext_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMediaPlayerContext_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Media_PlayerContext> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMediaPlayerContext_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMediaPlayerContext_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2471,36 +1707,20 @@ impl Scaler {
     /// **Source:** `Media_Scaler.hxx`:32 - `Media_Scaler::Media_Scaler()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Media_Scaler_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Scaler_ctor())) }
     }
 
     /// **Source:** `Media_Scaler.hxx`:29 - `Media_Scaler::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_Scaler_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Media_Scaler_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Media_Scaler.hxx`:38 - `Media_Scaler::Release()`
     /// sws_freeContext() wrapper.
     pub fn release(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Scaler_release(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Media_Scaler_release(self as *mut Self) })
     }
 
     /// **Source:** `Media_Scaler.hxx`:45 - `Media_Scaler::Init()`
@@ -2516,22 +1736,15 @@ impl Scaler {
         theResDims: &crate::ffi::Graphic3d_Vec2i,
         theResFormat: i32,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_Scaler_init(
-                    self as *mut Self,
-                    theSrcDims,
-                    theSrcFormat,
-                    theResDims,
-                    theResFormat,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Scaler_init(
+                self as *mut Self,
+                theSrcDims,
+                theSrcFormat,
+                theResDims,
+                theResFormat,
+            )
+        })
     }
 
     /// **Source:** `Media_Scaler.hxx`:51 - `Media_Scaler::Convert()`
@@ -2541,118 +1754,78 @@ impl Scaler {
         theSrc: &crate::ffi::HandleMediaFrame,
         theRes: &crate::ffi::HandleMediaFrame,
     ) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Scaler_convert(self as *mut Self, theSrc, theRes) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Scaler_convert(self as *mut Self, theSrc, theRes)
+        })
     }
 
     /// **Source:** `Media_Scaler.hxx`:55 - `Media_Scaler::IsValid()`
     /// Return TRUE if context was initialized.
     pub fn is_valid(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Media_Scaler_is_valid(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Scaler_is_valid(self as *const Self) })
     }
 
     /// **Source:** `Media_Scaler.hxx`:29 - `Media_Scaler::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Media_Scaler_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Media_Scaler_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Media_Scaler.hxx`:29 - `Media_Scaler::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_Scaler_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Media_Scaler_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_Scaler_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Media_Scaler_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_Scaler_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Media_Scaler_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMediaScaler> {
-        let __result = unsafe { crate::ffi::Media_Scaler_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Scaler_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_Scaler_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Scaler_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Scaler_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Scaler_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::Media_Scaler_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Media_Scaler_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2663,51 +1836,30 @@ impl Scaler {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Scaler_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Scaler_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Media_Scaler_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Scaler_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_Scaler_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Scaler_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Scaler_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Scaler_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2722,31 +1874,23 @@ unsafe impl crate::CppDeletable for HandleMediaScaler {
 impl HandleMediaScaler {
     /// Dereference this Handle to access the underlying Media_Scaler
     pub fn get(&self) -> &crate::ffi::Media_Scaler {
-        let __result = unsafe { crate::ffi::HandleMediaScaler_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleMediaScaler_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_Scaler
     pub fn get_mut(&mut self) -> &mut crate::ffi::Media_Scaler {
-        let __result = unsafe { crate::ffi::HandleMediaScaler_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMediaScaler_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Media_Scaler> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleMediaScaler_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMediaScaler_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2768,210 +1912,129 @@ impl Timer {
     /// **Source:** `Media_Timer.hxx`:28 - `Media_Timer::Media_Timer()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Media_Timer_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Timer_ctor())) }
     }
 
     /// **Source:** `Media_Timer.hxx`:25 - `Media_Timer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_Timer_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Media_Timer_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Media_Timer.hxx`:35 - `Media_Timer::ElapsedTime()`
     /// Return elapsed time in seconds.
     pub fn elapsed_time(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Media_Timer_elapsed_time(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Timer_elapsed_time(self as *const Self) })
     }
 
     /// **Source:** `Media_Timer.hxx`:38 - `Media_Timer::PlaybackSpeed()`
     /// Return playback speed coefficient (1.0 means normal speed).
     pub fn playback_speed(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Media_Timer_playback_speed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Timer_playback_speed(self as *const Self) })
     }
 
     /// **Source:** `Media_Timer.hxx`:41 - `Media_Timer::SetPlaybackSpeed()`
     /// Setup playback speed coefficient.
     pub fn set_playback_speed(&mut self, theSpeed: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Media_Timer_set_playback_speed(self as *mut Self, theSpeed) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Timer_set_playback_speed(self as *mut Self, theSpeed)
+        })
     }
 
     /// **Source:** `Media_Timer.hxx`:44 - `Media_Timer::IsStarted()`
     /// Return true if timer has been started.
     pub fn is_started(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Media_Timer_is_started(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Media_Timer_is_started(self as *const Self) })
     }
 
     /// **Source:** `Media_Timer.hxx`:47 - `Media_Timer::Start()`
     /// Start the timer.
     pub fn start(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Timer_start(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Media_Timer_start(self as *mut Self) })
     }
 
     /// **Source:** `Media_Timer.hxx`:50 - `Media_Timer::Pause()`
     /// Pause the timer.
     pub fn pause(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Timer_pause(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Media_Timer_pause(self as *mut Self) })
     }
 
     /// **Source:** `Media_Timer.hxx`:53 - `Media_Timer::Stop()`
     /// Stop the timer.
     pub fn stop(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Timer_stop(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Media_Timer_stop(self as *mut Self) })
     }
 
     /// **Source:** `Media_Timer.hxx`:56 - `Media_Timer::Seek()`
     /// Seek the timer to specified position.
     pub fn seek(&mut self, theTime: f64) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Timer_seek(self as *mut Self, theTime) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Timer_seek(self as *mut Self, theTime)
+        })
     }
 
     /// **Source:** `Media_Timer.hxx`:25 - `Media_Timer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Media_Timer_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Media_Timer_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Media_Timer.hxx`:25 - `Media_Timer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Media_Timer_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Media_Timer_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_Timer_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Media_Timer_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Media_Timer_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Media_Timer_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMediaTimer> {
-        let __result = unsafe { crate::ffi::Media_Timer_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Timer_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Media_Timer_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Timer_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Timer_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Timer_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::Media_Timer_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Media_Timer_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2982,49 +2045,30 @@ impl Timer {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Timer_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Timer_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Media_Timer_inherited_IncrementRefCounter(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Timer_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Media_Timer_inherited_DecrementRefCounter(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Media_Timer_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Media_Timer_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Media_Timer_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3039,29 +2083,22 @@ unsafe impl crate::CppDeletable for HandleMediaTimer {
 impl HandleMediaTimer {
     /// Dereference this Handle to access the underlying Media_Timer
     pub fn get(&self) -> &crate::ffi::Media_Timer {
-        let __result = unsafe { crate::ffi::HandleMediaTimer_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleMediaTimer_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_Timer
     pub fn get_mut(&mut self) -> &mut crate::ffi::Media_Timer {
-        let __result = unsafe { crate::ffi::HandleMediaTimer_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleMediaTimer_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Media_Timer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result =
-            unsafe { crate::ffi::HandleMediaTimer_to_HandleStandardTransient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleMediaTimer_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

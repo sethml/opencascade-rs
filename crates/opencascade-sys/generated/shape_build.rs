@@ -12,14 +12,7 @@
 /// This allows to consider an UV space homologous to a 3D space,
 /// with this support surface
 pub fn plane_xoy() -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
-    {
-        let __result = unsafe { crate::ffi::ShapeBuild_plane_xoy() };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
-    }
+    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeBuild_plane_xoy())) }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -44,12 +37,8 @@ impl Edge {
     /// **Source:** `ShapeBuild_Edge.hxx` - `ShapeBuild_Edge::ShapeBuild_Edge()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::ShapeBuild_Edge_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeBuild_Edge_ctor()))
         }
     }
 
@@ -64,15 +53,15 @@ impl Edge {
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_Edge_copy_replace_vertices(self as *const Self, edge, V1, V2)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeBuild_Edge_copy_replace_vertices(
+                    self as *const Self,
+                    edge,
+                    V1,
+                    V2,
+                ),
+            ))
         }
     }
 
@@ -86,33 +75,23 @@ impl Edge {
         alpha: f64,
         beta: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_copy_ranges(
-                    self as *const Self,
-                    toedge,
-                    fromedge,
-                    alpha,
-                    beta,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_copy_ranges(
+                self as *const Self,
+                toedge,
+                fromedge,
+                alpha,
+                beta,
+            )
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:56 - `ShapeBuild_Edge::SetRange3d()`
     /// Sets range on 3d curve only.
     pub fn set_range3d(&self, edge: &crate::topo_ds::Edge, first: f64, last: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_set_range3d(self as *const Self, edge, first, last)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_set_range3d(self as *const Self, edge, first, last)
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:64 - `ShapeBuild_Edge::CopyPCurves()`
@@ -121,14 +100,9 @@ impl Edge {
     /// are replaced by copies, other are copied. Ranges are also
     /// copied.
     pub fn copy_p_curves(&self, toedge: &crate::topo_ds::Edge, fromedge: &crate::topo_ds::Edge) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_copy_p_curves(self as *const Self, toedge, fromedge)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_copy_p_curves(self as *const Self, toedge, fromedge)
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:70 - `ShapeBuild_Edge::Copy()`
@@ -141,15 +115,12 @@ impl Edge {
         edge: &crate::topo_ds::Edge,
         sharepcurves: bool,
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_Edge_copy(self as *const Self, edge, sharepcurves)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeBuild_Edge_copy(
+                self as *const Self,
+                edge,
+                sharepcurves,
+            )))
         }
     }
 
@@ -161,18 +132,9 @@ impl Edge {
         edge: &crate::topo_ds::Edge,
         face: &crate::topo_ds::Face,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_remove_p_curve_edge_face(
-                    self as *const Self,
-                    edge,
-                    face,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_remove_p_curve_edge_face(self as *const Self, edge, face)
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:79 - `ShapeBuild_Edge::RemovePCurve()`
@@ -183,18 +145,13 @@ impl Edge {
         edge: &crate::topo_ds::Edge,
         surf: &crate::ffi::HandleGeomSurface,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_remove_p_curve_edge_handlegeomsurface(
-                    self as *const Self,
-                    edge,
-                    surf,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_remove_p_curve_edge_handlegeomsurface(
+                self as *const Self,
+                edge,
+                surf,
+            )
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:84 - `ShapeBuild_Edge::RemovePCurve()`
@@ -206,19 +163,14 @@ impl Edge {
         surf: &crate::ffi::HandleGeomSurface,
         loc: &crate::top_loc::Location,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_remove_p_curve_edge_handlegeomsurface_location(
-                    self as *const Self,
-                    edge,
-                    surf,
-                    loc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_remove_p_curve_edge_handlegeomsurface_location(
+                self as *const Self,
+                edge,
+                surf,
+                loc,
+            )
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:92 - `ShapeBuild_Edge::ReplacePCurve()`
@@ -232,14 +184,9 @@ impl Edge {
         pcurve: &crate::ffi::HandleGeom2dCurve,
         face: &crate::topo_ds::Face,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_replace_p_curve(self as *const Self, edge, pcurve, face)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_replace_p_curve(self as *const Self, edge, pcurve, face)
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:101 - `ShapeBuild_Edge::ReassignPCurve()`
@@ -254,16 +201,9 @@ impl Edge {
         old: &crate::topo_ds::Face,
         sub: &crate::topo_ds::Face,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_Edge_reassign_p_curve(self as *const Self, edge, old, sub)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_reassign_p_curve(self as *const Self, edge, old, sub)
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:106 - `ShapeBuild_Edge::TransformPCurve()`
@@ -276,8 +216,8 @@ impl Edge {
         aFirst: &mut f64,
         aLast: &mut f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::ShapeBuild_Edge_transform_p_curve(
                     self as *const Self,
                     pcurve,
@@ -285,40 +225,25 @@ impl Edge {
                     uFact,
                     aFirst,
                     aLast,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:113 - `ShapeBuild_Edge::RemoveCurve3d()`
     /// Removes the Curve3D recorded in an Edge
     pub fn remove_curve3d(&self, edge: &crate::topo_ds::Edge) {
-        {
-            let __exc =
-                unsafe { crate::ffi::ShapeBuild_Edge_remove_curve3d(self as *const Self, edge) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_remove_curve3d(self as *const Self, edge)
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:116 - `ShapeBuild_Edge::BuildCurve3d()`
     /// Calls BRepTools::BuildCurve3D
     pub fn build_curve3d(&self, edge: &crate::topo_ds::Edge) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeBuild_Edge_build_curve3d(self as *const Self, edge) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_build_curve3d(self as *const Self, edge)
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:119 - `ShapeBuild_Edge::MakeEdge()`
@@ -329,19 +254,14 @@ impl Edge {
         curve: &crate::ffi::HandleGeomCurve,
         L: &crate::top_loc::Location,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeomcurve_location(
-                    self as *const Self,
-                    edge,
-                    curve,
-                    L,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeomcurve_location(
+                self as *const Self,
+                edge,
+                curve,
+                L,
+            )
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:124 - `ShapeBuild_Edge::MakeEdge()`
@@ -354,21 +274,16 @@ impl Edge {
         p1: f64,
         p2: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeomcurve_location_real2(
-                    self as *const Self,
-                    edge,
-                    curve,
-                    L,
-                    p1,
-                    p2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeomcurve_location_real2(
+                self as *const Self,
+                edge,
+                curve,
+                L,
+                p1,
+                p2,
+            )
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:131 - `ShapeBuild_Edge::MakeEdge()`
@@ -379,19 +294,14 @@ impl Edge {
         pcurve: &crate::ffi::HandleGeom2dCurve,
         face: &crate::topo_ds::Face,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_face(
-                    self as *const Self,
-                    edge,
-                    pcurve,
-                    face,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_face(
+                self as *const Self,
+                edge,
+                pcurve,
+                face,
+            )
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:136 - `ShapeBuild_Edge::MakeEdge()`
@@ -404,21 +314,16 @@ impl Edge {
         p1: f64,
         p2: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_face_real2(
-                    self as *const Self,
-                    edge,
-                    pcurve,
-                    face,
-                    p1,
-                    p2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_face_real2(
+                self as *const Self,
+                edge,
+                pcurve,
+                face,
+                p1,
+                p2,
+            )
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:143 - `ShapeBuild_Edge::MakeEdge()`
@@ -430,14 +335,15 @@ impl Edge {
         S: &crate::ffi::HandleGeomSurface,
         L: &crate::top_loc::Location,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_handlegeomsurface_location(self as *const Self, edge, pcurve, S, L)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_handlegeomsurface_location(
+                self as *const Self,
+                edge,
+                pcurve,
+                S,
+                L,
+            )
+        })
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:149 - `ShapeBuild_Edge::MakeEdge()`
@@ -451,14 +357,9 @@ impl Edge {
         p1: f64,
         p2: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_handlegeomsurface_location_real2(self as *const Self, edge, pcurve, S, L, p1, p2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_handlegeomsurface_location_real2(self as *const Self, edge, pcurve, S, L, p1, p2)
+        })
     }
 }
 
@@ -491,12 +392,8 @@ impl ReShape {
     /// **Source:** `ShapeBuild_ReShape.hxx`:54 - `ShapeBuild_ReShape::ShapeBuild_ReShape()`
     /// Returns an empty Reshape
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::ShapeBuild_ReShape_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeBuild_ReShape_ctor()))
         }
     }
 
@@ -521,20 +418,15 @@ impl ReShape {
         until: crate::top_abs::ShapeEnum,
         buildmode: i32,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum_int(
                     self as *mut Self,
                     shape,
                     until.into(),
                     buildmode,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -556,19 +448,14 @@ impl ReShape {
         shape: &crate::topo_ds::Shape,
         until: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum(
                     self as *mut Self,
                     shape,
                     until.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -586,21 +473,9 @@ impl ReShape {
         newsh: &mut crate::topo_ds::Shape,
         last: bool,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_ReShape_status_shape2_bool(
-                    self as *mut Self,
-                    shape,
-                    newsh,
-                    last,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_status_shape2_bool(self as *mut Self, shape, newsh, last)
+        })
     }
 
     /// **Source:** `ShapeBuild_ReShape.hxx`:109 - `ShapeBuild_ReShape::Status()`
@@ -612,180 +487,126 @@ impl ReShape {
     /// DONE4: some subshapes removed
     /// FAIL1: some replacements not done because of bad type of subshape
     pub fn status_status(&self, status: crate::shape_extend::Status) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_ReShape_status_status(self as *const Self, status.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_status_status(self as *const Self, status.into())
+        })
     }
 
     /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeBuild_ReShape_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::ShapeBuild_ReShape_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::ShapeBuild_ReShape_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::ShapeBuild_ReShape_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::ShapeBuild_ReShape_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::ShapeBuild_ReShape_get_type_descriptor())) }
     }
 
     /// Upcast to BRepTools_ReShape
     pub fn as_b_rep_tools_re_shape(&self) -> &crate::b_rep_tools::ReShape {
-        let __result =
-            unsafe { crate::ffi::ShapeBuild_ReShape_as_BRepTools_ReShape(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::ShapeBuild_ReShape_as_BRepTools_ReShape(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepTools_ReShape (mutable)
     pub fn as_b_rep_tools_re_shape_mut(&mut self) -> &mut crate::b_rep_tools::ReShape {
-        let __result =
-            unsafe { crate::ffi::ShapeBuild_ReShape_as_BRepTools_ReShape_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::ShapeBuild_ReShape_as_BRepTools_ReShape_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::ShapeBuild_ReShape_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::ShapeBuild_ReShape_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::ShapeBuild_ReShape_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::ShapeBuild_ReShape_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
-        let __result = unsafe { crate::ffi::ShapeBuild_ReShape_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeBuild_ReShape_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:59 - `BRepTools_ReShape::Clear()`
     pub fn clear(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::ShapeBuild_ReShape_inherited_Clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_Clear(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:62 - `BRepTools_ReShape::Remove()`
     pub fn remove(&mut self, shape: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_Remove(self as *mut Self, shape)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_Remove(self as *mut Self, shape)
+        })
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:65 - `BRepTools_ReShape::Replace()`
     pub fn replace(&mut self, shape: &crate::topo_ds::Shape, newshape: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_Replace(self as *mut Self, shape, newshape)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_Replace(self as *mut Self, shape, newshape)
+        })
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:94 - `BRepTools_ReShape::IsRecorded()`
     pub fn is_recorded(&self, shape: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_IsRecorded(self as *const Self, shape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_IsRecorded(self as *const Self, shape)
+        })
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:100 - `BRepTools_ReShape::Value()`
     pub fn value(&self, shape: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_Value(self as *const Self, shape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeBuild_ReShape_inherited_Value(self as *const Self, shape),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:128 - `BRepTools_ReShape::ModeConsiderLocation()`
     pub fn mode_consider_location(&mut self) -> &mut bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_ModeConsiderLocation(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi::ShapeBuild_ReShape_inherited_ModeConsiderLocation(self as *mut Self),
+            ))
         }
     }
 
@@ -795,82 +616,53 @@ impl ReShape {
         theV: &crate::topo_ds::Vertex,
         theTol: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_CopyVertex(self as *mut Self, theV, theTol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeBuild_ReShape_inherited_CopyVertex(
+                    self as *mut Self,
+                    theV,
+                    theTol,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:148 - `BRepTools_ReShape::IsNewShape()`
     pub fn is_new_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_IsNewShape(self as *const Self, theShape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_IsNewShape(self as *const Self, theShape)
+        })
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:151 - `BRepTools_ReShape::History()`
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeBuild_ReShape_inherited_History(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::ShapeBuild_ReShape_inherited_History(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::ShapeBuild_ReShape_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::ShapeBuild_ReShape_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -881,53 +673,30 @@ impl ReShape {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeBuild_ReShape_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::ShapeBuild_ReShape_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -942,42 +711,36 @@ unsafe impl crate::CppDeletable for HandleShapeBuildReShape {
 impl HandleShapeBuildReShape {
     /// Dereference this Handle to access the underlying ShapeBuild_ReShape
     pub fn get(&self) -> &crate::ffi::ShapeBuild_ReShape {
-        let __result = unsafe { crate::ffi::HandleShapeBuildReShape_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleShapeBuildReShape_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeBuild_ReShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeBuild_ReShape {
-        let __result = unsafe { crate::ffi::HandleShapeBuildReShape_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleShapeBuildReShape_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeBuild_ReShape> to Handle<BRepTools_ReShape>
     pub fn to_handle_re_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsReShape> {
-        let __result = unsafe {
-            crate::ffi::HandleShapeBuildReShape_to_HandleBRepToolsReShape(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleShapeBuildReShape_to_HandleBRepToolsReShape(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeBuild_ReShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleShapeBuildReShape_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleShapeBuildReShape_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -999,12 +762,8 @@ impl Vertex {
     /// **Source:** `ShapeBuild_Vertex.hxx` - `ShapeBuild_Vertex::ShapeBuild_Vertex()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::ShapeBuild_Vertex_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeBuild_Vertex_ctor()))
         }
     }
 
@@ -1023,20 +782,15 @@ impl Vertex {
         V2: &crate::topo_ds::Vertex,
         tolFactor: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::ShapeBuild_Vertex_combine_vertex_vertex2_real(
                     self as *const Self,
                     V1,
                     V2,
                     tolFactor,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1051,8 +805,8 @@ impl Vertex {
         tol2: f64,
         tolFactor: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::ShapeBuild_Vertex_combine_vertex_pnt2_real3(
                     self as *const Self,
                     pnt1,
@@ -1060,13 +814,8 @@ impl Vertex {
                     tol1,
                     tol2,
                     tolFactor,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 }

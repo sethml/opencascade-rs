@@ -12,14 +12,11 @@ pub fn print_position_ostream(
     thePosition: crate::gcc_ent::Position,
     theStream: &mut crate::ffi::Standard_OStream,
 ) -> &mut crate::ffi::Standard_OStream {
-    {
-        let __result =
-            unsafe { crate::ffi::GccEnt_print_position_ostream(thePosition.into(), theStream) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { &mut *(__val) }
+    unsafe {
+        &mut *(crate::check_result(crate::ffi::GccEnt_print_position_ostream(
+            thePosition.into(),
+            theStream,
+        )))
     }
 }
 /// **Source:** `GccEnt.hxx`:63 - `GccEnt::PositionToString`
@@ -27,14 +24,13 @@ pub fn print_position_ostream(
 /// @param thePosition position type
 /// @return string identifier from the list UNQUALIFIED ENCLOSING ENCLOSED OUTSIDE NOQUALIFIER
 pub fn position_to_string(thePosition: crate::gcc_ent::Position) -> std::string::String {
-    {
-        let __result = unsafe { crate::ffi::GccEnt_position_to_string(thePosition.into()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+    unsafe {
+        std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::GccEnt_position_to_string(
+            thePosition.into(),
+        )))
     }
+    .to_string_lossy()
+    .into_owned()
 }
 /// **Source:** `GccEnt.hxx`:68 - `GccEnt::PositionFromString`
 /// Returns the position from the given string identifier (using case-insensitive comparison).
@@ -42,15 +38,10 @@ pub fn position_to_string(thePosition: crate::gcc_ent::Position) -> std::string:
 /// @return position or GccEnt_unqualified if string identifier is invalid
 pub fn position_from_string(thePositionString: &str) -> crate::gcc_ent::Position {
     let c_thePositionString = std::ffi::CString::new(thePositionString).unwrap();
-    {
-        let __result =
-            unsafe { crate::ffi::GccEnt_position_from_string(c_thePositionString.as_ptr()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        crate::gcc_ent::Position::try_from(__val).unwrap()
-    }
+    crate::gcc_ent::Position::try_from(crate::check_result(unsafe {
+        crate::ffi::GccEnt_position_from_string(c_thePositionString.as_ptr())
+    }))
+    .unwrap()
 }
 /// **Source:** `GccEnt.hxx`:86 - `GccEnt::Unqualified`
 /// Constructs a qualified line,
@@ -58,13 +49,8 @@ pub fn position_from_string(thePositionString: &str) -> crate::gcc_ent::Position
 /// solution computed by a construction algorithm using the
 /// qualified circle or line is not qualified, i.e. all solutions apply.
 pub fn unqualified_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
-    {
-        let __result = unsafe { crate::ffi::GccEnt_unqualified_lin2d(Obj) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_unqualified_lin2d(Obj)))
     }
 }
 /// **Source:** `GccEnt.hxx`:92 - `GccEnt::Unqualified`
@@ -73,13 +59,8 @@ pub fn unqualified_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin
 /// solution computed by a construction algorithm using the
 /// qualified circle or line is not qualified, i.e. all solutions apply.
 pub fn unqualified_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
-    {
-        let __result = unsafe { crate::ffi::GccEnt_unqualified_circ2d(Obj) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_unqualified_circ2d(Obj)))
     }
 }
 /// **Source:** `GccEnt.hxx`:97 - `GccEnt::Enclosing`
@@ -87,13 +68,8 @@ pub fn unqualified_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedC
 /// computed by a construction algorithm using the qualified
 /// circle encloses the circle.
 pub fn enclosing_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
-    {
-        let __result = unsafe { crate::ffi::GccEnt_enclosing_circ2d(Obj) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_enclosing_circ2d(Obj)))
     }
 }
 /// **Source:** `GccEnt.hxx`:103 - `GccEnt::Enclosed`
@@ -102,13 +78,8 @@ pub fn enclosing_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCir
 /// algorithm using the qualified circle or line is enclosed by
 /// the circle or line.
 pub fn enclosed_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
-    {
-        let __result = unsafe { crate::ffi::GccEnt_enclosed_lin2d(Obj) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_enclosed_lin2d(Obj)))
     }
 }
 /// **Source:** `GccEnt.hxx`:109 - `GccEnt::Enclosed`
@@ -117,13 +88,8 @@ pub fn enclosed_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
 /// algorithm using the qualified circle or line is enclosed by
 /// the circle or line.
 pub fn enclosed_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
-    {
-        let __result = unsafe { crate::ffi::GccEnt_enclosed_circ2d(Obj) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_enclosed_circ2d(Obj)))
     }
 }
 /// **Source:** `GccEnt.hxx`:115 - `GccEnt::Outside`
@@ -132,14 +98,7 @@ pub fn enclosed_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc
 /// algorithm using the qualified circle or line and the circle
 /// or line are external to one another.
 pub fn outside_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
-    {
-        let __result = unsafe { crate::ffi::GccEnt_outside_lin2d(Obj) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
-    }
+    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_outside_lin2d(Obj))) }
 }
 /// **Source:** `GccEnt.hxx`:121 - `GccEnt::Outside`
 /// Constructs a qualified circle
@@ -147,13 +106,8 @@ pub fn outside_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
 /// algorithm using the qualified circle or line and the circle
 /// or line are external to one another.
 pub fn outside_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
-    {
-        let __result = unsafe { crate::ffi::GccEnt_outside_circ2d(Obj) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_outside_circ2d(Obj)))
     }
 }
 
@@ -222,25 +176,18 @@ unsafe impl crate::CppDeletable for BadQualifier {
 impl BadQualifier {
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::GccEnt_BadQualifier()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::GccEnt_BadQualifier_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_BadQualifier_ctor()))
         }
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::GccEnt_BadQualifier()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_BadQualifier_ctor_charptr(c_theMessage.as_ptr()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GccEnt_BadQualifier_ctor_charptr(c_theMessage.as_ptr()),
+            ))
         }
     }
 
@@ -248,53 +195,38 @@ impl BadQualifier {
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GccEnt_BadQualifier_ctor_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_BadQualifier_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::GccEnt_BadQualifier_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::Raise()`
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        {
-            let __exc =
-                unsafe { crate::ffi::GccEnt_BadQualifier_raise_charptr(c_theMessage.as_ptr()) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GccEnt_BadQualifier_raise_charptr(c_theMessage.as_ptr())
+        })
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
-        {
-            let __exc = unsafe { crate::ffi::GccEnt_BadQualifier_raise_sstream(theMessage) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GccEnt_BadQualifier_raise_sstream(theMessage)
+        })
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::NewInstance()`
@@ -302,15 +234,10 @@ impl BadQualifier {
         theMessage: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleGccEntBadQualifier> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::GccEnt_BadQualifier_new_instance_charptr(c_theMessage.as_ptr())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GccEnt_BadQualifier_new_instance_charptr(c_theMessage.as_ptr()),
+            ))
         }
     }
 
@@ -321,188 +248,138 @@ impl BadQualifier {
     ) -> crate::OwnedPtr<crate::ffi::HandleGccEntBadQualifier> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GccEnt_BadQualifier_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::GccEnt_BadQualifier_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::GccEnt_BadQualifier_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::GccEnt_BadQualifier_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::GccEnt_BadQualifier_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        let __result =
-            unsafe { crate::ffi::GccEnt_BadQualifier_as_Standard_DomainError(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_DomainError(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        let __result = unsafe {
-            crate::ffi::GccEnt_BadQualifier_as_Standard_DomainError_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_DomainError_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        let __result =
-            unsafe { crate::ffi::GccEnt_BadQualifier_as_Standard_Failure(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_Failure(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        let __result =
-            unsafe { crate::ffi::GccEnt_BadQualifier_as_Standard_Failure_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_Failure_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::GccEnt_BadQualifier_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::GccEnt_BadQualifier_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGccEntBadQualifier> {
-        let __result = unsafe { crate::ffi::GccEnt_BadQualifier_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GccEnt_BadQualifier_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GccEnt_BadQualifier_inherited_Print(self as *const Self, theStream)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GccEnt_BadQualifier_inherited_Print(self as *const Self, theStream)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::GccEnt_BadQualifier_inherited_Reraise(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GccEnt_BadQualifier_inherited_Reraise(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::GccEnt_BadQualifier_inherited_Jump(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GccEnt_BadQualifier_inherited_Jump(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::GccEnt_BadQualifier_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GccEnt_BadQualifier_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::GccEnt_BadQualifier_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GccEnt_BadQualifier_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::GccEnt_BadQualifier_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::GccEnt_BadQualifier_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -513,53 +390,30 @@ impl BadQualifier {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::GccEnt_BadQualifier_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GccEnt_BadQualifier_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GccEnt_BadQualifier_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GccEnt_BadQualifier_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::GccEnt_BadQualifier_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GccEnt_BadQualifier_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::GccEnt_BadQualifier_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GccEnt_BadQualifier_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -574,53 +428,49 @@ unsafe impl crate::CppDeletable for HandleGccEntBadQualifier {
 impl HandleGccEntBadQualifier {
     /// Dereference this Handle to access the underlying GccEnt_BadQualifier
     pub fn get(&self) -> &crate::ffi::GccEnt_BadQualifier {
-        let __result = unsafe { crate::ffi::HandleGccEntBadQualifier_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleGccEntBadQualifier_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying GccEnt_BadQualifier
     pub fn get_mut(&mut self) -> &mut crate::ffi::GccEnt_BadQualifier {
-        let __result = unsafe { crate::ffi::HandleGccEntBadQualifier_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleGccEntBadQualifier_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<GccEnt_BadQualifier> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        let __result = unsafe {
-            crate::ffi::HandleGccEntBadQualifier_to_HandleStandardDomainError(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleGccEntBadQualifier_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<GccEnt_BadQualifier> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        let __result = unsafe {
-            crate::ffi::HandleGccEntBadQualifier_to_HandleStandardFailure(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleGccEntBadQualifier_to_HandleStandardFailure(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<GccEnt_BadQualifier> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleGccEntBadQualifier_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleGccEntBadQualifier_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -660,28 +510,20 @@ impl QualifiedCirc {
         Qualified: &crate::gp::Circ2d,
         Qualifier: crate::gcc_ent::Position,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GccEnt_QualifiedCirc_ctor_circ2d_position(Qualified, Qualifier.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GccEnt_QualifiedCirc_ctor_circ2d_position(Qualified, Qualifier.into()),
+            ))
         }
     }
 
     /// **Source:** `GccEnt_QualifiedCirc.hxx`:53 - `GccEnt_QualifiedCirc::Qualified()`
     /// Returns a 2D circle to which the qualifier is assigned.
     pub fn qualified(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_QualifiedCirc_qualified(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GccEnt_QualifiedCirc_qualified(self as *const Self),
+            ))
         }
     }
 
@@ -691,60 +533,37 @@ impl QualifiedCirc {
     /// enclosed or outside, or
     /// -   GccEnt_noqualifier if it is unqualified.
     pub fn qualifier(&self) -> crate::gcc_ent::Position {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_QualifiedCirc_qualifier(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::gcc_ent::Position::try_from(__val).unwrap()
-        }
+        crate::gcc_ent::Position::try_from(crate::check_result(unsafe {
+            crate::ffi::GccEnt_QualifiedCirc_qualifier(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `GccEnt_QualifiedCirc.hxx`:63 - `GccEnt_QualifiedCirc::IsUnqualified()`
     /// Returns true if the Circ2d is Unqualified and false in
     /// the other cases.
     pub fn is_unqualified(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_QualifiedCirc_is_unqualified(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GccEnt_QualifiedCirc_is_unqualified(self as *const Self)
+        })
     }
 
     /// **Source:** `GccEnt_QualifiedCirc.hxx`:67 - `GccEnt_QualifiedCirc::IsEnclosing()`
     /// Returns true if the solution computed by a construction
     /// algorithm using this qualified circle encloses the circle.
     pub fn is_enclosing(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_QualifiedCirc_is_enclosing(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GccEnt_QualifiedCirc_is_enclosing(self as *const Self)
+        })
     }
 
     /// **Source:** `GccEnt_QualifiedCirc.hxx`:71 - `GccEnt_QualifiedCirc::IsEnclosed()`
     /// Returns true if the solution computed by a construction
     /// algorithm using this qualified circle is enclosed by the circle.
     pub fn is_enclosed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_QualifiedCirc_is_enclosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GccEnt_QualifiedCirc_is_enclosed(self as *const Self)
+        })
     }
 
     /// **Source:** `GccEnt_QualifiedCirc.hxx`:76 - `GccEnt_QualifiedCirc::IsOutside()`
@@ -752,15 +571,9 @@ impl QualifiedCirc {
     /// construction algorithm using this qualified circle and the
     /// circle are external to one another.
     pub fn is_outside(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_QualifiedCirc_is_outside(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GccEnt_QualifiedCirc_is_outside(self as *const Self)
+        })
     }
 }
 
@@ -801,28 +614,20 @@ impl QualifiedLin {
         Qualified: &crate::gp::Lin2d,
         Qualifier: crate::gcc_ent::Position,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GccEnt_QualifiedLin_ctor_lin2d_position(Qualified, Qualifier.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GccEnt_QualifiedLin_ctor_lin2d_position(Qualified, Qualifier.into()),
+            ))
         }
     }
 
     /// **Source:** `GccEnt_QualifiedLin.hxx`:54 - `GccEnt_QualifiedLin::Qualified()`
     /// Returns a 2D line to which the qualifier is assigned.
     pub fn qualified(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_QualifiedLin_qualified(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GccEnt_QualifiedLin_qualified(self as *const Self),
+            ))
         }
     }
 
@@ -831,59 +636,36 @@ impl QualifiedLin {
     /// "outside", or
     /// -   GccEnt_noqualifier if it is unqualified.
     pub fn qualifier(&self) -> crate::gcc_ent::Position {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_QualifiedLin_qualifier(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::gcc_ent::Position::try_from(__val).unwrap()
-        }
+        crate::gcc_ent::Position::try_from(crate::check_result(unsafe {
+            crate::ffi::GccEnt_QualifiedLin_qualifier(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `GccEnt_QualifiedLin.hxx`:63 - `GccEnt_QualifiedLin::IsUnqualified()`
     /// Returns true if the solution is unqualified and false in
     /// the other cases.
     pub fn is_unqualified(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_QualifiedLin_is_unqualified(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GccEnt_QualifiedLin_is_unqualified(self as *const Self)
+        })
     }
 
     /// **Source:** `GccEnt_QualifiedLin.hxx`:67 - `GccEnt_QualifiedLin::IsEnclosed()`
     /// Returns true if the solution is Enclosed in the Lin2d and false in
     /// the other cases.
     pub fn is_enclosed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_QualifiedLin_is_enclosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GccEnt_QualifiedLin_is_enclosed(self as *const Self)
+        })
     }
 
     /// **Source:** `GccEnt_QualifiedLin.hxx`:71 - `GccEnt_QualifiedLin::IsOutside()`
     /// Returns true if the solution is Outside the Lin2d and false in
     /// the other cases.
     pub fn is_outside(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GccEnt_QualifiedLin_is_outside(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GccEnt_QualifiedLin_is_outside(self as *const Self)
+        })
     }
 }

@@ -15,13 +15,10 @@ pub fn to3d_ax2_handlegeom2dcurve(
     Position: &crate::gp::Ax2,
     Curve2d: &crate::ffi::HandleGeom2dCurve,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-    {
-        let __result = unsafe { crate::ffi::GeomLib_to3d_ax2_handlegeom2dcurve(Position, Curve2d) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi::GeomLib_to3d_ax2_handlegeom2dcurve(Position, Curve2d),
+        ))
     }
 }
 /// **Source:** `GeomLib.hxx`:67 - `GeomLib::GTransform`
@@ -37,13 +34,10 @@ pub fn g_transform(
     Curve: &crate::ffi::HandleGeom2dCurve,
     GTrsf: &crate::gp::GTrsf2d,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-    {
-        let __result = unsafe { crate::ffi::GeomLib_g_transform(Curve, GTrsf) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomLib_g_transform(
+            Curve, GTrsf,
+        )))
     }
 }
 /// **Source:** `GeomLib.hxx`:76 - `GeomLib::SameRange`
@@ -62,22 +56,17 @@ pub fn same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve(
     RequestedLast: f64,
     NewCurve2dPtr: &mut crate::ffi::HandleGeom2dCurve,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::GeomLib_same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve(
-                Tolerance,
-                Curve2dPtr,
-                First,
-                Last,
-                RequestedFirst,
-                RequestedLast,
-                NewCurve2dPtr,
-            )
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::GeomLib_same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve(
+            Tolerance,
+            Curve2dPtr,
+            First,
+            Last,
+            RequestedFirst,
+            RequestedLast,
+            NewCurve2dPtr,
+        )
+    })
 }
 /// **Source:** `GeomLib.hxx`:84 - `GeomLib::BuildCurve3d`
 pub fn build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(
@@ -92,14 +81,20 @@ pub fn build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(
     MaxDegree: i32,
     MaxSegment: i32,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::GeomLib_build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(Tolerance, CurvePtr, FirstParameter, LastParameter, NewCurvePtr, MaxDeviation, AverageDeviation, Continuity.into(), MaxDegree, MaxSegment)
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::GeomLib_build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(
+            Tolerance,
+            CurvePtr,
+            FirstParameter,
+            LastParameter,
+            NewCurvePtr,
+            MaxDeviation,
+            AverageDeviation,
+            Continuity.into(),
+            MaxDegree,
+            MaxSegment,
+        )
+    })
 }
 /// **Source:** `GeomLib.hxx`:95 - `GeomLib::AdjustExtremity`
 pub fn adjust_extremity(
@@ -109,12 +104,7 @@ pub fn adjust_extremity(
     T1: &crate::gp::Vec,
     T2: &crate::gp::Vec,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::GeomLib_adjust_extremity(Curve, P1, P2, T1, T2) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::GeomLib_adjust_extremity(Curve, P1, P2, T1, T2) })
 }
 /// **Source:** `GeomLib.hxx`:115 - `GeomLib::ExtendCurveToPoint`
 /// Extends the bounded curve Curve to the point Point.
@@ -137,12 +127,9 @@ pub fn extend_curve_to_point(
     Cont: i32,
     After: bool,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::GeomLib_extend_curve_to_point(Curve, Point, Cont, After) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::GeomLib_extend_curve_to_point(Curve, Point, Cont, After)
+    })
 }
 /// **Source:** `GeomLib.hxx`:139 - `GeomLib::ExtendSurfByLength`
 /// Extends the bounded surface Surf along one of its
@@ -171,13 +158,9 @@ pub fn extend_surf_by_length(
     InU: bool,
     After: bool,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::GeomLib_extend_surf_by_length(Surf, Length, Cont, InU, After) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::GeomLib_extend_surf_by_length(Surf, Length, Cont, InU, After)
+    })
 }
 /// **Source:** `GeomLib.hxx`:151 - `GeomLib::AxeOfInertia`
 /// Compute   axes of inertia,  of some  points --  -- --
@@ -192,12 +175,9 @@ pub fn axe_of_inertia(
     IsSingular: &mut bool,
     Tol: f64,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::GeomLib_axe_of_inertia(Points, Axe, IsSingular, Tol) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::GeomLib_axe_of_inertia(Points, Axe, IsSingular, Tol)
+    })
 }
 /// **Source:** `GeomLib.hxx`:158 - `GeomLib::Inertia`
 /// Compute principale axes  of  inertia, and dispersion
@@ -211,13 +191,9 @@ pub fn inertia(
     YGap: &mut f64,
     ZGap: &mut f64,
 ) {
-    {
-        let __exc =
-            unsafe { crate::ffi::GeomLib_inertia(Points, Bary, XDir, YDir, Xgap, YGap, ZGap) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::GeomLib_inertia(Points, Bary, XDir, YDir, Xgap, YGap, ZGap)
+    })
 }
 /// **Source:** `GeomLib.hxx`:232 - `GeomLib::CancelDenominatorDerivative`
 /// Cancel,on the boundaries,the denominator  first derivative
@@ -227,14 +203,9 @@ pub fn cancel_denominator_derivative(
     UDirection: bool,
     VDirection: bool,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::GeomLib_cancel_denominator_derivative(BSurf, UDirection, VDirection)
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::GeomLib_cancel_denominator_derivative(BSurf, UDirection, VDirection)
+    })
 }
 /// **Source:** `GeomLib.hxx`:244 - `GeomLib::NormEstim`
 /// Estimate surface normal at the given (U, V) point.
@@ -251,14 +222,7 @@ pub fn norm_estim(
     theTol: f64,
     theNorm: &mut crate::gp::Dir,
 ) -> i32 {
-    {
-        let __result = unsafe { crate::ffi::GeomLib_norm_estim(theSurf, theUV, theTol, theNorm) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::GeomLib_norm_estim(theSurf, theUV, theTol, theNorm) })
 }
 /// **Source:** `GeomLib.hxx`:251 - `GeomLib::IsClosed`
 /// This method defines if opposite boundaries of surface
@@ -269,12 +233,7 @@ pub fn is_closed(
     isUClosed: &mut bool,
     isVClosed: &mut bool,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::GeomLib_is_closed(S, Tol, isUClosed, isVClosed) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::GeomLib_is_closed(S, Tol, isUClosed, isVClosed) })
 }
 /// **Source:** `GeomLib.hxx`:259 - `GeomLib::IsBSplUClosed`
 /// Returns true if the poles of U1 isoline and the poles of
@@ -286,14 +245,7 @@ pub fn is_b_spl_u_closed(
     U2: f64,
     Tol: f64,
 ) -> bool {
-    {
-        let __result = unsafe { crate::ffi::GeomLib_is_b_spl_u_closed(S, U1, U2, Tol) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::GeomLib_is_b_spl_u_closed(S, U1, U2, Tol) })
 }
 /// **Source:** `GeomLib.hxx`:267 - `GeomLib::IsBSplVClosed`
 /// Returns true if the poles of V1 isoline and the poles of
@@ -305,40 +257,19 @@ pub fn is_b_spl_v_closed(
     V2: f64,
     Tol: f64,
 ) -> bool {
-    {
-        let __result = unsafe { crate::ffi::GeomLib_is_b_spl_v_closed(S, V1, V2, Tol) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::GeomLib_is_b_spl_v_closed(S, V1, V2, Tol) })
 }
 /// **Source:** `GeomLib.hxx`:274 - `GeomLib::IsBzUClosed`
 /// Returns true if the poles of U1 isoline and the poles of
 /// U2 isoline of surface are identical according to tolerance criterion.
 pub fn is_bz_u_closed(S: &crate::ffi::HandleGeomBezierSurface, U1: f64, U2: f64, Tol: f64) -> bool {
-    {
-        let __result = unsafe { crate::ffi::GeomLib_is_bz_u_closed(S, U1, U2, Tol) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::GeomLib_is_bz_u_closed(S, U1, U2, Tol) })
 }
 /// **Source:** `GeomLib.hxx`:281 - `GeomLib::IsBzVClosed`
 /// Returns true if the poles of V1 isoline and the poles of
 /// V2 isoline of surface are identical according to tolerance criterion.
 pub fn is_bz_v_closed(S: &crate::ffi::HandleGeomBezierSurface, V1: f64, V2: f64, Tol: f64) -> bool {
-    {
-        let __result = unsafe { crate::ffi::GeomLib_is_bz_v_closed(S, V1, V2, Tol) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe { crate::ffi::GeomLib_is_bz_v_closed(S, V1, V2, Tol) })
 }
 /// **Source:** `GeomLib.hxx`:293 - `GeomLib::isIsoLine`
 /// Checks whether the 2d curve is a isoline. It can be represented by b-spline, bezier,
@@ -354,15 +285,9 @@ pub fn is_iso_line(
     theParam: &mut f64,
     theIsForward: &mut bool,
 ) -> bool {
-    {
-        let __result =
-            unsafe { crate::ffi::GeomLib_is_iso_line(theC2D, theIsU, theParam, theIsForward) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::GeomLib_is_iso_line(theC2D, theIsU, theParam, theIsForward)
+    })
 }
 /// **Source:** `GeomLib.hxx`:305 - `GeomLib::buildC3dOnIsoLine`
 /// Builds 3D curve for a isoline. This method takes corresponding isoline from
@@ -382,24 +307,17 @@ pub fn build_c3d_on_iso_line(
     theParam: f64,
     theIsForward: bool,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-    {
-        let __result = unsafe {
-            crate::ffi::GeomLib_build_c3d_on_iso_line(
-                theC2D,
-                theSurf,
-                theFirst,
-                theLast,
-                theTolerance,
-                theIsU,
-                theParam,
-                theIsForward,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomLib_build_c3d_on_iso_line(
+            theC2D,
+            theSurf,
+            theFirst,
+            theLast,
+            theTolerance,
+            theIsU,
+            theParam,
+            theIsForward,
+        )))
     }
 }
 
@@ -457,64 +375,44 @@ impl Check2dBSplineCurve {
         Tolerance: f64,
         AngularTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GeomLib_Check2dBSplineCurve_ctor_handlegeom2dbsplinecurve_real2(
                     Curve,
                     Tolerance,
                     AngularTolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomLib_Check2dBSplineCurve.hxx`:37 - `GeomLib_Check2dBSplineCurve::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_Check2dBSplineCurve_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_Check2dBSplineCurve_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomLib_Check2dBSplineCurve.hxx`:39 - `GeomLib_Check2dBSplineCurve::NeedTangentFix()`
     pub fn need_tangent_fix(&self, FirstFlag: &mut bool, SecondFlag: &mut bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GeomLib_Check2dBSplineCurve_need_tangent_fix(
-                    self as *const Self,
-                    FirstFlag,
-                    SecondFlag,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GeomLib_Check2dBSplineCurve_need_tangent_fix(
+                self as *const Self,
+                FirstFlag,
+                SecondFlag,
+            )
+        })
     }
 
     /// **Source:** `GeomLib_Check2dBSplineCurve.hxx`:42 - `GeomLib_Check2dBSplineCurve::FixTangent()`
     pub fn fix_tangent(&mut self, FirstFlag: bool, LastFlag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GeomLib_Check2dBSplineCurve_fix_tangent(
-                    self as *mut Self,
-                    FirstFlag,
-                    LastFlag,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GeomLib_Check2dBSplineCurve_fix_tangent(
+                self as *mut Self,
+                FirstFlag,
+                LastFlag,
+            )
+        })
     }
 
     /// **Source:** `GeomLib_Check2dBSplineCurve.hxx`:50 - `GeomLib_Check2dBSplineCurve::FixedTangent()`
@@ -528,19 +426,14 @@ impl Check2dBSplineCurve {
         FirstFlag: bool,
         LastFlag: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GeomLib_Check2dBSplineCurve_fixed_tangent(
                     self as *mut Self,
                     FirstFlag,
                     LastFlag,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 }
@@ -567,64 +460,44 @@ impl CheckBSplineCurve {
         Tolerance: f64,
         AngularTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GeomLib_CheckBSplineCurve_ctor_handlegeombsplinecurve_real2(
                     Curve,
                     Tolerance,
                     AngularTolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomLib_CheckBSplineCurve.hxx`:37 - `GeomLib_CheckBSplineCurve::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_CheckBSplineCurve_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_CheckBSplineCurve_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomLib_CheckBSplineCurve.hxx`:39 - `GeomLib_CheckBSplineCurve::NeedTangentFix()`
     pub fn need_tangent_fix(&self, FirstFlag: &mut bool, SecondFlag: &mut bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GeomLib_CheckBSplineCurve_need_tangent_fix(
-                    self as *const Self,
-                    FirstFlag,
-                    SecondFlag,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GeomLib_CheckBSplineCurve_need_tangent_fix(
+                self as *const Self,
+                FirstFlag,
+                SecondFlag,
+            )
+        })
     }
 
     /// **Source:** `GeomLib_CheckBSplineCurve.hxx`:42 - `GeomLib_CheckBSplineCurve::FixTangent()`
     pub fn fix_tangent(&mut self, FirstFlag: bool, LastFlag: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GeomLib_CheckBSplineCurve_fix_tangent(
-                    self as *mut Self,
-                    FirstFlag,
-                    LastFlag,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GeomLib_CheckBSplineCurve_fix_tangent(
+                self as *mut Self,
+                FirstFlag,
+                LastFlag,
+            )
+        })
     }
 
     /// **Source:** `GeomLib_CheckBSplineCurve.hxx`:50 - `GeomLib_CheckBSplineCurve::FixedTangent()`
@@ -638,19 +511,14 @@ impl CheckBSplineCurve {
         FirstFlag: bool,
         LastFlag: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GeomLib_CheckBSplineCurve_fixed_tangent(
                     self as *mut Self,
                     FirstFlag,
                     LastFlag,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 }
@@ -674,12 +542,10 @@ impl CheckCurveOnSurface {
     /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:32 - `GeomLib_CheckCurveOnSurface::GeomLib_CheckCurveOnSurface()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GeomLib_CheckCurveOnSurface_ctor(),
+            ))
         }
     }
 
@@ -689,17 +555,13 @@ impl CheckCurveOnSurface {
         theCurve: &crate::ffi::HandleAdaptor3dCurve,
         theTolRange: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GeomLib_CheckCurveOnSurface_ctor_handleadaptor3dcurve_real(
                     theCurve,
                     theTolRange,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -710,29 +572,21 @@ impl CheckCurveOnSurface {
         theCurve: &crate::ffi::HandleAdaptor3dCurve,
         theTolRange: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GeomLib_CheckCurveOnSurface_init_handleadaptor3dcurve_real(
-                    self as *mut Self,
-                    theCurve,
-                    theTolRange,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_init_handleadaptor3dcurve_real(
+                self as *mut Self,
+                theCurve,
+                theTolRange,
+            )
+        })
     }
 
     /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:44 - `GeomLib_CheckCurveOnSurface::Init()`
     /// Initializes all members by default values
     pub fn init(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_init(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:49 - `GeomLib_CheckCurveOnSurface::Perform()`
@@ -740,61 +594,33 @@ impl CheckCurveOnSurface {
     /// and 2d curve <theCurveOnSurface>
     /// If isMultiThread == Standard_True then computation will be performed in parallel.
     pub fn perform(&mut self, theCurveOnSurface: &crate::ffi::HandleAdaptor3dCurveOnSurface) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GeomLib_CheckCurveOnSurface_perform(
-                    self as *mut Self,
-                    theCurveOnSurface,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_perform(self as *mut Self, theCurveOnSurface)
+        })
     }
 
     /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:52 - `GeomLib_CheckCurveOnSurface::SetParallel()`
     /// Sets parallel flag
     pub fn set_parallel(&mut self, theIsParallel: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GeomLib_CheckCurveOnSurface_set_parallel(
-                    self as *mut Self,
-                    theIsParallel,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_set_parallel(self as *mut Self, theIsParallel)
+        })
     }
 
     /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:55 - `GeomLib_CheckCurveOnSurface::IsParallel()`
     /// Returns true if parallel flag is set
     pub fn is_parallel(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_is_parallel(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_is_parallel(self as *mut Self)
+        })
     }
 
     /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:58 - `GeomLib_CheckCurveOnSurface::IsDone()`
     /// Returns true if the max distance has been found
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:66 - `GeomLib_CheckCurveOnSurface::ErrorStatus()`
@@ -805,46 +631,25 @@ impl CheckCurveOnSurface {
     /// 2 - invalid parametric range;
     /// 3 - error in calculations.
     pub fn error_status(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_CheckCurveOnSurface_error_status(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_error_status(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:69 - `GeomLib_CheckCurveOnSurface::MaxDistance()`
     /// Returns max distance
     pub fn max_distance(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_CheckCurveOnSurface_max_distance(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_max_distance(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:72 - `GeomLib_CheckCurveOnSurface::MaxParameter()`
     /// Returns parameter in which the distance is maximal
     pub fn max_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_CheckCurveOnSurface_max_parameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_max_parameter(self as *const Self)
+        })
     }
 }
 
@@ -876,16 +681,8 @@ impl DenominatorMultiplier {
         Surface: &crate::ffi::HandleGeomBSplineSurface,
         KnotVector: &crate::ffi::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_DenominatorMultiplier_ctor_handlegeombsplinesurface_array1ofreal(
-                    Surface, KnotVector,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomLib_DenominatorMultiplier_ctor_handlegeombsplinesurface_array1ofreal(Surface, KnotVector)))
         }
     }
 
@@ -905,20 +702,13 @@ impl DenominatorMultiplier {
     /// - ------------------------------[H2(u)]/(Denominator(Umax,Vparameter)^2)
     /// D U
     pub fn value(&self, UParameter: f64, VParameter: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_DenominatorMultiplier_value(
-                    self as *const Self,
-                    UParameter,
-                    VParameter,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_DenominatorMultiplier_value(
+                self as *const Self,
+                UParameter,
+                VParameter,
+            )
+        })
     }
 }
 
@@ -951,55 +741,37 @@ impl Interpolate {
         Points: &crate::ffi::TColgp_Array1OfPnt,
         Parameters: &crate::ffi::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GeomLib_Interpolate_ctor_int2_array1ofpnt_array1ofreal(
                     Degree, NumPoints, Points, Parameters,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomLib_Interpolate.hxx`:49 - `GeomLib_Interpolate::IsDone()`
     /// returns if everything went OK
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::GeomLib_Interpolate_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::GeomLib_Interpolate_is_done(self as *const Self) })
     }
 
     /// **Source:** `GeomLib_Interpolate.hxx`:52 - `GeomLib_Interpolate::Error()`
     /// returns the error type if any
     pub fn error(&self) -> crate::geom_lib::InterpolationErrors {
-        {
-            let __result = unsafe { crate::ffi::GeomLib_Interpolate_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_lib::InterpolationErrors::try_from(__val).unwrap()
-        }
+        crate::geom_lib::InterpolationErrors::try_from(crate::check_result(unsafe {
+            crate::ffi::GeomLib_Interpolate_error(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `GeomLib_Interpolate.hxx`:55 - `GeomLib_Interpolate::Curve()`
     /// returns the interpolated curve of the requested degree
     pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result = unsafe { crate::ffi::GeomLib_Interpolate_curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomLib_Interpolate_curve(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1024,13 +796,10 @@ impl IsPlanarSurface {
         S: &crate::ffi::HandleGeomSurface,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_IsPlanarSurface_ctor_handlegeomsurface_real(S, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GeomLib_IsPlanarSurface_ctor_handlegeomsurface_real(S, Tol),
+            ))
         }
     }
 
@@ -1042,27 +811,16 @@ impl IsPlanarSurface {
     /// **Source:** `GeomLib_IsPlanarSurface.hxx`:37 - `GeomLib_IsPlanarSurface::IsPlanar()`
     /// Return if the Surface is a plan
     pub fn is_planar(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_IsPlanarSurface_is_planar(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_IsPlanarSurface_is_planar(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomLib_IsPlanarSurface.hxx`:40 - `GeomLib_IsPlanarSurface::Plan()`
     /// Return the plan definition
     pub fn plan(&self) -> &crate::gp::Pln {
-        {
-            let __result = unsafe { crate::ffi::GeomLib_IsPlanarSurface_plan(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::GeomLib_IsPlanarSurface_plan(self as *const Self)))
         }
     }
 }
@@ -1083,12 +841,10 @@ unsafe impl crate::CppDeletable for LogSample {
 impl LogSample {
     /// **Source:** `GeomLib_LogSample.hxx`:32 - `GeomLib_LogSample::GeomLib_LogSample()`
     pub fn new_real2_int(A: f64, B: f64, N: i32) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::GeomLib_LogSample_ctor_real2_int(A, B, N) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GeomLib_LogSample_ctor_real2_int(A, B, N),
+            ))
         }
     }
 
@@ -1097,60 +853,41 @@ impl LogSample {
     /// range Index : A + ((Index-1)/(NbPoints-1))*B.
     /// An exception is raised if Index<=0 or Index>NbPoints.
     pub fn get_parameter(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_LogSample_get_parameter(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_LogSample_get_parameter(self as *const Self, Index)
+        })
     }
 
     /// Upcast to math_FunctionSample
     pub fn as_math_function_sample(&self) -> &crate::math::FunctionSample {
-        let __result =
-            unsafe { crate::ffi::GeomLib_LogSample_as_math_FunctionSample(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::GeomLib_LogSample_as_math_FunctionSample(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSample (mutable)
     pub fn as_math_function_sample_mut(&mut self) -> &mut crate::math::FunctionSample {
-        let __result =
-            unsafe { crate::ffi::GeomLib_LogSample_as_math_FunctionSample_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::GeomLib_LogSample_as_math_FunctionSample_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSample.hxx`:39 - `math_FunctionSample::Bounds()`
     pub fn bounds(&self, A: &mut f64, B: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GeomLib_LogSample_inherited_Bounds(self as *const Self, A, B)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GeomLib_LogSample_inherited_Bounds(self as *const Self, A, B)
+        })
     }
 
     /// Inherited: **Source:** `math_FunctionSample.hxx`:42 - `math_FunctionSample::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_LogSample_inherited_NbPoints(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_LogSample_inherited_NbPoints(self as *const Self)
+        })
     }
 }
 
@@ -1174,72 +911,42 @@ impl MakeCurvefromApprox {
     pub fn new_approxafunction(
         Approx: &crate::adv_approx::ApproxAFunction,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_MakeCurvefromApprox_ctor_approxafunction(Approx) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GeomLib_MakeCurvefromApprox_ctor_approxafunction(Approx),
+            ))
         }
     }
 
     /// **Source:** `GeomLib_MakeCurvefromApprox.hxx`:38 - `GeomLib_MakeCurvefromApprox::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_MakeCurvefromApprox_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_MakeCurvefromApprox_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomLib_MakeCurvefromApprox.hxx`:41 - `GeomLib_MakeCurvefromApprox::Nb1DSpaces()`
     /// returns the number of 1D spaces of the Approx
     pub fn nb1_d_spaces(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_MakeCurvefromApprox_nb1_d_spaces(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_MakeCurvefromApprox_nb1_d_spaces(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomLib_MakeCurvefromApprox.hxx`:44 - `GeomLib_MakeCurvefromApprox::Nb2DSpaces()`
     /// returns the number of 3D spaces of the Approx
     pub fn nb2_d_spaces(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_MakeCurvefromApprox_nb2_d_spaces(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_MakeCurvefromApprox_nb2_d_spaces(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomLib_MakeCurvefromApprox.hxx`:47 - `GeomLib_MakeCurvefromApprox::Nb3DSpaces()`
     /// returns the number of 3D spaces of the Approx
     pub fn nb3_d_spaces(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_MakeCurvefromApprox_nb3_d_spaces(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_MakeCurvefromApprox_nb3_d_spaces(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomLib_MakeCurvefromApprox.hxx`:53 - `GeomLib_MakeCurvefromApprox::Curve2d()`
@@ -1251,15 +958,10 @@ impl MakeCurvefromApprox {
         &self,
         Index2d: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_MakeCurvefromApprox_curve2d_int(self as *const Self, Index2d)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GeomLib_MakeCurvefromApprox_curve2d_int(self as *const Self, Index2d),
+            ))
         }
     }
 
@@ -1275,19 +977,14 @@ impl MakeCurvefromApprox {
         Index1d: i32,
         Index2d: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GeomLib_MakeCurvefromApprox_curve2d_from_two1d(
                     self as *const Self,
                     Index1d,
                     Index2d,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1303,19 +1000,14 @@ impl MakeCurvefromApprox {
         Index1d: i32,
         Index2d: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GeomLib_MakeCurvefromApprox_curve2d_int2(
                     self as *const Self,
                     Index1d,
                     Index2d,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -1325,15 +1017,10 @@ impl MakeCurvefromApprox {
     /// if Index3D not in the Range [1,Nb3dSpaces]
     /// if the Approx is not Done
     pub fn curve_int(&self, Index3d: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_MakeCurvefromApprox_curve_int(self as *const Self, Index3d)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GeomLib_MakeCurvefromApprox_curve_int(self as *const Self, Index3d),
+            ))
         }
     }
 
@@ -1349,19 +1036,14 @@ impl MakeCurvefromApprox {
         Index1D: i32,
         Index3D: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GeomLib_MakeCurvefromApprox_curve_int2(
                     self as *const Self,
                     Index1D,
                     Index3D,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 }
@@ -1383,12 +1065,10 @@ unsafe impl crate::CppDeletable for PolyFunc {
 impl PolyFunc {
     /// **Source:** `GeomLib_PolyFunc.hxx`:33 - `GeomLib_PolyFunc::GeomLib_PolyFunc()`
     pub fn new_vector(Coeffs: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::GeomLib_PolyFunc_ctor_vector(Coeffs) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GeomLib_PolyFunc_ctor_vector(Coeffs),
+            ))
         }
     }
 
@@ -1397,14 +1077,7 @@ impl PolyFunc {
     /// Returns True if the calculation were successfully done,
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        {
-            let __result = unsafe { crate::ffi::GeomLib_PolyFunc_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::GeomLib_PolyFunc_value(self as *mut Self, X, F) })
     }
 
     /// **Source:** `GeomLib_PolyFunc.hxx`:45 - `GeomLib_PolyFunc::Derivative()`
@@ -1413,15 +1086,9 @@ impl PolyFunc {
     /// Returns True if the calculation were successfully done,
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_PolyFunc_derivative(self as *mut Self, X, D) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_PolyFunc_derivative(self as *mut Self, X, D)
+        })
     }
 
     /// **Source:** `GeomLib_PolyFunc.hxx`:52 - `GeomLib_PolyFunc::Values()`
@@ -1430,72 +1097,54 @@ impl PolyFunc {
     /// Returns True if the calculation were successfully done,
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_PolyFunc_values(self as *mut Self, X, F, D) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_PolyFunc_values(self as *mut Self, X, F, D)
+        })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::GeomLib_PolyFunc_as_math_FunctionWithDerivative(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::GeomLib_PolyFunc_as_math_FunctionWithDerivative(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        let __result = unsafe {
-            crate::ffi::GeomLib_PolyFunc_as_math_FunctionWithDerivative_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::GeomLib_PolyFunc_as_math_FunctionWithDerivative_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::GeomLib_PolyFunc_as_math_Function(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::GeomLib_PolyFunc_as_math_Function(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::GeomLib_PolyFunc_as_math_Function_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::GeomLib_PolyFunc_as_math_Function_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_PolyFunc_inherited_GetStateNumber(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_PolyFunc_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -1525,13 +1174,7 @@ impl Tool {
     /// **Source:** `GeomLib_Tool.hxx` - `GeomLib_Tool::GeomLib_Tool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::GeomLib_Tool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomLib_Tool_ctor())) }
     }
 
     /// **Source:** `GeomLib_Tool.hxx`:51 - `GeomLib_Tool::Parameter()`
@@ -1543,18 +1186,9 @@ impl Tool {
         MaxDist: f64,
         U: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_Tool_parameter_handlegeomcurve_pnt_real2(
-                    Curve, Point, MaxDist, U,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_Tool_parameter_handlegeomcurve_pnt_real2(Curve, Point, MaxDist, U)
+        })
     }
 
     /// **Source:** `GeomLib_Tool.hxx`:58 - `GeomLib_Tool::Parameters()`
@@ -1567,15 +1201,9 @@ impl Tool {
         U: &mut f64,
         V: &mut f64,
     ) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomLib_Tool_parameters(Surface, Point, MaxDist, U, V) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_Tool_parameters(Surface, Point, MaxDist, U, V)
+        })
     }
 
     /// **Source:** `GeomLib_Tool.hxx`:66 - `GeomLib_Tool::Parameter()`
@@ -1587,18 +1215,11 @@ impl Tool {
         MaxDist: f64,
         U: &mut f64,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_Tool_parameter_handlegeom2dcurve_pnt2d_real2(
-                    Curve, Point, MaxDist, U,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_Tool_parameter_handlegeom2dcurve_pnt2d_real2(
+                Curve, Point, MaxDist, U,
+            )
+        })
     }
 
     /// **Source:** `GeomLib_Tool.hxx`:88 - `GeomLib_Tool::ComputeDeviation()`
@@ -1630,16 +1251,9 @@ impl Tool {
         theVecCurvLine: Option<&mut crate::gp::Vec2d>,
         theLine: Option<&mut crate::gp::Lin2d>,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_Tool_compute_deviation_curve_real3_int_realptr_pnt2dptr_vec2dptr_lin2dptr(theCurve, theFPar, theLPar, theStartParameter, theNbIters, thePrmOnCurve.map_or(std::ptr::null_mut(), |r| r as *mut _), thePtOnCurve.map_or(std::ptr::null_mut(), |r| r as *mut _), theVecCurvLine.map_or(std::ptr::null_mut(), |r| r as *mut _), theLine.map_or(std::ptr::null_mut(), |r| r as *mut _))
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_Tool_compute_deviation_curve_real3_int_realptr_pnt2dptr_vec2dptr_lin2dptr(theCurve, theFPar, theLPar, theStartParameter, theNbIters, thePrmOnCurve.map_or(std::ptr::null_mut(), |r| r as *mut _), thePtOnCurve.map_or(std::ptr::null_mut(), |r| r as *mut _), theVecCurvLine.map_or(std::ptr::null_mut(), |r| r as *mut _), theLine.map_or(std::ptr::null_mut(), |r| r as *mut _))
+        })
     }
 
     /// **Source:** `GeomLib_Tool.hxx`:116 - `GeomLib_Tool::ComputeDeviation()`
@@ -1669,22 +1283,15 @@ impl Tool {
         theNbIters: i32,
         thePrmOnCurve: Option<&mut f64>,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomLib_Tool_compute_deviation_curve_real2_int2_realptr(
-                    theCurve,
-                    theFPar,
-                    theLPar,
-                    theNbSubIntervals,
-                    theNbIters,
-                    thePrmOnCurve.map_or(std::ptr::null_mut(), |r| r as *mut _),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GeomLib_Tool_compute_deviation_curve_real2_int2_realptr(
+                theCurve,
+                theFPar,
+                theLPar,
+                theNbSubIntervals,
+                theNbIters,
+                thePrmOnCurve.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        })
     }
 }

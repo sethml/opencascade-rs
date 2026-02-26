@@ -29,12 +29,9 @@ pub fn add_shape_box_bool(
     B: &mut crate::bnd::Box,
     useTriangulation: bool,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::BRepBndLib_add_shape_box_bool(S, B, useTriangulation) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepBndLib_add_shape_box_bool(S, B, useTriangulation)
+    })
 }
 /// **Source:** `BRepBndLib.hxx`:67 - `BRepBndLib::AddClose`
 /// Adds the shape S to the bounding box B.
@@ -49,12 +46,7 @@ pub fn add_shape_box_bool(
 /// Add function. So the added part of the resulting bounding
 /// box is closer to the shape S.
 pub fn add_close(S: &crate::topo_ds::Shape, B: &mut crate::bnd::Box) {
-    {
-        let __exc = unsafe { crate::ffi::BRepBndLib_add_close(S, B) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe { crate::ffi::BRepBndLib_add_close(S, B) })
 }
 /// **Source:** `BRepBndLib.hxx`:78 - `BRepBndLib::AddOptimal`
 /// Adds the shape S to the bounding box B.
@@ -72,14 +64,9 @@ pub fn add_optimal(
     useTriangulation: bool,
     useShapeTolerance: bool,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::BRepBndLib_add_optimal(S, B, useTriangulation, useShapeTolerance)
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepBndLib_add_optimal(S, B, useTriangulation, useShapeTolerance)
+    })
 }
 /// **Source:** `BRepBndLib.hxx`:95 - `BRepBndLib::AddOBB`
 /// Computes the Oriented Bounding box for the shape <theS>.
@@ -101,18 +88,13 @@ pub fn add_obb(
     theIsOptimal: bool,
     theIsShapeToleranceUsed: bool,
 ) {
-    {
-        let __exc = unsafe {
-            crate::ffi::BRepBndLib_add_obb(
-                theS,
-                theOBB,
-                theIsTriangulationUsed,
-                theIsOptimal,
-                theIsShapeToleranceUsed,
-            )
-        };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepBndLib_add_obb(
+            theS,
+            theOBB,
+            theIsTriangulationUsed,
+            theIsOptimal,
+            theIsShapeToleranceUsed,
+        )
+    })
 }

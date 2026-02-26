@@ -14,18 +14,13 @@ pub fn find_entity_handletransferfinderprocess_shape(
     FinderProcess: &crate::ffi::HandleTransferFinderProcess,
     Shape: &crate::topo_ds::Shape,
 ) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationItem> {
-    {
-        let __result = unsafe {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi::STEPConstruct_find_entity_handletransferfinderprocess_shape(
                 FinderProcess,
                 Shape,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+            ),
+        ))
     }
 }
 /// **Source:** `STEPConstruct.hxx`:56 - `STEPConstruct::FindEntity`
@@ -38,19 +33,14 @@ pub fn find_entity_handletransferfinderprocess_shape_location(
     Shape: &crate::topo_ds::Shape,
     Loc: &mut crate::top_loc::Location,
 ) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationItem> {
-    {
-        let __result = unsafe {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi::STEPConstruct_find_entity_handletransferfinderprocess_shape_location(
                 FinderProcess,
                 Shape,
                 Loc,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+            ),
+        ))
     }
 }
 /// **Source:** `STEPConstruct.hxx`:62 - `STEPConstruct::FindShape`
@@ -59,13 +49,11 @@ pub fn find_shape(
     TransientProcess: &crate::ffi::HandleTransferTransientProcess,
     item: &crate::ffi::HandleStepReprRepresentationItem,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-    {
-        let __result = unsafe { crate::ffi::STEPConstruct_find_shape(TransientProcess, item) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_find_shape(
+            TransientProcess,
+            item,
+        )))
     }
 }
 /// **Source:** `STEPConstruct.hxx`:67 - `STEPConstruct::FindCDSR`
@@ -75,16 +63,9 @@ pub fn find_cdsr(
     AssemblySDR: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
     ComponentCDSR: &mut crate::ffi::HandleStepShapeContextDependentShapeRepresentation,
 ) -> bool {
-    {
-        let __result = unsafe {
-            crate::ffi::STEPConstruct_find_cdsr(ComponentBinder, AssemblySDR, ComponentCDSR)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        __val
-    }
+    crate::check_result(unsafe {
+        crate::ffi::STEPConstruct_find_cdsr(ComponentBinder, AssemblySDR, ComponentCDSR)
+    })
 }
 
 // ========================
@@ -109,12 +90,10 @@ impl AP203Context {
     /// **Source:** `STEPConstruct_AP203Context.hxx`:53 - `STEPConstruct_AP203Context::STEPConstruct_AP203Context()`
     /// Creates tool and fills constant fields
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_AP203Context_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_ctor(),
+            ))
         }
     }
 
@@ -122,29 +101,19 @@ impl AP203Context {
     /// Returns default approval entity which
     /// is used when no other data are available
     pub fn default_approval(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicApproval> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_default_approval(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_default_approval(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:60 - `STEPConstruct_AP203Context::SetDefaultApproval()`
     /// Sets default approval
     pub fn set_default_approval(&mut self, app: &crate::ffi::HandleStepBasicApproval) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_set_default_approval(self as *mut Self, app)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_set_default_approval(self as *mut Self, app)
+        })
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:64 - `STEPConstruct_AP203Context::DefaultDateAndTime()`
@@ -153,32 +122,19 @@ impl AP203Context {
     pub fn default_date_and_time(
         &mut self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicDateAndTime> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_default_date_and_time(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_default_date_and_time(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:67 - `STEPConstruct_AP203Context::SetDefaultDateAndTime()`
     /// Sets default date_and_time entity
     pub fn set_default_date_and_time(&mut self, dt: &crate::ffi::HandleStepBasicDateAndTime) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_set_default_date_and_time(
-                    self as *mut Self,
-                    dt,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_set_default_date_and_time(self as *mut Self, dt)
+        })
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:71 - `STEPConstruct_AP203Context::DefaultPersonAndOrganization()`
@@ -187,17 +143,12 @@ impl AP203Context {
     pub fn default_person_and_organization(
         &mut self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicPersonAndOrganization> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPConstruct_AP203Context_default_person_and_organization(
                     self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -207,17 +158,12 @@ impl AP203Context {
         &mut self,
         po: &crate::ffi::HandleStepBasicPersonAndOrganization,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_set_default_person_and_organization(
-                    self as *mut Self,
-                    po,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_set_default_person_and_organization(
+                self as *mut Self,
+                po,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:80 - `STEPConstruct_AP203Context::DefaultSecurityClassificationLevel()`
@@ -226,17 +172,12 @@ impl AP203Context {
     pub fn default_security_classification_level(
         &mut self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicSecurityClassificationLevel> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPConstruct_AP203Context_default_security_classification_level(
                     self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -246,31 +187,22 @@ impl AP203Context {
         &mut self,
         sc: &crate::ffi::HandleStepBasicSecurityClassificationLevel,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_set_default_security_classification_level(
-                    self as *mut Self,
-                    sc,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_set_default_security_classification_level(
+                self as *mut Self,
+                sc,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:86 - `STEPConstruct_AP203Context::RoleCreator()`
     pub fn role_creator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicPersonAndOrganizationRole> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_AP203Context_role_creator(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_role_creator(self as *const Self),
+            ))
         }
     }
 
@@ -278,15 +210,10 @@ impl AP203Context {
     pub fn role_design_owner(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicPersonAndOrganizationRole> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_role_design_owner(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_role_design_owner(self as *const Self),
+            ))
         }
     }
 
@@ -294,15 +221,10 @@ impl AP203Context {
     pub fn role_design_supplier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicPersonAndOrganizationRole> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_role_design_supplier(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_role_design_supplier(self as *const Self),
+            ))
         }
     }
 
@@ -310,31 +232,21 @@ impl AP203Context {
     pub fn role_classification_officer(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicPersonAndOrganizationRole> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPConstruct_AP203Context_role_classification_officer(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:94 - `STEPConstruct_AP203Context::RoleCreationDate()`
     pub fn role_creation_date(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicDateTimeRole> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_role_creation_date(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_role_creation_date(self as *const Self),
+            ))
         }
     }
 
@@ -342,15 +254,12 @@ impl AP203Context {
     pub fn role_classification_date(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicDateTimeRole> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_role_classification_date(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_role_classification_date(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -360,15 +269,10 @@ impl AP203Context {
     /// 'classification officer', 'creation date', 'classification date',
     /// 'approver'
     pub fn role_approver(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicApprovalRole> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_role_approver(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_role_approver(self as *const Self),
+            ))
         }
     }
 
@@ -380,14 +284,12 @@ impl AP203Context {
         &mut self,
         sdr: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_init_handlestepshapeshapedefinitionrepresentation(self as *mut Self, sdr)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_init_handlestepshapeshapedefinitionrepresentation(
+                self as *mut Self,
+                sdr,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:119 - `STEPConstruct_AP203Context::Init()`
@@ -402,14 +304,9 @@ impl AP203Context {
     /// GetApprover(), GetApprovalDateTime(),
     /// GetProductCategoryRelationship()
     pub fn init_part(&mut self, SDRTool: &Part) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_init_part(self as *mut Self, SDRTool)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_init_part(self as *mut Self, SDRTool)
+        })
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:133 - `STEPConstruct_AP203Context::Init()`
@@ -429,28 +326,22 @@ impl AP203Context {
         &mut self,
         nauo: &crate::ffi::HandleStepReprNextAssemblyUsageOccurrence,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_init_handlestepreprnextassemblyusageoccurrence(self as *mut Self, nauo)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_init_handlestepreprnextassemblyusageoccurrence(
+                self as *mut Self,
+                nauo,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:135 - `STEPConstruct_AP203Context::GetCreator()`
     pub fn get_creator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_AP203Context_get_creator(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_get_creator(self as *const Self),
+            ))
         }
     }
 
@@ -458,15 +349,10 @@ impl AP203Context {
     pub fn get_design_owner(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_get_design_owner(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_get_design_owner(self as *const Self),
+            ))
         }
     }
 
@@ -474,15 +360,10 @@ impl AP203Context {
     pub fn get_design_supplier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_get_design_supplier(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_get_design_supplier(self as *const Self),
+            ))
         }
     }
 
@@ -490,17 +371,12 @@ impl AP203Context {
     pub fn get_classification_officer(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPConstruct_AP203Context_get_classification_officer(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -508,14 +384,10 @@ impl AP203Context {
     pub fn get_security(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignSecurityClassification> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_AP203Context_get_security(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_get_security(self as *const Self),
+            ))
         }
     }
 
@@ -523,15 +395,10 @@ impl AP203Context {
     pub fn get_creation_date(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_get_creation_date(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_get_creation_date(self as *const Self),
+            ))
         }
     }
 
@@ -539,28 +406,19 @@ impl AP203Context {
     pub fn get_classification_date(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_get_classification_date(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_get_classification_date(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:151 - `STEPConstruct_AP203Context::GetApproval()`
     pub fn get_approval(&self) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignApproval> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_AP203Context_get_approval(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_get_approval(self as *const Self),
+            ))
         }
     }
 
@@ -568,14 +426,10 @@ impl AP203Context {
     pub fn get_approver(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicApprovalPersonOrganization> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_AP203Context_get_approver(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_get_approver(self as *const Self),
+            ))
         }
     }
 
@@ -583,15 +437,10 @@ impl AP203Context {
     pub fn get_approval_date_time(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicApprovalDateTime> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_get_approval_date_time(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_AP203Context_get_approval_date_time(self as *const Self),
+            ))
         }
     }
 
@@ -600,82 +449,55 @@ impl AP203Context {
     pub fn get_product_category_relationship(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductCategoryRelationship> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPConstruct_AP203Context_get_product_category_relationship(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:162 - `STEPConstruct_AP203Context::Clear()`
     /// Clears all fields describing entities specific to each part
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::STEPConstruct_AP203Context_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:165 - `STEPConstruct_AP203Context::InitRoles()`
     /// Initializes constant fields (shared entities)
     pub fn init_roles(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_AP203Context_init_roles(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_init_roles(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:168 - `STEPConstruct_AP203Context::InitAssembly()`
     /// Initializes all missing data which are required for assembly
     pub fn init_assembly(&mut self, nauo: &crate::ffi::HandleStepReprNextAssemblyUsageOccurrence) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_init_assembly(self as *mut Self, nauo)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_init_assembly(self as *mut Self, nauo)
+        })
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:172 - `STEPConstruct_AP203Context::InitSecurityRequisites()`
     /// Initializes ClassificationOfficer and ClassificationDate
     /// entities according to Security entity
     pub fn init_security_requisites(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_init_security_requisites(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_init_security_requisites(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_AP203Context.hxx`:176 - `STEPConstruct_AP203Context::InitApprovalRequisites()`
     /// Initializes Approver and ApprovalDateTime
     /// entities according to Approval entity
     pub fn init_approval_requisites(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_AP203Context_init_approval_requisites(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_AP203Context_init_approval_requisites(self as *mut Self)
+        })
     }
 }
 
@@ -702,12 +524,10 @@ unsafe impl crate::CppDeletable for Assembly {
 impl Assembly {
     /// **Source:** `STEPConstruct_Assembly.hxx`:43 - `STEPConstruct_Assembly::STEPConstruct_Assembly()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Assembly_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::STEPConstruct_Assembly_ctor()),
+            )
         }
     }
 
@@ -724,55 +544,38 @@ impl Assembly {
         Ax0: &crate::ffi::HandleStepGeomAxis2Placement3d,
         Loc: &crate::ffi::HandleStepGeomAxis2Placement3d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_Assembly_init(self as *mut Self, aSR, SDR0, Ax0, Loc)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Assembly_init(self as *mut Self, aSR, SDR0, Ax0, Loc)
+        })
     }
 
     /// **Source:** `STEPConstruct_Assembly.hxx`:57 - `STEPConstruct_Assembly::MakeRelationship()`
     /// Make a (ShapeRepresentationRelationship,...WithTransformation)
     /// Resulting Value is returned by ItemValue
     pub fn make_relationship(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_Assembly_make_relationship(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Assembly_make_relationship(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_Assembly.hxx`:61 - `STEPConstruct_Assembly::ItemValue()`
     /// Returns the Value
     /// If no Make... has been called, returns the starting SR
     pub fn item_value(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Assembly_item_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Assembly_item_value(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Assembly.hxx`:64 - `STEPConstruct_Assembly::ItemLocation()`
     /// Returns the location of the item, computed from starting aLoc
     pub fn item_location(&self) -> crate::OwnedPtr<crate::ffi::HandleStepGeomAxis2Placement3d> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Assembly_item_location(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Assembly_item_location(self as *const Self),
+            ))
         }
     }
 
@@ -781,14 +584,10 @@ impl Assembly {
     pub fn get_nauo(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepReprNextAssemblyUsageOccurrence> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Assembly_get_nauo(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Assembly_get_nauo(self as *const Self),
+            ))
         }
     }
 
@@ -799,16 +598,9 @@ impl Assembly {
         theGraph: &crate::interface::Graph,
         CDSR: &crate::ffi::HandleStepShapeContextDependentShapeRepresentation,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Assembly_check_srr_reverses_nauo(theGraph, CDSR)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_Assembly_check_srr_reverses_nauo(theGraph, CDSR)
+        })
     }
 }
 
@@ -835,12 +627,10 @@ unsafe impl crate::CppDeletable for ContextTool {
 impl ContextTool {
     /// **Source:** `STEPConstruct_ContextTool.hxx`:48 - `STEPConstruct_ContextTool::STEPConstruct_ContextTool()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_ContextTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ContextTool_ctor(),
+            ))
         }
     }
 
@@ -848,14 +638,10 @@ impl ContextTool {
     pub fn new_handlestepdatastepmodel(
         aStepModel: &crate::ffi::HandleStepDataStepModel,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_ctor_handlestepdatastepmodel(aStepModel)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ContextTool_ctor_handlestepdatastepmodel(aStepModel),
+            ))
         }
     }
 
@@ -863,110 +649,69 @@ impl ContextTool {
     /// Initialize ApplicationProtocolDefinition by the first
     /// entity of that type found in the model
     pub fn set_model(&mut self, aStepModel: &crate::ffi::HandleStepDataStepModel) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_set_model(self as *mut Self, aStepModel)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_model(self as *mut Self, aStepModel)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:56 - `STEPConstruct_ContextTool::SetGlobalFactor()`
     pub fn set_global_factor(&mut self, theGlobalFactor: &crate::step_data::Factors) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_set_global_factor(
-                    self as *mut Self,
-                    theGlobalFactor,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_global_factor(
+                self as *mut Self,
+                theGlobalFactor,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:58 - `STEPConstruct_ContextTool::GetAPD()`
     pub fn get_apd(
         &mut self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicApplicationProtocolDefinition> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_get_apd(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ContextTool_get_apd(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:60 - `STEPConstruct_ContextTool::AddAPD()`
     pub fn add_apd(&mut self, enforce: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_add_apd(self as *mut Self, enforce)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_add_apd(self as *mut Self, enforce)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:63 - `STEPConstruct_ContextTool::IsAP203()`
     /// Returns True if APD.schema_name is config_control_design
     pub fn is_ap203(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap203(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_is_ap203(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:66 - `STEPConstruct_ContextTool::IsAP214()`
     /// Returns True if APD.schema_name is automotive_design
     pub fn is_ap214(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap214(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_is_ap214(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:69 - `STEPConstruct_ContextTool::IsAP242()`
     /// Returns True if APD.schema_name is ap242_managed_model_based_3d_engineering
     pub fn is_ap242(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap242(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_is_ap242(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:71 - `STEPConstruct_ContextTool::GetACstatus()`
     pub fn get_a_cstatus(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_get_a_cstatus(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ContextTool_get_a_cstatus(self as *mut Self),
+            ))
         }
     }
 
@@ -974,93 +719,55 @@ impl ContextTool {
     pub fn get_a_cschema_name(
         &mut self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_get_a_cschema_name(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ContextTool_get_a_cschema_name(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:75 - `STEPConstruct_ContextTool::GetACyear()`
     pub fn get_a_cyear(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_get_a_cyear(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_get_a_cyear(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:77 - `STEPConstruct_ContextTool::GetACname()`
     pub fn get_a_cname(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_get_a_cname(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ContextTool_get_a_cname(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:79 - `STEPConstruct_ContextTool::SetACstatus()`
     pub fn set_a_cstatus(&mut self, status: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_set_a_cstatus(self as *mut Self, status)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_a_cstatus(self as *mut Self, status)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:81 - `STEPConstruct_ContextTool::SetACschemaName()`
     pub fn set_a_cschema_name(&mut self, schemaName: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_set_a_cschema_name(
-                    self as *mut Self,
-                    schemaName,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_a_cschema_name(self as *mut Self, schemaName)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:83 - `STEPConstruct_ContextTool::SetACyear()`
     pub fn set_a_cyear(&mut self, year: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_set_a_cyear(self as *mut Self, year)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_a_cyear(self as *mut Self, year)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:85 - `STEPConstruct_ContextTool::SetACname()`
     pub fn set_a_cname(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_set_a_cname(self as *mut Self, name)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_a_cname(self as *mut Self, name)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:88 - `STEPConstruct_ContextTool::GetDefaultAxis()`
@@ -1068,141 +775,91 @@ impl ContextTool {
     pub fn get_default_axis(
         &mut self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepGeomAxis2Placement3d> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_get_default_axis(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ContextTool_get_default_axis(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:91 - `STEPConstruct_ContextTool::AP203Context()`
     /// Returns tool which maintains context specific for AP203
     pub fn ap203_context(&mut self) -> &mut AP203Context {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_ap203_context(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::STEPConstruct_ContextTool_ap203_context(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:94 - `STEPConstruct_ContextTool::Level()`
     /// Returns current assembly level
     pub fn level(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_level(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_level(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:96 - `STEPConstruct_ContextTool::NextLevel()`
     pub fn next_level(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_next_level(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_next_level(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:98 - `STEPConstruct_ContextTool::PrevLevel()`
     pub fn prev_level(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_prev_level(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_prev_level(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:101 - `STEPConstruct_ContextTool::SetLevel()`
     /// Changes current assembly level
     pub fn set_level(&mut self, lev: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_set_level(self as *mut Self, lev) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_level(self as *mut Self, lev)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:104 - `STEPConstruct_ContextTool::Index()`
     /// Returns current index of assembly component on current level
     pub fn index(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_index(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_index(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:106 - `STEPConstruct_ContextTool::NextIndex()`
     pub fn next_index(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_next_index(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_next_index(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:108 - `STEPConstruct_ContextTool::PrevIndex()`
     pub fn prev_index(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_prev_index(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_prev_index(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:111 - `STEPConstruct_ContextTool::SetIndex()`
     /// Changes current index of assembly component on current level
     pub fn set_index(&mut self, ind: i32) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_ContextTool_set_index(self as *mut Self, ind) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_index(self as *mut Self, ind)
+        })
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:115 - `STEPConstruct_ContextTool::GetProductName()`
     /// Generates a product name basing on write.step.product.name
     /// parameter and current position in the assembly structure
     pub fn get_product_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_get_product_name(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ContextTool_get_product_name(self as *const Self),
+            ))
         }
     }
 
@@ -1213,15 +870,13 @@ impl ContextTool {
         &mut self,
         SDRTool: &Part,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ContextTool_get_roots_for_part(self as *mut Self, SDRTool)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ContextTool_get_roots_for_part(
+                    self as *mut Self,
+                    SDRTool,
+                ),
+            ))
         }
     }
 
@@ -1232,18 +887,13 @@ impl ContextTool {
         &mut self,
         assembly: &Assembly,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPConstruct_ContextTool_get_roots_for_assembly_link(
                     self as *mut Self,
                     assembly,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 }
@@ -1272,12 +922,10 @@ impl ExternRefs {
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:51 - `STEPConstruct_ExternRefs::STEPConstruct_ExternRefs()`
     /// Creates an empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_ExternRefs_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ExternRefs_ctor(),
+            ))
         }
     }
 
@@ -1286,39 +934,27 @@ impl ExternRefs {
     pub fn new_handlexscontrolworksession(
         WS: &crate::ffi::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ExternRefs_ctor_handlexscontrolworksession(WS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ExternRefs_ctor_handlexscontrolworksession(WS),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:57 - `STEPConstruct_ExternRefs::Init()`
     /// Initializes tool; returns True if succeeded
     pub fn init(&mut self, WS: &crate::ffi::HandleXSControlWorkSession) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ExternRefs_init(self as *mut Self, WS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ExternRefs_init(self as *mut Self, WS)
+        })
     }
 
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:60 - `STEPConstruct_ExternRefs::Clear()`
     /// Clears internal fields (list of defined extern refs)
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::STEPConstruct_ExternRefs_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ExternRefs_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:65 - `STEPConstruct_ExternRefs::LoadExternRefs()`
@@ -1326,44 +962,30 @@ impl ExternRefs {
     /// and loads them to the internal data structures
     /// NOTE: does not clear data structures before loading
     pub fn load_extern_refs(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ExternRefs_load_extern_refs(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ExternRefs_load_extern_refs(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:68 - `STEPConstruct_ExternRefs::NbExternRefs()`
     /// Returns number of defined extern references
     pub fn nb_extern_refs(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ExternRefs_nb_extern_refs(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ExternRefs_nb_extern_refs(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:72 - `STEPConstruct_ExternRefs::FileName()`
     /// Returns filename for numth extern reference
     /// Returns Null if FileName is not defined or bad
     pub fn file_name(&self, num: i32) -> std::string::String {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ExternRefs_file_name(self as *const Self, num) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::STEPConstruct_ExternRefs_file_name(self as *const Self, num),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:78 - `STEPConstruct_ExternRefs::ProdDef()`
@@ -1375,14 +997,10 @@ impl ExternRefs {
         &self,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinition> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ExternRefs_prod_def(self as *const Self, num) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ExternRefs_prod_def(self as *const Self, num),
+            ))
         }
     }
 
@@ -1391,14 +1009,10 @@ impl ExternRefs {
     /// is associated.
     /// Returns Null if cannot be detected.
     pub fn doc_file(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStepBasicDocumentFile> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ExternRefs_doc_file(self as *const Self, num) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ExternRefs_doc_file(self as *const Self, num),
+            ))
         }
     }
 
@@ -1406,14 +1020,10 @@ impl ExternRefs {
     /// Returns format identification string for the extern document
     /// Returns Null handle if format is not defined
     pub fn format(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ExternRefs_format(self as *const Self, num) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ExternRefs_format(self as *const Self, num),
+            ))
         }
     }
 
@@ -1431,63 +1041,39 @@ impl ExternRefs {
     ) -> i32 {
         let c_filename = std::ffi::CString::new(filename).unwrap();
         let c_format = std::ffi::CString::new(format).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ExternRefs_add_extern_ref(
-                    self as *mut Self,
-                    c_filename.as_ptr(),
-                    PD,
-                    c_format.as_ptr(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ExternRefs_add_extern_ref(
+                self as *mut Self,
+                c_filename.as_ptr(),
+                PD,
+                c_format.as_ptr(),
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:99 - `STEPConstruct_ExternRefs::checkAP214Shared()`
     /// Check (create if it is null) all shared entities for the model
     pub fn check_ap214_shared(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_ExternRefs_check_ap214_shared(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ExternRefs_check_ap214_shared(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:103 - `STEPConstruct_ExternRefs::WriteExternRefs()`
     /// Adds all the currently defined external refs to the model
     /// Returns number of written extern refs
     pub fn write_extern_refs(&self, num: i32) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ExternRefs_write_extern_refs(self as *const Self, num)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ExternRefs_write_extern_refs(self as *const Self, num)
+        })
     }
 
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:106 - `STEPConstruct_ExternRefs::SetAP214APD()`
     /// Set the ApplicationProtocolDefinition of the PDM schema
     pub fn set_ap214apd(&mut self, APD: &crate::ffi::HandleStepBasicApplicationProtocolDefinition) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_ExternRefs_set_ap214apd(self as *mut Self, APD)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ExternRefs_set_ap214apd(self as *mut Self, APD)
+        })
     }
 
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:110 - `STEPConstruct_ExternRefs::GetAP214APD()`
@@ -1496,105 +1082,76 @@ impl ExternRefs {
     pub fn get_ap214apd(
         &mut self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicApplicationProtocolDefinition> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ExternRefs_get_ap214apd(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ExternRefs_get_ap214apd(self as *mut Self),
+            ))
         }
     }
 
     /// Upcast to STEPConstruct_Tool
     pub fn as_tool(&self) -> &Tool {
-        let __result = unsafe {
-            crate::ffi::STEPConstruct_ExternRefs_as_STEPConstruct_Tool(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPConstruct_ExternRefs_as_STEPConstruct_Tool(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to STEPConstruct_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        let __result = unsafe {
-            crate::ffi::STEPConstruct_ExternRefs_as_STEPConstruct_Tool_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPConstruct_ExternRefs_as_STEPConstruct_Tool_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS()`
     pub fn ws(&self) -> &crate::ffi::HandleXSControlWorkSession {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ExternRefs_inherited_WS(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_ExternRefs_inherited_WS(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:56 - `STEPConstruct_Tool::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ExternRefs_inherited_Model(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ExternRefs_inherited_Model(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:59 - `STEPConstruct_Tool::Graph()`
     pub fn graph(&self, recompute: bool) -> &crate::interface::Graph {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ExternRefs_inherited_Graph(self as *const Self, recompute)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_ExternRefs_inherited_Graph(
+                self as *const Self,
+                recompute,
+            )))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:62 - `STEPConstruct_Tool::TransientProcess()`
     pub fn transient_process(&self) -> &crate::ffi::HandleTransferTransientProcess {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ExternRefs_inherited_TransientProcess(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi::STEPConstruct_ExternRefs_inherited_TransientProcess(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:65 - `STEPConstruct_Tool::FinderProcess()`
     pub fn finder_process(&self) -> &crate::ffi::HandleTransferFinderProcess {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ExternRefs_inherited_FinderProcess(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_ExternRefs_inherited_FinderProcess(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1619,12 +1176,8 @@ unsafe impl crate::CppDeletable for Part {
 impl Part {
     /// **Source:** `STEPConstruct_Part.hxx`:46 - `STEPConstruct_Part::STEPConstruct_Part()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_ctor()))
         }
     }
 
@@ -1636,43 +1189,27 @@ impl Part {
         AC: &crate::ffi::HandleStepBasicApplicationContext,
         theStepModel: &mut crate::ffi::HandleStepDataStepModel,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_Part_make_sdr(
-                    self as *mut Self,
-                    aShape,
-                    aName,
-                    AC,
-                    theStepModel,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_make_sdr(
+                self as *mut Self,
+                aShape,
+                aName,
+                AC,
+                theStepModel,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:53 - `STEPConstruct_Part::ReadSDR()`
     pub fn read_sdr(&mut self, aShape: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_Part_read_sdr(self as *mut Self, aShape) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_read_sdr(self as *mut Self, aShape)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:55 - `STEPConstruct_Part::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::STEPConstruct_Part_is_done(self as *const Self) })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:58 - `STEPConstruct_Part::SDRValue()`
@@ -1680,481 +1217,335 @@ impl Part {
     pub fn sdr_value(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepShapeShapeDefinitionRepresentation> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_sdr_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Part_sdr_value(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:61 - `STEPConstruct_Part::SRValue()`
     /// Returns SDR->UsedRepresentation() or Null if not done
     pub fn sr_value(&self) -> crate::OwnedPtr<crate::ffi::HandleStepShapeShapeRepresentation> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_sr_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_sr_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:63 - `STEPConstruct_Part::PC()`
     pub fn pc(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductContext> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_pc(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_pc(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:65 - `STEPConstruct_Part::PCname()`
     pub fn p_cname(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_p_cname(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_p_cname(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:67 - `STEPConstruct_Part::PCdisciplineType()`
     pub fn p_cdiscipline_type(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Part_p_cdiscipline_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Part_p_cdiscipline_type(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:69 - `STEPConstruct_Part::SetPCname()`
     pub fn set_p_cname(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_Part_set_p_cname(self as *mut Self, name) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_p_cname(self as *mut Self, name)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:71 - `STEPConstruct_Part::SetPCdisciplineType()`
     pub fn set_p_cdiscipline_type(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_Part_set_p_cdiscipline_type(self as *mut Self, label)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_p_cdiscipline_type(self as *mut Self, label)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:73 - `STEPConstruct_Part::AC()`
     pub fn ac(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicApplicationContext> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_ac(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_ac(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:75 - `STEPConstruct_Part::ACapplication()`
     pub fn a_capplication(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Part_a_capplication(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Part_a_capplication(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:77 - `STEPConstruct_Part::SetACapplication()`
     pub fn set_a_capplication(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_Part_set_a_capplication(self as *mut Self, text)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_a_capplication(self as *mut Self, text)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:79 - `STEPConstruct_Part::PDC()`
     pub fn pdc(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionContext> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_pdc(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_pdc(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:81 - `STEPConstruct_Part::PDCname()`
     pub fn pd_cname(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_pd_cname(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_pd_cname(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:83 - `STEPConstruct_Part::PDCstage()`
     pub fn pd_cstage(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_pd_cstage(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Part_pd_cstage(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:85 - `STEPConstruct_Part::SetPDCname()`
     pub fn set_pd_cname(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_Part_set_pd_cname(self as *mut Self, label) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_pd_cname(self as *mut Self, label)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:87 - `STEPConstruct_Part::SetPDCstage()`
     pub fn set_pd_cstage(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_Part_set_pd_cstage(self as *mut Self, label) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_pd_cstage(self as *mut Self, label)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:89 - `STEPConstruct_Part::Product()`
     pub fn product(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProduct> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_product(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_product(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:91 - `STEPConstruct_Part::Pid()`
     pub fn pid(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_pid(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_pid(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:93 - `STEPConstruct_Part::Pname()`
     pub fn pname(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_pname(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_pname(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:95 - `STEPConstruct_Part::Pdescription()`
     pub fn pdescription(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Part_pdescription(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Part_pdescription(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:97 - `STEPConstruct_Part::SetPid()`
     pub fn set_pid(&mut self, id: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe { crate::ffi::STEPConstruct_Part_set_pid(self as *mut Self, id) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_pid(self as *mut Self, id)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:99 - `STEPConstruct_Part::SetPname()`
     pub fn set_pname(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_Part_set_pname(self as *mut Self, label) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_pname(self as *mut Self, label)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:101 - `STEPConstruct_Part::SetPdescription()`
     pub fn set_pdescription(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_Part_set_pdescription(self as *mut Self, text) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_pdescription(self as *mut Self, text)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:103 - `STEPConstruct_Part::PDF()`
     pub fn pdf(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionFormation> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_pdf(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_pdf(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:105 - `STEPConstruct_Part::PDFid()`
     pub fn pd_fid(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_pd_fid(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_pd_fid(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:107 - `STEPConstruct_Part::PDFdescription()`
     pub fn pd_fdescription(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Part_pd_fdescription(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Part_pd_fdescription(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:109 - `STEPConstruct_Part::SetPDFid()`
     pub fn set_pd_fid(&mut self, id: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe { crate::ffi::STEPConstruct_Part_set_pd_fid(self as *mut Self, id) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_pd_fid(self as *mut Self, id)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:111 - `STEPConstruct_Part::SetPDFdescription()`
     pub fn set_pd_fdescription(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_Part_set_pd_fdescription(self as *mut Self, text)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_pd_fdescription(self as *mut Self, text)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:113 - `STEPConstruct_Part::PD()`
     pub fn pd(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinition> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_pd(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_pd(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:115 - `STEPConstruct_Part::PDdescription()`
     pub fn p_ddescription(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Part_p_ddescription(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Part_p_ddescription(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:117 - `STEPConstruct_Part::SetPDdescription()`
     pub fn set_p_ddescription(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_Part_set_p_ddescription(self as *mut Self, text)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_p_ddescription(self as *mut Self, text)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:119 - `STEPConstruct_Part::PDS()`
     pub fn pds(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_pds(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_pds(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:121 - `STEPConstruct_Part::PDSname()`
     pub fn pd_sname(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_pd_sname(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_pd_sname(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:123 - `STEPConstruct_Part::PDSdescription()`
     pub fn pd_sdescription(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Part_pd_sdescription(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Part_pd_sdescription(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:125 - `STEPConstruct_Part::SetPDSname()`
     pub fn set_pd_sname(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_Part_set_pd_sname(self as *mut Self, label) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_pd_sname(self as *mut Self, label)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:127 - `STEPConstruct_Part::SetPDSdescription()`
     pub fn set_pd_sdescription(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_Part_set_pd_sdescription(self as *mut Self, text)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_pd_sdescription(self as *mut Self, text)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:129 - `STEPConstruct_Part::PRPC()`
     pub fn prpc(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductRelatedProductCategory> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_prpc(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Part_prpc(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:131 - `STEPConstruct_Part::PRPCname()`
     pub fn prp_cname(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Part_prp_cname(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Part_prp_cname(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:133 - `STEPConstruct_Part::PRPCdescription()`
     pub fn prp_cdescription(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Part_prp_cdescription(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Part_prp_cdescription(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:135 - `STEPConstruct_Part::SetPRPCname()`
     pub fn set_prp_cname(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc =
-                unsafe { crate::ffi::STEPConstruct_Part_set_prp_cname(self as *mut Self, label) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_prp_cname(self as *mut Self, label)
+        })
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:137 - `STEPConstruct_Part::SetPRPCdescription()`
     pub fn set_prp_cdescription(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_Part_set_prp_cdescription(self as *mut Self, text)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Part_set_prp_cdescription(self as *mut Self, text)
+        })
     }
 }
 
@@ -2183,12 +1574,8 @@ impl Styles {
     /// **Source:** `STEPConstruct_Styles.hxx`:57 - `STEPConstruct_Styles::STEPConstruct_Styles()`
     /// Creates an empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Styles_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Styles_ctor()))
         }
     }
 
@@ -2197,94 +1584,62 @@ impl Styles {
     pub fn new_handlexscontrolworksession(
         WS: &crate::ffi::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Styles_ctor_handlexscontrolworksession(WS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Styles_ctor_handlexscontrolworksession(WS),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:63 - `STEPConstruct_Styles::Init()`
     /// Initializes tool; returns True if succeeded
     pub fn init(&mut self, WS: &crate::ffi::HandleXSControlWorkSession) -> bool {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Styles_init(self as *mut Self, WS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::STEPConstruct_Styles_init(self as *mut Self, WS) })
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:66 - `STEPConstruct_Styles::NbStyles()`
     /// Returns number of defined styles
     pub fn nb_styles(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Styles_nb_styles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_Styles_nb_styles(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:69 - `STEPConstruct_Styles::Style()`
     /// Returns style with given index
     pub fn style(&self, i: i32) -> crate::OwnedPtr<crate::ffi::HandleStepVisualStyledItem> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Styles_style(self as *const Self, i) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Styles_style(
+                self as *const Self,
+                i,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:72 - `STEPConstruct_Styles::NbRootStyles()`
     /// Returns number of override styles
     pub fn nb_root_styles(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Styles_nb_root_styles(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_Styles_nb_root_styles(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:75 - `STEPConstruct_Styles::RootStyle()`
     /// Returns override style with given index
     pub fn root_style(&self, i: i32) -> crate::OwnedPtr<crate::ffi::HandleStepVisualStyledItem> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Styles_root_style(self as *const Self, i) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Styles_root_style(self as *const Self, i),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:78 - `STEPConstruct_Styles::ClearStyles()`
     /// Clears all defined styles and PSA sequence
     pub fn clear_styles(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::STEPConstruct_Styles_clear_styles(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Styles_clear_styles(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:81 - `STEPConstruct_Styles::AddStyle()`
@@ -2293,17 +1648,12 @@ impl Styles {
         &mut self,
         style: &crate::ffi::HandleStepVisualStyledItem,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_Styles_add_style_handlestepvisualstyleditem(
-                    self as *mut Self,
-                    style,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_Styles_add_style_handlestepvisualstyleditem(
+                self as *mut Self,
+                style,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:86 - `STEPConstruct_Styles::AddStyle()`
@@ -2316,15 +1666,8 @@ impl Styles {
         PSA: &crate::ffi::HandleStepVisualPresentationStyleAssignment,
         Override: &crate::ffi::HandleStepVisualStyledItem,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualStyledItem> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_add_style_handlestepreprrepresentationitem_handlestepvisualpresentationstyleassignment_handlestepvisualstyleditem(self as *mut Self, item, PSA, Override)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Styles_add_style_handlestepreprrepresentationitem_handlestepvisualpresentationstyleassignment_handlestepvisualstyleditem(self as *mut Self, item, PSA, Override)))
         }
     }
 
@@ -2340,15 +1683,8 @@ impl Styles {
         PSA: &crate::ffi::HandleStepVisualPresentationStyleAssignment,
         Override: &crate::ffi::HandleStepVisualStyledItem,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualStyledItem> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_add_style_shape_handlestepvisualpresentationstyleassignment_handlestepvisualstyleditem(self as *mut Self, Shape, PSA, Override)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Styles_add_style_shape_handlestepvisualpresentationstyleassignment_handlestepvisualstyleditem(self as *mut Self, Shape, PSA, Override)))
         }
     }
 
@@ -2361,21 +1697,14 @@ impl Styles {
         MDGPR: &mut crate::ffi::HandleStepVisualMechanicalDesignGeometricPresentationRepresentation,
         theStepModel: &mut crate::ffi::HandleStepDataStepModel,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_create_mdgpr(
-                    self as *mut Self,
-                    Context,
-                    MDGPR,
-                    theStepModel,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_Styles_create_mdgpr(
+                self as *mut Self,
+                Context,
+                MDGPR,
+                theStepModel,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:113 - `STEPConstruct_Styles::CreateNAUOSRD()`
@@ -2389,21 +1718,14 @@ impl Styles {
         CDSR: &crate::ffi::HandleStepShapeContextDependentShapeRepresentation,
         initPDS: &crate::ffi::HandleStepReprProductDefinitionShape,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_create_nauosrd(
-                    self as *mut Self,
-                    Context,
-                    CDSR,
-                    initPDS,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_Styles_create_nauosrd(
+                self as *mut Self,
+                Context,
+                CDSR,
+                initPDS,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:120 - `STEPConstruct_Styles::FindContext()`
@@ -2414,15 +1736,10 @@ impl Styles {
         &self,
         Shape: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationContext> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_find_context(self as *const Self, Shape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Styles_find_context(self as *const Self, Shape),
+            ))
         }
     }
 
@@ -2430,15 +1747,9 @@ impl Styles {
     /// Searches the STEP model for the MDGPR or DM entities
     /// (which bring styles) and fills sequence of styles
     pub fn load_styles(&mut self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Styles_load_styles(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_Styles_load_styles(self as *mut Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:130 - `STEPConstruct_Styles::LoadInvisStyles()`
@@ -2448,16 +1759,9 @@ impl Styles {
         &self,
         InvSyles: &mut crate::ffi::HandleTColStdHSequenceOfTransient,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_load_invis_styles(self as *const Self, InvSyles)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_Styles_load_invis_styles(self as *const Self, InvSyles)
+        })
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:135 - `STEPConstruct_Styles::MakeColorPSA()`
@@ -2473,8 +1777,8 @@ impl Styles {
         RenderTransp: f64,
         isForNAUO: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationStyleAssignment> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::STEPConstruct_Styles_make_color_psa(
                     self as *const Self,
                     item,
@@ -2483,13 +1787,8 @@ impl Styles {
                     RenderCol,
                     RenderTransp,
                     isForNAUO,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -2503,15 +1802,10 @@ impl Styles {
         item: &crate::ffi::HandleStepReprRepresentationItem,
         Col: &crate::ffi::HandleStepVisualColour,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationStyleAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_get_color_psa(self as *mut Self, item, Col)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Styles_get_color_psa(self as *mut Self, item, Col),
+            ))
         }
     }
 
@@ -2530,25 +1824,18 @@ impl Styles {
         theRenderTransparency: &mut f64,
         theIsComponent: &mut bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_get_colors(
-                    self as *const Self,
-                    theStyle,
-                    theSurfaceColour,
-                    theBoundaryColour,
-                    theCurveColour,
-                    theRenderColour,
-                    theRenderTransparency,
-                    theIsComponent,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_Styles_get_colors(
+                self as *const Self,
+                theStyle,
+                theSurfaceColour,
+                theBoundaryColour,
+                theCurveColour,
+                theRenderColour,
+                theRenderTransparency,
+                theIsComponent,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_Styles.hxx`:167 - `STEPConstruct_Styles::EncodeColor()`
@@ -2559,13 +1846,10 @@ impl Styles {
     pub fn encode_color_color(
         Col: &crate::quantity::Color,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualColour> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Styles_encode_color_color(Col) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Styles_encode_color_color(Col),
+            ))
         }
     }
 
@@ -2579,15 +1863,8 @@ impl Styles {
         DPDCs: &mut crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient,
         ColRGBs: &mut crate::ffi::STEPConstruct_DataMapOfPointTransient,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualColour> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_encode_color_color_datamapofasciistringtransient_datamapofpointtransient(Col, DPDCs, ColRGBs)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Styles_encode_color_color_datamapofasciistringtransient_datamapofpointtransient(Col, DPDCs, ColRGBs)))
         }
     }
 
@@ -2598,102 +1875,70 @@ impl Styles {
         Colour: &crate::ffi::HandleStepVisualColour,
         Col: &mut crate::quantity::Color,
     ) -> bool {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Styles_decode_color(Colour, Col) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::STEPConstruct_Styles_decode_color(Colour, Col) })
     }
 
     /// Upcast to STEPConstruct_Tool
     pub fn as_tool(&self) -> &Tool {
-        let __result =
-            unsafe { crate::ffi::STEPConstruct_Styles_as_STEPConstruct_Tool(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPConstruct_Styles_as_STEPConstruct_Tool(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to STEPConstruct_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        let __result = unsafe {
-            crate::ffi::STEPConstruct_Styles_as_STEPConstruct_Tool_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::STEPConstruct_Styles_as_STEPConstruct_Tool_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS()`
     pub fn ws(&self) -> &crate::ffi::HandleXSControlWorkSession {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Styles_inherited_WS(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_Styles_inherited_WS(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:56 - `STEPConstruct_Tool::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Styles_inherited_Model(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Styles_inherited_Model(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:59 - `STEPConstruct_Tool::Graph()`
     pub fn graph(&self, recompute: bool) -> &crate::interface::Graph {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_inherited_Graph(self as *const Self, recompute)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_Styles_inherited_Graph(
+                self as *const Self,
+                recompute,
+            )))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:62 - `STEPConstruct_Tool::TransientProcess()`
     pub fn transient_process(&self) -> &crate::ffi::HandleTransferTransientProcess {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_inherited_TransientProcess(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_Styles_inherited_TransientProcess(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:65 - `STEPConstruct_Tool::FinderProcess()`
     pub fn finder_process(&self) -> &crate::ffi::HandleTransferFinderProcess {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_inherited_FinderProcess(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_Styles_inherited_FinderProcess(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -2725,12 +1970,8 @@ impl Tool {
     /// **Source:** `STEPConstruct_Tool.hxx`:47 - `STEPConstruct_Tool::STEPConstruct_Tool()`
     /// Creates an empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Tool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Tool_ctor()))
         }
     }
 
@@ -2739,81 +1980,57 @@ impl Tool {
     pub fn new_handlexscontrolworksession(
         WS: &crate::ffi::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Tool_ctor_handlexscontrolworksession(WS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_Tool_ctor_handlexscontrolworksession(WS),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS()`
     /// Returns currently loaded WorkSession
     pub fn ws(&self) -> &crate::ffi::HandleXSControlWorkSession {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Tool_ws(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::STEPConstruct_Tool_ws(self as *const Self))) }
     }
 
     /// **Source:** `STEPConstruct_Tool.hxx`:56 - `STEPConstruct_Tool::Model()`
     /// Returns current model (Null if not loaded)
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_Tool_model(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_Tool_model(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Tool.hxx`:59 - `STEPConstruct_Tool::Graph()`
     /// Returns current graph (recomputing if necessary)
     pub fn graph(&self, recompute: bool) -> &crate::interface::Graph {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Tool_graph(self as *const Self, recompute) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_Tool_graph(
+                self as *const Self,
+                recompute,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Tool.hxx`:62 - `STEPConstruct_Tool::TransientProcess()`
     /// Returns TransientProcess (reading; Null if not loaded)
     pub fn transient_process(&self) -> &crate::ffi::HandleTransferTransientProcess {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Tool_transient_process(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_Tool_transient_process(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `STEPConstruct_Tool.hxx`:65 - `STEPConstruct_Tool::FinderProcess()`
     /// Returns FinderProcess (writing; Null if not loaded)
     pub fn finder_process(&self) -> &crate::ffi::HandleTransferFinderProcess {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_Tool_finder_process(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_Tool_finder_process(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -2837,12 +2054,10 @@ impl UnitContext {
     /// **Source:** `STEPConstruct_UnitContext.hxx`:43 - `STEPConstruct_UnitContext::STEPConstruct_UnitContext()`
     /// Creates empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_UnitContext_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_UnitContext_ctor(),
+            ))
         }
     }
 
@@ -2855,33 +2070,22 @@ impl UnitContext {
         theModel: &crate::ffi::HandleStepDataStepModel,
         theLocalFactors: &crate::step_data::Factors,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_UnitContext_init(
-                    self as *mut Self,
-                    Tol3d,
-                    theModel,
-                    theLocalFactors,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_init(
+                self as *mut Self,
+                Tol3d,
+                theModel,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:52 - `STEPConstruct_UnitContext::IsDone()`
     /// Returns True if Init was called successfully
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_UnitContext_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:55 - `STEPConstruct_UnitContext::Value()`
@@ -2891,14 +2095,10 @@ impl UnitContext {
     ) -> crate::OwnedPtr<
         crate::ffi::HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
     > {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_UnitContext_value(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_UnitContext_value(self as *const Self),
+            ))
         }
     }
 
@@ -2910,16 +2110,9 @@ impl UnitContext {
         aContext: &crate::ffi::HandleStepReprGlobalUnitAssignedContext,
         theLocalFactors: &crate::step_data::Factors,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_UnitContext_compute_factors_handlestepreprglobalunitassignedcontext_factors(self as *mut Self, aContext, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_compute_factors_handlestepreprglobalunitassignedcontext_factors(self as *mut Self, aContext, theLocalFactors)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:65 - `STEPConstruct_UnitContext::ComputeFactors()`
@@ -2928,16 +2121,13 @@ impl UnitContext {
         aUnit: &crate::ffi::HandleStepBasicNamedUnit,
         theLocalFactors: &crate::step_data::Factors,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_UnitContext_compute_factors_handlestepbasicnamedunit_factors(self as *mut Self, aUnit, theLocalFactors)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_compute_factors_handlestepbasicnamedunit_factors(
+                self as *mut Self,
+                aUnit,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:70 - `STEPConstruct_UnitContext::ComputeTolerance()`
@@ -2946,224 +2136,131 @@ impl UnitContext {
         &mut self,
         aContext: &crate::ffi::HandleStepReprGlobalUncertaintyAssignedContext,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_UnitContext_compute_tolerance(self as *mut Self, aContext)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_compute_tolerance(self as *mut Self, aContext)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:73 - `STEPConstruct_UnitContext::LengthFactor()`
     /// Returns the lengthFactor
     pub fn length_factor(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_UnitContext_length_factor(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_length_factor(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:76 - `STEPConstruct_UnitContext::PlaneAngleFactor()`
     /// Returns the planeAngleFactor
     pub fn plane_angle_factor(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_UnitContext_plane_angle_factor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_plane_angle_factor(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:79 - `STEPConstruct_UnitContext::SolidAngleFactor()`
     /// Returns the solidAngleFactor
     pub fn solid_angle_factor(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_UnitContext_solid_angle_factor(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_solid_angle_factor(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:83 - `STEPConstruct_UnitContext::Uncertainty()`
     /// Returns the Uncertainty value (for length)
     /// It has been converted  with LengthFactor
     pub fn uncertainty(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_UnitContext_uncertainty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_uncertainty(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:86 - `STEPConstruct_UnitContext::AreaFactor()`
     /// Returns the areaFactor
     pub fn area_factor(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_UnitContext_area_factor(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_area_factor(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:89 - `STEPConstruct_UnitContext::VolumeFactor()`
     /// Returns the volumeFactor
     pub fn volume_factor(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_UnitContext_volume_factor(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_volume_factor(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:92 - `STEPConstruct_UnitContext::HasUncertainty()`
     /// Tells if a Uncertainty (for length) is recorded
     pub fn has_uncertainty(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_UnitContext_has_uncertainty(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_has_uncertainty(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:96 - `STEPConstruct_UnitContext::LengthDone()`
     /// Returns true if ComputeFactors has calculated
     /// a LengthFactor
     pub fn length_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_UnitContext_length_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_length_done(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:100 - `STEPConstruct_UnitContext::PlaneAngleDone()`
     /// Returns true if ComputeFactors has calculated
     /// a PlaneAngleFactor
     pub fn plane_angle_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_UnitContext_plane_angle_done(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_plane_angle_done(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:104 - `STEPConstruct_UnitContext::SolidAngleDone()`
     /// Returns true if ComputeFactors has calculated
     /// a SolidAngleFactor
     pub fn solid_angle_done(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_UnitContext_solid_angle_done(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_solid_angle_done(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:107 - `STEPConstruct_UnitContext::AreaDone()`
     /// Returns true if areaFactor is computed
     pub fn area_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_UnitContext_area_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_area_done(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:110 - `STEPConstruct_UnitContext::VolumeDone()`
     /// Returns true if volumeFactor is computed
     pub fn volume_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_UnitContext_volume_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_volume_done(self as *const Self)
+        })
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:114 - `STEPConstruct_UnitContext::StatusMessage()`
     /// Returns a message for a given status (0 - empty)
     /// This message can then be added as warning for transfer
     pub fn status_message(&self, status: i32) -> std::string::String {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_UnitContext_status_message(self as *const Self, status)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::STEPConstruct_UnitContext_status_message(self as *const Self, status),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `STEPConstruct_UnitContext.hxx`:118 - `STEPConstruct_UnitContext::ConvertSiPrefix()`
     /// Convert SI prefix defined by enumeration to corresponding
     /// real factor (e.g. 1e6 for mega)
     pub fn convert_si_prefix(aPrefix: crate::step_basic::SiPrefix) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_UnitContext_convert_si_prefix(aPrefix.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_UnitContext_convert_si_prefix(aPrefix.into())
+        })
     }
 }
 
@@ -3187,12 +2284,10 @@ impl ValidationProps {
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:47 - `STEPConstruct_ValidationProps::STEPConstruct_ValidationProps()`
     /// Creates an empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::STEPConstruct_ValidationProps_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ValidationProps_ctor(),
+            ))
         }
     }
 
@@ -3201,29 +2296,19 @@ impl ValidationProps {
     pub fn new_handlexscontrolworksession(
         WS: &crate::ffi::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_ctor_handlexscontrolworksession(WS)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ValidationProps_ctor_handlexscontrolworksession(WS),
+            ))
         }
     }
 
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:53 - `STEPConstruct_ValidationProps::Init()`
     /// Load worksession; returns True if succeeded
     pub fn init(&mut self, WS: &crate::ffi::HandleXSControlWorkSession) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPConstruct_ValidationProps_init(self as *mut Self, WS) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_init(self as *mut Self, WS)
+        })
     }
 
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:60 - `STEPConstruct_ValidationProps::AddProp()`
@@ -3240,16 +2325,9 @@ impl ValidationProps {
         instance: bool,
     ) -> bool {
         let c_Descr = std::ffi::CString::new(Descr).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_add_prop_shape_handlestepreprrepresentationitem_charptr_bool(self as *mut Self, Shape, Prop, c_Descr.as_ptr(), instance)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_add_prop_shape_handlestepreprrepresentationitem_charptr_bool(self as *mut Self, Shape, Prop, c_Descr.as_ptr(), instance)
+        })
     }
 
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:69 - `STEPConstruct_ValidationProps::AddProp()`
@@ -3265,48 +2343,27 @@ impl ValidationProps {
         Descr: &str,
     ) -> bool {
         let c_Descr = std::ffi::CString::new(Descr).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_add_prop_characterizeddefinition_handlestepreprrepresentationcontext_handlestepreprrepresentationitem_charptr(self as *mut Self, target, Context, Prop, c_Descr.as_ptr())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_add_prop_characterizeddefinition_handlestepreprrepresentationcontext_handlestepreprrepresentationitem_charptr(self as *mut Self, target, Context, Prop, c_Descr.as_ptr())
+        })
     }
 
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:76 - `STEPConstruct_ValidationProps::AddArea()`
     /// Adds surface area property for given shape (already mapped).
     /// Returns True if success, False in case of fail
     pub fn add_area(&mut self, Shape: &crate::topo_ds::Shape, Area: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_add_area(self as *mut Self, Shape, Area)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_add_area(self as *mut Self, Shape, Area)
+        })
     }
 
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:80 - `STEPConstruct_ValidationProps::AddVolume()`
     /// Adds volume property for given shape (already mapped).
     /// Returns True if success, False in case of fail
     pub fn add_volume(&mut self, Shape: &crate::topo_ds::Shape, Vol: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_add_volume(self as *mut Self, Shape, Vol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_add_volume(self as *mut Self, Shape, Vol)
+        })
     }
 
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:86 - `STEPConstruct_ValidationProps::AddCentroid()`
@@ -3320,21 +2377,14 @@ impl ValidationProps {
         Pnt: &crate::gp::Pnt,
         instance: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_add_centroid(
-                    self as *mut Self,
-                    Shape,
-                    Pnt,
-                    instance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_add_centroid(
+                self as *mut Self,
+                Shape,
+                Pnt,
+                instance,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:93 - `STEPConstruct_ValidationProps::FindTarget()`
@@ -3348,38 +2398,24 @@ impl ValidationProps {
         Context: &mut crate::ffi::HandleStepReprRepresentationContext,
         instance: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_find_target(
-                    self as *mut Self,
-                    S,
-                    target,
-                    Context,
-                    instance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_find_target(
+                self as *mut Self,
+                S,
+                target,
+                Context,
+                instance,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:100 - `STEPConstruct_ValidationProps::LoadProps()`
     /// Searches for entities of the type PropertyDefinitionRepresentation
     /// in the model and fills the sequence by them
     pub fn load_props(&self, seq: &mut crate::ffi::TColStd_SequenceOfTransient) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_load_props(self as *const Self, seq)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_load_props(self as *const Self, seq)
+        })
     }
 
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:104 - `STEPConstruct_ValidationProps::GetPropNAUO()`
@@ -3389,15 +2425,10 @@ impl ValidationProps {
         &self,
         PD: &crate::ffi::HandleStepReprPropertyDefinition,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepReprNextAssemblyUsageOccurrence> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_get_prop_nauo(self as *const Self, PD)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ValidationProps_get_prop_nauo(self as *const Self, PD),
+            ))
         }
     }
 
@@ -3408,15 +2439,10 @@ impl ValidationProps {
         &self,
         PD: &crate::ffi::HandleStepReprPropertyDefinition,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinition> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_get_prop_pd(self as *const Self, PD)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ValidationProps_get_prop_pd(self as *const Self, PD),
+            ))
         }
     }
 
@@ -3427,15 +2453,8 @@ impl ValidationProps {
         &self,
         ProdDef: &crate::ffi::HandleStepBasicProductDefinition,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_get_prop_shape_handlestepbasicproductdefinition(self as *const Self, ProdDef)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_ValidationProps_get_prop_shape_handlestepbasicproductdefinition(self as *const Self, ProdDef)))
         }
     }
 
@@ -3446,15 +2465,8 @@ impl ValidationProps {
         &self,
         PD: &crate::ffi::HandleStepReprPropertyDefinition,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_get_prop_shape_handlestepreprpropertydefinition(self as *const Self, PD)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPConstruct_ValidationProps_get_prop_shape_handlestepreprpropertydefinition(self as *const Self, PD)))
         }
     }
 
@@ -3470,22 +2482,15 @@ impl ValidationProps {
         isArea: &mut bool,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_get_prop_real(
-                    self as *const Self,
-                    item,
-                    Val,
-                    isArea,
-                    theLocalFactors,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_get_prop_real(
+                self as *const Self,
+                item,
+                Val,
+                isArea,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:133 - `STEPConstruct_ValidationProps::GetPropPnt()`
@@ -3497,136 +2502,92 @@ impl ValidationProps {
         Pnt: &mut crate::gp::Pnt,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_get_prop_pnt(
-                    self as *const Self,
-                    item,
-                    Context,
-                    Pnt,
-                    theLocalFactors,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_get_prop_pnt(
+                self as *const Self,
+                item,
+                Context,
+                Pnt,
+                theLocalFactors,
+            )
+        })
     }
 
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:139 - `STEPConstruct_ValidationProps::SetAssemblyShape()`
     /// Sets current assembly shape SDR (for FindCDSR calls)
     pub fn set_assembly_shape(&mut self, shape: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_set_assembly_shape(
-                    self as *mut Self,
-                    shape,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_set_assembly_shape(self as *mut Self, shape)
+        })
     }
 
     /// Upcast to STEPConstruct_Tool
     pub fn as_tool(&self) -> &Tool {
-        let __result = unsafe {
-            crate::ffi::STEPConstruct_ValidationProps_as_STEPConstruct_Tool(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::STEPConstruct_ValidationProps_as_STEPConstruct_Tool(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to STEPConstruct_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        let __result = unsafe {
-            crate::ffi::STEPConstruct_ValidationProps_as_STEPConstruct_Tool_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::STEPConstruct_ValidationProps_as_STEPConstruct_Tool_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS()`
     pub fn ws(&self) -> &crate::ffi::HandleXSControlWorkSession {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_inherited_WS(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_ValidationProps_inherited_WS(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:56 - `STEPConstruct_Tool::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_inherited_Model(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::STEPConstruct_ValidationProps_inherited_Model(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:59 - `STEPConstruct_Tool::Graph()`
     pub fn graph(&self, recompute: bool) -> &crate::interface::Graph {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_inherited_Graph(
-                    self as *const Self,
-                    recompute,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::STEPConstruct_ValidationProps_inherited_Graph(
+                self as *const Self,
+                recompute,
+            )))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:62 - `STEPConstruct_Tool::TransientProcess()`
     pub fn transient_process(&self) -> &crate::ffi::HandleTransferTransientProcess {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::STEPConstruct_ValidationProps_inherited_TransientProcess(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:65 - `STEPConstruct_Tool::FinderProcess()`
     pub fn finder_process(&self) -> &crate::ffi::HandleTransferFinderProcess {
-        {
-            let __result = unsafe {
+        unsafe {
+            &*(crate::check_result(
                 crate::ffi::STEPConstruct_ValidationProps_inherited_FinderProcess(
                     self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+                ),
+            ))
         }
     }
 }

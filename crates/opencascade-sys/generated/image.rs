@@ -156,41 +156,24 @@ impl AlienPixMap {
     /// **Source:** `Image_AlienPixMap.hxx`:46 - `Image_AlienPixMap::Image_AlienPixMap()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Image_AlienPixMap_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_AlienPixMap_ctor()))
         }
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:39 - `Image_AlienPixMap::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_AlienPixMap_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:52 - `Image_AlienPixMap::Load()`
     /// Read image data from file.
     pub fn load_asciistring(&mut self, theFileName: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_load_asciistring(self as *mut Self, theFileName)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_load_asciistring(self as *mut Self, theFileName)
+        })
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:55 - `Image_AlienPixMap::Load()`
@@ -200,20 +183,13 @@ impl AlienPixMap {
         theStream: &mut crate::ffi::Standard_IStream,
         theFileName: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_load_istream_asciistring(
-                    self as *mut Self,
-                    theStream,
-                    theFileName,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_load_istream_asciistring(
+                self as *mut Self,
+                theStream,
+                theFileName,
+            )
+        })
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:62 - `Image_AlienPixMap::Load()`
@@ -228,37 +204,23 @@ impl AlienPixMap {
         theLength: usize,
         theFileName: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_load_u8ptr_size_asciistring(
-                    self as *mut Self,
-                    theData,
-                    theLength,
-                    theFileName,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_load_u8ptr_size_asciistring(
+                self as *mut Self,
+                theData,
+                theLength,
+                theFileName,
+            )
+        })
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:68 - `Image_AlienPixMap::Save()`
     /// Write image data to file.
     /// @param[in] theFileName file name to save
     pub fn save_asciistring(&mut self, theFileName: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_save_asciistring(self as *mut Self, theFileName)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_save_asciistring(self as *mut Self, theFileName)
+        })
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:73 - `Image_AlienPixMap::Save()`
@@ -270,20 +232,13 @@ impl AlienPixMap {
         theStream: &mut crate::ffi::Standard_OStream,
         theExtension: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_save_ostream_asciistring(
-                    self as *mut Self,
-                    theStream,
-                    theExtension,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_save_ostream_asciistring(
+                self as *mut Self,
+                theStream,
+                theExtension,
+            )
+        })
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:81 - `Image_AlienPixMap::Save()`
@@ -299,21 +254,14 @@ impl AlienPixMap {
         theLength: usize,
         theFileName: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_save_u8ptr_size_asciistring(
-                    self as *mut Self,
-                    theBuffer,
-                    theLength,
-                    theFileName,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_save_u8ptr_size_asciistring(
+                self as *mut Self,
+                theBuffer,
+                theLength,
+                theFileName,
+            )
+        })
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:90 - `Image_AlienPixMap::InitTrash()`
@@ -329,296 +277,190 @@ impl AlienPixMap {
         theSizeY: usize,
         theSizeRowBytes: usize,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_init_trash(
-                    self as *mut Self,
-                    thePixelFormat.into(),
-                    theSizeX,
-                    theSizeY,
-                    theSizeRowBytes,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_init_trash(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeX,
+                theSizeY,
+                theSizeRowBytes,
+            )
+        })
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:96 - `Image_AlienPixMap::InitCopy()`
     /// Initialize by copying data.
     pub fn init_copy(&mut self, theCopy: &PixMap) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_init_copy(self as *mut Self, theCopy) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_init_copy(self as *mut Self, theCopy)
+        })
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:99 - `Image_AlienPixMap::Clear()`
     /// Method correctly deallocate internal buffer.
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Image_AlienPixMap_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Image_AlienPixMap_clear(self as *mut Self) })
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:103 - `Image_AlienPixMap::AdjustGamma()`
     /// Performs gamma correction on image.
     /// @param[in] theGamma - gamma value to use; a value of 1.0 leaves the image alone
     pub fn adjust_gamma(&mut self, theGammaCorr: f64) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_adjust_gamma(self as *mut Self, theGammaCorr)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_adjust_gamma(self as *mut Self, theGammaCorr)
+        })
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:39 - `Image_AlienPixMap::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Image_AlienPixMap_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Image_AlienPixMap_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:39 - `Image_AlienPixMap::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Image_AlienPixMap_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Image_AlienPixMap_get_type_descriptor())) }
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:42 - `Image_AlienPixMap::IsTopDownDefault()`
     /// Return default rows order used by underlying image library.
     pub fn is_top_down_default() -> bool {
-        {
-            let __result = unsafe { crate::ffi::Image_AlienPixMap_is_top_down_default() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_AlienPixMap_is_top_down_default() })
     }
 
     /// Upcast to Image_PixMap
     pub fn as_pix_map(&self) -> &PixMap {
-        let __result =
-            unsafe { crate::ffi::Image_AlienPixMap_as_Image_PixMap(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Image_AlienPixMap_as_Image_PixMap(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Image_PixMap (mutable)
     pub fn as_pix_map_mut(&mut self) -> &mut PixMap {
-        let __result =
-            unsafe { crate::ffi::Image_AlienPixMap_as_Image_PixMap_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Image_AlienPixMap_as_Image_PixMap_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Image_AlienPixMap_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Image_AlienPixMap_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Image_AlienPixMap_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Image_AlienPixMap_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleImageAlienPixMap> {
-        let __result = unsafe { crate::ffi::Image_AlienPixMap_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_AlienPixMap_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:93 - `Image_PixMap::Format()`
     pub fn format(&self) -> crate::image::Format {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_Format(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::image::Format::try_from(__val).unwrap()
-        }
+        crate::image::Format::try_from(crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_Format(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:99 - `Image_PixMap::SetFormat()`
     pub fn set_format(&mut self, thePixelFormat: crate::image::Format) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_SetFormat(
-                    self as *mut Self,
-                    thePixelFormat.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_SetFormat(
+                self as *mut Self,
+                thePixelFormat.into(),
+            )
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:102 - `Image_PixMap::Width()`
     pub fn width(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_Width(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_Width(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:105 - `Image_PixMap::Height()`
     pub fn height(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_Height(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_Height(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:108 - `Image_PixMap::Depth()`
     pub fn depth(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_Depth(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_Depth(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:111 - `Image_PixMap::SizeX()`
     pub fn size_x(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_SizeX(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_SizeX(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:114 - `Image_PixMap::SizeY()`
     pub fn size_y(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_SizeY(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_SizeY(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:117 - `Image_PixMap::SizeZ()`
     pub fn size_z(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_SizeZ(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_SizeZ(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:120 - `Image_PixMap::SizeXYZ()`
     pub fn size_xyz(&self) -> crate::OwnedPtr<crate::ffi::NCollection_Vec3_Standard_Size> {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_SizeXYZ(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Image_AlienPixMap_inherited_SizeXYZ(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:126 - `Image_PixMap::Ratio()`
     pub fn ratio(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_Ratio(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_Ratio(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:132 - `Image_PixMap::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_IsEmpty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_IsEmpty(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:148 - `Image_PixMap::PixelColor()`
@@ -628,20 +470,15 @@ impl AlienPixMap {
         theY: i32,
         theToLinearize: bool,
     ) -> crate::OwnedPtr<crate::quantity::ColorRGBA> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Image_AlienPixMap_inherited_PixelColor(
                     self as *const Self,
                     theX,
                     theY,
                     theToLinearize,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -653,20 +490,15 @@ impl AlienPixMap {
         theColor: &crate::quantity::Color,
         theToDeLinearize: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_SetPixelColor(
-                    self as *mut Self,
-                    theX,
-                    theY,
-                    theColor,
-                    theToDeLinearize,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_SetPixelColor(
+                self as *mut Self,
+                theX,
+                theY,
+                theColor,
+                theToDeLinearize,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:224 - `Image_PixMap::InitZero()`
@@ -678,23 +510,16 @@ impl AlienPixMap {
         theSizeRowBytes: usize,
         theValue: u8,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_InitZero(
-                    self as *mut Self,
-                    thePixelFormat.into(),
-                    theSizeX,
-                    theSizeY,
-                    theSizeRowBytes,
-                    theValue,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_InitZero(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeX,
+                theSizeY,
+                theSizeRowBytes,
+                theValue,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:251 - `Image_PixMap::InitTrash3D()`
@@ -704,21 +529,14 @@ impl AlienPixMap {
         theSizeXYZ: &crate::ffi::NCollection_Vec3_Standard_Size,
         theSizeRowBytes: usize,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_InitTrash3D(
-                    self as *mut Self,
-                    thePixelFormat.into(),
-                    theSizeXYZ,
-                    theSizeRowBytes,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_InitTrash3D(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeXYZ,
+                theSizeRowBytes,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:257 - `Image_PixMap::InitZero3D()`
@@ -729,182 +547,100 @@ impl AlienPixMap {
         theSizeRowBytes: usize,
         theValue: u8,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_InitZero3D(
-                    self as *mut Self,
-                    thePixelFormat.into(),
-                    theSizeXYZ,
-                    theSizeRowBytes,
-                    theValue,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_InitZero3D(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeXYZ,
+                theSizeRowBytes,
+                theValue,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:272 - `Image_PixMap::IsTopDown()`
     pub fn is_top_down(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_IsTopDown(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_IsTopDown(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:277 - `Image_PixMap::SetTopDown()`
     pub fn set_top_down(&mut self, theIsTopDown: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_SetTopDown(self as *mut Self, theIsTopDown)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_SetTopDown(self as *mut Self, theIsTopDown)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:281 - `Image_PixMap::TopDownInc()`
     pub fn top_down_inc(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_TopDownInc(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_TopDownInc(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:322 - `Image_PixMap::SizePixelBytes()`
     pub fn size_pixel_bytes(&self) -> usize {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_SizePixelBytes(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_SizePixelBytes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:326 - `Image_PixMap::SizeRowBytes()`
     pub fn size_row_bytes(&self) -> usize {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_SizeRowBytes(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_SizeRowBytes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:329 - `Image_PixMap::RowExtraBytes()`
     pub fn row_extra_bytes(&self) -> usize {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_RowExtraBytes(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_RowExtraBytes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:333 - `Image_PixMap::MaxRowAligmentBytes()`
     pub fn max_row_aligment_bytes(&self) -> usize {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_MaxRowAligmentBytes(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_MaxRowAligmentBytes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:336 - `Image_PixMap::SizeSliceBytes()`
     pub fn size_slice_bytes(&self) -> usize {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_SizeSliceBytes(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_SizeSliceBytes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Image_PixMap.hxx`:339 - `Image_PixMap::SizeBytes()`
     pub fn size_bytes(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_SizeBytes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_SizeBytes(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Image_AlienPixMap_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -915,52 +651,30 @@ impl AlienPixMap {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_AlienPixMap_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Image_AlienPixMap_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -975,41 +689,34 @@ unsafe impl crate::CppDeletable for HandleImageAlienPixMap {
 impl HandleImageAlienPixMap {
     /// Dereference this Handle to access the underlying Image_AlienPixMap
     pub fn get(&self) -> &crate::ffi::Image_AlienPixMap {
-        let __result = unsafe { crate::ffi::HandleImageAlienPixMap_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleImageAlienPixMap_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Image_AlienPixMap
     pub fn get_mut(&mut self) -> &mut crate::ffi::Image_AlienPixMap {
-        let __result = unsafe { crate::ffi::HandleImageAlienPixMap_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleImageAlienPixMap_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Image_AlienPixMap> to Handle<Image_PixMap>
     pub fn to_handle_pix_map(&self) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
-        let __result =
-            unsafe { crate::ffi::HandleImageAlienPixMap_to_HandleImagePixMap(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleImageAlienPixMap_to_HandleImagePixMap(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Image_AlienPixMap> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleImageAlienPixMap_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleImageAlienPixMap_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1032,381 +739,245 @@ impl CompressedPixMap {
     /// **Source:** `Image_CompressedPixMap.hxx`:89 - `Image_CompressedPixMap::Image_CompressedPixMap()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Image_CompressedPixMap_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::Image_CompressedPixMap_ctor()),
+            )
         }
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:27 - `Image_CompressedPixMap::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_CompressedPixMap_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_CompressedPixMap_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:30 - `Image_CompressedPixMap::BaseFormat()`
     /// Return base (uncompressed) pixel format.
     pub fn base_format(&self) -> crate::image::Format {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_CompressedPixMap_base_format(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::image::Format::try_from(__val).unwrap()
-        }
+        crate::image::Format::try_from(crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_base_format(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:33 - `Image_CompressedPixMap::SetBaseFormat()`
     /// Set base (uncompressed) pixel format.
     pub fn set_base_format(&mut self, theFormat: crate::image::Format) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_CompressedPixMap_set_base_format(
-                    self as *mut Self,
-                    theFormat.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_set_base_format(self as *mut Self, theFormat.into())
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:36 - `Image_CompressedPixMap::CompressedFormat()`
     /// Return compressed format.
     pub fn compressed_format(&self) -> crate::image::CompressedFormat {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_CompressedPixMap_compressed_format(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::image::CompressedFormat::try_from(__val).unwrap()
-        }
+        crate::image::CompressedFormat::try_from(crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_compressed_format(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:39 - `Image_CompressedPixMap::SetCompressedFormat()`
     /// Set compressed format.
     pub fn set_compressed_format(&mut self, theFormat: crate::image::CompressedFormat) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_CompressedPixMap_set_compressed_format(
-                    self as *mut Self,
-                    theFormat.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_set_compressed_format(
+                self as *mut Self,
+                theFormat.into(),
+            )
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:42 - `Image_CompressedPixMap::FaceData()`
     /// Return raw (compressed) data.
     pub fn face_data(&self) -> &crate::ffi::HandleNCollectionBuffer {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_CompressedPixMap_face_data(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_CompressedPixMap_face_data(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:45 - `Image_CompressedPixMap::SetFaceData()`
     /// Set raw (compressed) data.
     pub fn set_face_data(&mut self, theBuffer: &crate::ffi::HandleNCollectionBuffer) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_CompressedPixMap_set_face_data(self as *mut Self, theBuffer)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_set_face_data(self as *mut Self, theBuffer)
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:48 - `Image_CompressedPixMap::MipMaps()`
     /// Return Array of mipmap sizes, including base level.
     pub fn mip_maps(&self) -> &crate::ffi::TColStd_Array1OfInteger {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_CompressedPixMap_mip_maps(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_CompressedPixMap_mip_maps(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:51 - `Image_CompressedPixMap::ChangeMipMaps()`
     /// Return Array of mipmap sizes, including base level.
     pub fn change_mip_maps(&mut self) -> &mut crate::ffi::TColStd_Array1OfInteger {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_CompressedPixMap_change_mip_maps(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Image_CompressedPixMap_change_mip_maps(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:54 - `Image_CompressedPixMap::IsCompleteMipMapSet()`
     /// Return TRUE if complete mip map level set (up to 1x1 resolution).
     pub fn is_complete_mip_map_set(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_CompressedPixMap_is_complete_mip_map_set(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_is_complete_mip_map_set(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:57 - `Image_CompressedPixMap::SetCompleteMipMapSet()`
     /// Set if complete mip map level set (up to 1x1 resolution).
     pub fn set_complete_mip_map_set(&mut self, theIsComplete: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_CompressedPixMap_set_complete_mip_map_set(
-                    self as *mut Self,
-                    theIsComplete,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_set_complete_mip_map_set(
+                self as *mut Self,
+                theIsComplete,
+            )
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:60 - `Image_CompressedPixMap::FaceBytes()`
     /// Return surface length in bytes.
     pub fn face_bytes(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_CompressedPixMap_face_bytes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_face_bytes(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:63 - `Image_CompressedPixMap::SetFaceBytes()`
     /// Set surface length in bytes.
     pub fn set_face_bytes(&mut self, theSize: usize) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_CompressedPixMap_set_face_bytes(self as *mut Self, theSize)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_set_face_bytes(self as *mut Self, theSize)
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:66 - `Image_CompressedPixMap::SizeX()`
     /// Return surface width.
     pub fn size_x(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_CompressedPixMap_size_x(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_size_x(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:69 - `Image_CompressedPixMap::SizeY()`
     /// Return surface height.
     pub fn size_y(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_CompressedPixMap_size_y(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_size_y(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:72 - `Image_CompressedPixMap::SetSize()`
     /// Set surface width x height.
     pub fn set_size(&mut self, theSizeX: i32, theSizeY: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_CompressedPixMap_set_size(self as *mut Self, theSizeX, theSizeY)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_set_size(self as *mut Self, theSizeX, theSizeY)
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:79 - `Image_CompressedPixMap::IsTopDown()`
     /// Return TRUE if image layout is top-down (always true).
     pub fn is_top_down(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_CompressedPixMap_is_top_down(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_is_top_down(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:82 - `Image_CompressedPixMap::NbFaces()`
     /// Return number of faces in the file; should be 6 for cubemap.
     pub fn nb_faces(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_CompressedPixMap_nb_faces(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_nb_faces(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:85 - `Image_CompressedPixMap::SetNbFaces()`
     /// Set number of faces in the file.
     pub fn set_nb_faces(&mut self, theSize: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_CompressedPixMap_set_nb_faces(self as *mut Self, theSize)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_set_nb_faces(self as *mut Self, theSize)
+        })
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:27 - `Image_CompressedPixMap::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Image_CompressedPixMap_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Image_CompressedPixMap_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Image_CompressedPixMap.hxx`:27 - `Image_CompressedPixMap::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Image_CompressedPixMap_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Image_CompressedPixMap_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Image_CompressedPixMap_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Image_CompressedPixMap_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Image_CompressedPixMap_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Image_CompressedPixMap_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
-        let __result = unsafe { crate::ffi::Image_CompressedPixMap_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Image_CompressedPixMap_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_CompressedPixMap_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_CompressedPixMap_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Image_CompressedPixMap_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Image_CompressedPixMap_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1417,53 +988,30 @@ impl CompressedPixMap {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_CompressedPixMap_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_CompressedPixMap_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_CompressedPixMap_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Image_CompressedPixMap_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_CompressedPixMap_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1478,32 +1026,29 @@ unsafe impl crate::CppDeletable for HandleImageCompressedPixMap {
 impl HandleImageCompressedPixMap {
     /// Dereference this Handle to access the underlying Image_CompressedPixMap
     pub fn get(&self) -> &crate::ffi::Image_CompressedPixMap {
-        let __result = unsafe { crate::ffi::HandleImageCompressedPixMap_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleImageCompressedPixMap_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Image_CompressedPixMap
     pub fn get_mut(&mut self) -> &mut crate::ffi::Image_CompressedPixMap {
-        let __result =
-            unsafe { crate::ffi::HandleImageCompressedPixMap_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleImageCompressedPixMap_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Image_CompressedPixMap> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleImageCompressedPixMap_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleImageCompressedPixMap_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1525,12 +1070,8 @@ impl DDSParser {
     /// **Source:** `Image_DDSParser.hxx` - `Image_DDSParser::Image_DDSParser()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Image_DDSParser_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_DDSParser_ctor()))
         }
     }
 
@@ -1548,15 +1089,8 @@ impl DDSParser {
         theFaceIndex: i32,
         theFileOffset: i64,
     ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_DDSParser_load_handleimagesupportedformats_asciistring_int_longlong(theSupported, theFile, theFaceIndex, theFileOffset)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_DDSParser_load_handleimagesupportedformats_asciistring_int_longlong(theSupported, theFile, theFaceIndex, theFileOffset)))
         }
     }
 
@@ -1573,15 +1107,8 @@ impl DDSParser {
         theBuffer: &crate::ffi::HandleNCollectionBuffer,
         theFaceIndex: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_DDSParser_load_handleimagesupportedformats_handlencollectionbuffer_int(theSupported, theBuffer, theFaceIndex)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_DDSParser_load_handleimagesupportedformats_handlencollectionbuffer_int(theSupported, theBuffer, theFaceIndex)))
         }
     }
 }
@@ -1636,13 +1163,7 @@ impl Diff {
     /// **Source:** `Image_Diff.hxx`:64 - `Image_Diff::Image_Diff()`
     /// An empty constructor. Init() should be called for initialization.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Image_Diff_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_Diff_ctor())) }
     }
 
     /// **Source:** `Image_Diff.hxx`:71 - `Image_Diff::Init()`
@@ -1654,21 +1175,14 @@ impl Diff {
         theImageNew: &crate::ffi::HandleImagePixMap,
         theToBlackWhite: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_Diff_init_handleimagepixmap2_bool(
-                    self as *mut Self,
-                    theImageRef,
-                    theImageNew,
-                    theToBlackWhite,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Diff_init_handleimagepixmap2_bool(
+                self as *mut Self,
+                theImageRef,
+                theImageNew,
+                theToBlackWhite,
+            )
+        })
     }
 
     /// **Source:** `Image_Diff.hxx`:77 - `Image_Diff::Init()`
@@ -1680,21 +1194,14 @@ impl Diff {
         theImgPathNew: &crate::t_collection::AsciiString,
         theToBlackWhite: bool,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_Diff_init_asciistring2_bool(
-                    self as *mut Self,
-                    theImgPathRef,
-                    theImgPathNew,
-                    theToBlackWhite,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Diff_init_asciistring2_bool(
+                self as *mut Self,
+                theImgPathRef,
+                theImgPathNew,
+                theToBlackWhite,
+            )
+        })
     }
 
     /// **Source:** `Image_Diff.hxx`:85 - `Image_Diff::SetColorTolerance()`
@@ -1703,27 +1210,15 @@ impl Diff {
     /// By default, the tolerance is equal to 0 thus equality check will return false for any
     /// different colors.
     pub fn set_color_tolerance(&mut self, theTolerance: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_Diff_set_color_tolerance(self as *mut Self, theTolerance)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_Diff_set_color_tolerance(self as *mut Self, theTolerance)
+        })
     }
 
     /// **Source:** `Image_Diff.hxx`:88 - `Image_Diff::ColorTolerance()`
     /// Color tolerance for equality check.
     pub fn color_tolerance(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Image_Diff_color_tolerance(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_Diff_color_tolerance(self as *const Self) })
     }
 
     /// **Source:** `Image_Diff.hxx`:96 - `Image_Diff::SetBorderFilterOn()`
@@ -1734,57 +1229,32 @@ impl Diff {
     /// This flag allows to detect such a "border" area and skip it from comparison of images.
     /// Filter turned OFF by default.
     pub fn set_border_filter_on(&mut self, theToIgnore: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_Diff_set_border_filter_on(self as *mut Self, theToIgnore)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_Diff_set_border_filter_on(self as *mut Self, theToIgnore)
+        })
     }
 
     /// **Source:** `Image_Diff.hxx`:99 - `Image_Diff::IsBorderFilterOn()`
     /// Returns a flag of taking into account (ignoring) a border effect in comparison of images.
     pub fn is_border_filter_on(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_Diff_is_border_filter_on(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Diff_is_border_filter_on(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_Diff.hxx`:103 - `Image_Diff::Compare()`
     /// Compares two images. It returns a number of different pixels (or groups of pixels).
     /// It returns -1 if algorithm not initialized before.
     pub fn compare(&mut self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::Image_Diff_compare(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_Diff_compare(self as *mut Self) })
     }
 
     /// **Source:** `Image_Diff.hxx`:106 - `Image_Diff::SaveDiffImage()`
     /// Saves a difference between two images as white pixels on black background.
     pub fn save_diff_image_pixmap(&self, theDiffImage: &mut PixMap) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_Diff_save_diff_image_pixmap(self as *const Self, theDiffImage)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Diff_save_diff_image_pixmap(self as *const Self, theDiffImage)
+        })
     }
 
     /// **Source:** `Image_Diff.hxx`:109 - `Image_Diff::SaveDiffImage()`
@@ -1793,117 +1263,75 @@ impl Diff {
         &self,
         theDiffPath: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_Diff_save_diff_image_asciistring(self as *const Self, theDiffPath)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Diff_save_diff_image_asciistring(self as *const Self, theDiffPath)
+        })
     }
 
     /// **Source:** `Image_Diff.hxx`:152 - `Image_Diff::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Image_Diff_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Image_Diff_dynamic_type(self as *const Self))) }
     }
 
     /// **Source:** `Image_Diff.hxx`:152 - `Image_Diff::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Image_Diff_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Image_Diff_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Image_Diff.hxx`:152 - `Image_Diff::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Image_Diff_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Image_Diff_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe { crate::ffi::Image_Diff_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Image_Diff_as_Standard_Transient(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Image_Diff_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Image_Diff_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleImageDiff> {
-        let __result = unsafe { crate::ffi::Image_Diff_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_Diff_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_Diff_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Diff_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_Diff_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Diff_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::Image_Diff_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Image_Diff_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1914,49 +1342,30 @@ impl Diff {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_Diff_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Diff_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Image_Diff_inherited_IncrementRefCounter(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_Diff_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_Diff_inherited_DecrementRefCounter(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Diff_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Image_Diff_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_Diff_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -1971,30 +1380,21 @@ unsafe impl crate::CppDeletable for HandleImageDiff {
 impl HandleImageDiff {
     /// Dereference this Handle to access the underlying Image_Diff
     pub fn get(&self) -> &crate::ffi::Image_Diff {
-        let __result = unsafe { crate::ffi::HandleImageDiff_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleImageDiff_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Image_Diff
     pub fn get_mut(&mut self) -> &mut crate::ffi::Image_Diff {
-        let __result = unsafe { crate::ffi::HandleImageDiff_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &mut *__result.ret }
+        unsafe { &mut *crate::check_result(crate::ffi::HandleImageDiff_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<Image_Diff> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result =
-            unsafe { crate::ffi::HandleImageDiff_to_HandleStandardTransient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleImageDiff_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2016,38 +1416,23 @@ impl PixMap {
     /// **Source:** `Image_PixMap.hxx`:135 - `Image_PixMap::Image_PixMap()`
     /// Empty constructor. Initialize the NULL image plane.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_PixMap_ctor())) }
     }
 
     /// **Source:** `Image_PixMap.hxx`:27 - `Image_PixMap::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_PixMap_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Image_PixMap.hxx`:93 - `Image_PixMap::Format()`
     /// Return pixel format.
     pub fn format(&self) -> crate::image::Format {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_format(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::image::Format::try_from(__val).unwrap()
-        }
+        crate::image::Format::try_from(crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_format(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `Image_PixMap.hxx`:99 - `Image_PixMap::SetFormat()`
@@ -2056,131 +1441,67 @@ impl PixMap {
     /// Intended to switch formats indicating different interpretation of the same data
     /// (e.g. ImgGray and ImgAlpha).
     pub fn set_format(&mut self, thePixelFormat: crate::image::Format) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_PixMap_set_format(self as *mut Self, thePixelFormat.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMap_set_format(self as *mut Self, thePixelFormat.into())
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:102 - `Image_PixMap::Width()`
     /// Return image width in pixels.
     pub fn width(&self) -> usize {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_width(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_width(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:105 - `Image_PixMap::Height()`
     /// Return image height in pixels.
     pub fn height(&self) -> usize {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_height(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_height(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:108 - `Image_PixMap::Depth()`
     /// Return image depth in pixels.
     pub fn depth(&self) -> usize {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_depth(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_depth(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:111 - `Image_PixMap::SizeX()`
     /// Return image width in pixels.
     pub fn size_x(&self) -> usize {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_size_x(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_size_x(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:114 - `Image_PixMap::SizeY()`
     /// Return image height in pixels.
     pub fn size_y(&self) -> usize {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_size_y(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_size_y(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:117 - `Image_PixMap::SizeZ()`
     /// Return image depth in pixels.
     pub fn size_z(&self) -> usize {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_size_z(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_size_z(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:120 - `Image_PixMap::SizeXYZ()`
     /// Return image width x height x depth in pixels.
     pub fn size_xyz(&self) -> crate::OwnedPtr<crate::ffi::NCollection_Vec3_Standard_Size> {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_size_xyz(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_PixMap_size_xyz(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Image_PixMap.hxx`:126 - `Image_PixMap::Ratio()`
     /// Return width / height.
     pub fn ratio(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_ratio(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_ratio(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:132 - `Image_PixMap::IsEmpty()`
     /// Return true if data is NULL.
     pub fn is_empty(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_is_empty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_is_empty(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:148 - `Image_PixMap::PixelColor()`
@@ -2198,20 +1519,13 @@ impl PixMap {
         theY: i32,
         theToLinearize: bool,
     ) -> crate::OwnedPtr<crate::quantity::ColorRGBA> {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_pixel_color(
-                    self as *const Self,
-                    theX,
-                    theY,
-                    theToLinearize,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_PixMap_pixel_color(
+                self as *const Self,
+                theX,
+                theY,
+                theToLinearize,
+            )))
         }
     }
 
@@ -2231,20 +1545,15 @@ impl PixMap {
         theColor: &crate::quantity::Color,
         theToDeLinearize: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_PixMap_set_pixel_color_int2_color_bool(
-                    self as *mut Self,
-                    theX,
-                    theY,
-                    theColor,
-                    theToDeLinearize,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMap_set_pixel_color_int2_color_bool(
+                self as *mut Self,
+                theX,
+                theY,
+                theColor,
+                theToDeLinearize,
+            )
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:186 - `Image_PixMap::SetPixelColor()`
@@ -2263,20 +1572,15 @@ impl PixMap {
         theColor: &crate::quantity::ColorRGBA,
         theToDeLinearize: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_PixMap_set_pixel_color_int2_colorrgba_bool(
-                    self as *mut Self,
-                    theX,
-                    theY,
-                    theColor,
-                    theToDeLinearize,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMap_set_pixel_color_int2_colorrgba_bool(
+                self as *mut Self,
+                theX,
+                theY,
+                theColor,
+                theToDeLinearize,
+            )
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:205 - `Image_PixMap::InitWrapper()`
@@ -2292,23 +1596,16 @@ impl PixMap {
         theSizeY: usize,
         theSizeRowBytes: usize,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_init_wrapper(
-                    self as *mut Self,
-                    thePixelFormat.into(),
-                    theDataPtr,
-                    theSizeX,
-                    theSizeY,
-                    theSizeRowBytes,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_init_wrapper(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theDataPtr,
+                theSizeX,
+                theSizeY,
+                theSizeRowBytes,
+            )
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:213 - `Image_PixMap::InitTrash()`
@@ -2321,37 +1618,24 @@ impl PixMap {
         theSizeY: usize,
         theSizeRowBytes: usize,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_init_trash(
-                    self as *mut Self,
-                    thePixelFormat.into(),
-                    theSizeX,
-                    theSizeY,
-                    theSizeRowBytes,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_init_trash(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeX,
+                theSizeY,
+                theSizeRowBytes,
+            )
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:220 - `Image_PixMap::InitCopy()`
     /// Initialize by copying data.
     /// If you want to copy alien data you should create wrapper using InitWrapper() before.
     pub fn init_copy(&mut self, theCopy: &PixMap) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_init_copy(self as *mut Self, theCopy) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_init_copy(self as *mut Self, theCopy)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:224 - `Image_PixMap::InitZero()`
@@ -2365,34 +1649,22 @@ impl PixMap {
         theSizeRowBytes: usize,
         theValue: u8,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_init_zero(
-                    self as *mut Self,
-                    thePixelFormat.into(),
-                    theSizeX,
-                    theSizeY,
-                    theSizeRowBytes,
-                    theValue,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_init_zero(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeX,
+                theSizeY,
+                theSizeRowBytes,
+                theValue,
+            )
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:237 - `Image_PixMap::Clear()`
     /// Method correctly deallocate internal buffer.
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Image_PixMap_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Image_PixMap_clear(self as *mut Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:244 - `Image_PixMap::InitWrapper3D()`
@@ -2407,22 +1679,15 @@ impl PixMap {
         theSizeXYZ: &crate::ffi::NCollection_Vec3_Standard_Size,
         theSizeRowBytes: usize,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_init_wrapper3_d(
-                    self as *mut Self,
-                    thePixelFormat.into(),
-                    theDataPtr,
-                    theSizeXYZ,
-                    theSizeRowBytes,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_init_wrapper3_d(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theDataPtr,
+                theSizeXYZ,
+                theSizeRowBytes,
+            )
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:251 - `Image_PixMap::InitTrash3D()`
@@ -2434,21 +1699,14 @@ impl PixMap {
         theSizeXYZ: &crate::ffi::NCollection_Vec3_Standard_Size,
         theSizeRowBytes: usize,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_init_trash3_d(
-                    self as *mut Self,
-                    thePixelFormat.into(),
-                    theSizeXYZ,
-                    theSizeRowBytes,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_init_trash3_d(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeXYZ,
+                theSizeRowBytes,
+            )
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:257 - `Image_PixMap::InitZero3D()`
@@ -2461,22 +1719,15 @@ impl PixMap {
         theSizeRowBytes: usize,
         theValue: u8,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_init_zero3_d(
-                    self as *mut Self,
-                    thePixelFormat.into(),
-                    theSizeXYZ,
-                    theSizeRowBytes,
-                    theValue,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_init_zero3_d(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeXYZ,
+                theSizeRowBytes,
+                theValue,
+            )
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:272 - `Image_PixMap::IsTopDown()`
@@ -2491,14 +1742,7 @@ impl PixMap {
     /// You should use this flag only if interconnect with alien APIs and buffers.
     /// @return true if image data is top-down
     pub fn is_top_down(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_is_top_down(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_is_top_down(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:277 - `Image_PixMap::SetTopDown()`
@@ -2506,228 +1750,128 @@ impl PixMap {
     /// Drawers should explicitly specify this value if current state IsTopDown() was ignored!
     /// @param theIsTopDown top-down flag
     pub fn set_top_down(&mut self, theIsTopDown: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Image_PixMap_set_top_down(self as *mut Self, theIsTopDown) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMap_set_top_down(self as *mut Self, theIsTopDown)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:281 - `Image_PixMap::TopDownInc()`
     /// Returns +1 if scanlines ordered in Top->Down order in memory and -1 otherwise.
     /// @return scanline increment for Top->Down iteration
     pub fn top_down_inc(&self) -> usize {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_top_down_inc(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_top_down_inc(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:285 - `Image_PixMap::Data()`
     /// Return data pointer for low-level operations (copying entire buffer, parsing with extra tools
     /// etc.).
     pub unsafe fn data(&self) -> *const u8 {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_data(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_data(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:289 - `Image_PixMap::ChangeData()`
     /// Return data pointer for low-level operations (copying entire buffer, parsing with extra tools
     /// etc.).
     pub unsafe fn change_data(&mut self) -> *mut u8 {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_change_data(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_change_data(self as *mut Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:293 - `Image_PixMap::Row()`
     /// Return data pointer to requested row (first column).
     /// Indexation starts from 0.
     pub unsafe fn row(&self, theRow: usize) -> *const u8 {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_row(self as *const Self, theRow) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_row(self as *const Self, theRow) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:297 - `Image_PixMap::ChangeRow()`
     /// Return data pointer to requested row (first column).
     /// Indexation starts from 0.
     pub unsafe fn change_row(&mut self, theRow: usize) -> *mut u8 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_change_row(self as *mut Self, theRow) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_change_row(self as *mut Self, theRow)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:301 - `Image_PixMap::Slice()`
     /// Return data pointer to requested 2D slice.
     /// Indexation starts from 0.
     pub unsafe fn slice(&self, theSlice: usize) -> *const u8 {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_slice(self as *const Self, theSlice) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_slice(self as *const Self, theSlice)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:305 - `Image_PixMap::ChangeSlice()`
     /// Return data pointer to requested 2D slice.
     /// Indexation starts from 0.
     pub unsafe fn change_slice(&mut self, theSlice: usize) -> *mut u8 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_change_slice(self as *mut Self, theSlice) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_change_slice(self as *mut Self, theSlice)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:309 - `Image_PixMap::SliceRow()`
     /// Return data pointer to requested row (first column).
     /// Indexation starts from 0.
     pub unsafe fn slice_row(&self, theSlice: usize, theRow: usize) -> *const u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_slice_row(self as *const Self, theSlice, theRow)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_slice_row(self as *const Self, theSlice, theRow)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:316 - `Image_PixMap::ChangeSliceRow()`
     /// Return data pointer to requested row (first column).
     /// Indexation starts from 0.
     pub unsafe fn change_slice_row(&mut self, theSlice: usize, theRow: usize) -> *mut u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_change_slice_row(self as *mut Self, theSlice, theRow)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_change_slice_row(self as *mut Self, theSlice, theRow)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:322 - `Image_PixMap::SizePixelBytes()`
     /// Return bytes reserved for one pixel (may include extra bytes for alignment).
     pub fn size_pixel_bytes(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_size_pixel_bytes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_size_pixel_bytes(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:326 - `Image_PixMap::SizeRowBytes()`
     /// Return bytes reserved per row.
     /// Could be larger than needed to store packed row (extra bytes for alignment etc.).
     pub fn size_row_bytes(&self) -> usize {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_size_row_bytes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_size_row_bytes(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:329 - `Image_PixMap::RowExtraBytes()`
     /// Return the extra bytes in the row.
     pub fn row_extra_bytes(&self) -> usize {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_row_extra_bytes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_row_extra_bytes(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:333 - `Image_PixMap::MaxRowAligmentBytes()`
     /// Compute the maximal row alignment for current row size.
     /// @return maximal row alignment in bytes (up to 16 bytes).
     pub fn max_row_aligment_bytes(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_max_row_aligment_bytes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_max_row_aligment_bytes(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:336 - `Image_PixMap::SizeSliceBytes()`
     /// Return number of bytes per 2D slice.
     pub fn size_slice_bytes(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_size_slice_bytes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_size_slice_bytes(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:339 - `Image_PixMap::SizeBytes()`
     /// Return buffer size
     pub fn size_bytes(&self) -> usize {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_size_bytes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_size_bytes(self as *const Self) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:369 - `Image_PixMap::RawValue()`
@@ -2737,15 +1881,9 @@ impl PixMap {
     /// WARNING: Input parameters are defined in the decreasing majority following memory layout -
     /// e.g. row first, column next.
     pub unsafe fn raw_value(&self, theRow: usize, theCol: usize) -> *const u8 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_raw_value(self as *const Self, theRow, theCol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_raw_value(self as *const Self, theRow, theCol)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:379 - `Image_PixMap::ChangeRawValue()`
@@ -2755,16 +1893,9 @@ impl PixMap {
     /// WARNING: Input parameters are defined in the decreasing majority following memory layout -
     /// e.g. row first, column next.
     pub unsafe fn change_raw_value(&mut self, theRow: usize, theCol: usize) -> *mut u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_change_raw_value(self as *mut Self, theRow, theCol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_change_raw_value(self as *mut Self, theRow, theCol)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:408 - `Image_PixMap::RawValueXY()`
@@ -2773,15 +1904,9 @@ impl PixMap {
     /// This method does not perform any type checks - use on own risk (check Format() before)!
     /// WARNING: Input parameters are defined in traditional X, Y order.
     pub unsafe fn raw_value_xy(&self, theX: usize, theY: usize) -> *const u8 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_raw_value_xy(self as *const Self, theX, theY) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_raw_value_xy(self as *const Self, theX, theY)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:417 - `Image_PixMap::ChangeRawValueXY()`
@@ -2790,16 +1915,9 @@ impl PixMap {
     /// This method does not perform any type checks - use on own risk (check Format() before)!
     /// WARNING: Input parameters are defined in traditional X, Y order.
     pub unsafe fn change_raw_value_xy(&mut self, theX: usize, theY: usize) -> *mut u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_change_raw_value_xy(self as *mut Self, theX, theY)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_change_raw_value_xy(self as *mut Self, theX, theY)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:447 - `Image_PixMap::RawValueXYZ()`
@@ -2808,16 +1926,9 @@ impl PixMap {
     /// This method does not perform any type checks - use on own risk (check Format() before)!
     /// WARNING: Input parameters are defined in traditional X, Y, Z order.
     pub unsafe fn raw_value_xyz(&self, theX: usize, theY: usize, theZ: usize) -> *const u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_raw_value_xyz(self as *const Self, theX, theY, theZ)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_raw_value_xyz(self as *const Self, theX, theY, theZ)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:456 - `Image_PixMap::ChangeRawValueXYZ()`
@@ -2831,67 +1942,37 @@ impl PixMap {
         theY: usize,
         theZ: usize,
     ) -> *mut u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_change_raw_value_xyz(self as *mut Self, theX, theY, theZ)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_change_raw_value_xyz(self as *mut Self, theX, theY, theZ)
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:27 - `Image_PixMap::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Image_PixMap_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Image_PixMap.hxx`:27 - `Image_PixMap::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Image_PixMap_get_type_descriptor())) }
     }
 
     /// **Source:** `Image_PixMap.hxx`:30 - `Image_PixMap::IsBigEndianHost()`
     /// Determine Big-Endian at runtime
     pub fn is_big_endian_host() -> bool {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_is_big_endian_host() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_is_big_endian_host() })
     }
 
     /// **Source:** `Image_PixMap.hxx`:42 - `Image_PixMap::SizePixelBytes()`
     /// Return bytes reserved for one pixel (may include extra bytes for alignment).
     pub fn size_pixel_bytes_format(thePixelFormat: crate::image::Format) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_size_pixel_bytes_format(thePixelFormat.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_size_pixel_bytes_format(thePixelFormat.into())
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:52 - `Image_PixMap::SwapRgbaBgra()`
@@ -2904,65 +1985,37 @@ impl PixMap {
     /// - Image_Format_RGBF  / Image_Format_BGRF
     /// - Image_Format_RGBAF / Image_Format_BGRAF
     pub fn swap_rgba_bgra(theImage: &mut PixMap) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_swap_rgba_bgra(theImage) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_swap_rgba_bgra(theImage) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:55 - `Image_PixMap::ToBlackWhite()`
     /// Convert image to Black/White.
     pub fn to_black_white(theImage: &mut PixMap) {
-        {
-            let __exc = unsafe { crate::ffi::Image_PixMap_to_black_white(theImage) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::Image_PixMap_to_black_white(theImage) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:58 - `Image_PixMap::FlipY()`
     /// Reverse line order as it draws it from bottom to top.
     pub fn flip_y(theImage: &mut PixMap) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_flip_y(theImage) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_flip_y(theImage) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:61 - `Image_PixMap::DefaultAllocator()`
     /// Return default image data allocator.
     pub fn default_allocator() -> &'static crate::ffi::HandleNCollectionBaseAllocator {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_default_allocator() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Image_PixMap_default_allocator())) }
     }
 
     /// **Source:** `Image_PixMap.hxx`:64 - `Image_PixMap::ImageFormatToString()`
     /// Return string representation of pixel format.
     pub fn image_format_to_string_format(theFormat: crate::image::Format) -> std::string::String {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_image_format_to_string_format(theFormat.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Image_PixMap_image_format_to_string_format(theFormat.into()),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Image_PixMap.hxx`:67 - `Image_PixMap::ImageFormatToString()`
@@ -2970,16 +2023,13 @@ impl PixMap {
     pub fn image_format_to_string_compressedformat(
         theFormat: crate::image::CompressedFormat,
     ) -> std::string::String {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_image_format_to_string_compressedformat(theFormat.into())
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Image_PixMap_image_format_to_string_compressedformat(theFormat.into()),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Image_PixMap.hxx`:75 - `Image_PixMap::ColorFromRawPixel()`
@@ -2994,19 +2044,14 @@ impl PixMap {
         theFormat: crate::image::Format,
         theToLinearize: bool,
     ) -> crate::OwnedPtr<crate::quantity::ColorRGBA> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Image_PixMap_color_from_raw_pixel(
                     theRawValue,
                     theFormat.into(),
                     theToLinearize,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+                ),
+            ))
         }
     }
 
@@ -3023,112 +2068,76 @@ impl PixMap {
         theColor: &crate::quantity::ColorRGBA,
         theToDeLinearize: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_PixMap_color_to_raw_pixel(
-                    theRawValue,
-                    theFormat.into(),
-                    theColor,
-                    theToDeLinearize,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMap_color_to_raw_pixel(
+                theRawValue,
+                theFormat.into(),
+                theColor,
+                theToDeLinearize,
+            )
+        })
     }
 
     /// **Source:** `Image_PixMap.hxx`:463 - `Image_PixMap::ConvertFromHalfFloat()`
     /// Convert 16-bit half-float value into 32-bit float (simple conversion).
     pub fn convert_from_half_float(theHalf: u16) -> f32 {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_convert_from_half_float(theHalf) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_convert_from_half_float(theHalf) })
     }
 
     /// **Source:** `Image_PixMap.hxx`:483 - `Image_PixMap::ConvertToHalfFloat()`
     /// Convert 32-bit float value into IEEE-754 16-bit floating-point format without infinity:
     /// 1-5-10, exp-15, +-131008.0, +-6.1035156E-5, +-5.9604645E-8, 3.311 digits.
     pub fn convert_to_half_float(theFloat: f32) -> u16 {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMap_convert_to_half_float(theFloat) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_PixMap_convert_to_half_float(theFloat) })
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Image_PixMap_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Image_PixMap_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Image_PixMap_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Image_PixMap_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
-        let __result = unsafe { crate::ffi::Image_PixMap_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_PixMap_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::Image_PixMap_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Image_PixMap_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3139,51 +2148,30 @@ impl PixMap {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMap_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_PixMap_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMap_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMap_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMap_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Image_PixMap_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMap_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3198,31 +2186,23 @@ unsafe impl crate::CppDeletable for HandleImagePixMap {
 impl HandleImagePixMap {
     /// Dereference this Handle to access the underlying Image_PixMap
     pub fn get(&self) -> &crate::ffi::Image_PixMap {
-        let __result = unsafe { crate::ffi::HandleImagePixMap_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleImagePixMap_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Image_PixMap
     pub fn get_mut(&mut self) -> &mut crate::ffi::Image_PixMap {
-        let __result = unsafe { crate::ffi::HandleImagePixMap_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleImagePixMap_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Image_PixMap> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleImagePixMap_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleImagePixMap_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Image_PixMap> to Handle<Image_AlienPixMap>
@@ -3231,16 +2211,13 @@ impl HandleImagePixMap {
     pub fn downcast_to_alien_pix_map(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleImageAlienPixMap>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleImagePixMap_downcast_to_HandleImageAlienPixMap(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -3263,12 +2240,8 @@ impl PixMapData {
     /// **Source:** `Image_PixMapData.hxx`:28 - `Image_PixMapData::Image_PixMapData()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMapData_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_PixMapData_ctor()))
         }
     }
 
@@ -3283,24 +2256,17 @@ impl PixMapData {
         theSizeRowBytes: usize,
         theDataPtr: *mut u8,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_init_handlencollectionbaseallocator_size4_u8ptr(
-                    self as *mut Self,
-                    theAlloc,
-                    theSizeBPP,
-                    theSizeX,
-                    theSizeY,
-                    theSizeRowBytes,
-                    theDataPtr,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_init_handlencollectionbaseallocator_size4_u8ptr(
+                self as *mut Self,
+                theAlloc,
+                theSizeBPP,
+                theSizeX,
+                theSizeY,
+                theSizeRowBytes,
+                theDataPtr,
+            )
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:58 - `Image_PixMapData::Init()`
@@ -3313,215 +2279,122 @@ impl PixMapData {
         theSizeRowBytes: usize,
         theDataPtr: *mut u8,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_init_handlencollectionbaseallocator_size_vec3_standard_size_size_u8ptr(self as *mut Self, theAlloc, theSizeBPP, theSizeXYZ, theSizeRowBytes, theDataPtr)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_init_handlencollectionbaseallocator_size_vec3_standard_size_size_u8ptr(self as *mut Self, theAlloc, theSizeBPP, theSizeXYZ, theSizeRowBytes, theDataPtr)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:84 - `Image_PixMapData::ZeroData()`
     /// Reset all values to zeros.
     pub fn zero_data(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Image_PixMapData_zero_data(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMapData_zero_data(self as *mut Self)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:93 - `Image_PixMapData::Row()`
     /// Return data pointer to requested row (first column).
     pub unsafe fn row(&self, theRow: usize) -> *const u8 {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMapData_row(self as *const Self, theRow) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_row(self as *const Self, theRow)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:99 - `Image_PixMapData::ChangeRow()`
     /// Return data pointer to requested row (first column).
     pub unsafe fn change_row(&mut self, theRow: usize) -> *mut u8 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_change_row(self as *mut Self, theRow) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_change_row(self as *mut Self, theRow)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:105 - `Image_PixMapData::Value()`
     /// Return data pointer to requested position.
     pub unsafe fn value(&self, theRow: usize, theCol: usize) -> *const u8 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_value(self as *const Self, theRow, theCol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_value(self as *const Self, theRow, theCol)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:111 - `Image_PixMapData::ChangeValue()`
     /// Return data pointer to requested position.
     pub unsafe fn change_value(&mut self, theRow: usize, theCol: usize) -> *mut u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_change_value(self as *mut Self, theRow, theCol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_change_value(self as *mut Self, theRow, theCol)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:117 - `Image_PixMapData::ValueXY()`
     /// Return data pointer to requested position.
     pub unsafe fn value_xy(&self, theX: usize, theY: usize) -> *const u8 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_value_xy(self as *const Self, theX, theY) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_value_xy(self as *const Self, theX, theY)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:123 - `Image_PixMapData::ChangeValueXY()`
     /// Return data pointer to requested position.
     pub unsafe fn change_value_xy(&mut self, theX: usize, theY: usize) -> *mut u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_change_value_xy(self as *mut Self, theX, theY)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_change_value_xy(self as *mut Self, theX, theY)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:130 - `Image_PixMapData::Slice()`
     /// Return data pointer to requested 2D slice.
     pub unsafe fn slice(&self, theSlice: usize) -> *const u8 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_slice(self as *const Self, theSlice) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_slice(self as *const Self, theSlice)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:136 - `Image_PixMapData::ChangeSlice()`
     /// Return data pointer to requested 2D slice.
     pub unsafe fn change_slice(&mut self, theSlice: usize) -> *mut u8 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_change_slice(self as *mut Self, theSlice) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_change_slice(self as *mut Self, theSlice)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:142 - `Image_PixMapData::SliceRow()`
     /// Return data pointer to requested row (first column).
     pub unsafe fn slice_row(&self, theSlice: usize, theRow: usize) -> *const u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_slice_row(self as *const Self, theSlice, theRow)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_slice_row(self as *const Self, theSlice, theRow)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:149 - `Image_PixMapData::ChangeSliceRow()`
     /// Return data pointer to requested row (first column).
     pub unsafe fn change_slice_row(&mut self, theSlice: usize, theRow: usize) -> *mut u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_change_slice_row(self as *mut Self, theSlice, theRow)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_change_slice_row(self as *mut Self, theSlice, theRow)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:156 - `Image_PixMapData::ValueXYZ()`
     /// Return data pointer to requested position.
     pub unsafe fn value_xyz(&self, theX: usize, theY: usize, theZ: usize) -> *const u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_value_xyz(self as *const Self, theX, theY, theZ)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_value_xyz(self as *const Self, theX, theY, theZ)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:163 - `Image_PixMapData::ChangeValueXYZ()`
     /// Return data pointer to requested position.
     pub unsafe fn change_value_xyz(&mut self, theX: usize, theY: usize, theZ: usize) -> *mut u8 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_change_value_xyz(self as *mut Self, theX, theY, theZ)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_change_value_xyz(self as *mut Self, theX, theY, theZ)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:171 - `Image_PixMapData::MaxRowAligmentBytes()`
     /// Compute the maximal row alignment for current row size.
     /// @return maximal row alignment in bytes (up to 16 bytes).
     pub fn max_row_aligment_bytes(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_max_row_aligment_bytes(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_max_row_aligment_bytes(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:187 - `Image_PixMapData::SetTopDown()`
@@ -3529,216 +2402,145 @@ impl PixMapData {
     /// Drawers should explicitly specify this value if current state IsTopDown() was ignored!
     /// @param theIsTopDown top-down flag
     pub fn set_top_down(&mut self, theIsTopDown: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_PixMapData_set_top_down(self as *mut Self, theIsTopDown)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMapData_set_top_down(self as *mut Self, theIsTopDown)
+        })
     }
 
     /// **Source:** `Image_PixMapData.hxx`:209 - `Image_PixMapData::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_PixMapData_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Image_PixMapData.hxx`:209 - `Image_PixMapData::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMapData_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Image_PixMapData_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Image_PixMapData.hxx`:209 - `Image_PixMapData::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Image_PixMapData_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Image_PixMapData_get_type_descriptor())) }
     }
 
     /// Upcast to NCollection_Buffer
     pub fn as_n_collection_buffer(&self) -> &crate::n_collection::Buffer {
-        let __result =
-            unsafe { crate::ffi::Image_PixMapData_as_NCollection_Buffer(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Image_PixMapData_as_NCollection_Buffer(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to NCollection_Buffer (mutable)
     pub fn as_n_collection_buffer_mut(&mut self) -> &mut crate::n_collection::Buffer {
-        let __result =
-            unsafe { crate::ffi::Image_PixMapData_as_NCollection_Buffer_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Image_PixMapData_as_NCollection_Buffer_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Image_PixMapData_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Image_PixMapData_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Image_PixMapData_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Image_PixMapData_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMapData> {
-        let __result = unsafe { crate::ffi::Image_PixMapData_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_PixMapData_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:60 - `NCollection_Buffer::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_inherited_IsEmpty(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_inherited_IsEmpty(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:63 - `NCollection_Buffer::Size()`
     pub fn size(&self) -> usize {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_inherited_Size(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_inherited_Size(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:66 - `NCollection_Buffer::Allocator()`
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_inherited_Allocator(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_PixMapData_inherited_Allocator(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:69 - `NCollection_Buffer::SetAllocator()`
     pub fn set_allocator(&mut self, theAlloc: &crate::ffi::HandleNCollectionBaseAllocator) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_PixMapData_inherited_SetAllocator(self as *mut Self, theAlloc)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMapData_inherited_SetAllocator(self as *mut Self, theAlloc)
+        })
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:77 - `NCollection_Buffer::Allocate()`
     pub fn allocate(&mut self, theSize: usize) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_inherited_Allocate(self as *mut Self, theSize)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_inherited_Allocate(self as *mut Self, theSize)
+        })
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:95 - `NCollection_Buffer::Free()`
     pub fn free(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Image_PixMapData_inherited_Free(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMapData_inherited_Free(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Image_PixMapData_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3749,52 +2551,30 @@ impl PixMapData {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_PixMapData_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_PixMapData_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMapData_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_PixMapData_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_PixMapData_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Image_PixMapData_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_PixMapData_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3809,42 +2589,32 @@ unsafe impl crate::CppDeletable for HandleImagePixMapData {
 impl HandleImagePixMapData {
     /// Dereference this Handle to access the underlying Image_PixMapData
     pub fn get(&self) -> &crate::ffi::Image_PixMapData {
-        let __result = unsafe { crate::ffi::HandleImagePixMapData_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleImagePixMapData_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Image_PixMapData
     pub fn get_mut(&mut self) -> &mut crate::ffi::Image_PixMapData {
-        let __result = unsafe { crate::ffi::HandleImagePixMapData_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleImagePixMapData_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Image_PixMapData> to Handle<NCollection_Buffer>
     pub fn to_handle_buffer(&self) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBuffer> {
-        let __result = unsafe {
-            crate::ffi::HandleImagePixMapData_to_HandleNCollectionBuffer(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleImagePixMapData_to_HandleNCollectionBuffer(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Image_PixMapData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleImagePixMapData_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleImagePixMapData_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3866,215 +2636,144 @@ impl SupportedFormats {
     /// **Source:** `Image_SupportedFormats.hxx`:27 - `Image_SupportedFormats::Image_SupportedFormats()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Image_SupportedFormats_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::Image_SupportedFormats_ctor()),
+            )
         }
     }
 
     /// **Source:** `Image_SupportedFormats.hxx`:24 - `Image_SupportedFormats::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_SupportedFormats_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_SupportedFormats_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Image_SupportedFormats.hxx`:30 - `Image_SupportedFormats::IsSupported()`
     /// Return TRUE if image format is supported.
     pub fn is_supported_format(&self, theFormat: crate::image::Format) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_SupportedFormats_is_supported_format(
-                    self as *const Self,
-                    theFormat.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_SupportedFormats_is_supported_format(
+                self as *const Self,
+                theFormat.into(),
+            )
+        })
     }
 
     /// **Source:** `Image_SupportedFormats.hxx`:33 - `Image_SupportedFormats::Add()`
     /// Set if image format is supported or not.
     pub fn add_format(&mut self, theFormat: crate::image::Format) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_SupportedFormats_add_format(self as *mut Self, theFormat.into())
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_SupportedFormats_add_format(self as *mut Self, theFormat.into())
+        })
     }
 
     /// **Source:** `Image_SupportedFormats.hxx`:36 - `Image_SupportedFormats::HasCompressed()`
     /// Return TRUE if there are compressed image formats supported.
     pub fn has_compressed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_SupportedFormats_has_compressed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_SupportedFormats_has_compressed(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_SupportedFormats.hxx`:39 - `Image_SupportedFormats::IsSupported()`
     /// Return TRUE if compressed image format is supported.
     pub fn is_supported_compressedformat(&self, theFormat: crate::image::CompressedFormat) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_SupportedFormats_is_supported_compressedformat(
-                    self as *const Self,
-                    theFormat.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_SupportedFormats_is_supported_compressedformat(
+                self as *const Self,
+                theFormat.into(),
+            )
+        })
     }
 
     /// **Source:** `Image_SupportedFormats.hxx`:42 - `Image_SupportedFormats::Add()`
     /// Set if compressed image format is supported or not.
     pub fn add_compressedformat(&mut self, theFormat: crate::image::CompressedFormat) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_SupportedFormats_add_compressedformat(
-                    self as *mut Self,
-                    theFormat.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_SupportedFormats_add_compressedformat(
+                self as *mut Self,
+                theFormat.into(),
+            )
+        })
     }
 
     /// **Source:** `Image_SupportedFormats.hxx`:49 - `Image_SupportedFormats::Clear()`
     /// Reset flags.
     pub fn clear(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Image_SupportedFormats_clear(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_SupportedFormats_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `Image_SupportedFormats.hxx`:24 - `Image_SupportedFormats::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Image_SupportedFormats_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Image_SupportedFormats_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Image_SupportedFormats.hxx`:24 - `Image_SupportedFormats::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Image_SupportedFormats_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Image_SupportedFormats_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Image_SupportedFormats_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Image_SupportedFormats_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::Image_SupportedFormats_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Image_SupportedFormats_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleImageSupportedFormats> {
-        let __result = unsafe { crate::ffi::Image_SupportedFormats_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Image_SupportedFormats_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_SupportedFormats_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_SupportedFormats_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_SupportedFormats_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_SupportedFormats_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Image_SupportedFormats_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Image_SupportedFormats_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -4085,53 +2784,30 @@ impl SupportedFormats {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_SupportedFormats_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_SupportedFormats_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_SupportedFormats_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_SupportedFormats_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_SupportedFormats_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_SupportedFormats_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Image_SupportedFormats_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_SupportedFormats_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -4146,32 +2822,29 @@ unsafe impl crate::CppDeletable for HandleImageSupportedFormats {
 impl HandleImageSupportedFormats {
     /// Dereference this Handle to access the underlying Image_SupportedFormats
     pub fn get(&self) -> &crate::ffi::Image_SupportedFormats {
-        let __result = unsafe { crate::ffi::HandleImageSupportedFormats_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleImageSupportedFormats_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Image_SupportedFormats
     pub fn get_mut(&mut self) -> &mut crate::ffi::Image_SupportedFormats {
-        let __result =
-            unsafe { crate::ffi::HandleImageSupportedFormats_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleImageSupportedFormats_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Image_SupportedFormats> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleImageSupportedFormats_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleImageSupportedFormats_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4197,12 +2870,10 @@ impl Texture {
     pub fn new_asciistring(
         theFileName: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Image_Texture_ctor_asciistring(theFileName) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Image_Texture_ctor_asciistring(theFileName),
+            ))
         }
     }
 
@@ -4213,18 +2884,14 @@ impl Texture {
         theOffset: i64,
         theLength: i64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::Image_Texture_ctor_asciistring_longlong2(
                     theFileName,
                     theOffset,
                     theLength,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -4234,118 +2901,73 @@ impl Texture {
         theBuffer: &crate::ffi::HandleNCollectionBuffer,
         theId: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_Texture_ctor_handlencollectionbuffer_asciistring(theBuffer, theId)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Image_Texture_ctor_handlencollectionbuffer_asciistring(
+                    theBuffer, theId,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Image_Texture.hxx`:30 - `Image_Texture::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Image_Texture_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_Texture_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `Image_Texture.hxx`:45 - `Image_Texture::TextureId()`
     /// Return generated texture id.
     pub fn texture_id(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result = unsafe { crate::ffi::Image_Texture_texture_id(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_Texture_texture_id(self as *const Self)))
         }
     }
 
     /// **Source:** `Image_Texture.hxx`:48 - `Image_Texture::FilePath()`
     /// Return image file path.
     pub fn file_path(&self) -> &crate::t_collection::AsciiString {
-        {
-            let __result = unsafe { crate::ffi::Image_Texture_file_path(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Image_Texture_file_path(self as *const Self))) }
     }
 
     /// **Source:** `Image_Texture.hxx`:51 - `Image_Texture::FileOffset()`
     /// Return offset within file.
     pub fn file_offset(&self) -> i64 {
-        {
-            let __result = unsafe { crate::ffi::Image_Texture_file_offset(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_Texture_file_offset(self as *const Self) })
     }
 
     /// **Source:** `Image_Texture.hxx`:54 - `Image_Texture::FileLength()`
     /// Return length of image data within the file after offset.
     pub fn file_length(&self) -> i64 {
-        {
-            let __result = unsafe { crate::ffi::Image_Texture_file_length(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::Image_Texture_file_length(self as *const Self) })
     }
 
     /// **Source:** `Image_Texture.hxx`:57 - `Image_Texture::DataBuffer()`
     /// Return buffer holding encoded image content.
     pub fn data_buffer(&self) -> &crate::ffi::HandleNCollectionBuffer {
-        {
-            let __result = unsafe { crate::ffi::Image_Texture_data_buffer(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_Texture_data_buffer(self as *const Self)))
         }
     }
 
     /// **Source:** `Image_Texture.hxx`:60 - `Image_Texture::MimeType()`
     /// Return mime-type of image file based on ProbeImageFileFormat().
     pub fn mime_type(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result = unsafe { crate::ffi::Image_Texture_mime_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_Texture_mime_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Image_Texture.hxx`:63 - `Image_Texture::ProbeImageFileFormat()`
     /// Return image file format.
     pub fn probe_image_file_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_Texture_probe_image_file_format(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Image_Texture_probe_image_file_format(self as *const Self),
+            ))
         }
     }
 
@@ -4355,15 +2977,10 @@ impl Texture {
         &self,
         theSupported: &crate::ffi::HandleImageSupportedFormats,
     ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_Texture_read_compressed_image(self as *const Self, theSupported)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Image_Texture_read_compressed_image(self as *const Self, theSupported),
+            ))
         }
     }
 
@@ -4373,30 +2990,20 @@ impl Texture {
         &self,
         theSupported: &crate::ffi::HandleImageSupportedFormats,
     ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_Texture_read_image(self as *const Self, theSupported) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_Texture_read_image(
+                self as *const Self,
+                theSupported,
+            )))
         }
     }
 
     /// **Source:** `Image_Texture.hxx`:74 - `Image_Texture::WriteImage()`
     /// Write image to specified file without decoding data.
     pub fn write_image_asciistring(&mut self, theFile: &crate::t_collection::AsciiString) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_Texture_write_image_asciistring(self as *mut Self, theFile)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Texture_write_image_asciistring(self as *mut Self, theFile)
+        })
     }
 
     /// **Source:** `Image_Texture.hxx`:77 - `Image_Texture::WriteImage()`
@@ -4406,112 +3013,78 @@ impl Texture {
         theStream: &mut crate::ffi::Standard_OStream,
         theFile: &crate::t_collection::AsciiString,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_Texture_write_image_ostream_asciistring(
-                    self as *mut Self,
-                    theStream,
-                    theFile,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Texture_write_image_ostream_asciistring(
+                self as *mut Self,
+                theStream,
+                theFile,
+            )
+        })
     }
 
     /// **Source:** `Image_Texture.hxx`:30 - `Image_Texture::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Image_Texture_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Image_Texture_get_type_name()))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Image_Texture.hxx`:30 - `Image_Texture::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Image_Texture_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Image_Texture_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Image_Texture_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Image_Texture_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Image_Texture_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Image_Texture_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleImageTexture> {
-        let __result = unsafe { crate::ffi::Image_Texture_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_Texture_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_Texture_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Texture_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_Texture_inherited_IsKind(self as *const Self, theType) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Texture_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result = unsafe { crate::ffi::Image_Texture_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Image_Texture_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -4522,51 +3095,30 @@ impl Texture {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_Texture_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Texture_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_Texture_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_Texture_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_Texture_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_Texture_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe { crate::ffi::Image_Texture_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_Texture_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -4581,31 +3133,23 @@ unsafe impl crate::CppDeletable for HandleImageTexture {
 impl HandleImageTexture {
     /// Dereference this Handle to access the underlying Image_Texture
     pub fn get(&self) -> &crate::ffi::Image_Texture {
-        let __result = unsafe { crate::ffi::HandleImageTexture_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleImageTexture_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Image_Texture
     pub fn get_mut(&mut self) -> &mut crate::ffi::Image_Texture {
-        let __result = unsafe { crate::ffi::HandleImageTexture_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleImageTexture_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Image_Texture> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleImageTexture_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleImageTexture_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4628,30 +3172,21 @@ impl VideoParams {
     /// **Source:** `Image_VideoRecorder.hxx`:55 - `Image_VideoParams::Image_VideoParams()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Image_VideoParams_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_VideoParams_ctor()))
         }
     }
 
     /// **Source:** `Image_VideoRecorder.hxx`:64 - `Image_VideoParams::SetFramerate()`
     /// Setup playback FPS.
     pub fn set_framerate_int2(&mut self, theNumerator: i32, theDenominator: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_VideoParams_set_framerate_int2(
-                    self as *mut Self,
-                    theNumerator,
-                    theDenominator,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_VideoParams_set_framerate_int2(
+                self as *mut Self,
+                theNumerator,
+                theDenominator,
+            )
+        })
     }
 
     /// **Source:** `Image_VideoRecorder.hxx`:73 - `Image_VideoParams::SetFramerate()`
@@ -4659,14 +3194,9 @@ impl VideoParams {
     /// For fixed-fps content, timebase should be 1/framerate and timestamp increments should be
     /// identical to 1.
     pub fn set_framerate_int(&mut self, theValue: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_VideoParams_set_framerate_int(self as *mut Self, theValue)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_VideoParams_set_framerate_int(self as *mut Self, theValue)
+        })
     }
 }
 
@@ -4684,37 +3214,26 @@ impl VideoRecorder {
     /// **Source:** `Image_VideoRecorder.hxx`:86 - `Image_VideoRecorder::Image_VideoRecorder()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Image_VideoRecorder_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Image_VideoRecorder_ctor()))
         }
     }
 
     /// **Source:** `Image_VideoRecorder.hxx`:83 - `Image_VideoRecorder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_VideoRecorder_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::Image_VideoRecorder_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Image_VideoRecorder.hxx`:92 - `Image_VideoRecorder::Close()`
     /// Close the stream - stop recorder.
     pub fn close(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::Image_VideoRecorder_close(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_VideoRecorder_close(self as *mut Self)
+        })
     }
 
     /// **Source:** `Image_VideoRecorder.hxx`:97 - `Image_VideoRecorder::Open()`
@@ -4723,156 +3242,107 @@ impl VideoRecorder {
     /// @param[in] theParams    video parameters
     pub fn open(&mut self, theFileName: &str, theParams: &VideoParams) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        {
-            let __result = unsafe {
-                crate::ffi::Image_VideoRecorder_open(
-                    self as *mut Self,
-                    c_theFileName.as_ptr(),
-                    theParams,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_VideoRecorder_open(
+                self as *mut Self,
+                c_theFileName.as_ptr(),
+                theParams,
+            )
+        })
     }
 
     /// **Source:** `Image_VideoRecorder.hxx`:102 - `Image_VideoRecorder::ChangeFrame()`
     /// Access RGBA frame, should NOT be re-initialized outside.
     /// Note that image is expected to have upper-left origin.
     pub fn change_frame(&mut self) -> &mut PixMap {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_VideoRecorder_change_frame(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::Image_VideoRecorder_change_frame(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `Image_VideoRecorder.hxx`:105 - `Image_VideoRecorder::FrameCount()`
     /// Return current frame index.
     pub fn frame_count(&self) -> i64 {
-        {
-            let __result =
-                unsafe { crate::ffi::Image_VideoRecorder_frame_count(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_VideoRecorder_frame_count(self as *const Self)
+        })
     }
 
     /// **Source:** `Image_VideoRecorder.hxx`:108 - `Image_VideoRecorder::PushFrame()`
     /// Push new frame, should be called after Open().
     pub fn push_frame(&mut self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::Image_VideoRecorder_push_frame(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_VideoRecorder_push_frame(self as *mut Self)
+        })
     }
 
     /// **Source:** `Image_VideoRecorder.hxx`:83 - `Image_VideoRecorder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::Image_VideoRecorder_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::Image_VideoRecorder_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `Image_VideoRecorder.hxx`:83 - `Image_VideoRecorder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::Image_VideoRecorder_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::Image_VideoRecorder_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Image_VideoRecorder_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::Image_VideoRecorder_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::Image_VideoRecorder_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::Image_VideoRecorder_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleImageVideoRecorder> {
-        let __result = unsafe { crate::ffi::Image_VideoRecorder_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::Image_VideoRecorder_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_VideoRecorder_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_VideoRecorder_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_VideoRecorder_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_VideoRecorder_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::Image_VideoRecorder_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::Image_VideoRecorder_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -4883,53 +3353,30 @@ impl VideoRecorder {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_VideoRecorder_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_VideoRecorder_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::Image_VideoRecorder_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_VideoRecorder_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::Image_VideoRecorder_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::Image_VideoRecorder_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::Image_VideoRecorder_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::Image_VideoRecorder_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -4944,30 +3391,28 @@ unsafe impl crate::CppDeletable for HandleImageVideoRecorder {
 impl HandleImageVideoRecorder {
     /// Dereference this Handle to access the underlying Image_VideoRecorder
     pub fn get(&self) -> &crate::ffi::Image_VideoRecorder {
-        let __result = unsafe { crate::ffi::HandleImageVideoRecorder_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleImageVideoRecorder_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Image_VideoRecorder
     pub fn get_mut(&mut self) -> &mut crate::ffi::Image_VideoRecorder {
-        let __result = unsafe { crate::ffi::HandleImageVideoRecorder_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleImageVideoRecorder_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Image_VideoRecorder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleImageVideoRecorder_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleImageVideoRecorder_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

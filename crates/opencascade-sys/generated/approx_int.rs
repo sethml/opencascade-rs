@@ -33,12 +33,8 @@ impl KnotTools {
     /// **Source:** `ApproxInt_KnotTools.hxx` - `ApproxInt_KnotTools::ApproxInt_KnotTools()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::ApproxInt_KnotTools_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ApproxInt_KnotTools_ctor()))
         }
     }
 
@@ -65,24 +61,19 @@ impl KnotTools {
         theMinNbPnts: i32,
         theKnots: &mut crate::ffi::NCollection_Vector_Standard_Integer,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ApproxInt_KnotTools_build_knots(
-                    thePntsXYZ,
-                    thePntsU1V1,
-                    thePntsU2V2,
-                    thePars,
-                    theApproxXYZ,
-                    theApproxU1V1,
-                    theApproxU2V2,
-                    theMinNbPnts,
-                    theKnots,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ApproxInt_KnotTools_build_knots(
+                thePntsXYZ,
+                thePntsU1V1,
+                thePntsU2V2,
+                thePars,
+                theApproxXYZ,
+                theApproxU1V1,
+                theApproxU2V2,
+                theMinNbPnts,
+                theKnots,
+            )
+        })
     }
 
     /// **Source:** `ApproxInt_KnotTools.hxx`:75 - `ApproxInt_KnotTools::BuildCurvature()`
@@ -94,16 +85,11 @@ impl KnotTools {
         theCurv: &mut crate::ffi::TColStd_Array1OfReal,
         theMaxCurv: &mut f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ApproxInt_KnotTools_build_curvature(
-                    theCoords, theDim, thePars, theCurv, theMaxCurv,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ApproxInt_KnotTools_build_curvature(
+                theCoords, theDim, thePars, theCurv, theMaxCurv,
+            )
+        })
     }
 
     /// **Source:** `ApproxInt_KnotTools.hxx`:82 - `ApproxInt_KnotTools::DefineParType()`
@@ -116,23 +102,17 @@ impl KnotTools {
         theApproxU1V1: bool,
         theApproxU2V2: bool,
     ) -> crate::approx::ParametrizationType {
-        {
-            let __result = unsafe {
-                crate::ffi::ApproxInt_KnotTools_define_par_type(
-                    theWL,
-                    theFpar,
-                    theLpar,
-                    theApproxXYZ,
-                    theApproxU1V1,
-                    theApproxU2V2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::approx::ParametrizationType::try_from(__val).unwrap()
-        }
+        crate::approx::ParametrizationType::try_from(crate::check_result(unsafe {
+            crate::ffi::ApproxInt_KnotTools_define_par_type(
+                theWL,
+                theFpar,
+                theLpar,
+                theApproxXYZ,
+                theApproxU1V1,
+                theApproxU2V2,
+            )
+        }))
+        .unwrap()
     }
 }
 
@@ -173,38 +153,26 @@ impl SvSurfaces {
         Tguv1: &mut crate::gp::Vec2d,
         Tguv2: &mut crate::gp::Vec2d,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ApproxInt_SvSurfaces_compute(
-                    self as *mut Self,
-                    u1,
-                    v1,
-                    u2,
-                    v2,
-                    Pt,
-                    Tg,
-                    Tguv1,
-                    Tguv2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ApproxInt_SvSurfaces_compute(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Pt,
+                Tg,
+                Tguv1,
+                Tguv2,
+            )
+        })
     }
 
     /// **Source:** `ApproxInt_SvSurfaces.hxx`:61 - `ApproxInt_SvSurfaces::Pnt()`
     pub fn pnt(&mut self, u1: f64, v1: f64, u2: f64, v2: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ApproxInt_SvSurfaces_pnt(self as *mut Self, u1, v1, u2, v2, P)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ApproxInt_SvSurfaces_pnt(self as *mut Self, u1, v1, u2, v2, P)
+        })
     }
 
     /// **Source:** `ApproxInt_SvSurfaces.hxx`:68 - `ApproxInt_SvSurfaces::SeekPoint()`
@@ -217,23 +185,9 @@ impl SvSurfaces {
         v2: f64,
         Point: &mut crate::int_surf::PntOn2S,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ApproxInt_SvSurfaces_seek_point(
-                    self as *mut Self,
-                    u1,
-                    v1,
-                    u2,
-                    v2,
-                    Point,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ApproxInt_SvSurfaces_seek_point(self as *mut Self, u1, v1, u2, v2, Point)
+        })
     }
 
     /// **Source:** `ApproxInt_SvSurfaces.hxx`:74 - `ApproxInt_SvSurfaces::Tangency()`
@@ -245,16 +199,9 @@ impl SvSurfaces {
         v2: f64,
         Tg: &mut crate::gp::Vec,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ApproxInt_SvSurfaces_tangency(self as *mut Self, u1, v1, u2, v2, Tg)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ApproxInt_SvSurfaces_tangency(self as *mut Self, u1, v1, u2, v2, Tg)
+        })
     }
 
     /// **Source:** `ApproxInt_SvSurfaces.hxx`:80 - `ApproxInt_SvSurfaces::TangencyOnSurf1()`
@@ -266,23 +213,16 @@ impl SvSurfaces {
         v2: f64,
         Tg: &mut crate::gp::Vec2d,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ApproxInt_SvSurfaces_tangency_on_surf1(
-                    self as *mut Self,
-                    u1,
-                    v1,
-                    u2,
-                    v2,
-                    Tg,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ApproxInt_SvSurfaces_tangency_on_surf1(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Tg,
+            )
+        })
     }
 
     /// **Source:** `ApproxInt_SvSurfaces.hxx`:86 - `ApproxInt_SvSurfaces::TangencyOnSurf2()`
@@ -294,47 +234,29 @@ impl SvSurfaces {
         v2: f64,
         Tg: &mut crate::gp::Vec2d,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::ApproxInt_SvSurfaces_tangency_on_surf2(
-                    self as *mut Self,
-                    u1,
-                    v1,
-                    u2,
-                    v2,
-                    Tg,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ApproxInt_SvSurfaces_tangency_on_surf2(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Tg,
+            )
+        })
     }
 
     /// **Source:** `ApproxInt_SvSurfaces.hxx`:93 - `ApproxInt_SvSurfaces::SetUseSolver()`
     pub fn set_use_solver(&mut self, theUseSol: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::ApproxInt_SvSurfaces_set_use_solver(self as *mut Self, theUseSol)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::ApproxInt_SvSurfaces_set_use_solver(self as *mut Self, theUseSol)
+        })
     }
 
     /// **Source:** `ApproxInt_SvSurfaces.hxx`:95 - `ApproxInt_SvSurfaces::GetUseSolver()`
     pub fn get_use_solver(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::ApproxInt_SvSurfaces_get_use_solver(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::ApproxInt_SvSurfaces_get_use_solver(self as *const Self)
+        })
     }
 }

@@ -89,12 +89,8 @@ impl AbscissaPoint {
     /// **Source:** `GCPnts_AbscissaPoint.hxx`:76 - `GCPnts_AbscissaPoint::GCPnts_AbscissaPoint()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::GCPnts_AbscissaPoint_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GCPnts_AbscissaPoint_ctor()))
         }
     }
 
@@ -106,14 +102,10 @@ impl AbscissaPoint {
         theAbscissa: f64,
         theU0: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_AbscissaPoint_ctor_curve_real2(theC, theAbscissa, theU0)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_AbscissaPoint_ctor_curve_real2(theC, theAbscissa, theU0),
+            ))
         }
     }
 
@@ -127,19 +119,15 @@ impl AbscissaPoint {
         theAbscissa: f64,
         theU0: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_AbscissaPoint_ctor_real_curve_real2(
                     theTol,
                     theC,
                     theAbscissa,
                     theU0,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -153,19 +141,15 @@ impl AbscissaPoint {
         theAbscissa: f64,
         theU0: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_AbscissaPoint_ctor_real_curve2d_real2(
                     theTol,
                     theC,
                     theAbscissa,
                     theU0,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -177,14 +161,10 @@ impl AbscissaPoint {
         theAbscissa: f64,
         theU0: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_AbscissaPoint_ctor_curve2d_real2(theC, theAbscissa, theU0)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_AbscissaPoint_ctor_curve2d_real2(theC, theAbscissa, theU0),
+            ))
         }
     }
 
@@ -199,14 +179,10 @@ impl AbscissaPoint {
         theU0: f64,
         theUi: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_AbscissaPoint_ctor_curve_real3(theC, theAbscissa, theU0, theUi)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_AbscissaPoint_ctor_curve_real3(theC, theAbscissa, theU0, theUi),
+            ))
         }
     }
 
@@ -221,14 +197,15 @@ impl AbscissaPoint {
         theU0: f64,
         theUi: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_AbscissaPoint_ctor_curve2d_real3(theC, theAbscissa, theU0, theUi)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_AbscissaPoint_ctor_curve2d_real3(
+                    theC,
+                    theAbscissa,
+                    theU0,
+                    theUi,
+                ),
+            ))
         }
     }
 
@@ -244,20 +221,16 @@ impl AbscissaPoint {
         theUi: f64,
         theTol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_AbscissaPoint_ctor_curve_real4(
                     theC,
                     theAbscissa,
                     theU0,
                     theUi,
                     theTol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -273,20 +246,16 @@ impl AbscissaPoint {
         theUi: f64,
         theTol: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_AbscissaPoint_ctor_curve2d_real4(
                     theC,
                     theAbscissa,
                     theU0,
                     theUi,
                     theTol,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -296,14 +265,9 @@ impl AbscissaPoint {
     /// -   non-convergence of the algorithm
     /// -   querying the results before computation.
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::GCPnts_AbscissaPoint_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_AbscissaPoint_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GCPnts_AbscissaPoint.hxx`:155 - `GCPnts_AbscissaPoint::Parameter()`
@@ -313,98 +277,53 @@ impl AbscissaPoint {
     /// StdFail_NotDone if the computation was not
     /// successful, or was not done.
     pub fn parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_AbscissaPoint_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_AbscissaPoint_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `GCPnts_AbscissaPoint.hxx`:39 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 3D Curve.
     pub fn length_curve(theC: &crate::adaptor3d::Curve) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve(theC) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve(theC) })
     }
 
     /// **Source:** `GCPnts_AbscissaPoint.hxx`:42 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 2D Curve.
     pub fn length_curve2d(theC: &crate::adaptor2d::Curve2d) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve2d(theC) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve2d(theC) })
     }
 
     /// **Source:** `GCPnts_AbscissaPoint.hxx`:45 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 3D Curve with the given tolerance.
     pub fn length_curve_real(theC: &crate::adaptor3d::Curve, theTol: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve_real(theC, theTol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_AbscissaPoint_length_curve_real(theC, theTol)
+        })
     }
 
     /// **Source:** `GCPnts_AbscissaPoint.hxx`:49 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 2D Curve with the given tolerance.
     pub fn length_curve2d_real(theC: &crate::adaptor2d::Curve2d, theTol: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve2d_real(theC, theTol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_AbscissaPoint_length_curve2d_real(theC, theTol)
+        })
     }
 
     /// **Source:** `GCPnts_AbscissaPoint.hxx`:53 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 3D Curve.
     pub fn length_curve_real2(theC: &crate::adaptor3d::Curve, theU1: f64, theU2: f64) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve_real2(theC, theU1, theU2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_AbscissaPoint_length_curve_real2(theC, theU1, theU2)
+        })
     }
 
     /// **Source:** `GCPnts_AbscissaPoint.hxx`:58 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 2D Curve.
     pub fn length_curve2d_real2(theC: &crate::adaptor2d::Curve2d, theU1: f64, theU2: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_AbscissaPoint_length_curve2d_real2(theC, theU1, theU2)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_AbscissaPoint_length_curve2d_real2(theC, theU1, theU2)
+        })
     }
 
     /// **Source:** `GCPnts_AbscissaPoint.hxx`:63 - `GCPnts_AbscissaPoint::Length()`
@@ -415,16 +334,9 @@ impl AbscissaPoint {
         theU2: f64,
         theTol: f64,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_AbscissaPoint_length_curve_real3(theC, theU1, theU2, theTol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_AbscissaPoint_length_curve_real3(theC, theU1, theU2, theTol)
+        })
     }
 
     /// **Source:** `GCPnts_AbscissaPoint.hxx`:69 - `GCPnts_AbscissaPoint::Length()`
@@ -435,16 +347,9 @@ impl AbscissaPoint {
         theU2: f64,
         theTol: f64,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_AbscissaPoint_length_curve2d_real3(theC, theU1, theU2, theTol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_AbscissaPoint_length_curve2d_real3(theC, theU1, theU2, theTol)
+        })
     }
 }
 
@@ -472,70 +377,52 @@ impl DistFunction {
         U1: f64,
         U2: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_DistFunction_ctor_curve_real2(theCurve, U1, U2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_DistFunction_ctor_curve_real2(theCurve, U1, U2),
+            ))
         }
     }
 
     /// **Source:** `GCPnts_DistFunction.hxx`:34 - `GCPnts_DistFunction::Value()`
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_DistFunction_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_DistFunction_value(self as *mut Self, X, F)
+        })
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::GCPnts_DistFunction_as_math_Function(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::GCPnts_DistFunction_as_math_Function(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::GCPnts_DistFunction_as_math_Function_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::GCPnts_DistFunction_as_math_Function_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        let __result = unsafe { crate::ffi::GCPnts_DistFunction_to_owned(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_DistFunction_to_owned(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_DistFunction_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_DistFunction_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -553,76 +440,52 @@ unsafe impl crate::CppDeletable for DistFunctionMV {
 impl DistFunctionMV {
     /// **Source:** `GCPnts_DistFunction.hxx`:51 - `GCPnts_DistFunctionMV::GCPnts_DistFunctionMV()`
     pub fn new_distfunction(theCurvLinDist: &mut DistFunction) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_DistFunctionMV_ctor_distfunction(theCurvLinDist) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_DistFunctionMV_ctor_distfunction(theCurvLinDist),
+            ))
         }
     }
 
     /// **Source:** `GCPnts_DistFunction.hxx`:53 - `GCPnts_DistFunctionMV::Value()`
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_DistFunctionMV_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_DistFunctionMV_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `GCPnts_DistFunction.hxx`:55 - `GCPnts_DistFunctionMV::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_DistFunctionMV_nb_variables(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_DistFunctionMV_nb_variables(self as *const Self)
+        })
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        let __result = unsafe {
-            crate::ffi::GCPnts_DistFunctionMV_as_math_MultipleVarFunction(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::GCPnts_DistFunctionMV_as_math_MultipleVarFunction(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        let __result = unsafe {
-            crate::ffi::GCPnts_DistFunctionMV_as_math_MultipleVarFunction_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::GCPnts_DistFunctionMV_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_DistFunctionMV_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_DistFunctionMV_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -650,70 +513,52 @@ impl DistFunction2d {
         U1: f64,
         U2: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_DistFunction2d_ctor_curve2d_real2(theCurve, U1, U2) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_DistFunction2d_ctor_curve2d_real2(theCurve, U1, U2),
+            ))
         }
     }
 
     /// **Source:** `GCPnts_DistFunction2d.hxx`:34 - `GCPnts_DistFunction2d::Value()`
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_DistFunction2d_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_DistFunction2d_value(self as *mut Self, X, F)
+        })
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::GCPnts_DistFunction2d_as_math_Function(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::GCPnts_DistFunction2d_as_math_Function(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        let __result =
-            unsafe { crate::ffi::GCPnts_DistFunction2d_as_math_Function_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::GCPnts_DistFunction2d_as_math_Function_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        let __result = unsafe { crate::ffi::GCPnts_DistFunction2d_to_owned(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_DistFunction2d_to_owned(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_DistFunction2d_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_DistFunction2d_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -732,76 +577,52 @@ unsafe impl crate::CppDeletable for DistFunction2dMV {
 impl DistFunction2dMV {
     /// **Source:** `GCPnts_DistFunction2d.hxx`:52 - `GCPnts_DistFunction2dMV::GCPnts_DistFunction2dMV()`
     pub fn new_distfunction2d(theCurvLinDist: &mut DistFunction2d) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_DistFunction2dMV_ctor_distfunction2d(theCurvLinDist) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_DistFunction2dMV_ctor_distfunction2d(theCurvLinDist),
+            ))
         }
     }
 
     /// **Source:** `GCPnts_DistFunction2d.hxx`:54 - `GCPnts_DistFunction2dMV::Value()`
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_DistFunction2dMV_value(self as *mut Self, X, F) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_DistFunction2dMV_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `GCPnts_DistFunction2d.hxx`:56 - `GCPnts_DistFunction2dMV::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_DistFunction2dMV_nb_variables(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_DistFunction2dMV_nb_variables(self as *const Self)
+        })
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        let __result = unsafe {
-            crate::ffi::GCPnts_DistFunction2dMV_as_math_MultipleVarFunction(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::GCPnts_DistFunction2dMV_as_math_MultipleVarFunction(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        let __result = unsafe {
-            crate::ffi::GCPnts_DistFunction2dMV_as_math_MultipleVarFunction_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::GCPnts_DistFunction2dMV_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_DistFunction2dMV_inherited_GetStateNumber(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_DistFunction2dMV_inherited_GetStateNumber(self as *mut Self)
+        })
     }
 }
 
@@ -828,12 +649,10 @@ impl QuasiUniformAbscissa {
     /// Constructs an empty algorithm.
     /// To define the problem to be solved, use the function Initialize.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::GCPnts_QuasiUniformAbscissa_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_QuasiUniformAbscissa_ctor(),
+            ))
         }
     }
 
@@ -845,14 +664,10 @@ impl QuasiUniformAbscissa {
         theC: &crate::adaptor3d::Curve,
         theNbPoints: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_QuasiUniformAbscissa_ctor_curve_int(theC, theNbPoints)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_QuasiUniformAbscissa_ctor_curve_int(theC, theNbPoints),
+            ))
         }
     }
 
@@ -892,19 +707,15 @@ impl QuasiUniformAbscissa {
         theU1: f64,
         theU2: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_QuasiUniformAbscissa_ctor_curve_int_real2(
                     theC,
                     theNbPoints,
                     theU1,
                     theU2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -916,14 +727,10 @@ impl QuasiUniformAbscissa {
         theC: &crate::adaptor2d::Curve2d,
         theNbPoints: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_QuasiUniformAbscissa_ctor_curve2d_int(theC, theNbPoints)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_QuasiUniformAbscissa_ctor_curve2d_int(theC, theNbPoints),
+            ))
         }
     }
 
@@ -939,19 +746,15 @@ impl QuasiUniformAbscissa {
         theU1: f64,
         theU2: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_QuasiUniformAbscissa_ctor_curve2d_int_real2(
                     theC,
                     theNbPoints,
                     theU1,
                     theU2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -960,18 +763,13 @@ impl QuasiUniformAbscissa {
     /// @param[in] theC  input 3D curve
     /// @param[in] theNbPoints  defines the number of desired points
     pub fn initialize_curve_int(&mut self, theC: &crate::adaptor3d::Curve, theNbPoints: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_QuasiUniformAbscissa_initialize_curve_int(
-                    self as *mut Self,
-                    theC,
-                    theNbPoints,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformAbscissa_initialize_curve_int(
+                self as *mut Self,
+                theC,
+                theNbPoints,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:90 - `GCPnts_QuasiUniformAbscissa::Initialize()`
@@ -987,20 +785,15 @@ impl QuasiUniformAbscissa {
         theU1: f64,
         theU2: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_QuasiUniformAbscissa_initialize_curve_int_real2(
-                    self as *mut Self,
-                    theC,
-                    theNbPoints,
-                    theU1,
-                    theU2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformAbscissa_initialize_curve_int_real2(
+                self as *mut Self,
+                theC,
+                theNbPoints,
+                theU1,
+                theU2,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:114 - `GCPnts_QuasiUniformAbscissa::Initialize()`
@@ -1008,18 +801,13 @@ impl QuasiUniformAbscissa {
     /// @param[in] theC  input 2D curve
     /// @param[in] theNbPoints  defines the number of desired points
     pub fn initialize_curve2d_int(&mut self, theC: &crate::adaptor2d::Curve2d, theNbPoints: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_QuasiUniformAbscissa_initialize_curve2d_int(
-                    self as *mut Self,
-                    theC,
-                    theNbPoints,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformAbscissa_initialize_curve2d_int(
+                self as *mut Self,
+                theC,
+                theNbPoints,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:122 - `GCPnts_QuasiUniformAbscissa::Initialize()`
@@ -1035,20 +823,15 @@ impl QuasiUniformAbscissa {
         theU1: f64,
         theU2: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_QuasiUniformAbscissa_initialize_curve2d_int_real2(
-                    self as *mut Self,
-                    theC,
-                    theNbPoints,
-                    theU1,
-                    theU2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformAbscissa_initialize_curve2d_int_real2(
+                self as *mut Self,
+                theC,
+                theNbPoints,
+                theU1,
+                theU2,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:131 - `GCPnts_QuasiUniformAbscissa::IsDone()`
@@ -1057,15 +840,9 @@ impl QuasiUniformAbscissa {
     /// -   non-convergence of the algorithm
     /// -   querying the results before computation.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_QuasiUniformAbscissa_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformAbscissa_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:145 - `GCPnts_QuasiUniformAbscissa::NbPoints()`
@@ -1082,15 +859,9 @@ impl QuasiUniformAbscissa {
     /// StdFail_NotDone if this algorithm has not been
     /// initialized, or if the computation was not successful.
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_QuasiUniformAbscissa_nb_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformAbscissa_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:161 - `GCPnts_QuasiUniformAbscissa::Parameter()`
@@ -1105,16 +876,9 @@ impl QuasiUniformAbscissa {
     /// StdFail_NotDone if this algorithm has not been
     /// initialized, or if the computation was not successful.
     pub fn parameter(&self, Index: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_QuasiUniformAbscissa_parameter(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformAbscissa_parameter(self as *const Self, Index)
+        })
     }
 }
 
@@ -1147,12 +911,10 @@ impl QuasiUniformDeflection {
     /// Constructs an empty algorithm.
     /// To define the problem to be solved, use the function Initialize().
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::GCPnts_QuasiUniformDeflection_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_QuasiUniformDeflection_ctor(),
+            ))
         }
     }
 
@@ -1163,18 +925,14 @@ impl QuasiUniformDeflection {
         theDeflection: f64,
         theContinuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve_real_shape(
                     theC,
                     theDeflection,
                     theContinuity.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1185,18 +943,14 @@ impl QuasiUniformDeflection {
         theDeflection: f64,
         theContinuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve2d_real_shape(
                     theC,
                     theDeflection,
                     theContinuity.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1209,20 +963,16 @@ impl QuasiUniformDeflection {
         theU2: f64,
         theContinuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve_real3_shape(
                     theC,
                     theDeflection,
                     theU1,
                     theU2,
                     theContinuity.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1274,20 +1024,16 @@ impl QuasiUniformDeflection {
         theU2: f64,
         theContinuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve2d_real3_shape(
                     theC,
                     theDeflection,
                     theU1,
                     theU2,
                     theContinuity.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1299,19 +1045,14 @@ impl QuasiUniformDeflection {
         theDeflection: f64,
         theContinuity: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve_real_shape(
-                    self as *mut Self,
-                    theC,
-                    theDeflection,
-                    theContinuity.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve_real_shape(
+                self as *mut Self,
+                theC,
+                theDeflection,
+                theContinuity.into(),
+            )
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:118 - `GCPnts_QuasiUniformDeflection::Initialize()`
@@ -1322,19 +1063,14 @@ impl QuasiUniformDeflection {
         theDeflection: f64,
         theContinuity: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve2d_real_shape(
-                    self as *mut Self,
-                    theC,
-                    theDeflection,
-                    theContinuity.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve2d_real_shape(
+                self as *mut Self,
+                theC,
+                theDeflection,
+                theContinuity.into(),
+            )
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:123 - `GCPnts_QuasiUniformDeflection::Initialize()`
@@ -1347,21 +1083,16 @@ impl QuasiUniformDeflection {
         theU2: f64,
         theContinuity: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve_real3_shape(
-                    self as *mut Self,
-                    theC,
-                    theDeflection,
-                    theU1,
-                    theU2,
-                    theContinuity.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve_real3_shape(
+                self as *mut Self,
+                theC,
+                theDeflection,
+                theU1,
+                theU2,
+                theContinuity.into(),
+            )
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:170 - `GCPnts_QuasiUniformDeflection::Initialize()`
@@ -1414,21 +1145,16 @@ impl QuasiUniformDeflection {
         theU2: f64,
         theContinuity: crate::geom_abs::Shape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve2d_real3_shape(
-                    self as *mut Self,
-                    theC,
-                    theDeflection,
-                    theU1,
-                    theU2,
-                    theContinuity.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve2d_real3_shape(
+                self as *mut Self,
+                theC,
+                theDeflection,
+                theU1,
+                theU2,
+                theContinuity.into(),
+            )
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:180 - `GCPnts_QuasiUniformDeflection::IsDone()`
@@ -1437,15 +1163,9 @@ impl QuasiUniformDeflection {
     /// -   non-convergence of the algorithm
     /// -   querying the results before computation.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_QuasiUniformDeflection_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformDeflection_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:187 - `GCPnts_QuasiUniformDeflection::NbPoints()`
@@ -1455,15 +1175,9 @@ impl QuasiUniformDeflection {
     /// StdFail_NotDone if this algorithm has not been
     /// initialized, or if the computation was not successful.
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_QuasiUniformDeflection_nb_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformDeflection_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:203 - `GCPnts_QuasiUniformDeflection::Parameter()`
@@ -1478,16 +1192,9 @@ impl QuasiUniformDeflection {
     /// StdFail_NotDone if this algorithm has not been
     /// initialized, or if the computation was not successful.
     pub fn parameter(&self, Index: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_QuasiUniformDeflection_parameter(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformDeflection_parameter(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:219 - `GCPnts_QuasiUniformDeflection::Value()`
@@ -1502,15 +1209,10 @@ impl QuasiUniformDeflection {
     /// StdFail_NotDone if this algorithm has not been
     /// initialized, or if the computation was not successful.
     pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_QuasiUniformDeflection_value(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_QuasiUniformDeflection_value(self as *const Self, Index),
+            ))
         }
     }
 
@@ -1524,16 +1226,9 @@ impl QuasiUniformDeflection {
     /// StdFail_NotDone if this algorithm has not been
     /// initialized, or if the computation was not successful.
     pub fn deflection(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_QuasiUniformDeflection_deflection(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_QuasiUniformDeflection_deflection(self as *const Self)
+        })
     }
 }
 
@@ -1589,12 +1284,10 @@ impl TangentialDeflection {
     /// Empty constructor.
     /// @sa Initialize()
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::GCPnts_TangentialDeflection_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_TangentialDeflection_ctor(),
+            ))
         }
     }
 
@@ -1614,8 +1307,8 @@ impl TangentialDeflection {
         theUTol: f64,
         theMinLen: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real2_int_real2(
                     theC,
                     theAngularDeflection,
@@ -1623,12 +1316,8 @@ impl TangentialDeflection {
                     theMinimumOfPoints,
                     theUTol,
                     theMinLen,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1652,8 +1341,8 @@ impl TangentialDeflection {
         theUTol: f64,
         theMinLen: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real4_int_real2(
                     theC,
                     theFirstParameter,
@@ -1663,12 +1352,8 @@ impl TangentialDeflection {
                     theMinimumOfPoints,
                     theUTol,
                     theMinLen,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1688,8 +1373,8 @@ impl TangentialDeflection {
         theUTol: f64,
         theMinLen: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real2_int_real2(
                     theC,
                     theAngularDeflection,
@@ -1697,12 +1382,8 @@ impl TangentialDeflection {
                     theMinimumOfPoints,
                     theUTol,
                     theMinLen,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1726,8 +1407,8 @@ impl TangentialDeflection {
         theUTol: f64,
         theMinLen: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real4_int_real2(
                     theC,
                     theFirstParameter,
@@ -1737,12 +1418,8 @@ impl TangentialDeflection {
                     theMinimumOfPoints,
                     theUTol,
                     theMinLen,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2087,22 +1764,17 @@ impl TangentialDeflection {
         theUTol: f64,
         theMinLen: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_TangentialDeflection_initialize_curve_real2_int_real2(
-                    self as *mut Self,
-                    theC,
-                    theAngularDeflection,
-                    theCurvatureDeflection,
-                    theMinimumOfPoints,
-                    theUTol,
-                    theMinLen,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_TangentialDeflection_initialize_curve_real2_int_real2(
+                self as *mut Self,
+                theC,
+                theAngularDeflection,
+                theCurvatureDeflection,
+                theMinimumOfPoints,
+                theUTol,
+                theMinLen,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_TangentialDeflection.hxx`:158 - `GCPnts_TangentialDeflection::Initialize()`
@@ -2126,24 +1798,19 @@ impl TangentialDeflection {
         theUTol: f64,
         theMinLen: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_TangentialDeflection_initialize_curve_real4_int_real2(
-                    self as *mut Self,
-                    theC,
-                    theFirstParameter,
-                    theLastParameter,
-                    theAngularDeflection,
-                    theCurvatureDeflection,
-                    theMinimumOfPoints,
-                    theUTol,
-                    theMinLen,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_TangentialDeflection_initialize_curve_real4_int_real2(
+                self as *mut Self,
+                theC,
+                theFirstParameter,
+                theLastParameter,
+                theAngularDeflection,
+                theCurvatureDeflection,
+                theMinimumOfPoints,
+                theUTol,
+                theMinLen,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_TangentialDeflection.hxx`:174 - `GCPnts_TangentialDeflection::Initialize()`
@@ -2163,22 +1830,17 @@ impl TangentialDeflection {
         theUTol: f64,
         theMinLen: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_TangentialDeflection_initialize_curve2d_real2_int_real2(
-                    self as *mut Self,
-                    theC,
-                    theAngularDeflection,
-                    theCurvatureDeflection,
-                    theMinimumOfPoints,
-                    theUTol,
-                    theMinLen,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_TangentialDeflection_initialize_curve2d_real2_int_real2(
+                self as *mut Self,
+                theC,
+                theAngularDeflection,
+                theCurvatureDeflection,
+                theMinimumOfPoints,
+                theUTol,
+                theMinLen,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_TangentialDeflection.hxx`:190 - `GCPnts_TangentialDeflection::Initialize()`
@@ -2202,24 +1864,19 @@ impl TangentialDeflection {
         theUTol: f64,
         theMinLen: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_TangentialDeflection_initialize_curve2d_real4_int_real2(
-                    self as *mut Self,
-                    theC,
-                    theFirstParameter,
-                    theLastParameter,
-                    theAngularDeflection,
-                    theCurvatureDeflection,
-                    theMinimumOfPoints,
-                    theUTol,
-                    theMinLen,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_TangentialDeflection_initialize_curve2d_real4_int_real2(
+                self as *mut Self,
+                theC,
+                theFirstParameter,
+                theLastParameter,
+                theAngularDeflection,
+                theCurvatureDeflection,
+                theMinimumOfPoints,
+                theUTol,
+                theMinLen,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_TangentialDeflection.hxx`:202 - `GCPnts_TangentialDeflection::AddPoint()`
@@ -2227,60 +1884,36 @@ impl TangentialDeflection {
     /// Returns index of new added point
     /// or founded with parametric tolerance (replaced if theIsReplace is true)
     pub fn add_point(&mut self, thePnt: &crate::gp::Pnt, theParam: f64, theIsReplace: bool) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_TangentialDeflection_add_point(
-                    self as *mut Self,
-                    thePnt,
-                    theParam,
-                    theIsReplace,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_TangentialDeflection_add_point(
+                self as *mut Self,
+                thePnt,
+                theParam,
+                theIsReplace,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_TangentialDeflection.hxx`:206 - `GCPnts_TangentialDeflection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_TangentialDeflection_nb_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_TangentialDeflection_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `GCPnts_TangentialDeflection.hxx`:208 - `GCPnts_TangentialDeflection::Parameter()`
     pub fn parameter(&self, I: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_TangentialDeflection_parameter(self as *const Self, I)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_TangentialDeflection_parameter(self as *const Self, I)
+        })
     }
 
     /// **Source:** `GCPnts_TangentialDeflection.hxx`:210 - `GCPnts_TangentialDeflection::Value()`
     pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_TangentialDeflection_value(self as *const Self, I) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_TangentialDeflection_value(self as *const Self, I),
+            ))
         }
     }
 
@@ -2292,21 +1925,14 @@ impl TangentialDeflection {
         theAngularDeflection: f64,
         theMinLength: f64,
     ) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_TangentialDeflection_arc_angular_step(
-                    theRadius,
-                    theLinearDeflection,
-                    theAngularDeflection,
-                    theMinLength,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_TangentialDeflection_arc_angular_step(
+                theRadius,
+                theLinearDeflection,
+                theAngularDeflection,
+                theMinLength,
+            )
+        })
     }
 }
 
@@ -2329,12 +1955,10 @@ impl UniformAbscissa {
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:34 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// creation of a indefinite UniformAbscissa
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::GCPnts_UniformAbscissa_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::GCPnts_UniformAbscissa_ctor()),
+            )
         }
     }
 
@@ -2349,14 +1973,10 @@ impl UniformAbscissa {
         theAbscissa: f64,
         theToler: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_UniformAbscissa_ctor_curve_real2(theC, theAbscissa, theToler)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_UniformAbscissa_ctor_curve_real2(theC, theAbscissa, theToler),
+            ))
         }
     }
 
@@ -2375,20 +1995,16 @@ impl UniformAbscissa {
         theU2: f64,
         theToler: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_UniformAbscissa_ctor_curve_real4(
                     theC,
                     theAbscissa,
                     theU1,
                     theU2,
                     theToler,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2403,14 +2019,10 @@ impl UniformAbscissa {
         theNbPoints: i32,
         theToler: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_UniformAbscissa_ctor_curve_int_real(theC, theNbPoints, theToler)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_UniformAbscissa_ctor_curve_int_real(theC, theNbPoints, theToler),
+            ))
         }
     }
 
@@ -2429,20 +2041,16 @@ impl UniformAbscissa {
         theU2: f64,
         theToler: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_UniformAbscissa_ctor_curve_int_real3(
                     theC,
                     theNbPoints,
                     theU1,
                     theU2,
                     theToler,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2457,14 +2065,10 @@ impl UniformAbscissa {
         theAbscissa: f64,
         theToler: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_UniformAbscissa_ctor_curve2d_real2(theC, theAbscissa, theToler)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_UniformAbscissa_ctor_curve2d_real2(theC, theAbscissa, theToler),
+            ))
         }
     }
 
@@ -2483,20 +2087,16 @@ impl UniformAbscissa {
         theU2: f64,
         theToler: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_UniformAbscissa_ctor_curve2d_real4(
                     theC,
                     theAbscissa,
                     theU1,
                     theU2,
                     theToler,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2511,18 +2111,14 @@ impl UniformAbscissa {
         theNbPoints: i32,
         theToler: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_UniformAbscissa_ctor_curve2d_int_real(
                     theC,
                     theNbPoints,
                     theToler,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2541,20 +2137,16 @@ impl UniformAbscissa {
         theU2: f64,
         theToler: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_UniformAbscissa_ctor_curve2d_int_real3(
                     theC,
                     theNbPoints,
                     theU1,
                     theU2,
                     theToler,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -2690,19 +2282,14 @@ impl UniformAbscissa {
         theAbscissa: f64,
         theToler: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformAbscissa_initialize_curve_real2(
-                    self as *mut Self,
-                    theC,
-                    theAbscissa,
-                    theToler,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_initialize_curve_real2(
+                self as *mut Self,
+                theC,
+                theAbscissa,
+                theToler,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:96 - `GCPnts_UniformAbscissa::Initialize()`
@@ -2721,21 +2308,16 @@ impl UniformAbscissa {
         theU2: f64,
         theToler: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformAbscissa_initialize_curve_real4(
-                    self as *mut Self,
-                    theC,
-                    theAbscissa,
-                    theU1,
-                    theU2,
-                    theToler,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_initialize_curve_real4(
+                self as *mut Self,
+                theC,
+                theAbscissa,
+                theU1,
+                theU2,
+                theToler,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:107 - `GCPnts_UniformAbscissa::Initialize()`
@@ -2750,19 +2332,14 @@ impl UniformAbscissa {
         theNbPoints: i32,
         theToler: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformAbscissa_initialize_curve_int_real(
-                    self as *mut Self,
-                    theC,
-                    theNbPoints,
-                    theToler,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_initialize_curve_int_real(
+                self as *mut Self,
+                theC,
+                theNbPoints,
+                theToler,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:118 - `GCPnts_UniformAbscissa::Initialize()`
@@ -2781,21 +2358,16 @@ impl UniformAbscissa {
         theU2: f64,
         theToler: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformAbscissa_initialize_curve_int_real3(
-                    self as *mut Self,
-                    theC,
-                    theNbPoints,
-                    theU1,
-                    theU2,
-                    theToler,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_initialize_curve_int_real3(
+                self as *mut Self,
+                theC,
+                theNbPoints,
+                theU1,
+                theU2,
+                theToler,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:174 - `GCPnts_UniformAbscissa::Initialize()`
@@ -2810,19 +2382,14 @@ impl UniformAbscissa {
         theAbscissa: f64,
         theToler: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformAbscissa_initialize_curve2d_real2(
-                    self as *mut Self,
-                    theC,
-                    theAbscissa,
-                    theToler,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_initialize_curve2d_real2(
+                self as *mut Self,
+                theC,
+                theAbscissa,
+                theToler,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:185 - `GCPnts_UniformAbscissa::Initialize()`
@@ -2841,21 +2408,16 @@ impl UniformAbscissa {
         theU2: f64,
         theToler: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformAbscissa_initialize_curve2d_real4(
-                    self as *mut Self,
-                    theC,
-                    theAbscissa,
-                    theU1,
-                    theU2,
-                    theToler,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_initialize_curve2d_real4(
+                self as *mut Self,
+                theC,
+                theAbscissa,
+                theU1,
+                theU2,
+                theToler,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:196 - `GCPnts_UniformAbscissa::Initialize()`
@@ -2870,19 +2432,14 @@ impl UniformAbscissa {
         theNbPoints: i32,
         theToler: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformAbscissa_initialize_curve2d_int_real(
-                    self as *mut Self,
-                    theC,
-                    theNbPoints,
-                    theToler,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_initialize_curve2d_int_real(
+                self as *mut Self,
+                theC,
+                theNbPoints,
+                theToler,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:207 - `GCPnts_UniformAbscissa::Initialize()`
@@ -2901,75 +2458,46 @@ impl UniformAbscissa {
         theU2: f64,
         theToler: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformAbscissa_initialize_curve2d_int_real3(
-                    self as *mut Self,
-                    theC,
-                    theNbPoints,
-                    theU1,
-                    theU2,
-                    theToler,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_initialize_curve2d_int_real3(
+                self as *mut Self,
+                theC,
+                theNbPoints,
+                theU1,
+                theU2,
+                theToler,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:213 - `GCPnts_UniformAbscissa::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_UniformAbscissa_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:215 - `GCPnts_UniformAbscissa::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_UniformAbscissa_nb_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:222 - `GCPnts_UniformAbscissa::Parameter()`
     /// returns the computed Parameter of index <Index>.
     pub fn parameter(&self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_UniformAbscissa_parameter(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_parameter(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `GCPnts_UniformAbscissa.hxx`:229 - `GCPnts_UniformAbscissa::Abscissa()`
     /// Returns the current abscissa, i.e. the distance between two consecutive points.
     pub fn abscissa(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_UniformAbscissa_abscissa(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_UniformAbscissa_abscissa(self as *const Self)
+        })
     }
 }
 
@@ -2999,12 +2527,10 @@ impl UniformDeflection {
     /// Constructs an empty algorithm.
     /// To define the problem to be solved, use the function Initialize.
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::GCPnts_UniformDeflection_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_UniformDeflection_ctor(),
+            ))
         }
     }
 
@@ -3018,18 +2544,14 @@ impl UniformDeflection {
         theDeflection: f64,
         theWithControl: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_UniformDeflection_ctor_curve_real_bool(
                     theC,
                     theDeflection,
                     theWithControl,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3043,18 +2565,14 @@ impl UniformDeflection {
         theDeflection: f64,
         theWithControl: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_UniformDeflection_ctor_curve2d_real_bool(
                     theC,
                     theDeflection,
                     theWithControl,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3072,20 +2590,16 @@ impl UniformDeflection {
         theU2: f64,
         theWithControl: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_UniformDeflection_ctor_curve_real3_bool(
                     theC,
                     theDeflection,
                     theU1,
                     theU2,
                     theWithControl,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3103,20 +2617,16 @@ impl UniformDeflection {
         theU2: f64,
         theWithControl: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::GCPnts_UniformDeflection_ctor_curve2d_real3_bool(
                     theC,
                     theDeflection,
                     theU1,
                     theU2,
                     theWithControl,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -3184,19 +2694,14 @@ impl UniformDeflection {
         theDeflection: f64,
         theWithControl: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformDeflection_initialize_curve_real_bool(
-                    self as *mut Self,
-                    theC,
-                    theDeflection,
-                    theWithControl,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformDeflection_initialize_curve_real_bool(
+                self as *mut Self,
+                theC,
+                theDeflection,
+                theWithControl,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformDeflection.hxx`:91 - `GCPnts_UniformDeflection::Initialize()`
@@ -3207,19 +2712,14 @@ impl UniformDeflection {
         theDeflection: f64,
         theWithControl: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformDeflection_initialize_curve2d_real_bool(
-                    self as *mut Self,
-                    theC,
-                    theDeflection,
-                    theWithControl,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformDeflection_initialize_curve2d_real_bool(
+                self as *mut Self,
+                theC,
+                theDeflection,
+                theWithControl,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformDeflection.hxx`:96 - `GCPnts_UniformDeflection::Initialize()`
@@ -3232,21 +2732,16 @@ impl UniformDeflection {
         theU2: f64,
         theWithControl: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformDeflection_initialize_curve_real3_bool(
-                    self as *mut Self,
-                    theC,
-                    theDeflection,
-                    theU1,
-                    theU2,
-                    theWithControl,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformDeflection_initialize_curve_real3_bool(
+                self as *mut Self,
+                theC,
+                theDeflection,
+                theU1,
+                theU2,
+                theWithControl,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformDeflection.hxx`:140 - `GCPnts_UniformDeflection::Initialize()`
@@ -3296,21 +2791,16 @@ impl UniformDeflection {
         theU2: f64,
         theWithControl: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::GCPnts_UniformDeflection_initialize_curve2d_real3_bool(
-                    self as *mut Self,
-                    theC,
-                    theDeflection,
-                    theU1,
-                    theU2,
-                    theWithControl,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::GCPnts_UniformDeflection_initialize_curve2d_real3_bool(
+                self as *mut Self,
+                theC,
+                theDeflection,
+                theU1,
+                theU2,
+                theWithControl,
+            )
+        })
     }
 
     /// **Source:** `GCPnts_UniformDeflection.hxx`:150 - `GCPnts_UniformDeflection::IsDone()`
@@ -3319,15 +2809,9 @@ impl UniformDeflection {
     /// -   non-convergence of the algorithm
     /// -   querying the results before computation.
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_UniformDeflection_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_UniformDeflection_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GCPnts_UniformDeflection.hxx`:157 - `GCPnts_UniformDeflection::NbPoints()`
@@ -3337,15 +2821,9 @@ impl UniformDeflection {
     /// StdFail_NotDone if this algorithm has not been
     /// initialized, or if the computation was not successful.
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_UniformDeflection_nb_points(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_UniformDeflection_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `GCPnts_UniformDeflection.hxx`:173 - `GCPnts_UniformDeflection::Parameter()`
@@ -3360,16 +2838,9 @@ impl UniformDeflection {
     /// StdFail_NotDone if this algorithm has not been
     /// initialized, or if the computation was not successful.
     pub fn parameter(&self, Index: i32) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::GCPnts_UniformDeflection_parameter(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_UniformDeflection_parameter(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `GCPnts_UniformDeflection.hxx`:189 - `GCPnts_UniformDeflection::Value()`
@@ -3384,14 +2855,10 @@ impl UniformDeflection {
     /// StdFAil_NotDone if this algorithm has not been
     /// initialized, or if the computation was not successful.
     pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_UniformDeflection_value(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::GCPnts_UniformDeflection_value(self as *const Self, Index),
+            ))
         }
     }
 
@@ -3405,14 +2872,8 @@ impl UniformDeflection {
     /// StdFail_NotDone if this algorithm has not been
     /// initialized, or if the computation was not successful.
     pub fn deflection(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::GCPnts_UniformDeflection_deflection(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::GCPnts_UniformDeflection_deflection(self as *const Self)
+        })
     }
 }

@@ -12,13 +12,10 @@ pub fn face_edge2(
     Edge1: &crate::topo_ds::Edge,
     Edge2: &crate::topo_ds::Edge,
 ) -> crate::OwnedPtr<crate::topo_ds::Face> {
-    {
-        let __result = unsafe { crate::ffi::BRepFill_face_edge2(Edge1, Edge2) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_face_edge2(
+            Edge1, Edge2,
+        )))
     }
 }
 /// **Source:** `BRepFill.hxx`:45 - `BRepFill::Shell`
@@ -28,13 +25,10 @@ pub fn shell_wire2(
     Wire1: &crate::topo_ds::Wire,
     Wire2: &crate::topo_ds::Wire,
 ) -> crate::OwnedPtr<crate::topo_ds::Shell> {
-    {
-        let __result = unsafe { crate::ffi::BRepFill_shell_wire2(Wire1, Wire2) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        let __val = __result.ret;
-        unsafe { crate::OwnedPtr::from_raw(__val) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_shell_wire2(
+            Wire1, Wire2,
+        )))
     }
 }
 /// **Source:** `BRepFill.hxx`:53 - `BRepFill::Axe`
@@ -51,12 +45,9 @@ pub fn axe(
     ProfOnSpine: &mut bool,
     Tol: f64,
 ) {
-    {
-        let __exc = unsafe { crate::ffi::BRepFill_axe(Spine, Profile, AxeProf, ProfOnSpine, Tol) };
-        if !__exc.is_null() {
-            crate::wrapper_threw_exception(__exc);
-        }
-    }
+    crate::check_void_result(unsafe {
+        crate::ffi::BRepFill_axe(Spine, Profile, AxeProf, ProfOnSpine, Tol)
+    })
 }
 
 /// Errors that can occur at thrusection algorithm.
@@ -186,242 +177,169 @@ impl ACRLaw {
         Path: &crate::topo_ds::Wire,
         Law: &crate::ffi::HandleGeomFillLocationGuide,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ACRLaw_ctor_wire_handlegeomfilllocationguide(Path, Law)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_ACRLaw_ctor_wire_handlegeomfilllocationguide(Path, Law),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_ACRLaw.hxx`:41 - `BRepFill_ACRLaw::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_ACRLaw_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_ACRLaw_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepFill_ACRLaw.hxx`:41 - `BRepFill_ACRLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_ACRLaw_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepFill_ACRLaw_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepFill_ACRLaw.hxx`:41 - `BRepFill_ACRLaw::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_ACRLaw_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_ACRLaw_get_type_descriptor())) }
     }
 
     /// Upcast to BRepFill_LocationLaw
     pub fn as_location_law(&self) -> &LocationLaw {
-        let __result =
-            unsafe { crate::ffi::BRepFill_ACRLaw_as_BRepFill_LocationLaw(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_ACRLaw_as_BRepFill_LocationLaw(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepFill_LocationLaw (mutable)
     pub fn as_location_law_mut(&mut self) -> &mut LocationLaw {
-        let __result =
-            unsafe { crate::ffi::BRepFill_ACRLaw_as_BRepFill_LocationLaw_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_ACRLaw_as_BRepFill_LocationLaw_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_ACRLaw_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_ACRLaw_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_ACRLaw_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_ACRLaw_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillACRLaw> {
-        let __result = unsafe { crate::ffi::BRepFill_ACRLaw_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_ACRLaw_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::GetStatus()`
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_GetStatus(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_fill::PipeError::try_from(__val).unwrap()
-        }
+        crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_GetStatus(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInG0Law()`
     pub fn transform_in_g0_law(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_TransformInG0Law(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_TransformInG0Law(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
     pub fn transform_in_compatible_law(&mut self, AngularTolerance: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_TransformInCompatibleLaw(
-                    self as *mut Self,
-                    AngularTolerance,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_TransformInCompatibleLaw(
+                self as *mut Self,
+                AngularTolerance,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::DeleteTransform()`
     pub fn delete_transform(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_DeleteTransform(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_DeleteTransform(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_NbHoles(self as *mut Self, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_NbHoles(self as *mut Self, Tol)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
     pub fn holes(&self, Interval: &mut crate::ffi::TColStd_Array1OfInteger) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_Holes(self as *const Self, Interval)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_Holes(self as *const Self, Interval)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_NbLaw(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_NbLaw(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:68 - `BRepFill_LocationLaw::Law()`
     pub fn law(&self, Index: i32) -> &crate::ffi::HandleGeomFillLocationLaw {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_Law(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_ACRLaw_inherited_Law(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
     pub fn wire(&self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_Wire(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_ACRLaw_inherited_Wire(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_Edge(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_ACRLaw_inherited_Edge(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
     pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_Vertex(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_ACRLaw_inherited_Vertex(self as *const Self, Index),
+            ))
         }
     }
 
@@ -434,152 +352,95 @@ impl ACRLaw {
         OutputVertex: &mut crate::topo_ds::Vertex,
         Location: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_PerformVertex(
-                    self as *const Self,
-                    Index,
-                    InputVertex,
-                    TolMin,
-                    OutputVertex,
-                    Location,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_PerformVertex(
+                self as *const Self,
+                Index,
+                InputVertex,
+                TolMin,
+                OutputVertex,
+                Location,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:96 - `BRepFill_LocationLaw::CurvilinearBounds()`
     pub fn curvilinear_bounds(&self, Index: i32, First: &mut f64, Last: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_CurvilinearBounds(
-                    self as *const Self,
-                    Index,
-                    First,
-                    Last,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_CurvilinearBounds(
+                self as *const Self,
+                Index,
+                First,
+                Last,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:100 - `BRepFill_LocationLaw::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_IsClosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_IsClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:107 - `BRepFill_LocationLaw::IsG1()`
     pub fn is_g1(&self, Index: i32, SpatialTolerance: f64, AngularTolerance: f64) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_IsG1(
-                    self as *const Self,
-                    Index,
-                    SpatialTolerance,
-                    AngularTolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_IsG1(
+                self as *const Self,
+                Index,
+                SpatialTolerance,
+                AngularTolerance,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_D0(self as *mut Self, Abscissa, Section)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_D0(self as *mut Self, Abscissa, Section)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
     pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_Parameter(
-                    self as *mut Self,
-                    Abscissa,
-                    Index,
-                    Param,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_Parameter(
+                self as *mut Self,
+                Abscissa,
+                Index,
+                Param,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_Abscissa(self as *mut Self, Index, Param)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_Abscissa(self as *mut Self, Index, Param)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepFill_ACRLaw_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -590,52 +451,30 @@ impl ACRLaw {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ACRLaw_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_ACRLaw_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -650,42 +489,32 @@ unsafe impl crate::CppDeletable for HandleBRepFillACRLaw {
 impl HandleBRepFillACRLaw {
     /// Dereference this Handle to access the underlying BRepFill_ACRLaw
     pub fn get(&self) -> &crate::ffi::BRepFill_ACRLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillACRLaw_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        unsafe { &*__result.ret }
+        unsafe { &*crate::check_result(crate::ffi::HandleBRepFillACRLaw_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepFill_ACRLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_ACRLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillACRLaw_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepFillACRLaw_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepFill_ACRLaw> to Handle<BRepFill_LocationLaw>
     pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillLocationLaw> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillACRLaw_to_HandleBRepFillLocationLaw(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillACRLaw_to_HandleBRepFillLocationLaw(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepFill_ACRLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillACRLaw_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillACRLaw_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -708,12 +537,10 @@ impl AdvancedEvolved {
     /// **Source:** `BRepFill_AdvancedEvolved.hxx`:39 - `BRepFill_AdvancedEvolved::BRepFill_AdvancedEvolved()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_AdvancedEvolved_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_AdvancedEvolved_ctor(),
+            ))
         }
     }
 
@@ -725,50 +552,32 @@ impl AdvancedEvolved {
         theTolerance: f64,
         theSolidReq: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_AdvancedEvolved_perform(
-                    self as *mut Self,
-                    theSpine,
-                    theProfile,
-                    theTolerance,
-                    theSolidReq,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_AdvancedEvolved_perform(
+                self as *mut Self,
+                theSpine,
+                theProfile,
+                theTolerance,
+                theSolidReq,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_AdvancedEvolved.hxx`:52 - `BRepFill_AdvancedEvolved::IsDone()`
     pub fn is_done(&self, theErrorCode: Option<&mut u32>) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_AdvancedEvolved_is_done(
-                    self as *const Self,
-                    theErrorCode.map_or(std::ptr::null_mut(), |r| r as *mut _),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_AdvancedEvolved_is_done(
+                self as *const Self,
+                theErrorCode.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        })
     }
 
     /// **Source:** `BRepFill_AdvancedEvolved.hxx`:61 - `BRepFill_AdvancedEvolved::Shape()`
     /// returns the resulting shape.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_AdvancedEvolved_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_AdvancedEvolved_shape(self as *const Self)))
         }
     }
 
@@ -776,30 +585,20 @@ impl AdvancedEvolved {
     /// Sets directory where the debug shapes will be saved
     pub fn set_temporary_directory(&mut self, thePath: &str) {
         let c_thePath = std::ffi::CString::new(thePath).unwrap();
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_AdvancedEvolved_set_temporary_directory(
-                    self as *mut Self,
-                    c_thePath.as_ptr(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_AdvancedEvolved_set_temporary_directory(
+                self as *mut Self,
+                c_thePath.as_ptr(),
+            )
+        })
     }
 
     /// **Source:** `BRepFill_AdvancedEvolved.hxx`:67 - `BRepFill_AdvancedEvolved::SetParallelMode()`
     /// Sets/Unsets computation in parallel mode
     pub fn set_parallel_mode(&mut self, theVal: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_AdvancedEvolved_set_parallel_mode(self as *mut Self, theVal)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_AdvancedEvolved_set_parallel_mode(self as *mut Self, theVal)
+        })
     }
 }
 
@@ -822,60 +621,41 @@ unsafe impl crate::CppDeletable for ApproxSeewing {
 impl ApproxSeewing {
     /// **Source:** `BRepFill_ApproxSeewing.hxx`:36 - `BRepFill_ApproxSeewing::BRepFill_ApproxSeewing()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_ApproxSeewing_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi::BRepFill_ApproxSeewing_ctor()),
+            )
         }
     }
 
     /// **Source:** `BRepFill_ApproxSeewing.hxx`:38 - `BRepFill_ApproxSeewing::BRepFill_ApproxSeewing()`
     pub fn new_multiline(ML: &MultiLine) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_ApproxSeewing_ctor_multiline(ML) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_ApproxSeewing_ctor_multiline(ML),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_ApproxSeewing.hxx`:40 - `BRepFill_ApproxSeewing::Perform()`
     pub fn perform(&mut self, ML: &MultiLine) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_ApproxSeewing_perform(self as *mut Self, ML) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ApproxSeewing_perform(self as *mut Self, ML)
+        })
     }
 
     /// **Source:** `BRepFill_ApproxSeewing.hxx`:42 - `BRepFill_ApproxSeewing::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ApproxSeewing_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ApproxSeewing_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_ApproxSeewing.hxx`:45 - `BRepFill_ApproxSeewing::Curve()`
     /// returns the approximation of the 3d Curve
     pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_ApproxSeewing_curve(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_ApproxSeewing_curve(self as *const Self)))
         }
     }
 
@@ -883,14 +663,10 @@ impl ApproxSeewing {
     /// returns the  approximation  of the  PCurve  on the
     /// first face of the MultiLine
     pub fn curve_on_f1(&self) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ApproxSeewing_curve_on_f1(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_ApproxSeewing_curve_on_f1(
+                self as *const Self,
+            )))
         }
     }
 
@@ -898,14 +674,10 @@ impl ApproxSeewing {
     /// returns the  approximation  of the  PCurve  on the
     /// first face of the MultiLine
     pub fn curve_on_f2(&self) -> &crate::ffi::HandleGeom2dCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ApproxSeewing_curve_on_f2(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_ApproxSeewing_curve_on_f2(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -929,12 +701,10 @@ unsafe impl crate::CppDeletable for CompatibleWires {
 impl CompatibleWires {
     /// **Source:** `BRepFill_CompatibleWires.hxx`:37 - `BRepFill_CompatibleWires::BRepFill_CompatibleWires()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_CompatibleWires_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_CompatibleWires_ctor(),
+            ))
         }
     }
 
@@ -942,90 +712,56 @@ impl CompatibleWires {
     pub fn new_sequenceofshape(
         Sections: &crate::ffi::TopTools_SequenceOfShape,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_CompatibleWires_ctor_sequenceofshape(Sections) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_CompatibleWires_ctor_sequenceofshape(Sections),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_CompatibleWires.hxx`:41 - `BRepFill_CompatibleWires::Init()`
     pub fn init(&mut self, Sections: &crate::ffi::TopTools_SequenceOfShape) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_CompatibleWires_init(self as *mut Self, Sections) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CompatibleWires_init(self as *mut Self, Sections)
+        })
     }
 
     /// **Source:** `BRepFill_CompatibleWires.hxx`:43 - `BRepFill_CompatibleWires::SetPercent()`
     pub fn set_percent(&mut self, percent: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CompatibleWires_set_percent(self as *mut Self, percent)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CompatibleWires_set_percent(self as *mut Self, percent)
+        })
     }
 
     /// **Source:** `BRepFill_CompatibleWires.hxx`:47 - `BRepFill_CompatibleWires::Perform()`
     /// Performs  CompatibleWires According  to  the orientation
     /// and the origin of  each other
     pub fn perform(&mut self, WithRotation: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CompatibleWires_perform(self as *mut Self, WithRotation)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CompatibleWires_perform(self as *mut Self, WithRotation)
+        })
     }
 
     /// **Source:** `BRepFill_CompatibleWires.hxx`:49 - `BRepFill_CompatibleWires::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_CompatibleWires_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CompatibleWires_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_CompatibleWires.hxx`:51 - `BRepFill_CompatibleWires::GetStatus()`
     pub fn get_status(&self) -> crate::b_rep_fill::ThruSectionErrorStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_CompatibleWires_get_status(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::b_rep_fill::ThruSectionErrorStatus::try_from(__val).unwrap()
-        }
+        crate::b_rep_fill::ThruSectionErrorStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_CompatibleWires_get_status(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepFill_CompatibleWires.hxx`:54 - `BRepFill_CompatibleWires::Shape()`
     /// returns the generated sequence.
     pub fn shape(&self) -> &crate::ffi::TopTools_SequenceOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_CompatibleWires_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_CompatibleWires_shape(self as *const Self)))
         }
     }
 
@@ -1042,64 +778,35 @@ impl CompatibleWires {
         &self,
         SubSection: &crate::topo_ds::Edge,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CompatibleWires_generated_shapes(
-                    self as *const Self,
-                    SubSection,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_CompatibleWires_generated_shapes(
+                self as *const Self,
+                SubSection,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_CompatibleWires.hxx`:60 - `BRepFill_CompatibleWires::Generated()`
     pub fn generated(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_CompatibleWires_generated(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_CompatibleWires_generated(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_CompatibleWires.hxx`:62 - `BRepFill_CompatibleWires::IsDegeneratedFirstSection()`
     pub fn is_degenerated_first_section(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CompatibleWires_is_degenerated_first_section(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CompatibleWires_is_degenerated_first_section(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_CompatibleWires.hxx`:64 - `BRepFill_CompatibleWires::IsDegeneratedLastSection()`
     pub fn is_degenerated_last_section(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CompatibleWires_is_degenerated_last_section(
-                    self as *const Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CompatibleWires_is_degenerated_last_section(self as *const Self)
+        })
     }
 }
 
@@ -1132,8 +839,8 @@ impl ComputeCLine {
         FirstC: crate::app_par_curves::Constraint,
         LastC: crate::app_par_curves::Constraint,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_ComputeCLine_ctor_multiline_int2_real2_bool_constraint2(
                     Line,
                     degreemin,
@@ -1143,12 +850,8 @@ impl ComputeCLine {
                     cutting,
                     FirstC.into(),
                     LastC.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1163,8 +866,8 @@ impl ComputeCLine {
         FirstC: crate::app_par_curves::Constraint,
         LastC: crate::app_par_curves::Constraint,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_ComputeCLine_ctor_int2_real2_bool_constraint2(
                     degreemin,
                     degreemax,
@@ -1173,59 +876,37 @@ impl ComputeCLine {
                     cutting,
                     FirstC.into(),
                     LastC.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:61 - `BRepFill_ComputeCLine::Perform()`
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &MultiLine) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_ComputeCLine_perform(self as *mut Self, Line) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_perform(self as *mut Self, Line)
+        })
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:64 - `BRepFill_ComputeCLine::SetDegrees()`
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ComputeCLine_set_degrees(
-                    self as *mut Self,
-                    degreemin,
-                    degreemax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_set_degrees(self as *mut Self, degreemin, degreemax)
+        })
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:68 - `BRepFill_ComputeCLine::SetTolerances()`
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ComputeCLine_set_tolerances(
-                    self as *mut Self,
-                    Tolerance3d,
-                    Tolerance2d,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_set_tolerances(
+                self as *mut Self,
+                Tolerance3d,
+                Tolerance2d,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:72 - `BRepFill_ComputeCLine::SetConstraints()`
@@ -1235,34 +916,21 @@ impl ComputeCLine {
         FirstC: crate::app_par_curves::Constraint,
         LastC: crate::app_par_curves::Constraint,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ComputeCLine_set_constraints(
-                    self as *mut Self,
-                    FirstC.into(),
-                    LastC.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_set_constraints(
+                self as *mut Self,
+                FirstC.into(),
+                LastC.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:76 - `BRepFill_ComputeCLine::SetMaxSegments()`
     /// Changes the max number of segments, which is allowed for cutting.
     pub fn set_max_segments(&mut self, theMaxSegments: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ComputeCLine_set_max_segments(
-                    self as *mut Self,
-                    theMaxSegments,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_set_max_segments(self as *mut Self, theMaxSegments)
+        })
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:82 - `BRepFill_ComputeCLine::SetInvOrder()`
@@ -1271,14 +939,9 @@ impl ComputeCLine {
     /// from maxdegree to mindegree.
     /// By default inverse order is used.
     pub fn set_inv_order(&mut self, theInvOrder: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ComputeCLine_set_inv_order(self as *mut Self, theInvOrder)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_set_inv_order(self as *mut Self, theInvOrder)
+        })
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:88 - `BRepFill_ComputeCLine::SetHangChecking()`
@@ -1287,17 +950,9 @@ impl ComputeCLine {
     /// and algorithm is forced to stop.
     /// By default hang checking is used.
     pub fn set_hang_checking(&mut self, theHangChecking: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ComputeCLine_set_hang_checking(
-                    self as *mut Self,
-                    theHangChecking,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_set_hang_checking(self as *mut Self, theHangChecking)
+        })
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:93 - `BRepFill_ComputeCLine::IsAllApproximated()`
@@ -1305,90 +960,52 @@ impl ComputeCLine {
     /// the status NoApproximation has been sent by the user
     /// when more points were needed.
     pub fn is_all_approximated(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ComputeCLine_is_all_approximated(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_is_all_approximated(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:96 - `BRepFill_ComputeCLine::IsToleranceReached()`
     /// returns False if the status NoPointsAdded has been sent.
     pub fn is_tolerance_reached(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ComputeCLine_is_tolerance_reached(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_is_tolerance_reached(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:99 - `BRepFill_ComputeCLine::Error()`
     /// returns the tolerances 2d and 3d of the <Index> MultiCurve.
     pub fn error(&self, Index: i32, tol3d: &mut f64, tol2d: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ComputeCLine_error(self as *const Self, Index, tol3d, tol2d)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_error(self as *const Self, Index, tol3d, tol2d)
+        })
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:105 - `BRepFill_ComputeCLine::NbMultiCurves()`
     /// Returns the number of MultiCurve doing the approximation
     /// of the MultiLine.
     pub fn nb_multi_curves(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ComputeCLine_nb_multi_curves(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_nb_multi_curves(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:108 - `BRepFill_ComputeCLine::Value()`
     /// returns the approximation MultiCurve of range <Index>.
     pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ComputeCLine_value(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_ComputeCLine_value(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:110 - `BRepFill_ComputeCLine::Parameters()`
     pub fn parameters(&self, Index: i32, firstp: &mut f64, lastp: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ComputeCLine_parameters(
-                    self as *const Self,
-                    Index,
-                    firstp,
-                    lastp,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ComputeCLine_parameters(self as *const Self, Index, firstp, lastp)
+        })
     }
 }
 
@@ -1426,16 +1043,12 @@ impl CurveConstraint {
         TolAng: f64,
         TolCurv: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_CurveConstraint_ctor_handleadaptor3dcurveonsurface_int2_real3(
                     Boundary, Order, NPt, TolDist, TolAng, TolCurv,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1446,16 +1059,12 @@ impl CurveConstraint {
         NPt: i32,
         TolDist: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_CurveConstraint_ctor_handleadaptor3dcurve_int2_real(
                     Boundary, Tang, NPt, TolDist,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -1550,303 +1159,190 @@ impl CurveConstraint {
 
     /// **Source:** `BRepFill_CurveConstraint.hxx`:56 - `BRepFill_CurveConstraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_CurveConstraint_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_CurveConstraint_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_CurveConstraint.hxx`:56 - `BRepFill_CurveConstraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_CurveConstraint_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepFill_CurveConstraint_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepFill_CurveConstraint.hxx`:56 - `BRepFill_CurveConstraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_CurveConstraint_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_CurveConstraint_get_type_descriptor()))
         }
     }
 
     /// Upcast to GeomPlate_CurveConstraint
     pub fn as_geom_plate_curve_constraint(&self) -> &crate::geom_plate::CurveConstraint {
-        let __result = unsafe {
-            crate::ffi::BRepFill_CurveConstraint_as_GeomPlate_CurveConstraint(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(
+                crate::ffi::BRepFill_CurveConstraint_as_GeomPlate_CurveConstraint(
+                    self as *const Self,
+                ),
+            )
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomPlate_CurveConstraint (mutable)
     pub fn as_geom_plate_curve_constraint_mut(
         &mut self,
     ) -> &mut crate::geom_plate::CurveConstraint {
-        let __result = unsafe {
-            crate::ffi::BRepFill_CurveConstraint_as_GeomPlate_CurveConstraint_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepFill_CurveConstraint_as_GeomPlate_CurveConstraint_mut(
+                    self as *mut Self,
+                ),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepFill_CurveConstraint_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_CurveConstraint_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepFill_CurveConstraint_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepFill_CurveConstraint_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillCurveConstraint> {
-        let __result = unsafe { crate::ffi::BRepFill_CurveConstraint_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_CurveConstraint_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:58 - `GeomPlate_CurveConstraint::SetOrder()`
     pub fn set_order(&mut self, Order: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_SetOrder(self as *mut Self, Order)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_SetOrder(self as *mut Self, Order)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:61 - `GeomPlate_CurveConstraint::Order()`
     pub fn order(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_Order(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_Order(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:67 - `GeomPlate_CurveConstraint::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_NbPoints(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_NbPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:73 - `GeomPlate_CurveConstraint::SetNbPoints()`
     pub fn set_nb_points(&mut self, NewNb: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_SetNbPoints(self as *mut Self, NewNb)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_SetNbPoints(self as *mut Self, NewNb)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:80 - `GeomPlate_CurveConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, G0Crit: &crate::ffi::HandleLawFunction) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_SetG0Criterion(
-                    self as *mut Self,
-                    G0Crit,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_SetG0Criterion(self as *mut Self, G0Crit)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:87 - `GeomPlate_CurveConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, G1Crit: &crate::ffi::HandleLawFunction) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_SetG1Criterion(
-                    self as *mut Self,
-                    G1Crit,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_SetG1Criterion(self as *mut Self, G1Crit)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:89 - `GeomPlate_CurveConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, G2Crit: &crate::ffi::HandleLawFunction) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_SetG2Criterion(
-                    self as *mut Self,
-                    G2Crit,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_SetG2Criterion(self as *mut Self, G2Crit)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:94 - `GeomPlate_CurveConstraint::G0Criterion()`
     pub fn g0_criterion(&self, U: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_G0Criterion(self as *const Self, U)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_G0Criterion(self as *const Self, U)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:100 - `GeomPlate_CurveConstraint::G1Criterion()`
     pub fn g1_criterion(&self, U: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_G1Criterion(self as *const Self, U)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_G1Criterion(self as *const Self, U)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:106 - `GeomPlate_CurveConstraint::G2Criterion()`
     pub fn g2_criterion(&self, U: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_G2Criterion(self as *const Self, U)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_G2Criterion(self as *const Self, U)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:108 - `GeomPlate_CurveConstraint::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_FirstParameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_FirstParameter(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:110 - `GeomPlate_CurveConstraint::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_LastParameter(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_LastParameter(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:112 - `GeomPlate_CurveConstraint::Length()`
     pub fn length(&self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_Length(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_Length(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:114 - `GeomPlate_CurveConstraint::LPropSurf()`
     pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::geom_l_prop::SLProps {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_LPropSurf(self as *mut Self, U)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &mut *(__val) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi::BRepFill_CurveConstraint_inherited_LPropSurf(
+                self as *mut Self,
+                U,
+            )))
         }
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:116 - `GeomPlate_CurveConstraint::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_D0(self as *const Self, U, P)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_D0(self as *const Self, U, P)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:118 - `GeomPlate_CurveConstraint::D1()`
@@ -1857,14 +1353,9 @@ impl CurveConstraint {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_D1(self as *const Self, U, P, V1, V2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_D1(self as *const Self, U, P, V1, V2)
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:120 - `GeomPlate_CurveConstraint::D2()`
@@ -1878,65 +1369,45 @@ impl CurveConstraint {
         V4: &mut crate::gp::Vec,
         V5: &mut crate::gp::Vec,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_D2(
-                    self as *const Self,
-                    U,
-                    P,
-                    V1,
-                    V2,
-                    V3,
-                    V4,
-                    V5,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_D2(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+                V3,
+                V4,
+                V5,
+            )
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:128 - `GeomPlate_CurveConstraint::Curve3d()`
     pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_Curve3d(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_CurveConstraint_inherited_Curve3d(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:131 - `GeomPlate_CurveConstraint::SetCurve2dOnSurf()`
     pub fn set_curve2d_on_surf(&mut self, Curve2d: &crate::ffi::HandleGeom2dCurve) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_SetCurve2dOnSurf(
-                    self as *mut Self,
-                    Curve2d,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_SetCurve2dOnSurf(
+                self as *mut Self,
+                Curve2d,
+            )
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:134 - `GeomPlate_CurveConstraint::Curve2dOnSurf()`
     pub fn curve2d_on_surf(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_Curve2dOnSurf(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_CurveConstraint_inherited_Curve2dOnSurf(self as *const Self),
+            ))
         }
     }
 
@@ -1947,75 +1418,45 @@ impl CurveConstraint {
         TolU: f64,
         TolV: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_SetProjectedCurve(
-                    self as *mut Self,
-                    Curve2d,
-                    TolU,
-                    TolV,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_SetProjectedCurve(
+                self as *mut Self,
+                Curve2d,
+                TolU,
+                TolV,
+            )
+        })
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:144 - `GeomPlate_CurveConstraint::ProjectedCurve()`
     pub fn projected_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_ProjectedCurve(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_CurveConstraint_inherited_ProjectedCurve(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepFill_CurveConstraint_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepFill_CurveConstraint_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2026,58 +1467,30 @@ impl CurveConstraint {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_IncrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_DecrementRefCounter(
-                    self as *mut Self,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_CurveConstraint_inherited_Delete(self as *const Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2092,50 +1505,44 @@ unsafe impl crate::CppDeletable for HandleBRepFillCurveConstraint {
 impl HandleBRepFillCurveConstraint {
     /// Dereference this Handle to access the underlying BRepFill_CurveConstraint
     pub fn get(&self) -> &crate::ffi::BRepFill_CurveConstraint {
-        let __result =
-            unsafe { crate::ffi::HandleBRepFillCurveConstraint_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepFillCurveConstraint_get(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepFill_CurveConstraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_CurveConstraint {
-        let __result =
-            unsafe { crate::ffi::HandleBRepFillCurveConstraint_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepFillCurveConstraint_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepFill_CurveConstraint> to Handle<GeomPlate_CurveConstraint>
     pub fn to_handle_curve_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateCurveConstraint> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillCurveConstraint_to_HandleGeomPlateCurveConstraint(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillCurveConstraint_to_HandleGeomPlateCurveConstraint(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepFill_CurveConstraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillCurveConstraint_to_HandleStandardTransient(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillCurveConstraint_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2159,13 +1566,10 @@ impl Draft {
         Dir: &crate::gp::Dir,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Draft_ctor_shape_dir_real(Shape, Dir, Angle) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_Draft_ctor_shape_dir_real(Shape, Dir, Angle),
+            ))
         }
     }
 
@@ -2176,41 +1580,28 @@ impl Draft {
         AngleMin: f64,
         AngleMax: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Draft_set_options(
-                    self as *mut Self,
-                    Style.into(),
-                    AngleMin,
-                    AngleMax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Draft_set_options(
+                self as *mut Self,
+                Style.into(),
+                AngleMin,
+                AngleMax,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_Draft.hxx`:49 - `BRepFill_Draft::SetDraft()`
     pub fn set_draft(&mut self, IsInternal: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_Draft_set_draft(self as *mut Self, IsInternal) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Draft_set_draft(self as *mut Self, IsInternal)
+        })
     }
 
     /// **Source:** `BRepFill_Draft.hxx`:51 - `BRepFill_Draft::Perform()`
     pub fn perform_real(&mut self, LengthMax: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_Draft_perform_real(self as *mut Self, LengthMax) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Draft_perform_real(self as *mut Self, LengthMax)
+        })
     }
 
     /// **Source:** `BRepFill_Draft.hxx`:53 - `BRepFill_Draft::Perform()`
@@ -2219,46 +1610,25 @@ impl Draft {
         Surface: &crate::ffi::HandleGeomSurface,
         KeepInsideSurface: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Draft_perform_handlegeomsurface_bool(
-                    self as *mut Self,
-                    Surface,
-                    KeepInsideSurface,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Draft_perform_handlegeomsurface_bool(
+                self as *mut Self,
+                Surface,
+                KeepInsideSurface,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_Draft.hxx`:56 - `BRepFill_Draft::Perform()`
     pub fn perform_shape_bool(&mut self, StopShape: &crate::topo_ds::Shape, KeepOutSide: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Draft_perform_shape_bool(
-                    self as *mut Self,
-                    StopShape,
-                    KeepOutSide,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Draft_perform_shape_bool(self as *mut Self, StopShape, KeepOutSide)
+        })
     }
 
     /// **Source:** `BRepFill_Draft.hxx`:59 - `BRepFill_Draft::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Draft_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_Draft_is_done(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_Draft.hxx`:64 - `BRepFill_Draft::Shell()`
@@ -2266,13 +1636,10 @@ impl Draft {
     /// To have the complete shape
     /// you have to use the Shape() methode.
     pub fn shell(&self) -> crate::OwnedPtr<crate::topo_ds::Shell> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Draft_shell(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Draft_shell(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2289,25 +1656,17 @@ impl Draft {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Draft_generated(self as *mut Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Draft_generated(self as *mut Self, S)))
         }
     }
 
     /// **Source:** `BRepFill_Draft.hxx`:70 - `BRepFill_Draft::Shape()`
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Draft_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Draft_shape(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -2332,277 +1691,197 @@ impl DraftLaw {
         Path: &crate::topo_ds::Wire,
         Law: &crate::ffi::HandleGeomFillLocationDraft,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_DraftLaw_ctor_wire_handlegeomfilllocationdraft(Path, Law)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_DraftLaw_ctor_wire_handlegeomfilllocationdraft(Path, Law),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_DraftLaw.hxx`:39 - `BRepFill_DraftLaw::CleanLaw()`
     /// To clean the little discontinuities.
     pub fn clean_law(&mut self, TolAngular: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_DraftLaw_clean_law(self as *mut Self, TolAngular) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_clean_law(self as *mut Self, TolAngular)
+        })
     }
 
     /// **Source:** `BRepFill_DraftLaw.hxx`:41 - `BRepFill_DraftLaw::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_DraftLaw_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_DraftLaw_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepFill_DraftLaw.hxx`:41 - `BRepFill_DraftLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_DraftLaw_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepFill_DraftLaw_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepFill_DraftLaw.hxx`:41 - `BRepFill_DraftLaw::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_DraftLaw_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_DraftLaw_get_type_descriptor())) }
     }
 
     /// Upcast to BRepFill_Edge3DLaw
     pub fn as_edge3_d_law(&self) -> &Edge3DLaw {
-        let __result =
-            unsafe { crate::ffi::BRepFill_DraftLaw_as_BRepFill_Edge3DLaw(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_DraftLaw_as_BRepFill_Edge3DLaw(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepFill_Edge3DLaw (mutable)
     pub fn as_edge3_d_law_mut(&mut self) -> &mut Edge3DLaw {
-        let __result =
-            unsafe { crate::ffi::BRepFill_DraftLaw_as_BRepFill_Edge3DLaw_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_DraftLaw_as_BRepFill_Edge3DLaw_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepFill_LocationLaw
     pub fn as_location_law(&self) -> &LocationLaw {
-        let __result =
-            unsafe { crate::ffi::BRepFill_DraftLaw_as_BRepFill_LocationLaw(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_DraftLaw_as_BRepFill_LocationLaw(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepFill_LocationLaw (mutable)
     pub fn as_location_law_mut(&mut self) -> &mut LocationLaw {
-        let __result =
-            unsafe { crate::ffi::BRepFill_DraftLaw_as_BRepFill_LocationLaw_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_DraftLaw_as_BRepFill_LocationLaw_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_DraftLaw_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_DraftLaw_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_DraftLaw_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_DraftLaw_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillDraftLaw> {
-        let __result = unsafe { crate::ffi::BRepFill_DraftLaw_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_DraftLaw_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::GetStatus()`
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_DraftLaw_inherited_GetStatus(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_fill::PipeError::try_from(__val).unwrap()
-        }
+        crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_GetStatus(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInG0Law()`
     pub fn transform_in_g0_law(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_TransformInG0Law(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_TransformInG0Law(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
     pub fn transform_in_compatible_law(&mut self, AngularTolerance: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_TransformInCompatibleLaw(
-                    self as *mut Self,
-                    AngularTolerance,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_TransformInCompatibleLaw(
+                self as *mut Self,
+                AngularTolerance,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::DeleteTransform()`
     pub fn delete_transform(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_DeleteTransform(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_DeleteTransform(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_DraftLaw_inherited_NbHoles(self as *mut Self, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_NbHoles(self as *mut Self, Tol)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
     pub fn holes(&self, Interval: &mut crate::ffi::TColStd_Array1OfInteger) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_Holes(self as *const Self, Interval)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_Holes(self as *const Self, Interval)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_DraftLaw_inherited_NbLaw(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_NbLaw(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:68 - `BRepFill_LocationLaw::Law()`
     pub fn law(&self, Index: i32) -> &crate::ffi::HandleGeomFillLocationLaw {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_DraftLaw_inherited_Law(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_DraftLaw_inherited_Law(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
     pub fn wire(&self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_DraftLaw_inherited_Wire(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_DraftLaw_inherited_Wire(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_DraftLaw_inherited_Edge(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_DraftLaw_inherited_Edge(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
     pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_Vertex(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_DraftLaw_inherited_Vertex(self as *const Self, Index),
+            ))
         }
     }
 
@@ -2615,152 +1894,95 @@ impl DraftLaw {
         OutputVertex: &mut crate::topo_ds::Vertex,
         Location: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_PerformVertex(
-                    self as *const Self,
-                    Index,
-                    InputVertex,
-                    TolMin,
-                    OutputVertex,
-                    Location,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_PerformVertex(
+                self as *const Self,
+                Index,
+                InputVertex,
+                TolMin,
+                OutputVertex,
+                Location,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:96 - `BRepFill_LocationLaw::CurvilinearBounds()`
     pub fn curvilinear_bounds(&self, Index: i32, First: &mut f64, Last: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_CurvilinearBounds(
-                    self as *const Self,
-                    Index,
-                    First,
-                    Last,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_CurvilinearBounds(
+                self as *const Self,
+                Index,
+                First,
+                Last,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:100 - `BRepFill_LocationLaw::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_DraftLaw_inherited_IsClosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_IsClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:107 - `BRepFill_LocationLaw::IsG1()`
     pub fn is_g1(&self, Index: i32, SpatialTolerance: f64, AngularTolerance: f64) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_IsG1(
-                    self as *const Self,
-                    Index,
-                    SpatialTolerance,
-                    AngularTolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_IsG1(
+                self as *const Self,
+                Index,
+                SpatialTolerance,
+                AngularTolerance,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_D0(self as *mut Self, Abscissa, Section)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_D0(self as *mut Self, Abscissa, Section)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
     pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_Parameter(
-                    self as *mut Self,
-                    Abscissa,
-                    Index,
-                    Param,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_Parameter(
+                self as *mut Self,
+                Abscissa,
+                Index,
+                Param,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_Abscissa(self as *mut Self, Index, Param)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_Abscissa(self as *mut Self, Index, Param)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepFill_DraftLaw_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepFill_DraftLaw_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -2771,52 +1993,30 @@ impl DraftLaw {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_DraftLaw_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_DraftLaw_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_DraftLaw_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -2831,53 +2031,45 @@ unsafe impl crate::CppDeletable for HandleBRepFillDraftLaw {
 impl HandleBRepFillDraftLaw {
     /// Dereference this Handle to access the underlying BRepFill_DraftLaw
     pub fn get(&self) -> &crate::ffi::BRepFill_DraftLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillDraftLaw_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepFillDraftLaw_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepFill_DraftLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_DraftLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillDraftLaw_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepFillDraftLaw_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepFill_DraftLaw> to Handle<BRepFill_Edge3DLaw>
     pub fn to_handle_edge3_d_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillEdge3DLaw> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillDraftLaw_to_HandleBRepFillEdge3DLaw(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillDraftLaw_to_HandleBRepFillEdge3DLaw(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepFill_DraftLaw> to Handle<BRepFill_LocationLaw>
     pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillLocationLaw> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillDraftLaw_to_HandleBRepFillLocationLaw(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillDraftLaw_to_HandleBRepFillLocationLaw(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepFill_DraftLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillDraftLaw_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillDraftLaw_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2901,247 +2093,173 @@ impl Edge3DLaw {
         Path: &crate::topo_ds::Wire,
         Law: &crate::ffi::HandleGeomFillLocationLaw,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_ctor_wire_handlegeomfilllocationlaw(Path, Law)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_Edge3DLaw_ctor_wire_handlegeomfilllocationlaw(Path, Law),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_Edge3DLaw.hxx`:38 - `BRepFill_Edge3DLaw::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Edge3DLaw_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Edge3DLaw_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_Edge3DLaw.hxx`:38 - `BRepFill_Edge3DLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Edge3DLaw_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepFill_Edge3DLaw_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepFill_Edge3DLaw.hxx`:38 - `BRepFill_Edge3DLaw::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Edge3DLaw_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_Edge3DLaw_get_type_descriptor())) }
     }
 
     /// Upcast to BRepFill_LocationLaw
     pub fn as_location_law(&self) -> &LocationLaw {
-        let __result =
-            unsafe { crate::ffi::BRepFill_Edge3DLaw_as_BRepFill_LocationLaw(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_Edge3DLaw_as_BRepFill_LocationLaw(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepFill_LocationLaw (mutable)
     pub fn as_location_law_mut(&mut self) -> &mut LocationLaw {
-        let __result = unsafe {
-            crate::ffi::BRepFill_Edge3DLaw_as_BRepFill_LocationLaw_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_Edge3DLaw_as_BRepFill_LocationLaw_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_Edge3DLaw_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_Edge3DLaw_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_Edge3DLaw_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_Edge3DLaw_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillEdge3DLaw> {
-        let __result = unsafe { crate::ffi::BRepFill_Edge3DLaw_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_Edge3DLaw_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::GetStatus()`
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_GetStatus(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_fill::PipeError::try_from(__val).unwrap()
-        }
+        crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_GetStatus(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInG0Law()`
     pub fn transform_in_g0_law(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_TransformInG0Law(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_TransformInG0Law(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
     pub fn transform_in_compatible_law(&mut self, AngularTolerance: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_TransformInCompatibleLaw(
-                    self as *mut Self,
-                    AngularTolerance,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_TransformInCompatibleLaw(
+                self as *mut Self,
+                AngularTolerance,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::DeleteTransform()`
     pub fn delete_transform(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_DeleteTransform(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_DeleteTransform(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_NbHoles(self as *mut Self, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_NbHoles(self as *mut Self, Tol)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
     pub fn holes(&self, Interval: &mut crate::ffi::TColStd_Array1OfInteger) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_Holes(self as *const Self, Interval)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_Holes(self as *const Self, Interval)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_NbLaw(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_NbLaw(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:68 - `BRepFill_LocationLaw::Law()`
     pub fn law(&self, Index: i32) -> &crate::ffi::HandleGeomFillLocationLaw {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_Law(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Edge3DLaw_inherited_Law(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
     pub fn wire(&self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_Wire(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Edge3DLaw_inherited_Wire(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_Edge(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Edge3DLaw_inherited_Edge(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
     pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_Vertex(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_Edge3DLaw_inherited_Vertex(self as *const Self, Index),
+            ))
         }
     }
 
@@ -3154,152 +2272,95 @@ impl Edge3DLaw {
         OutputVertex: &mut crate::topo_ds::Vertex,
         Location: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_PerformVertex(
-                    self as *const Self,
-                    Index,
-                    InputVertex,
-                    TolMin,
-                    OutputVertex,
-                    Location,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_PerformVertex(
+                self as *const Self,
+                Index,
+                InputVertex,
+                TolMin,
+                OutputVertex,
+                Location,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:96 - `BRepFill_LocationLaw::CurvilinearBounds()`
     pub fn curvilinear_bounds(&self, Index: i32, First: &mut f64, Last: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_CurvilinearBounds(
-                    self as *const Self,
-                    Index,
-                    First,
-                    Last,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_CurvilinearBounds(
+                self as *const Self,
+                Index,
+                First,
+                Last,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:100 - `BRepFill_LocationLaw::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_IsClosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_IsClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:107 - `BRepFill_LocationLaw::IsG1()`
     pub fn is_g1(&self, Index: i32, SpatialTolerance: f64, AngularTolerance: f64) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_IsG1(
-                    self as *const Self,
-                    Index,
-                    SpatialTolerance,
-                    AngularTolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_IsG1(
+                self as *const Self,
+                Index,
+                SpatialTolerance,
+                AngularTolerance,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_D0(self as *mut Self, Abscissa, Section)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_D0(self as *mut Self, Abscissa, Section)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
     pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_Parameter(
-                    self as *mut Self,
-                    Abscissa,
-                    Index,
-                    Param,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_Parameter(
+                self as *mut Self,
+                Abscissa,
+                Index,
+                Param,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_Abscissa(self as *mut Self, Index, Param)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_Abscissa(self as *mut Self, Index, Param)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepFill_Edge3DLaw_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3310,53 +2371,30 @@ impl Edge3DLaw {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Edge3DLaw_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -3371,42 +2409,38 @@ unsafe impl crate::CppDeletable for HandleBRepFillEdge3DLaw {
 impl HandleBRepFillEdge3DLaw {
     /// Dereference this Handle to access the underlying BRepFill_Edge3DLaw
     pub fn get(&self) -> &crate::ffi::BRepFill_Edge3DLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillEdge3DLaw_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepFillEdge3DLaw_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepFill_Edge3DLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_Edge3DLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillEdge3DLaw_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepFillEdge3DLaw_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepFill_Edge3DLaw> to Handle<BRepFill_LocationLaw>
     pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillLocationLaw> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillEdge3DLaw_to_HandleBRepFillLocationLaw(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillEdge3DLaw_to_HandleBRepFillLocationLaw(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepFill_Edge3DLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillEdge3DLaw_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillEdge3DLaw_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<BRepFill_Edge3DLaw> to Handle<BRepFill_DraftLaw>
@@ -3415,18 +2449,15 @@ impl HandleBRepFillEdge3DLaw {
     pub fn downcast_to_draft_law(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillDraftLaw>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepFillEdge3DLaw_downcast_to_HandleBRepFillDraftLaw(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -3447,12 +2478,10 @@ unsafe impl crate::CppDeletable for EdgeFaceAndOrder {
 impl EdgeFaceAndOrder {
     /// **Source:** `BRepFill_EdgeFaceAndOrder.hxx`:33 - `BRepFill_EdgeFaceAndOrder::BRepFill_EdgeFaceAndOrder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_EdgeFaceAndOrder_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_EdgeFaceAndOrder_ctor(),
+            ))
         }
     }
 
@@ -3462,18 +2491,14 @@ impl EdgeFaceAndOrder {
         aFace: &crate::topo_ds::Face,
         anOrder: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_EdgeFaceAndOrder_ctor_edge_face_shape(
                     anEdge,
                     aFace,
                     anOrder.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 }
@@ -3498,13 +2523,10 @@ impl EdgeOnSurfLaw {
         Path: &crate::topo_ds::Wire,
         Surf: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_ctor_wire_shape(Path, Surf) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_EdgeOnSurfLaw_ctor_wire_shape(Path, Surf),
+            ))
         }
     }
 
@@ -3513,253 +2535,171 @@ impl EdgeOnSurfLaw {
     /// representation on  <Surf>.   In this  case  it is
     /// impossible to use this object.
     pub fn has_result(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_has_result(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_has_result(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:41 - `BRepFill_EdgeOnSurfLaw::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_EdgeOnSurfLaw_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:41 - `BRepFill_EdgeOnSurfLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepFill_EdgeOnSurfLaw_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:41 - `BRepFill_EdgeOnSurfLaw::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_EdgeOnSurfLaw_get_type_descriptor())) }
     }
 
     /// Upcast to BRepFill_LocationLaw
     pub fn as_location_law(&self) -> &LocationLaw {
-        let __result = unsafe {
-            crate::ffi::BRepFill_EdgeOnSurfLaw_as_BRepFill_LocationLaw(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_EdgeOnSurfLaw_as_BRepFill_LocationLaw(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepFill_LocationLaw (mutable)
     pub fn as_location_law_mut(&mut self) -> &mut LocationLaw {
-        let __result = unsafe {
-            crate::ffi::BRepFill_EdgeOnSurfLaw_as_BRepFill_LocationLaw_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi::BRepFill_EdgeOnSurfLaw_as_BRepFill_LocationLaw_mut(self as *mut Self),
+            )
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepFill_EdgeOnSurfLaw_as_Standard_Transient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_EdgeOnSurfLaw_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepFill_EdgeOnSurfLaw_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_EdgeOnSurfLaw_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillEdgeOnSurfLaw> {
-        let __result = unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_EdgeOnSurfLaw_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::GetStatus()`
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_GetStatus(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_fill::PipeError::try_from(__val).unwrap()
-        }
+        crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_GetStatus(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInG0Law()`
     pub fn transform_in_g0_law(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_TransformInG0Law(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_TransformInG0Law(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
     pub fn transform_in_compatible_law(&mut self, AngularTolerance: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_TransformInCompatibleLaw(
-                    self as *mut Self,
-                    AngularTolerance,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_TransformInCompatibleLaw(
+                self as *mut Self,
+                AngularTolerance,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::DeleteTransform()`
     pub fn delete_transform(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_DeleteTransform(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_DeleteTransform(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_NbHoles(self as *mut Self, Tol)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_NbHoles(self as *mut Self, Tol)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
     pub fn holes(&self, Interval: &mut crate::ffi::TColStd_Array1OfInteger) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Holes(self as *const Self, Interval)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Holes(self as *const Self, Interval)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_NbLaw(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_NbLaw(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:68 - `BRepFill_LocationLaw::Law()`
     pub fn law(&self, Index: i32) -> &crate::ffi::HandleGeomFillLocationLaw {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Law(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Law(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
     pub fn wire(&self) -> &crate::topo_ds::Wire {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Wire(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Wire(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Edge(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Edge(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
     pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Vertex(self as *const Self, Index)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Vertex(self as *const Self, Index),
+            ))
         }
     }
 
@@ -3772,164 +2712,95 @@ impl EdgeOnSurfLaw {
         OutputVertex: &mut crate::topo_ds::Vertex,
         Location: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_PerformVertex(
-                    self as *const Self,
-                    Index,
-                    InputVertex,
-                    TolMin,
-                    OutputVertex,
-                    Location,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_PerformVertex(
+                self as *const Self,
+                Index,
+                InputVertex,
+                TolMin,
+                OutputVertex,
+                Location,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:96 - `BRepFill_LocationLaw::CurvilinearBounds()`
     pub fn curvilinear_bounds(&self, Index: i32, First: &mut f64, Last: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_CurvilinearBounds(
-                    self as *const Self,
-                    Index,
-                    First,
-                    Last,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_CurvilinearBounds(
+                self as *const Self,
+                Index,
+                First,
+                Last,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:100 - `BRepFill_LocationLaw::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IsClosed(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IsClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:107 - `BRepFill_LocationLaw::IsG1()`
     pub fn is_g1(&self, Index: i32, SpatialTolerance: f64, AngularTolerance: f64) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IsG1(
-                    self as *const Self,
-                    Index,
-                    SpatialTolerance,
-                    AngularTolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IsG1(
+                self as *const Self,
+                Index,
+                SpatialTolerance,
+                AngularTolerance,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_D0(
-                    self as *mut Self,
-                    Abscissa,
-                    Section,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_D0(self as *mut Self, Abscissa, Section)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
     pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Parameter(
-                    self as *mut Self,
-                    Abscissa,
-                    Index,
-                    Param,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Parameter(
+                self as *mut Self,
+                Abscissa,
+                Index,
+                Param,
+            )
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Abscissa(
-                    self as *mut Self,
-                    Index,
-                    Param,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Abscissa(self as *mut Self, Index, Param)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IsInstance(
-                    self as *const Self,
-                    theType,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -3940,53 +2811,30 @@ impl EdgeOnSurfLaw {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -4001,45 +2849,40 @@ unsafe impl crate::CppDeletable for HandleBRepFillEdgeOnSurfLaw {
 impl HandleBRepFillEdgeOnSurfLaw {
     /// Dereference this Handle to access the underlying BRepFill_EdgeOnSurfLaw
     pub fn get(&self) -> &crate::ffi::BRepFill_EdgeOnSurfLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillEdgeOnSurfLaw_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepFillEdgeOnSurfLaw_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepFill_EdgeOnSurfLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_EdgeOnSurfLaw {
-        let __result =
-            unsafe { crate::ffi::HandleBRepFillEdgeOnSurfLaw_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepFillEdgeOnSurfLaw_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepFill_EdgeOnSurfLaw> to Handle<BRepFill_LocationLaw>
     pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillLocationLaw> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillEdgeOnSurfLaw_to_HandleBRepFillLocationLaw(
-                self as *const Self,
-            )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillEdgeOnSurfLaw_to_HandleBRepFillLocationLaw(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepFill_EdgeOnSurfLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillEdgeOnSurfLaw_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillEdgeOnSurfLaw_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4061,12 +2904,8 @@ unsafe impl crate::CppDeletable for Evolved {
 impl Evolved {
     /// **Source:** `BRepFill_Evolved.hxx`:45 - `BRepFill_Evolved::BRepFill_Evolved()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Evolved_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Evolved_ctor()))
         }
     }
 
@@ -4084,20 +2923,16 @@ impl Evolved {
         Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_Evolved_ctor_wire2_ax3_jointype_bool(
                     Spine,
                     Profile,
                     AxeProf,
                     Join.into(),
                     Solid,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -4111,20 +2946,16 @@ impl Evolved {
         Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_Evolved_ctor_face_wire_ax3_jointype_bool(
                     Spine,
                     Profile,
                     AxeProf,
                     Join.into(),
                     Solid,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -4167,21 +2998,16 @@ impl Evolved {
         Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Evolved_perform_wire2_ax3_jointype_bool(
-                    self as *mut Self,
-                    Spine,
-                    Profile,
-                    AxeProf,
-                    Join.into(),
-                    Solid,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Evolved_perform_wire2_ax3_jointype_bool(
+                self as *mut Self,
+                Spine,
+                Profile,
+                AxeProf,
+                Join.into(),
+                Solid,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:77 - `BRepFill_Evolved::Perform()`
@@ -4195,46 +3021,27 @@ impl Evolved {
         Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Evolved_perform_face_wire_ax3_jointype_bool(
-                    self as *mut Self,
-                    Spine,
-                    Profile,
-                    AxeProf,
-                    Join.into(),
-                    Solid,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Evolved_perform_face_wire_ax3_jointype_bool(
+                self as *mut Self,
+                Spine,
+                Profile,
+                AxeProf,
+                Join.into(),
+                Solid,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:83 - `BRepFill_Evolved::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Evolved_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_Evolved_is_done(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:86 - `BRepFill_Evolved::Shape()`
     /// returns the generated shape.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Evolved_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_Evolved_shape(self as *const Self))) }
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:91 - `BRepFill_Evolved::GeneratedShapes()`
@@ -4252,58 +3059,33 @@ impl Evolved {
         SpineShape: &crate::topo_ds::Shape,
         ProfShape: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Evolved_generated_shapes(
-                    self as *const Self,
-                    SpineShape,
-                    ProfShape,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Evolved_generated_shapes(
+                self as *const Self,
+                SpineShape,
+                ProfShape,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:94 - `BRepFill_Evolved::JoinType()`
     pub fn join_type(&self) -> crate::geom_abs::JoinType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Evolved_join_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::JoinType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::JoinType::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_Evolved_join_type(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:97 - `BRepFill_Evolved::Top()`
     /// Return the face Top if <Solid> is True in the constructor.
     pub fn top(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Evolved_top(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_Evolved_top(self as *const Self))) }
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:100 - `BRepFill_Evolved::Bottom()`
     /// Return the face Bottom  if <Solid> is True in the constructor.
     pub fn bottom(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Evolved_bottom(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_Evolved_bottom(self as *const Self))) }
     }
 }
 
@@ -4324,12 +3106,8 @@ unsafe impl crate::CppDeletable for FaceAndOrder {
 impl FaceAndOrder {
     /// **Source:** `BRepFill_FaceAndOrder.hxx`:33 - `BRepFill_FaceAndOrder::BRepFill_FaceAndOrder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_FaceAndOrder_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_FaceAndOrder_ctor()))
         }
     }
 
@@ -4338,13 +3116,10 @@ impl FaceAndOrder {
         aFace: &crate::topo_ds::Face,
         anOrder: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_FaceAndOrder_ctor_face_shape(aFace, anOrder.into()) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_FaceAndOrder_ctor_face_shape(aFace, anOrder.into()),
+            ))
         }
     }
 }
@@ -4407,8 +3182,8 @@ impl Filling {
         MaxDeg: i32,
         MaxSegments: i32,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_Filling_ctor_int3_bool_real4_int2(
                     Degree,
                     NbPtsOnCur,
@@ -4420,12 +3195,8 @@ impl Filling {
                     TolCurv,
                     MaxDeg,
                     MaxSegments,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -4614,20 +3385,15 @@ impl Filling {
     /// TolCurv: it is the maximum difference of curvature allowed between
     /// the surface and the constraint
     pub fn set_constr_param(&mut self, Tol2d: f64, Tol3d: f64, TolAng: f64, TolCurv: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Filling_set_constr_param(
-                    self as *mut Self,
-                    Tol2d,
-                    Tol3d,
-                    TolAng,
-                    TolCurv,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Filling_set_constr_param(
+                self as *mut Self,
+                Tol2d,
+                Tol3d,
+                TolAng,
+                TolCurv,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:109 - `BRepFill_Filling::SetResolParam()`
@@ -4652,37 +3418,23 @@ impl Filling {
         NbIter: i32,
         Anisotropie: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Filling_set_resol_param(
-                    self as *mut Self,
-                    Degree,
-                    NbPtsOnCur,
-                    NbIter,
-                    Anisotropie,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Filling_set_resol_param(
+                self as *mut Self,
+                Degree,
+                NbPtsOnCur,
+                NbIter,
+                Anisotropie,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:115 - `BRepFill_Filling::SetApproxParam()`
     /// Sets the parameters used for approximation of the surface
     pub fn set_approx_param(&mut self, MaxDeg: i32, MaxSegments: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Filling_set_approx_param(
-                    self as *mut Self,
-                    MaxDeg,
-                    MaxSegments,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Filling_set_approx_param(self as *mut Self, MaxDeg, MaxSegments)
+        })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:124 - `BRepFill_Filling::LoadInitSurface()`
@@ -4693,13 +3445,9 @@ impl Filling {
     /// If this condition breaks, distortions of resulting surface
     /// are possible.
     pub fn load_init_surface(&mut self, aFace: &crate::topo_ds::Face) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_Filling_load_init_surface(self as *mut Self, aFace) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Filling_load_init_surface(self as *mut Self, aFace)
+        })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:137 - `BRepFill_Filling::Add()`
@@ -4720,21 +3468,14 @@ impl Filling {
         Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Filling_add_edge_shape_bool(
-                    self as *mut Self,
-                    anEdge,
-                    Order.into(),
-                    IsBound,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Filling_add_edge_shape_bool(
+                self as *mut Self,
+                anEdge,
+                Order.into(),
+                IsBound,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:152 - `BRepFill_Filling::Add()`
@@ -4756,22 +3497,15 @@ impl Filling {
         Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Filling_add_edge_face_shape_bool(
-                    self as *mut Self,
-                    anEdge,
-                    Support,
-                    Order.into(),
-                    IsBound,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Filling_add_edge_face_shape_bool(
+                self as *mut Self,
+                anEdge,
+                Support,
+                Order.into(),
+                IsBound,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:160 - `BRepFill_Filling::Add()`
@@ -4783,34 +3517,17 @@ impl Filling {
         Support: &crate::topo_ds::Face,
         Order: crate::geom_abs::Shape,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Filling_add_face_shape(
-                    self as *mut Self,
-                    Support,
-                    Order.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Filling_add_face_shape(self as *mut Self, Support, Order.into())
+        })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:163 - `BRepFill_Filling::Add()`
     /// Adds a punctual constraint
     pub fn add_pnt(&mut self, Point: &crate::gp::Pnt) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Filling_add_pnt(self as *mut Self, Point) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Filling_add_pnt(self as *mut Self, Point)
+        })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:166 - `BRepFill_Filling::Add()`
@@ -4822,56 +3539,34 @@ impl Filling {
         Support: &crate::topo_ds::Face,
         Order: crate::geom_abs::Shape,
     ) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Filling_add_real2_face_shape(
-                    self as *mut Self,
-                    U,
-                    V,
-                    Support,
-                    Order.into(),
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Filling_add_real2_face_shape(
+                self as *mut Self,
+                U,
+                V,
+                Support,
+                Order.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:172 - `BRepFill_Filling::Build()`
     /// Builds the resulting faces
     pub fn build(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_Filling_build(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe { crate::ffi::BRepFill_Filling_build(self as *mut Self) })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:174 - `BRepFill_Filling::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Filling_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_Filling_is_done(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:176 - `BRepFill_Filling::Face()`
     pub fn face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Filling_face(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Filling_face(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4888,89 +3583,45 @@ impl Filling {
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Filling_generated(self as *mut Self, S) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Filling_generated(self as *mut Self, S)))
         }
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:182 - `BRepFill_Filling::G0Error()`
     pub fn g0_error(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Filling_g0_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_Filling_g0_error(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:184 - `BRepFill_Filling::G1Error()`
     pub fn g1_error(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Filling_g1_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_Filling_g1_error(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:186 - `BRepFill_Filling::G2Error()`
     pub fn g2_error(&self) -> f64 {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Filling_g2_error(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_Filling_g2_error(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:188 - `BRepFill_Filling::G0Error()`
     pub fn g0_error_int(&mut self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Filling_g0_error_int(self as *mut Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Filling_g0_error_int(self as *mut Self, Index)
+        })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:190 - `BRepFill_Filling::G1Error()`
     pub fn g1_error_int(&mut self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Filling_g1_error_int(self as *mut Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Filling_g1_error_int(self as *mut Self, Index)
+        })
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:192 - `BRepFill_Filling::G2Error()`
     pub fn g2_error_int(&mut self, Index: i32) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Filling_g2_error_int(self as *mut Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Filling_g2_error_int(self as *mut Self, Index)
+        })
     }
 }
 
@@ -4994,58 +3645,38 @@ unsafe impl crate::CppDeletable for Generator {
 impl Generator {
     /// **Source:** `BRepFill_Generator.hxx`:42 - `BRepFill_Generator::BRepFill_Generator()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Generator_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Generator_ctor()))
         }
     }
 
     /// **Source:** `BRepFill_Generator.hxx`:44 - `BRepFill_Generator::AddWire()`
     pub fn add_wire(&mut self, Wire: &crate::topo_ds::Wire) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_Generator_add_wire(self as *mut Self, Wire) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Generator_add_wire(self as *mut Self, Wire)
+        })
     }
 
     /// **Source:** `BRepFill_Generator.hxx`:47 - `BRepFill_Generator::Perform()`
     /// Compute the  shell.
     pub fn perform(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_Generator_perform(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Generator_perform(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepFill_Generator.hxx`:49 - `BRepFill_Generator::Shell()`
     pub fn shell(&self) -> &crate::topo_ds::Shell {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Generator_shell(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Generator_shell(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepFill_Generator.hxx`:52 - `BRepFill_Generator::Generated()`
     /// Returns  all   the shapes created
     pub fn generated(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Generator_generated(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Generator_generated(self as *const Self)))
         }
     }
 
@@ -5062,15 +3693,11 @@ impl Generator {
         &self,
         SSection: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Generator_generated_shapes(self as *const Self, SSection)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Generator_generated_shapes(
+                self as *const Self,
+                SSection,
+            )))
         }
     }
 
@@ -5081,15 +3708,10 @@ impl Generator {
         &self,
         theShape: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Generator_result_shape(self as *const Self, theShape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_Generator_result_shape(self as *const Self, theShape),
+            ))
         }
     }
 
@@ -5098,45 +3720,26 @@ impl Generator {
     /// If true then the input profile can be modified
     /// inside the operation. Default value is true.
     pub fn set_mutable_input(&mut self, theIsMutableInput: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Generator_set_mutable_input(
-                    self as *mut Self,
-                    theIsMutableInput,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Generator_set_mutable_input(self as *mut Self, theIsMutableInput)
+        })
     }
 
     /// **Source:** `BRepFill_Generator.hxx`:68 - `BRepFill_Generator::IsMutableInput()`
     /// Returns the current mutable input state
     pub fn is_mutable_input(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Generator_is_mutable_input(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Generator_is_mutable_input(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_Generator.hxx`:71 - `BRepFill_Generator::GetStatus()`
     /// Returns status of the operation
     pub fn get_status(&self) -> crate::b_rep_fill::ThruSectionErrorStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Generator_get_status(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::b_rep_fill::ThruSectionErrorStatus::try_from(__val).unwrap()
-        }
+        crate::b_rep_fill::ThruSectionErrorStatus::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_Generator_get_status(self as *const Self)
+        }))
+        .unwrap()
     }
 }
 
@@ -5158,12 +3761,8 @@ impl LocationLaw {
     /// **Source:** `BRepFill_LocationLaw.hxx` - `BRepFill_LocationLaw::BRepFill_LocationLaw()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_LocationLaw_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_LocationLaw_ctor()))
         }
     }
 
@@ -5171,120 +3770,77 @@ impl LocationLaw {
     /// Return a error status, if the  status is not PipeOk then
     /// it exist a parameter tlike the law is not valuable for t.
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_LocationLaw_get_status(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_fill::PipeError::try_from(__val).unwrap()
-        }
+        crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_get_status(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInG0Law()`
     /// Apply a linear   transformation  on each law, to  have
     /// continuity of the global law between the edges.
     pub fn transform_in_g0_law(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_LocationLaw_transform_in_g0_law(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_transform_in_g0_law(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
     /// Apply a linear transformation on each law, to reduce
     /// the   dicontinuities  of law at one  rotation.
     pub fn transform_in_compatible_law(&mut self, AngularTolerance: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_LocationLaw_transform_in_compatible_law(
-                    self as *mut Self,
-                    AngularTolerance,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_transform_in_compatible_law(
+                self as *mut Self,
+                AngularTolerance,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::DeleteTransform()`
     pub fn delete_transform(&mut self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_LocationLaw_delete_transform(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_delete_transform(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_LocationLaw_nb_holes(self as *mut Self, Tol) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_nb_holes(self as *mut Self, Tol)
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
     pub fn holes(&self, Interval: &mut crate::ffi::TColStd_Array1OfInteger) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_LocationLaw_holes(self as *const Self, Interval) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_holes(self as *const Self, Interval)
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
     /// Return the number of elementary Law
     pub fn nb_law(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_LocationLaw_nb_law(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_LocationLaw_nb_law(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:68 - `BRepFill_LocationLaw::Law()`
     /// Return the elementary Law of rank <Index>
     /// <Index> have to be in [1, NbLaw()]
     pub fn law(&self, Index: i32) -> &crate::ffi::HandleGeomFillLocationLaw {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_LocationLaw_law(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_LocationLaw_law(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
     /// return the path
     pub fn wire(&self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_LocationLaw_wire(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_LocationLaw_wire(self as *const Self)))
         }
     }
 
@@ -5292,14 +3848,11 @@ impl LocationLaw {
     /// Return the Edge of rank <Index> in the path
     /// <Index> have to be in [1, NbLaw()]
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_LocationLaw_edge(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_LocationLaw_edge(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -5307,14 +3860,11 @@ impl LocationLaw {
     /// Return the vertex of rank <Index> in the path
     /// <Index> have to be in [0, NbLaw()]
     pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_LocationLaw_vertex(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_LocationLaw_vertex(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -5335,52 +3885,36 @@ impl LocationLaw {
         OutputVertex: &mut crate::topo_ds::Vertex,
         Location: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_LocationLaw_perform_vertex(
-                    self as *const Self,
-                    Index,
-                    InputVertex,
-                    TolMin,
-                    OutputVertex,
-                    Location,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_perform_vertex(
+                self as *const Self,
+                Index,
+                InputVertex,
+                TolMin,
+                OutputVertex,
+                Location,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:96 - `BRepFill_LocationLaw::CurvilinearBounds()`
     /// Return the Curvilinear Bounds of the <Index> Law
     pub fn curvilinear_bounds(&self, Index: i32, First: &mut f64, Last: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_LocationLaw_curvilinear_bounds(
-                    self as *const Self,
-                    Index,
-                    First,
-                    Last,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_curvilinear_bounds(
+                self as *const Self,
+                Index,
+                First,
+                Last,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:100 - `BRepFill_LocationLaw::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_LocationLaw_is_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_is_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:107 - `BRepFill_LocationLaw::IsG1()`
@@ -5390,52 +3924,30 @@ impl LocationLaw {
     /// 0  : It is connex (G0)
     /// 1  : It is tangent (G1)
     pub fn is_g1(&self, Index: i32, SpatialTolerance: f64, AngularTolerance: f64) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_LocationLaw_is_g1(
-                    self as *const Self,
-                    Index,
-                    SpatialTolerance,
-                    AngularTolerance,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_is_g1(
+                self as *const Self,
+                Index,
+                SpatialTolerance,
+                AngularTolerance,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
     /// Apply the Law to a shape, for a given Curvilinear abscissa
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_LocationLaw_d0(self as *mut Self, Abscissa, Section)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_d0(self as *mut Self, Abscissa, Section)
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
     /// Find the index Law and the parameter, for a given Curvilinear abscissa
     pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_LocationLaw_parameter(
-                    self as *mut Self,
-                    Abscissa,
-                    Index,
-                    Param,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_parameter(self as *mut Self, Abscissa, Index, Param)
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
@@ -5443,124 +3955,85 @@ impl LocationLaw {
     /// of  the path, defined by  <Index>  of  Edge and a
     /// parameter on the edge.
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_LocationLaw_abscissa(self as *mut Self, Index, Param)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_abscissa(self as *mut Self, Index, Param)
+        })
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:124 - `BRepFill_LocationLaw::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_LocationLaw_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_LocationLaw_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:124 - `BRepFill_LocationLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_LocationLaw_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepFill_LocationLaw_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:124 - `BRepFill_LocationLaw::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_LocationLaw_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_LocationLaw_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_LocationLaw_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_LocationLaw_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result = unsafe {
-            crate::ffi::BRepFill_LocationLaw_as_Standard_Transient_mut(self as *mut Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_LocationLaw_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillLocationLaw> {
-        let __result = unsafe { crate::ffi::BRepFill_LocationLaw_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_LocationLaw_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_LocationLaw_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_LocationLaw_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepFill_LocationLaw_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepFill_LocationLaw_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -5571,53 +4044,30 @@ impl LocationLaw {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_LocationLaw_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_LocationLaw_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_LocationLaw_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_LocationLaw_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_LocationLaw_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -5632,49 +4082,44 @@ unsafe impl crate::CppDeletable for HandleBRepFillLocationLaw {
 impl HandleBRepFillLocationLaw {
     /// Dereference this Handle to access the underlying BRepFill_LocationLaw
     pub fn get(&self) -> &crate::ffi::BRepFill_LocationLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillLocationLaw_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepFillLocationLaw_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepFill_LocationLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_LocationLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillLocationLaw_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepFillLocationLaw_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepFill_LocationLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillLocationLaw_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillLocationLaw_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<BRepFill_LocationLaw> to Handle<BRepFill_ACRLaw>
     ///
     /// Returns `None` if the handle does not point to a `BRepFill_ACRLaw` (or subclass).
     pub fn downcast_to_acr_law(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillACRLaw>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillACRLaw(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -5684,18 +4129,15 @@ impl HandleBRepFillLocationLaw {
     pub fn downcast_to_draft_law(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillDraftLaw>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillDraftLaw(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -5705,18 +4147,15 @@ impl HandleBRepFillLocationLaw {
     pub fn downcast_to_edge3_d_law(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillEdge3DLaw>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillEdge3DLaw(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -5726,18 +4165,15 @@ impl HandleBRepFillLocationLaw {
     pub fn downcast_to_edge_on_surf_law(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillEdgeOnSurfLaw>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillEdgeOnSurfLaw(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -5766,12 +4202,8 @@ unsafe impl crate::CppDeletable for MultiLine {
 impl MultiLine {
     /// **Source:** `BRepFill_MultiLine.hxx`:52 - `BRepFill_MultiLine::BRepFill_MultiLine()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_MultiLine_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_MultiLine_ctor()))
         }
     }
 
@@ -5785,16 +4217,12 @@ impl MultiLine {
         Inv2: bool,
         Bissec: &crate::ffi::HandleGeom2dCurve,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_MultiLine_ctor_face2_edge2_bool2_handlegeom2dcurve(
                     Face1, Face2, Edge1, Edge2, Inv1, Inv2, Bissec,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -5803,30 +4231,19 @@ impl MultiLine {
     /// faces needs an approximation or not.
     /// Returns true if the approximation is not needed.
     pub fn is_particular_case(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_MultiLine_is_particular_case(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_is_particular_case(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_MultiLine.hxx`:69 - `BRepFill_MultiLine::Continuity()`
     /// Returns   the continuity  between  the two  faces
     /// seShape         from GeomAbsparated by myBis.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_MultiLine_continuity(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_continuity(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepFill_MultiLine.hxx`:72 - `BRepFill_MultiLine::Curves()`
@@ -5837,55 +4254,34 @@ impl MultiLine {
         PCurve1: &mut crate::ffi::HandleGeom2dCurve,
         PCurve2: &mut crate::ffi::HandleGeom2dCurve,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_MultiLine_curves(self as *const Self, Curve, PCurve1, PCurve2)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_curves(self as *const Self, Curve, PCurve1, PCurve2)
+        })
     }
 
     /// **Source:** `BRepFill_MultiLine.hxx`:77 - `BRepFill_MultiLine::FirstParameter()`
     /// returns the first parameter of the Bissectrice.
     pub fn first_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_MultiLine_first_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_first_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_MultiLine.hxx`:80 - `BRepFill_MultiLine::LastParameter()`
     /// returns the last parameter of the Bissectrice.
     pub fn last_parameter(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_MultiLine_last_parameter(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_MultiLine.hxx`:83 - `BRepFill_MultiLine::Value()`
     /// Returns the current point on the 3d curve
     pub fn value_real(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_MultiLine_value_real(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_MultiLine_value_real(self as *const Self, U),
+            ))
         }
     }
 
@@ -5893,14 +4289,10 @@ impl MultiLine {
     /// returns the current point on the PCurve of the
     /// first face
     pub fn value_on_f1(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_MultiLine_value_on_f1(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_MultiLine_value_on_f1(self as *const Self, U),
+            ))
         }
     }
 
@@ -5908,14 +4300,10 @@ impl MultiLine {
     /// returns the current point on the PCurve of the
     /// first face
     pub fn value_on_f2(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_MultiLine_value_on_f2(self as *const Self, U) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_MultiLine_value_on_f2(self as *const Self, U),
+            ))
         }
     }
 
@@ -5927,20 +4315,15 @@ impl MultiLine {
         PF1: &mut crate::gp::Pnt2d,
         PF2: &mut crate::gp::Pnt2d,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_MultiLine_value3d_on_f1_on_f2(
-                    self as *const Self,
-                    U,
-                    P3d,
-                    PF1,
-                    PF2,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_value3d_on_f1_on_f2(
+                self as *const Self,
+                U,
+                P3d,
+                PF1,
+                PF2,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_MultiLine.hxx`:99 - `BRepFill_MultiLine::Value()`
@@ -5951,21 +4334,14 @@ impl MultiLine {
         thePnt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         thePnt: &mut crate::ffi::TColgp_Array1OfPnt,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_MultiLine_value_real_array1ofpnt2d_array1ofpnt(
-                    self as *const Self,
-                    theU,
-                    thePnt2d,
-                    thePnt,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_value_real_array1ofpnt2d_array1ofpnt(
+                self as *const Self,
+                theU,
+                thePnt2d,
+                thePnt,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_MultiLine.hxx`:104 - `BRepFill_MultiLine::D1()`
@@ -5976,97 +4352,64 @@ impl MultiLine {
         theVec2d: &mut crate::ffi::TColgp_Array1OfVec2d,
         theVec: &mut crate::ffi::TColgp_Array1OfVec,
     ) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_MultiLine_d1(self as *const Self, theU, theVec2d, theVec)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_d1(self as *const Self, theU, theVec2d, theVec)
+        })
     }
 
     /// Upcast to AppCont_Function
     pub fn as_app_cont_function(&self) -> &crate::app_cont::Function {
-        let __result =
-            unsafe { crate::ffi::BRepFill_MultiLine_as_AppCont_Function(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_MultiLine_as_AppCont_Function(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to AppCont_Function (mutable)
     pub fn as_app_cont_function_mut(&mut self) -> &mut crate::app_cont::Function {
-        let __result =
-            unsafe { crate::ffi::BRepFill_MultiLine_as_AppCont_Function_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_MultiLine_as_AppCont_Function_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `AppCont_Function.hxx`:37 - `AppCont_Function::GetNumberOfPoints()`
     pub fn get_number_of_points(&self, theNbPnt: &mut i32, theNbPnt2d: &mut i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_MultiLine_inherited_GetNumberOfPoints(
-                    self as *const Self,
-                    theNbPnt,
-                    theNbPnt2d,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_inherited_GetNumberOfPoints(
+                self as *const Self,
+                theNbPnt,
+                theNbPnt2d,
+            )
+        })
     }
 
     /// Inherited: **Source:** `AppCont_Function.hxx`:44 - `AppCont_Function::GetNbOf3dPoints()`
     pub fn get_nb_of3d_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_MultiLine_inherited_GetNbOf3dPoints(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_inherited_GetNbOf3dPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `AppCont_Function.hxx`:47 - `AppCont_Function::GetNbOf2dPoints()`
     pub fn get_nb_of2d_points(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_MultiLine_inherited_GetNbOf2dPoints(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_inherited_GetNbOf2dPoints(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `AppCont_Function.hxx`:71 - `AppCont_Function::PeriodInformation()`
     pub fn period_information(&self, arg0: i32, IsPeriodic: &mut bool, thePeriod: &mut f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_MultiLine_inherited_PeriodInformation(
-                    self as *const Self,
-                    arg0,
-                    IsPeriodic,
-                    thePeriod,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_MultiLine_inherited_PeriodInformation(
+                self as *const Self,
+                arg0,
+                IsPeriodic,
+                thePeriod,
+            )
+        })
     }
 }
 
@@ -6091,13 +4434,10 @@ impl NSections {
         S: &crate::ffi::TopTools_SequenceOfShape,
         Build: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_ctor_sequenceofshape_bool(S, Build) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_NSections_ctor_sequenceofshape_bool(S, Build),
+            ))
         }
     }
 
@@ -6111,14 +4451,8 @@ impl NSections {
         VL: f64,
         Build: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_NSections_ctor_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(S, Trsfs, P, VF, VL, Build)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_NSections_ctor_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(S, Trsfs, P, VF, VL, Build)))
         }
     }
 
@@ -6145,312 +4479,208 @@ impl NSections {
     /// **Source:** `BRepFill_NSections.hxx`:56 - `BRepFill_NSections::IsVertex()`
     /// Say if the input shape is a  vertex.
     pub fn is_vertex(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_NSections_is_vertex(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_is_vertex(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:59 - `BRepFill_NSections::IsConstant()`
     /// Say if the Law is  Constant.
     pub fn is_constant(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_is_constant(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_is_constant(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:62 - `BRepFill_NSections::ConcatenedLaw()`
     /// Give the law build on a concatenated section
     pub fn concatened_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSectionLaw> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_concatened_law(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_NSections_concatened_law(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:64 - `BRepFill_NSections::Continuity()`
     pub fn continuity(&self, Index: i32, TolAngular: f64) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_NSections_continuity(self as *const Self, Index, TolAngular)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_continuity(self as *const Self, Index, TolAngular)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:68 - `BRepFill_NSections::VertexTol()`
     pub fn vertex_tol(&self, Index: i32, Param: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_NSections_vertex_tol(self as *const Self, Index, Param)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_vertex_tol(self as *const Self, Index, Param)
+        })
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:72 - `BRepFill_NSections::Vertex()`
     pub fn vertex(&self, Index: i32, Param: f64) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_vertex(self as *const Self, Index, Param) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_NSections_vertex(
+                self as *const Self,
+                Index,
+                Param,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:75 - `BRepFill_NSections::D0()`
     pub fn d0(&mut self, Param: f64, S: &mut crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_NSections_d0(self as *mut Self, Param, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_NSections_d0(self as *mut Self, Param, S)
+        })
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:77 - `BRepFill_NSections::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_NSections_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:77 - `BRepFill_NSections::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_NSections_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepFill_NSections_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:77 - `BRepFill_NSections::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_NSections_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_NSections_get_type_descriptor())) }
     }
 
     /// Upcast to BRepFill_SectionLaw
     pub fn as_section_law(&self) -> &SectionLaw {
-        let __result =
-            unsafe { crate::ffi::BRepFill_NSections_as_BRepFill_SectionLaw(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_NSections_as_BRepFill_SectionLaw(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepFill_SectionLaw (mutable)
     pub fn as_section_law_mut(&mut self) -> &mut SectionLaw {
-        let __result =
-            unsafe { crate::ffi::BRepFill_NSections_as_BRepFill_SectionLaw_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_NSections_as_BRepFill_SectionLaw_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_NSections_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_NSections_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_NSections_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_NSections_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillNSections> {
-        let __result = unsafe { crate::ffi::BRepFill_NSections_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_NSections_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:43 - `BRepFill_SectionLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_inherited_NbLaw(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_inherited_NbLaw(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:45 - `BRepFill_SectionLaw::Law()`
     pub fn law(&self, Index: i32) -> &crate::ffi::HandleGeomFillSectionLaw {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_inherited_Law(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_NSections_inherited_Law(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:47 - `BRepFill_SectionLaw::IndexOfEdge()`
     pub fn index_of_edge(&self, anEdge: &crate::topo_ds::Shape) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_NSections_inherited_IndexOfEdge(self as *const Self, anEdge)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_inherited_IndexOfEdge(self as *const Self, anEdge)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:51 - `BRepFill_SectionLaw::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_inherited_IsUClosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_inherited_IsUClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:53 - `BRepFill_SectionLaw::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_inherited_IsVClosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_inherited_IsVClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:55 - `BRepFill_SectionLaw::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_inherited_IsDone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:75 - `BRepFill_SectionLaw::CurrentEdge()`
     pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_inherited_CurrentEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_NSections_inherited_CurrentEdge(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_NSections_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_NSections_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepFill_NSections_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepFill_NSections_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -6461,53 +4691,30 @@ impl NSections {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_NSections_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_NSections_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_NSections_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_NSections_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_NSections_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_NSections_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_NSections_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -6522,42 +4729,38 @@ unsafe impl crate::CppDeletable for HandleBRepFillNSections {
 impl HandleBRepFillNSections {
     /// Dereference this Handle to access the underlying BRepFill_NSections
     pub fn get(&self) -> &crate::ffi::BRepFill_NSections {
-        let __result = unsafe { crate::ffi::HandleBRepFillNSections_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepFillNSections_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepFill_NSections
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_NSections {
-        let __result = unsafe { crate::ffi::HandleBRepFillNSections_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepFillNSections_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepFill_NSections> to Handle<BRepFill_SectionLaw>
     pub fn to_handle_section_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillSectionLaw> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillNSections_to_HandleBRepFillSectionLaw(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillNSections_to_HandleBRepFillSectionLaw(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepFill_NSections> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillNSections_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillNSections_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6579,62 +4782,41 @@ unsafe impl crate::CppDeletable for OffsetAncestors {
 impl OffsetAncestors {
     /// **Source:** `BRepFill_OffsetAncestors.hxx`:37 - `BRepFill_OffsetAncestors::BRepFill_OffsetAncestors()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_OffsetAncestors_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_OffsetAncestors_ctor(),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_OffsetAncestors.hxx`:39 - `BRepFill_OffsetAncestors::BRepFill_OffsetAncestors()`
     pub fn new_offsetwire(Paral: &mut OffsetWire) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_OffsetAncestors_ctor_offsetwire(Paral) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_OffsetAncestors_ctor_offsetwire(Paral),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_OffsetAncestors.hxx`:41 - `BRepFill_OffsetAncestors::Perform()`
     pub fn perform(&mut self, Paral: &mut OffsetWire) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_OffsetAncestors_perform(self as *mut Self, Paral) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_OffsetAncestors_perform(self as *mut Self, Paral)
+        })
     }
 
     /// **Source:** `BRepFill_OffsetAncestors.hxx`:43 - `BRepFill_OffsetAncestors::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_OffsetAncestors_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_OffsetAncestors_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_OffsetAncestors.hxx`:45 - `BRepFill_OffsetAncestors::HasAncestor()`
     pub fn has_ancestor(&self, S1: &crate::topo_ds::Edge) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_OffsetAncestors_has_ancestor(self as *const Self, S1)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_OffsetAncestors_has_ancestor(self as *const Self, S1)
+        })
     }
 
     /// **Source:** `BRepFill_OffsetAncestors.hxx`:50 - `BRepFill_OffsetAncestors::Ancestor()`
@@ -6648,14 +4830,11 @@ impl OffsetAncestors {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn ancestor(&self, S1: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_OffsetAncestors_ancestor(self as *const Self, S1) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_OffsetAncestors_ancestor(
+                self as *const Self,
+                S1,
+            )))
         }
     }
 }
@@ -6688,12 +4867,8 @@ unsafe impl crate::CppDeletable for OffsetWire {
 impl OffsetWire {
     /// **Source:** `BRepFill_OffsetWire.hxx`:53 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_OffsetWire_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_OffsetWire_ctor()))
         }
     }
 
@@ -6703,18 +4878,14 @@ impl OffsetWire {
         Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_OffsetWire_ctor_face_jointype_bool(
                     Spine,
                     Join.into(),
                     IsOpenResult,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6734,19 +4905,14 @@ impl OffsetWire {
         Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_OffsetWire_init(
-                    self as *mut Self,
-                    Spine,
-                    Join.into(),
-                    IsOpenResult,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_OffsetWire_init(
+                self as *mut Self,
+                Spine,
+                Join.into(),
+                IsOpenResult,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:67 - `BRepFill_OffsetWire::Perform()`
@@ -6754,13 +4920,9 @@ impl OffsetWire {
     /// the  face ( According  to  the orientation of  the
     /// face)
     pub fn perform(&mut self, Offset: f64, Alt: f64) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_OffsetWire_perform(self as *mut Self, Offset, Alt) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_OffsetWire_perform(self as *mut Self, Offset, Alt)
+        })
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:70 - `BRepFill_OffsetWire::PerformWithBiLo()`
@@ -6774,58 +4936,36 @@ impl OffsetWire {
         Join: crate::geom_abs::JoinType,
         Alt: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_OffsetWire_perform_with_bi_lo(
-                    self as *mut Self,
-                    WSP,
-                    Offset,
-                    Locus,
-                    Link,
-                    Join.into(),
-                    Alt,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_OffsetWire_perform_with_bi_lo(
+                self as *mut Self,
+                WSP,
+                Offset,
+                Locus,
+                Link,
+                Join.into(),
+                Alt,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:77 - `BRepFill_OffsetWire::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_OffsetWire_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_OffsetWire_is_done(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:79 - `BRepFill_OffsetWire::Spine()`
     pub fn spine(&self) -> &crate::topo_ds::Face {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_OffsetWire_spine(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_OffsetWire_spine(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:82 - `BRepFill_OffsetWire::Shape()`
     /// returns the generated shape.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_OffsetWire_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_OffsetWire_shape(self as *const Self)))
         }
     }
 
@@ -6843,29 +4983,20 @@ impl OffsetWire {
         &mut self,
         SpineShape: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_OffsetWire_generated_shapes(self as *mut Self, SpineShape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_OffsetWire_generated_shapes(
+                self as *mut Self,
+                SpineShape,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:89 - `BRepFill_OffsetWire::JoinType()`
     pub fn join_type(&self) -> crate::geom_abs::JoinType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_OffsetWire_join_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::JoinType::try_from(__val).unwrap()
-        }
+        crate::geom_abs::JoinType::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_OffsetWire_join_type(self as *const Self)
+        }))
+        .unwrap()
     }
 }
 
@@ -6891,13 +5022,7 @@ unsafe impl crate::CppDeletable for Pipe {
 impl Pipe {
     /// **Source:** `BRepFill_Pipe.hxx`:51 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Pipe_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
-        }
+        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Pipe_ctor())) }
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
@@ -6908,20 +5033,16 @@ impl Pipe {
         ForceApproxC1: bool,
         GeneratePartCase: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_Pipe_ctor_wire_shape_trihedron_bool2(
                     Spine,
                     Profile,
                     aMode.into(),
                     ForceApproxC1,
                     GeneratePartCase,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -6951,91 +5072,44 @@ impl Pipe {
         Profile: &crate::topo_ds::Shape,
         GeneratePartCase: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Pipe_perform(
-                    self as *mut Self,
-                    Spine,
-                    Profile,
-                    GeneratePartCase,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Pipe_perform(self as *mut Self, Spine, Profile, GeneratePartCase)
+        })
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:63 - `BRepFill_Pipe::Spine()`
     pub fn spine(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Pipe_spine(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_Pipe_spine(self as *const Self))) }
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:65 - `BRepFill_Pipe::Profile()`
     pub fn profile(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Pipe_profile(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_Pipe_profile(self as *const Self))) }
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:67 - `BRepFill_Pipe::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Pipe_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_Pipe_shape(self as *const Self))) }
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:69 - `BRepFill_Pipe::ErrorOnSurface()`
     pub fn error_on_surface(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Pipe_error_on_surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Pipe_error_on_surface(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:71 - `BRepFill_Pipe::FirstShape()`
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Pipe_first_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Pipe_first_shape(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:73 - `BRepFill_Pipe::LastShape()`
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Pipe_last_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Pipe_last_shape(self as *const Self)))
         }
     }
 
@@ -7047,12 +5121,9 @@ impl Pipe {
         S: &crate::topo_ds::Shape,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_Pipe_generated(self as *mut Self, S, L) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Pipe_generated(self as *mut Self, S, L)
+        })
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:82 - `BRepFill_Pipe::Face()`
@@ -7064,14 +5135,12 @@ impl Pipe {
         ESpine: &crate::topo_ds::Edge,
         EProfile: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<crate::topo_ds::Face> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Pipe_face(self as *mut Self, ESpine, EProfile) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Pipe_face(
+                self as *mut Self,
+                ESpine,
+                EProfile,
+            )))
         }
     }
 
@@ -7085,14 +5154,12 @@ impl Pipe {
         ESpine: &crate::topo_ds::Edge,
         VProfile: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Pipe_edge(self as *mut Self, ESpine, VProfile) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Pipe_edge(
+                self as *mut Self,
+                ESpine,
+                VProfile,
+            )))
         }
     }
 
@@ -7104,14 +5171,11 @@ impl Pipe {
         &self,
         VSpine: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Pipe_section(self as *const Self, VSpine) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Pipe_section(
+                self as *const Self,
+                VSpine,
+            )))
         }
     }
 
@@ -7119,13 +5183,11 @@ impl Pipe {
     /// Create a Wire by sweeping the Point along the <spine>
     /// if the <Spine> is undefined
     pub fn pipe_line(&mut self, Point: &crate::gp::Pnt) -> crate::OwnedPtr<crate::topo_ds::Wire> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Pipe_pipe_line(self as *mut Self, Point) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Pipe_pipe_line(
+                self as *mut Self,
+                Point,
+            )))
         }
     }
 }
@@ -7151,12 +5213,10 @@ impl PipeShell {
     /// Set an sweep's mode
     /// If no mode are set, the mode used in MakePipe is used
     pub fn new_wire(Spine: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_PipeShell_ctor_wire(Spine) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_PipeShell_ctor_wire(Spine),
+            ))
         }
     }
 
@@ -7164,50 +5224,36 @@ impl PipeShell {
     /// Set an Frenet or an CorrectedFrenet trihedron
     /// to  perform  the  sweeping
     pub fn set_bool(&mut self, Frenet: bool) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_PipeShell_set_bool(self as *mut Self, Frenet) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_bool(self as *mut Self, Frenet)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:66 - `BRepFill_PipeShell::SetDiscrete()`
     /// Set a Discrete trihedron
     /// to  perform  the  sweeping
     pub fn set_discrete(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_PipeShell_set_discrete(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_discrete(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:70 - `BRepFill_PipeShell::Set()`
     /// Set  an  fixed  trihedron  to  perform  the  sweeping
     /// all sections will be parallel.
     pub fn set_ax2(&mut self, Axe: &crate::gp::Ax2) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_PipeShell_set_ax2(self as *mut Self, Axe) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_ax2(self as *mut Self, Axe)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:74 - `BRepFill_PipeShell::Set()`
     /// Set an fixed  BiNormal  direction to  perform
     /// the sweeping
     pub fn set_dir(&mut self, BiNormal: &crate::gp::Dir) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_PipeShell_set_dir(self as *mut Self, BiNormal) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_dir(self as *mut Self, BiNormal)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:80 - `BRepFill_PipeShell::Set()`
@@ -7216,16 +5262,9 @@ impl PipeShell {
     /// Warning: To  be  effective,  Each  edge  of  the  <spine>  must
     /// have an  representation  on   one   face  of<SpineSupport>
     pub fn set_shape(&mut self, SpineSupport: &crate::topo_ds::Shape) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_PipeShell_set_shape(self as *mut Self, SpineSupport)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_shape(self as *mut Self, SpineSupport)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:102 - `BRepFill_PipeShell::Set()`
@@ -7255,46 +5294,31 @@ impl PipeShell {
         CurvilinearEquivalence: bool,
         KeepContact: crate::b_rep_fill::TypeOfContact,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_set_wire_bool_typeofcontact(
-                    self as *mut Self,
-                    AuxiliarySpine,
-                    CurvilinearEquivalence,
-                    KeepContact.into(),
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_wire_bool_typeofcontact(
+                self as *mut Self,
+                AuxiliarySpine,
+                CurvilinearEquivalence,
+                KeepContact.into(),
+            )
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:107 - `BRepFill_PipeShell::SetMaxDegree()`
     /// Define the maximum V degree of resulting surface
     pub fn set_max_degree(&mut self, NewMaxDegree: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_set_max_degree(self as *mut Self, NewMaxDegree)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_max_degree(self as *mut Self, NewMaxDegree)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:111 - `BRepFill_PipeShell::SetMaxSegments()`
     /// Define the maximum number of spans in V-direction
     /// on resulting surface
     pub fn set_max_segments(&mut self, NewMaxSegments: i32) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_set_max_segments(self as *mut Self, NewMaxSegments)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_max_segments(self as *mut Self, NewMaxSegments)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:123 - `BRepFill_PipeShell::SetForceApproxC1()`
@@ -7309,14 +5333,9 @@ impl PipeShell {
     /// - correspondence between profile, and section on the sweeped shape defined by a vertex of the
     /// spine
     pub fn set_force_approx_c1(&mut self, ForceApproxC1: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_set_force_approx_c1(self as *mut Self, ForceApproxC1)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_force_approx_c1(self as *mut Self, ForceApproxC1)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:126 - `BRepFill_PipeShell::Add()`
@@ -7327,19 +5346,14 @@ impl PipeShell {
         WithContact: bool,
         WithCorrection: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_add_shape_bool2(
-                    self as *mut Self,
-                    Profile,
-                    WithContact,
-                    WithCorrection,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_add_shape_bool2(
+                self as *mut Self,
+                Profile,
+                WithContact,
+                WithCorrection,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:131 - `BRepFill_PipeShell::Add()`
@@ -7351,20 +5365,15 @@ impl PipeShell {
         WithContact: bool,
         WithCorrection: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_add_shape_vertex_bool2(
-                    self as *mut Self,
-                    Profile,
-                    Location,
-                    WithContact,
-                    WithCorrection,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_add_shape_vertex_bool2(
+                self as *mut Self,
+                Profile,
+                Location,
+                WithContact,
+                WithCorrection,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:138 - `BRepFill_PipeShell::SetLaw()`
@@ -7377,20 +5386,15 @@ impl PipeShell {
         WithContact: bool,
         WithCorrection: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_set_law_shape_handlelawfunction_bool2(
-                    self as *mut Self,
-                    Profile,
-                    L,
-                    WithContact,
-                    WithCorrection,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_law_shape_handlelawfunction_bool2(
+                self as *mut Self,
+                Profile,
+                L,
+                WithContact,
+                WithCorrection,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:145 - `BRepFill_PipeShell::SetLaw()`
@@ -7404,79 +5408,52 @@ impl PipeShell {
         WithContact: bool,
         WithCorrection: bool,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_set_law_shape_handlelawfunction_vertex_bool2(
-                    self as *mut Self,
-                    Profile,
-                    L,
-                    Location,
-                    WithContact,
-                    WithCorrection,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_law_shape_handlelawfunction_vertex_bool2(
+                self as *mut Self,
+                Profile,
+                L,
+                Location,
+                WithContact,
+                WithCorrection,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:152 - `BRepFill_PipeShell::DeleteProfile()`
     /// Delete an section.
     pub fn delete_profile(&mut self, Profile: &crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_delete_profile(self as *mut Self, Profile)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_delete_profile(self as *mut Self, Profile)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:156 - `BRepFill_PipeShell::IsReady()`
     /// Say if <me> is ready to build the shape
     /// return False if <me> do not have section definition
     pub fn is_ready(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_PipeShell_is_ready(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_PipeShell_is_ready(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:159 - `BRepFill_PipeShell::GetStatus()`
     /// Get a status, when Simulate or Build failed.
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_PipeShell_get_status(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_fill::PipeError::try_from(__val).unwrap()
-        }
+        crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_get_status(self as *const Self)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:161 - `BRepFill_PipeShell::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, BoundTol: f64, TolAngular: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_set_tolerance(
-                    self as *mut Self,
-                    Tol3d,
-                    BoundTol,
-                    TolAngular,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_tolerance(
+                self as *mut Self,
+                Tol3d,
+                BoundTol,
+                TolAngular,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:167 - `BRepFill_PipeShell::SetTransition()`
@@ -7488,19 +5465,14 @@ impl PipeShell {
         Angmin: f64,
         Angmax: f64,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_set_transition(
-                    self as *mut Self,
-                    Mode.into(),
-                    Angmin,
-                    Angmax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_set_transition(
+                self as *mut Self,
+                Mode.into(),
+                Angmin,
+                Angmax,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:173 - `BRepFill_PipeShell::Simulate()`
@@ -7511,124 +5483,67 @@ impl PipeShell {
         NumberOfSection: i32,
         Sections: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_simulate(
-                    self as *mut Self,
-                    NumberOfSection,
-                    Sections,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_simulate(self as *mut Self, NumberOfSection, Sections)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:177 - `BRepFill_PipeShell::Build()`
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_PipeShell_build(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_PipeShell_build(self as *mut Self) })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:181 - `BRepFill_PipeShell::MakeSolid()`
     /// Transform the sweeping Shell in Solid.
     /// If the section are not closed returns False
     pub fn make_solid(&mut self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_PipeShell_make_solid(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_PipeShell_make_solid(self as *mut Self) })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:184 - `BRepFill_PipeShell::Shape()`
     /// Returns the result Shape.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_PipeShell_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_PipeShell_shape(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:186 - `BRepFill_PipeShell::ErrorOnSurface()`
     pub fn error_on_surface(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_PipeShell_error_on_surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_error_on_surface(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:189 - `BRepFill_PipeShell::FirstShape()`
     /// Returns the  TopoDS  Shape of the bottom of the sweep.
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_PipeShell_first_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_PipeShell_first_shape(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:192 - `BRepFill_PipeShell::LastShape()`
     /// Returns the TopoDS Shape of the top of the sweep.
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_PipeShell_last_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_PipeShell_last_shape(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:195 - `BRepFill_PipeShell::Profiles()`
     /// Returns the list of original profiles
     pub fn profiles(&mut self, theProfiles: &mut crate::ffi::TopTools_ListOfShape) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_PipeShell_profiles(self as *mut Self, theProfiles) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_profiles(self as *mut Self, theProfiles)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:202 - `BRepFill_PipeShell::Spine()`
     /// Returns the spine
     pub fn spine(&mut self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_PipeShell_spine(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_PipeShell_spine(self as *mut Self))) }
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:206 - `BRepFill_PipeShell::Generated()`
@@ -7639,120 +5554,85 @@ impl PipeShell {
         S: &crate::topo_ds::Shape,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_PipeShell_generated(self as *mut Self, S, L) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_generated(self as *mut Self, S, L)
+        })
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_PipeShell_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_PipeShell_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_PipeShell_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepFill_PipeShell_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_PipeShell_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_PipeShell_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_PipeShell_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_PipeShell_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_PipeShell_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_PipeShell_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillPipeShell> {
-        let __result = unsafe { crate::ffi::BRepFill_PipeShell_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_PipeShell_to_handle(obj.into_raw()),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_PipeShell_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_PipeShell_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepFill_PipeShell_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepFill_PipeShell_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -7763,53 +5643,30 @@ impl PipeShell {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_PipeShell_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_PipeShell_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_PipeShell_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_PipeShell_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_PipeShell_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -7824,31 +5681,27 @@ unsafe impl crate::CppDeletable for HandleBRepFillPipeShell {
 impl HandleBRepFillPipeShell {
     /// Dereference this Handle to access the underlying BRepFill_PipeShell
     pub fn get(&self) -> &crate::ffi::BRepFill_PipeShell {
-        let __result = unsafe { crate::ffi::HandleBRepFillPipeShell_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepFillPipeShell_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepFill_PipeShell
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_PipeShell {
-        let __result = unsafe { crate::ffi::HandleBRepFillPipeShell_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepFillPipeShell_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepFill_PipeShell> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillPipeShell_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillPipeShell_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7869,12 +5722,8 @@ unsafe impl crate::CppDeletable for Section {
 impl Section {
     /// **Source:** `BRepFill_Section.hxx`:32 - `BRepFill_Section::BRepFill_Section()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Section_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Section_ctor()))
         }
     }
 
@@ -7885,67 +5734,42 @@ impl Section {
         WithContact: bool,
         WithCorrection: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_Section_ctor_shape_vertex_bool2(
                     Profile,
                     V,
                     WithContact,
                     WithCorrection,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_Section.hxx`:39 - `BRepFill_Section::Set()`
     pub fn set(&mut self, IsLaw: bool) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_Section_set(self as *mut Self, IsLaw) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Section_set(self as *mut Self, IsLaw)
+        })
     }
 
     /// **Source:** `BRepFill_Section.hxx`:41 - `BRepFill_Section::OriginalShape()`
     pub fn original_shape(&self) -> &crate::topo_ds::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Section_original_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_Section_original_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_Section.hxx`:43 - `BRepFill_Section::Wire()`
     pub fn wire(&self) -> &crate::topo_ds::Wire {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Section_wire(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_Section_wire(self as *const Self))) }
     }
 
     /// **Source:** `BRepFill_Section.hxx`:45 - `BRepFill_Section::Vertex()`
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Section_vertex(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_Section_vertex(self as *const Self))) }
     }
 
     /// **Source:** `BRepFill_Section.hxx`:47 - `BRepFill_Section::ModifiedShape()`
@@ -7953,66 +5777,37 @@ impl Section {
         &self,
         theShape: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Section_modified_shape(self as *const Self, theShape)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_Section_modified_shape(self as *const Self, theShape),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_Section.hxx`:49 - `BRepFill_Section::IsLaw()`
     pub fn is_law(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Section_is_law(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_Section_is_law(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_Section.hxx`:51 - `BRepFill_Section::IsPunctual()`
     pub fn is_punctual(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Section_is_punctual(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Section_is_punctual(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_Section.hxx`:53 - `BRepFill_Section::WithContact()`
     pub fn with_contact(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Section_with_contact(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Section_with_contact(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_Section.hxx`:55 - `BRepFill_Section::WithCorrection()`
     pub fn with_correction(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Section_with_correction(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Section_with_correction(self as *const Self)
+        })
     }
 }
 
@@ -8033,290 +5828,178 @@ unsafe impl crate::CppDeletable for SectionLaw {
 impl SectionLaw {
     /// **Source:** `BRepFill_SectionLaw.hxx`:43 - `BRepFill_SectionLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_SectionLaw_nb_law(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_SectionLaw_nb_law(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:45 - `BRepFill_SectionLaw::Law()`
     pub fn law(&self, Index: i32) -> &crate::ffi::HandleGeomFillSectionLaw {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_SectionLaw_law(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_SectionLaw_law(self as *const Self, Index)))
         }
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:47 - `BRepFill_SectionLaw::IndexOfEdge()`
     pub fn index_of_edge(&self, anEdge: &crate::topo_ds::Shape) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_SectionLaw_index_of_edge(self as *const Self, anEdge)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_index_of_edge(self as *const Self, anEdge)
+        })
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:49 - `BRepFill_SectionLaw::IsConstant()`
     pub fn is_constant(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_SectionLaw_is_constant(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_is_constant(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:51 - `BRepFill_SectionLaw::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_SectionLaw_is_u_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_is_u_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:53 - `BRepFill_SectionLaw::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_SectionLaw_is_v_closed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_is_v_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:55 - `BRepFill_SectionLaw::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_SectionLaw_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_SectionLaw_is_done(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:58 - `BRepFill_SectionLaw::IsVertex()`
     /// Say if the input shape is a  vertex.
     pub fn is_vertex(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_SectionLaw_is_vertex(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_is_vertex(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:60 - `BRepFill_SectionLaw::ConcatenedLaw()`
     pub fn concatened_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSectionLaw> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_SectionLaw_concatened_law(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_SectionLaw_concatened_law(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:62 - `BRepFill_SectionLaw::Continuity()`
     pub fn continuity(&self, Index: i32, TolAngular: f64) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_SectionLaw_continuity(self as *const Self, Index, TolAngular)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_continuity(self as *const Self, Index, TolAngular)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:65 - `BRepFill_SectionLaw::VertexTol()`
     pub fn vertex_tol(&self, Index: i32, Param: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_SectionLaw_vertex_tol(self as *const Self, Index, Param)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_vertex_tol(self as *const Self, Index, Param)
+        })
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:68 - `BRepFill_SectionLaw::Vertex()`
     pub fn vertex(&self, Index: i32, Param: f64) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_SectionLaw_vertex(self as *const Self, Index, Param)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_SectionLaw_vertex(
+                self as *const Self,
+                Index,
+                Param,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:71 - `BRepFill_SectionLaw::D0()`
     pub fn d0(&mut self, U: f64, S: &mut crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_SectionLaw_d0(self as *mut Self, U, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_d0(self as *mut Self, U, S)
+        })
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:73 - `BRepFill_SectionLaw::Init()`
     pub fn init(&mut self, W: &crate::topo_ds::Wire) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_SectionLaw_init(self as *mut Self, W) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_init(self as *mut Self, W)
+        })
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:75 - `BRepFill_SectionLaw::CurrentEdge()`
     pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_SectionLaw_current_edge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_SectionLaw_current_edge(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:77 - `BRepFill_SectionLaw::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_SectionLaw_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_SectionLaw_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:77 - `BRepFill_SectionLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_SectionLaw_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepFill_SectionLaw_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:77 - `BRepFill_SectionLaw::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_SectionLaw_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_SectionLaw_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_SectionLaw_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_SectionLaw_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_SectionLaw_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_SectionLaw_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_SectionLaw_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_SectionLaw_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepFill_SectionLaw_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepFill_SectionLaw_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -8327,53 +6010,30 @@ impl SectionLaw {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_SectionLaw_inherited_GetRefCount(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_SectionLaw_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_SectionLaw_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_SectionLaw_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_SectionLaw_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -8388,31 +6048,29 @@ unsafe impl crate::CppDeletable for HandleBRepFillSectionLaw {
 impl HandleBRepFillSectionLaw {
     /// Dereference this Handle to access the underlying BRepFill_SectionLaw
     pub fn get(&self) -> &crate::ffi::BRepFill_SectionLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillSectionLaw_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepFillSectionLaw_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepFill_SectionLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_SectionLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillSectionLaw_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepFillSectionLaw_get_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepFill_SectionLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillSectionLaw_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillSectionLaw_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<BRepFill_SectionLaw> to Handle<BRepFill_NSections>
@@ -8421,18 +6079,15 @@ impl HandleBRepFillSectionLaw {
     pub fn downcast_to_n_sections(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillNSections>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepFillSectionLaw_downcast_to_HandleBRepFillNSections(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -8442,18 +6097,15 @@ impl HandleBRepFillSectionLaw {
     pub fn downcast_to_shape_law(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillShapeLaw>> {
-        let __result = unsafe {
+        let __val = crate::check_result(unsafe {
             crate::ffi::HandleBRepFillSectionLaw_downcast_to_HandleBRepFillShapeLaw(
                 self as *const Self,
             )
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
-        }
-        if __result.ret.is_null() {
+        });
+        if __val.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }
@@ -8481,19 +6133,15 @@ impl SectionPlacement {
         WithContact: bool,
         WithCorrection: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_SectionPlacement_ctor_handlebrepfilllocationlaw_shape_bool2(
                     Law,
                     Section,
                     WithContact,
                     WithCorrection,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -8506,20 +6154,16 @@ impl SectionPlacement {
         WithContact: bool,
         WithCorrection: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_SectionPlacement_ctor_handlebrepfilllocationlaw_shape2_bool2(
                     Law,
                     Section,
                     Vertex,
                     WithContact,
                     WithCorrection,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -8565,30 +6209,18 @@ impl SectionPlacement {
 
     /// **Source:** `BRepFill_SectionPlacement.hxx`:48 - `BRepFill_SectionPlacement::Transformation()`
     pub fn transformation(&self) -> &crate::gp::Trsf {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_SectionPlacement_transformation(self as *const Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_SectionPlacement_transformation(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_SectionPlacement.hxx`:50 - `BRepFill_SectionPlacement::AbscissaOnPath()`
     pub fn abscissa_on_path(&mut self) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_SectionPlacement_abscissa_on_path(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_SectionPlacement_abscissa_on_path(self as *mut Self)
+        })
     }
 }
 
@@ -8610,24 +6242,20 @@ impl ShapeLaw {
     /// **Source:** `BRepFill_ShapeLaw.hxx`:43 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an constant Law
     pub fn new_vertex_bool(V: &crate::topo_ds::Vertex, Build: bool) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_ShapeLaw_ctor_vertex_bool(V, Build) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_ShapeLaw_ctor_vertex_bool(V, Build),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:47 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an constant Law
     pub fn new_wire_bool(W: &crate::topo_ds::Wire, Build: bool) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_ShapeLaw_ctor_wire_bool(W, Build) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_ShapeLaw_ctor_wire_bool(W, Build),
+            ))
         }
     }
 
@@ -8638,14 +6266,10 @@ impl ShapeLaw {
         L: &crate::ffi::HandleLawFunction,
         Build: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ShapeLaw_ctor_wire_handlelawfunction_bool(W, L, Build)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_ShapeLaw_ctor_wire_handlelawfunction_bool(W, L, Build),
+            ))
         }
     }
 
@@ -8673,325 +6297,211 @@ impl ShapeLaw {
     /// **Source:** `BRepFill_ShapeLaw.hxx`:56 - `BRepFill_ShapeLaw::IsVertex()`
     /// Say if the input shape is a  vertex.
     pub fn is_vertex(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_ShapeLaw_is_vertex(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_ShapeLaw_is_vertex(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:59 - `BRepFill_ShapeLaw::IsConstant()`
     /// Say if the Law is  Constant.
     pub fn is_constant(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_is_constant(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_is_constant(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:62 - `BRepFill_ShapeLaw::ConcatenedLaw()`
     /// Give the law build on a concatenated section
     pub fn concatened_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSectionLaw> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_concatened_law(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_ShapeLaw_concatened_law(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:64 - `BRepFill_ShapeLaw::Continuity()`
     pub fn continuity(&self, Index: i32, TolAngular: f64) -> crate::geom_abs::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ShapeLaw_continuity(self as *const Self, Index, TolAngular)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            crate::geom_abs::Shape::try_from(__val).unwrap()
-        }
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_continuity(self as *const Self, Index, TolAngular)
+        }))
+        .unwrap()
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:68 - `BRepFill_ShapeLaw::VertexTol()`
     pub fn vertex_tol(&self, Index: i32, Param: f64) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ShapeLaw_vertex_tol(self as *const Self, Index, Param)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_vertex_tol(self as *const Self, Index, Param)
+        })
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:72 - `BRepFill_ShapeLaw::Vertex()`
     pub fn vertex(&self, Index: i32, Param: f64) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_vertex(self as *const Self, Index, Param) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_ShapeLaw_vertex(
+                self as *const Self,
+                Index,
+                Param,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:75 - `BRepFill_ShapeLaw::D0()`
     pub fn d0(&mut self, Param: f64, S: &mut crate::topo_ds::Shape) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_ShapeLaw_d0(self as *mut Self, Param, S) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_d0(self as *mut Self, Param, S)
+        })
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:77 - `BRepFill_ShapeLaw::Edge()`
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_edge(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_ShapeLaw_edge(self as *const Self, Index)))
         }
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:79 - `BRepFill_ShapeLaw::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_dynamic_type(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_ShapeLaw_dynamic_type(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:79 - `BRepFill_ShapeLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_ShapeLaw_get_type_name() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi::BRepFill_ShapeLaw_get_type_name(),
+            ))
         }
+        .to_string_lossy()
+        .into_owned()
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:79 - `BRepFill_ShapeLaw::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_ShapeLaw_get_type_descriptor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
-        }
+        unsafe { &*(crate::check_result(crate::ffi::BRepFill_ShapeLaw_get_type_descriptor())) }
     }
 
     /// Upcast to BRepFill_SectionLaw
     pub fn as_section_law(&self) -> &SectionLaw {
-        let __result =
-            unsafe { crate::ffi::BRepFill_ShapeLaw_as_BRepFill_SectionLaw(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_ShapeLaw_as_BRepFill_SectionLaw(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepFill_SectionLaw (mutable)
     pub fn as_section_law_mut(&mut self) -> &mut SectionLaw {
-        let __result =
-            unsafe { crate::ffi::BRepFill_ShapeLaw_as_BRepFill_SectionLaw_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_ShapeLaw_as_BRepFill_SectionLaw_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_ShapeLaw_as_Standard_Transient(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::BRepFill_ShapeLaw_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        let __result =
-            unsafe { crate::ffi::BRepFill_ShapeLaw_as_Standard_Transient_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::BRepFill_ShapeLaw_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillShapeLaw> {
-        let __result = unsafe { crate::ffi::BRepFill_ShapeLaw_to_handle(obj.into_raw()) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_ShapeLaw_to_handle(
+                obj.into_raw(),
+            )))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:43 - `BRepFill_SectionLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_NbLaw(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_inherited_NbLaw(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:45 - `BRepFill_SectionLaw::Law()`
     pub fn law(&self, Index: i32) -> &crate::ffi::HandleGeomFillSectionLaw {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_Law(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { &*(__val) }
+        unsafe {
+            &*(crate::check_result(crate::ffi::BRepFill_ShapeLaw_inherited_Law(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:47 - `BRepFill_SectionLaw::IndexOfEdge()`
     pub fn index_of_edge(&self, anEdge: &crate::topo_ds::Shape) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ShapeLaw_inherited_IndexOfEdge(self as *const Self, anEdge)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_inherited_IndexOfEdge(self as *const Self, anEdge)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:51 - `BRepFill_SectionLaw::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_IsUClosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_inherited_IsUClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:53 - `BRepFill_SectionLaw::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_IsVClosed(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_inherited_IsVClosed(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:55 - `BRepFill_SectionLaw::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_IsDone(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_inherited_IsDone(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:75 - `BRepFill_SectionLaw::CurrentEdge()`
     pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_CurrentEdge(self as *mut Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::BRepFill_ShapeLaw_inherited_CurrentEdge(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ShapeLaw_inherited_IsInstance(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_inherited_IsInstance(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ShapeLaw_inherited_IsKind(self as *const Self, theType)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_inherited_IsKind(self as *const Self, theType)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_This(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
+            let __val = crate::check_result(unsafe {
+                crate::ffi::BRepFill_ShapeLaw_inherited_This(self as *const Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -9002,52 +6512,30 @@ impl ShapeLaw {
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_GetRefCount(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_inherited_GetRefCount(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_ShapeLaw_inherited_IncrementRefCounter(self as *mut Self)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_inherited_IncrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_ShapeLaw_inherited_DecrementRefCounter(self as *mut Self)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_inherited_DecrementRefCounter(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        {
-            let __exc =
-                unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_Delete(self as *const Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_ShapeLaw_inherited_Delete(self as *const Self)
+        })
     }
 }
 
@@ -9062,42 +6550,34 @@ unsafe impl crate::CppDeletable for HandleBRepFillShapeLaw {
 impl HandleBRepFillShapeLaw {
     /// Dereference this Handle to access the underlying BRepFill_ShapeLaw
     pub fn get(&self) -> &crate::ffi::BRepFill_ShapeLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillShapeLaw_get(self as *const Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &*crate::check_result(crate::ffi::HandleBRepFillShapeLaw_get(self as *const Self))
         }
-        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepFill_ShapeLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_ShapeLaw {
-        let __result = unsafe { crate::ffi::HandleBRepFillShapeLaw_get_mut(self as *mut Self) };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            &mut *crate::check_result(crate::ffi::HandleBRepFillShapeLaw_get_mut(self as *mut Self))
         }
-        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepFill_ShapeLaw> to Handle<BRepFill_SectionLaw>
     pub fn to_handle_section_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillSectionLaw> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillShapeLaw_to_HandleBRepFillSectionLaw(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillShapeLaw_to_HandleBRepFillSectionLaw(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepFill_ShapeLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        let __result = unsafe {
-            crate::ffi::HandleBRepFillShapeLaw_to_HandleStandardTransient(self as *const Self)
-        };
-        if !__result.exc.is_null() {
-            crate::wrapper_threw_exception(__result.exc);
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi::HandleBRepFillShapeLaw_to_HandleStandardTransient(self as *const Self),
+            ))
         }
-        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9124,14 +6604,8 @@ impl Sweep {
         Location: &crate::ffi::HandleBRepFillLocationLaw,
         WithKPart: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_Sweep_ctor_handlebrepfillsectionlaw_handlebrepfilllocationlaw_bool(Section, Location, WithKPart)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Sweep_ctor_handlebrepfillsectionlaw_handlebrepfilllocationlaw_bool(Section, Location, WithKPart)))
         }
     }
 
@@ -9141,14 +6615,9 @@ impl Sweep {
         FirstShape: &crate::topo_ds::Wire,
         LastShape: &crate::topo_ds::Wire,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Sweep_set_bounds(self as *mut Self, FirstShape, LastShape)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Sweep_set_bounds(self as *mut Self, FirstShape, LastShape)
+        })
     }
 
     /// **Source:** `BRepFill_Sweep.hxx`:61 - `BRepFill_Sweep::SetTolerance()`
@@ -9162,20 +6631,15 @@ impl Sweep {
     /// between tangents on the section law and
     /// tangent of iso-v on approximated surface
     pub fn set_tolerance(&mut self, Tol3d: f64, BoundTol: f64, Tol2d: f64, TolAngular: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Sweep_set_tolerance(
-                    self as *mut Self,
-                    Tol3d,
-                    BoundTol,
-                    Tol2d,
-                    TolAngular,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Sweep_set_tolerance(
+                self as *mut Self,
+                Tol3d,
+                BoundTol,
+                Tol2d,
+                TolAngular,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_Sweep.hxx`:70 - `BRepFill_Sweep::SetAngularControl()`
@@ -9184,18 +6648,9 @@ impl Sweep {
     /// If the discontinuity is lesser than <AngleMin> in radian The
     /// Transition Performed will be always "Modified"
     pub fn set_angular_control(&mut self, AngleMin: f64, AngleMax: f64) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Sweep_set_angular_control(
-                    self as *mut Self,
-                    AngleMin,
-                    AngleMax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Sweep_set_angular_control(self as *mut Self, AngleMin, AngleMax)
+        })
     }
 
     /// **Source:** `BRepFill_Sweep.hxx`:76 - `BRepFill_Sweep::SetForceApproxC1()`
@@ -9203,14 +6658,9 @@ impl Sweep {
     /// a C1-continuous surface if a swept surface proved
     /// to be C0.
     pub fn set_force_approx_c1(&mut self, ForceApproxC1: bool) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Sweep_set_force_approx_c1(self as *mut Self, ForceApproxC1)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Sweep_set_force_approx_c1(self as *mut Self, ForceApproxC1)
+        })
     }
 
     /// **Source:** `BRepFill_Sweep.hxx`:92 - `BRepFill_Sweep::Build()`
@@ -9239,112 +6689,80 @@ impl Sweep {
         Degmax: i32,
         Segmax: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_Sweep_build(
-                    self as *mut Self,
-                    ReversedEdges,
-                    Tapes,
-                    Rails,
-                    Transition.into(),
-                    Continuity.into(),
-                    Approx.into(),
-                    Degmax,
-                    Segmax,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_Sweep_build(
+                self as *mut Self,
+                ReversedEdges,
+                Tapes,
+                Rails,
+                Transition.into(),
+                Continuity.into(),
+                Approx.into(),
+                Degmax,
+                Segmax,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_Sweep.hxx`:102 - `BRepFill_Sweep::IsDone()`
     /// Say if the Shape is Build.
     pub fn is_done(&self) -> bool {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Sweep_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe { crate::ffi::BRepFill_Sweep_is_done(self as *const Self) })
     }
 
     /// **Source:** `BRepFill_Sweep.hxx`:105 - `BRepFill_Sweep::Shape()`
     /// returns the Sweeping Shape
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Sweep_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Sweep_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_Sweep.hxx`:108 - `BRepFill_Sweep::ErrorOnSurface()`
     /// Get the Approximation  error.
     pub fn error_on_surface(&self) -> f64 {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_Sweep_error_on_surface(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_Sweep_error_on_surface(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_Sweep.hxx`:110 - `BRepFill_Sweep::SubShape()`
     pub fn sub_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHArray2OfShape> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Sweep_sub_shape(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Sweep_sub_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_Sweep.hxx`:112 - `BRepFill_Sweep::InterFaces()`
     pub fn inter_faces(&self) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHArray2OfShape> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Sweep_inter_faces(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Sweep_inter_faces(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_Sweep.hxx`:114 - `BRepFill_Sweep::Sections()`
     pub fn sections(&self) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHArray2OfShape> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Sweep_sections(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Sweep_sections(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepFill_Sweep.hxx`:117 - `BRepFill_Sweep::Tape()`
     /// returns the Tape corresponding to Index-th edge of section
     pub fn tape(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_Sweep_tape(self as *const Self, Index) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            unsafe { crate::OwnedPtr::from_raw(__val) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_Sweep_tape(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 }
@@ -9366,12 +6784,8 @@ unsafe impl crate::CppDeletable for TrimEdgeTool {
 impl TrimEdgeTool {
     /// **Source:** `BRepFill_TrimEdgeTool.hxx`:41 - `BRepFill_TrimEdgeTool::BRepFill_TrimEdgeTool()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::BRepFill_TrimEdgeTool_ctor() };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_TrimEdgeTool_ctor()))
         }
     }
 
@@ -9382,16 +6796,12 @@ impl TrimEdgeTool {
         S2: &crate::ffi::HandleGeom2dGeometry,
         Offset: f64,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_TrimEdgeTool_ctor_bisec_handlegeom2dgeometry2_real(
                     Bisec, S1, S2, Offset,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -9408,25 +6818,20 @@ impl TrimEdgeTool {
         IsOpenResult: bool,
         Params: &mut crate::ffi::TColgp_SequenceOfPnt,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_TrimEdgeTool_intersect_with(
-                    self as *mut Self,
-                    Edge1,
-                    Edge2,
-                    InitShape1,
-                    InitShape2,
-                    End1,
-                    End2,
-                    theJoinType.into(),
-                    IsOpenResult,
-                    Params,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_TrimEdgeTool_intersect_with(
+                self as *mut Self,
+                Edge1,
+                Edge2,
+                InitShape1,
+                InitShape2,
+                End1,
+                End2,
+                theJoinType.into(),
+                IsOpenResult,
+                Params,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_TrimEdgeTool.hxx`:58 - `BRepFill_TrimEdgeTool::AddOrConfuse()`
@@ -9437,33 +6842,22 @@ impl TrimEdgeTool {
         Edge2: &crate::topo_ds::Edge,
         Params: &mut crate::ffi::TColgp_SequenceOfPnt,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_TrimEdgeTool_add_or_confuse(
-                    self as *const Self,
-                    Start,
-                    Edge1,
-                    Edge2,
-                    Params,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_TrimEdgeTool_add_or_confuse(
+                self as *const Self,
+                Start,
+                Edge1,
+                Edge2,
+                Params,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_TrimEdgeTool.hxx`:63 - `BRepFill_TrimEdgeTool::IsInside()`
     pub fn is_inside(&self, P: &crate::gp::Pnt2d) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_TrimEdgeTool_is_inside(self as *const Self, P) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_TrimEdgeTool_is_inside(self as *const Self, P)
+        })
     }
 }
 
@@ -9495,39 +6889,23 @@ impl TrimShellCorner {
         theAxeOfBisPlane: &crate::gp::Ax2,
         theIntPointCrossDir: &crate::gp::Vec,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_TrimShellCorner_ctor_handletoptoolsharray2ofshape_transitionstyle_ax2_vec(theFaces, theTransition.into(), theAxeOfBisPlane, theIntPointCrossDir)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepFill_TrimShellCorner_ctor_handletoptoolsharray2ofshape_transitionstyle_ax2_vec(theFaces, theTransition.into(), theAxeOfBisPlane, theIntPointCrossDir)))
         }
     }
 
     /// **Source:** `BRepFill_TrimShellCorner.hxx`:49 - `BRepFill_TrimShellCorner::AddBounds()`
     pub fn add_bounds(&mut self, Bounds: &crate::ffi::HandleTopToolsHArray2OfShape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_TrimShellCorner_add_bounds(self as *mut Self, Bounds)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_TrimShellCorner_add_bounds(self as *mut Self, Bounds)
+        })
     }
 
     /// **Source:** `BRepFill_TrimShellCorner.hxx`:51 - `BRepFill_TrimShellCorner::AddUEdges()`
     pub fn add_u_edges(&mut self, theUEdges: &crate::ffi::HandleTopToolsHArray2OfShape) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_TrimShellCorner_add_u_edges(self as *mut Self, theUEdges)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_TrimShellCorner_add_u_edges(self as *mut Self, theUEdges)
+        })
     }
 
     /// **Source:** `BRepFill_TrimShellCorner.hxx`:53 - `BRepFill_TrimShellCorner::AddVEdges()`
@@ -9536,54 +6914,30 @@ impl TrimShellCorner {
         theVEdges: &crate::ffi::HandleTopToolsHArray2OfShape,
         theIndex: i32,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_TrimShellCorner_add_v_edges(
-                    self as *mut Self,
-                    theVEdges,
-                    theIndex,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_TrimShellCorner_add_v_edges(self as *mut Self, theVEdges, theIndex)
+        })
     }
 
     /// **Source:** `BRepFill_TrimShellCorner.hxx`:56 - `BRepFill_TrimShellCorner::Perform()`
     pub fn perform(&mut self) {
-        {
-            let __exc = unsafe { crate::ffi::BRepFill_TrimShellCorner_perform(self as *mut Self) };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_TrimShellCorner_perform(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepFill_TrimShellCorner.hxx`:58 - `BRepFill_TrimShellCorner::IsDone()`
     pub fn is_done(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_TrimShellCorner_is_done(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_TrimShellCorner_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_TrimShellCorner.hxx`:60 - `BRepFill_TrimShellCorner::HasSection()`
     pub fn has_section(&self) -> bool {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepFill_TrimShellCorner_has_section(self as *const Self) };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_TrimShellCorner_has_section(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepFill_TrimShellCorner.hxx`:62 - `BRepFill_TrimShellCorner::Modified()`
@@ -9592,14 +6946,9 @@ impl TrimShellCorner {
         S: &crate::topo_ds::Shape,
         theModified: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_TrimShellCorner_modified(self as *mut Self, S, theModified)
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_TrimShellCorner_modified(self as *mut Self, S, theModified)
+        })
     }
 }
 
@@ -9629,16 +6978,12 @@ impl TrimSurfaceTool {
         Inv1: bool,
         Inv2: bool,
     ) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi::BRepFill_TrimSurfaceTool_ctor_handlegeom2dcurve_face2_edge2_bool2(
                     Bis, Face1, Face2, Edge1, Edge2, Inv1, Inv2,
-                )
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
+                ),
+            ))
         }
     }
 
@@ -9656,50 +7001,31 @@ impl TrimSurfaceTool {
         EdgeOnF2: &crate::topo_ds::Edge,
         Points: &mut crate::ffi::TColgp_SequenceOfPnt,
     ) {
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_TrimSurfaceTool_intersect_with(
-                    self as *const Self,
-                    EdgeOnF1,
-                    EdgeOnF2,
-                    Points,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        }
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_TrimSurfaceTool_intersect_with(
+                self as *const Self,
+                EdgeOnF1,
+                EdgeOnF2,
+                Points,
+            )
+        })
     }
 
     /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:59 - `BRepFill_TrimSurfaceTool::IsOnFace()`
     /// returns True if the Line (P, DZ) intersect the Faces
     pub fn is_on_face(&self, Point: &crate::gp::Pnt2d) -> bool {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_TrimSurfaceTool_is_on_face(self as *const Self, Point)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_TrimSurfaceTool_is_on_face(self as *const Self, Point)
+        })
     }
 
     /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:63 - `BRepFill_TrimSurfaceTool::ProjOn()`
     /// returns the parameter of the  point <Point> on the
     /// Edge <Edge>, assuming that the point is on the edge.
     pub fn proj_on(&self, Point: &crate::gp::Pnt2d, Edge: &crate::topo_ds::Edge) -> f64 {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFill_TrimSurfaceTool_proj_on(self as *const Self, Point, Edge)
-            };
-            if !__result.exc.is_null() {
-                crate::wrapper_threw_exception(__result.exc);
-            }
-            let __val = __result.ret;
-            __val
-        }
+        crate::check_result(unsafe {
+            crate::ffi::BRepFill_TrimSurfaceTool_proj_on(self as *const Self, Point, Edge)
+        })
     }
 
     /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:65 - `BRepFill_TrimSurfaceTool::Project()`
@@ -9713,22 +7039,17 @@ impl TrimSurfaceTool {
         myCont: &mut crate::geom_abs::Shape,
     ) {
         let mut myCont_i32_: i32 = (*myCont).into();
-        {
-            let __exc = unsafe {
-                crate::ffi::BRepFill_TrimSurfaceTool_project(
-                    self as *const Self,
-                    U1,
-                    U2,
-                    Curve,
-                    PCurve1,
-                    PCurve2,
-                    &mut myCont_i32_,
-                )
-            };
-            if !__exc.is_null() {
-                crate::wrapper_threw_exception(__exc);
-            }
-        };
+        crate::check_void_result(unsafe {
+            crate::ffi::BRepFill_TrimSurfaceTool_project(
+                self as *const Self,
+                U1,
+                U2,
+                Curve,
+                PCurve1,
+                PCurve2,
+                &mut myCont_i32_,
+            )
+        });
         *myCont = crate::geom_abs::Shape::try_from(myCont_i32_).unwrap();
     }
 }
