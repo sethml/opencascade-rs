@@ -7,11 +7,9 @@
 #include <Adaptor2d_Line2d.hxx>
 #include <Adaptor2d_OffsetCurve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bisector_BisecAna.hxx>
 #include <Bisector_BisecCC.hxx>
 #include <Bisector_BisecPC.hxx>
-#include <ChFiKPart_RstMap.hxx>
 #include <Geom2dAdaptor.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
 #include <Geom2dEvaluator.hxx>
@@ -61,7 +59,6 @@
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TColGeom2d_Array1OfBSplineCurve.hxx>
 #include <TColGeom2d_Array1OfBezierCurve.hxx>
 #include <TColGeom2d_Array1OfCurve.hxx>
@@ -72,7 +69,6 @@
 #include <TColGeom2d_HSequenceOfCurve.hxx>
 #include <TColGeom2d_SequenceOfBoundedCurve.hxx>
 #include <TColGeom2d_SequenceOfCurve.hxx>
-#include <TColGeom2d_SequenceOfGeometry.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColgp_Array1OfPnt2d.hxx>

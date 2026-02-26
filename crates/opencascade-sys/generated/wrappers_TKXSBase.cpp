@@ -4,10 +4,8 @@
 #include "occt_preamble.hxx"
 
 #include <APIHeaderSection_EditHeader.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ShapeFixParameters.hxx>
-#include <FEmTool_AssemblyTable.hxx>
 #include <Geom2d_Curve.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_Geometry.hxx>
@@ -90,9 +88,6 @@
 #include <IFSelect_SelectUnknownEntities.hxx>
 #include <IFSelect_Selection.hxx>
 #include <IFSelect_SelectionIterator.hxx>
-#include <IFSelect_SequenceOfAppliedModifiers.hxx>
-#include <IFSelect_SequenceOfGeneralModifier.hxx>
-#include <IFSelect_SequenceOfInterfaceModel.hxx>
 #include <IFSelect_SessionDumper.hxx>
 #include <IFSelect_SessionFile.hxx>
 #include <IFSelect_SessionPilot.hxx>
@@ -106,7 +101,6 @@
 #include <IFSelect_SignValidity.hxx>
 #include <IFSelect_Signature.hxx>
 #include <IFSelect_SignatureList.hxx>
-#include <IFSelect_TSeqOfDispatch.hxx>
 #include <IFSelect_TSeqOfSelection.hxx>
 #include <IFSelect_TransformStandard.hxx>
 #include <IFSelect_Transformer.hxx>
@@ -198,7 +192,6 @@
 #include <Interface_CopyControl.hxx>
 #include <Interface_CopyMap.hxx>
 #include <Interface_CopyTool.hxx>
-#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Interface_DataState.hxx>
 #include <Interface_EntityCluster.hxx>
 #include <Interface_EntityIterator.hxx>
@@ -243,7 +236,6 @@
 #include <Interface_Static.hxx>
 #include <Interface_TypedValue.hxx>
 #include <Interface_UndefinedContent.hxx>
-#include <Interface_ValueInterpret.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_Msg.hxx>
 #include <Message_Printer.hxx>
@@ -303,11 +295,7 @@
 #include <StepSelect_FloatFormat.hxx>
 #include <StepSelect_StepType.hxx>
 #include <StepSelect_WorkLibrary.hxx>
-#include <StepVisual_TessellatedCurveSet.hxx>
 #include <Storage_PType.hxx>
-#include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfSurface.hxx>
 #include <TColStd_DataMapOfAsciiStringInteger.hxx>
 #include <TColStd_DataMapOfTransientTransient.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
@@ -319,7 +307,6 @@
 #include <TColStd_HSequenceOfReal.hxx>
 #include <TColStd_HSequenceOfTransient.hxx>
 #include <TColStd_IndexedMapOfTransient.hxx>
-#include <TColStd_SequenceOfHExtendedString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
 #include <TCollection_HExtendedString.hxx>

@@ -13,7 +13,6 @@
 #include <RWObj_Tools.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
-#include <Standard_TypeDef.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<LDOM_MemManager> HandleLDOMMemManager;

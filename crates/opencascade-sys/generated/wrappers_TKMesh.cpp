@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <Approx_Array1OfAdHSurface.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
 #include <BRepMesh_BaseMeshAlgo.hxx>
@@ -55,7 +54,6 @@
 #include <BRepMesh_UVParamRangeSplitter.hxx>
 #include <BRepMesh_UndefinedRangeSplitter.hxx>
 #include <BRepMesh_VertexTool.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Geom2d_Curve.hxx>
 #include <GeomAbs_IsoType.hxx>
@@ -71,7 +69,6 @@
 #include <IMeshData_Status.hxx>
 #include <IMeshData_StatusOwner.hxx>
 #include <IMeshData_TessellatedShape.hxx>
-#include <IMeshData_Types.hxx>
 #include <IMeshData_Wire.hxx>
 #include <IMeshTools_Context.hxx>
 #include <IMeshTools_CurveTessellator.hxx>
@@ -89,15 +86,11 @@
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_IncAllocator.hxx>
-#include <Poly_ListOfTriangulation.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
-#include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
 #include <TColStd_MapOfAsciiString.hxx>
 #include <TColgp_Array1OfPnt.hxx>
 #include <TopAbs_Orientation.hxx>

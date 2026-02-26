@@ -5,17 +5,11 @@
 
 #include <AppStdL_Application.hxx>
 #include <AppStd_Application.hxx>
-#include <Approx_SequenceOfHArray1OfReal.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
+#include <BRepClass3d_MapOfInter.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_ListOfDocument.hxx>
-#include <CDM_ListOfReferences.hxx>
 #include <CDM_MetaDataLookUpTable.hxx>
-#include <FEmTool_AssemblyTable.hxx>
-#include <IntSurf_Allocator.hxx>
-#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_BaseAllocator.hxx>
 #include <PCDM_ReaderFilter.hxx>
@@ -28,10 +22,8 @@
 #include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TColStd_DataMapOfStringInteger.hxx>
 #include <TColStd_HArray1OfByte.hxx>
 #include <TColStd_HArray1OfExtendedString.hxx>
@@ -167,11 +159,9 @@
 #include <TDocStd_SequenceOfDocument.hxx>
 #include <TDocStd_XLink.hxx>
 #include <TDocStd_XLinkIterator.hxx>
-#include <TDocStd_XLinkPtr.hxx>
 #include <TDocStd_XLinkRoot.hxx>
 #include <TDocStd_XLinkTool.hxx>
 #include <TFunction_Array1OfDataMapOfGUIDDriver.hxx>
-#include <TFunction_DataMapOfGUIDDriver.hxx>
 #include <TFunction_DoubleMapOfIntegerLabel.hxx>
 #include <TFunction_Driver.hxx>
 #include <TFunction_DriverTable.hxx>

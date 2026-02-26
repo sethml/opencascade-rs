@@ -3,13 +3,11 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <DESTL_ConfigurationNode.hxx>
 #include <DESTL_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ConfigurationNode.hxx>
 #include <DE_Provider.hxx>
-#include <DE_Wrapper.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_Buffer.hxx>
 #include <OSD_Path.hxx>
@@ -19,13 +17,11 @@
 #include <Standard_IStream.hxx>
 #include <Standard_ReadLineBuffer.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <StlAPI.hxx>
 #include <StlAPI_Reader.hxx>
 #include <StlAPI_Writer.hxx>
 #include <TColStd_ListOfAsciiString.hxx>
 #include <TDocStd_Document.hxx>
-#include <TDocStd_SequenceOfDocument.hxx>
 #include <XSControl_WorkSession.hxx>
 
 // Handle type aliases

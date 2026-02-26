@@ -4,18 +4,14 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor3d_Curve.hxx>
-#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Aspect_TypeOfDeflection.hxx>
 #include <BRepAdaptor_Surface.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_B3f.hxx>
 #include <DEVRML_ConfigurationNode.hxx>
 #include <DEVRML_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ConfigurationNode.hxx>
 #include <DE_Provider.hxx>
-#include <DE_Wrapper.hxx>
-#include <FEmTool_AssemblyTable.hxx>
 #include <HLRAlgo_Projector.hxx>
 #include <Interface_IndexedMapOfAsciiString.hxx>
 #include <Message_ProgressRange.hxx>
@@ -29,7 +25,6 @@
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TColStd_HArray1OfAsciiString.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
 #include <TColStd_HArray1OfReal.hxx>
@@ -41,7 +36,6 @@
 #include <TCollection_ExtendedString.hxx>
 #include <TDataStd_ListIteratorOfListOfExtendedString.hxx>
 #include <TDocStd_Document.hxx>
-#include <TDocStd_SequenceOfDocument.hxx>
 #include <TopTools_Array1OfShape.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_TShape.hxx>
@@ -82,7 +76,6 @@
 #include <VrmlData_InBuffer.hxx>
 #include <VrmlData_IndexedFaceSet.hxx>
 #include <VrmlData_IndexedLineSet.hxx>
-#include <VrmlData_ListOfNode.hxx>
 #include <VrmlData_MapOfNode.hxx>
 #include <VrmlData_Material.hxx>
 #include <VrmlData_Node.hxx>

@@ -15,6 +15,7 @@
 #include <BRepAlgo_Image.hxx>
 #include <BRepAlgo_Loop.hxx>
 #include <BRepAlgo_NormalProjection.hxx>
+#include <BRepClass3d_MapOfInter.hxx>
 #include <BRepFill.hxx>
 #include <BRepFill_ACRLaw.hxx>
 #include <BRepFill_AdvancedEvolved.hxx>
@@ -53,12 +54,10 @@
 #include <BRepMAT2d_BisectingLocus.hxx>
 #include <BRepMAT2d_LinkTopoBilo.hxx>
 #include <BRepProj_Projection.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bisector_Bisec.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
 #include <Bnd_HArray1OfBox.hxx>
-#include <ChFiKPart_RstMap.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
 #include <Geom2d_Curve.hxx>
 #include <Geom2d_Geometry.hxx>
@@ -66,8 +65,6 @@
 #include <GeomAbs_Shape.hxx>
 #include <GeomAdaptor_Surface.hxx>
 #include <GeomFill_ApproxStyle.hxx>
-#include <GeomFill_Array1OfLocationLaw.hxx>
-#include <GeomFill_Array1OfSectionLaw.hxx>
 #include <GeomFill_LocationDraft.hxx>
 #include <GeomFill_LocationGuide.hxx>
 #include <GeomFill_LocationLaw.hxx>
@@ -76,7 +73,6 @@
 #include <GeomFill_SequenceOfTrsf.hxx>
 #include <GeomFill_Trihedron.hxx>
 #include <GeomLProp_SLProps.hxx>
-#include <GeomPlate_Array1OfHCurve.hxx>
 #include <GeomPlate_CurveConstraint.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_Surface.hxx>
@@ -84,7 +80,6 @@
 #include <IntPatch_Line.hxx>
 #include <IntPatch_Point.hxx>
 #include <IntPatch_RLine.hxx>
-#include <IntPatch_SequenceOfLine.hxx>
 #include <IntPatch_WLine.hxx>
 #include <IntRes2d_Domain.hxx>
 #include <IntRes2d_IntersectionPoint.hxx>
@@ -93,16 +88,10 @@
 #include <IntSurf_Transition.hxx>
 #include <IntSurf_TypeTrans.hxx>
 #include <Law_Function.hxx>
-#include <Law_Laws.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
-#include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom2d_SequenceOfGeometry.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_ListIteratorOfListOfInteger.hxx>
 #include <TColStd_ListOfInteger.hxx>
@@ -143,9 +132,6 @@
 #include <TopOpeBRepBuild_Loop.hxx>
 #include <TopOpeBRepBuild_LoopClassifier.hxx>
 #include <TopOpeBRepBuild_LoopSet.hxx>
-#include <TopOpeBRepBuild_PBuilder.hxx>
-#include <TopOpeBRepBuild_PGTopo.hxx>
-#include <TopOpeBRepBuild_PWireEdgeSet.hxx>
 #include <TopOpeBRepBuild_Pave.hxx>
 #include <TopOpeBRepBuild_PaveClassifier.hxx>
 #include <TopOpeBRepBuild_PaveSet.hxx>
@@ -174,7 +160,6 @@
 #include <TopOpeBRepDS_CurveExplorer.hxx>
 #include <TopOpeBRepDS_CurveIterator.hxx>
 #include <TopOpeBRepDS_CurvePointInterference.hxx>
-#include <TopOpeBRepDS_DataMapOfInterferenceListOfInterference.hxx>
 #include <TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State.hxx>
 #include <TopOpeBRepDS_DataMapOfShapeState.hxx>
 #include <TopOpeBRepDS_DataStructure.hxx>
@@ -203,7 +188,6 @@
 #include <TopOpeBRepDS_ListOfShapeOn1State.hxx>
 #include <TopOpeBRepDS_MapOfShapeData.hxx>
 #include <TopOpeBRepDS_Marker.hxx>
-#include <TopOpeBRepDS_PDataStructure.hxx>
 #include <TopOpeBRepDS_Point.hxx>
 #include <TopOpeBRepDS_PointData.hxx>
 #include <TopOpeBRepDS_PointExplorer.hxx>
@@ -233,7 +217,6 @@
 #include <TopOpeBRepTool_HBoxTool.hxx>
 #include <TopOpeBRepTool_IndexedDataMapOfShapeBox.hxx>
 #include <TopOpeBRepTool_OutCurveType.hxx>
-#include <TopOpeBRepTool_PShapeClassifier.hxx>
 #include <TopOpeBRepTool_PurgeInternalEdges.hxx>
 #include <TopOpeBRepTool_REGUS.hxx>
 #include <TopOpeBRepTool_REGUW.hxx>
@@ -265,7 +248,6 @@
 #include <TopOpeBRep_Hctxff2d.hxx>
 #include <TopOpeBRep_LineInter.hxx>
 #include <TopOpeBRep_P2Dstatus.hxx>
-#include <TopOpeBRep_PFacesFiller.hxx>
 #include <TopOpeBRep_Point2d.hxx>
 #include <TopOpeBRep_PointClassifier.hxx>
 #include <TopOpeBRep_PointGeomTool.hxx>

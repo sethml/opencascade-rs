@@ -5,11 +5,11 @@
 
 #include <AppStdL_Application.hxx>
 #include <AppStd_Application.hxx>
+#include <BRepClass3d_MapOfInter.hxx>
 #include <BinDrivers_DocumentRetrievalDriver.hxx>
 #include <BinDrivers_DocumentStorageDriver.hxx>
 #include <BinLDrivers_DocumentRetrievalDriver.hxx>
 #include <BinLDrivers_DocumentStorageDriver.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <BinTObjDrivers_DocumentRetrievalDriver.hxx>
 #include <BinTObjDrivers_DocumentStorageDriver.hxx>
 #include <BinXCAFDrivers_DocumentRetrievalDriver.hxx>
@@ -26,8 +26,6 @@
 #include <CDM_Application.hxx>
 #include <CDM_CanCloseStatus.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_ListOfDocument.hxx>
-#include <CDM_ListOfReferences.hxx>
 #include <CDM_MetaData.hxx>
 #include <CDM_MetaDataLookUpTable.hxx>
 #include <CDM_Reference.hxx>
@@ -57,7 +55,6 @@
 #include <OSD_FileIterator.hxx>
 #include <OSD_Path.hxx>
 #include <PCDM.hxx>
-#include <PCDM_BaseDriverPointer.hxx>
 #include <PCDM_DOMHeaderParser.hxx>
 #include <PCDM_Document.hxx>
 #include <PCDM_DriverError.hxx>
@@ -80,7 +77,6 @@
 #include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Persistent.hxx>
 #include <Standard_SStream.hxx>
@@ -93,7 +89,6 @@
 #include <Storage_Error.hxx>
 #include <Storage_OpenMode.hxx>
 #include <TColStd_SequenceOfExtendedString.hxx>
-#include <TColStd_SequenceOfHExtendedString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HExtendedString.hxx>
 #include <TDocStd_Application.hxx>

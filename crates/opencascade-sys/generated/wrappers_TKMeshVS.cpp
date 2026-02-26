@@ -4,28 +4,20 @@
 #include "occt_preamble.hxx"
 
 #include <AIS_InteractiveContext.hxx>
-#include <AIS_NArray1OfEntityOwner.hxx>
-#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Aspect_SequenceOfColor.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
+#include <BRepClass3d_MapOfInter.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
-#include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <Graphic3d_ArrayOfPrimitives.hxx>
 #include <Graphic3d_AspectFillArea3d.hxx>
 #include <Graphic3d_AspectLine3d.hxx>
 #include <Graphic3d_AspectMarker3d.hxx>
 #include <Graphic3d_AspectText3d.hxx>
-#include <Graphic3d_Camera.hxx>
-#include <Graphic3d_MapOfObject.hxx>
-#include <Graphic3d_MapOfStructure.hxx>
 #include <Graphic3d_MaterialAspect.hxx>
 #include <Graphic3d_ShaderVariable.hxx>
-#include <Interface_DataMapOfTransientInteger.hxx>
 #include <MeshVS_Array1OfSequenceOfInteger.hxx>
 #include <MeshVS_Buffer.hxx>
 #include <MeshVS_CommonSensitiveEntity.hxx>
-#include <MeshVS_DataMapOfHArray1OfSequenceOfInteger.hxx>
 #include <MeshVS_DataMapOfIntegerAsciiString.hxx>
 #include <MeshVS_DataMapOfIntegerColor.hxx>
 #include <MeshVS_DataMapOfIntegerOwner.hxx>
@@ -51,7 +43,6 @@
 #include <MeshVS_SensitivePolyhedron.hxx>
 #include <MeshVS_SensitiveQuad.hxx>
 #include <MeshVS_SensitiveSegment.hxx>
-#include <MeshVS_SequenceOfPrsBuilder.hxx>
 #include <MeshVS_TextPrsBuilder.hxx>
 #include <MeshVS_Tool.hxx>
 #include <MeshVS_TwoColors.hxx>
@@ -64,7 +55,6 @@
 #include <PrsMgr_Presentations.hxx>
 #include <Quantity_Color.hxx>
 #include <Select3D_BndBox3d.hxx>
-#include <Select3D_EntitySequence.hxx>
 #include <Select3D_SensitiveFace.hxx>
 #include <Select3D_SensitiveSegment.hxx>
 #include <Select3D_SensitiveSet.hxx>
@@ -72,12 +62,10 @@
 #include <SelectBasics_PickResult.hxx>
 #include <SelectBasics_SelectingVolumeManager.hxx>
 #include <SelectMgr_SelectableObject.hxx>
-#include <SelectMgr_SelectableObjectSet.hxx>
 #include <SelectMgr_Selection.hxx>
 #include <SelectMgr_SequenceOfOwner.hxx>
 #include <SelectMgr_SequenceOfSelection.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
 #include <TColStd_Array1OfInteger.hxx>
@@ -88,7 +76,6 @@
 #include <TColgp_Array1OfPnt.hxx>
 #include <TColgp_Array1OfPnt2d.hxx>
 #include <TopLoc_Location.hxx>
-#include <V3d_ListOfView.hxx>
 #include <gp_GTrsf.hxx>
 #include <gp_Trsf.hxx>
 #include <gp_Vec.hxx>

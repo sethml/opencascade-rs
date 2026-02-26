@@ -15,7 +15,6 @@
 #include <BinMDF_DerivedDriver.hxx>
 #include <BinMDF_ReferenceDriver.hxx>
 #include <BinMDF_TagSourceDriver.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <BinMDataStd.hxx>
 #include <BinMDataStd_AsciiStringDriver.hxx>
 #include <BinMDataStd_BooleanArrayDriver.hxx>
@@ -81,13 +80,11 @@
 #include <BinXCAFDrivers_DocumentStorageDriver.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_ListOfDocument.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <PCDM_Reader.hxx>
 #include <PCDM_ReaderFilter.hxx>
 #include <PCDM_RetrievalDriver.hxx>
-#include <PCDM_SequenceOfDocument.hxx>
 #include <PCDM_StorageDriver.hxx>
 #include <PCDM_Writer.hxx>
 #include <ShapeProcess.hxx>
@@ -103,7 +100,6 @@
 #include <TColStd_SequenceOfAsciiString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeArray1.hxx>
 #include <TDF_Data.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_FormatVersion.hxx>

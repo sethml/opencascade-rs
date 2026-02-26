@@ -18,7 +18,6 @@
 #include <AIS_ColoredShape.hxx>
 #include <AIS_ConnectedInteractive.hxx>
 #include <AIS_DataMapIteratorOfDataMapOfIOStatus.hxx>
-#include <AIS_DataMapOfIOStatus.hxx>
 #include <AIS_DataMapOfShapeDrawer.hxx>
 #include <AIS_DragAction.hxx>
 #include <AIS_ExclusionFilter.hxx>
@@ -69,7 +68,6 @@
 #include <AIS_XRTrackedDevice.hxx>
 #include <Adaptor2d_Curve2d.hxx>
 #include <Adaptor3d_Curve.hxx>
-#include <Approx_Array1OfAdHSurface.hxx>
 #include <Aspect_CircularGrid.hxx>
 #include <Aspect_FillMethod.hxx>
 #include <Aspect_GradientBackground.hxx>
@@ -95,11 +93,10 @@
 #include <Aspect_XRTrackedDeviceRole.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
+#include <BRepClass3d_MapOfInter.hxx>
 #include <BRep_Builder.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
-#include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <DsgPrs.hxx>
 #include <DsgPrs_AnglePresentation.hxx>
 #include <DsgPrs_ArrowSide.hxx>
@@ -126,7 +123,6 @@
 #include <DsgPrs_TangentPresentation.hxx>
 #include <DsgPrs_XYZAxisPresentation.hxx>
 #include <DsgPrs_XYZPlanePresentation.hxx>
-#include <FEmTool_AssemblyTable.hxx>
 #include <Font_FTFont.hxx>
 #include <Font_FontAspect.hxx>
 #include <Font_StrictLevel.hxx>
@@ -165,7 +161,6 @@
 #include <Graphic3d_GroupAspect.hxx>
 #include <Graphic3d_HorizontalTextAlignment.hxx>
 #include <Graphic3d_IndexBuffer.hxx>
-#include <Graphic3d_MapOfObject.hxx>
 #include <Graphic3d_MapOfStructure.hxx>
 #include <Graphic3d_MarkerImage.hxx>
 #include <Graphic3d_MaterialAspect.hxx>
@@ -183,9 +178,9 @@
 #include <Graphic3d_Texture2D.hxx>
 #include <Graphic3d_TextureEnv.hxx>
 #include <Graphic3d_TransformPers.hxx>
-#include <Graphic3d_TransformUtils.hxx>
 #include <Graphic3d_TypeOfBackfacingModel.hxx>
 #include <Graphic3d_TypeOfShadingModel.hxx>
+#include <Graphic3d_Vec2.hxx>
 #include <Graphic3d_Vec3.hxx>
 #include <Graphic3d_Vec4.hxx>
 #include <Graphic3d_Vertex.hxx>
@@ -194,8 +189,6 @@
 #include <Graphic3d_ZLayerSettings.hxx>
 #include <HLRAlgo_Projector.hxx>
 #include <Image_Texture.hxx>
-#include <IntSurf_Allocator.hxx>
-#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Media_PlayerContext.hxx>
 #include <Media_Timer.hxx>
 #include <MeshVS_CommonSensitiveEntity.hxx>
@@ -211,7 +204,6 @@
 #include <NCollection_BaseAllocator.hxx>
 #include <NCollection_Buffer.hxx>
 #include <NCollection_String.hxx>
-#include <Poly_ListOfTriangulation.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
 #include <Prs3d.hxx>
@@ -354,11 +346,9 @@
 #include <SelectMgr_VectorTypes.hxx>
 #include <SelectMgr_ViewClipRange.hxx>
 #include <SelectMgr_ViewerSelector.hxx>
-#include <ShapeUpgrade_UnifySameDomain.hxx>
 #include <Standard_DomainError.hxx>
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_Mutex.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_OutOfRange.hxx>
@@ -376,7 +366,6 @@
 #include <StdPrs_HLRToolShape.hxx>
 #include <StdPrs_Isolines.hxx>
 #include <StdPrs_Plane.hxx>
-#include <StdPrs_Point.hxx>
 #include <StdPrs_PoleCurve.hxx>
 #include <StdPrs_ShadedShape.hxx>
 #include <StdPrs_ShadedSurface.hxx>
@@ -402,8 +391,6 @@
 #include <StdSelect_TypeOfEdge.hxx>
 #include <StdSelect_TypeOfFace.hxx>
 #include <StdSelect_TypeOfSelectionImage.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfSurface.hxx>
 #include <TColStd_HArray1OfByte.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
 #include <TColStd_HPackedMapOfInteger.hxx>
@@ -450,7 +437,6 @@
 #include <V3d_TypeOfVisualization.hxx>
 #include <V3d_UnMapped.hxx>
 #include <V3d_Viewer.hxx>
-#include <V3d_ViewerPointer.hxx>
 #include <WNT_HIDSpaceMouse.hxx>
 #include <XCAFPrs_AISObject.hxx>
 #include <gp_Ax1.hxx>

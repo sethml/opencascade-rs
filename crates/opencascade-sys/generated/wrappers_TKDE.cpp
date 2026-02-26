@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <DEBREP_ConfigurationNode.hxx>
 #include <DEBREP_Provider.hxx>
 #include <DEGLTF_ConfigurationNode.hxx>
@@ -33,10 +32,8 @@
 #include <Standard_Handle.hxx>
 #include <Standard_Mutex.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TColStd_ListOfAsciiString.hxx>
 #include <TDocStd_Document.hxx>
-#include <TDocStd_SequenceOfDocument.hxx>
 #include <XSControl_WorkSession.hxx>
 
 // Handle type aliases

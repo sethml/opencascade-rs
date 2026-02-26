@@ -3,9 +3,7 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
-#include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <Graphic3d_Vec3.hxx>
 #include <Image_Texture.hxx>
 #include <Interface_IndexedMapOfAsciiString.hxx>
@@ -14,7 +12,6 @@
 #include <Poly_Array1OfTriangle.hxx>
 #include <Poly_ArrayOfNodes.hxx>
 #include <Poly_ArrayOfUVNodes.hxx>
-#include <Poly_ListOfTriangulation.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Quantity_ColorRGBA.hxx>
 #include <RWGltf_CafReader.hxx>
@@ -42,9 +39,7 @@
 #include <Standard_TypeDef.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_IndexedDataMapOfStringString.hxx>
-#include <TColgp_SequenceOfArray1OfPnt2d.hxx>
 #include <TDocStd_Document.hxx>
-#include <TDocStd_SequenceOfDocument.hxx>
 #include <TopLoc_Location.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>

@@ -998,7 +998,6 @@ fn generate_output(
     let (all_function_bindings, all_skipped_functions) = codegen::bindings::compute_all_function_bindings(
         symbol_table, all_classes, &collection_type_names, &extra_typedef_names, known_headers, manual_type_names, &handle_able_classes,
     );
-
     // Compute module→toolkit map (always needed for per-toolkit FFI generation,
     // and optionally for C++ split)
     let module_to_toolkit = if let Some(ref occt_src) = split_config.occt_source_dir {
@@ -1031,7 +1030,6 @@ fn generate_output(
     std::fs::write(&ffi_path, &ffi_code)?;
     generated_rs_files.push(ffi_path.clone());
     println!("  Wrote: {} (type definitions)", ffi_path.display());
-
     let split_toolkit_names: Vec<String> = toolkit_files.iter().map(|(name, _)| name.clone()).collect();
 
     for (toolkit_name, code) in &toolkit_files {
@@ -1047,9 +1045,24 @@ fn generate_output(
     if split_config.cpp_split.as_deref() == Some("toolkit") {
         println!("Splitting wrappers by toolkit...");
 
-        // Generate preamble header
+        // Build HeaderResolver once for all toolkits (avoids redundant file I/O)
         let include_dir = args.include_dirs.first().map(|p| p.as_path());
-        let preamble = codegen::cpp::generate_preamble(template_instantiations, known_headers, include_dir);
+        let class_header_map: HashMap<String, String> = all_classes.iter()
+            .map(|c| (c.name.clone(), c.source_header.clone()))
+            .collect();
+        let resolver = include_dir.map(|dir| {
+            codegen::cpp::HeaderResolver::build(
+                &all_bindings,
+                template_instantiations,
+                known_headers,
+                &class_header_map,
+                dir,
+            )
+        });
+
+
+        // Generate preamble header
+        let preamble = codegen::cpp::generate_preamble(template_instantiations, known_headers, resolver.as_ref());
         let preamble_path = args.output.join("occt_preamble.hxx");
         std::fs::write(&preamble_path, &preamble)?;
         println!("  Wrote: {}", preamble_path.display());
@@ -1138,11 +1151,7 @@ fn generate_output(
         }
 
         // Build class_name → source_header map (covers ALL classes for cross-toolkit lookups)
-        let class_header_map: HashMap<String, String> = all_classes.iter()
-            .map(|c| (c.name.clone(), c.source_header.clone()))
-            .collect();
-
-        println!("  {} toolkits", sorted_toolkits.len());
+        // (class_header_map and resolver were built above)
         for toolkit in &sorted_toolkits {
             let empty_bindings = Vec::new();
             let empty_classes = Vec::new();
@@ -1176,7 +1185,7 @@ fn generate_output(
                 "occt_preamble.hxx",
                 own_classes,
                 &class_header_map,
-                include_dir,
+                resolver.as_ref(),
             );
             let cpp_path = args.output.join(format!("wrappers_{}.cpp", toolkit));
             std::fs::write(&cpp_path, &cpp_code)?;

@@ -4,25 +4,16 @@
 #include "occt_preamble.hxx"
 
 #include <AIS_ColoredShape.hxx>
-#include <AIS_DataMapOfIOStatus.hxx>
 #include <AIS_DataMapOfShapeDrawer.hxx>
 #include <AIS_InteractiveContext.hxx>
-#include <AIS_NArray1OfEntityOwner.hxx>
 #include <AIS_Shape.hxx>
-#include <Approx_SequenceOfHArray1OfReal.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_ListOfDocument.hxx>
 #include <CDM_MetaDataLookUpTable.hxx>
 #include <Graphic3d_AlphaMode.hxx>
 #include <Graphic3d_Aspects.hxx>
-#include <Graphic3d_Camera.hxx>
-#include <Graphic3d_MapOfAspectsToAspects.hxx>
-#include <Graphic3d_MapOfObject.hxx>
-#include <Graphic3d_MapOfStructure.hxx>
 #include <Graphic3d_MaterialAspect.hxx>
 #include <Graphic3d_ShaderVariable.hxx>
 #include <Graphic3d_Texture2D.hxx>
@@ -33,8 +24,6 @@
 #include <Image_CompressedPixMap.hxx>
 #include <Image_SupportedFormats.hxx>
 #include <Image_Texture.hxx>
-#include <Interface_Array1OfHAsciiString.hxx>
-#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <OSD_File.hxx>
 #include <OSD_Path.hxx>
@@ -52,7 +41,6 @@
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TColStd_HArray1OfByte.hxx>
 #include <TColStd_HArray1OfReal.hxx>
 #include <TColStd_HSequenceOfExtendedString.hxx>
@@ -62,8 +50,6 @@
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeArray1.hxx>
-#include <TDF_AttributeDeltaList.hxx>
 #include <TDF_AttributeIndexedMap.hxx>
 #include <TDF_AttributeSequence.hxx>
 #include <TDF_DataSet.hxx>
@@ -78,14 +64,12 @@
 #include <TDataStd_Real.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_Document.hxx>
-#include <TDocStd_SequenceOfDocument.hxx>
 #include <TPrsStd_Driver.hxx>
 #include <TopLoc_Location.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopTools_SequenceOfShape.hxx>
 #include <TopoDS_Edge.hxx>
 #include <UnitsMethods_LengthUnit.hxx>
-#include <V3d_ListOfView.hxx>
 #include <XCAFApp_Application.hxx>
 #include <XCAFDimTolObjects_AngularQualifier.hxx>
 #include <XCAFDimTolObjects_DataMapOfToleranceDatum.hxx>
@@ -133,7 +117,6 @@
 #include <XCAFDoc_Editor.hxx>
 #include <XCAFDoc_GeomTolerance.hxx>
 #include <XCAFDoc_GraphNode.hxx>
-#include <XCAFDoc_GraphNodeSequence.hxx>
 #include <XCAFDoc_LayerTool.hxx>
 #include <XCAFDoc_LengthUnit.hxx>
 #include <XCAFDoc_Location.hxx>

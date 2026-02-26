@@ -3,22 +3,18 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
-#include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <DEGLTF_ConfigurationNode.hxx>
 #include <DEGLTF_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ConfigurationNode.hxx>
 #include <DE_Provider.hxx>
-#include <DE_Wrapper.hxx>
 #include <Image_Texture.hxx>
 #include <Interface_IndexedMapOfAsciiString.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Poly_Array1OfTriangle.hxx>
 #include <Poly_ArrayOfNodes.hxx>
 #include <Poly_ArrayOfUVNodes.hxx>
-#include <Poly_ListOfTriangulation.hxx>
 #include <Quantity_ColorRGBA.hxx>
 #include <RWGltf_CafReader.hxx>
 #include <RWGltf_DracoParameters.hxx>
@@ -44,9 +40,7 @@
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_IndexedDataMapOfStringString.hxx>
 #include <TColStd_ListOfAsciiString.hxx>
-#include <TColgp_SequenceOfArray1OfPnt2d.hxx>
 #include <TDocStd_Document.hxx>
-#include <TDocStd_SequenceOfDocument.hxx>
 #include <XCAFPrs_Style.hxx>
 #include <XSControl_WorkSession.hxx>
 #include <gp_Ax3.hxx>

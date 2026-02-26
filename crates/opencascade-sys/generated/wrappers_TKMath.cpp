@@ -3,7 +3,7 @@
 
 #include "occt_preamble.hxx"
 
-#include <Approx_SequenceOfHArray1OfReal.hxx>
+#include <BRepClass3d_MapOfInter.hxx>
 #include <BSplCLib.hxx>
 #include <BSplCLib_Cache.hxx>
 #include <BSplCLib_CacheParams.hxx>
@@ -15,7 +15,6 @@
 #include <BVH_BuildThread.hxx>
 #include <BVH_Object.hxx>
 #include <BVH_Properties.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Array1OfBox.hxx>
 #include <Bnd_Array1OfBox2d.hxx>
 #include <Bnd_Array1OfSphere.hxx>
@@ -48,14 +47,11 @@
 #include <Convert_HyperbolaToBSplineCurve.hxx>
 #include <Convert_ParabolaToBSplineCurve.hxx>
 #include <Convert_ParameterisationType.hxx>
-#include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <Convert_SphereToBSplineSurface.hxx>
 #include <Convert_TorusToBSplineSurface.hxx>
 #include <ElCLib.hxx>
 #include <ElSLib.hxx>
-#include <FEmTool_AssemblyTable.hxx>
 #include <GeomAbs_Shape.hxx>
-#include <IntSurf_Allocator.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_BaseAllocator.hxx>
 #include <OSD_FileSystem.hxx>
@@ -90,7 +86,6 @@
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
@@ -151,7 +146,6 @@
 #include <TColgp_HSequenceOfVec2d.hxx>
 #include <TColgp_HSequenceOfXY.hxx>
 #include <TColgp_HSequenceOfXYZ.hxx>
-#include <TColgp_SequenceOfArray1OfPnt2d.hxx>
 #include <TColgp_SequenceOfDir.hxx>
 #include <TColgp_SequenceOfDir2d.hxx>
 #include <TColgp_SequenceOfPnt.hxx>

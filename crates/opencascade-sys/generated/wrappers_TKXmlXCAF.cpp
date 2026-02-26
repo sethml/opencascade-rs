@@ -3,34 +3,27 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
-#include <CDM_ListOfDocument.hxx>
 #include <LDOM_Element.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <PCDM_Reader.hxx>
 #include <PCDM_RetrievalDriver.hxx>
-#include <PCDM_SequenceOfDocument.hxx>
 #include <PCDM_StorageDriver.hxx>
 #include <PCDM_Writer.hxx>
 #include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeArray1.hxx>
 #include <TDocStd_Application.hxx>
 #include <TopLoc_Location.hxx>
 #include <TopTools_LocationSet.hxx>
-#include <TopTools_LocationSetPtr.hxx>
 #include <XmlDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlDrivers_DocumentStorageDriver.hxx>
 #include <XmlLDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlLDrivers_DocumentStorageDriver.hxx>
 #include <XmlMDF_ADriver.hxx>
 #include <XmlMDF_ADriverTable.hxx>
-#include <XmlMDF_MapOfDriver.hxx>
 #include <XmlMXCAFDoc.hxx>
 #include <XmlMXCAFDoc_AssemblyItemRefDriver.hxx>
 #include <XmlMXCAFDoc_CentroidDriver.hxx>

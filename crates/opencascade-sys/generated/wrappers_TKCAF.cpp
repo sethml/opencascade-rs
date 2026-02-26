@@ -4,27 +4,21 @@
 #include "occt_preamble.hxx"
 
 #include <AppStd_Application.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
-#include <CDM_ListOfDocument.hxx>
 #include <CDM_MetaDataLookUpTable.hxx>
 #include <Message_ProgressRange.hxx>
-#include <Poly_ListOfTriangulation.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TColStd_IndexedDataMapOfTransientTransient.hxx>
 #include <TColStd_SequenceOfAsciiString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeArray1.hxx>
 #include <TDF_AttributeDelta.hxx>
-#include <TDF_AttributeDeltaList.hxx>
 #include <TDF_AttributeIndexedMap.hxx>
 #include <TDF_AttributeMap.hxx>
 #include <TDF_DataSet.hxx>
@@ -56,7 +50,6 @@
 #include <TDataXtd_Shape.hxx>
 #include <TDataXtd_Triangulation.hxx>
 #include <TDocStd_Application.hxx>
-#include <TDocStd_SequenceOfDocument.hxx>
 #include <TNaming.hxx>
 #include <TNaming_Builder.hxx>
 #include <TNaming_CopyShape.hxx>

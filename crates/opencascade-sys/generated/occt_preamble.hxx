@@ -64,6 +64,7 @@ static const char* occt_make_exception(const char* type_name, const char* messag
 #include <AIS_InteractiveObject.hxx>
 #include <Adaptor3d_Surface.hxx>
 #include <Aspect_FrustumLRBT.hxx>
+#include <Aspect_TouchMap.hxx>
 #include <BRepExtrema_ProximityValueTool.hxx>
 #include <BRepMesh_Vertex.hxx>
 #include <BVH_Box.hxx>
@@ -104,7 +105,6 @@ static const char* occt_make_exception(const char* type_name, const char* messag
 #include <SelectMgr_EntityOwner.hxx>
 #include <SelectMgr_SensitiveEntity.hxx>
 #include <SelectMgr_VectorTypes.hxx>
-#include <Standard_ThreadId.hxx>
 #include <Standard_Transient.hxx>
 #include <StdObjMgt_Persistent.hxx>
 #include <StdObject_Shape.hxx>

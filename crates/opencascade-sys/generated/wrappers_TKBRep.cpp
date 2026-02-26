@@ -6,7 +6,6 @@
 #include <Adaptor2d_Curve2d.hxx>
 #include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
-#include <Approx_Array1OfAdHSurface.hxx>
 #include <BOPAlgo_Alerts.hxx>
 #include <BRepAdaptor_Array1OfCurve.hxx>
 #include <BRepAdaptor_CompCurve.hxx>
@@ -57,7 +56,6 @@
 #include <BRep_TFace.hxx>
 #include <BRep_TVertex.hxx>
 #include <BRep_Tool.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <BinTools.hxx>
 #include <BinTools_Curve2dSet.hxx>
 #include <BinTools_CurveSet.hxx>
@@ -72,7 +70,6 @@
 #include <BinTools_ShapeWriter.hxx>
 #include <BinTools_SurfaceSet.hxx>
 #include <Bnd_Box2d.hxx>
-#include <ChFiKPart_RstMap.hxx>
 #include <Draft_Modification.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
 #include <Geom2d_Curve.hxx>
@@ -81,19 +78,16 @@
 #include <GeomAbs_SurfaceType.hxx>
 #include <GeomAdaptor_Curve.hxx>
 #include <GeomAdaptor_Surface.hxx>
-#include <GeomPlate_Array1OfHCurve.hxx>
 #include <Geom_BSplineCurve.hxx>
 #include <Geom_BSplineSurface.hxx>
 #include <Geom_BezierCurve.hxx>
 #include <Geom_BezierSurface.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_OffsetCurve.hxx>
-#include <Geom_SequenceOfBSplineSurface.hxx>
 #include <Geom_Surface.hxx>
 #include <Message_Alert.hxx>
 #include <Message_Attribute.hxx>
 #include <Message_AttributeStream.hxx>
-#include <Message_ListOfAlert.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <OSD_FileSystem.hxx>
@@ -119,14 +113,6 @@
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
-#include <TColGeom2d_Array1OfBSplineCurve.hxx>
-#include <TColGeom2d_Array1OfBezierCurve.hxx>
-#include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfBSplineCurve.hxx>
-#include <TColGeom_Array1OfBezierCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfSurface.hxx>
-#include <TColGeom_Array2OfBezierSurface.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
@@ -190,7 +176,6 @@
 #include <TopoDS_UnCompatibleShapes.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <VrmlData_DataMapOfShapeAppearance.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>

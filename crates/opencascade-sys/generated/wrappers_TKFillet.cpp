@@ -7,7 +7,6 @@
 #include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_HVertex.hxx>
 #include <Adaptor3d_TopolTool.hxx>
-#include <Approx_Array1OfAdHSurface.hxx>
 #include <Approx_ParametrizationType.hxx>
 #include <Approx_SweepFunction.hxx>
 #include <BRepAdaptor_Curve.hxx>
@@ -30,7 +29,6 @@
 #include <BRepBlend_RstRstConstRad.hxx>
 #include <BRepBlend_RstRstEvolRad.hxx>
 #include <BRepBlend_RstRstLineBuilder.hxx>
-#include <BRepBlend_SequenceOfLine.hxx>
 #include <BRepBlend_SurfCurvConstRadInv.hxx>
 #include <BRepBlend_SurfCurvEvolRadInv.hxx>
 #include <BRepBlend_SurfPointConstRadInv.hxx>
@@ -43,7 +41,6 @@
 #include <BRepFilletAPI_MakeChamfer.hxx>
 #include <BRepFilletAPI_MakeFillet.hxx>
 #include <BRepFilletAPI_MakeFillet2d.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <BlendFunc.hxx>
 #include <BlendFunc_CSCircular.hxx>
 #include <BlendFunc_CSConstRad.hxx>
@@ -106,7 +103,6 @@
 #include <ChFiDS_Regul.hxx>
 #include <ChFiDS_SecArray1.hxx>
 #include <ChFiDS_SecHArray1.hxx>
-#include <ChFiDS_SequenceOfSpine.hxx>
 #include <ChFiDS_SequenceOfSurfData.hxx>
 #include <ChFiDS_Spine.hxx>
 #include <ChFiDS_State.hxx>
@@ -115,7 +111,6 @@
 #include <ChFiDS_SurfData.hxx>
 #include <ChFiDS_TypeOfConcavity.hxx>
 #include <ChFiKPart_ComputeData.hxx>
-#include <ChFiKPart_RstMap.hxx>
 #include <FilletSurf_Builder.hxx>
 #include <FilletSurf_ErrorTypeStatus.hxx>
 #include <FilletSurf_InternalBuilder.hxx>
@@ -126,7 +121,6 @@
 #include <Geom2d_Curve.hxx>
 #include <GeomAbs_CurveType.hxx>
 #include <GeomAbs_Shape.hxx>
-#include <GeomPlate_Array1OfHCurve.hxx>
 #include <Geom_BSplineCurve.hxx>
 #include <Geom_BezierCurve.hxx>
 #include <Geom_Curve.hxx>
@@ -134,22 +128,12 @@
 #include <Geom_TrimmedCurve.hxx>
 #include <IntSurf_Transition.hxx>
 #include <IntSurf_TypeTrans.hxx>
-#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Law_Composite.hxx>
 #include <Law_Function.hxx>
-#include <Law_Laws.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
-#include <TColGeom2d_Array1OfBSplineCurve.hxx>
-#include <TColGeom2d_Array1OfBezierCurve.hxx>
-#include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfBSplineCurve.hxx>
-#include <TColGeom_Array1OfBezierCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_Array2OfReal.hxx>

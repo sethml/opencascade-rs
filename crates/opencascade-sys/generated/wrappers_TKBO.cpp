@@ -4,7 +4,6 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor3d_TopolTool.hxx>
-#include <Approx_Array1OfAdHSurface.hxx>
 #include <BOPAlgo_Alerts.hxx>
 #include <BOPAlgo_Algo.hxx>
 #include <BOPAlgo_ArgumentAnalyzer.hxx>
@@ -25,8 +24,6 @@
 #include <BOPAlgo_MakerVolume.hxx>
 #include <BOPAlgo_Operation.hxx>
 #include <BOPAlgo_Options.hxx>
-#include <BOPAlgo_PBuilder.hxx>
-#include <BOPAlgo_PPaveFiller.hxx>
 #include <BOPAlgo_PaveFiller.hxx>
 #include <BOPAlgo_RemoveFeatures.hxx>
 #include <BOPAlgo_Section.hxx>
@@ -41,7 +38,6 @@
 #include <BOPDS_CoupleOfPaveBlocks.hxx>
 #include <BOPDS_Curve.hxx>
 #include <BOPDS_DS.hxx>
-#include <BOPDS_DataMapOfPaveBlockCommonBlock.hxx>
 #include <BOPDS_FaceInfo.hxx>
 #include <BOPDS_IndexRange.hxx>
 #include <BOPDS_IndexedDataMapOfPaveBlockListOfInteger.hxx>
@@ -54,8 +50,6 @@
 #include <BOPDS_ListOfPaveBlock.hxx>
 #include <BOPDS_MapOfPair.hxx>
 #include <BOPDS_MapOfPaveBlock.hxx>
-#include <BOPDS_PDS.hxx>
-#include <BOPDS_PIterator.hxx>
 #include <BOPDS_Pair.hxx>
 #include <BOPDS_Pave.hxx>
 #include <BOPDS_PaveBlock.hxx>
@@ -99,10 +93,8 @@
 #include <BRepAlgoAPI_Splitter.hxx>
 #include <BRepClass3d_SolidClassifier.hxx>
 #include <BRepTools_History.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
-#include <ChFiKPart_RstMap.hxx>
 #include <Geom2dHatch_Hatcher.hxx>
 #include <Geom2d_Curve.hxx>
 #include <GeomAPI_ProjectPointOnCurve.hxx>
@@ -114,7 +106,6 @@
 #include <Geom_Surface.hxx>
 #include <IntPatch_SequenceOfLine.hxx>
 #include <IntPatch_WLine.hxx>
-#include <IntSurf_Allocator.hxx>
 #include <IntSurf_ListOfPntOn2S.hxx>
 #include <IntTools.hxx>
 #include <IntTools_BaseRangeSample.hxx>
@@ -147,17 +138,12 @@
 #include <IntTools_TopolTool.hxx>
 #include <IntTools_WLineTool.hxx>
 #include <Message_Alert.hxx>
-#include <Message_ListOfAlert.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Message_Report.hxx>
 #include <NCollection_BaseAllocator.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
-#include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfSurface.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_DataMapOfIntegerInteger.hxx>
 #include <TColStd_ListOfInteger.hxx>

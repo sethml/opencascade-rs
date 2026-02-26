@@ -3,12 +3,9 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
-#include <CDM_ListOfDocument.hxx>
 #include <CDM_MetaDataLookUpTable.hxx>
-#include <Interface_Array1OfHAsciiString.hxx>
 #include <Message_Algorithm.hxx>
 #include <Message_ExecStatus.hxx>
 #include <Message_Gravity.hxx>
@@ -19,23 +16,18 @@
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TColStd_SequenceOfAsciiString.hxx>
-#include <TColStd_SequenceOfHExtendedString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
 #include <TCollection_HExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeArray1.hxx>
 #include <TDF_AttributeDelta.hxx>
-#include <TDF_AttributeDeltaList.hxx>
 #include <TDF_AttributeIndexedMap.hxx>
 #include <TDF_DeltaOnModification.hxx>
 #include <TDF_IDFilter.hxx>
 #include <TDF_RelocationTable.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_Document.hxx>
-#include <TDocStd_SequenceOfDocument.hxx>
 #include <TObj_Application.hxx>
 #include <TObj_Assistant.hxx>
 #include <TObj_CheckModel.hxx>
@@ -52,7 +44,6 @@
 #include <TObj_Persistence.hxx>
 #include <TObj_ReferenceIterator.hxx>
 #include <TObj_SequenceIterator.hxx>
-#include <TObj_SequenceOfIterator.hxx>
 #include <TObj_SequenceOfObject.hxx>
 #include <TObj_TIntSparseArray.hxx>
 #include <TObj_TModel.hxx>

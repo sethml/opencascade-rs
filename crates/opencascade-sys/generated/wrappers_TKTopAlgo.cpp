@@ -12,9 +12,7 @@
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
 #include <AppParCurves_MultiBSpCurve.hxx>
 #include <AppParCurves_MultiCurve.hxx>
-#include <Approx_Array1OfAdHSurface.hxx>
 #include <Approx_ParametrizationType.hxx>
-#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Approx_Status.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
@@ -76,7 +74,6 @@
 #include <BRepCheck_Analyzer.hxx>
 #include <BRepCheck_Edge.hxx>
 #include <BRepCheck_Face.hxx>
-#include <BRepCheck_IndexedDataMapOfShapeResult.hxx>
 #include <BRepCheck_ListOfStatus.hxx>
 #include <BRepCheck_Result.hxx>
 #include <BRepCheck_Shell.hxx>
@@ -87,6 +84,7 @@
 #include <BRepClass3d.hxx>
 #include <BRepClass3d_BndBoxTree.hxx>
 #include <BRepClass3d_Intersector3d.hxx>
+#include <BRepClass3d_MapOfInter.hxx>
 #include <BRepClass3d_SClassifier.hxx>
 #include <BRepClass3d_SolidClassifier.hxx>
 #include <BRepClass3d_SolidExplorer.hxx>
@@ -118,7 +116,6 @@
 #include <BRepExtrema_SupportType.hxx>
 #include <BRepExtrema_TriangleSet.hxx>
 #include <BRepExtrema_UnCompatibleShape.hxx>
-#include <BRepFill_DataMapOfNodeDataMapOfShapeShape.hxx>
 #include <BRepGProp.hxx>
 #include <BRepGProp_Cinert.hxx>
 #include <BRepGProp_Domain.hxx>
@@ -156,7 +153,6 @@
 #include <BRepLib_ValidateEdge.hxx>
 #include <BRepLib_WireError.hxx>
 #include <BRepMAT2d_BisectingLocus.hxx>
-#include <BRepMAT2d_DataMapOfBasicEltShape.hxx>
 #include <BRepMAT2d_Explorer.hxx>
 #include <BRepMAT2d_LinkTopoBilo.hxx>
 #include <BRepTools_ReShape.hxx>
@@ -166,7 +162,6 @@
 #include <BRepTopAdaptor_Tool.hxx>
 #include <BRepTopAdaptor_TopolTool.hxx>
 #include <BVH_Types.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bisector.hxx>
 #include <Bisector_Bisec.hxx>
 #include <Bisector_BisecAna.hxx>
@@ -180,8 +175,6 @@
 #include <Bisector_PolyBis.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
-#include <ChFiKPart_RstMap.hxx>
-#include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <Extrema_ExtAlgo.hxx>
 #include <Extrema_ExtFlag.hxx>
 #include <GProp_GProps.hxx>
@@ -197,13 +190,11 @@
 #include <GeomAbs_Shape.hxx>
 #include <GeomAbs_SurfaceType.hxx>
 #include <GeomAdaptor_Curve.hxx>
-#include <GeomPlate_Array1OfHCurve.hxx>
 #include <Geom_BSplineCurve.hxx>
 #include <Geom_BSplineSurface.hxx>
 #include <Geom_BezierSurface.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_Plane.hxx>
-#include <Geom_SequenceOfBSplineSurface.hxx>
 #include <Geom_Surface.hxx>
 #include <IntCurveSurface_IntersectionPoint.hxx>
 #include <IntCurveSurface_TransitionOnCurve.hxx>
@@ -217,7 +208,6 @@
 #include <IntSurf_LineOn2S.hxx>
 #include <IntSurf_PntOn2S.hxx>
 #include <IntSurf_Quadric.hxx>
-#include <MAT2d_Array2OfConnexion.hxx>
 #include <MAT2d_BiInt.hxx>
 #include <MAT2d_Circuit.hxx>
 #include <MAT2d_Connexion.hxx>
@@ -230,9 +220,7 @@
 #include <MAT_Arc.hxx>
 #include <MAT_BasicElt.hxx>
 #include <MAT_Bisector.hxx>
-#include <MAT_DataMapOfIntegerArc.hxx>
 #include <MAT_DataMapOfIntegerBasicElt.hxx>
-#include <MAT_DataMapOfIntegerBisector.hxx>
 #include <MAT_Edge.hxx>
 #include <MAT_Graph.hxx>
 #include <MAT_ListOfBisector.hxx>
@@ -246,25 +234,15 @@
 #include <MAT_Zone.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Poly_Connect.hxx>
-#include <Poly_ListOfTriangulation.hxx>
 #include <Select3D_BndBox3d.hxx>
-#include <ShapeUpgrade_UnifySameDomain.hxx>
 #include <Standard_DomainError.hxx>
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
-#include <TColGeom2d_Array1OfBSplineCurve.hxx>
-#include <TColGeom2d_Array1OfCurve.hxx>
 #include <TColGeom2d_SequenceOfCurve.hxx>
-#include <TColGeom2d_SequenceOfGeometry.hxx>
-#include <TColGeom_Array1OfBSplineCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfSurface.hxx>
-#include <TColGeom_Array2OfBezierSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_HArray1OfReal.hxx>
@@ -278,7 +256,6 @@
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_State.hxx>
 #include <TopLoc_Location.hxx>
-#include <TopOpeBRep_DataMapOfTopolTool.hxx>
 #include <TopTools_DataMapOfIntegerListOfShape.hxx>
 #include <TopTools_DataMapOfIntegerShape.hxx>
 #include <TopTools_DataMapOfShapeListOfShape.hxx>

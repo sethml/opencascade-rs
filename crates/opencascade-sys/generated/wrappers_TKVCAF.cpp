@@ -3,21 +3,16 @@
 
 #include "occt_preamble.hxx"
 
-#include <AIS_DataMapOfIOStatus.hxx>
 #include <AIS_InteractiveContext.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Graphic3d_NameOfMaterial.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeArray1.hxx>
 #include <TDF_AttributeDelta.hxx>
-#include <TDF_AttributeDeltaList.hxx>
 #include <TDF_AttributeIndexedMap.hxx>
 #include <TDF_IDFilter.hxx>
 #include <TDF_RelocationTable.hxx>
@@ -27,7 +22,6 @@
 #include <TPrsStd_AxisDriver.hxx>
 #include <TPrsStd_ConstraintDriver.hxx>
 #include <TPrsStd_ConstraintTools.hxx>
-#include <TPrsStd_DataMapOfGUIDDriver.hxx>
 #include <TPrsStd_Driver.hxx>
 #include <TPrsStd_DriverTable.hxx>
 #include <TPrsStd_GeometryDriver.hxx>

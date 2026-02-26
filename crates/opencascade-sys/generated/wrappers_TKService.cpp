@@ -56,8 +56,8 @@
 #include <Aspect_XRPoseActionData.hxx>
 #include <Aspect_XRSession.hxx>
 #include <Aspect_XRTrackedDeviceRole.hxx>
+#include <BRepClass3d_MapOfInter.hxx>
 #include <BVH_Types.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Font_FTFont.hxx>
 #include <Font_FTLibrary.hxx>
@@ -122,7 +122,6 @@
 #include <Graphic3d_LevelOfTextureAnisotropy.hxx>
 #include <Graphic3d_LightSet.hxx>
 #include <Graphic3d_MapOfAspectsToAspects.hxx>
-#include <Graphic3d_MapOfObject.hxx>
 #include <Graphic3d_MapOfStructure.hxx>
 #include <Graphic3d_MarkerImage.hxx>
 #include <Graphic3d_Mat4.hxx>
@@ -168,7 +167,6 @@
 #include <Graphic3d_TransModeFlags.hxx>
 #include <Graphic3d_TransformPers.hxx>
 #include <Graphic3d_TransformPersScaledAbove.hxx>
-#include <Graphic3d_TransformUtils.hxx>
 #include <Graphic3d_TypeOfBackfacingModel.hxx>
 #include <Graphic3d_TypeOfBackground.hxx>
 #include <Graphic3d_TypeOfConnection.hxx>
@@ -202,9 +200,6 @@
 #include <Image_SupportedFormats.hxx>
 #include <Image_Texture.hxx>
 #include <Image_VideoRecorder.hxx>
-#include <IntSurf_Allocator.hxx>
-#include <Interface_Array1OfHAsciiString.hxx>
-#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Media_BufferPool.hxx>
 #include <Media_CodecContext.hxx>
 #include <Media_FormatContext.hxx>
@@ -231,7 +226,6 @@
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_Mutex.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_OutOfRange.hxx>
@@ -250,7 +244,6 @@
 #include <V3d_AmbientLight.hxx>
 #include <V3d_CircularGrid.hxx>
 #include <V3d_DirectionalLight.hxx>
-#include <V3d_ListOfLight.hxx>
 #include <V3d_PositionLight.hxx>
 #include <V3d_PositionalLight.hxx>
 #include <V3d_RectangularGrid.hxx>

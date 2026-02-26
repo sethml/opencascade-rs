@@ -103,6 +103,7 @@
 #include <BRepCheck_Solid.hxx>
 #include <BRepCheck_Vertex.hxx>
 #include <BRepCheck_Wire.hxx>
+#include <BRepClass3d_MapOfInter.hxx>
 #include <BRepExtrema_UnCompatibleShape.hxx>
 #include <BRepFill_ACRLaw.hxx>
 #include <BRepFill_CurveConstraint.hxx>
@@ -178,7 +179,6 @@
 #include <BinMDF_DerivedDriver.hxx>
 #include <BinMDF_ReferenceDriver.hxx>
 #include <BinMDF_TagSourceDriver.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <BinMDataStd_AsciiStringDriver.hxx>
 #include <BinMDataStd_BooleanArrayDriver.hxx>
 #include <BinMDataStd_BooleanListDriver.hxx>
@@ -884,15 +884,12 @@
 #include <IntPatch_RLine.hxx>
 #include <IntPatch_TheIWLineOfTheIWalking.hxx>
 #include <IntPatch_WLine.hxx>
-#include <IntSurf_Allocator.hxx>
 #include <IntSurf_LineOn2S.hxx>
 #include <IntTools_Context.hxx>
 #include <IntTools_TopolTool.hxx>
-#include <Interface_Array1OfHAsciiString.hxx>
 #include <Interface_Check.hxx>
 #include <Interface_CheckFailure.hxx>
 #include <Interface_CopyMap.hxx>
-#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Interface_EntityCluster.hxx>
 #include <Interface_GTool.hxx>
 #include <Interface_GlobalNodeOfGeneralLib.hxx>
@@ -1079,7 +1076,6 @@
 #include <OSD_ThreadFunction.hxx>
 #include <OSD_ThreadPool.hxx>
 #include <OSD_Timer.hxx>
-#include <PCDM_BaseDriverPointer.hxx>
 #include <PCDM_Document.hxx>
 #include <PCDM_DriverError.hxx>
 #include <PCDM_ReadWriter_1.hxx>
@@ -2258,7 +2254,6 @@
 #include <Storage_HSeqOfRoot.hxx>
 #include <Storage_HeaderData.hxx>
 #include <Storage_InternalData.hxx>
-#include <Storage_MapOfPers.hxx>
 #include <Storage_OpenMode.hxx>
 #include <Storage_PArray.hxx>
 #include <Storage_PType.hxx>

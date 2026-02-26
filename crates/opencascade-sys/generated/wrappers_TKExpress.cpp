@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Expr.hxx>
 #include <ExprIntrp_Analysis.hxx>
 #include <ExprIntrp_GenExp.hxx>
@@ -12,9 +11,6 @@
 #include <ExprIntrp_Generator.hxx>
 #include <ExprIntrp_SequenceOfNamedExpression.hxx>
 #include <ExprIntrp_SequenceOfNamedFunction.hxx>
-#include <ExprIntrp_StackOfGeneralExpression.hxx>
-#include <ExprIntrp_StackOfGeneralFunction.hxx>
-#include <ExprIntrp_StackOfGeneralRelation.hxx>
 #include <ExprIntrp_SyntaxError.hxx>
 #include <Expr_Absolute.hxx>
 #include <Expr_ArcCosine.hxx>
@@ -25,7 +21,6 @@
 #include <Expr_ArgTanh.hxx>
 #include <Expr_Array1OfGeneralExpression.hxx>
 #include <Expr_Array1OfNamedUnknown.hxx>
-#include <Expr_Array1OfSingleRelation.hxx>
 #include <Expr_BinaryExpression.hxx>
 #include <Expr_BinaryFunction.hxx>
 #include <Expr_Cosh.hxx>
@@ -82,7 +77,6 @@
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TColStd_Array1OfReal.hxx>
 
 // Handle type aliases

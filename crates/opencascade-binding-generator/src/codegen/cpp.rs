@@ -10,9 +10,183 @@
 
 use crate::model::{ParsedClass, Type};
 use crate::resolver::SymbolTable;
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::fmt::Write;
 use std::path::Path;
+
+/// Pre-built cache mapping type names to their defining OCCT headers.
+///
+/// Built once by scanning header files, then shared across all toolkit
+/// wrapper generations to avoid redundant file I/O.
+pub struct HeaderResolver {
+    /// type_name → header_name for types found via header scanning
+    cache: HashMap<String, String>,
+}
+
+impl HeaderResolver {
+    /// Build a HeaderResolver by scanning OCCT headers for typedef/enum definitions.
+    ///
+    /// Collects all type names that need resolution from all bindings, then does
+    /// a single batch scan of header files.
+    pub fn build(
+        all_bindings: &[super::bindings::ClassBindings],
+        template_instantiations: &HashMap<String, crate::config::TemplateInstantiation>,
+        known_headers: &HashSet<String>,
+        class_header_map: &HashMap<String, String>,
+        include_dir: &Path,
+    ) -> Self {
+        // 1. Collect ALL unresolved type names across all bindings
+        let mut unresolved = HashSet::new();
+        let all_b_refs: Vec<&super::bindings::ClassBindings> = all_bindings.iter().collect();
+        collect_unresolved_from_bindings(&all_b_refs, known_headers, class_header_map, &mut unresolved);
+
+        // 2. Collect unresolved types from template instantiation spellings
+        for spelling in template_instantiations.keys() {
+            collect_unresolved_from_template_spelling(spelling, known_headers, &mut unresolved);
+        }
+
+        // 3. Resolve all unresolved types by scanning headers once.
+        //    Instead of checking each remaining type name against each line
+        //    (O(remaining_types × total_lines)), we extract identifier tokens
+        //    from typedef/enum lines and look them up in a HashSet
+        //    (O(tokens_per_line) per line with O(1) per lookup).
+        let mut cache = HashMap::new();
+        if !unresolved.is_empty() {
+            let remaining: HashSet<&str> = unresolved.iter().map(|s| s.as_str()).collect();
+            // Track class-scope (indented) matches as fallbacks
+            let mut class_scope: HashMap<String, String> = HashMap::new();
+
+            let mut sorted_known: Vec<&String> = known_headers.iter().collect();
+            sorted_known.sort();
+
+            for header_name in &sorted_known {
+                let path = include_dir.join(header_name.as_str());
+                let content = match std::fs::read_to_string(&path) {
+                    Ok(c) => c,
+                    Err(_) => continue,
+                };
+
+                let mut prev_had_typedef = false;
+                for line in content.lines() {
+                    let has_typedef = line.contains("typedef");
+                    let has_enum = line.contains("enum ");
+                    let is_typedef_context = has_typedef || has_enum || prev_had_typedef;
+
+                    if is_typedef_context {
+                        let is_file_scope = !line.starts_with(' ') && !line.starts_with('\t');
+
+                        // Extract C++ identifiers and check against the remaining set
+                        for word in line.split(|c: char| !c.is_ascii_alphanumeric() && c != '_')
+                            .filter(|s| !s.is_empty())
+                        {
+                            if remaining.contains(word) {
+                                if is_file_scope {
+                                    // File-scope definitions always win
+                                    cache.entry(word.to_string())
+                                        .or_insert_with(|| (*header_name).clone());
+                                } else {
+                                    // Class-scope: only record as fallback
+                                    class_scope.entry(word.to_string())
+                                        .or_insert_with(|| (*header_name).clone());
+                                }
+                            }
+                        }
+                    }
+
+                    prev_had_typedef = has_typedef && !line.contains(';');
+                }
+            }
+
+            // Use class-scope matches for types that had no file-scope match
+            for (name, header) in class_scope {
+                cache.entry(name).or_insert(header);
+            }
+        }
+
+        HeaderResolver { cache }
+    }
+
+    /// Look up the header for a type name.
+    pub fn resolve(&self, type_name: &str) -> Option<&str> {
+        self.cache.get(type_name).map(|s| s.as_str())
+    }
+}
+
+/// Collect unresolved type names from bindings methods, used to pre-populate the cache.
+fn collect_unresolved_from_bindings(
+    bindings: &[&super::bindings::ClassBindings],
+    known_headers: &HashSet<String>,
+    class_header_map: &HashMap<String, String>,
+    unresolved: &mut HashSet<String>,
+) {
+    let mut resolved = HashSet::new(); // throwaway, we just want unresolved
+    for b in bindings {
+        for im in &b.inherited_methods {
+            for p in &im.params {
+                collect_headers_from_cpp_type_str(&p.cpp_type, &mut resolved, known_headers, class_header_map, unresolved);
+            }
+            if let Some(rt) = &im.return_type {
+                collect_headers_from_cpp_type_str(&rt.cpp_type, &mut resolved, known_headers, class_header_map, unresolved);
+            }
+        }
+        for wm in &b.wrapper_methods {
+            for p in &wm.params {
+                collect_headers_from_cpp_type_str(&p.cpp_type, &mut resolved, known_headers, class_header_map, unresolved);
+            }
+            if let Some(rt) = &wm.return_type {
+                collect_headers_from_cpp_type_str(&rt.cpp_type, &mut resolved, known_headers, class_header_map, unresolved);
+            }
+        }
+        for sm in &b.static_methods {
+            for p in &sm.params {
+                collect_headers_from_cpp_type_str(&p.cpp_type, &mut resolved, known_headers, class_header_map, unresolved);
+            }
+            if let Some(rt) = &sm.return_type {
+                collect_headers_from_cpp_type_str(&rt.cpp_type, &mut resolved, known_headers, class_header_map, unresolved);
+            }
+        }
+        for ctor in &b.constructors {
+            for p in &ctor.params {
+                collect_headers_from_cpp_type_str(&p.cpp_type, &mut resolved, known_headers, class_header_map, unresolved);
+            }
+        }
+    }
+}
+
+/// Collect unresolved type names from a template spelling string.
+fn collect_unresolved_from_template_spelling(
+    spelling: &str,
+    known_headers: &HashSet<String>,
+    unresolved: &mut HashSet<String>,
+) {
+    let chars: Vec<char> = spelling.chars().collect();
+    let mut i = 0;
+    while i < chars.len() {
+        if !chars[i].is_alphanumeric() && chars[i] != '_' {
+            i += 1;
+            continue;
+        }
+        let start = i;
+        while i < chars.len() && (chars[i].is_alphanumeric() || chars[i] == '_') {
+            i += 1;
+        }
+        let ident: String = chars[start..i].iter().collect();
+        if ident.starts_with("NCollection_") || ident.starts_with("opencascade") {
+            continue;
+        }
+        if matches!(ident.as_str(), "handle" | "const" | "Standard_Real" | "Standard_Integer"
+            | "Standard_Boolean" | "Standard_ShortReal" | "Standard_Character" | "bool"
+            | "int" | "double" | "float" | "void" | "char" | "unsigned") {
+            continue;
+        }
+        if ident.contains('_') || ident.starts_with("Standard") {
+            let header = format!("{}.hxx", ident);
+            if !known_headers.contains(&header) {
+                unresolved.insert(ident);
+            }
+        }
+    }
+}
 
 /// Generate the shared C++ exception handling boilerplate.
 /// This includes the OcctResult<T> template, occt_make_exception helper,
@@ -223,13 +397,13 @@ fn collect_headers_from_cpp_type_str(
 }
 
 /// Collect headers for types referenced in ClassBindings methods (especially inherited methods)
-/// that may come from other toolkits. If include_dir is provided, does a single batch search
-/// for any types that don't have their own .hxx file.
+/// that may come from other toolkits. Uses the pre-built HeaderResolver cache for types
+/// that don't have their own .hxx file.
 pub fn collect_headers_from_bindings(
     bindings: &[&super::bindings::ClassBindings],
     known_headers: &HashSet<String>,
     class_header_map: &std::collections::HashMap<String, String>,
-    include_dir: Option<&Path>,
+    resolver: Option<&HeaderResolver>,
 ) -> Vec<String> {
     let mut headers = HashSet::new();
     let mut unresolved = HashSet::new();
@@ -268,10 +442,14 @@ pub fn collect_headers_from_bindings(
             }
         }
     }
-    // Batch-resolve unresolved types by scanning OCCT headers once
+    // Resolve unresolved types via cached HeaderResolver
     if !unresolved.is_empty() {
-        if let Some(inc_dir) = include_dir {
-            batch_find_defining_headers(&unresolved, inc_dir, known_headers, &mut headers);
+        if let Some(resolver) = resolver {
+            for type_name in &unresolved {
+                if let Some(header) = resolver.resolve(type_name) {
+                    headers.insert(header.to_string());
+                }
+            }
         }
     }
     let mut result: Vec<_> = headers.into_iter().collect();
@@ -281,30 +459,25 @@ pub fn collect_headers_from_bindings(
 
 /// Extract type names from template arguments and add their headers.
 /// Handles nested templates like NCollection_Shared<NCollection_DynamicArray<BRepMesh_Vertex>>
-/// If include_dir is provided, searches OCCT headers for types without their own .hxx file.
+/// Uses the pre-built HeaderResolver for types without their own .hxx file.
 fn collect_template_arg_headers(
     spelling: &str,
     known_headers: &HashSet<String>,
     headers: &mut HashSet<String>,
-    include_dir: Option<&std::path::Path>,
+    resolver: Option<&HeaderResolver>,
 ) {
-    // Find all identifiers that look like OCCT type names (contain underscore)
-    // by splitting on template delimiters and whitespace
     let chars: Vec<char> = spelling.chars().collect();
     let mut i = 0;
     while i < chars.len() {
-        // Skip non-alphabetic chars
         if !chars[i].is_alphanumeric() && chars[i] != '_' {
             i += 1;
             continue;
         }
-        // Collect an identifier
         let start = i;
         while i < chars.len() && (chars[i].is_alphanumeric() || chars[i] == '_') {
             i += 1;
         }
         let ident: String = chars[start..i].iter().collect();
-        // Skip template class names (NCollection_*), primitives, and keywords
         if ident.starts_with("NCollection_") || ident.starts_with("opencascade") {
             continue;
         }
@@ -317,10 +490,9 @@ fn collect_template_arg_headers(
             let header = format!("{}.hxx", ident);
             if known_headers.contains(&header) {
                 headers.insert(header);
-            } else if let Some(dir) = include_dir {
-                // Type doesn't have its own header - search OCCT headers for its definition
-                if let Some(defining_header) = find_defining_header(&ident, dir, known_headers) {
-                    headers.insert(defining_header);
+            } else if let Some(resolver) = resolver {
+                if let Some(defining_header) = resolver.resolve(&ident) {
+                    headers.insert(defining_header.to_string());
                 }
             }
         }
@@ -329,137 +501,6 @@ fn collect_template_arg_headers(
 
 /// Batch-search OCCT headers to find which .hxx files define the given type names.
 /// More efficient than calling find_defining_header per type since it scans each header only once.
-fn batch_find_defining_headers(
-    type_names: &HashSet<String>,
-    include_dir: &Path,
-    known_headers: &HashSet<String>,
-    headers: &mut HashSet<String>,
-) {
-    use std::io::BufRead;
-    if type_names.is_empty() {
-        return;
-    }
-    let mut remaining: HashSet<&str> = type_names.iter().map(|s| s.as_str()).collect();
-    // Group type names by module prefix for prioritized search
-    let mut prefix_types: std::collections::HashMap<&str, Vec<&str>> = std::collections::HashMap::new();
-    for name in &remaining {
-        let prefix = name.split('_').next().unwrap_or("");
-        prefix_types.entry(prefix).or_default().push(name);
-    }
-    // Sort headers for deterministic iteration order
-    let mut sorted_known: Vec<&String> = known_headers.iter().collect();
-    sorted_known.sort();
-    // Pass 1: Search headers matching module prefix
-    for header_name in &sorted_known {
-        if remaining.is_empty() {
-            break;
-        }
-        let header_prefix = header_name.split('_').next().unwrap_or("");
-        // Only check if any remaining type has this prefix
-        let relevant_types: Vec<&str> = prefix_types
-            .get(header_prefix)
-            .map(|v| v.iter().copied().filter(|t| remaining.contains(t)).collect())
-            .unwrap_or_default();
-        if relevant_types.is_empty() {
-            continue;
-        }
-        let path = include_dir.join(header_name.as_str());
-        if let Ok(file) = std::fs::File::open(&path) {
-            let reader = std::io::BufReader::new(file);
-            let mut prev_had_typedef = false;
-            for line in reader.lines() {
-                if let Ok(line) = line {
-                    for &type_name in &relevant_types {
-                        if remaining.contains(type_name) && line.contains(type_name) {
-                            if line.contains("typedef") || line.contains("enum ") || prev_had_typedef {
-                                headers.insert((*header_name).clone());
-                                remaining.remove(type_name);
-                            }
-                        }
-                    }
-                    prev_had_typedef = line.contains("typedef") && !line.contains(';');
-                }
-            }
-        }
-    }
-    // Pass 2: Search ALL headers for any still-unresolved types
-    if !remaining.is_empty() {
-        for header_name in &sorted_known {
-            if remaining.is_empty() {
-                break;
-            }
-            let path = include_dir.join(header_name.as_str());
-            if let Ok(file) = std::fs::File::open(&path) {
-                let reader = std::io::BufReader::new(file);
-                let mut prev_had_typedef = false;
-                for line in reader.lines() {
-                    if let Ok(line) = line {
-                        for type_name in remaining.iter().copied().collect::<Vec<_>>() {
-                            if line.contains(type_name) {
-                                if line.contains("typedef") || line.contains("enum ") || prev_had_typedef {
-                                    headers.insert((*header_name).clone());
-                                    remaining.remove(type_name);
-                                }
-                            }
-                        }
-                        prev_had_typedef = line.contains("typedef") && !line.contains(';');
-                    }
-                }
-            }
-        }
-    }
-}
-
-/// Search OCCT headers to find which .hxx file defines a given type name.
-/// Looks for typedef/enum declarations containing the type name.
-/// Prefers file-scope definitions (non-indented) over class-scope ones.
-fn find_defining_header(
-    type_name: &str,
-    include_dir: &std::path::Path,
-    known_headers: &HashSet<String>,
-) -> Option<String> {
-    use std::io::BufRead;
-    let module_prefix = type_name.split('_').next().unwrap_or("");
-    let mut class_scope_match: Option<String> = None;
-    // Sort headers for deterministic iteration order
-    let mut sorted_known: Vec<&String> = known_headers.iter().collect();
-    sorted_known.sort();
-
-    for pass in 0..2 {
-        for header_name in &sorted_known {
-            if pass == 0 && !header_name.starts_with(module_prefix) {
-                continue;
-            }
-            if pass == 1 && header_name.starts_with(module_prefix) {
-                continue;
-            }
-            let path = include_dir.join(header_name.as_str());
-            if let Ok(file) = std::fs::File::open(&path) {
-                let reader = std::io::BufReader::new(file);
-                let mut prev_had_typedef = false;
-                for line in reader.lines() {
-                    if let Ok(line) = line {
-                        let has_type_name = line.contains(type_name);
-                        if has_type_name {
-                            if line.contains("typedef") || line.contains("enum ") || prev_had_typedef {
-                                // Prefer file-scope definitions (non-indented)
-                                if !line.starts_with(' ') && !line.starts_with('\t') {
-                                    return Some((*header_name).clone());
-                                }
-                                if class_scope_match.is_none() {
-                                    class_scope_match = Some((*header_name).clone());
-                                }
-                            }
-                        }
-                        prev_had_typedef = line.contains("typedef") && !line.contains(';');
-                    }
-                }
-            }
-        }
-    }
-    class_scope_match
-}
-
 /// Collect headers needed for a type
 fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>, known_headers: &HashSet<String>) {
     if let Some(ty) = ty {
@@ -619,8 +660,9 @@ fn collect_function_required_headers<T: std::borrow::Borrow<super::bindings::Fun
 }
 
 fn extend_unique_headers(headers: &mut Vec<String>, additional_headers: impl IntoIterator<Item = String>) {
+    let existing: HashSet<String> = headers.iter().cloned().collect();
     for header in additional_headers {
-        if !headers.contains(&header) {
+        if !existing.contains(&header) {
             headers.push(header);
         }
     }
@@ -758,7 +800,7 @@ pub fn generate_wrappers(
 pub fn generate_preamble(
     template_instantiations: &std::collections::HashMap<String, crate::config::TemplateInstantiation>,
     known_headers: &HashSet<String>,
-    include_dir: Option<&std::path::Path>,
+    resolver: Option<&HeaderResolver>,
 ) -> String {
     let mut output = String::new();
     writeln!(output, "// Generated by opencascade-binding-generator").unwrap();
@@ -787,7 +829,7 @@ pub fn generate_preamble(
                 tmpl_headers.insert(inst.header.clone());
             }
             // Extract element/value type headers from template arguments
-            collect_template_arg_headers(spelling, known_headers, &mut tmpl_headers, include_dir);
+            collect_template_arg_headers(spelling, known_headers, &mut tmpl_headers, resolver);
         }
         let mut sorted_headers: Vec<_> = tmpl_headers.into_iter().collect();
         sorted_headers.sort();
@@ -823,7 +865,7 @@ pub fn generate_wrappers_for_group(
     preamble_filename: &str,
     own_class_names: &HashSet<String>,
     class_header_map: &std::collections::HashMap<String, String>,
-    include_dir: Option<&Path>,
+    resolver: Option<&HeaderResolver>,
 ) -> String {
     let mut output = String::new();
 
@@ -869,7 +911,7 @@ pub fn generate_wrappers_for_group(
     // Add headers for cross-toolkit types referenced in bindings (especially inherited methods)
     extend_unique_headers(
         &mut headers,
-        collect_headers_from_bindings(bindings, known_headers, class_header_map, include_dir),
+        collect_headers_from_bindings(bindings, known_headers, class_header_map, resolver),
     );
 
 

@@ -4,13 +4,11 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor3d_Curve.hxx>
-#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <BRepTools_History.hxx>
 #include <BRepTools_Modification.hxx>
 #include <BRepTools_Modifier.hxx>
 #include <BRepTools_ReShape.hxx>
 #include <BRepTools_TrsfModification.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
 #include <Geom2d_BSplineCurve.hxx>
@@ -23,15 +21,12 @@
 #include <Geom_Curve.hxx>
 #include <Geom_Geometry.hxx>
 #include <Geom_Plane.hxx>
-#include <Geom_SequenceOfBSplineSurface.hxx>
 #include <Geom_Surface.hxx>
 #include <IntRes2d_SequenceOfIntersectionPoint.hxx>
-#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Message_Gravity.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_Msg.hxx>
 #include <Message_ProgressRange.hxx>
-#include <Poly_ListOfTriangulation.hxx>
 #include <Resource_Manager.hxx>
 #include <ShapeAlgo.hxx>
 #include <ShapeAlgo_AlgoContainer.hxx>
@@ -155,15 +150,9 @@
 #include <ShapeUpgrade_WireDivide.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
-#include <TColGeom2d_Array1OfBSplineCurve.hxx>
-#include <TColGeom2d_Array1OfCurve.hxx>
 #include <TColGeom2d_HArray1OfCurve.hxx>
 #include <TColGeom2d_HSequenceOfBoundedCurve.hxx>
 #include <TColGeom2d_SequenceOfCurve.hxx>
-#include <TColGeom_Array1OfBSplineCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfSurface.hxx>
 #include <TColGeom_HArray1OfCurve.hxx>
 #include <TColGeom_HArray2OfSurface.hxx>
 #include <TColGeom_HSequenceOfBoundedCurve.hxx>

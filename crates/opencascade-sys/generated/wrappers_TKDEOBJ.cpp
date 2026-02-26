@@ -3,19 +3,16 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <DEOBJ_ConfigurationNode.hxx>
 #include <DEOBJ_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ConfigurationNode.hxx>
 #include <DE_Provider.hxx>
-#include <DE_Wrapper.hxx>
 #include <Graphic3d_ShaderVariable.hxx>
 #include <Graphic3d_Vec2.hxx>
 #include <Graphic3d_Vec3.hxx>
 #include <Interface_IndexedMapOfAsciiString.hxx>
 #include <Message_ProgressRange.hxx>
-#include <Poly_ListOfTriangulation.hxx>
 #include <RWMesh_CafReader.hxx>
 #include <RWMesh_CoordinateSystemConverter.hxx>
 #include <RWMesh_MaterialMap.hxx>
@@ -31,13 +28,11 @@
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TColStd_IndexedDataMapOfStringString.hxx>
 #include <TColStd_ListOfAsciiString.hxx>
 #include <TColStd_MapOfAsciiString.hxx>
 #include <TDF_LabelSequence.hxx>
 #include <TDocStd_Document.hxx>
-#include <TDocStd_SequenceOfDocument.hxx>
 #include <XCAFPrs_Style.hxx>
 #include <XSControl_WorkSession.hxx>
 #include <gp_Ax3.hxx>

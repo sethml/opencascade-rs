@@ -11,7 +11,6 @@
 #include <BinLDrivers_DocumentStorageDriver.hxx>
 #include <BinMDF_ADriver.hxx>
 #include <BinMDF_ADriverTable.hxx>
-#include <BinMDF_TypeADriverMap.hxx>
 #include <BinMDataXtd.hxx>
 #include <BinMDataXtd_ConstraintDriver.hxx>
 #include <BinMDataXtd_GeometryDriver.hxx>
@@ -28,12 +27,10 @@
 #include <BinTools_ShapeSetBase.hxx>
 #include <BinXCAFDrivers_DocumentRetrievalDriver.hxx>
 #include <BinXCAFDrivers_DocumentStorageDriver.hxx>
-#include <CDM_ListOfDocument.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <PCDM_Reader.hxx>
 #include <PCDM_RetrievalDriver.hxx>
-#include <PCDM_SequenceOfDocument.hxx>
 #include <PCDM_StorageDriver.hxx>
 #include <PCDM_Writer.hxx>
 #include <Standard_GUID.hxx>
@@ -41,11 +38,9 @@
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TColStd_IndexedMapOfTransient.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeArray1.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_FormatVersion.hxx>
 

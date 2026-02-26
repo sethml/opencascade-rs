@@ -3,13 +3,11 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <DEPLY_ConfigurationNode.hxx>
 #include <DEPLY_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ConfigurationNode.hxx>
 #include <DE_Provider.hxx>
-#include <DE_Wrapper.hxx>
 #include <Graphic3d_ShaderVariable.hxx>
 #include <Graphic3d_Vec2.hxx>
 #include <Graphic3d_Vec3.hxx>
@@ -21,13 +19,11 @@
 #include <RWPly_PlyWriterContext.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <TColStd_IndexedDataMapOfStringString.hxx>
 #include <TColStd_ListOfAsciiString.hxx>
 #include <TColStd_MapOfAsciiString.hxx>
 #include <TDF_LabelSequence.hxx>
 #include <TDocStd_Document.hxx>
-#include <TDocStd_SequenceOfDocument.hxx>
 #include <XCAFPrs_Style.hxx>
 #include <XSControl_WorkSession.hxx>
 

@@ -3,17 +3,14 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeADriverMap.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_ListOfDocument.hxx>
 #include <LDOM_Element.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <PCDM_Reader.hxx>
 #include <PCDM_ReaderFilter.hxx>
 #include <PCDM_RetrievalDriver.hxx>
-#include <PCDM_SequenceOfDocument.hxx>
 #include <PCDM_StorageDriver.hxx>
 #include <PCDM_Writer.hxx>
 #include <Standard_GUID.hxx>
@@ -21,12 +18,10 @@
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <Storage_Data.hxx>
 #include <Storage_HeaderData.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeArray1.hxx>
 #include <TDF_Data.hxx>
 #include <TDocStd_Application.hxx>
 #include <XmlDrivers_DocumentRetrievalDriver.hxx>
