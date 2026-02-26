@@ -5,6 +5,7 @@
 
 #include <AIS_DataMapOfIOStatus.hxx>
 #include <AIS_InteractiveContext.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Graphic3d_NameOfMaterial.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Standard_GUID.hxx>
@@ -14,7 +15,7 @@
 #include <Standard_TypeDef.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeDataMap.hxx>
+#include <TDF_AttributeArray1.hxx>
 #include <TDF_AttributeDelta.hxx>
 #include <TDF_AttributeDeltaList.hxx>
 #include <TDF_AttributeIndexedMap.hxx>
@@ -35,7 +36,6 @@
 #include <TPrsStd_PointDriver.hxx>
 #include <V3d_Viewer.hxx>
 #include <XCAFPrs_Driver.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<AIS_InteractiveContext> HandleAISInteractiveContext;

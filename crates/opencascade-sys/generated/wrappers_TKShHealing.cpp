@@ -4,11 +4,13 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor3d_Curve.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <BRepTools_History.hxx>
 #include <BRepTools_Modification.hxx>
 #include <BRepTools_Modifier.hxx>
 #include <BRepTools_ReShape.hxx>
 #include <BRepTools_TrsfModification.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
 #include <Geom2d_BSplineCurve.hxx>
@@ -23,15 +25,14 @@
 #include <Geom_Plane.hxx>
 #include <Geom_SequenceOfBSplineSurface.hxx>
 #include <Geom_Surface.hxx>
-#include <IGESBasic_Array2OfHArray1OfReal.hxx>
 #include <IntRes2d_SequenceOfIntersectionPoint.hxx>
+#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Message_Gravity.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_Msg.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Poly_ListOfTriangulation.hxx>
 #include <Resource_Manager.hxx>
-#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <ShapeAlgo.hxx>
 #include <ShapeAlgo_AlgoContainer.hxx>
 #include <ShapeAlgo_ToolContainer.hxx>
@@ -194,7 +195,6 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Cone.hxx>

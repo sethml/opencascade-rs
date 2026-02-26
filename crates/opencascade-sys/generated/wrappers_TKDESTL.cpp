@@ -3,6 +3,7 @@
 
 #include "occt_preamble.hxx"
 
+#include <BinMDF_TypeADriverMap.hxx>
 #include <DESTL_ConfigurationNode.hxx>
 #include <DESTL_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
@@ -26,7 +27,6 @@
 #include <TDocStd_Document.hxx>
 #include <TDocStd_SequenceOfDocument.hxx>
 #include <XSControl_WorkSession.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<DESTL_ConfigurationNode> HandleDESTLConfigurationNode;

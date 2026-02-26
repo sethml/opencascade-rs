@@ -57,6 +57,7 @@
 #include <BRep_TFace.hxx>
 #include <BRep_TVertex.hxx>
 #include <BRep_Tool.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <BinTools.hxx>
 #include <BinTools_Curve2dSet.hxx>
 #include <BinTools_CurveSet.hxx>
@@ -190,7 +191,6 @@
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
 #include <VrmlData_DataMapOfShapeAppearance.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>

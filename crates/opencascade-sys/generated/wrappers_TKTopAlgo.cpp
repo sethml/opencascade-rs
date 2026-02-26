@@ -14,6 +14,7 @@
 #include <AppParCurves_MultiCurve.hxx>
 #include <Approx_Array1OfAdHSurface.hxx>
 #include <Approx_ParametrizationType.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Approx_Status.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
@@ -117,7 +118,7 @@
 #include <BRepExtrema_SupportType.hxx>
 #include <BRepExtrema_TriangleSet.hxx>
 #include <BRepExtrema_UnCompatibleShape.hxx>
-#include <BRepFill_DataMapOfNodeShape.hxx>
+#include <BRepFill_DataMapOfNodeDataMapOfShapeShape.hxx>
 #include <BRepGProp.hxx>
 #include <BRepGProp_Cinert.hxx>
 #include <BRepGProp_Domain.hxx>
@@ -155,6 +156,7 @@
 #include <BRepLib_ValidateEdge.hxx>
 #include <BRepLib_WireError.hxx>
 #include <BRepMAT2d_BisectingLocus.hxx>
+#include <BRepMAT2d_DataMapOfBasicEltShape.hxx>
 #include <BRepMAT2d_Explorer.hxx>
 #include <BRepMAT2d_LinkTopoBilo.hxx>
 #include <BRepTools_ReShape.hxx>
@@ -164,6 +166,7 @@
 #include <BRepTopAdaptor_Tool.hxx>
 #include <BRepTopAdaptor_TopolTool.hxx>
 #include <BVH_Types.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bisector.hxx>
 #include <Bisector_Bisec.hxx>
 #include <Bisector_BisecAna.hxx>
@@ -202,7 +205,6 @@
 #include <Geom_Plane.hxx>
 #include <Geom_SequenceOfBSplineSurface.hxx>
 #include <Geom_Surface.hxx>
-#include <IGESBasic_Array2OfHArray1OfReal.hxx>
 #include <IntCurveSurface_IntersectionPoint.hxx>
 #include <IntCurveSurface_TransitionOnCurve.hxx>
 #include <IntCurvesFace_Intersector.hxx>
@@ -250,6 +252,7 @@
 #include <Standard_DomainError.hxx>
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
+#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
@@ -290,7 +293,6 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>

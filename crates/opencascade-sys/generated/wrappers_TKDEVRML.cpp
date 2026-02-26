@@ -4,8 +4,10 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor3d_Curve.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Aspect_TypeOfDeflection.hxx>
 #include <BRepAdaptor_Surface.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_B3f.hxx>
 #include <DEVRML_ConfigurationNode.hxx>
 #include <DEVRML_Provider.hxx>
@@ -15,7 +17,6 @@
 #include <DE_Wrapper.hxx>
 #include <FEmTool_AssemblyTable.hxx>
 #include <HLRAlgo_Projector.hxx>
-#include <IGESBasic_Array2OfHArray1OfReal.hxx>
 #include <Interface_IndexedMapOfAsciiString.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_IncAllocator.hxx>
@@ -148,7 +149,6 @@
 #include <Vrml_WWWAnchorMap.hxx>
 #include <Vrml_WWWInline.hxx>
 #include <XSControl_WorkSession.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax3.hxx>
 #include <gp_Trsf.hxx>
 #include <gp_Vec.hxx>

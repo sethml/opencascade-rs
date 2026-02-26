@@ -7,13 +7,15 @@
 #include <AIS_DataMapOfIOStatus.hxx>
 #include <AIS_DataMapOfShapeDrawer.hxx>
 #include <AIS_InteractiveContext.hxx>
-#include <AIS_NListOfEntityOwner.hxx>
+#include <AIS_NArray1OfEntityOwner.hxx>
 #include <AIS_Shape.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_MapOfDocument.hxx>
+#include <CDM_ListOfDocument.hxx>
 #include <CDM_MetaDataLookUpTable.hxx>
 #include <Graphic3d_AlphaMode.hxx>
 #include <Graphic3d_Aspects.hxx>
@@ -28,12 +30,12 @@
 #include <Graphic3d_TextureRoot.hxx>
 #include <Graphic3d_TextureUnit.hxx>
 #include <Graphic3d_TypeOfBackfacingModel.hxx>
-#include <IGESBasic_Array2OfHArray1OfReal.hxx>
 #include <Image_CompressedPixMap.hxx>
 #include <Image_SupportedFormats.hxx>
 #include <Image_Texture.hxx>
+#include <Interface_Array1OfHAsciiString.hxx>
+#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Message_ProgressRange.hxx>
-#include <MoniTool_ValueInterpret.hxx>
 #include <OSD_File.hxx>
 #include <OSD_Path.hxx>
 #include <PrsMgr_ListOfPresentableObjects.hxx>
@@ -42,7 +44,6 @@
 #include <Quantity_Color.hxx>
 #include <Quantity_ColorRGBA.hxx>
 #include <Quantity_NameOfColor.hxx>
-#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <SelectMgr_SelectableObject.hxx>
 #include <SelectMgr_SequenceOfOwner.hxx>
 #include <SelectMgr_SequenceOfSelection.hxx>
@@ -61,7 +62,7 @@
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeDataMap.hxx>
+#include <TDF_AttributeArray1.hxx>
 #include <TDF_AttributeDeltaList.hxx>
 #include <TDF_AttributeIndexedMap.hxx>
 #include <TDF_AttributeSequence.hxx>
@@ -163,7 +164,6 @@
 #include <XCAFPrs_Texture.hxx>
 #include <XCAFView_Object.hxx>
 #include <XCAFView_ProjectionType.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Dir.hxx>
 #include <gp_GTrsf.hxx>

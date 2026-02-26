@@ -4,6 +4,7 @@
 #include "occt_preamble.hxx"
 
 #include <APIHeaderSection_EditHeader.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ShapeFixParameters.hxx>
 #include <FEmTool_AssemblyTable.hxx>
@@ -197,6 +198,7 @@
 #include <Interface_CopyControl.hxx>
 #include <Interface_CopyMap.hxx>
 #include <Interface_CopyTool.hxx>
+#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Interface_DataState.hxx>
 #include <Interface_EntityCluster.hxx>
 #include <Interface_EntityIterator.hxx>
@@ -271,7 +273,6 @@
 #include <RWHeaderSection_ReadWriteModule.hxx>
 #include <STEPCAFControl_ActorWrite.hxx>
 #include <STEPCAFControl_Controller.hxx>
-#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <STEPControl_ActorRead.hxx>
 #include <STEPControl_ActorWrite.hxx>
 #include <STEPControl_Controller.hxx>
@@ -318,10 +319,10 @@
 #include <TColStd_HSequenceOfReal.hxx>
 #include <TColStd_HSequenceOfTransient.hxx>
 #include <TColStd_IndexedMapOfTransient.hxx>
+#include <TColStd_SequenceOfHExtendedString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
 #include <TCollection_HExtendedString.hxx>
-#include <TObj_Container.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopTools_DataMapOfShapeShape.hxx>
@@ -375,7 +376,6 @@
 #include <Transfer_TransferFailure.hxx>
 #include <Transfer_TransferInput.hxx>
 #include <Transfer_TransferIterator.hxx>
-#include <Transfer_TransferMapOfProcessForFinder.hxx>
 #include <Transfer_TransferOutput.hxx>
 #include <Transfer_TransientListBinder.hxx>
 #include <Transfer_TransientMapper.hxx>
@@ -398,7 +398,6 @@
 #include <XSControl_Vars.hxx>
 #include <XSControl_WorkSession.hxx>
 #include <XSControl_Writer.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_XY.hxx>
 
 // Handle type aliases

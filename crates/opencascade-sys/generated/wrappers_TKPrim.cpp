@@ -42,6 +42,7 @@
 #include <Geom_Surface.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Standard_Handle.hxx>
+#include <Standard_MMgrOpt.hxx>
 #include <Standard_TypeDef.hxx>
 #include <Sweep_NumShape.hxx>
 #include <Sweep_NumShapeIterator.hxx>

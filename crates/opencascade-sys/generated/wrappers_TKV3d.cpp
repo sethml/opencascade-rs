@@ -96,6 +96,7 @@
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
 #include <BRep_Builder.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
 #include <Convert_SequenceOfArray1OfPoles.hxx>
@@ -193,6 +194,8 @@
 #include <Graphic3d_ZLayerSettings.hxx>
 #include <HLRAlgo_Projector.hxx>
 #include <Image_Texture.hxx>
+#include <IntSurf_Allocator.hxx>
+#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Media_PlayerContext.hxx>
 #include <Media_Timer.hxx>
 #include <MeshVS_CommonSensitiveEntity.hxx>
@@ -206,7 +209,6 @@
 #include <MeshVS_SensitiveQuad.hxx>
 #include <MeshVS_SensitiveSegment.hxx>
 #include <NCollection_BaseAllocator.hxx>
-#include <NCollection_BaseList.hxx>
 #include <NCollection_Buffer.hxx>
 #include <NCollection_String.hxx>
 #include <Poly_ListOfTriangulation.hxx>
@@ -290,7 +292,6 @@
 #include <Quantity_HArray1OfColor.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Quantity_TypeOfColor.hxx>
-#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <Select3D_BVHIndexBuffer.hxx>
 #include <Select3D_BndBox3d.hxx>
 #include <Select3D_EntitySequence.hxx>
@@ -357,6 +358,7 @@
 #include <Standard_DomainError.hxx>
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
+#include <Standard_MMgrOpt.hxx>
 #include <Standard_Mutex.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_OutOfRange.hxx>
@@ -451,7 +453,6 @@
 #include <V3d_ViewerPointer.hxx>
 #include <WNT_HIDSpaceMouse.hxx>
 #include <XCAFPrs_AISObject.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Ax3.hxx>

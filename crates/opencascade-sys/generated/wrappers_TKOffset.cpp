@@ -47,6 +47,7 @@
 #include <BiTgte_ContactType.hxx>
 #include <BiTgte_CurveOnEdge.hxx>
 #include <BiTgte_CurveOnVertex.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <ChFiDS_TypeOfConcavity.hxx>
 #include <Draft.hxx>
 #include <Draft_EdgeInfo.hxx>
@@ -94,7 +95,6 @@
 #include <TopoDS_Shell.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Dir.hxx>

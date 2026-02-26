@@ -7,7 +7,8 @@
 #include <BRep_ListOfCurveRepresentation.hxx>
 #include <BRep_ListOfPointRepresentation.hxx>
 #include <BRep_PointRepresentation.hxx>
-#include <CDM_MapOfDocument.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
+#include <CDM_ListOfDocument.hxx>
 #include <Geom2d_BSplineCurve.hxx>
 #include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_Circle.hxx>
@@ -42,8 +43,8 @@
 #include <Geom_SurfaceOfRevolution.hxx>
 #include <Geom_ToroidalSurface.hxx>
 #include <Geom_TrimmedCurve.hxx>
+#include <Interface_Array1OfHAsciiString.hxx>
 #include <Message_ProgressRange.hxx>
-#include <MoniTool_ValueInterpret.hxx>
 #include <PCDM_BaseDriverPointer.hxx>
 #include <PCDM_Reader.hxx>
 #include <PCDM_RetrievalDriver.hxx>
@@ -102,8 +103,9 @@
 #include <TColStd_HSequenceOfAsciiString.hxx>
 #include <TColStd_SequenceOfAsciiString.hxx>
 #include <TColStd_SequenceOfExtendedString.hxx>
+#include <TColStd_SequenceOfHExtendedString.hxx>
 #include <TCollection_ExtendedString.hxx>
-#include <TDF_AttributeDataMap.hxx>
+#include <TDF_AttributeArray1.hxx>
 #include <TDF_Data.hxx>
 #include <TDataXtd_Constraint.hxx>
 #include <TDataXtd_PatternStd.hxx>
@@ -113,13 +115,11 @@
 #include <TNaming_ListOfNamedShape.hxx>
 #include <TNaming_Name.hxx>
 #include <TNaming_NamedShape.hxx>
-#include <TObj_Container.hxx>
 #include <TopLoc_Datum3D.hxx>
 #include <TopLoc_Location.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Vertex.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<BRep_CurveRepresentation> HandleBRepCurveRepresentation;

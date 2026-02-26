@@ -22,9 +22,11 @@
 #include <ApproxInt_SvSurfaces.hxx>
 #include <Approx_Array1OfAdHSurface.hxx>
 #include <Approx_ParametrizationType.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Approx_Status.hxx>
 #include <Approx_SweepFunction.hxx>
 #include <BRepFill_CurveConstraint.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_BoundSortBox.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
@@ -292,7 +294,6 @@
 #include <Hatch_Line.hxx>
 #include <Hatch_LineForm.hxx>
 #include <Hatch_Parameter.hxx>
-#include <IGESBasic_Array2OfHArray1OfReal.hxx>
 #include <IntAna_Curve.hxx>
 #include <IntCurveSurface_HInter.hxx>
 #include <IntCurveSurface_Intersection.hxx>
@@ -387,6 +388,7 @@
 #include <IntRes2d_TypeTrans.hxx>
 #include <IntStart_SITopolTool.hxx>
 #include <IntSurf.hxx>
+#include <IntSurf_Allocator.hxx>
 #include <IntSurf_Couple.hxx>
 #include <IntSurf_InteriorPoint.hxx>
 #include <IntSurf_InteriorPointTool.hxx>
@@ -435,7 +437,6 @@
 #include <LocalAnalysis_SurfaceContinuity.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_BaseAllocator.hxx>
-#include <NCollection_BaseList.hxx>
 #include <NLPlate_HGPPConstraint.hxx>
 #include <NLPlate_HPG0Constraint.hxx>
 #include <NLPlate_HPG0G1Constraint.hxx>
@@ -466,6 +467,7 @@
 #include <Standard_DomainError.hxx>
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
+#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
@@ -506,7 +508,6 @@
 #include <TopAbs_State.hxx>
 #include <TopTrans_CurveTransition.hxx>
 #include <TopTrans_SurfaceTransition.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax22d.hxx>
 #include <gp_Circ.hxx>

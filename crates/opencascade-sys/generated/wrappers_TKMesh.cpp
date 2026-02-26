@@ -55,6 +55,7 @@
 #include <BRepMesh_UVParamRangeSplitter.hxx>
 #include <BRepMesh_UndefinedRangeSplitter.hxx>
 #include <BRepMesh_VertexTool.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Geom2d_Curve.hxx>
 #include <GeomAbs_IsoType.hxx>
@@ -105,7 +106,6 @@
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Circ2d.hxx>
 #include <gp_Dir.hxx>
 #include <gp_XY.hxx>

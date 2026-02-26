@@ -5475,3 +5475,582 @@ The 10.9× page fault difference confirms the core problem with the monolithic f
 So contrary to the earlier concern, splitting the Rust FFI files into per-toolkit modules provides real, measurable benefits — primarily a **3× faster Rust compilation phase**.
 
 Made changes.
+
+User: Think about whether you discovered worthwhile refactoring opportunities during this session. If so, implement the refactors and commit.
+
+GitHub Copilot: 
+
+Let me first check the current state of the repo and review what the measurement subagent may have left behind. 
+
+Ran terminal command:  git status --short && echo "---" && git diff --stat
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code%20-%20Insiders/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/f6f3958f-eacf-4e2b-bcc9-0bfe7af90b62/toolu_vrtx_01PFA7ufJc6pbumLRxf3tcEr__vscode-1772068645411/content.txt#1-1), lines 1 to 30
+
+The measurement subagent left the repo in a mess. Let me see the full extent and fix it first. 
+
+Ran terminal command:  git status --short | wc -l && echo "---" && git status --short | grep -v "^?" | grep -v "tmp/" | head -5 && echo "..." && git status --short | grep "^ M" | head -20
+
+Ran terminal command:  git diff crates/opencascade-sys/manual/standard.rs
+
+The subagent left the generated files in a bad state. Let me restore them and then think about refactoring. 
+
+Ran terminal command:  git checkout -- crates/opencascade-sys/generated/ && git status --short | grep -v "^?" | grep -v "tmp/" | wc -l
+
+User: Oops, that was my fault - I was regenerating the bindings while you were looking at the state. I'm done now, and the repo is clean. However, I've noticed that the cpp files seem to have nondeterministic header ordering - fix that by emitting #includes in alphabetical order. Then do your refactor and commit.
+
+GitHub Copilot: 
+
+ 
+
+Created 7 todos
+
+Ran terminal command:  git status --short | grep -v "^?" | wc -l && echo "---" && git log --oneline -3
+
+Starting: *Find C++ #include generation code* (2/7)
+
+Search complete: Find C++ include generation code
+
+Searched for files matching `**/crates/opencascade-binding-generator/src/codegen/**`, 5 matches
+
+Searched for regex `#include|include` (`**/crates/opencascade-binding-generator/src/codegen/cpp.rs`), 34 results
+
+Searched for files matching `**/*.cpp`, 137 matches
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code%20-%20Insiders/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/f6f3958f-eacf-4e2b-bcc9-0bfe7af90b62/toolu_vrtx_01J8Ppq4TXxfruj1bwhmUmcH__vscode-1772068645419/content.txt#1-1), lines 1 to 80
+
+Now let me look at the main.rs where the cpp files are actually written, and also the cpp.rs codegen to understand all the places where headers are collected and emitted. 
+
+Searched for regex `#include|headers|include_set|collect_headers` (`**/crates/opencascade-binding-generator/src/main.rs`), 20 results
+
+Now let me find where the C++ files are actually generated with their #include statements - likely in main.rs somewhere around the cpp split generation: 
+
+Searched for regex `fn generate|fn emit|fn write.*cpp|include_set|headers_for|HashSet.*String.*headers` (`**/crates/opencascade-binding-generator/src/codegen/cpp.rs`), 6 results
+
+Updated todo list
+
+Let me read the key functions in cpp.rs - `generate_wrappers`, `generate_preamble`, and `generate_wrappers_for_group`: 
+
+Reading lines 631-810 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L631-L811)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 631,
+  "endLine": 810
+}
+
+Now let me read `generate_preamble` and `generate_wrappers_for_group`: 
+
+Reading lines 812-1030 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L812-L1031)
+Completed with input: {
+  "endLine": 1030,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 812
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code%20-%20Insiders/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/f6f3958f-eacf-4e2b-bcc9-0bfe7af90b62/toolu_vrtx_01H2wXfNkk2RwxTP4cmUQKLb__vscode-1772068645429/content.txt)
+
+Reading lines 1030-1100 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L1030-L1101)
+Completed with input: {
+  "endLine": 1100,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 1030
+}
+
+Now I see the structure. The issue is in `collect_all_required_headers` — it uses a `HashSet` and then converts to `Vec`, but the conversion order is nondeterministic. Let me check: the callers sort afterwards in some places. Let me trace through:
+
+1. `generate_wrappers` (line 650): calls `collect_all_required_headers`, then `headers.sort()` at line 671 — **sorted, OK**
+2. `generate_wrappers_for_group` (line 956): calls `collect_all_required_headers`, then `headers.sort()` at line 1010 — **sorted, OK**
+
+But there are other functions that collect headers. Let me check if `collect_all_required_headers` itself returns in nondeterministic order and whether the `extend_unique_headers` function preserves ordering: 
+
+Reading lines 1-167 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L1-L168)
+Completed with input: {
+  "endLine": 167,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 1
+}
+
+Now let me look at the `extend_unique_headers` function: 
+
+Searched for regex `fn extend_unique_headers` (`**/crates/opencascade-binding-generator/src/codegen/cpp.rs`), 1 result
+
+Reading lines 554-582 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L554-L583)
+Completed with input: {
+  "endLine": 582,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 554
+}
+
+I see the issue. Looking at `collect_all_required_headers` (line 1066): 
+
+Reading lines 1066-1130 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L1066-L1131)
+Completed with input: {
+  "endLine": 1130,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 1066
+}
+
+OK, so `collect_all_required_headers` already sorts. And `collect_function_required_headers_refs` already sorts. And both callers (`generate_wrappers` and `generate_wrappers_for_group`) also sort. So the Rust code seems to sort in all the right places.
+
+But wait — `collect_headers_from_bindings` at line 168 also collects and sorts. Let me verify the other header collection functions return sorted too:  
+
+Searched for regex `result\.sort|headers\.sort` (`**/crates/opencascade-binding-generator/src/codegen/cpp.rs`), 9 results
+
+The Rust headers all seem sorted. Let me actually look at a generated cpp file to see the nondeterminism the user noticed:  
+
+Ran terminal command:  grep "^#include" crates/opencascade-sys/generated/wrappers_TKMath.cpp | head -30
+
+That looks sorted. Let me check if the nondeterminism comes from the preamble or maybe check collection headers:  
+
+Ran terminal command:  grep "^#include" crates/opencascade-sys/generated/occt_preamble.hxx
+
+Wait, the standard headers are out of order in the preamble:
+```
+#include <cstdint>
+#include <new>
+#include <typeinfo>
+#include <cstring>
+#include <string>
+```
+
+These are hardcoded in `generate_preamble` at lines 822-826 and are NOT alphabetically sorted. And:
+
+```
+#include <cxxabi.h>
+```
+
+appears inline in the boilerplate at line 833 (after the OCCT headers should come from the template section, which are sorted at line 899). Then at the end we see `<memory>` and `<utility>` which come from sorted template headers.
+
+So the preamble has: hardcoded standard headers (not sorted) → cxxabi.h (in boilerplate) → template headers (sorted). Let me also check if there's nondeterminism in some of the per-toolkit cpp files. Let me regenerate twice and compare: 
+
+Ran terminal command:  cp crates/opencascade-sys/generated/wrappers_TKGeomBase.cpp tmp/wrappers_TKGeomBase_1.cpp && time scripts/regenerate-bindings.sh 2>&1 | grep -E "^(Generating|Writing|Error|warning)" | wc -l
+
+Ran terminal command:  diff tmp/wrappers_TKGeomBase_1.cpp crates/opencascade-sys/generated/wrappers_TKGeomBase.cpp | head -40
+Completed with input:  diff tmp/wrappers_TKGeomBase_1.cpp crates/opencascade-sys/generated/wrappers_TKGeomBase.cpp | head -40
+
+The file is huge. Let me use a faster approach:  
+
+Ran terminal command:  diff <(grep "^#include" tmp/wrappers_TKGeomBase_1.cpp) <(grep "^#include" crates/opencascade-sys/generated/wrappers_TKGeomBase.cpp)
+Completed with input:  diff <(grep "^#include" tmp/wrappers_TKGeomBase_1.cpp) <(grep "^#include" crates/opencascade-sys/generated/wrappers_TKGeomBase.cpp)
+
+There it is — nondeterministic output across runs. The differences are in headers resolved by the `batch_find_defining_headers` function and `collect_headers_from_bindings`. Let me check all files for nondeterminism:  
+
+Ran terminal command:  git diff --stat -- crates/opencascade-sys/generated/*.cpp crates/opencascade-sys/generated/*.hxx 2>/dev/null | tail -3
+
+27 files changed! Significant nondeterminism. Let me also check the .rs files:   
+
+Ran terminal command:  git diff --stat -- crates/opencascade-sys/generated/*.rs 2>/dev/null | tail -3
+
+Ran terminal command:  git diff --stat -- crates/opencascade-sys/generated/*.rs 2>/dev/null | grep -v "ffi_types\|ffi_extern_misc" | tail -5
+
+Whoa, there's massive nondeterminism in the .rs files too. Let me restore and look at this more carefully. The ffi_types.rs shrank by 34K lines... that suggests the issue is more fundamental than just header ordering. Let me check what kinds of things differ:   
+
+Ran terminal command:  git diff -- crates/opencascade-sys/generated/ffi_extern_misc.rs | head -60
+
+That's just formatting differences (multiline vs single line). Let me check if rustfmt is the issue — it ran on different formatting. Let me look at the ffi_types.rs diff more specifically to understand the 34K line shrinkage:    
+
+Ran terminal command:  wc -l crates/opencascade-sys/generated/ffi_types.rs && git show HEAD:crates/opencascade-sys/generated/ffi_types.rs | wc -l
+
+17K lines fewer. This is probably from a bindings.toml change, not nondeterminism. Let me restore everything since we need to understand the committed state first:     
+
+Ran terminal command:  git checkout -- crates/opencascade-sys/generated/ && git status --short | grep -v "^?" | wc -l
+
+OK, the user mentioned they were regenerating bindings. Those changes may have come from their changes. Let me focus on the actual problem: cpp #include nondeterminism. The issue is in `batch_find_defining_headers` — when scanning OCCT headers to find which header defines an unresolved type, the scan order depends on directory traversal which is nondeterministic. Let me find that function:    
+
+Searched for regex `fn batch_find_defining_headers` (`**/crates/opencascade-binding-generator/src/codegen/cpp.rs`), 1 result
+
+Reading lines 274-400 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L274-L401)
+Completed with input: {
+  "endLine": 400,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 274
+}
+
+Found it. Both `batch_find_defining_headers` (line 292) and `find_defining_header` (line 365) iterate over `known_headers` which is a `HashSet<String>` — iteration order is nondeterministic. When the search finds a type in the first matching header it encounters, the result depends on iteration order.
+
+The fix: iterate over headers in sorted order. Let me also check if `collect_template_arg_headers` has the same issue:  
+
+Reading lines 222-270 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L222-L271)
+Completed with input: {
+  "endLine": 270,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 222
+}
+
+`collect_template_arg_headers` calls `find_defining_header`, which also iterates over `HashSet` nondeterministically.
+
+Now let me also look at what other places iterate `known_headers` nondeterministically. The key fix is to sort `known_headers` before iteration in the search functions. Let me now also check `collect_type_headers`:   
+
+Reading lines 400-458 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L400-L459)
+Completed with input: {
+  "endLine": 458,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 400
+}
+
+OK. `collect_type_headers` only does `known_headers.contains()` lookups (not iteration), so it's deterministic. The nondeterminism is in the two functions that **iterate** over `known_headers`:
+1. `batch_find_defining_headers` (lines 292, 326)
+2. `find_defining_header` (line 365)
+
+The fix is simple: sort `known_headers` into a `Vec` before iterating.    
+
+Starting: *Fix nondeterministic include ordering* (3/7)
+
+Now let me also think about potential refactoring opportunities. Let me look at the overall structure of cpp.rs and rust.rs for duplicated patterns:    
+
+Find refactoring opportunities in codegen
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#1-1), lines 1 to 50
+
+Searched for regex `fn generate_wrappers\(` (`**/crates/opencascade-binding-generator/src/**`), 1 result
+
+Searched for regex `fn generate_function_wrappers` (`**/crates/opencascade-binding-generator/src/**`), 2 results
+
+Searched for text `generate_wrappers\(\)` (`**/crates/opencascade-binding-generator/src/main.rs`), no results
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#631-631), lines 631 to 720
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#919-919), lines 919 to 1000
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#459-459), lines 459 to 580
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#583-583), lines 583 to 630
+
+Searched for regex `fn generate_preamble|fn collect_all_required_headers|fn collect_handle_types_from_bindings|fn collect_headers_from_bindings` (`**/crates/opencascade-binding-generator/src/codegen/cpp.rs`), 4 results
+
+Searched for regex `generate_wrappers|generate_preamble|generate_wrappers_for_group` (`**/crates/opencascade-binding-generator/src/main.rs`), 3 results
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#812-812), lines 812 to 920
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#1040-1040), lines 1040 to 1200
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#1000-1000), lines 1000 to 1100
+
+Searched for regex `fn.*duplicate|fn.*_refs\(|fn generate_.*_group|fn generate_modules` (`**/crates/opencascade-binding-generator/src/codegen/rust.rs`), no results
+
+Searched for regex `pub fn generate|fn generate_module|fn collect.*headers` (`**/crates/opencascade-binding-generator/src/codegen/rust.rs`), 2 results
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#1-1), lines 1 to 50
+
+Searched for regex `^fn |^pub fn ` (`**/crates/opencascade-binding-generator/src/codegen/cpp.rs`), 18 results
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#459-459), lines 459 to 530
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#583-583), lines 583 to 630
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#631-631), lines 631 to 810
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#532-532), lines 532 to 580
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#1066-1066), lines 1066 to 1112
+
+Read memory [](file:///Users/sethml/Library/Application%20Support/Code%20-%20Insiders/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/memory-tool/memories/ZjZmMzk1OGYtZWFjZi00ZTJiLWJjYzktMGJmZTdhZjkwYjYy)
+
+Updated memory file [](file:///Users/sethml/Library/Application%20Support/Code%20-%20Insiders/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/memory-tool/memories/ZjZmMzk1OGYtZWFjZi00ZTJiLWJjYzktMGJmZTdhZjkwYjYy/binding-split-analysis.md)
+
+Read memory [](file:///Users/sethml/Library/Application%20Support/Code%20-%20Insiders/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/memory-tool/memories/ZjZmMzk1OGYtZWFjZi00ZTJiLWJjYzktMGJmZTdhZjkwYjYy/binding-split-analysis.md)
+
+Good findings. Now let me also check whether the monolithic `generate_wrappers()` is still needed, or if we can remove it since the previous session removed monolithic **Rust** generation:     
+
+Searched for regex `generate_wrappers[^_]|cpp_split` (`**/crates/opencascade-binding-generator/src/main.rs`), 2 results
+
+Reading lines 1040-1230 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L1040-L1231)
+Completed with input: {
+  "endLine": 1230,
+  "filePath": "crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 1040
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code%20-%20Insiders/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/f6f3958f-eacf-4e2b-bcc9-0bfe7af90b62/toolu_vrtx_01G1G16URBVmQKDjLmwcmbYj__vscode-1772068645481/content.txt)
+
+I see — the monolithic `generate_wrappers()` (line 1189) is still called when `cpp_split` is not `"toolkit"`. In the previous session, only Rust FFI generation was forced to always-split. C++ still has a monolithic fallback. 
+
+Now, let me also check what happens with the `collect_collection_headers` function since it was also used:      
+
+Searched for regex `fn collect_collection_headers` (`**/crates/opencascade-binding-generator/src/codegen/collections.rs`), 1 result
+
+Reading lines 1197-1230 of [collections.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/collections.rs#L1197-L1231)
+Completed with input: {
+  "endLine": 1230,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/collections.rs",
+  "startLine": 1197
+}
+
+`collect_collection_headers` also sorts. OK.
+
+Now I have a clear plan. Let me implement both fixes:
+
+1. **Fix nondeterministic headers**: Sort `known_headers` before iterating in `batch_find_defining_headers` and `find_defining_header`
+2. **Refactor: Deduplicate function wrapper/header pairs**: Merge `generate_function_wrappers`/`_refs` and `collect_function_required_headers`/`_refs`
+3. **Refactor: Extract exception handling boilerplate** shared between `generate_wrappers` and `generate_preamble`
+4. **Optionally**: Remove monolithic `generate_wrappers()` if we want to follow the pattern set when monolithic Rust generation was removed
+
+Let me start implementing. First, the nondeterminism fix:       
+
+Reading lines 459-560 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L459-L561)
+Completed with input: {
+  "endLine": 560,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 459
+}
+
+Now let me implement all the changes. I'll:
+
+1. Fix `batch_find_defining_headers` and `find_defining_header` to sort `known_headers` before iterating
+2. Merge `generate_function_wrappers` + `_refs` into one generic function using `Borrow<FunctionBinding>` 
+3. Merge `collect_function_required_headers` + `_refs` similarly
+4. Extract shared exception handling boilerplate      
+
+Edited: [cpp.rs -77+80](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L274-L354), [-46+49](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L355-L404)
+Completed with input: {
+  "edits": [
+    {
+      "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+      "lineHashes": "274:tj,275:va,276:as,277:ai,278:uo,279:ho,280:pd,281:tu,282:ah,283:ax,284:qk,285:fr,286:da,287:bk,288:pa,289:lb,290:ax,291:ca,292:zq,293:gv,294:zx,295:cy,296:xh,297:wr,298:zu,299:aa,300:ih,301:mt,302:ho,303:zr,304:cy,305:hf,306:sj,307:pb,308:iw,309:li,310:mb,311:to,312:fz,313:ys,314:pd,315:dp,316:qf,317:mf,318:or,319:pa,320:gl,321:uo,322:cy,323:ax,324:vv,325:xh,326:rp,327:ea,328:xp,329:uo,330:ja,331:kr,332:dc,333:mo,334:bd,335:uf,336:sq,337:fs,338:kt,339:li,340:fj,341:ew,342:qf,343:mf,344:pj,345:or,346:gl,347:uo,348:cy,349:ax,350:io",
+      "content": "fn batch_find_defining_headers(\n    type_names: &HashSet<String>,\n    include_dir: &Path,\n    known_headers: &HashSet<String>,\n    headers: &mut HashSet<String>,\n) {\n    use std::io::BufRead;\n    if type_names.is_empty() {\n        return;\n    }\n    let mut remaining: HashSet<&str> = type_names.iter().map(|s| s.as_str()).collect();\n    // Group type names by module prefix for prioritized search\n    let mut prefix_types: std::collections::HashMap<&str, Vec<&str>> = std::collections::HashMap::new();\n    for name in &remaining {\n        let prefix = name.split('_').next().unwrap_or(\"\");\n        prefix_types.entry(prefix).or_default().push(name);\n    }\n    // Sort headers for deterministic iteration order\n    let mut sorted_known: Vec<&String> = known_headers.iter().collect();\n    sorted_known.sort();\n    // Pass 1: Search headers matching module prefix\n    for header_name in &sorted_known {\n        if remaining.is_empty() {\n            break;\n        }\n        let header_prefix = header_name.split('_').next().unwrap_or(\"\");\n        // Only check if any remaining type has this prefix\n        let relevant_types: Vec<&str> = prefix_types\n            .get(header_prefix)\n            .map(|v| v.iter().copied().filter(|t| remaining.contains(t)).collect())\n            .unwrap_or_default();\n        if relevant_types.is_empty() {\n            continue;\n        }\n        let path = include_dir.join(header_name.as_str());\n        if let Ok(file) = std::fs::File::open(&path) {\n            let reader = std::io::BufReader::new(file);\n            let mut prev_had_typedef = false;\n            for line in reader.lines() {\n                if let Ok(line) = line {\n                    for &type_name in &relevant_types {\n                        if remaining.contains(type_name) && line.contains(type_name) {\n                            if line.contains(\"typedef\") || line.contains(\"enum \") || prev_had_typedef {\n                                headers.insert((*header_name).clone());\n                                remaining.remove(type_name);\n                            }\n                        }\n                    }\n                    prev_had_typedef = line.contains(\"typedef\") && !line.contains(';');\n                }\n            }\n        }\n    }\n    // Pass 2: Search ALL headers for any still-unresolved types\n    if !remaining.is_empty() {\n        for header_name in &sorted_known {\n            if remaining.is_empty() {\n                break;\n            }\n            let path = include_dir.join(header_name.as_str());\n            if let Ok(file) = std::fs::File::open(&path) {\n                let reader = std::io::BufReader::new(file);\n                let mut prev_had_typedef = false;\n                for line in reader.lines() {\n                    if let Ok(line) = line {\n                        for type_name in remaining.iter().copied().collect::<Vec<_>>() {\n                            if line.contains(type_name) {\n                                if line.contains(\"typedef\") || line.contains(\"enum \") || prev_had_typedef {\n                                    headers.insert((*header_name).clone());\n                                    remaining.remove(type_name);\n                                }\n                            }\n                        }\n                        prev_had_typedef = line.contains(\"typedef\") && !line.contains(';');\n                    }\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+      "lineHashes": "352:pn,353:zo,354:wp,355:jm,356:ma,357:ix,358:ai,359:an,360:pd,361:je,362:dr,363:dd,364:lz,365:rp,366:ub,367:fq,368:uo,369:kp,370:fq,371:uo,372:ja,373:kr,374:dc,375:mo,376:bd,377:uf,378:hs,379:em,380:ys,381:gj,382:rk,383:wv,384:ew,385:un,386:ae,387:ew,388:qf,389:mf,390:pj,391:or,392:gl,393:uo,394:cy,395:ax,396:mm,397:io",
+      "content": "/// Search OCCT headers to find which .hxx file defines a given type name.\n/// Looks for typedef/enum declarations containing the type name.\n/// Prefers file-scope definitions (non-indented) over class-scope ones.\nfn find_defining_header(\n    type_name: &str,\n    include_dir: &std::path::Path,\n    known_headers: &HashSet<String>,\n) -> Option<String> {\n    use std::io::BufRead;\n    let module_prefix = type_name.split('_').next().unwrap_or(\"\");\n    let mut class_scope_match: Option<String> = None;\n    // Sort headers for deterministic iteration order\n    let mut sorted_known: Vec<&String> = known_headers.iter().collect();\n    sorted_known.sort();\n\n    for pass in 0..2 {\n        for header_name in &sorted_known {\n            if pass == 0 && !header_name.starts_with(module_prefix) {\n                continue;\n            }\n            if pass == 1 && header_name.starts_with(module_prefix) {\n                continue;\n            }\n            let path = include_dir.join(header_name.as_str());\n            if let Ok(file) = std::fs::File::open(&path) {\n                let reader = std::io::BufReader::new(file);\n                let mut prev_had_typedef = false;\n                for line in reader.lines() {\n                    if let Ok(line) = line {\n                        let has_type_name = line.contains(type_name);\n                        if has_type_name {\n                            if line.contains(\"typedef\") || line.contains(\"enum \") || prev_had_typedef {\n                                // Prefer file-scope definitions (non-indented)\n                                if !line.starts_with(' ') && !line.starts_with('\\t') {\n                                    return Some((*header_name).clone());\n                                }\n                                if class_scope_match.is_none() {\n                                    class_scope_match = Some((*header_name).clone());\n                                }\n                            }\n                        }\n                        prev_had_typedef = line.contains(\"typedef\") && !line.contains(';');\n                    }\n                }\n            }\n        }\n    }\n    class_scope_match\n}"
+    }
+  ]
+}
+
+Now let me merge the duplicated functions. First, let me re-read the current state of the function pairs:       
+
+Reading lines 459-640 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L459-L641)
+Completed with input: {
+  "endLine": 640,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 459
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code%20-%20Insiders/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/f6f3958f-eacf-4e2b-bcc9-0bfe7af90b62/toolu_vrtx_01LQz2ZZ4JTuf8EaTVxShasc__vscode-1772068645487/content.txt)
+
+Now I'll replace all four duplicated functions with two generic ones using `Borrow`:        
+
+Edited: [cpp.rs -172+106](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L464-L570)
+Completed with input: {
+  "edits": [
+    {
+      "content": "/// Generate wrappers for namespace-level free functions from pre-computed FunctionBindings.\n/// Accepts both `&[FunctionBinding]` and `&[&FunctionBinding]` via `Borrow`.\nfn generate_function_wrappers<T: std::borrow::Borrow<super::bindings::FunctionBinding>>(\n    output: &mut String,\n    function_bindings: &[T],\n) {\n    if function_bindings.is_empty() {\n        return;\n    }\n\n    // Group functions by namespace\n    let mut by_namespace: std::collections::HashMap<&str, Vec<&super::bindings::FunctionBinding>> =\n        std::collections::HashMap::new();\n    for func in function_bindings {\n        let func = func.borrow();\n        by_namespace\n            .entry(&func.namespace)\n            .or_default()\n            .push(func);\n    }\n\n    let mut namespaces: Vec<&&str> = by_namespace.keys().collect();\n    namespaces.sort();\n\n    for namespace in namespaces {\n        let namespace_functions = &by_namespace[namespace];\n\n        writeln!(output, \"// ========================\").unwrap();\n        writeln!(output, \"// {} namespace functions\", namespace).unwrap();\n        writeln!(output, \"// ========================\").unwrap();\n\n        for func in namespace_functions {\n            let wrapper_name = &func.cpp_wrapper_name;\n\n            // Build param declarations from pre-computed cpp_type\n            let params_cpp: Vec<String> = func.params.iter()\n                .map(|p| format!(\"{} {}\", p.cpp_type, p.cpp_name))\n                .collect();\n            let params_str = params_cpp.join(\", \");\n\n            // Build argument expressions from pre-computed cpp_arg_expr\n            let args: Vec<String> = func.params.iter()\n                .map(|p| p.cpp_arg_expr.clone())\n                .collect();\n            let args_str = args.join(\", \");\n\n            let call = format!(\"{}::{}({})\", namespace, func.short_name, args_str);\n\n            // Determine return pattern from pre-computed return type binding\n            if let Some(ref rt) = func.return_type {\n                let ret_type_cpp = rt.ffi_cpp_return_type();\n                let expr = rt.format_cpp_return_expr(&call);\n                writeln!(\n                    output,\n                    \"extern \\\"C\\\" OcctResult<{}> {}({}) {{\",\n                    ret_type_cpp, wrapper_name, params_str\n                ).unwrap();\n                writeln!(output, \"    try {{ return {{{}, nullptr}}; }}\", expr).unwrap();\n                writeln!(output, \"    OCCT_CATCH_RETURN\").unwrap();\n                writeln!(output, \"}}\").unwrap();\n            } else {\n                writeln!(\n                    output,\n                    \"extern \\\"C\\\" const char* {}({}) {{\",\n                    wrapper_name, params_str\n                ).unwrap();\n                writeln!(output, \"    try {{ {}; return nullptr; }}\", call).unwrap();\n                writeln!(output, \"    OCCT_CATCH_RETURN_VOID\").unwrap();\n                writeln!(output, \"}}\").unwrap();\n            }\n\n        }\n        writeln!(output).unwrap();\n    }\n}\n\nfn collect_function_required_headers<T: std::borrow::Borrow<super::bindings::FunctionBinding>>(\n    function_bindings: &[T],\n    known_headers: &HashSet<String>,\n) -> Vec<String> {\n    let mut headers = HashSet::new();\n\n    for func in function_bindings {\n        let func = func.borrow();\n        let ns_header = format!(\"{}.hxx\", func.namespace);\n        if known_headers.is_empty() || known_headers.contains(&ns_header) {\n            headers.insert(ns_header);\n        }\n\n        for header in &func.cpp_headers {\n            headers.insert(header.clone());\n        }\n    }\n\n    let mut result: Vec<_> = headers.into_iter().collect();\n    result.sort();\n    result\n}\n\nfn extend_unique_headers(headers: &mut Vec<String>, additional_headers: impl IntoIterator<Item = String>) {\n    for header in additional_headers {\n        if !headers.contains(&header) {\n            headers.push(header);\n        }\n    }\n}",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+      "lineHashes": "464:jk,465:qb,466:xa,467:cn,468:ho,469:jp,470:ah,471:ax,472:dd,473:bk,474:pd,475:tg,476:hk,477:eo,478:pw,479:zd,480:hu,481:ax,482:dd,483:ok,484:zs,485:dd,486:pz,487:zi,488:dd,489:av,490:xe,491:av,492:dd,493:bl,494:er,495:dd,496:sb,497:xh,498:am,499:zu,500:pz,501:dd,502:ao,503:ya,504:sp,505:zu,506:pr,507:dd,508:cn,509:dd,510:gm,511:iv,512:mr,513:en,514:tw,515:qh,516:rp,517:wb,518:tn,519:mx,520:cw,521:at,522:ud,523:tw,524:qh,525:oq,526:ab,527:tn,528:ki,529:xm,530:at,531:uo,532:dd,533:cy,534:kh,535:ax,536:io,537:dd,538:dj,539:cn,540:ai,541:jy,542:pe,543:dd,544:hk,545:rw,546:lb,547:xh,548:cy,549:dd,550:fx,551:fz,552:cy,553:ax,554:dd,555:vt,556:cl,557:ya,558:io,559:dd,560:mx,561:vr,562:bi,563:os,564:cy,565:ax,566:io,567:dd,568:ag,569:oy,570:gf,571:ai,572:jy,573:pe,574:hk,575:rw,576:lb,577:xh,578:cy,579:fx,580:fz,581:cy,582:ax,583:vt,584:cl,585:ya,586:io,587:dd,588:ze,589:tf,590:xa,591:gf,592:ho,593:jp,594:ah,595:ax,596:bp,597:tg,598:hk,599:kn,600:ax,601:ok,602:zs,603:pz,604:zi,605:av,606:xe,607:av,608:bl,609:er,610:xh,611:am,612:zu,613:pz,614:ya,615:sp,616:zu,617:pr,618:cn,619:iv,620:mr,621:en,622:nw,623:mx,624:cw,625:at,626:ud,627:kq,628:ki,629:xm,630:at,631:uo,632:cy,633:kh,634:ax,635:io"
+    }
+  ]
+}
+
+Now I need to update callers that used the old `_refs` variants. Let me find them:          
+
+Searched for regex `generate_function_wrappers_refs|collect_function_required_headers_refs` (`**/crates/opencascade-binding-generator/src/codegen/cpp.rs`), 2 results
+
+Reading lines 893-906 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L893-L907)
+Completed with input: {
+  "endLine": 906,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 893
+}
+
+Reading lines 977-990 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L977-L991)
+Completed with input: {
+  "endLine": 990,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 977
+}
+
+Edited: [cpp.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L899-L900), [-3+2](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L982-L984)
+Completed with input: {
+  "edits": [
+    {
+      "content": "        collect_function_required_headers(function_bindings, known_headers),",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+      "lineHashes": "899:cw"
+    },
+    {
+      "content": "    // Free function wrappers\n    generate_function_wrappers(&mut output, function_bindings);",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+      "lineHashes": "982:fe,983:kt,984:pm"
+    }
+  ]
+}
+
+Now let me extract the shared exception handling boilerplate. Let me re-read the current state of `generate_wrappers` and `generate_preamble`:          
+
+Reading lines 569-680 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L569-L681)
+Completed with input: {
+  "endLine": 680,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 569
+}
+
+Let me also re-read the identical block in `generate_preamble`:            
+
+Reading lines 750-825 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L750-L826)
+Completed with input: {
+  "endLine": 825,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 750
+}
+
+The exception handling block is identical from lines 621-673 and 768-820. Let me extract it into a constant or function:             
+
+Edited: [cpp.rs -55+3](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L619-L622), [-53+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L716-L717)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    // Exception handling: OcctResult<T> template with null-terminated exc string.\n    // Non-void wrappers return OcctResult<T>, void wrappers return const char*.\n    output.push_str(&generate_exception_handling_boilerplate());",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+      "lineHashes": "619:lw,620:us,621:hc,622:dg,623:pr,624:dg,625:dd,626:zm,627:dd,628:ex,629:jb,630:pw,631:lo,632:vv,633:dd,634:pp,635:ry,636:lo,637:vv,638:dd,639:sc,640:dd,641:fb,642:jw,643:cz,644:cb,645:pn,646:dg,647:di,648:ro,649:ag,650:qx,651:ro,652:cy,653:ui,654:cz,655:ax,656:mg,657:rd,658:cs,659:ax,660:vs,661:io,662:dd,663:tc,664:ib,665:ez,666:sz,667:dd,668:es,669:kf,670:yy,671:kq,672:dd,673:wr"
+    },
+    {
+      "content": "    output.push_str(&generate_exception_handling_boilerplate());",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+      "lineHashes": "768:hc,769:dg,770:pr,771:dg,772:dd,773:zm,774:dd,775:ex,776:jb,777:pw,778:lo,779:vv,780:dd,781:pp,782:ry,783:lo,784:vv,785:dd,786:sc,787:dd,788:fb,789:jw,790:cz,791:cb,792:pn,793:dg,794:di,795:ro,796:ag,797:qx,798:ro,799:cy,800:ui,801:cz,802:ax,803:mg,804:rd,805:cs,806:ax,807:vs,808:io,809:dd,810:tc,811:ib,812:ez,813:sz,814:dd,815:es,816:kf,817:yy,818:kq,819:dd,820:wr"
+    }
+  ]
+}
+
+Now I need to add the `generate_exception_handling_boilerplate` function. Let me find a good place to put it - after the imports at the top:              
+
+Reading lines 10-20 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L10-L21)
+Completed with input: {
+  "endLine": 20,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 10
+}
+
+Edited: [cpp.rs -6+64](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L11-L75)
+Completed with input: {
+  "edits": [
+    {
+      "content": "use crate::model::{ParsedClass, Type};\nuse crate::resolver::SymbolTable;\nuse std::collections::HashSet;\nuse std::fmt::Write;\nuse std::path::Path;\n\n/// Generate the shared C++ exception handling boilerplate.\n/// This includes the OcctResult<T> template, occt_make_exception helper,\n/// and OCCT_CATCH_RETURN / OCCT_CATCH_RETURN_VOID macros.\nfn generate_exception_handling_boilerplate() -> &'static str {\n    r#\"\n// ========================\n// Exception handling\n// ========================\n\n#include <cxxabi.h>\n\ntemplate<typename T>\nstruct OcctResult {\n    T ret;\n    const char* exc;\n};\n\ntemplate<>\nstruct OcctResult<void> {\n    const char* exc;\n};\n\nextern \"C\" const char* occt_alloc_exception(const char* ptr, size_t len);\n\nstatic const char* occt_make_exception(const char* type_name, const char* message) {\n    std::string combined;\n    if (type_name) {\n        int status = 0;\n        char* demangled = abi::__cxa_demangle(type_name, nullptr, nullptr, &status);\n        if (status == 0 && demangled) {\n            combined = demangled;\n            std::free(demangled);\n        } else {\n            combined = type_name;\n            std::free(demangled);\n        }\n    } else {\n        combined = \"<unknown>\";\n    }\n    if (message && message[0] != '\\0') {\n        combined += \": \";\n        combined += message;\n    }\n    return occt_alloc_exception(combined.data(), combined.size());\n}\n\n#define OCCT_CATCH_RETURN \\\n    catch (const Standard_Failure& e) { return {{}, occt_make_exception(typeid(e).name(), e.GetMessageString())}; } \\\n    catch (const std::exception& e) { return {{}, occt_make_exception(typeid(e).name(), e.what())}; } \\\n    catch (...) { return {{}, occt_make_exception(nullptr, \"unknown C++ exception\")}; }\n\n#define OCCT_CATCH_RETURN_VOID \\\n    catch (const Standard_Failure& e) { return occt_make_exception(typeid(e).name(), e.GetMessageString()); } \\\n    catch (const std::exception& e) { return occt_make_exception(typeid(e).name(), e.what()); } \\\n    catch (...) { return occt_make_exception(nullptr, \"unknown C++ exception\"); }\n\n\"#\n}",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+      "lineHashes": "11:ye,12:ut,13:xe,14:ac,15:az,16:dd"
+    }
+  ]
+}
+
+Now let me also fix the `generate_preamble` standard header order. Let me re-read its current state:                
+
+Reading lines 700-730 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L700-L731)
+Completed with input: {
+  "endLine": 730,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 700
+}
+
+Reading lines 750-770 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L750-L771)
+Completed with input: {
+  "endLine": 770,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 750
+}
+
+Reading lines 768-785 of [cpp.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L768-L786)
+Completed with input: {
+  "endLine": 785,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+  "startLine": 768
+}
+
+The standard headers in the preamble (`cstdint`, `new`, `typeinfo`, `cstring`, `string`) are hardcoded in non-alphabetical order. But since `cxxabi.h` is now inside the boilerplate function, and `string` is needed for the boilerplate's `std::string combined`, these are actually correct but just out of order. Let me fix them to be alphabetical:                   
+
+Edited: [cpp.rs -5+5](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/cpp.rs#L768-L773)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    writeln!(output, \"#include <cstdint>\").unwrap();\n    writeln!(output, \"#include <cstring>\").unwrap();\n    writeln!(output, \"#include <new>\").unwrap();\n    writeln!(output, \"#include <string>\").unwrap();\n    writeln!(output, \"#include <typeinfo>\").unwrap();",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/cpp.rs",
+      "lineHashes": "768:ar,769:zl,770:tk,771:ti,772:ue"
+    }
+  ]
+}
+
+Now let me build the binding generator to check for compilation errors:                  
+
+Ran terminal command:  time cargo build -p opencascade-binding-generator 2>&1
+
+Starting: *Regenerate, build, test* (6/7)
+
+Now regenerate bindings and do a full build:                      
+
+Ran terminal command:  time scripts/regenerate-bindings.sh 2>&1
+
+Ran terminal command:  echo "Exit: $?"
+
+Now verify the preamble has sorted includes:                        
+
+Ran terminal command:  grep "^#include" crates/opencascade-sys/generated/occt_preamble.hxx
+
+Standard headers are now sorted (`cstdint`, `cstring`, `new`, `string`, `typeinfo`), template-arg headers are sorted, and `cxxabi.h` is inside the boilerplate block. Now let me verify determinism by regenerating again and comparing:                           
+
+Ran terminal command:  for f in crates/opencascade-sys/generated/wrappers_TK*.cpp; do cp "$f" "tmp/$(basename "$f" .cpp)_run1.cpp"; done && echo "Saved run 1"
+
+Ran terminal command:  cp crates/opencascade-sys/generated/occt_preamble.hxx tmp/occt_preamble_run1.hxx && time scripts/regenerate-bindings.sh 2>&1 | grep -E "^(Error|warning)" | wc -l
+
+Ran terminal command:  for f in crates/opencascade-sys/generated/wrappers_TK*.cpp; do bn=$(basename "$f" .cpp); diff <(grep "^#include" "tmp/${bn}_run1.cpp") <(grep "^#include" "$f") && true; done | wc -l
+
+Zero differences — the includes are now fully deterministic across runs. Let me also check the preamble:                             
+
+Ran terminal command:  diff tmp/occt_preamble_run1.hxx crates/opencascade-sys/generated/occt_preamble.hxx
+
+Identical. Now do the full build:                               
+
+Ran terminal command:  time cargo build 2>&1
+
+Ran terminal command:  echo "Exit: $?"
+
+Now run the binding generator tests:                                    
+
+Ran terminal command:  time scripts/run-binding-generator-tests.sh 2>&1
+
+All 17 tests pass. Now run workspace tests:                                        
+
+Ran terminal command:  time cargo test --workspace --exclude opencascade-binding-generator 2>&1
+
+Ran terminal command:  echo "Exit: $?"
+
+All tests pass. Now commit:                                             
+
+Created 7 todos
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/commit_msg.txt)
+
+Ran terminal command:  cd /Users/sethml/src/opencascade-rs && cat > tmp/commit_msg.txt << 'ENDMSG'
+Fix nondeterministic C++ #include ordering; refactor cpp codegen
+
+- Sort known_headers before iterating in batch_find_defining_headers()
+  and find_defining_header() to ensure deterministic header resolution
+  across runs. Previously HashSet iteration order caused different
+  headers to be selected for the same unresolved types.
+
+- Sort standard library includes in generate_preamble() alphabetically.
+
+- Extract shared exception handling C++ boilerplate (OcctResult template,
+  occt_make_exception, OCCT_CATCH_RETURN macros) into
+  generate_exception_handling_boilerplate(), eliminating ~55 lines of
+  duplication between generate_wrappers() and generate_preamble().
+
+- Merge generate_function_wrappers() / generate_function_wrappers_refs()
+  and collect_function_required_headers() / collect_function_required_headers_refs()
+  into single generic functions using Borrow<FunctionBinding>, eliminating
+  ~80 lines of duplication.
+ENDMSG
+
+Ran terminal command:  git add -A && git status --short | grep -v "tmp/" | wc -l && echo "---" && git diff --cached --stat | tail -5
+
+50 files changed (1 source file + ~49 generated files), net reduction of 84 lines. Let me commit:                                                     
+
+Ran terminal command:  git commit -F tmp/commit_msg.txt 2>&1
+
+Completed: *Commit* (7/7)
+
+Committed as `e21ce85`. The changes:
+
+1. **Nondeterminism fix**: `batch_find_defining_headers()` and `find_defining_header()` now sort `known_headers` into a `Vec` before iterating, so header resolution is deterministic across runs. Verified by regenerating bindings twice and diffing — zero differences.
+
+2. **Preamble header ordering**: Standard library includes (`cstdint`, `cstring`, `new`, `string`, `typeinfo`) are now emitted alphabetically.
+
+3. **Extracted exception handling boilerplate**: The ~55-line C++ block (OcctResult template, occt_make_exception, catch macros) was duplicated verbatim between `generate_wrappers()` and `generate_preamble()`. Now it's a single `generate_exception_handling_boilerplate()` function.
+
+4. **Merged duplicated function pairs**: `generate_function_wrappers` + `_refs` and `collect_function_required_headers` + `_refs` merged into generic functions using `Borrow<FunctionBinding>`, eliminating ~80 lines of duplication.

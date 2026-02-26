@@ -7,6 +7,7 @@
 #include <BinLDrivers_DocumentStorageDriver.hxx>
 #include <BinMDF_ADriver.hxx>
 #include <BinMDF_ADriverTable.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <BinObjMgt_Persistent.hxx>
 #include <BinObjMgt_RRelocationTable.hxx>
 #include <BinTObjDrivers.hxx>
@@ -17,7 +18,7 @@
 #include <BinTObjDrivers_ObjectDriver.hxx>
 #include <BinTObjDrivers_ReferenceDriver.hxx>
 #include <BinTObjDrivers_XYZDriver.hxx>
-#include <CDM_MapOfDocument.hxx>
+#include <CDM_ListOfDocument.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <PCDM_Reader.hxx>
@@ -32,9 +33,8 @@
 #include <TColStd_IndexedMapOfTransient.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeDataMap.hxx>
+#include <TDF_AttributeArray1.hxx>
 #include <TDocStd_Application.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<BinLDrivers_DocumentRetrievalDriver> HandleBinLDriversDocumentRetrievalDriver;

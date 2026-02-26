@@ -9,6 +9,7 @@
 #include <BinDrivers_DocumentStorageDriver.hxx>
 #include <BinLDrivers_DocumentRetrievalDriver.hxx>
 #include <BinLDrivers_DocumentStorageDriver.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <BinTObjDrivers_DocumentRetrievalDriver.hxx>
 #include <BinTObjDrivers_DocumentStorageDriver.hxx>
 #include <BinXCAFDrivers_DocumentRetrievalDriver.hxx>
@@ -25,8 +26,8 @@
 #include <CDM_Application.hxx>
 #include <CDM_CanCloseStatus.hxx>
 #include <CDM_Document.hxx>
+#include <CDM_ListOfDocument.hxx>
 #include <CDM_ListOfReferences.hxx>
-#include <CDM_MapOfDocument.hxx>
 #include <CDM_MetaData.hxx>
 #include <CDM_MetaDataLookUpTable.hxx>
 #include <CDM_Reference.hxx>
@@ -79,6 +80,7 @@
 #include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
+#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Persistent.hxx>
 #include <Standard_SStream.hxx>
@@ -91,19 +93,18 @@
 #include <Storage_Error.hxx>
 #include <Storage_OpenMode.hxx>
 #include <TColStd_SequenceOfExtendedString.hxx>
+#include <TColStd_SequenceOfHExtendedString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HExtendedString.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_Document.hxx>
 #include <TObj_Application.hxx>
-#include <TObj_Container.hxx>
 #include <UTL.hxx>
 #include <XCAFApp_Application.hxx>
 #include <XmlDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlDrivers_DocumentStorageDriver.hxx>
 #include <XmlLDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlLDrivers_DocumentStorageDriver.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <XmlTObjDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlTObjDrivers_DocumentStorageDriver.hxx>
 #include <XmlXCAFDrivers_DocumentRetrievalDriver.hxx>

@@ -8,9 +8,11 @@
 #include <Adaptor3d_HVertex.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <Approx_Array1OfAdHSurface.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
 #include <BRepTopAdaptor_MapOfShapeTool.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_BoundSortBox.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
@@ -143,13 +145,13 @@
 #include <HLRTopoBRep_FaceIsoLiner.hxx>
 #include <HLRTopoBRep_OutLiner.hxx>
 #include <HLRTopoBRep_VData.hxx>
-#include <IGESBasic_Array2OfHArray1OfReal.hxx>
 #include <IntCurveSurface_IntersectionPoint.hxx>
 #include <IntCurveSurface_IntersectionSegment.hxx>
 #include <IntCurve_IConicTool.hxx>
 #include <IntRes2d_Domain.hxx>
 #include <IntRes2d_IntersectionPoint.hxx>
 #include <IntRes2d_IntersectionSegment.hxx>
+#include <IntSurf_Allocator.hxx>
 #include <IntSurf_InteriorPoint.hxx>
 #include <IntSurf_LineOn2S.hxx>
 #include <IntSurf_PathPoint.hxx>
@@ -159,6 +161,7 @@
 #include <IntSurf_SequenceOfPathPoint.hxx>
 #include <IntSurf_Transition.hxx>
 #include <IntSurf_TypeTrans.hxx>
+#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Intf_Array1OfLin.hxx>
 #include <Intf_SectionLine.hxx>
 #include <Intf_SectionPoint.hxx>
@@ -167,9 +170,8 @@
 #include <Intrv_Intervals.hxx>
 #include <Intrv_Position.hxx>
 #include <NCollection_BaseAllocator.hxx>
-#include <NCollection_BaseList.hxx>
-#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <Standard_Handle.hxx>
+#include <Standard_MMgrOpt.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
 #include <TColGeom2d_Array1OfBSplineCurve.hxx>
@@ -193,7 +195,6 @@
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Vertex.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Circ.hxx>

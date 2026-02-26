@@ -14,6 +14,64 @@ use std::collections::HashSet;
 use std::fmt::Write;
 use std::path::Path;
 
+/// Generate the shared C++ exception handling boilerplate.
+/// This includes the OcctResult<T> template, occt_make_exception helper,
+/// and OCCT_CATCH_RETURN / OCCT_CATCH_RETURN_VOID macros.
+fn generate_exception_handling_boilerplate() -> &'static str {
+    r#"
+// ========================
+// Exception handling
+// ========================
+
+#include <cxxabi.h>
+
+template<typename T>
+struct OcctResult {
+    T ret;
+    const char* exc;
+};
+
+template<>
+struct OcctResult<void> {
+    const char* exc;
+};
+
+extern "C" const char* occt_alloc_exception(const char* ptr, size_t len);
+
+static const char* occt_make_exception(const char* type_name, const char* message) {
+    std::string combined;
+    if (type_name) {
+        int status = 0;
+        char* demangled = abi::__cxa_demangle(type_name, nullptr, nullptr, &status);
+        if (status == 0 && demangled) {
+            combined = demangled;
+            std::free(demangled);
+        } else {
+            combined = type_name;
+            std::free(demangled);
+        }
+    } else {
+        combined = "<unknown>";
+    }
+    if (message && message[0] != '\0') {
+        combined += ": ";
+        combined += message;
+    }
+    return occt_alloc_exception(combined.data(), combined.size());
+}
+
+#define OCCT_CATCH_RETURN \
+    catch (const Standard_Failure& e) { return {{}, occt_make_exception(typeid(e).name(), e.GetMessageString())}; } \
+    catch (const std::exception& e) { return {{}, occt_make_exception(typeid(e).name(), e.what())}; } \
+    catch (...) { return {{}, occt_make_exception(nullptr, "unknown C++ exception")}; }
+
+#define OCCT_CATCH_RETURN_VOID \
+    catch (const Standard_Failure& e) { return occt_make_exception(typeid(e).name(), e.GetMessageString()); } \
+    catch (const std::exception& e) { return occt_make_exception(typeid(e).name(), e.what()); } \
+    catch (...) { return occt_make_exception(nullptr, "unknown C++ exception"); }
+
+"#
+}
 fn collect_handle_types(classes: &[&ParsedClass], handle_able_classes: &HashSet<String>) -> Vec<(String, String)> {
     let mut handles = HashSet::new();
 
@@ -288,8 +346,11 @@ fn batch_find_defining_headers(
         let prefix = name.split('_').next().unwrap_or("");
         prefix_types.entry(prefix).or_default().push(name);
     }
+    // Sort headers for deterministic iteration order
+    let mut sorted_known: Vec<&String> = known_headers.iter().collect();
+    sorted_known.sort();
     // Pass 1: Search headers matching module prefix
-    for header_name in known_headers {
+    for header_name in &sorted_known {
         if remaining.is_empty() {
             break;
         }
@@ -302,7 +363,7 @@ fn batch_find_defining_headers(
         if relevant_types.is_empty() {
             continue;
         }
-        let path = include_dir.join(header_name);
+        let path = include_dir.join(header_name.as_str());
         if let Ok(file) = std::fs::File::open(&path) {
             let reader = std::io::BufReader::new(file);
             let mut prev_had_typedef = false;
@@ -311,7 +372,7 @@ fn batch_find_defining_headers(
                     for &type_name in &relevant_types {
                         if remaining.contains(type_name) && line.contains(type_name) {
                             if line.contains("typedef") || line.contains("enum ") || prev_had_typedef {
-                                headers.insert(header_name.clone());
+                                headers.insert((*header_name).clone());
                                 remaining.remove(type_name);
                             }
                         }
@@ -323,11 +384,11 @@ fn batch_find_defining_headers(
     }
     // Pass 2: Search ALL headers for any still-unresolved types
     if !remaining.is_empty() {
-        for header_name in known_headers {
+        for header_name in &sorted_known {
             if remaining.is_empty() {
                 break;
             }
-            let path = include_dir.join(header_name);
+            let path = include_dir.join(header_name.as_str());
             if let Ok(file) = std::fs::File::open(&path) {
                 let reader = std::io::BufReader::new(file);
                 let mut prev_had_typedef = false;
@@ -336,7 +397,7 @@ fn batch_find_defining_headers(
                         for type_name in remaining.iter().copied().collect::<Vec<_>>() {
                             if line.contains(type_name) {
                                 if line.contains("typedef") || line.contains("enum ") || prev_had_typedef {
-                                    headers.insert(header_name.clone());
+                                    headers.insert((*header_name).clone());
                                     remaining.remove(type_name);
                                 }
                             }
@@ -360,16 +421,19 @@ fn find_defining_header(
     use std::io::BufRead;
     let module_prefix = type_name.split('_').next().unwrap_or("");
     let mut class_scope_match: Option<String> = None;
+    // Sort headers for deterministic iteration order
+    let mut sorted_known: Vec<&String> = known_headers.iter().collect();
+    sorted_known.sort();
 
     for pass in 0..2 {
-        for header_name in known_headers {
+        for header_name in &sorted_known {
             if pass == 0 && !header_name.starts_with(module_prefix) {
                 continue;
             }
             if pass == 1 && header_name.starts_with(module_prefix) {
                 continue;
             }
-            let path = include_dir.join(header_name);
+            let path = include_dir.join(header_name.as_str());
             if let Ok(file) = std::fs::File::open(&path) {
                 let reader = std::io::BufReader::new(file);
                 let mut prev_had_typedef = false;
@@ -380,10 +444,10 @@ fn find_defining_header(
                             if line.contains("typedef") || line.contains("enum ") || prev_had_typedef {
                                 // Prefer file-scope definitions (non-indented)
                                 if !line.starts_with(' ') && !line.starts_with('\t') {
-                                    return Some(header_name.clone());
+                                    return Some((*header_name).clone());
                                 }
                                 if class_scope_match.is_none() {
-                                    class_scope_match = Some(header_name.clone());
+                                    class_scope_match = Some((*header_name).clone());
                                 }
                             }
                         }
@@ -455,10 +519,11 @@ fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>, known_
     }
 }
 
-/// Generate wrappers for all namespace-level free functions from pre-computed FunctionBindings
-fn generate_function_wrappers(
+/// Generate wrappers for namespace-level free functions from pre-computed FunctionBindings.
+/// Accepts both `&[FunctionBinding]` and `&[&FunctionBinding]` via `Borrow`.
+fn generate_function_wrappers<T: std::borrow::Borrow<super::bindings::FunctionBinding>>(
     output: &mut String,
-    function_bindings: &[super::bindings::FunctionBinding],
+    function_bindings: &[T],
 ) {
     if function_bindings.is_empty() {
         return;
@@ -468,6 +533,7 @@ fn generate_function_wrappers(
     let mut by_namespace: std::collections::HashMap<&str, Vec<&super::bindings::FunctionBinding>> =
         std::collections::HashMap::new();
     for func in function_bindings {
+        let func = func.borrow();
         by_namespace
             .entry(&func.namespace)
             .or_default()
@@ -529,13 +595,14 @@ fn generate_function_wrappers(
     }
 }
 
-fn collect_function_required_headers(
-    function_bindings: &[super::bindings::FunctionBinding],
+fn collect_function_required_headers<T: std::borrow::Borrow<super::bindings::FunctionBinding>>(
+    function_bindings: &[T],
     known_headers: &HashSet<String>,
 ) -> Vec<String> {
     let mut headers = HashSet::new();
 
     for func in function_bindings {
+        let func = func.borrow();
         let ns_header = format!("{}.hxx", func.namespace);
         if known_headers.is_empty() || known_headers.contains(&ns_header) {
             headers.insert(ns_header);
@@ -556,75 +623,6 @@ fn extend_unique_headers(headers: &mut Vec<String>, additional_headers: impl Int
         if !headers.contains(&header) {
             headers.push(header);
         }
-    }
-}
-
-/// Like `collect_function_required_headers` but accepts `&&FunctionBinding` refs.
-fn collect_function_required_headers_refs(
-    function_bindings: &[&super::bindings::FunctionBinding],
-    known_headers: &HashSet<String>,
-) -> Vec<String> {
-    let mut headers = HashSet::new();
-    for func in function_bindings {
-        let ns_header = format!("{}.hxx", func.namespace);
-        if known_headers.is_empty() || known_headers.contains(&ns_header) {
-            headers.insert(ns_header);
-        }
-        for header in &func.cpp_headers {
-            headers.insert(header.clone());
-        }
-    }
-    let mut result: Vec<_> = headers.into_iter().collect();
-    result.sort();
-    result
-}
-
-/// Like `generate_function_wrappers` but accepts `&&FunctionBinding` refs.
-fn generate_function_wrappers_refs(
-    output: &mut String,
-    function_bindings: &[&super::bindings::FunctionBinding],
-) {
-    if function_bindings.is_empty() {
-        return;
-    }
-    let mut by_namespace: std::collections::HashMap<&str, Vec<&&super::bindings::FunctionBinding>> =
-        std::collections::HashMap::new();
-    for func in function_bindings {
-        by_namespace.entry(&func.namespace).or_default().push(func);
-    }
-    let mut namespaces: Vec<&&str> = by_namespace.keys().collect();
-    namespaces.sort();
-    for namespace in namespaces {
-        let namespace_functions = &by_namespace[namespace];
-        writeln!(output, "// ========================").unwrap();
-        writeln!(output, "// {} namespace functions", namespace).unwrap();
-        writeln!(output, "// ========================").unwrap();
-        for func in namespace_functions {
-            let wrapper_name = &func.cpp_wrapper_name;
-            let params_cpp: Vec<String> = func.params.iter()
-                .map(|p| format!("{} {}", p.cpp_type, p.cpp_name))
-                .collect();
-            let params_str = params_cpp.join(", ");
-            let args: Vec<String> = func.params.iter()
-                .map(|p| p.cpp_arg_expr.clone())
-                .collect();
-            let args_str = args.join(", ");
-            let call = format!("{}::{}({})", namespace, func.short_name, args_str);
-            if let Some(ref rt) = func.return_type {
-                let ret_type_cpp = rt.ffi_cpp_return_type();
-                let expr = rt.format_cpp_return_expr(&call);
-                writeln!(output, "extern \"C\" OcctResult<{}> {}({}) {{", ret_type_cpp, wrapper_name, params_str).unwrap();
-                writeln!(output, "    try {{ return {{{}, nullptr}}; }}", expr).unwrap();
-                writeln!(output, "    OCCT_CATCH_RETURN").unwrap();
-                writeln!(output, "}}").unwrap();
-            } else {
-                writeln!(output, "extern \"C\" const char* {}({}) {{", wrapper_name, params_str).unwrap();
-                writeln!(output, "    try {{ {}; return nullptr; }}", call).unwrap();
-                writeln!(output, "    OCCT_CATCH_RETURN_VOID").unwrap();
-                writeln!(output, "}}").unwrap();
-            }
-        }
-        writeln!(output).unwrap();
     }
 }
 
@@ -678,59 +676,7 @@ pub fn generate_wrappers(
 
     // Exception handling: OcctResult<T> template with null-terminated exc string.
     // Non-void wrappers return OcctResult<T>, void wrappers return const char*.
-    output.push_str(r#"
-// ========================
-// Exception handling
-// ========================
-
-#include <cxxabi.h>
-
-template<typename T>
-struct OcctResult {
-    T ret;
-    const char* exc;
-};
-
-template<>
-struct OcctResult<void> {
-    const char* exc;
-};
-
-extern "C" const char* occt_alloc_exception(const char* ptr, size_t len);
-
-static const char* occt_make_exception(const char* type_name, const char* message) {
-    std::string combined;
-    if (type_name) {
-        int status = 0;
-        char* demangled = abi::__cxa_demangle(type_name, nullptr, nullptr, &status);
-        if (status == 0 && demangled) {
-            combined = demangled;
-            std::free(demangled);
-        } else {
-            combined = type_name;
-            std::free(demangled);
-        }
-    } else {
-        combined = "<unknown>";
-    }
-    if (message && message[0] != '\0') {
-        combined += ": ";
-        combined += message;
-    }
-    return occt_alloc_exception(combined.data(), combined.size());
-}
-
-#define OCCT_CATCH_RETURN \
-    catch (const Standard_Failure& e) { return {{}, occt_make_exception(typeid(e).name(), e.GetMessageString())}; } \
-    catch (const std::exception& e) { return {{}, occt_make_exception(typeid(e).name(), e.what())}; } \
-    catch (...) { return {{}, occt_make_exception(nullptr, "unknown C++ exception")}; }
-
-#define OCCT_CATCH_RETURN_VOID \
-    catch (const Standard_Failure& e) { return occt_make_exception(typeid(e).name(), e.GetMessageString()); } \
-    catch (const std::exception& e) { return occt_make_exception(typeid(e).name(), e.what()); } \
-    catch (...) { return occt_make_exception(nullptr, "unknown C++ exception"); }
-
-"#);
+    output.push_str(&generate_exception_handling_boilerplate());
 
     // Generate typedefs for template instantiation aliases.
     // These MUST come before Handle typedefs since handles reference the alias names.
@@ -820,64 +766,12 @@ pub fn generate_preamble(
     writeln!(output, "#pragma once").unwrap();
     writeln!(output).unwrap();
     writeln!(output, "#include <cstdint>").unwrap();
-    writeln!(output, "#include <new>").unwrap();
-    writeln!(output, "#include <typeinfo>").unwrap();
     writeln!(output, "#include <cstring>").unwrap();
+    writeln!(output, "#include <new>").unwrap();
     writeln!(output, "#include <string>").unwrap();
+    writeln!(output, "#include <typeinfo>").unwrap();
     writeln!(output).unwrap();
-    output.push_str(r#"
-// ========================
-// Exception handling
-// ========================
-
-#include <cxxabi.h>
-
-template<typename T>
-struct OcctResult {
-    T ret;
-    const char* exc;
-};
-
-template<>
-struct OcctResult<void> {
-    const char* exc;
-};
-
-extern "C" const char* occt_alloc_exception(const char* ptr, size_t len);
-
-static const char* occt_make_exception(const char* type_name, const char* message) {
-    std::string combined;
-    if (type_name) {
-        int status = 0;
-        char* demangled = abi::__cxa_demangle(type_name, nullptr, nullptr, &status);
-        if (status == 0 && demangled) {
-            combined = demangled;
-            std::free(demangled);
-        } else {
-            combined = type_name;
-            std::free(demangled);
-        }
-    } else {
-        combined = "<unknown>";
-    }
-    if (message && message[0] != '\0') {
-        combined += ": ";
-        combined += message;
-    }
-    return occt_alloc_exception(combined.data(), combined.size());
-}
-
-#define OCCT_CATCH_RETURN \
-    catch (const Standard_Failure& e) { return {{}, occt_make_exception(typeid(e).name(), e.GetMessageString())}; } \
-    catch (const std::exception& e) { return {{}, occt_make_exception(typeid(e).name(), e.what())}; } \
-    catch (...) { return {{}, occt_make_exception(nullptr, "unknown C++ exception")}; }
-
-#define OCCT_CATCH_RETURN_VOID \
-    catch (const Standard_Failure& e) { return occt_make_exception(typeid(e).name(), e.GetMessageString()); } \
-    catch (const std::exception& e) { return occt_make_exception(typeid(e).name(), e.what()); } \
-    catch (...) { return occt_make_exception(nullptr, "unknown C++ exception"); }
-
-"#);
+    output.push_str(&generate_exception_handling_boilerplate());
 
     // Template instantiation headers and typedefs (available to all split files)
     if !template_instantiations.is_empty() {
@@ -956,7 +850,7 @@ pub fn generate_wrappers_for_group(
     let mut headers = collect_all_required_headers(classes, known_headers);
     extend_unique_headers(
         &mut headers,
-        collect_function_required_headers_refs(function_bindings, known_headers),
+        collect_function_required_headers(function_bindings, known_headers),
     );
     let coll_vec: Vec<_> = collections.iter().copied().cloned().collect();
     extend_unique_headers(
@@ -1040,8 +934,7 @@ pub fn generate_wrappers_for_group(
     }
 
     // Free function wrappers
-    let fn_refs: Vec<_> = function_bindings.to_vec();
-    generate_function_wrappers_refs(&mut output, &fn_refs);
+    generate_function_wrappers(&mut output, function_bindings);
 
     // Nested type destructors
     if !nested_types.is_empty() {

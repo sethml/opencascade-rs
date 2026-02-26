@@ -21,9 +21,11 @@
 #include <BRepFeat_Status.hxx>
 #include <BRepFeat_StatusError.hxx>
 #include <BRepTopAdaptor_FClass2d.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_Plane.hxx>
+#include <IntSurf_Allocator.hxx>
 #include <LocOpe.hxx>
 #include <LocOpe_BuildShape.hxx>
 #include <LocOpe_BuildWires.hxx>
@@ -51,7 +53,6 @@
 #include <LocOpe_WiresOnShape.hxx>
 #include <Message_ListOfAlert.hxx>
 #include <Message_ProgressRange.hxx>
-#include <NCollection_BaseList.hxx>
 #include <ShapeUpgrade_UnifySameDomain.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
@@ -72,7 +73,6 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Dir.hxx>

@@ -3,16 +3,17 @@
 
 #include "occt_preamble.hxx"
 
+#include <BinMDF_TypeADriverMap.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
-#include <CDM_MapOfDocument.hxx>
+#include <CDM_ListOfDocument.hxx>
 #include <CDM_MetaDataLookUpTable.hxx>
+#include <Interface_Array1OfHAsciiString.hxx>
 #include <Message_Algorithm.hxx>
 #include <Message_ExecStatus.hxx>
 #include <Message_Gravity.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
-#include <MoniTool_ValueInterpret.hxx>
 #include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
@@ -20,11 +21,12 @@
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
 #include <TColStd_SequenceOfAsciiString.hxx>
+#include <TColStd_SequenceOfHExtendedString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
 #include <TCollection_HExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeDataMap.hxx>
+#include <TDF_AttributeArray1.hxx>
 #include <TDF_AttributeDelta.hxx>
 #include <TDF_AttributeDeltaList.hxx>
 #include <TDF_AttributeIndexedMap.hxx>
@@ -58,7 +60,6 @@
 #include <TObj_TObject.hxx>
 #include <TObj_TReference.hxx>
 #include <TObj_TXYZ.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<CDF_Application> HandleCDFApplication;

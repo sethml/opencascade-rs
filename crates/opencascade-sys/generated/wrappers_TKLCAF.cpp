@@ -5,28 +5,30 @@
 
 #include <AppStdL_Application.hxx>
 #include <AppStd_Application.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
+#include <CDM_ListOfDocument.hxx>
 #include <CDM_ListOfReferences.hxx>
-#include <CDM_MapOfDocument.hxx>
 #include <CDM_MetaDataLookUpTable.hxx>
 #include <FEmTool_AssemblyTable.hxx>
-#include <IGESBasic_Array2OfHArray1OfReal.hxx>
+#include <IntSurf_Allocator.hxx>
+#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_BaseAllocator.hxx>
-#include <NCollection_BaseList.hxx>
 #include <PCDM_ReaderFilter.hxx>
 #include <PCDM_ReaderStatus.hxx>
 #include <PCDM_RetrievalDriver.hxx>
 #include <PCDM_StorageDriver.hxx>
 #include <PCDM_StoreStatus.hxx>
 #include <Resource_Manager.hxx>
-#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <ShapeProcess.hxx>
 #include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
+#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
@@ -225,7 +227,6 @@
 #include <XCAFDoc_ViewTool.hxx>
 #include <XCAFDoc_VisMaterialTool.hxx>
 #include <XCAFDoc_Volume.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<AppStdL_Application> HandleAppStdLApplication;

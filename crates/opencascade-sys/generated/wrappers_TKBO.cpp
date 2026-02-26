@@ -41,6 +41,7 @@
 #include <BOPDS_CoupleOfPaveBlocks.hxx>
 #include <BOPDS_Curve.hxx>
 #include <BOPDS_DS.hxx>
+#include <BOPDS_DataMapOfPaveBlockCommonBlock.hxx>
 #include <BOPDS_FaceInfo.hxx>
 #include <BOPDS_IndexRange.hxx>
 #include <BOPDS_IndexedDataMapOfPaveBlockListOfInteger.hxx>
@@ -51,7 +52,6 @@
 #include <BOPDS_IteratorSI.hxx>
 #include <BOPDS_ListOfPave.hxx>
 #include <BOPDS_ListOfPaveBlock.hxx>
-#include <BOPDS_MapOfCommonBlock.hxx>
 #include <BOPDS_MapOfPair.hxx>
 #include <BOPDS_MapOfPaveBlock.hxx>
 #include <BOPDS_PDS.hxx>
@@ -99,6 +99,7 @@
 #include <BRepAlgoAPI_Splitter.hxx>
 #include <BRepClass3d_SolidClassifier.hxx>
 #include <BRepTools_History.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
 #include <ChFiKPart_RstMap.hxx>
@@ -113,6 +114,7 @@
 #include <Geom_Surface.hxx>
 #include <IntPatch_SequenceOfLine.hxx>
 #include <IntPatch_WLine.hxx>
+#include <IntSurf_Allocator.hxx>
 #include <IntSurf_ListOfPntOn2S.hxx>
 #include <IntTools.hxx>
 #include <IntTools_BaseRangeSample.hxx>
@@ -149,7 +151,6 @@
 #include <Message_ProgressRange.hxx>
 #include <Message_Report.hxx>
 #include <NCollection_BaseAllocator.hxx>
-#include <NCollection_BaseList.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
@@ -180,7 +181,6 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Dir.hxx>
 #include <gp_Lin.hxx>
 #include <gp_Pln.hxx>

@@ -3,6 +3,7 @@
 
 #include "occt_preamble.hxx"
 
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <BSplCLib.hxx>
 #include <BSplCLib_Cache.hxx>
 #include <BSplCLib_CacheParams.hxx>
@@ -14,6 +15,7 @@
 #include <BVH_BuildThread.hxx>
 #include <BVH_Object.hxx>
 #include <BVH_Properties.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Array1OfBox.hxx>
 #include <Bnd_Array1OfBox2d.hxx>
 #include <Bnd_Array1OfSphere.hxx>
@@ -53,10 +55,9 @@
 #include <ElSLib.hxx>
 #include <FEmTool_AssemblyTable.hxx>
 #include <GeomAbs_Shape.hxx>
-#include <IGESBasic_Array2OfHArray1OfReal.hxx>
+#include <IntSurf_Allocator.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_BaseAllocator.hxx>
-#include <NCollection_BaseList.hxx>
 #include <OSD_FileSystem.hxx>
 #include <PLib.hxx>
 #include <PLib_Base.hxx>
@@ -89,6 +90,7 @@
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
+#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
@@ -164,7 +166,6 @@
 #include <TopLoc_Location.hxx>
 #include <TopLoc_SListNodeOfItemLocation.hxx>
 #include <TopLoc_SListOfItemLocation.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>

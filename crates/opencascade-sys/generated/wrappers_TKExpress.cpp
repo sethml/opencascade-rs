@@ -3,6 +3,7 @@
 
 #include "occt_preamble.hxx"
 
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Expr.hxx>
 #include <ExprIntrp_Analysis.hxx>
 #include <ExprIntrp_GenExp.hxx>
@@ -11,6 +12,7 @@
 #include <ExprIntrp_Generator.hxx>
 #include <ExprIntrp_SequenceOfNamedExpression.hxx>
 #include <ExprIntrp_SequenceOfNamedFunction.hxx>
+#include <ExprIntrp_StackOfGeneralExpression.hxx>
 #include <ExprIntrp_StackOfGeneralFunction.hxx>
 #include <ExprIntrp_StackOfGeneralRelation.hxx>
 #include <ExprIntrp_SyntaxError.hxx>
@@ -82,7 +84,6 @@
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
 #include <TColStd_Array1OfReal.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<ExprIntrp_GenExp> HandleExprIntrpGenExp;

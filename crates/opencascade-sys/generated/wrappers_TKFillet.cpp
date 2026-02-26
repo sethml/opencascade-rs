@@ -43,6 +43,7 @@
 #include <BRepFilletAPI_MakeChamfer.hxx>
 #include <BRepFilletAPI_MakeFillet.hxx>
 #include <BRepFilletAPI_MakeFillet2d.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <BlendFunc.hxx>
 #include <BlendFunc_CSCircular.hxx>
 #include <BlendFunc_CSConstRad.hxx>
@@ -110,7 +111,6 @@
 #include <ChFiDS_Spine.hxx>
 #include <ChFiDS_State.hxx>
 #include <ChFiDS_Stripe.hxx>
-#include <ChFiDS_StripeArray1.hxx>
 #include <ChFiDS_StripeMap.hxx>
 #include <ChFiDS_SurfData.hxx>
 #include <ChFiDS_TypeOfConcavity.hxx>
@@ -134,11 +134,11 @@
 #include <Geom_TrimmedCurve.hxx>
 #include <IntSurf_Transition.hxx>
 #include <IntSurf_TypeTrans.hxx>
+#include <Interface_DataMapOfTransientInteger.hxx>
 #include <Law_Composite.hxx>
 #include <Law_Function.hxx>
 #include <Law_Laws.hxx>
 #include <Message_ProgressRange.hxx>
-#include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
@@ -169,7 +169,6 @@
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>

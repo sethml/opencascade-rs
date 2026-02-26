@@ -81,7 +81,7 @@
 #include <BinXCAFDrivers_DocumentStorageDriver.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_MapOfDocument.hxx>
+#include <CDM_ListOfDocument.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <PCDM_Reader.hxx>
@@ -103,11 +103,10 @@
 #include <TColStd_SequenceOfAsciiString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeDataMap.hxx>
+#include <TDF_AttributeArray1.hxx>
 #include <TDF_Data.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_FormatVersion.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<BinDrivers_DocumentRetrievalDriver> HandleBinDriversDocumentRetrievalDriver;

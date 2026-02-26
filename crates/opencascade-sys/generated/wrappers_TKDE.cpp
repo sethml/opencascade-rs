@@ -3,6 +3,7 @@
 
 #include "occt_preamble.hxx"
 
+#include <BinMDF_TypeADriverMap.hxx>
 #include <DEBREP_ConfigurationNode.hxx>
 #include <DEBREP_Provider.hxx>
 #include <DEGLTF_ConfigurationNode.hxx>
@@ -37,7 +38,6 @@
 #include <TDocStd_Document.hxx>
 #include <TDocStd_SequenceOfDocument.hxx>
 #include <XSControl_WorkSession.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<DEBREP_ConfigurationNode> HandleDEBREPConfigurationNode;
