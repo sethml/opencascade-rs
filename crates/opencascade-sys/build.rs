@@ -12,34 +12,6 @@
 
 use std::path::PathBuf;
 
-/// The list of used OpenCASCADE libraries which needs to be linked with.
-const OCCT_LIBS: &[&str] = &[
-    "TKMath",
-    "TKernel",
-    "TKDE",
-    "TKFeat",
-    "TKGeomBase",
-    "TKG2d",
-    "TKG3d",
-    "TKTopAlgo",
-    "TKGeomAlgo",
-    "TKBRep",
-    "TKPrim",
-    "TKDESTEP",
-    "TKDEIGES",
-    "TKDESTL",
-    "TKMesh",
-    "TKShHealing",
-    "TKFillet",
-    "TKBool",
-    "TKBO",
-    "TKOffset",
-    "TKXSBase",
-    "TKCAF",
-    "TKLCAF",
-    "TKXCAF",
-];
-
 fn main() {
     let manifest_dir = PathBuf::from(std::env::var("CARGO_MANIFEST_DIR").expect("CARGO_MANIFEST_DIR not set"));
     let gen_dir = manifest_dir.join("generated");
@@ -52,12 +24,6 @@ fn main() {
     let occt_config = OcctConfig::detect();
 
     println!("cargo:rustc-link-search=native={}", occt_config.library_dir.to_str().unwrap());
-
-    let lib_type = if occt_config.is_dynamic { "dylib" } else { "static" };
-    for lib in OCCT_LIBS {
-        println!("cargo:rustc-link-lib={lib_type}={lib}");
-    }
-
     if is_windows {
         println!("cargo:rustc-link-lib=dylib=user32");
     }
@@ -79,6 +45,19 @@ fn main() {
     wrapper_cpp_files.sort();
     if wrapper_cpp_files.is_empty() {
         panic!("No generated wrappers*.cpp files found in {}. Run the binding generator first.", gen_dir.display());
+    }
+
+    // Derive OCCT libraries to link from generated wrapper file names.
+    // Each wrappers_TK<name>.cpp corresponds to an OCCT library named TK<name>.
+    let lib_type = if occt_config.is_dynamic { "dylib" } else { "static" };
+    for cpp_file in &wrapper_cpp_files {
+        if let Some(stem) = cpp_file.file_stem().and_then(|s| s.to_str()) {
+            if let Some(lib_name) = stem.strip_prefix("wrappers_") {
+                if lib_name.starts_with("TK") {
+                    println!("cargo:rustc-link-lib={lib_type}={lib_name}");
+                }
+            }
+        }
     }
 
     // Find manual wrapper .cpp files
